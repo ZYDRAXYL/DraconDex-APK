@@ -37,7 +37,7 @@ class UpdateCheckResult {
 class UpdateService {
   // This app's own canonical release feed — every install reads the SAME one.
   //
-  // NOT the source repo (ZYDRAXYL/DraconDex-APP): that one is PRIVATE, and the
+  // NOT the source repo (ZYDRAXYL/DraconDex-APK): that one is PRIVATE, and the
   // GitHub REST API answers 404 to every unauthenticated caller — which is
   // every install of this app. _fetchLatest() below turns any non-200 into
   // "no update", so the check reported "you are on the latest version" no

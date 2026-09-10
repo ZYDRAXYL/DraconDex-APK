@@ -357,7 +357,7 @@ jobs:
             gh "${args[@]}" "${files[@]}"
           fi
 
-  # DraconDex-APP is private, so nothing outside it can read this release —
+  # DraconDex-APK is private, so nothing outside it can read this release —
   # not the in-app update check, not the website's download page. Re-publish
   # it to the public ZYDRAXYL/DraconDex-REL mirror, which is what both now
   # read. Gated on `signed` for the same reason the publish step is: an APK

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Re-publish a release from this (private) repo into the public release repo.
 #
-# DraconDex-APP is private, so api.github.com/repos/ZYDRAXYL/DraconDex-APP/releases
+# DraconDex-APK is private, so api.github.com/repos/ZYDRAXYL/DraconDex-APK/releases
 # answers 404 to everyone without a token — which is every install of the app
 # and every visitor of the website. The update check and the download page
 # therefore read a PUBLIC mirror instead: ZYDRAXYL/DraconDex-REL, which holds
