@@ -1,0 +1,440 @@
+name: Build Flutter APK
+
+# Pull requests / branch pushes only build + upload workflow artifacts (30-day
+# retention). Pushing a flutter-v* tag additionally publishes the APKs as
+# GitHub release assets — mirrors build-electron.yml's v* tag convention, but
+# with its own prefix since the Electron app's package.json version and the
+# Flutter app's pubspec.yaml version are independent numbers that happen to
+# both look like "vX.Y.Z".
+
+on:
+  push:
+    branches:
+      - main
+      - claude/apk-run-prep-q0ct2l
+    tags:
+      - 'flutter-v*'
+    paths:
+      - 'flutter/**'
+      - '.github/workflows/build-apk.yml'
+  # flutter analyze / flutter test are this app's only automated checks, and
+  # until now they ran on main AFTER a merge — a PR touching flutter/ from any
+  # other branch shipped unverified. Never publishes: the release step below
+  # requires a tag push or workflow_dispatch.
+  pull_request:
+    paths:
+      - 'flutter/**'
+      - '.github/workflows/build-apk.yml'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (default: flutter-v<version from pubspec.yaml>)'
+        required: false
+        default: ''
+      draft:
+        description: 'Publish as a draft release'
+        type: boolean
+        default: true
+      prerelease:
+        description: 'Mark the release as a pre-release'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    # Consumed by the `mirror` job below, which re-publishes this release to
+    # the public ZYDRAXYL/DraconDex-REL repo.
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      tag: ${{ steps.meta.outputs.tag }}
+      signed: ${{ steps.signing.outputs.signed }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # Before the multi-repo split these were three separate --check steps
+      # (assets mirror, generated schema, generated Supabase constants), each
+      # comparing a generated file against a source in the same checkout. Those
+      # sources live in ZYDRAXYL/DraconDex-SDB now, so one check replaces all
+      # three: every vendored artifact must be byte-identical to the release
+      # sdb.lock.json pins. It also catches SDB publishing something new for
+      # this repo that nobody vendored — which none of the three used to.
+      - name: Vendored DraconDex-SDB artifacts match the pinned release
+        run: node tools/sdb-check.mjs
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.4'
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        working-directory: flutter
+        run: flutter pub get
+
+      # Release builds must be signed with the SAME certificate every time —
+      # Android refuses to install an update over an existing install if the
+      # signature changed. Without a keystore, flutter/android/app/build.gradle.kts
+      # falls back to the debug signingConfig, and a fresh GitHub Actions
+      # runner has no debug keystore either, so one gets auto-generated at
+      # random on every single run — every release then carries a different
+      # certificate and no in-app update can ever install over the last one.
+      #
+      # Two ways to supply that keystore, checked in this order:
+      #
+      #   1. Repo secrets — ANDROID_KEYSTORE_BASE64 is `base64 -w0
+      #      your-release.keystore` of a keystore kept OUT of the repo, plus
+      #      the three password/alias secrets. Private: nobody outside the
+      #      repo's admins can sign an "update" for this app.
+      #   2. A keystore committed to the repo — flutter/android/key.properties
+      #      plus the keystore file it names, both deliberately un-ignored in
+      #      flutter/android/.gitignore. Nothing to configure, works for local
+      #      builds and forks too, but the signing identity is public: anyone
+      #      who can read the repo can build an APK Android will accept as an
+      #      update over an existing DraconDex install. That trade is only
+      #      defensible because this app is sideloaded, not on Play.
+      #
+      # Secrets win when both exist, so the project can start on a committed
+      # key and move to a private one later — but note that SWITCHING breaks
+      # in-app updates for everyone already installed, exactly like losing the
+      # keystore does. Whichever is used, the certificate is permanent: there
+      # is no recovery from changing it, only a fresh reinstall for users.
+      - name: Set up release signing
+        id: signing
+        working-directory: flutter
+        env:
+          # A run that publishes a release MUST be signed. A plain branch/PR
+          # run only uploads a 30-day CI artifact nobody updates over, so it
+          # may still fall back to debug signing and stay green.
+          PUBLISHING: ${{ startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch' }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+
+          if [[ -n "$ANDROID_KEYSTORE_BASE64" ]]; then
+            for var in ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
+              if [[ -z "${!var}" ]]; then
+                echo "::error::$var is empty but ANDROID_KEYSTORE_BASE64 is set — all four signing secrets are needed together."
+                exit 1
+              fi
+            done
+            # Overwrites a committed keystore if one is also present: a private
+            # key is strictly better than a shared one.
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/release.keystore
+            cat > android/key.properties <<PROPS
+          storeFile=release.keystore
+          storePassword=$ANDROID_KEYSTORE_PASSWORD
+          keyAlias=$ANDROID_KEY_ALIAS
+          keyPassword=$ANDROID_KEY_PASSWORD
+          PROPS
+            echo "Signing with the keystore from repo secrets."
+            echo "signed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [[ -f android/key.properties ]]; then
+            store="$(sed -n 's/^[[:space:]]*storeFile[[:space:]]*=[[:space:]]*//p' android/key.properties | tr -d '\r')"
+            if [[ -z "$store" ]]; then
+              echo "::error::android/key.properties is committed but names no storeFile."
+              exit 1
+            fi
+            # storeFile is resolved by build.gradle.kts's file() against the
+            # :app project dir, so that is where it has to exist.
+            if [[ ! -f "android/app/$store" ]]; then
+              echo "::error::android/key.properties names storeFile '$store', but android/app/$store does not exist."
+              exit 1
+            fi
+            echo "Signing with the keystore committed to the repo (android/app/$store)."
+            echo "signed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "signed=false" >> "$GITHUB_OUTPUT"
+          # This used to `exit 0` with only a ::warning:: — which is exactly
+          # how flutter-v2.3.0 .. v2.8.0 all shipped signed by a DIFFERENT
+          # random debug certificate each run, so every in-app "Install now"
+          # failed with Android's generic invalid-package error. A warning in
+          # a green log is not a gate; publishing now hard-fails instead.
+          if [[ "$PUBLISHING" == "true" ]]; then
+            echo "::error::No signing keystore: neither the ANDROID_KEYSTORE_BASE64 secret nor a committed android/key.properties. This release would be signed with a throwaway debug certificate and could never install over any previous install. Refusing to build a release — see docs/UPDATE.md section 2.11."
+            exit 1
+          fi
+          echo "::warning::No signing keystore — this CI-artifact APK falls back to a random debug signature. Fine for a scratch install, but it can never be updated over. See docs/UPDATE.md."
+
+      - name: Analyze
+        working-directory: flutter
+        run: flutter analyze --no-fatal-infos
+
+      - name: Test
+        working-directory: flutter
+        run: flutter test
+
+      - name: Resolve version and release tag
+        id: meta
+        run: |
+          version="$(grep -m1 '^version:' flutter/pubspec.yaml | sed -E 's/^version:\s*([0-9.]+).*/\1/')"
+          tag='${{ github.event.inputs.tag }}'
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            tag="${GITHUB_REF#refs/tags/}"
+          fi
+          if [[ -z "$tag" ]]; then
+            tag="flutter-v$version"
+          fi
+          if [[ "${tag#flutter-v}" != "$version" ]]; then
+            echo "::warning::Tag '$tag' does not match pubspec.yaml version '$version'."
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=$version tag=$tag"
+
+      - name: Build release APK (split per ABI)
+        working-directory: flutter
+        run: flutter build apk --release --split-per-abi
+
+      - name: Build release APK (universal)
+        working-directory: flutter
+        run: flutter build apk --release
+
+      # Defence in depth for the same bug. The step above catches a MISSING
+      # secret; this catches Gradle having fallen back to debug signing for any
+      # other reason (key.properties written but not read, a wrong storeFile
+      # path, a signingConfig regression in build.gradle.kts) — all of which
+      # look like a perfectly successful build and only fail on the user's
+      # phone. Read the signer certificate back out of the APKs that were
+      # actually built and refuse to go any further if it is a debug one.
+      #
+      # The printed SHA-256 fingerprint is the invariant that matters: it must
+      # be identical in every release, forever. If it ever changes, in-app
+      # updates break for every existing install.
+      - name: Verify release signing certificate
+        if: steps.signing.outputs.signed == 'true'
+        env:
+          EXPECTED_CERT_SHA256: ${{ secrets.ANDROID_SIGNING_CERT_SHA256 }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          # Not `set -e`-safe on its own: a failing find would abort the step
+          # before the explanatory error below ever prints.
+          apksigner="$(find "$sdk/build-tools" -name apksigner -type f 2>/dev/null | sort -V | tail -1 || true)"
+          if [[ -z "$apksigner" ]]; then
+            echo "::error::apksigner not found under $sdk/build-tools — cannot verify the signature of a release build."
+            exit 1
+          fi
+          apks=(flutter/build/app/outputs/flutter-apk/app-*release.apk)
+          if [[ ${#apks[@]} -eq 0 ]]; then
+            echo "::error::No release APKs to verify."
+            exit 1
+          fi
+          fail=0
+          for apk in "${apks[@]}"; do
+            name="$(basename "$apk")"
+            # 2>&1: apksigner puts its WARNINGs on stderr, and losing them
+            # makes an unexpected output shape impossible to diagnose from
+            # the log alone.
+            if ! certs="$("$apksigner" verify --print-certs "$apk" 2>&1)"; then
+              echo "::error::$name failed signature verification."
+              printf '%s\n' "$certs"
+              fail=1
+              continue
+            fi
+            printf '%s\n' "$certs"
+            # Deliberately NOT anchored to "^Signer #1 certificate DN: ".
+            # apksigner varies the prefix — it prints
+            # "Signer (minSdkVersion=24, maxSdkVersion=...) #1 certificate DN:"
+            # when signers differ per SDK range — and the anchored pattern
+            # silently produced an EMPTY subject, which then compared false
+            # against the debug-certificate test below. The whole gate passed
+            # every APK regardless of how it was signed. Hence the emptiness
+            # check that follows: unparseable output must fail, never pass.
+            subject="$(sed -n 's/.*certificate DN: //p' <<<"$certs" | head -1)"
+            sha="$(sed -n 's/.*certificate SHA-256 digest: //p' <<<"$certs" | head -1)"
+            if [[ -z "$subject" || -z "$sha" ]]; then
+              echo "::error::Could not read a signer certificate out of $name (see the apksigner output above). Refusing to treat an unverifiable APK as signed."
+              fail=1
+              continue
+            fi
+            echo "$name: $subject (SHA-256 $sha)"
+            echo "- \`$name\` — $subject, SHA-256 \`$sha\`" >> "$GITHUB_STEP_SUMMARY"
+            if [[ "$subject" == *"CN=Android Debug"* ]]; then
+              echo "::error::$name is signed with a throwaway debug certificate. Not publishing — see docs/UPDATE.md section 2.11."
+              fail=1
+            fi
+            # Optional belt-and-braces: set the ANDROID_SIGNING_CERT_SHA256
+            # repo secret to this project's fingerprint and every release is
+            # pinned to it, so an accidental key change fails the build
+            # instead of silently breaking updates for every install.
+            if [[ -n "$EXPECTED_CERT_SHA256" ]]; then
+              want="$(tr 'A-Z' 'a-z' <<<"$EXPECTED_CERT_SHA256" | tr -d ': ')"
+              got="$(tr 'A-Z' 'a-z' <<<"$sha" | tr -d ': ')"
+              if [[ "$want" != "$got" ]]; then
+                echo "::error::$name is signed with $sha, but ANDROID_SIGNING_CERT_SHA256 pins $EXPECTED_CERT_SHA256. A changed signing certificate breaks in-app updates for every existing install."
+                fail=1
+              fi
+            fi
+          done
+          exit "$fail"
+
+      - name: Collect release assets
+        run: |
+          set -euo pipefail
+          version='${{ steps.meta.outputs.version }}'
+          dist='dist-release'
+          mkdir -p "$dist"
+          shopt -s nullglob
+          apks=(flutter/build/app/outputs/flutter-apk/app-*-release.apk flutter/build/app/outputs/flutter-apk/app-release.apk)
+          if [[ ${#apks[@]} -eq 0 ]]; then
+            echo "No release APKs found" >&2
+            exit 1
+          fi
+          for f in "${apks[@]}"; do
+            base="$(basename "$f" .apk)"
+            cp "$f" "$dist/DraconDex-$version-${base#app-}.apk"
+          done
+          ( cd "$dist" && sha256sum * > checksums-sha256.txt )
+          ls -lh "$dist" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      # Non-fatal on purpose. GitHub Actions artifact storage is an
+      # account-wide quota that can fill up ("Failed to CreateArtifact:
+      # Artifact storage quota has been hit"), and this step sits BEFORE the
+      # release is published — so a full quota used to kill the job after
+      # every installer had already built successfully, and no release was
+      # ever created. The artifact is a 30-day convenience; the release is the
+      # deliverable, and it must not be blocked by one.
+      #
+      # This does NOT weaken the empty-output guard: "Collect release assets"
+      # above already hard-fails (and is not continue-on-error) when an
+      # expected build output is missing, so `if-no-files-found` here is only
+      # ever the second line of defence.
+      - name: Upload build artifacts
+        continue-on-error: true
+        uses: actions/upload-artifact@v6
+        with:
+          name: release-apks
+          path: dist-release/*
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Publish GitHub release
+        if: (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch') && steps.signing.outputs.signed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          tag='${{ steps.meta.outputs.tag }}'
+          version='${{ steps.meta.outputs.version }}'
+          files=(dist-release/*)
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists - uploading assets."
+            gh release upload "$tag" --clobber "${files[@]}"
+          else
+            args=(release create "$tag" --title "DraconDex APK $version" --generate-notes)
+            if [[ '${{ github.event_name }}' == 'workflow_dispatch' ]]; then
+              # A manual run may target a tag that does not exist yet; gh
+              # creates it from the checked-out commit.
+              [[ '${{ github.event.inputs.draft }}' == 'true' ]] && args+=(--draft)
+              [[ '${{ github.event.inputs.prerelease }}' == 'true' ]] && args+=(--prerelease)
+            else
+              args+=(--verify-tag)
+            fi
+            gh "${args[@]}" "${files[@]}"
+          fi
+
+  # DraconDex-APP is private, so nothing outside it can read this release —
+  # not the in-app update check, not the website's download page. Re-publish
+  # it to the public ZYDRAXYL/DraconDex-REL mirror, which is what both now
+  # read. Gated on `signed` for the same reason the publish step is: an APK
+  # signed with a throwaway debug certificate must not reach users at all,
+  # and the mirror is the copy users actually download.
+  mirror:
+    needs: build
+    if: (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch') && needs.build.outputs.signed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # Non-fatal on purpose. The artifact is the fast path — it skips
+      # re-downloading assets that were just built — but GitHub Actions
+      # artifact storage is an account-wide quota that can be full ("Failed to
+      # CreateArtifact: Artifact storage quota has been hit"), and the mirror
+      # must not be the reason a published release goes un-mirrored. When this
+      # step fails, dist-release stays empty and mirror-release.sh falls back
+      # to pulling the assets off the release itself.
+      - name: Download the built assets
+        id: assets
+        continue-on-error: true
+        uses: actions/download-artifact@v6
+        with:
+          name: release-apks
+          path: dist-release
+
+      - name: Mirror the release to the public release repo
+        env:
+          # Legacy second mirror: nothing reads DraconDex-REL since both
+          # update checks moved to DraconDex-WEB, so an unset RELEASE_REPO_TOKEN
+          # skips this step instead of reddening every release build.
+          OPTIONAL_TARGET: 'true'
+          SOURCE_REPO: ${{ github.repository }}
+          SOURCE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # A token with `contents: write` on ZYDRAXYL/DraconDex-REL. The
+          # workflow's own GITHUB_TOKEN is scoped to THIS repo and cannot
+          # write to another one, so this secret is required — the step fails
+          # loudly rather than leaving the mirror silently behind.
+          TARGET_TOKEN: ${{ secrets.RELEASE_REPO_TOKEN }}
+          # Empty when the download above failed, which sends the script
+          # down its "fetch the assets from the source release" path.
+          ASSETS_DIR: ${{ steps.assets.outcome == 'success' && 'dist-release' || '' }}
+        run: bash .github/scripts/mirror-release.sh '${{ needs.build.outputs.tag }}'
+
+      # Same mirror, second target: the APKs also land directly on
+      # ZYDRAXYL/DraconDex-WEB (the site repo itself), so its Android download
+      # section can link straight to files hosted in that repo instead of a
+      # third one. See "Refresh the web repo's static release data" below.
+      # The two web-repo steps below carry their own secret (WEB_REPO_TOKEN) and
+      # their own target, so a failure of the DraconDex-REL mirror above —
+      # a missing RELEASE_REPO_TOKEN, say — must not take the download page's
+      # data down with it. `!cancelled()` runs them anyway; the job still
+      # reports the earlier failure.
+      - name: Mirror the release into the public web repo
+        if: ${{ !cancelled() }}
+        env:
+          SOURCE_REPO: ${{ github.repository }}
+          SOURCE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_REPO: ZYDRAXYL/DraconDex-WEB
+          # A token with `contents: write` on ZYDRAXYL/DraconDex-WEB — a
+          # different repo than RELEASE_REPO_TOKEN's, hence its own secret.
+          TARGET_TOKEN: ${{ secrets.WEB_REPO_TOKEN }}
+          ASSETS_DIR: ${{ steps.assets.outcome == 'success' && 'dist-release' || '' }}
+        run: bash .github/scripts/mirror-release.sh '${{ needs.build.outputs.tag }}'
+
+      # assets/js/releases.js on the website used to call api.github.com at
+      # every visitor's page load — a public repo works, but the anonymous
+      # API is capped at 60 req/hour per IP, which a traffic spike or a
+      # shared office/campus IP can exhaust for everyone behind it at once.
+      # Snapshotting the release list into a file GitHub Pages serves removes
+      # that runtime API dependency entirely.
+      - name: Refresh the web repo's static release data
+        if: ${{ !cancelled() }}
+        env:
+          WEB_TOKEN: ${{ secrets.WEB_REPO_TOKEN }}
+        run: bash .github/scripts/update-web-releases-json.sh

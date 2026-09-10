@@ -1,0 +1,36 @@
+node_modules/
+*.log
+
+# Flutter / Dart
+.dart_tool/
+.flutter_sdk/
+flutter/build/
+build/
+
+# Databases. The app's data lives on the device, never in the repo — anything
+# matching here would be real user content.
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Secrets — none are committed and none should be. Every credential this app
+# uses (Supabase URL/anon key, Google client id/secret) is entered in the app UI
+# at runtime and stored locally, not in source.
+#
+# That includes the Android release keystore: it lives in repo secrets
+# (ANDROID_KEYSTORE_BASE64, decoded at build time by
+# .github/workflows/build-apk.yml), never in the tree. flutter/android/.gitignore
+# spells out why, and what would have to change to sign from a committed
+# keystore instead.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.keystore
+*.jks
+
+# Editor / IDE
+.idea/

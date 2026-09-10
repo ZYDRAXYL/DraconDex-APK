@@ -1,0 +1,85 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/i18n/app_localizations.dart';
+import '../../../data/models/module_model.dart';
+import '../../../providers/db_providers.dart';
+
+class NexusDialog extends ConsumerStatefulWidget {
+  final NexusModel? existing;
+  const NexusDialog({super.key, this.existing});
+
+  @override
+  ConsumerState<NexusDialog> createState() => _NexusDialogState();
+}
+
+class _NexusDialogState extends ConsumerState<NexusDialog> {
+  late final TextEditingController _name;
+  late final TextEditingController _memo;
+
+  @override
+  void initState() {
+    super.initState();
+    _name = TextEditingController(text: widget.existing?.name ?? '');
+    _memo = TextEditingController(text: widget.existing?.memo ?? '');
+  }
+
+  @override
+  void dispose() {
+    _name.dispose();
+    _memo.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return AlertDialog(
+      title: Text(widget.existing == null ? l10n.newNexusTitle : l10n.renameNexusTitle),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(controller: _name, autofocus: true, decoration: InputDecoration(labelText: '${l10n.labelName} *')),
+          const SizedBox(height: 12),
+          TextField(controller: _memo, decoration: InputDecoration(labelText: l10n.labelMemo), maxLines: 2),
+        ],
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.btnCancel)),
+        FilledButton(onPressed: _save, child: Text(l10n.btnSave)),
+      ],
+    );
+  }
+
+  Future<void> _save() async {
+    final name = _name.text.trim();
+    if (name.isEmpty) return;
+    final memo = _memo.text.trim().isEmpty ? null : _memo.text.trim();
+    // Was: the DAO's own AsyncValue.error branch was the only thing caught
+    // here, so an exception thrown by createNexus/updateNexus itself (e.g. a
+    // DB write failure) propagated straight out of this async callback —
+    // Flutter reports that to the zone error handler, not to this dialog, so
+    // it never reached Navigator.pop() but also never told the user anything
+    // went wrong. The dialog just... stayed there, or the tap looked like it
+    // did nothing. Wrapping the whole save in try/catch means every failure
+    // path shows saveFailedMessage and only a real success closes the dialog.
+    try {
+      await ref.read(moduleDaoProvider).when(
+        data: (d) async {
+          if (widget.existing == null) {
+            await d.createNexus(name: name, memo: memo);
+          } else {
+            await d.updateNexus(widget.existing!.id, name: name, memo: memo, colorId: widget.existing!.colorId);
+          }
+        },
+        loading: () => throw StateError('database not ready'),
+        error: (e, s) => throw e,
+      );
+      if (mounted) Navigator.of(context).pop();
+    } catch (e) {
+      if (!mounted) return;
+      final l10n = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${l10n.saveFailedMessage} $e')));
+    }
+  }
+}

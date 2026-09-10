@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <title>DraconDex — Google</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; color: #e5e7eb; background: #111827; }
+  </style>
+</head>
+<body>
+<p id="msg">Finishing sign-in…</p>
+<!--
+  Where Google sends the browser back after the consent screen, for the
+  web/PWA build's Google login (lib/data/services/google_auth_platform_web.dart).
+
+  This page is deliberately tiny and framework-free: it runs inside the popup
+  the app opened, hands the URL fragment back to the app that opened it, and
+  closes. It never talks to Google itself and stores nothing.
+
+  The whole payload is passed as one opaque string rather than parsed here —
+  parsing lives in the Dart side that also knows the CSRF nonce to check it
+  against. targetOrigin is pinned to this page's own origin so the token
+  cannot be posted to a page from anywhere else.
+-->
+<script>
+  (function () {
+    var hash = window.location.hash ? window.location.hash.substring(1) : '';
+    var query = window.location.search ? window.location.search.substring(1) : '';
+    // Success comes back in the fragment; an error redirect uses the query.
+    var payload = hash || query;
+    if (window.opener && !window.opener.closed) {
+      window.opener.postMessage('dracondex-oauth:' + payload, window.location.origin);
+      window.close();
+      return;
+    }
+    // No opener means the popup was blocked and the browser opened this in a
+    // tab of its own, or the app was closed mid-login. Nothing can be handed
+    // back, so say so instead of leaving a token sitting in the address bar.
+    document.getElementById('msg').textContent =
+      'Sign-in could not be returned to DraconDex. Close this tab and try again with pop-ups allowed.';
+    history.replaceState(null, '', window.location.pathname);
+  })();
+</script>
+</body>
+</html>

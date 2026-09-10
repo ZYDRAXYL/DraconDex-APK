@@ -1,0 +1,527 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Thai (`th`).
+class AppLocalizationsTh extends AppLocalizations {
+  AppLocalizationsTh([String locale = 'th']) : super(locale);
+
+  @override
+  String get appName => 'DraconDex';
+
+  @override
+  String get nexusTitle => 'DraconDex';
+
+  @override
+  String get nexusSubtitle => 'จัดการข้อมูลนิยาย';
+
+  @override
+  String get moduleGlobalTags => 'แท็ก';
+
+  @override
+  String get moduleColors => 'สี';
+
+  @override
+  String get moduleSettings => 'ตั้งค่า';
+
+  @override
+  String get btnNew => 'ใหม่';
+
+  @override
+  String get btnSave => 'บันทึก';
+
+  @override
+  String get btnCancel => 'ยกเลิก';
+
+  @override
+  String get btnDelete => 'ลบ';
+
+  @override
+  String get btnEdit => 'แก้ไข';
+
+  @override
+  String get btnClose => 'ปิด';
+
+  @override
+  String get btnAdd => 'เพิ่ม';
+
+  @override
+  String get btnImport => 'นำเข้า DB';
+
+  @override
+  String get btnExport => 'ส่งออก DB';
+
+  @override
+  String get labelName => 'ชื่อ';
+
+  @override
+  String get labelMemo => 'บันทึก';
+
+  @override
+  String get labelColor => 'สี';
+
+  @override
+  String get labelNote => 'โน้ต';
+
+  @override
+  String get labelTags => 'แท็ก';
+
+  @override
+  String get labelSearch => 'ค้นหา...';
+
+  @override
+  String get newHashtag => 'แท็กใหม่';
+
+  @override
+  String get noTags => 'ยังไม่มีแท็ก';
+
+  @override
+  String get noColors => 'ไม่มีสีในพาเลท';
+
+  @override
+  String get noResults => 'ไม่พบผลลัพธ์';
+
+  @override
+  String get confirmDeleteTitle => 'ยืนยันการลบ';
+
+  @override
+  String get confirmDeleteMessage => 'การกระทำนี้ไม่สามารถย้อนกลับได้';
+
+  @override
+  String get colorInUse => 'สีนี้กำลังถูกใช้งานอยู่ ไม่สามารถลบได้';
+
+  @override
+  String get themeLabel => 'ธีม';
+
+  @override
+  String get themeMidnight => 'Midnight';
+
+  @override
+  String get themeMoonlight => 'Moonlight';
+
+  @override
+  String get themeDaylight => 'Daylight';
+
+  @override
+  String get languageLabel => 'ภาษา';
+
+  @override
+  String get uiScaleLabel => 'ขนาด UI';
+
+  @override
+  String get importSuccess => 'นำเข้าฐานข้อมูลสำเร็จ';
+
+  @override
+  String get importFailed => 'นำเข้าล้มเหลว กรุณาตรวจสอบไฟล์';
+
+  @override
+  String get exportSuccess => 'ส่งออกฐานข้อมูลแล้ว';
+
+  @override
+  String get selectColor => 'เลือกสี';
+
+  @override
+  String get recentColors => 'ล่าสุด';
+
+  @override
+  String get version => 'เวอร์ชัน 2.1.0';
+
+  @override
+  String get btnRename => 'เปลี่ยนชื่อ';
+
+  @override
+  String get btnPin => 'ปักหมุด';
+
+  @override
+  String get btnUnpin => 'เลิกปักหมุด';
+
+  @override
+  String get newNexusTitle => 'Nexus ใหม่';
+
+  @override
+  String get renameNexusTitle => 'เปลี่ยนชื่อ Nexus';
+
+  @override
+  String get newModuleTitle => 'โมดูลใหม่';
+
+  @override
+  String get renameModuleTitle => 'เปลี่ยนชื่อโมดูล';
+
+  @override
+  String get newModuleTooltip => 'โมดูลใหม่';
+
+  @override
+  String get newNexusTooltip => 'Nexus ใหม่';
+
+  @override
+  String get emptyNexusMessage => 'ยังไม่มี Nexus แตะ + เพื่อสร้าง';
+
+  @override
+  String get emptyModuleMessage => 'ว่างเปล่า แตะ + เพื่อเพิ่มโมดูล';
+
+  @override
+  String get deleteNexusMessage => 'การลบนี้จะลบโมดูลทั้งหมดที่อยู่ข้างในด้วย ไม่สามารถย้อนกลับได้';
+
+  @override
+  String get deleteModuleMessage => 'การลบนี้จะลบโมดูลที่ซ้อนอยู่ข้างในทั้งหมดด้วย ไม่สามารถย้อนกลับได้';
+
+  @override
+  String get labelKind => 'ประเภท';
+
+  @override
+  String get kindContentUnavailable => 'โมดูลประเภทนี้ยังรองรับไม่เต็มรูปแบบบนมือถือ — ใช้ช่องโน้ตร่วมด้านล่างแทน';
+
+  @override
+  String get notesHint => 'โน้ตสำหรับโมดูลนี้…';
+
+  @override
+  String get settingsAppearance => 'รูปลักษณ์';
+
+  @override
+  String get settingsData => 'ข้อมูล';
+
+  @override
+  String get settingsAbout => 'เกี่ยวกับ';
+
+  @override
+  String get exportDbTitle => 'ส่งออกฐานข้อมูล';
+
+  @override
+  String get exportDbSubtitle => 'แชร์ไฟล์ .db เพื่อย้ายข้อมูลไปยัง PC หรืออุปกรณ์อื่น';
+
+  @override
+  String get importDbTitle => 'นำเข้าฐานข้อมูล';
+
+  @override
+  String get importDbSubtitle => 'ผสานข้อมูลจากไฟล์ .db ของ DraconDex';
+
+  @override
+  String get checkUpdatesTitle => 'ตรวจสอบอัปเดต';
+
+  @override
+  String get checkUpdatesSubtitle => 'ตรวจสอบ GitHub Releases ของโปรเจกต์นี้ — ถามก่อนติดตั้งเสมอ';
+
+  @override
+  String get upToDateMessage => 'คุณใช้เวอร์ชันล่าสุดอยู่แล้ว';
+
+  @override
+  String get importingMessage => 'กำลังนำเข้า…';
+
+  @override
+  String get importCompleteMessage => 'นำเข้าเสร็จสมบูรณ์';
+
+  @override
+  String get importFailedMessage => 'นำเข้าล้มเหลว';
+
+  @override
+  String get exportFailedMessage => 'ส่งออกล้มเหลว';
+
+  @override
+  String get saveFailedMessage => 'บันทึกล้มเหลว';
+
+  @override
+  String get webBackupUnsupportedMessage => 'ไม่รองรับในเวอร์ชันเว็บ';
+
+  @override
+  String get driveBackupTitle => 'สำรองข้อมูลผ่าน Google Drive';
+
+  @override
+  String get driveConnectedAs => 'เชื่อมต่อ:';
+
+  @override
+  String get driveNotConnected => 'ยังไม่เชื่อมต่อ';
+
+  @override
+  String get driveConnect => 'เชื่อมต่อ';
+
+  @override
+  String get driveDisconnect => 'ยกเลิกการเชื่อมต่อ';
+
+  @override
+  String get driveBackupNow => 'สำรองข้อมูลตอนนี้';
+
+  @override
+  String get driveRestoreTitle => 'กู้คืนจาก Google Drive';
+
+  @override
+  String get driveRestoreSubtitle => 'ผสานข้อมูลจาก Drive เข้ากับข้อมูลปัจจุบัน';
+
+  @override
+  String get driveConnectFailedMessage => 'เชื่อมต่อล้มเหลว';
+
+  @override
+  String get driveBackingUpMessage => 'กำลังสำรองข้อมูลไปยัง Google Drive…';
+
+  @override
+  String get driveBackupSuccessMessage => 'สำรองข้อมูลสำเร็จ';
+
+  @override
+  String get driveBackupFailedMessage => 'สำรองข้อมูลล้มเหลว';
+
+  @override
+  String get addColorTitle => 'เพิ่มสี';
+
+  @override
+  String get colorPaletteTitle => 'พาเลทสี';
+
+  @override
+  String get hashtagsTitle => 'แท็ก';
+
+  @override
+  String get editHashtagTitle => 'แก้ไขแท็ก';
+
+  @override
+  String get tagNameLabel => 'ชื่อแท็ก';
+
+  @override
+  String get removeColorConfirmTitle => 'ลบสีนี้หรือไม่?';
+
+  @override
+  String get deleteHashtagConfirmTitle => 'ลบแท็กนี้หรือไม่?';
+
+  @override
+  String get builderNavHome => 'หน้าแรก';
+
+  @override
+  String get builderNavView => 'มุมมอง';
+
+  @override
+  String get builderNavFolders => 'โฟลเดอร์มุมมอง';
+
+  @override
+  String get viewModeTitle => 'รูปแบบมุมมอง';
+
+  @override
+  String get viewModeList => 'รายการ';
+
+  @override
+  String get viewModeGrid => 'ตาราง';
+
+  @override
+  String get viewModeCompact => 'กระชับ';
+
+  @override
+  String get recentViewsTitle => 'มุมมองล่าสุด';
+
+  @override
+  String get recentViewsEmpty => 'ยังไม่มีมุมมองล่าสุด';
+
+  @override
+  String get recentViewsClear => 'ล้างทั้งหมด';
+
+  @override
+  String get builderNexusRootLabel => 'รากของ Nexus';
+
+  // --- Supabase project setup (features/settings/supabase_setup_screen.dart) ---
+
+  @override
+  String get settingPageSupabase => 'โปรเจกต์ Supabase';
+
+  @override
+  String get sbIntro => 'ใช้โปรเจกต์ Supabase ของคุณเองเป็นเซิร์ฟเวอร์ของ Cloud Sync — วาง Project URL กับ publishable key แล้วให้ DraconDex ตรวจสอบและติดตั้งตารางที่ต้องใช้ให้เอง';
+
+  @override
+  String get sbUrl => 'Project URL';
+
+  @override
+  String get sbKey => 'Publishable key';
+
+  @override
+  String get sbKeyStored => 'มีคีย์บันทึกไว้แล้ว — เว้นว่างไว้ถ้าจะใช้คีย์เดิม';
+
+  @override
+  String get sbCheck => 'ตรวจสอบโปรเจกต์';
+
+  @override
+  String get sbObjects => 'ตารางและฟังก์ชันที่ต้องมี';
+
+  @override
+  String get sbSchemaVersion => 'เวอร์ชัน schema';
+
+  @override
+  String get sbReady => 'พร้อมใช้งาน — โปรเจกต์นี้มีครบทุกอย่างที่ Cloud Sync ต้องใช้';
+
+  @override
+  String get sbNeedSetup => 'ยังต้องติดตั้ง — ตารางหรือฟังก์ชันบางตัวยังไม่มี';
+
+  @override
+  String get sbNotChecked => 'ยังไม่ได้ตรวจสอบ บันทึกการตั้งค่าด้านบนแล้วกด "ตรวจสอบโปรเจกต์"';
+
+  @override
+  String get sbAutoInstall => 'ติดตั้งอัตโนมัติ';
+
+  @override
+  String get sbAutoInstallHint => 'publishable key สร้างตารางไม่ได้ ถ้าวาง personal access token ของ Supabase ไว้ DraconDex จะรัน SQL ติดตั้งให้เอง';
+
+  @override
+  String get sbAccessToken => 'Personal access token';
+
+  @override
+  String get sbAccessTokenHint => 'ใช้แค่คำขอนี้ครั้งเดียว ไม่มีการเก็บไว้';
+
+  @override
+  String get sbGetToken => 'ไปสร้างโทเคน';
+
+  @override
+  String get sbManualTitle => 'หรือจะติดตั้งเองก็ได้';
+
+  @override
+  String get sbManualHint => 'คัดลอก SQL ไปรันใน SQL Editor ของโปรเจกต์ แล้วกด "ตรวจสอบโปรเจกต์" อีกครั้ง';
+
+  @override
+  String get sbCopySql => 'คัดลอก SQL';
+
+  @override
+  String get sbOpenSqlEditor => 'เปิด SQL Editor';
+
+  @override
+  String get sbOpenApiSettings => 'เปิดหน้า API settings';
+
+  @override
+  String get sbOpenAuthProviders => 'เปิดหน้า Auth providers';
+
+  @override
+  String get sbGoogleOn => 'โปรเจกต์นี้เปิดการเข้าสู่ระบบด้วย Google ไว้แล้ว';
+
+  @override
+  String get sbGoogleOff => 'ยังไม่ได้เปิดการเข้าสู่ระบบด้วย Google — เปิดที่ Authentication → Providers ก่อนล็อกอิน';
+
+  @override
+  String get sbInstalled => 'ติดตั้งเรียบร้อย';
+
+  @override
+  String get sbClear => 'ลบโปรเจกต์ที่ตั้งไว้';
+
+  @override
+  String get sbClearConfirm => 'ลบการตั้งค่าโปรเจกต์ Supabase ที่บันทึกไว้?';
+
+  @override
+  String get sbCleared => 'ลบการตั้งค่า Supabase แล้ว';
+
+  @override
+  String get sbErrNoConfig => 'กรุณากรอก Project URL และ publishable key ก่อน';
+
+  @override
+  String get sbErrInvalidUrl => 'Project URL ไม่ถูกต้อง — ต้องเป็น https เท่านั้น';
+
+  @override
+  String get sbErrBadKey => 'โปรเจกต์ปฏิเสธคีย์นี้';
+
+  @override
+  String get sbErrUnreachable => 'ติดต่อโปรเจกต์นี้ไม่ได้';
+
+  @override
+  String get sbErrNeedsManual => 'ไม่มี access token — ใช้วิธีติดตั้งเองแทน';
+
+  @override
+  String get sbErrBadAccessToken => 'access token นี้ถูกปฏิเสธ';
+
+  @override
+  String get sbErrForbidden => 'โทเคนนี้ไม่มีสิทธิ์แก้ไขโปรเจกต์นั้น';
+
+  @override
+  String get sbErrNoProjectRef => 'การติดตั้งอัตโนมัติต้องใช้ URL แบบ supabase.co';
+
+  @override
+  String get sbErrRateLimited => 'ส่งคำขอถี่เกินไป — ลองใหม่อีกสักครู่';
+
+  @override
+  String get sbErrSqlError => 'รัน SQL ติดตั้งไม่สำเร็จ';
+
+  @override
+  String get sbErrNetwork => 'เครือข่ายผิดพลาด — ติดต่อโปรเจกต์ไม่ได้';
+
+  @override
+  String get sbCopied => 'คัดลอกแล้ว';
+
+  @override
+  String get sbNotConfigured => 'ยังไม่ได้ตั้งค่าโปรเจกต์';
+  @override
+  String get googleAccountTitle => 'บัญชี Google';
+
+  @override
+  String get googleAccountNotConfigured => 'ยังไม่ได้ตั้งค่า OAuth client';
+
+  @override
+  String get googleAccountSetupTitle => 'ตั้งค่าการเข้าสู่ระบบ Google';
+
+  @override
+  String get googleClientTypeHintNative => 'ใน Google Cloud Console ให้เปิดใช้ Google Drive API แล้วสร้าง OAuth client ชนิด "Desktop app" จากนั้นวางค่าที่ได้ด้านล่าง';
+
+  @override
+  String get googleClientTypeHintWeb => 'ใน Google Cloud Console ให้เปิดใช้ Google Drive API แล้วสร้าง OAuth client ชนิด "Web application" จากนั้นวาง Client ID ด้านล่าง';
+
+  @override
+  String get googleClientIdLabel => 'Client ID';
+
+  @override
+  String get googleClientSecretLabel => 'Client secret';
+
+  @override
+  String get googleClientSecretKept => 'มี client secret บันทึกไว้แล้ว เว้นว่างไว้เพื่อใช้ค่าเดิม';
+
+  @override
+  String get googleRedirectUriLabel => 'Authorized redirect URI';
+
+  @override
+  String get googleRedirectUriHint => 'เพิ่มที่อยู่นี้แบบตรงตัวใน authorized redirect URIs ของ client และเพิ่มที่อยู่ของเว็บนี้ใน authorized JavaScript origins';
+
+  @override
+  String get googleSessionExpired => 'เซสชันหมดอายุ — เชื่อมต่ออีกครั้ง';
+
+  @override
+  String get googleErrNoConfig => 'กรุณากรอกข้อมูล OAuth client ก่อน';
+
+  @override
+  String get googleErrCancelled => 'ยกเลิกการเข้าสู่ระบบแล้ว';
+
+  @override
+  String get googleErrTimeout => 'หมดเวลาเข้าสู่ระบบ';
+
+  @override
+  String get googleErrVerify => 'ตรวจสอบการเข้าสู่ระบบไม่ผ่าน กรุณาลองใหม่';
+
+  @override
+  String get googleErrNetwork => 'เชื่อมต่อ Google ไม่ได้';
+
+  @override
+  String get googleErrAuth => 'Google ปฏิเสธการเข้าสู่ระบบ';
+
+  @override
+  String get googleErrPopupBlocked => 'หน้าต่างเข้าสู่ระบบถูกบล็อก กรุณาอนุญาตป๊อปอัปของเว็บนี้แล้วลองใหม่';
+
+  @override
+  String get googleErrNotConnected => 'ยังไม่ได้เชื่อมต่อบัญชี Google';
+
+  @override
+  String get driveRestoreSettingsTitle => 'กู้คืนการตั้งค่าจาก Drive';
+
+  @override
+  String get driveRestoreSettingsSubtitle => 'แทนที่ธีม ภาษา และขนาด UI ด้วยค่าที่สำรองไว้';
+
+  @override
+  String get driveSettingsRestoredMessage => 'กู้คืนการตั้งค่าจาก Google Drive แล้ว';
+
+  @override
+  String get driveNoBackupMessage => 'ไม่พบข้อมูลสำรองบน Google Drive';
+
+  @override
+  String get driveWebDatabaseNote => 'บนเบราว์เซอร์จะสำรองเฉพาะการตั้งค่า — ฐานข้อมูลยังอยู่ในเครื่องนี้เท่านั้น';
+
+  @override
+  String get hubNestTitle => 'รังเน็กซัส';
+
+  @override
+  String get hubPanelShow => 'แสดงแผงฮับ';
+
+  @override
+  String get hubPanelHide => 'ซ่อนแผงฮับ';
+
+  @override
+  String get railExpand => 'ขยายแถบนำทาง';
+
+  @override
+  String get railCollapse => 'ย่อแถบนำทาง';
+}

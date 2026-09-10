@@ -1,0 +1,15 @@
+# Renamed from l10n.yaml so `flutter build` skips gen-l10n: the custom "qd"
+# (Draconic) locale is rejected by the IANA language-code validation in newer
+# Flutter versions, which fails the whole build. The generated localization
+# files in lib/core/i18n/ are committed instead.
+#
+# To regenerate after editing the .arb files:
+#   1. copy this file back to l10n.yaml
+#   2. temporarily move lib/core/i18n/l10n/app_qd.arb out of the arb dir
+#   3. run `flutter gen-l10n`, then restore app_qd.arb and hand-update
+#      app_localizations_qd.dart with any new keys
+#   4. delete l10n.yaml again (keep this .disabled copy)
+arb-dir: lib/core/i18n/l10n
+template-arb-file: app_en.arb
+output-localization-file: app_localizations.dart
+output-dir: lib/core/i18n

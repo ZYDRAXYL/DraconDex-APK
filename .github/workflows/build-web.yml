@@ -1,0 +1,111 @@
+name: Build Flutter Web (PWA)
+
+# Builds the Flutter-web PWA build as a CI check. This workflow exists mainly
+# because the two SQLite-in-browser assets sqflite_common_ffi_web needs
+# (sqlite3.wasm, sqflite_sw.js) are resolved by a real Dart toolchain run
+# (`dart run sqflite_common_ffi_web:setup`, pinned by pubspec.lock's sqlite3
+# version) and are NOT committed to this repo — see docs/PWA.md. The built
+# site is uploaded as a plain workflow artifact (any push/dispatch, any
+# branch) so it can be grabbed and served locally.
+#
+# It does NOT publish anything. The deployed PWA lives in its own repository
+# (ZYDRAXYL/DraconDex-PWA), which serves both front-ends behind a router and is
+# the only place the site is built for real; this repo deploying a second,
+# mobile-only copy of it to its own Pages site was two sites claiming to be
+# the same app. `--base-href /DraconDex-APP/` below is kept so the artifact
+# still matches that old path if anyone serves it there by hand.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'flutter/**'
+      - 'sdb.lock.json'
+      - '.github/workflows/build-web.yml'
+  # Also on PRs. flutter analyze does not compile for the web target, so a
+  # change that only breaks the browser build — a web-unsupported package, a
+  # plugin with no web implementation, a bad conditional import — passes the
+  # APK workflow's checks and is only caught here.
+  pull_request:
+    paths:
+      - 'flutter/**'
+      - 'sdb.lock.json'
+      - '.github/workflows/build-web.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+# Nothing here publishes any more, so runs only ever race each other: one
+# group per ref, and a new push supersedes the build it interrupted.
+concurrency:
+  group: web-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # Before the multi-repo split these were three separate --check steps
+      # (assets mirror, generated schema, generated Supabase constants), each
+      # comparing a generated file against a source in the same checkout. Those
+      # sources live in ZYDRAXYL/DraconDex-SDB now, so one check replaces all
+      # three: every vendored artifact must be byte-identical to the release
+      # sdb.lock.json pins. It also catches SDB publishing something new for
+      # this repo that nobody vendored — which none of the three used to.
+      - name: Vendored DraconDex-SDB artifacts match the pinned release
+        run: node tools/sdb-check.mjs
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.4'
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        working-directory: flutter
+        run: flutter pub get
+
+      # Fetches sqlite3.wasm + sqflite_sw.js (versioned against the resolved
+      # sqlite3 package in pubspec.lock) into flutter/web/ — this step is the
+      # whole reason this workflow exists; these files cannot be hand-authored
+      # or fetched from a fixed URL. See lib/core/database/db_factory_web.dart.
+      - name: Set up sqflite web assets
+        working-directory: flutter
+        run: dart run sqflite_common_ffi_web:setup
+
+      - name: Analyze
+        working-directory: flutter
+        run: flutter analyze --no-fatal-infos
+
+      # --base-href has to match whatever path the build is served from, or
+      # every asset/script path in index.html resolves from "/" instead and
+      # the page comes up blank. Kept at /DraconDex-APP/ (this repo's old
+      # project-page path) so the artifact is unchanged from when this
+      # workflow still deployed; the real site's copy is built with its own
+      # base href in the PWA repository.
+      - name: Build web (release)
+        working-directory: flutter
+        run: flutter build web --release --base-href /DraconDex-APP/
+
+      # Non-fatal for the same account-wide artifact-quota reason as the
+      # two release workflows — but the trade here is different, so it is
+      # spelled out separately. What this workflow is FOR is proving the web
+      # target still compiles (see the header: it publishes nothing), and
+      # "Build web (release)" above does that and is not continue-on-error.
+      # The artifact only exists so a build can be grabbed and served by hand.
+      # Failing the whole check because that convenience upload hit a storage
+      # limit reports a web-build breakage that did not happen.
+      - name: Upload build artifact
+        continue-on-error: true
+        uses: actions/upload-artifact@v6
+        with:
+          name: dracondex-web
+          path: flutter/build/web
+          retention-days: 30
+          if-no-files-found: error
