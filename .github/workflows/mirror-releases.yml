@@ -1,10 +1,10 @@
 name: Mirror releases
 
-# DraconDex-APP is private. api.github.com/repos/ZYDRAXYL/DraconDex-APP/releases
+# DraconDex-APK is private. api.github.com/repos/ZYDRAXYL/DraconDex-APK/releases
 # answers 404 to anyone without a token — which is every install of the app and
-# every visitor of the website — so the in-app update check (electron/src/db/
-# update.js, flutter/lib/data/services/update_service.dart) reads a PUBLIC
-# mirror instead: ZYDRAXYL/DraconDex-REL. The download page
+# every visitor of the website — so the in-app update check (flutter/lib/data/
+# services/update_service.dart — and DraconDex-EXE's electron/src/db/update.js)
+# reads a PUBLIC mirror instead: ZYDRAXYL/DraconDex-REL. The download page
 # (ZYDRAXYL/DraconDex-WEB assets/js/releases.js) reads a static
 # assets/data/releases.json snapshot committed straight into that repo — see
 # "Refresh the web repo's static release data" below for why it isn't a live
