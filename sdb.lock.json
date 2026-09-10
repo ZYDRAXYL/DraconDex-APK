@@ -1,0 +1,52 @@
+{
+  "lockVersion": 1,
+  "self": "APK",
+  "source": {
+    "repo": "ZYDRAXYL/DraconDex-SDB",
+    "ref": "be803f8b5a666d93f2080a245a8ebf971085bbf2",
+    "version": "1.0.0",
+    "_comment": "An immutable ref, deliberately: a commit SHA rather than a branch. sdb-check resolves this through raw.githubusercontent, and pinning 'main' would not be a pin \u2014 main moves, so the drift check would verify against whatever SDB happens to be rather than against the version this repo actually vendored. Moving the pin is a reviewable commit, which is the whole point. Same idea as DraconDex-PWA's app-source.json commit field."
+  },
+  "expect": {
+    "vaultSchemaVersion": 4,
+    "supabaseSchemaVersion": 2
+  },
+  "vendored": {
+    "flutter/lib/core/database/vault_schema.g.dart": {
+      "artifact": "generated/flutter/vault_schema.g.dart",
+      "sha256": "a33fea1b30f442854738a079625f80a80b22b9bdd65a6fd5627baaa2d701478e"
+    },
+    "flutter/lib/data/services/supabase_schema.dart": {
+      "artifact": "generated/flutter/supabase_schema.dart",
+      "sha256": "539cad343515f2a819c6c2ef04fa113fbf053795bee369c0bba22e2a9d5b1155"
+    },
+    "flutter/assets/images/DraconDex-IconApp.png": {
+      "artifact": "assets/flutter/DraconDex-IconApp.png",
+      "sha256": "5661d237bf79e5499f3ebd9ee76c2eb72ac29ea29ca32a8375f9231c84e4356d"
+    },
+    "flutter/assets/images/DraconDex-SymbolBlack.png": {
+      "artifact": "assets/flutter/DraconDex-SymbolBlack.png",
+      "sha256": "56f31ff7cc5db96f9714f9043e1d06aaed0f51bee35a7667d94d358c6436a8ea"
+    },
+    "flutter/assets/images/DraconDex-SymbolColor.png": {
+      "artifact": "assets/flutter/DraconDex-SymbolColor.png",
+      "sha256": "3778c06dccc6c35fa0ba51abbc5d1c7a0a142194245bf54bdc8fa49d1ae8f46b"
+    },
+    "flutter/assets/images/DraconDex-SymbolWhite.png": {
+      "artifact": "assets/flutter/DraconDex-SymbolWhite.png",
+      "sha256": "e01f6f20cc8da69c4c8ede1a2ef69a7bf6fd9d4e3a106578e520759b120a862f"
+    },
+    "flutter/assets/fonts/NotoSans-Bold.ttf": {
+      "artifact": "assets/fonts/NotoSans-Bold.ttf",
+      "sha256": "1df075a380fc7cb898acf64c1f7b3b4dd780de3caa860178bf929de35817a913"
+    },
+    "flutter/assets/fonts/NotoSans-Regular.ttf": {
+      "artifact": "assets/fonts/NotoSans-Regular.ttf",
+      "sha256": "478c558ea716033cd60c03438f628dfa75694dcf6b5f6d505a2f05fd2b4f3823"
+    },
+    "flutter/assets/fonts/OFL.txt": {
+      "artifact": "assets/fonts/OFL.txt",
+      "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a"
+    }
+  }
+}

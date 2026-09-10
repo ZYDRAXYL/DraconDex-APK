@@ -1,0 +1,89 @@
+name: dracondex
+description: "DraconDex - Novel data management app"
+publish_to: 'none'
+version: 2.10.2+13
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Database
+  sqflite: ^2.4.1
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  # SQLite-in-browser (WASM + IndexedDB) for the web/PWA build — see
+  # lib/core/database/db_factory_web.dart. Requires a one-time toolchain step
+  # (`dart run sqflite_common_ffi_web:setup`) to fetch sqlite3.wasm +
+  # sqflite_sw.js; see docs/UPDATE.md / CI workflow for where that runs.
+  sqflite_common_ffi_web: ^1.1.2
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Navigation
+  go_router: ^14.8.1
+
+  # Settings persistence
+  shared_preferences: ^2.3.5
+
+  # File import/export
+  file_picker: ^9.0.1
+  share_plus: ^10.1.4
+
+  # Browser APIs (window.open, postMessage) for the web/PWA build's Google
+  # login popup — lib/data/services/google_auth_platform_web.dart. Already
+  # resolved transitively; declared directly because this app imports it.
+  # It replaced google_sign_in, whose Android half needs an OAuth client
+  # registered against this app's package name + signing SHA-1 and fails
+  # with ApiException 10 until someone does that; see google_auth_service.dart.
+  web: ^1.1.0
+
+  # Color picker
+  flutter_colorpicker: ^1.1.0
+
+  # Relations force-directed graph
+  graphview: ^1.2.0
+
+  # Internationalization
+  intl: ^0.20.2
+
+  cupertino_icons: ^1.0.8
+
+  # Update-check notice (GitHub Releases) — see docs/UPDATE.md
+  http: ^1.2.2
+  # Verifies a downloaded release APK against the checksums-sha256.txt the
+  # release workflow publishes, before it is handed to Android's package
+  # installer (apk_installer_io.dart). Already resolved transitively; declared
+  # directly because this app imports it.
+  crypto: ^3.0.7
+  package_info_plus: ^8.1.2
+  url_launcher: ^6.3.1
+  # In-app update install: hands the downloaded release APK to Android's own
+  # package installer (see UpdateService.installApk in update_service.dart).
+  open_filex: ^4.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+# generate is off because the custom "qd" (Draconic) locale is rejected by
+# newer gen-l10n validation; the generated files in lib/core/i18n are committed.
+flutter:
+  uses-material-design: true
+  generate: false
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans-Bold.ttf
+          weight: 700

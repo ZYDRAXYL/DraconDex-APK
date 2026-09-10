@@ -1,0 +1,1224 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations_de.dart';
+import 'app_localizations_en.dart';
+import 'app_localizations_es.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_id.dart';
+import 'app_localizations_ja.dart';
+import 'app_localizations_ko.dart';
+import 'app_localizations_pt.dart';
+import 'app_localizations_qd.dart';
+import 'app_localizations_ru.dart';
+import 'app_localizations_th.dart';
+import 'app_localizations_vi.dart';
+import 'app_localizations_zh.dart';
+
+// ignore_for_file: type=lint
+
+/// Callers can lookup localized strings with an instance of AppLocalizations
+/// returned by `AppLocalizations.of(context)`.
+///
+/// Applications need to include `AppLocalizations.delegate()` in their app's
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
+///
+/// ```dart
+/// import 'i18n/app_localizations.dart';
+///
+/// return MaterialApp(
+///   localizationsDelegates: AppLocalizations.localizationsDelegates,
+///   supportedLocales: AppLocalizations.supportedLocales,
+///   home: MyApplicationHome(),
+/// );
+/// ```
+///
+/// ## Update pubspec.yaml
+///
+/// Please make sure to update your pubspec.yaml to include the following
+/// packages:
+///
+/// ```yaml
+/// dependencies:
+///   # Internationalization support.
+///   flutter_localizations:
+///     sdk: flutter
+///   intl: any # Use the pinned version from flutter_localizations
+///
+///   # Rest of dependencies
+/// ```
+///
+/// ## iOS Applications
+///
+/// iOS applications define key application metadata, including supported
+/// locales, in an Info.plist file that is built into the application bundle.
+/// To configure the locales supported by your app, you’ll need to edit this
+/// file.
+///
+/// First, open your project’s ios/Runner.xcworkspace Xcode workspace file.
+/// Then, in the Project Navigator, open the Info.plist file under the Runner
+/// project’s Runner folder.
+///
+/// Next, select the Information Property List item, select Add Item from the
+/// Editor menu, then select Localizations from the pop-up menu.
+///
+/// Select and expand the newly-created Localizations item then, for each
+/// locale your application supports, add a new item and select the locale
+/// you wish to add from the pop-up menu in the Value field. This list should
+/// be consistent with the languages listed in the AppLocalizations.supportedLocales
+/// property.
+abstract class AppLocalizations {
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+
+  final String localeName;
+
+  static AppLocalizations? of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  }
+
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
+
+  /// A list of this localizations delegate along with the default localizations
+  /// delegates.
+  ///
+  /// Returns a list of localizations delegates containing this delegate along with
+  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
+  /// and GlobalWidgetsLocalizations.delegate.
+  ///
+  /// Additional delegates can be added by appending to this list in
+  /// MaterialApp. This list does not have to be used at all if a custom list
+  /// of delegates is preferred or required.
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
+
+  /// A list of this localizations delegate's supported locales.
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('de'),
+    Locale('en'),
+    Locale('es'),
+    Locale('fr'),
+    Locale('id'),
+    Locale('ja'),
+    Locale('ko'),
+    Locale('pt'),
+    Locale('qd'),
+    Locale('ru'),
+    Locale('th'),
+    Locale('vi'),
+    Locale('zh'),
+  ];
+
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'DraconDex'**
+  String get appName;
+
+  /// No description provided for @nexusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'DraconDex'**
+  String get nexusTitle;
+
+  /// No description provided for @nexusSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Novel Data Management'**
+  String get nexusSubtitle;
+
+  /// No description provided for @moduleGlobalTags.
+  ///
+  /// In en, this message translates to:
+  /// **'Tags'**
+  String get moduleGlobalTags;
+
+  /// No description provided for @moduleColors.
+  ///
+  /// In en, this message translates to:
+  /// **'Colors'**
+  String get moduleColors;
+
+  /// No description provided for @moduleSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get moduleSettings;
+
+  /// No description provided for @btnNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get btnNew;
+
+  /// No description provided for @btnSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get btnSave;
+
+  /// No description provided for @btnCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get btnCancel;
+
+  /// No description provided for @btnDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get btnDelete;
+
+  /// No description provided for @btnEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get btnEdit;
+
+  /// No description provided for @btnClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get btnClose;
+
+  /// No description provided for @btnAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get btnAdd;
+
+  /// No description provided for @btnImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import DB'**
+  String get btnImport;
+
+  /// No description provided for @btnExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export DB'**
+  String get btnExport;
+
+  /// No description provided for @labelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get labelName;
+
+  /// No description provided for @labelMemo.
+  ///
+  /// In en, this message translates to:
+  /// **'Memo'**
+  String get labelMemo;
+
+  /// No description provided for @labelColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get labelColor;
+
+  /// No description provided for @labelNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get labelNote;
+
+  /// No description provided for @labelTags.
+  ///
+  /// In en, this message translates to:
+  /// **'Tags'**
+  String get labelTags;
+
+  /// No description provided for @labelSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search...'**
+  String get labelSearch;
+
+  /// No description provided for @newHashtag.
+  ///
+  /// In en, this message translates to:
+  /// **'New Tag'**
+  String get newHashtag;
+
+  /// No description provided for @noTags.
+  ///
+  /// In en, this message translates to:
+  /// **'No tags yet.'**
+  String get noTags;
+
+  /// No description provided for @noColors.
+  ///
+  /// In en, this message translates to:
+  /// **'No colors in the palette.'**
+  String get noColors;
+
+  /// No description provided for @noResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found.'**
+  String get noResults;
+
+  /// No description provided for @confirmDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Delete'**
+  String get confirmDeleteTitle;
+
+  /// No description provided for @confirmDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone.'**
+  String get confirmDeleteMessage;
+
+  /// No description provided for @colorInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Color is in use and cannot be deleted.'**
+  String get colorInUse;
+
+  /// No description provided for @themeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get themeLabel;
+
+  /// No description provided for @themeMidnight.
+  ///
+  /// In en, this message translates to:
+  /// **'Midnight'**
+  String get themeMidnight;
+
+  /// No description provided for @themeMoonlight.
+  ///
+  /// In en, this message translates to:
+  /// **'Moonlight'**
+  String get themeMoonlight;
+
+  /// No description provided for @themeDaylight.
+  ///
+  /// In en, this message translates to:
+  /// **'Daylight'**
+  String get themeDaylight;
+
+  /// No description provided for @languageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get languageLabel;
+
+  /// No description provided for @uiScaleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'UI Scale'**
+  String get uiScaleLabel;
+
+  /// No description provided for @importSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Database imported successfully.'**
+  String get importSuccess;
+
+  /// No description provided for @importFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Import failed. Please check the file.'**
+  String get importFailed;
+
+  /// No description provided for @exportSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Database exported.'**
+  String get exportSuccess;
+
+  /// No description provided for @selectColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Color'**
+  String get selectColor;
+
+  /// No description provided for @recentColors.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get recentColors;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version 2.1.0'**
+  String get version;
+
+  /// No description provided for @btnRename.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get btnRename;
+
+  /// No description provided for @btnPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin'**
+  String get btnPin;
+
+  /// No description provided for @btnUnpin.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpin'**
+  String get btnUnpin;
+
+  /// No description provided for @newNexusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Nexus'**
+  String get newNexusTitle;
+
+  /// No description provided for @renameNexusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename Nexus'**
+  String get renameNexusTitle;
+
+  /// No description provided for @newModuleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Module'**
+  String get newModuleTitle;
+
+  /// No description provided for @renameModuleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename Module'**
+  String get renameModuleTitle;
+
+  /// No description provided for @newModuleTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'New Module'**
+  String get newModuleTooltip;
+
+  /// No description provided for @newNexusTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'New Nexus'**
+  String get newNexusTooltip;
+
+  /// No description provided for @emptyNexusMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No Nexus yet. Tap + to create one.'**
+  String get emptyNexusMessage;
+
+  /// No description provided for @emptyModuleMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty. Tap + to add a module.'**
+  String get emptyModuleMessage;
+
+  /// No description provided for @deleteNexusMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This deletes every module inside it. This action cannot be undone.'**
+  String get deleteNexusMessage;
+
+  /// No description provided for @deleteModuleMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This deletes every module nested inside it too. This action cannot be undone.'**
+  String get deleteModuleMessage;
+
+  /// No description provided for @labelKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Kind'**
+  String get labelKind;
+
+  /// No description provided for @kindContentUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This module kind isn't fully supported on mobile yet — using the shared notes field below.'**
+  String get kindContentUnavailable;
+
+  /// No description provided for @notesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes for this module…'**
+  String get notesHint;
+
+  /// No description provided for @settingsAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get settingsAppearance;
+
+  /// No description provided for @settingsData.
+  ///
+  /// In en, this message translates to:
+  /// **'Data'**
+  String get settingsData;
+
+  /// No description provided for @settingsAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get settingsAbout;
+
+  /// No description provided for @exportDbTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Database'**
+  String get exportDbTitle;
+
+  /// No description provided for @exportDbSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share the .db file to transfer data to PC or another device'**
+  String get exportDbSubtitle;
+
+  /// No description provided for @importDbTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Database'**
+  String get importDbTitle;
+
+  /// No description provided for @importDbSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge data from a DraconDex .db file'**
+  String get importDbSubtitle;
+
+  /// No description provided for @checkUpdatesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check for Updates'**
+  String get checkUpdatesTitle;
+
+  /// No description provided for @checkUpdatesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks at this project's GitHub Releases — always asks before installing'**
+  String get checkUpdatesSubtitle;
+
+  /// No description provided for @upToDateMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You're on the latest version.'**
+  String get upToDateMessage;
+
+  /// No description provided for @importingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Importing…'**
+  String get importingMessage;
+
+  /// No description provided for @importCompleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Import complete.'**
+  String get importCompleteMessage;
+
+  /// No description provided for @importFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Import failed.'**
+  String get importFailedMessage;
+
+  /// No description provided for @exportFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed.'**
+  String get exportFailedMessage;
+
+  /// No description provided for @saveFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Save failed.'**
+  String get saveFailedMessage;
+
+  /// No description provided for @webBackupUnsupportedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available in the web version.'**
+  String get webBackupUnsupportedMessage;
+
+  /// No description provided for @driveBackupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Drive Backup'**
+  String get driveBackupTitle;
+
+  /// No description provided for @driveConnectedAs.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected:'**
+  String get driveConnectedAs;
+
+  /// No description provided for @driveNotConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not connected'**
+  String get driveNotConnected;
+
+  /// No description provided for @driveConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get driveConnect;
+
+  /// No description provided for @driveDisconnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect'**
+  String get driveDisconnect;
+
+  /// No description provided for @driveBackupNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup Now'**
+  String get driveBackupNow;
+
+  /// No description provided for @driveRestoreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from Google Drive'**
+  String get driveRestoreTitle;
+
+  /// No description provided for @driveRestoreSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Merges the Drive backup into your current data'**
+  String get driveRestoreSubtitle;
+
+  /// No description provided for @driveConnectFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect failed.'**
+  String get driveConnectFailedMessage;
+
+  /// No description provided for @driveBackingUpMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Backing up to Google Drive…'**
+  String get driveBackingUpMessage;
+
+  /// No description provided for @driveBackupSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup complete.'**
+  String get driveBackupSuccessMessage;
+
+  /// No description provided for @driveBackupFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup failed.'**
+  String get driveBackupFailedMessage;
+
+  /// No description provided for @addColorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Color'**
+  String get addColorTitle;
+
+  /// No description provided for @colorPaletteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Palette'**
+  String get colorPaletteTitle;
+
+  /// No description provided for @hashtagsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hashtags'**
+  String get hashtagsTitle;
+
+  /// No description provided for @editHashtagTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Hashtag'**
+  String get editHashtagTitle;
+
+  /// No description provided for @tagNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tag Name'**
+  String get tagNameLabel;
+
+  /// No description provided for @removeColorConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove color?'**
+  String get removeColorConfirmTitle;
+
+  /// No description provided for @deleteHashtagConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete hashtag?'**
+  String get deleteHashtagConfirmTitle;
+
+  /// No description provided for @builderNavHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get builderNavHome;
+
+  /// No description provided for @builderNavView.
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get builderNavView;
+
+  /// No description provided for @builderNavFolders.
+  ///
+  /// In en, this message translates to:
+  /// **'Folder Views'**
+  String get builderNavFolders;
+
+  /// No description provided for @viewModeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'View mode'**
+  String get viewModeTitle;
+
+  /// No description provided for @viewModeList.
+  ///
+  /// In en, this message translates to:
+  /// **'List'**
+  String get viewModeList;
+
+  /// No description provided for @viewModeGrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid'**
+  String get viewModeGrid;
+
+  /// No description provided for @viewModeCompact.
+  ///
+  /// In en, this message translates to:
+  /// **'Compact'**
+  String get viewModeCompact;
+
+  /// No description provided for @recentViewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Views'**
+  String get recentViewsTitle;
+
+  /// No description provided for @recentViewsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No recent views yet'**
+  String get recentViewsEmpty;
+
+  /// No description provided for @recentViewsClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get recentViewsClear;
+
+  /// No description provided for @builderNexusRootLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Nexus root'**
+  String get builderNexusRootLabel;
+
+  // --- Supabase project setup (features/settings/supabase_setup_screen.dart) ---
+
+  /// No description provided for @settingPageSupabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Supabase Project'**
+  String get settingPageSupabase;
+
+  /// No description provided for @sbIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your own Supabase project as the Cloud Sync backend. Paste the project URL and publishable key, then let DraconDex check and install the tables it needs.'**
+  String get sbIntro;
+
+  /// No description provided for @sbUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Project URL'**
+  String get sbUrl;
+
+  /// No description provided for @sbKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Publishable key'**
+  String get sbKey;
+
+  /// No description provided for @sbKeyStored.
+  ///
+  /// In en, this message translates to:
+  /// **'A key is already saved — leave this empty to keep it.'**
+  String get sbKeyStored;
+
+  /// No description provided for @sbCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Check project'**
+  String get sbCheck;
+
+  /// No description provided for @sbObjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Required tables & functions'**
+  String get sbObjects;
+
+  /// No description provided for @sbSchemaVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Schema version'**
+  String get sbSchemaVersion;
+
+  /// No description provided for @sbReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready — this project has everything Cloud Sync needs.'**
+  String get sbReady;
+
+  /// No description provided for @sbNeedSetup.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup needed — some tables or functions are missing.'**
+  String get sbNeedSetup;
+
+  /// No description provided for @sbNotChecked.
+  ///
+  /// In en, this message translates to:
+  /// **'Not checked yet. Save the settings above, then press Check project.'**
+  String get sbNotChecked;
+
+  /// No description provided for @sbAutoInstall.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto setup'**
+  String get sbAutoInstall;
+
+  /// No description provided for @sbAutoInstallHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A publishable key cannot create tables. Paste a Supabase personal access token and DraconDex will run the setup SQL for you.'**
+  String get sbAutoInstallHint;
+
+  /// No description provided for @sbAccessToken.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal access token'**
+  String get sbAccessToken;
+
+  /// No description provided for @sbAccessTokenHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for this one request only — never saved.'**
+  String get sbAccessTokenHint;
+
+  /// No description provided for @sbGetToken.
+  ///
+  /// In en, this message translates to:
+  /// **'Get a token'**
+  String get sbGetToken;
+
+  /// No description provided for @sbManualTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Or set it up by hand'**
+  String get sbManualTitle;
+
+  /// No description provided for @sbManualHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the SQL, run it in your project SQL editor, then press Check project again.'**
+  String get sbManualHint;
+
+  /// No description provided for @sbCopySql.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy SQL'**
+  String get sbCopySql;
+
+  /// No description provided for @sbOpenSqlEditor.
+  ///
+  /// In en, this message translates to:
+  /// **'Open SQL Editor'**
+  String get sbOpenSqlEditor;
+
+  /// No description provided for @sbOpenApiSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open API settings'**
+  String get sbOpenApiSettings;
+
+  /// No description provided for @sbOpenAuthProviders.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Auth providers'**
+  String get sbOpenAuthProviders;
+
+  /// No description provided for @sbGoogleOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in is enabled on this project.'**
+  String get sbGoogleOn;
+
+  /// No description provided for @sbGoogleOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in is off — turn it on under Authentication → Providers before signing in.'**
+  String get sbGoogleOff;
+
+  /// No description provided for @sbInstalled.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup complete'**
+  String get sbInstalled;
+
+  /// No description provided for @sbClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove project'**
+  String get sbClear;
+
+  /// No description provided for @sbClearConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove the saved Supabase project settings?'**
+  String get sbClearConfirm;
+
+  /// No description provided for @sbCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Supabase settings removed'**
+  String get sbCleared;
+
+  /// No description provided for @sbErrNoConfig.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the project URL and publishable key first.'**
+  String get sbErrNoConfig;
+
+  /// No description provided for @sbErrInvalidUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'That project URL is not valid — https only.'**
+  String get sbErrInvalidUrl;
+
+  /// No description provided for @sbErrBadKey.
+  ///
+  /// In en, this message translates to:
+  /// **'The project rejected this key.'**
+  String get sbErrBadKey;
+
+  /// No description provided for @sbErrUnreachable.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach that project.'**
+  String get sbErrUnreachable;
+
+  /// No description provided for @sbErrNeedsManual.
+  ///
+  /// In en, this message translates to:
+  /// **'No access token — use the manual steps instead.'**
+  String get sbErrNeedsManual;
+
+  /// No description provided for @sbErrBadAccessToken.
+  ///
+  /// In en, this message translates to:
+  /// **'That access token was rejected.'**
+  String get sbErrBadAccessToken;
+
+  /// No description provided for @sbErrForbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'This token is not allowed to change that project.'**
+  String get sbErrForbidden;
+
+  /// No description provided for @sbErrNoProjectRef.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic setup needs a supabase.co project URL.'**
+  String get sbErrNoProjectRef;
+
+  /// No description provided for @sbErrRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many requests — try again in a moment.'**
+  String get sbErrRateLimited;
+
+  /// No description provided for @sbErrSqlError.
+  ///
+  /// In en, this message translates to:
+  /// **'The setup SQL failed to run.'**
+  String get sbErrSqlError;
+
+  /// No description provided for @sbErrNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error — could not reach the project.'**
+  String get sbErrNetwork;
+
+  /// No description provided for @sbCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get sbCopied;
+
+  /// No description provided for @sbNotConfigured.
+  ///
+  /// In en, this message translates to:
+  /// **'No project set up yet'**
+  String get sbNotConfigured;
+  /// No description provided for @googleAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Google account'**
+  String get googleAccountTitle;
+
+  /// No description provided for @googleAccountNotConfigured.
+  ///
+  /// In en, this message translates to:
+  /// **'No OAuth client set up yet'**
+  String get googleAccountNotConfigured;
+
+  /// No description provided for @googleAccountSetupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in setup'**
+  String get googleAccountSetupTitle;
+
+  /// No description provided for @googleClientTypeHintNative.
+  ///
+  /// In en, this message translates to:
+  /// **'In Google Cloud Console, enable the Google Drive API and create an OAuth client of type "Desktop app", then paste its details below.'**
+  String get googleClientTypeHintNative;
+
+  /// No description provided for @googleClientTypeHintWeb.
+  ///
+  /// In en, this message translates to:
+  /// **'In Google Cloud Console, enable the Google Drive API and create an OAuth client of type "Web application", then paste its client ID below.'**
+  String get googleClientTypeHintWeb;
+
+  /// No description provided for @googleClientIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID'**
+  String get googleClientIdLabel;
+
+  /// No description provided for @googleClientSecretLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Client secret'**
+  String get googleClientSecretLabel;
+
+  /// No description provided for @googleClientSecretKept.
+  ///
+  /// In en, this message translates to:
+  /// **'A client secret is already saved. Leave this blank to keep it.'**
+  String get googleClientSecretKept;
+
+  /// No description provided for @googleRedirectUriLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Authorized redirect URI'**
+  String get googleRedirectUriLabel;
+
+  /// No description provided for @googleRedirectUriHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add this exact address to the client\'s authorized redirect URIs, and this site\'s address to its authorized JavaScript origins.'**
+  String get googleRedirectUriHint;
+
+  /// No description provided for @googleSessionExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Session expired — connect again'**
+  String get googleSessionExpired;
+
+  /// No description provided for @googleErrNoConfig.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your OAuth client details first.'**
+  String get googleErrNoConfig;
+
+  /// No description provided for @googleErrCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in was cancelled.'**
+  String get googleErrCancelled;
+
+  /// No description provided for @googleErrTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in timed out.'**
+  String get googleErrTimeout;
+
+  /// No description provided for @googleErrVerify.
+  ///
+  /// In en, this message translates to:
+  /// **'The sign-in could not be verified. Please try again.'**
+  String get googleErrVerify;
+
+  /// No description provided for @googleErrNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach Google.'**
+  String get googleErrNetwork;
+
+  /// No description provided for @googleErrAuth.
+  ///
+  /// In en, this message translates to:
+  /// **'Google refused the sign-in.'**
+  String get googleErrAuth;
+
+  /// No description provided for @googleErrPopupBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'The sign-in window was blocked. Allow pop-ups for this site and try again.'**
+  String get googleErrPopupBlocked;
+
+  /// No description provided for @googleErrNotConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not connected to a Google account.'**
+  String get googleErrNotConnected;
+
+  /// No description provided for @driveRestoreSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore settings from Drive'**
+  String get driveRestoreSettingsTitle;
+
+  /// No description provided for @driveRestoreSettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Replaces theme, language and UI size with the backed-up ones.'**
+  String get driveRestoreSettingsSubtitle;
+
+  /// No description provided for @driveSettingsRestoredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings restored from Google Drive.'**
+  String get driveSettingsRestoredMessage;
+
+  /// No description provided for @driveNoBackupMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No backup found on Google Drive.'**
+  String get driveNoBackupMessage;
+
+  /// No description provided for @driveWebDatabaseNote.
+  ///
+  /// In en, this message translates to:
+  /// **'In the browser build only the settings are backed up — the database stays on this device.'**
+  String get driveWebDatabaseNote;
+
+  /// No description provided for @hubNestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nexus Nest'**
+  String get hubNestTitle;
+
+  /// No description provided for @hubPanelShow.
+  ///
+  /// In en, this message translates to:
+  /// **'Show hub panel'**
+  String get hubPanelShow;
+
+  /// No description provided for @hubPanelHide.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide hub panel'**
+  String get hubPanelHide;
+
+  /// No description provided for @railExpand.
+  ///
+  /// In en, this message translates to:
+  /// **'Expand rail'**
+  String get railExpand;
+
+  /// No description provided for @railCollapse.
+  ///
+  /// In en, this message translates to:
+  /// **'Collapse rail'**
+  String get railCollapse;
+}
+
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
+
+  @override
+  Future<AppLocalizations> load(Locale locale) {
+    return SynchronousFuture<AppLocalizations>(lookupAppLocalizations(locale));
+  }
+
+  @override
+  bool isSupported(Locale locale) => <String>[
+    'de',
+    'en',
+    'es',
+    'fr',
+    'id',
+    'ja',
+    'ko',
+    'pt',
+    'qd',
+    'ru',
+    'th',
+    'vi',
+    'zh',
+  ].contains(locale.languageCode);
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
+AppLocalizations lookupAppLocalizations(Locale locale) {
+  // Lookup logic when only language code is specified.
+  switch (locale.languageCode) {
+    case 'de':
+      return AppLocalizationsDe();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'id':
+      return AppLocalizationsId();
+    case 'ja':
+      return AppLocalizationsJa();
+    case 'ko':
+      return AppLocalizationsKo();
+    case 'pt':
+      return AppLocalizationsPt();
+    case 'qd':
+      return AppLocalizationsQd();
+    case 'ru':
+      return AppLocalizationsRu();
+    case 'th':
+      return AppLocalizationsTh();
+    case 'vi':
+      return AppLocalizationsVi();
+    case 'zh':
+      return AppLocalizationsZh();
+  }
+
+  throw FlutterError(
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
+}
