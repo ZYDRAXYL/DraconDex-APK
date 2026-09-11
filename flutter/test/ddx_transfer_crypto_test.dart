@@ -70,7 +70,7 @@ void main() {
         expect(
           await DdxTransferService.unwrapKeyWithPin(wrap, typed[0], typed[1]),
           key,
-          reason: 'typed as \'\${typed[0]}\' / \'\${typed[1]}\'',
+          reason: 'typed as "${typed[0]}" / "${typed[1]}"',
         );
       }
     });
@@ -145,7 +145,7 @@ void main() {
     test('gzip round-trips and actually compresses', () {
       final body = utf8.encode(jsonEncode(<String, Object?>{
         'modules': List<Map<String, Object?>>.generate(
-            400, (i) => <String, Object?>{'id': i, 'name': 'Module \$i', 'kind': 'classifier'}),
+            400, (i) => <String, Object?>{'id': i, 'name': 'Module $i', 'kind': 'classifier'}),
       }));
       final gz = DdxTransferService.gzip(body);
       expect(gz.length, lessThan(body.length ~/ 4));
@@ -165,7 +165,7 @@ void main() {
       final k = DdxTransferService.newKey();
       final b64 = base64Url.encode(k).replaceAll('=', '');
       final parsed = DdxTransferService.parseLink(
-          'https://transfer.example/t/ABCD1234#k=\$b64&p=482719');
+          'https://transfer.example/t/ABCD1234#k=$b64&p=482719');
       expect(parsed, isNotNull);
       expect(parsed!.code, 'ABCD1234');
       expect(parsed.pin, '482719');

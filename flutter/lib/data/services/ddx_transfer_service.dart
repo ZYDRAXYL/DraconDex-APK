@@ -262,6 +262,13 @@ class DdxTransferService {
       'source': 'apk',
     };
 
+    // Sealed BEFORE the request is built: `_send` takes a synchronous closure,
+    // so an await inside that closure is not legal Dart. Omitting pinWrap is
+    // what makes a transfer end-to-end — with no wrapped key on the service,
+    // the QR/link fragment holds the only copy of it in existence.
+    final manifestEnc = await sealJson(key, manifest);
+    final pinWrap = allowTypedCode ? await wrapKeyWithPin(key, code, pin) : null;
+
     _decode(await _send(() => _client.post(
           _uri('/api/commit'),
           headers: {
@@ -272,8 +279,8 @@ class DdxTransferService {
             'transferId': transferId,
             'chunkCount': slices.length,
             'sizeBytes': body.length,
-            'manifestEnc': await sealJson(key, manifest),
-            'pinWrap': allowTypedCode ? await wrapKeyWithPin(key, code, pin) : null,
+            'manifestEnc': manifestEnc,
+            'pinWrap': pinWrap,
           }),
         )));
 
