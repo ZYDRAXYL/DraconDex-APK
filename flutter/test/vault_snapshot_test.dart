@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -17,8 +19,17 @@ void main() {
   sqfliteFfiInit();
   final factory = databaseFactoryFfi;
 
+  /// A fresh in-memory vault per test.
+  ///
+  /// `addTearDown` rather than a `db.close()` at the end of each test: a test
+  /// that fails an expectation never reaches its own last line, the database
+  /// stays open, and the NEXT test's `openDatabase(':memory:')` gets handed
+  /// that same live instance — whose `nexus` rows then collide on the UNIQUE
+  /// name. One failure cascading into the next one's setup is a miserable
+  /// thing to debug, so the cleanup cannot be on the happy path.
   Future<Database> openVault() async {
     final db = await factory.openDatabase(inMemoryDatabasePath);
+    addTearDown(() async => db.close());
     await db.execute('PRAGMA foreign_keys = ON');
     for (final sql in vaultCreateStatements) {
       await db.execute(sql);
@@ -93,17 +104,156 @@ void main() {
     return nexusId;
   }
 
-  /// Everything that legitimately differs between two serializations of the
-  /// same content: primary keys, and when it was exported.
-  Object? strip(Object? v) {
-    if (v is Map) {
-      return {
-        for (final e in v.entries)
-          if (e.key != 'id' && e.key != 'exportedAt') e.key: strip(e.value),
-      };
+  /// Rewrites a snapshot so two serializations of the same content compare
+  /// equal.
+  ///
+  /// Dropping `id` is not enough: every FOREIGN key (`parentId`, `moduleId`,
+  /// `folderId`, the id embedded in a relation's `fromKey`…) also changes when
+  /// rows are re-inserted, and stripping those instead would throw away
+  /// exactly what a round trip is supposed to prove.
+  ///
+  /// So each id is replaced by the POSITION of the row it points at within its
+  /// own section. `serializeVault` orders every section by id and
+  /// `applySnapshot` inserts in that order, so position is stable across the
+  /// trip while the id is not — and a link rewired to the wrong row still
+  /// shows up as a mismatch.
+  ///
+  /// Written out section by section rather than as a generic walk: the same
+  /// field name means different things in different sections (a folder's
+  /// `parentId` points at folders, a module's at modules), and a clever
+  /// traversal that gets that subtly wrong would weaken the test silently.
+  Map<String, Object?> canonicalise(Map<String, Object?> snapshot) {
+    final s = (jsonDecode(jsonEncode(snapshot)) as Map).cast<String, Object?>();
+    s.remove('exportedAt');
+
+    List<Map<String, Object?>> rows(Object? v) => v is List
+        ? v.map((e) => (e as Map).cast<String, Object?>()).toList()
+        : <Map<String, Object?>>[];
+    Map<String, Object?> sect(Object? v) =>
+        v is Map ? v.cast<String, Object?>() : <String, Object?>{};
+
+    /// id -> position, and strips the `id` field on the way past.
+    Map<int, int> index(List<Map<String, Object?>> list) {
+      final out = <int, int>{};
+      for (var i = 0; i < list.length; i++) {
+        final id = list[i].remove('id');
+        if (id is int) out[id] = i;
+      }
+      return out;
     }
-    if (v is List) return v.map(strip).toList();
-    return v;
+
+    void remap(List<Map<String, Object?>> list, String field, Map<int, int> to) {
+      for (final r in list) {
+        final v = r[field];
+        r[field] = v is int ? to[v] : null;
+      }
+    }
+
+    final modules = rows(s['modules']);
+    final cls = sect(s['classifier']);
+    final loc = sect(s['locator']);
+    final chr = sect(s['chronicler']);
+    final nar = sect(s['narrator']);
+    final cht = sect(s['chatscribe']);
+    final skt = sect(s['sketcher']);
+    final dsg = sect(s['designer']);
+    final nts = sect(s['notes']);
+
+    final objects = rows(cls['objects']);
+    final templates = rows(cls['templates']);
+    final maps = rows(loc['maps']);
+    final areas = rows(loc['areas']);
+    final timelines = rows(chr['timelines']);
+    final events = rows(chr['events']);
+    final dialogues = rows(nar['dialogues']);
+    final talks = rows(nar['talks']);
+    final chapters = rows(sect(s['author'])['chapters']);
+    final sessions = rows(cht['sessions']);
+    final pages = rows(skt['pages']);
+    final nodes = rows(dsg['nodes']);
+    final folders = rows(nts['folders']);
+    final notes = rows(nts['notes']);
+
+    // Indexed first, because remapping needs every map to exist.
+    final modIx = index(modules);
+    final objIx = index(objects);
+    final tplIx = index(templates);
+    final mapIx = index(maps);
+    final areaIx = index(areas);
+    final tlIx = index(timelines);
+    final evtIx = index(events);
+    final dlgIx = index(dialogues);
+    final talkIx = index(talks);
+    final chpIx = index(chapters);
+    final sesIx = index(sessions);
+    final pageIx = index(pages);
+    final nodeIx = index(nodes);
+    final folIx = index(folders);
+    final noteIx = index(notes);
+
+    remap(modules, 'parentId', modIx);
+    for (final key in <String>['moduleAttrs', 'moduleUi', 'moduleTags']) {
+      remap(rows(s[key]), 'moduleId', modIx);
+    }
+    remap(objects, 'moduleId', modIx);
+    remap(templates, 'moduleId', modIx);
+    remap(templates, 'objectId', objIx);
+    remap(rows(cls['attributes']), 'objectId', objIx);
+    remap(rows(cls['attributes']), 'templateId', tplIx);
+    remap(maps, 'moduleId', modIx);
+    remap(areas, 'mapId', mapIx);
+    remap(rows(loc['points']), 'areaId', areaIx);
+    remap(timelines, 'moduleId', modIx);
+    remap(events, 'timelineId', tlIx);
+    final mapEvents = rows(sect(s['wanderer'])['mapEvents']);
+    remap(mapEvents, 'moduleId', modIx);
+    remap(mapEvents, 'eventId', evtIx);
+    remap(mapEvents, 'areaId', areaIx);
+    remap(dialogues, 'moduleId', modIx);
+    for (final field in <String>['moduleId', 'fromId', 'toId']) {
+      remap(rows(nar['edges']), field, field == 'moduleId' ? modIx : dlgIx);
+    }
+    remap(talks, 'dialogueId', dlgIx);
+    remap(rows(nar['choiceOptions']), 'talkId', talkIx);
+    remap(rows(nar['choiceOptions']), 'jumpId', dlgIx);
+    remap(chapters, 'moduleId', modIx);
+    remap(sessions, 'moduleId', modIx);
+    remap(rows(cht['messages']), 'sessionId', sesIx);
+    remap(pages, 'moduleId', modIx);
+    remap(rows(skt['strokes']), 'pageId', pageIx);
+    remap(rows(skt['pins']), 'pageId', pageIx);
+    remap(nodes, 'moduleId', modIx);
+    for (final field in <String>['moduleId', 'fromId', 'toId']) {
+      remap(rows(dsg['edges']), field, field == 'moduleId' ? modIx : nodeIx);
+    }
+    // A folder's parentId points at FOLDERS, not modules.
+    remap(folders, 'parentId', folIx);
+    remap(notes, 'folderId', folIx);
+
+    // Relation endpoints and linker keys carry their id inside a string.
+    final keyIx = <String, Map<int, int>>{
+      'module': modIx, 'cobj': objIx, 'bchp': chpIx, 'chss': sesIx, 'note': noteIx,
+    };
+    String? canonKey(Object? v) {
+      if (v is! String) return null;
+      final m = RegExp(r'^([a-z]+)_(\d+)$').firstMatch(v);
+      if (m == null) return v;
+      final idx = keyIx[m.group(1)]?[int.parse(m.group(2)!)];
+      return idx == null ? v : '${m.group(1)}_#$idx';
+    }
+
+    for (final r in rows(s['relations'])) {
+      r['fromKey'] = canonKey(r['fromKey']);
+      r['toKey'] = canonKey(r['toKey']);
+    }
+    for (final r in rows(skt['pins'])) {
+      r['linkerKey'] = canonKey(r['linkerKey']);
+    }
+    for (final r in nodes) {
+      r['linkerKey'] = canonKey(r['linkerKey']);
+    }
+
+    return s;
   }
 
   test('the snapshot header matches what DraconDex-EXE writes', () async {
@@ -116,7 +266,6 @@ void main() {
     expect(snap['format'], 'dracondex-vault-snapshot');
     expect(snap['version'], 1);
     expect((snap['nexus']! as Map)['name'], 'My World');
-    await db.close();
   });
 
   test('serialize -> apply -> serialize comes back identical', () async {
@@ -135,13 +284,12 @@ void main() {
 
     // The local Nexus NAME is deliberately kept (it is UNIQUE per install),
     // so that one field is expected to differ.
-    final a = strip(first)! as Map;
-    final b = strip(second)! as Map;
+    final a = canonicalise(first);
+    final b = canonicalise(second);
     (a['nexus']! as Map).remove('name');
     (b['nexus']! as Map).remove('name');
 
     expect(b, a);
-    await db.close();
   });
 
   test('the id remapping survives the round trip, dangling keys and all', () async {
@@ -167,7 +315,6 @@ void main() {
         "SELECT id FROM module WHERE nexus_ref=? AND name='Characters'", [targetId]);
     expect(rels.first['from_key'], 'module_${newModules.first['id']}');
 
-    await db.close();
   });
 
   test('a module tree is rebuilt parents-first even when the payload is not ordered', () async {
@@ -202,7 +349,6 @@ void main() {
     expect(byName['Child']!['parent_id'], byName['Root']!['id']);
     expect(byName['Grandchild']!['parent_id'], byName['Child']!['id']);
 
-    await db.close();
   });
 
   test('a payload that is not a snapshot is refused rather than half-applied', () async {
@@ -219,7 +365,6 @@ void main() {
       expect(r.ok, isFalse);
       expect(r.code, 'bad_snapshot');
     }
-    await db.close();
   });
 
   test('a colliding module handle is dropped rather than aborting the import', () async {
@@ -244,7 +389,6 @@ void main() {
     // rather than throwing on a cosmetic field.
     expect(applied.ok, isTrue, reason: applied.code);
     expect(applied.modules, 1);
-    await db.close();
   });
 
   test('collectModuleSubtreeIds walks the whole subtree', () async {
@@ -257,7 +401,6 @@ void main() {
 
     final ids = await VaultSnapshotService.collectModuleSubtreeIds(db, nexusId, root);
     expect(ids.toSet(), <int>{root, a, b});
-    await db.close();
   });
 
   test('remapEntityKey only maps keys it has a map for', () {
