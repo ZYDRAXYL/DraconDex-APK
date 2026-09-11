@@ -47,7 +47,12 @@ void main() {
 
   /// A Nexus with something in most of the shapes the format carries, so the
   /// round trip exercises the id remapping rather than an empty vault.
-  Future<int> seedVault(Database db) async {
+  ///
+  /// [withDanglingRelation] adds a relation whose endpoint no module owns.
+  /// It is off by default because such a row CANNOT round-trip by design —
+  /// apply drops it — so a vault containing one is the wrong fixture for an
+  /// identity assertion. Its own test turns it on.
+  Future<int> seedVault(Database db, {bool withDanglingRelation = false}) async {
     final blue = await colorIdOf(db, defaultColorCodes.first);
     final nexusId = await db.insert('nexus', {'name': 'My World', 'memo': 'a memo', 'color': blue});
 
@@ -95,11 +100,13 @@ void main() {
     await db.insert('entity_relation', {
       'nexus_ref': nexusId, 'from_key': 'module_$root', 'to_key': 'note_$note', 'label': 'mentions',
     });
-    // ...and one that cannot be remapped, which must be dropped and counted
-    // rather than inserted with a dangling key.
-    await db.insert('entity_relation', {
-      'nexus_ref': nexusId, 'from_key': 'module_999999', 'to_key': 'note_$note', 'label': 'ghost',
-    });
+    // ...and, on request, one that cannot be remapped at all, which apply must
+    // drop and count rather than insert with an endpoint pointing at nothing.
+    if (withDanglingRelation) {
+      await db.insert('entity_relation', {
+        'nexus_ref': nexusId, 'from_key': 'module_999999', 'to_key': 'note_$note', 'label': 'ghost',
+      });
+    }
 
     return nexusId;
   }
@@ -272,6 +279,9 @@ void main() {
     final db = await openVault();
     final sourceId = await seedVault(db);
 
+    // No dangling relation in this fixture: a row whose endpoint cannot be
+    // remapped is dropped on apply, by design, so a vault containing one can
+    // never serialize back to itself. That behaviour has its own test.
     final first = (await VaultSnapshotService.serializeVault(db, sourceId))!;
 
     // Receiving always lands in a NEW Nexus: applySnapshot is wipe-and-rebuild
@@ -294,7 +304,7 @@ void main() {
 
   test('the id remapping survives the round trip, dangling keys and all', () async {
     final db = await openVault();
-    final sourceId = await seedVault(db);
+    final sourceId = await seedVault(db, withDanglingRelation: true);
     final snap = (await VaultSnapshotService.serializeVault(db, sourceId))!;
 
     final targetId = await db.insert('nexus', {'name': 'Received'});
