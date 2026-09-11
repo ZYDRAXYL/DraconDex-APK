@@ -524,4 +524,141 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get railCollapse => 'レールを畳む';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => '転送';
+
+  @override
+  String get transferSubtitle => 'Nexus をまるごと別の端末へ渡します。アカウントも設定も不要 — 送る側がコードを表示し、受け取る側がそれを入力すると、中継されたコピーは受信と同時に削除されます。';
+
+  @override
+  String get transferTabSend => '送る';
+
+  @override
+  String get transferTabReceive => '受け取る';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => '送りたい Nexus を開いてください。';
+
+  @override
+  String get transferAllowTyped => 'コード入力での受信を許可する';
+
+  @override
+  String get transferAllowTypedHint => 'オンにすると相手はコードと PIN を手入力できますが、待機中サーバーが PIN で封じた鍵を預かります。オフにすると QR コードだけが入口になり、サーバーはファイルを一切読めません。';
+
+  @override
+  String get transferCreate => '転送を作成';
+
+  @override
+  String get transferCode => '転送コード';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'リンクをコピー';
+
+  @override
+  String get transferModeTyped => 'QR を読み取るか、コードと PIN を入力してください。待機中はサーバーが PIN で封じた鍵を預かります。';
+
+  @override
+  String get transferModeQr => 'QR コードのみ。鍵はサーバーに届かないため、読み取った端末以外はこれを開けません。';
+
+  @override
+  String get transferExpiry => '30 分で期限切れになり、受信された瞬間に削除されます。';
+
+  @override
+  String get transferWaiting => '相手の端末を待っています…';
+
+  @override
+  String get transferClaimed => '相手がコードを確認し、ダウンロード中です…';
+
+  @override
+  String get transferDone => '受信完了 — サーバー上のコピーは削除されました。';
+
+  @override
+  String get transferExpiredNotice => '受信される前に期限切れになりました。';
+
+  @override
+  String get transferVerify => '確認';
+
+  @override
+  String get transferFound => '転送が見つかりました';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => 'サイズ';
+
+  @override
+  String get transferCreated => '作成日時';
+
+  @override
+  String get transferSource => '送信元';
+
+  @override
+  String get transferReceiveAsNew => '新しい Nexus として取り込まれます。既存のものには一切触れません。';
+
+  @override
+  String get transferReceiveAction => '受け取る';
+
+  @override
+  String get transferReceived => 'Nexus を受け取りました';
+
+  @override
+  String get transferErrNetwork => '転送サービスに接続できませんでした。';
+
+  @override
+  String get transferErrBadCode => '転送コードまたは PIN が違います。';
+
+  @override
+  String get transferErrLocked => 'PIN の誤りが多すぎます。この転送はしばらくロックされます。';
+
+  @override
+  String get transferErrExpired => 'この転送は期限切れです。新しいコードをもらってください。';
+
+  @override
+  String get transferErrGone => 'この転送はもう存在しません — 受信済みかキャンセルされました。';
+
+  @override
+  String get transferErrNotReady => '相手の端末がまだアップロードを終えていません。';
+
+  @override
+  String get transferErrTooLarge => 'この Nexus は 1 回の転送の上限を超えています。';
+
+  @override
+  String get transferErrBadToken => 'この転送セッションは無効になりました。やり直してください。';
+
+  @override
+  String get transferErrBadKey => 'リンクが不完全です — 鍵の部分が欠けているか壊れています。';
+
+  @override
+  String get transferErrQrOnly => '送信側は QR コードのみを許可しています。入力ではなく読み取ってください。';
+
+  @override
+  String get transferErrBadPayload => '受け取ったファイルを読み込めませんでした。';
+
+  @override
+  String get transferErrServer => '転送サービスで問題が発生しました。';
+
+  @override
+  String get transferSending => '送信中…';
+
+  @override
+  String get transferCopied => 'リンクをコピーしました';
+
+  @override
+  String get transferCancel => 'キャンセル';
+
+  @override
+  String get transferPasteLink => 'または転送リンクを貼り付け';
+
+  @override
+  String get transferPasteLinkHint => 'リンクには鍵が含まれているため、送信側が QR のみを許可していても使えます。';
 }

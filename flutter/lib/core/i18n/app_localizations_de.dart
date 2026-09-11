@@ -524,4 +524,141 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get railCollapse => 'Leiste einklappen';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => 'Übertragung';
+
+  @override
+  String get transferSubtitle => 'Übergib einen ganzen Nexus an ein anderes Gerät. Ohne Konto und ohne Einrichtung — das sendende Gerät zeigt einen Code, das empfangende gibt ihn ein, und die Kopie dazwischen wird gelöscht, sobald sie angekommen ist.';
+
+  @override
+  String get transferTabSend => 'Senden';
+
+  @override
+  String get transferTabReceive => 'Empfangen';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => 'Öffne zuerst den Nexus, den du senden willst.';
+
+  @override
+  String get transferAllowTyped => 'Empfang per eingetipptem Code erlauben';
+
+  @override
+  String get transferAllowTypedHint => 'An kann das andere Gerät Code und PIN eintippen — dafür verwahrt der Dienst den mit dieser PIN versiegelten Schlüssel, solange gewartet wird. Aus ist der QR-Code der einzige Weg hinein, und der Dienst kann die Datei überhaupt nicht lesen.';
+
+  @override
+  String get transferCreate => 'Übertragung erstellen';
+
+  @override
+  String get transferCode => 'Übertragungscode';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'Link kopieren';
+
+  @override
+  String get transferModeTyped => 'QR scannen, oder Code und PIN eintippen. Während gewartet wird, verwahrt der Dienst den mit der PIN versiegelten Schlüssel.';
+
+  @override
+  String get transferModeQr => 'Nur QR-Code. Der Schlüssel erreicht den Dienst nie, also kann niemand außer dem scannenden Gerät das hier öffnen.';
+
+  @override
+  String get transferExpiry => 'Läuft in 30 Minuten ab und wird gelöscht, sobald es empfangen wurde.';
+
+  @override
+  String get transferWaiting => 'Warte auf das andere Gerät…';
+
+  @override
+  String get transferClaimed => 'Das andere Gerät hat den Code geprüft und lädt herunter…';
+
+  @override
+  String get transferDone => 'Empfangen. Die Kopie auf dem Dienst wurde gelöscht.';
+
+  @override
+  String get transferExpiredNotice => 'Abgelaufen, bevor es jemand empfangen hat.';
+
+  @override
+  String get transferVerify => 'Prüfen';
+
+  @override
+  String get transferFound => 'Übertragung gefunden';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => 'Größe';
+
+  @override
+  String get transferCreated => 'Erstellt';
+
+  @override
+  String get transferSource => 'Gesendet von';
+
+  @override
+  String get transferReceiveAsNew => 'Sie kommt als neuer Nexus an. Nichts von dem, was du schon hast, wird angefasst.';
+
+  @override
+  String get transferReceiveAction => 'Empfangen';
+
+  @override
+  String get transferReceived => 'Nexus empfangen';
+
+  @override
+  String get transferErrNetwork => 'Der Übertragungsdienst war nicht erreichbar.';
+
+  @override
+  String get transferErrBadCode => 'Dieser Übertragungscode oder diese PIN stimmt nicht.';
+
+  @override
+  String get transferErrLocked => 'Zu viele falsche PINs. Diese Übertragung ist eine Weile gesperrt.';
+
+  @override
+  String get transferErrExpired => 'Diese Übertragung ist abgelaufen. Bitte um einen neuen Code.';
+
+  @override
+  String get transferErrGone => 'Diese Übertragung gibt es nicht mehr — sie wurde empfangen oder abgebrochen.';
+
+  @override
+  String get transferErrNotReady => 'Das andere Gerät ist mit dem Hochladen noch nicht fertig.';
+
+  @override
+  String get transferErrTooLarge => 'Dieser Nexus ist größer, als eine Übertragung zulässt.';
+
+  @override
+  String get transferErrBadToken => 'Diese Übertragungssitzung gilt nicht mehr. Fang neu an.';
+
+  @override
+  String get transferErrBadKey => 'Dieser Link ist unvollständig — der Schlüsselteil fehlt oder ist beschädigt.';
+
+  @override
+  String get transferErrQrOnly => 'Der Absender hat nur den QR-Code erlaubt. Scanne ihn, statt zu tippen.';
+
+  @override
+  String get transferErrBadPayload => 'Die empfangene Datei konnte nicht gelesen werden.';
+
+  @override
+  String get transferErrServer => 'Beim Übertragungsdienst ist ein Problem aufgetreten.';
+
+  @override
+  String get transferSending => 'Wird gesendet…';
+
+  @override
+  String get transferCopied => 'Link kopiert';
+
+  @override
+  String get transferCancel => 'Abbrechen';
+
+  @override
+  String get transferPasteLink => 'Oder einen Übertragungslink einfügen';
+
+  @override
+  String get transferPasteLinkHint => 'Der Link trägt den Schlüssel in sich, funktioniert also auch, wenn der Absender nur den QR-Code erlaubt hat.';
 }

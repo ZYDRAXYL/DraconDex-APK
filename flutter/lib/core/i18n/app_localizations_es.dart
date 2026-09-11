@@ -524,4 +524,141 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get railCollapse => 'Contraer la barra';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => 'Transferir';
+
+  @override
+  String get transferSubtitle => 'Entrega un Nexus entero a otro dispositivo. Sin cuenta y sin configuración: el que envía muestra un código, el que recibe lo introduce, y la copia intermedia se borra en cuanto llega.';
+
+  @override
+  String get transferTabSend => 'Enviar';
+
+  @override
+  String get transferTabReceive => 'Recibir';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => 'Abre el Nexus que quieras enviar.';
+
+  @override
+  String get transferAllowTyped => 'Permitir recibir escribiendo el código';
+
+  @override
+  String get transferAllowTypedHint => 'Activado, el otro dispositivo puede escribir el código y el PIN, a cambio de que el servicio guarde la clave sellada con ese PIN mientras espera. Desactivado, el código QR es la única entrada y el servicio no puede leer el archivo en absoluto.';
+
+  @override
+  String get transferCreate => 'Crear transferencia';
+
+  @override
+  String get transferCode => 'Código de transferencia';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'Copiar enlace';
+
+  @override
+  String get transferModeTyped => 'Escanea el QR, o escribe el código y el PIN. Mientras espera, el servicio guarda la clave sellada con el PIN.';
+
+  @override
+  String get transferModeQr => 'Solo código QR. La clave nunca llega al servicio, así que nadie salvo el dispositivo que escanea puede abrir esto.';
+
+  @override
+  String get transferExpiry => 'Caduca en 30 minutos, y se borra en cuanto se recibe.';
+
+  @override
+  String get transferWaiting => 'Esperando al otro dispositivo…';
+
+  @override
+  String get transferClaimed => 'El otro dispositivo ha verificado el código y está descargando…';
+
+  @override
+  String get transferDone => 'Recibido. La copia del servicio se ha borrado.';
+
+  @override
+  String get transferExpiredNotice => 'Caducó antes de que nadie lo recibiera.';
+
+  @override
+  String get transferVerify => 'Verificar';
+
+  @override
+  String get transferFound => 'Transferencia encontrada';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => 'Tamaño';
+
+  @override
+  String get transferCreated => 'Creado';
+
+  @override
+  String get transferSource => 'Enviado desde';
+
+  @override
+  String get transferReceiveAsNew => 'Llega como un Nexus nuevo. No se toca nada de lo que ya tienes.';
+
+  @override
+  String get transferReceiveAction => 'Recibir';
+
+  @override
+  String get transferReceived => 'Nexus recibido';
+
+  @override
+  String get transferErrNetwork => 'No se pudo contactar con el servicio de transferencia.';
+
+  @override
+  String get transferErrBadCode => 'Ese código de transferencia o ese PIN no son correctos.';
+
+  @override
+  String get transferErrLocked => 'Demasiados PIN incorrectos. Esta transferencia queda bloqueada un rato.';
+
+  @override
+  String get transferErrExpired => 'Esta transferencia ha caducado. Pide un código nuevo.';
+
+  @override
+  String get transferErrGone => 'Esta transferencia ya no existe: se recibió o se canceló.';
+
+  @override
+  String get transferErrNotReady => 'El otro dispositivo aún no ha terminado de subirla.';
+
+  @override
+  String get transferErrTooLarge => 'Este Nexus supera el tamaño que permite una transferencia.';
+
+  @override
+  String get transferErrBadToken => 'Esta sesión de transferencia ya no vale. Empieza de nuevo.';
+
+  @override
+  String get transferErrBadKey => 'Ese enlace está incompleto: falta la parte de la clave o está dañada.';
+
+  @override
+  String get transferErrQrOnly => 'Quien envía solo permitió el código QR. Escanéalo en vez de escribirlo.';
+
+  @override
+  String get transferErrBadPayload => 'No se pudo leer el archivo recibido.';
+
+  @override
+  String get transferErrServer => 'El servicio de transferencia tuvo un problema.';
+
+  @override
+  String get transferSending => 'Enviando…';
+
+  @override
+  String get transferCopied => 'Enlace copiado';
+
+  @override
+  String get transferCancel => 'Cancelar';
+
+  @override
+  String get transferPasteLink => 'O pega un enlace de transferencia';
+
+  @override
+  String get transferPasteLinkHint => 'El enlace lleva la clave dentro, así que funciona incluso si quien envía solo permitió el código QR.';
 }

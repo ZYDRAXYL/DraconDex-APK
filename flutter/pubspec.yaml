@@ -54,8 +54,19 @@ dependencies:
 
   cupertino_icons: ^1.0.8
 
-  # Update-check notice (GitHub Releases) — see docs/UPDATE.md
+  # Update-check notice (GitHub Releases) — see docs/UPDATE.md, and the
+  # DDX Transfer client (data/services/ddx_transfer_service.dart).
   http: ^1.2.2
+
+  # DDX Transfer. All three are pure Dart with no native half, which is what
+  # lets the same service run on Android and in the web/PWA build:
+  #   cryptography — AES-256-GCM and PBKDF2-SHA256 for the transfer wire
+  #                  format. `crypto` above hashes and nothing else.
+  #   archive      — gzip. dart:io's GZipCodec does not exist on web.
+  #   qr_flutter   — renders the transfer link as a QR for the other device.
+  cryptography: ^2.7.0
+  archive: ^3.6.1
+  qr_flutter: ^4.1.0
   # Verifies a downloaded release APK against the checksums-sha256.txt the
   # release workflow publishes, before it is handed to Android's package
   # installer (apk_installer_io.dart). Already resolved transitively; declared
@@ -71,6 +82,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  # Runs the real vault schema against sqlite on the test host, so
+  # test/vault_snapshot_test.dart can hold the Dart port of the snapshot
+  # engine to an actual round trip instead of only type-checking it. The
+  # port's other half lives in electron/src/db/sync.js, and the two drifting
+  # apart is the failure this guards.
+  sqflite_common_ffi: ^2.3.3
 
 # generate is off because the custom "qd" (Draconic) locale is rejected by
 # newer gen-l10n validation; the generated files in lib/core/i18n are committed.

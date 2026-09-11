@@ -524,4 +524,141 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get railCollapse => 'Свернуть панель навигации';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => 'Передача';
+
+  @override
+  String get transferSubtitle => 'Передайте целый Nexus на другое устройство. Без учётной записи и без настройки: отправляющее устройство показывает код, принимающее вводит его, а промежуточная копия удаляется в момент получения.';
+
+  @override
+  String get transferTabSend => 'Отправить';
+
+  @override
+  String get transferTabReceive => 'Принять';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => 'Сначала откройте Nexus, который хотите отправить.';
+
+  @override
+  String get transferAllowTyped => 'Разрешить приём вводом кода';
+
+  @override
+  String get transferAllowTypedHint => 'Включено — другое устройство может ввести код и PIN, но пока идёт ожидание, служба хранит ключ, запечатанный этим PIN. Выключено — единственный вход через QR-код, и служба совсем не может прочитать файл.';
+
+  @override
+  String get transferCreate => 'Создать передачу';
+
+  @override
+  String get transferCode => 'Код передачи';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'Скопировать ссылку';
+
+  @override
+  String get transferModeTyped => 'Отсканируйте QR или введите код и PIN. Пока идёт ожидание, служба хранит ключ, запечатанный PIN.';
+
+  @override
+  String get transferModeQr => 'Только QR-код. Ключ никогда не попадает на сервер, поэтому открыть это может только сканирующее устройство.';
+
+  @override
+  String get transferExpiry => 'Истекает через 30 минут и удаляется в момент получения.';
+
+  @override
+  String get transferWaiting => 'Ожидание другого устройства…';
+
+  @override
+  String get transferClaimed => 'Другое устройство проверило код и скачивает…';
+
+  @override
+  String get transferDone => 'Получено. Копия на сервере удалена.';
+
+  @override
+  String get transferExpiredNotice => 'Истекло, прежде чем кто-то успел принять.';
+
+  @override
+  String get transferVerify => 'Проверить';
+
+  @override
+  String get transferFound => 'Передача найдена';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => 'Размер';
+
+  @override
+  String get transferCreated => 'Создано';
+
+  @override
+  String get transferSource => 'Отправлено с';
+
+  @override
+  String get transferReceiveAsNew => 'Он придёт как новый Nexus. Ничего из того, что у вас уже есть, не затрагивается.';
+
+  @override
+  String get transferReceiveAction => 'Принять';
+
+  @override
+  String get transferReceived => 'Nexus получен';
+
+  @override
+  String get transferErrNetwork => 'Не удалось связаться со службой передачи.';
+
+  @override
+  String get transferErrBadCode => 'Этот код передачи или PIN неверен.';
+
+  @override
+  String get transferErrLocked => 'Слишком много неверных PIN. Эта передача заблокирована на время.';
+
+  @override
+  String get transferErrExpired => 'Эта передача истекла. Попросите новый код.';
+
+  @override
+  String get transferErrGone => 'Этой передачи больше нет — её приняли или отменили.';
+
+  @override
+  String get transferErrNotReady => 'Другое устройство ещё не закончило загрузку.';
+
+  @override
+  String get transferErrTooLarge => 'Этот Nexus больше, чем допускает одна передача.';
+
+  @override
+  String get transferErrBadToken => 'Эта сессия передачи больше недействительна. Начните заново.';
+
+  @override
+  String get transferErrBadKey => 'Ссылка неполная — часть с ключом отсутствует или повреждена.';
+
+  @override
+  String get transferErrQrOnly => 'Отправитель разрешил только QR-код. Отсканируйте его вместо ввода.';
+
+  @override
+  String get transferErrBadPayload => 'Не удалось прочитать полученный файл.';
+
+  @override
+  String get transferErrServer => 'В службе передачи произошла ошибка.';
+
+  @override
+  String get transferSending => 'Отправка…';
+
+  @override
+  String get transferCopied => 'Ссылка скопирована';
+
+  @override
+  String get transferCancel => 'Отмена';
+
+  @override
+  String get transferPasteLink => 'Или вставьте ссылку передачи';
+
+  @override
+  String get transferPasteLinkHint => 'Ссылка несёт ключ в себе, поэтому работает даже если отправитель разрешил только QR-код.';
 }

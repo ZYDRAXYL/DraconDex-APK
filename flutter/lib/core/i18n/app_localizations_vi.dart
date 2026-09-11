@@ -524,4 +524,141 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get railCollapse => 'Thu gọn thanh điều hướng';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => 'Chuyển';
+
+  @override
+  String get transferSubtitle => 'Trao cả một Nexus sang thiết bị khác. Không cần tài khoản, không cần cài đặt — máy gửi hiện một mã, máy nhận nhập mã đó, và bản sao trung gian bị xoá ngay khi đến nơi.';
+
+  @override
+  String get transferTabSend => 'Gửi';
+
+  @override
+  String get transferTabReceive => 'Nhận';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => 'Hãy mở Nexus bạn muốn gửi.';
+
+  @override
+  String get transferAllowTyped => 'Cho phép nhận bằng cách gõ mã';
+
+  @override
+  String get transferAllowTypedHint => 'Bật thì máy kia có thể tự gõ mã và PIN, đổi lại máy chủ giữ khoá đã niêm bằng PIN trong lúc chờ. Tắt thì chỉ nhận được qua mã QR, và máy chủ hoàn toàn không đọc được tệp.';
+
+  @override
+  String get transferCreate => 'Tạo lượt chuyển';
+
+  @override
+  String get transferCode => 'Mã chuyển';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'Chép liên kết';
+
+  @override
+  String get transferModeTyped => 'Quét mã QR, hoặc gõ mã và PIN. Trong lúc chờ, máy chủ giữ khoá đã niêm bằng PIN.';
+
+  @override
+  String get transferModeQr => 'Chỉ qua mã QR. Khoá không bao giờ tới máy chủ, nên ngoài thiết bị quét thì không ai mở được.';
+
+  @override
+  String get transferExpiry => 'Hết hạn sau 30 phút, và bị xoá ngay khi được nhận.';
+
+  @override
+  String get transferWaiting => 'Đang chờ thiết bị kia…';
+
+  @override
+  String get transferClaimed => 'Thiết bị kia đã xác minh mã và đang tải về…';
+
+  @override
+  String get transferDone => 'Đã nhận — bản sao trên máy chủ đã bị xoá.';
+
+  @override
+  String get transferExpiredNotice => 'Đã hết hạn trước khi có ai nhận.';
+
+  @override
+  String get transferVerify => 'Xác minh';
+
+  @override
+  String get transferFound => 'Đã tìm thấy lượt chuyển';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => 'Kích thước';
+
+  @override
+  String get transferCreated => 'Tạo lúc';
+
+  @override
+  String get transferSource => 'Gửi từ';
+
+  @override
+  String get transferReceiveAsNew => 'Nó sẽ vào như một Nexus mới. Những gì bạn đang có không bị đụng tới.';
+
+  @override
+  String get transferReceiveAction => 'Nhận';
+
+  @override
+  String get transferReceived => 'Đã nhận Nexus';
+
+  @override
+  String get transferErrNetwork => 'Không kết nối được tới dịch vụ chuyển.';
+
+  @override
+  String get transferErrBadCode => 'Mã chuyển hoặc PIN không đúng.';
+
+  @override
+  String get transferErrLocked => 'Sai PIN quá nhiều lần. Lượt chuyển này bị khoá một lúc.';
+
+  @override
+  String get transferErrExpired => 'Lượt chuyển này đã hết hạn. Hãy xin mã mới.';
+
+  @override
+  String get transferErrGone => 'Lượt chuyển này không còn nữa — đã được nhận hoặc đã huỷ.';
+
+  @override
+  String get transferErrNotReady => 'Thiết bị kia chưa tải lên xong.';
+
+  @override
+  String get transferErrTooLarge => 'Nexus này lớn hơn mức một lượt chuyển cho phép.';
+
+  @override
+  String get transferErrBadToken => 'Phiên chuyển này không còn hiệu lực. Hãy bắt đầu lại.';
+
+  @override
+  String get transferErrBadKey => 'Liên kết không đầy đủ — phần khoá bị thiếu hoặc hỏng.';
+
+  @override
+  String get transferErrQrOnly => 'Người gửi chỉ cho phép mã QR. Hãy quét thay vì gõ.';
+
+  @override
+  String get transferErrBadPayload => 'Không đọc được tệp vừa nhận.';
+
+  @override
+  String get transferErrServer => 'Dịch vụ chuyển gặp sự cố.';
+
+  @override
+  String get transferSending => 'Đang gửi…';
+
+  @override
+  String get transferCopied => 'Đã chép liên kết';
+
+  @override
+  String get transferCancel => 'Huỷ';
+
+  @override
+  String get transferPasteLink => 'Hoặc dán liên kết chuyển';
+
+  @override
+  String get transferPasteLinkHint => 'Liên kết mang sẵn khoá, nên vẫn dùng được kể cả khi người gửi chỉ cho phép mã QR.';
 }

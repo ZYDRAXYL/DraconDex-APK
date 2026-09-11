@@ -1152,6 +1152,278 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Collapse rail'**
   String get railCollapse;
+
+  // --- DDX Transfer (features/settings/transfer_screen.dart) ---
+
+  /// No description provided for @transferTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer'**
+  String get transferTitle;
+
+  /// No description provided for @transferSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hand a whole Nexus to another device. No account and no setup — the sending device shows a code, the receiving one takes it, and the copy in between is deleted the moment it arrives.'**
+  String get transferSubtitle;
+
+  /// No description provided for @transferTabSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get transferTabSend;
+
+  /// No description provided for @transferTabReceive.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive'**
+  String get transferTabReceive;
+
+  /// No description provided for @transferNexusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Nexus'**
+  String get transferNexusLabel;
+
+  /// No description provided for @transferPickNexus.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a Nexus to send it.'**
+  String get transferPickNexus;
+
+  /// No description provided for @transferAllowTyped.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow receiving by typed code'**
+  String get transferAllowTyped;
+
+  /// No description provided for @transferAllowTypedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'On, the other device can type the code and PIN, and the service holds the key sealed under that PIN while it waits. Off, the QR code is the only way in and the service cannot read the file at all.'**
+  String get transferAllowTypedHint;
+
+  /// No description provided for @transferCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create transfer'**
+  String get transferCreate;
+
+  /// No description provided for @transferCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer code'**
+  String get transferCode;
+
+  /// No description provided for @transferPin.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN'**
+  String get transferPin;
+
+  /// No description provided for @transferCopyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get transferCopyLink;
+
+  /// No description provided for @transferModeTyped.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the QR, or type the code and PIN. While this is waiting, the service holds the key sealed under the PIN.'**
+  String get transferModeTyped;
+
+  /// No description provided for @transferModeQr.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code only. The key never reaches the service, so nobody but the scanning device can open this.'**
+  String get transferModeQr;
+
+  /// No description provided for @transferExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'This expires in 30 minutes, and is deleted the moment it is received.'**
+  String get transferExpiry;
+
+  /// No description provided for @transferWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the other device…'**
+  String get transferWaiting;
+
+  /// No description provided for @transferClaimed.
+  ///
+  /// In en, this message translates to:
+  /// **'The other device has verified the code and is downloading…'**
+  String get transferClaimed;
+
+  /// No description provided for @transferDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Received. The copy on the service has been deleted.'**
+  String get transferDone;
+
+  /// No description provided for @transferExpiredNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'This expired before it was received.'**
+  String get transferExpiredNotice;
+
+  /// No description provided for @transferVerify.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get transferVerify;
+
+  /// No description provided for @transferFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer found'**
+  String get transferFound;
+
+  /// No description provided for @transferProject.
+  ///
+  /// In en, this message translates to:
+  /// **'Nexus'**
+  String get transferProject;
+
+  /// No description provided for @transferSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get transferSize;
+
+  /// No description provided for @transferCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get transferCreated;
+
+  /// No description provided for @transferSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent from'**
+  String get transferSource;
+
+  /// No description provided for @transferReceiveAsNew.
+  ///
+  /// In en, this message translates to:
+  /// **'This arrives as a new Nexus. Nothing you already have is touched.'**
+  String get transferReceiveAsNew;
+
+  /// No description provided for @transferReceiveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive'**
+  String get transferReceiveAction;
+
+  /// No description provided for @transferReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Nexus received'**
+  String get transferReceived;
+
+  /// No description provided for @transferErrNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the transfer service.'**
+  String get transferErrNetwork;
+
+  /// No description provided for @transferErrBadCode.
+  ///
+  /// In en, this message translates to:
+  /// **'That transfer code or PIN is not right.'**
+  String get transferErrBadCode;
+
+  /// No description provided for @transferErrLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many wrong PINs. This transfer is locked for a while.'**
+  String get transferErrLocked;
+
+  /// No description provided for @transferErrExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'This transfer has expired. Ask for a new code.'**
+  String get transferErrExpired;
+
+  /// No description provided for @transferErrGone.
+  ///
+  /// In en, this message translates to:
+  /// **'This transfer no longer exists — it was received or cancelled.'**
+  String get transferErrGone;
+
+  /// No description provided for @transferErrNotReady.
+  ///
+  /// In en, this message translates to:
+  /// **'The other device has not finished uploading yet.'**
+  String get transferErrNotReady;
+
+  /// No description provided for @transferErrTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'This Nexus is larger than a single transfer allows.'**
+  String get transferErrTooLarge;
+
+  /// No description provided for @transferErrBadToken.
+  ///
+  /// In en, this message translates to:
+  /// **'This transfer session is no longer valid. Start again.'**
+  String get transferErrBadToken;
+
+  /// No description provided for @transferErrBadKey.
+  ///
+  /// In en, this message translates to:
+  /// **'That link is incomplete — the key part is missing or damaged.'**
+  String get transferErrBadKey;
+
+  /// No description provided for @transferErrQrOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'The sender allowed the QR code only. Scan it instead of typing.'**
+  String get transferErrQrOnly;
+
+  /// No description provided for @transferErrBadPayload.
+  ///
+  /// In en, this message translates to:
+  /// **'The received file could not be read.'**
+  String get transferErrBadPayload;
+
+  /// No description provided for @transferErrServer.
+  ///
+  /// In en, this message translates to:
+  /// **'The transfer service had a problem.'**
+  String get transferErrServer;
+
+  /// No description provided for @transferSending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
+  String get transferSending;
+
+  /// No description provided for @transferCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get transferCopied;
+
+  /// No description provided for @transferCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get transferCancel;
+
+  /// No description provided for @transferPasteLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Or paste a transfer link'**
+  String get transferPasteLink;
+
+  /// No description provided for @transferPasteLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A link carries the key in it, so it works even when the sender allowed the QR code only.'**
+  String get transferPasteLinkHint;
 }
 
 class _AppLocalizationsDelegate
