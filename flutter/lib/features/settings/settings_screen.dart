@@ -15,6 +15,7 @@ import '../../providers/update_provider.dart';
 import '../update/update_dialog.dart';
 import 'google_account_screen.dart';
 import 'supabase_setup_screen.dart';
+import 'transfer_screen.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -85,6 +86,17 @@ class SettingsScreen extends ConsumerWidget {
           // platform-gated any more — both are plain https, so they work on
           // Android and on the web/PWA build alike.
           _supabaseTile(context, ref, l10n),
+          // Next to export/import and the cloud tiles because it answers the
+          // same question they do — "how does this leave the device?" — and
+          // differs only in needing no account and keeping nothing.
+          ListTile(
+            leading: const Icon(Icons.swap_horiz),
+            title: Text(l10n.transferTitle),
+            subtitle: Text(l10n.transferSubtitle),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const TransferScreen()),
+            ),
+          ),
           const Divider(),
           _SectionHeader(l10n.settingsAbout),
           ListTile(

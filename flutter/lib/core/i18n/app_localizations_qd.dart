@@ -524,4 +524,141 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get railCollapse => 'Kompaktha railra';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => 'Beryth';
+
+  @override
+  String get transferSubtitle => 'Beryth an hoole Nexvs unto anothyr enjyn. No rekonyng and no buyldyng — ythe sendyr shewyth a runemarke, ythe resevyr typyth yt, and ythe shadowe betwyxt vanyshyth ythe momenth yt landyth.';
+
+  @override
+  String get transferTabSend => 'Sendyth';
+
+  @override
+  String get transferTabReceive => 'Reseevyth';
+
+  @override
+  String get transferNexusLabel => 'Nexvs';
+
+  @override
+  String get transferPickNexus => 'Openyth ythe Nexvs thou wouldst sendyth.';
+
+  @override
+  String get transferAllowTyped => 'Suffyr resevyng bye typyd runemarke';
+
+  @override
+  String get transferAllowTypedHint => 'Lyt, ythe othyr enjyn maye typyth ythe runemarke and ythe PIN, but ythe servyce holdyth ythe kaye sealyd undyr that PIN whyle yt waytyth. Darke, ythe QR ys ythe onlye dore, and ythe servyce redyth noght at alle.';
+
+  @override
+  String get transferCreate => 'Forgyth ythe Beryng';
+
+  @override
+  String get transferCode => 'Beryng Runemarke';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'Coppye ythe Lynk';
+
+  @override
+  String get transferModeTyped => 'Scanyth ythe QR, orr typyth ythe runemarke and ythe PIN. Whyle yt waytyth, ythe servyce holdyth ythe kaye sealyd undyr ythe PIN.';
+
+  @override
+  String get transferModeQr => 'QR sygil alone. Ythe kaye reachyth ythe servyce nevyr, so noone save ythe scanyng enjyn openyth thys.';
+
+  @override
+  String get transferExpiry => 'Thys fadyth in thyrtye mynuts, and vhoreth ythe momenth yt ys resevyd.';
+
+  @override
+  String get transferWaiting => 'Waytyng on ythe othyr enjyn…';
+
+  @override
+  String get transferClaimed => 'Ythe othyr enjyn hathe provyd ythe runemarke and drawyth yt downe…';
+
+  @override
+  String get transferDone => 'Resevyd. Ythe shadowe upon ythe servyce ys vhoryd.';
+
+  @override
+  String get transferExpiredNotice => 'Yt fadyd ere anye resevyd yt.';
+
+  @override
+  String get transferVerify => 'Provyth';
+
+  @override
+  String get transferFound => 'Beryng Founde';
+
+  @override
+  String get transferProject => 'Nexvs';
+
+  @override
+  String get transferSize => 'Weyghth';
+
+  @override
+  String get transferCreated => 'Forgyd';
+
+  @override
+  String get transferSource => 'Sendyd fromme';
+
+  @override
+  String get transferReceiveAsNew => 'Yt comyth as a Nexvs vyrran. Noght thou holdyst alredye ys touchyd.';
+
+  @override
+  String get transferReceiveAction => 'Reseevyth';
+
+  @override
+  String get transferReceived => 'Nexvs resevyd';
+
+  @override
+  String get transferErrNetwork => 'Ythe beryng servyce answeryd noth.';
+
+  @override
+  String get transferErrBadCode => 'That runemarke orr PIN ys noth ryghth.';
+
+  @override
+  String get transferErrLocked => 'To manye wrongyd PINs. Thys beryng lyeth lokyd a whyle.';
+
+  @override
+  String get transferErrExpired => 'Thys beryng hathe fadyd. Askyth a runemarke vyrran.';
+
+  @override
+  String get transferErrGone => 'Thys beryng abydyth no more — resevyd orr unmadyd.';
+
+  @override
+  String get transferErrNotReady => 'Ythe othyr enjyn hathe noth yet fynyshyd sendyng.';
+
+  @override
+  String get transferErrTooLarge => 'Thys Nexvs weyghyth more thanne oon beryng suffryth.';
+
+  @override
+  String get transferErrBadToken => 'Thys beryng sessyon holdyth no more. Begynnyth agayn.';
+
+  @override
+  String get transferErrBadKey => 'That lynk ys unhoole — ythe kaye parth lakyth orr ys marryd.';
+
+  @override
+  String get transferErrQrOnly => 'Ythe sendyr suffryd ythe QR sygil alone. Scanyth yt, typyth yt noth.';
+
+  @override
+  String get transferErrBadPayload => 'Ythe resevyd thyng myghth noth be redde.';
+
+  @override
+  String get transferErrServer => 'Ythe beryng servyce faltryd.';
+
+  @override
+  String get transferSending => 'Sendyng…';
+
+  @override
+  String get transferCopied => 'Lynk coppyd';
+
+  @override
+  String get transferCancel => 'Unmadyth';
+
+  @override
+  String get transferPasteLink => 'Orr laye downe a beryng lynk';
+
+  @override
+  String get transferPasteLinkHint => 'Ythe lynk beryth ythe kaye wythyn yt, so yt servyth even whanne ythe sendyr suffryd ythe QR sygil alone.';
 }

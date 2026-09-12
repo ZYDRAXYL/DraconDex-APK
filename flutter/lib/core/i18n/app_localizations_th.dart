@@ -524,4 +524,141 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get railCollapse => 'ย่อแถบนำทาง';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => 'ส่งต่อ';
+
+  @override
+  String get transferSubtitle => 'ส่ง Nexus ทั้งก้อนไปอีกเครื่องหนึ่ง ไม่ต้องมีบัญชีและไม่ต้องตั้งค่า — เครื่องต้นทางแสดงรหัส เครื่องปลายทางกรอกรหัส แล้วสำเนาที่อยู่ตรงกลางจะถูกลบทันทีที่รับสำเร็จ';
+
+  @override
+  String get transferTabSend => 'ส่ง';
+
+  @override
+  String get transferTabReceive => 'รับ';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => 'เปิด Nexus ที่ต้องการส่งก่อน';
+
+  @override
+  String get transferAllowTyped => 'อนุญาตให้พิมพ์รหัสรับได้';
+
+  @override
+  String get transferAllowTypedHint => 'ถ้าเปิดไว้ อีกเครื่องจะพิมพ์รหัสกับ PIN เองได้ แลกกับการที่เซิร์ฟเวอร์ถือคีย์ที่ถูกห่อด้วย PIN ไว้ระหว่างรอ ถ้าปิดไว้ จะรับได้ทาง QR อย่างเดียว และเซิร์ฟเวอร์จะอ่านไฟล์ไม่ได้เลย';
+
+  @override
+  String get transferCreate => 'สร้างรหัสส่ง';
+
+  @override
+  String get transferCode => 'รหัสส่ง';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'คัดลอกลิงก์';
+
+  @override
+  String get transferModeTyped => 'สแกน QR หรือพิมพ์รหัสกับ PIN ก็ได้ — ระหว่างที่รอ เซิร์ฟเวอร์ถือคีย์ที่ถูกห่อด้วย PIN ไว้';
+
+  @override
+  String get transferModeQr => 'รับได้ทาง QR เท่านั้น — คีย์ไม่เคยถึงเซิร์ฟเวอร์ จึงไม่มีใครนอกจากเครื่องที่สแกนเปิดไฟล์นี้ได้';
+
+  @override
+  String get transferExpiry => 'รายการนี้หมดอายุใน 30 นาที และจะถูกลบทิ้งทันทีที่รับสำเร็จ';
+
+  @override
+  String get transferWaiting => 'กำลังรออีกเครื่อง…';
+
+  @override
+  String get transferClaimed => 'อีกเครื่องตรวจสอบรหัสแล้ว กำลังดาวน์โหลด…';
+
+  @override
+  String get transferDone => 'รับเรียบร้อย — สำเนาบนเซิร์ฟเวอร์ถูกลบแล้ว';
+
+  @override
+  String get transferExpiredNotice => 'หมดอายุก่อนที่จะมีใครมารับ';
+
+  @override
+  String get transferVerify => 'ตรวจสอบ';
+
+  @override
+  String get transferFound => 'พบรายการนี้';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => 'ขนาด';
+
+  @override
+  String get transferCreated => 'สร้างเมื่อ';
+
+  @override
+  String get transferSource => 'ส่งจาก';
+
+  @override
+  String get transferReceiveAsNew => 'ข้อมูลนี้จะเข้ามาเป็น Nexus ใหม่ ของเดิมที่มีอยู่ไม่ถูกแตะต้อง';
+
+  @override
+  String get transferReceiveAction => 'รับไฟล์';
+
+  @override
+  String get transferReceived => 'รับ Nexus แล้ว';
+
+  @override
+  String get transferErrNetwork => 'ต่อกับบริการรับส่งไม่ได้';
+
+  @override
+  String get transferErrBadCode => 'รหัสส่งหรือ PIN ไม่ถูกต้อง';
+
+  @override
+  String get transferErrLocked => 'ใส่ PIN ผิดหลายครั้งเกินไป รายการนี้ถูกล็อกชั่วคราว';
+
+  @override
+  String get transferErrExpired => 'รายการนี้หมดอายุแล้ว ขอรหัสใหม่';
+
+  @override
+  String get transferErrGone => 'ไม่พบรายการนี้แล้ว — ถูกรับไปแล้วหรือถูกยกเลิก';
+
+  @override
+  String get transferErrNotReady => 'อีกเครื่องยังอัปโหลดไม่เสร็จ';
+
+  @override
+  String get transferErrTooLarge => 'Nexus นี้ใหญ่เกินกว่าที่ส่งได้ในครั้งเดียว';
+
+  @override
+  String get transferErrBadToken => 'เซสชันการรับส่งนี้ใช้ไม่ได้แล้ว เริ่มใหม่อีกครั้ง';
+
+  @override
+  String get transferErrBadKey => 'ลิงก์ไม่สมบูรณ์ — ส่วนที่เป็นคีย์หายไปหรือเสียหาย';
+
+  @override
+  String get transferErrQrOnly => 'ผู้ส่งอนุญาตเฉพาะการสแกน QR — พิมพ์รหัสรับไม่ได้';
+
+  @override
+  String get transferErrBadPayload => 'อ่านไฟล์ที่รับมาไม่ได้';
+
+  @override
+  String get transferErrServer => 'บริการรับส่งมีปัญหา';
+
+  @override
+  String get transferSending => 'กำลังส่ง…';
+
+  @override
+  String get transferCopied => 'คัดลอกลิงก์แล้ว';
+
+  @override
+  String get transferCancel => 'ยกเลิก';
+
+  @override
+  String get transferPasteLink => 'หรือวางลิงก์ที่ได้รับมา';
+
+  @override
+  String get transferPasteLinkHint => 'ลิงก์มีคีย์อยู่ในตัว จึงใช้ได้แม้ผู้ส่งจะอนุญาตเฉพาะการสแกน QR';
 }

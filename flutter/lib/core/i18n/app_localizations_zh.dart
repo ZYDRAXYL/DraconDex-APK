@@ -524,4 +524,141 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get railCollapse => '收起导航栏';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => '传输';
+
+  @override
+  String get transferSubtitle => '把整个 Nexus 交给另一台设备。无需账号、无需设置 — 发送方显示一组代码，接收方输入它，中转的副本在送达的那一刻被删除。';
+
+  @override
+  String get transferTabSend => '发送';
+
+  @override
+  String get transferTabReceive => '接收';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => '请先打开要发送的 Nexus。';
+
+  @override
+  String get transferAllowTyped => '允许通过手动输入代码接收';
+
+  @override
+  String get transferAllowTypedHint => '开启后对方可以手动输入代码和 PIN，代价是等待期间服务器会保管用该 PIN 封装的密钥。关闭后只能通过二维码接收，服务器完全无法读取文件。';
+
+  @override
+  String get transferCreate => '创建传输';
+
+  @override
+  String get transferCode => '传输代码';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => '复制链接';
+
+  @override
+  String get transferModeTyped => '扫描二维码，或输入代码和 PIN。等待期间服务器保管用 PIN 封装的密钥。';
+
+  @override
+  String get transferModeQr => '仅限二维码。密钥从不抵达服务器，因此除扫描的设备外无人能打开。';
+
+  @override
+  String get transferExpiry => '30 分钟后过期，并在被接收的那一刻删除。';
+
+  @override
+  String get transferWaiting => '正在等待对方设备…';
+
+  @override
+  String get transferClaimed => '对方已验证代码，正在下载…';
+
+  @override
+  String get transferDone => '已接收 — 服务器上的副本已删除。';
+
+  @override
+  String get transferExpiredNotice => '在被接收之前就已过期。';
+
+  @override
+  String get transferVerify => '验证';
+
+  @override
+  String get transferFound => '已找到该传输';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => '大小';
+
+  @override
+  String get transferCreated => '创建于';
+
+  @override
+  String get transferSource => '来自';
+
+  @override
+  String get transferReceiveAsNew => '它会作为一个新的 Nexus 进来，不会改动你已有的任何内容。';
+
+  @override
+  String get transferReceiveAction => '接收';
+
+  @override
+  String get transferReceived => '已接收 Nexus';
+
+  @override
+  String get transferErrNetwork => '无法连接传输服务。';
+
+  @override
+  String get transferErrBadCode => '传输代码或 PIN 不正确。';
+
+  @override
+  String get transferErrLocked => 'PIN 错误次数过多，此传输已被暂时锁定。';
+
+  @override
+  String get transferErrExpired => '此传输已过期，请索取新的代码。';
+
+  @override
+  String get transferErrGone => '此传输已不存在 — 已被接收或已取消。';
+
+  @override
+  String get transferErrNotReady => '对方设备尚未完成上传。';
+
+  @override
+  String get transferErrTooLarge => '此 Nexus 超过了单次传输的上限。';
+
+  @override
+  String get transferErrBadToken => '此传输会话已失效，请重新开始。';
+
+  @override
+  String get transferErrBadKey => '链接不完整 — 密钥部分缺失或已损坏。';
+
+  @override
+  String get transferErrQrOnly => '发送方仅允许二维码。请扫描而不是输入。';
+
+  @override
+  String get transferErrBadPayload => '无法读取收到的文件。';
+
+  @override
+  String get transferErrServer => '传输服务出现问题。';
+
+  @override
+  String get transferSending => '发送中…';
+
+  @override
+  String get transferCopied => '已复制链接';
+
+  @override
+  String get transferCancel => '取消';
+
+  @override
+  String get transferPasteLink => '或粘贴传输链接';
+
+  @override
+  String get transferPasteLinkHint => '链接本身带着密钥，所以即使发送方只允许二维码也能用。';
 }

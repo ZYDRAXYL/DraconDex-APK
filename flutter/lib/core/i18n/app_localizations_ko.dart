@@ -524,4 +524,141 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get railCollapse => '레일 접기';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => '전송';
+
+  @override
+  String get transferSubtitle => 'Nexus 전체를 다른 기기로 넘깁니다. 계정도 설정도 필요 없습니다 — 보내는 기기가 코드를 보여주고, 받는 기기가 그것을 입력하면, 중간에 있던 사본은 도착하는 즉시 삭제됩니다.';
+
+  @override
+  String get transferTabSend => '보내기';
+
+  @override
+  String get transferTabReceive => '받기';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => '보낼 Nexus를 먼저 여세요.';
+
+  @override
+  String get transferAllowTyped => '코드 입력으로 받기 허용';
+
+  @override
+  String get transferAllowTypedHint => '켜면 상대가 코드와 PIN을 직접 입력할 수 있지만, 대기하는 동안 서버가 PIN으로 봉인된 키를 보관합니다. 끄면 QR 코드만이 입구가 되고 서버는 파일을 전혀 읽을 수 없습니다.';
+
+  @override
+  String get transferCreate => '전송 만들기';
+
+  @override
+  String get transferCode => '전송 코드';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => '링크 복사';
+
+  @override
+  String get transferModeTyped => 'QR을 스캔하거나 코드와 PIN을 입력하세요. 대기 중에는 서버가 PIN으로 봉인된 키를 보관합니다.';
+
+  @override
+  String get transferModeQr => 'QR 코드 전용입니다. 키가 서버에 닿지 않으므로 스캔한 기기 외에는 아무도 열 수 없습니다.';
+
+  @override
+  String get transferExpiry => '30분 후 만료되며, 수신되는 즉시 삭제됩니다.';
+
+  @override
+  String get transferWaiting => '상대 기기를 기다리는 중…';
+
+  @override
+  String get transferClaimed => '상대가 코드를 확인하고 내려받는 중…';
+
+  @override
+  String get transferDone => '수신 완료 — 서버의 사본은 삭제되었습니다.';
+
+  @override
+  String get transferExpiredNotice => '수신되기 전에 만료되었습니다.';
+
+  @override
+  String get transferVerify => '확인';
+
+  @override
+  String get transferFound => '전송을 찾았습니다';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => '크기';
+
+  @override
+  String get transferCreated => '만든 시각';
+
+  @override
+  String get transferSource => '보낸 곳';
+
+  @override
+  String get transferReceiveAsNew => '새 Nexus로 들어옵니다. 기존 항목은 건드리지 않습니다.';
+
+  @override
+  String get transferReceiveAction => '받기';
+
+  @override
+  String get transferReceived => 'Nexus를 받았습니다';
+
+  @override
+  String get transferErrNetwork => '전송 서비스에 연결할 수 없습니다.';
+
+  @override
+  String get transferErrBadCode => '전송 코드 또는 PIN이 올바르지 않습니다.';
+
+  @override
+  String get transferErrLocked => 'PIN을 너무 여러 번 틀렸습니다. 이 전송은 잠시 잠깁니다.';
+
+  @override
+  String get transferErrExpired => '이 전송은 만료되었습니다. 새 코드를 요청하세요.';
+
+  @override
+  String get transferErrGone => '이 전송은 더 이상 존재하지 않습니다 — 수신되었거나 취소되었습니다.';
+
+  @override
+  String get transferErrNotReady => '상대 기기가 아직 업로드를 끝내지 않았습니다.';
+
+  @override
+  String get transferErrTooLarge => '이 Nexus는 한 번에 보낼 수 있는 크기를 넘습니다.';
+
+  @override
+  String get transferErrBadToken => '이 전송 세션은 더 이상 유효하지 않습니다. 다시 시작하세요.';
+
+  @override
+  String get transferErrBadKey => '링크가 불완전합니다 — 키 부분이 없거나 손상되었습니다.';
+
+  @override
+  String get transferErrQrOnly => '보낸 쪽이 QR 코드만 허용했습니다. 입력하지 말고 스캔하세요.';
+
+  @override
+  String get transferErrBadPayload => '받은 파일을 읽을 수 없습니다.';
+
+  @override
+  String get transferErrServer => '전송 서비스에 문제가 발생했습니다.';
+
+  @override
+  String get transferSending => '보내는 중…';
+
+  @override
+  String get transferCopied => '링크를 복사했습니다';
+
+  @override
+  String get transferCancel => '취소';
+
+  @override
+  String get transferPasteLink => '또는 전송 링크 붙여넣기';
+
+  @override
+  String get transferPasteLinkHint => '링크에는 키가 들어 있어서, 보낸 쪽이 QR만 허용했더라도 사용할 수 있습니다.';
 }

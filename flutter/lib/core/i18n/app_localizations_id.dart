@@ -524,4 +524,141 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get railCollapse => 'Ciutkan bilah';
+
+  // --- DDX Transfer ---
+
+  @override
+  String get transferTitle => 'Transfer';
+
+  @override
+  String get transferSubtitle => 'Serahkan satu Nexus utuh ke perangkat lain. Tanpa akun dan tanpa penyiapan — perangkat pengirim menampilkan kode, penerima memasukkannya, dan salinan perantara dihapus begitu sampai.';
+
+  @override
+  String get transferTabSend => 'Kirim';
+
+  @override
+  String get transferTabReceive => 'Terima';
+
+  @override
+  String get transferNexusLabel => 'Nexus';
+
+  @override
+  String get transferPickNexus => 'Buka dulu Nexus yang ingin dikirim.';
+
+  @override
+  String get transferAllowTyped => 'Izinkan penerimaan dengan mengetik kode';
+
+  @override
+  String get transferAllowTypedHint => 'Jika aktif, perangkat lain boleh mengetik kode dan PIN, dengan konsekuensi server menyimpan kunci yang disegel PIN selama menunggu. Jika mati, hanya kode QR yang jadi pintunya dan server sama sekali tidak bisa membaca berkasnya.';
+
+  @override
+  String get transferCreate => 'Buat transfer';
+
+  @override
+  String get transferCode => 'Kode transfer';
+
+  @override
+  String get transferPin => 'PIN';
+
+  @override
+  String get transferCopyLink => 'Salin tautan';
+
+  @override
+  String get transferModeTyped => 'Pindai QR, atau ketik kode dan PIN. Selama menunggu, server menyimpan kunci yang disegel PIN.';
+
+  @override
+  String get transferModeQr => 'Hanya kode QR. Kunci tidak pernah sampai ke server, jadi tak ada yang bisa membukanya selain perangkat yang memindai.';
+
+  @override
+  String get transferExpiry => 'Kedaluwarsa dalam 30 menit, dan dihapus begitu diterima.';
+
+  @override
+  String get transferWaiting => 'Menunggu perangkat lain…';
+
+  @override
+  String get transferClaimed => 'Perangkat lain sudah memverifikasi kode dan sedang mengunduh…';
+
+  @override
+  String get transferDone => 'Diterima — salinan di server sudah dihapus.';
+
+  @override
+  String get transferExpiredNotice => 'Kedaluwarsa sebelum sempat diterima.';
+
+  @override
+  String get transferVerify => 'Verifikasi';
+
+  @override
+  String get transferFound => 'Transfer ditemukan';
+
+  @override
+  String get transferProject => 'Nexus';
+
+  @override
+  String get transferSize => 'Ukuran';
+
+  @override
+  String get transferCreated => 'Dibuat';
+
+  @override
+  String get transferSource => 'Dikirim dari';
+
+  @override
+  String get transferReceiveAsNew => 'Ini masuk sebagai Nexus baru. Yang sudah ada tidak disentuh.';
+
+  @override
+  String get transferReceiveAction => 'Terima';
+
+  @override
+  String get transferReceived => 'Nexus diterima';
+
+  @override
+  String get transferErrNetwork => 'Tidak dapat menghubungi layanan transfer.';
+
+  @override
+  String get transferErrBadCode => 'Kode transfer atau PIN tidak benar.';
+
+  @override
+  String get transferErrLocked => 'Terlalu sering salah PIN. Transfer ini dikunci sementara.';
+
+  @override
+  String get transferErrExpired => 'Transfer ini sudah kedaluwarsa. Mintalah kode baru.';
+
+  @override
+  String get transferErrGone => 'Transfer ini sudah tidak ada — sudah diterima atau dibatalkan.';
+
+  @override
+  String get transferErrNotReady => 'Perangkat lain belum selesai mengunggah.';
+
+  @override
+  String get transferErrTooLarge => 'Nexus ini lebih besar dari batas satu kali transfer.';
+
+  @override
+  String get transferErrBadToken => 'Sesi transfer ini tidak berlaku lagi. Mulai lagi.';
+
+  @override
+  String get transferErrBadKey => 'Tautannya tidak lengkap — bagian kuncinya hilang atau rusak.';
+
+  @override
+  String get transferErrQrOnly => 'Pengirim hanya mengizinkan kode QR. Pindai, jangan diketik.';
+
+  @override
+  String get transferErrBadPayload => 'Berkas yang diterima tidak dapat dibaca.';
+
+  @override
+  String get transferErrServer => 'Layanan transfer bermasalah.';
+
+  @override
+  String get transferSending => 'Mengirim…';
+
+  @override
+  String get transferCopied => 'Tautan disalin';
+
+  @override
+  String get transferCancel => 'Batal';
+
+  @override
+  String get transferPasteLink => 'Atau tempel tautan transfer';
+
+  @override
+  String get transferPasteLinkHint => 'Tautannya membawa kuncinya sendiri, jadi tetap bisa dipakai meski pengirim hanya mengizinkan kode QR.';
 }
