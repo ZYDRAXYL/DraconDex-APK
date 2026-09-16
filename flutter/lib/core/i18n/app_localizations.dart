@@ -624,6 +624,72 @@ abstract class AppLocalizations {
   /// **'This also deletes the value every item holds for it.'**
   String get classifierDeleteFieldWarning;
 
+  /// No description provided for @narratorScenes.
+  ///
+  /// In en, this message translates to:
+  /// **'Scenes'**
+  String get narratorScenes;
+
+  /// No description provided for @narratorNewScene.
+  ///
+  /// In en, this message translates to:
+  /// **'New scene'**
+  String get narratorNewScene;
+
+  /// No description provided for @narratorNoScenes.
+  ///
+  /// In en, this message translates to:
+  /// **'No scenes yet'**
+  String get narratorNoScenes;
+
+  /// No description provided for @narratorScript.
+  ///
+  /// In en, this message translates to:
+  /// **'Script'**
+  String get narratorScript;
+
+  /// No description provided for @narratorNewLine.
+  ///
+  /// In en, this message translates to:
+  /// **'New line'**
+  String get narratorNewLine;
+
+  /// No description provided for @narratorNoLines.
+  ///
+  /// In en, this message translates to:
+  /// **'No lines yet'**
+  String get narratorNoLines;
+
+  /// No description provided for @narratorSpeaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Speaker'**
+  String get narratorSpeaker;
+
+  /// No description provided for @narratorLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Line'**
+  String get narratorLine;
+
+  /// No description provided for @narratorRoutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Routes'**
+  String get narratorRoutes;
+
+  /// No description provided for @narratorLeadsTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Leads to'**
+  String get narratorLeadsTo;
+
+  /// No description provided for @narratorNoRoutes.
+  ///
+  /// In en, this message translates to:
+  /// **'No routes yet'**
+  String get narratorNoRoutes;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

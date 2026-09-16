@@ -261,6 +261,39 @@ class AppLocalizationsJa extends AppLocalizations {
   String get classifierDeleteFieldWarning => '各項目が持つこのフィールドの値もすべて削除されます。';
 
   @override
+  String get narratorScenes => 'シーン';
+
+  @override
+  String get narratorNewScene => '新しいシーン';
+
+  @override
+  String get narratorNoScenes => 'まだシーンがありません';
+
+  @override
+  String get narratorScript => 'スクリプト';
+
+  @override
+  String get narratorNewLine => '新しい行';
+
+  @override
+  String get narratorNoLines => 'まだ行がありません';
+
+  @override
+  String get narratorSpeaker => '話者';
+
+  @override
+  String get narratorLine => '行';
+
+  @override
+  String get narratorRoutes => 'ルート';
+
+  @override
+  String get narratorLeadsTo => '次へ';
+
+  @override
+  String get narratorNoRoutes => 'まだルートがありません';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

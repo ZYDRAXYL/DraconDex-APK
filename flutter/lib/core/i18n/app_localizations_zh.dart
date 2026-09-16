@@ -261,6 +261,39 @@ class AppLocalizationsZh extends AppLocalizations {
   String get classifierDeleteFieldWarning => '这也会删除每个条目在该字段中的值。';
 
   @override
+  String get narratorScenes => '场景';
+
+  @override
+  String get narratorNewScene => '新建场景';
+
+  @override
+  String get narratorNoScenes => '还没有场景';
+
+  @override
+  String get narratorScript => '剧本';
+
+  @override
+  String get narratorNewLine => '新建台词';
+
+  @override
+  String get narratorNoLines => '还没有台词';
+
+  @override
+  String get narratorSpeaker => '说话者';
+
+  @override
+  String get narratorLine => '台词';
+
+  @override
+  String get narratorRoutes => '路线';
+
+  @override
+  String get narratorLeadsTo => '通向';
+
+  @override
+  String get narratorNoRoutes => '还没有路线';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

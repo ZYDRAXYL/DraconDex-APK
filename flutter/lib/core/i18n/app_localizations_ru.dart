@@ -261,6 +261,39 @@ class AppLocalizationsRu extends AppLocalizations {
   String get classifierDeleteFieldWarning => 'Это также удалит значение этого поля у каждого элемента.';
 
   @override
+  String get narratorScenes => 'Сцены';
+
+  @override
+  String get narratorNewScene => 'Новая сцена';
+
+  @override
+  String get narratorNoScenes => 'Пока нет сцен';
+
+  @override
+  String get narratorScript => 'Сценарий';
+
+  @override
+  String get narratorNewLine => 'Новая строка';
+
+  @override
+  String get narratorNoLines => 'Пока нет строк';
+
+  @override
+  String get narratorSpeaker => 'Говорящий';
+
+  @override
+  String get narratorLine => 'Строка';
+
+  @override
+  String get narratorRoutes => 'Маршруты';
+
+  @override
+  String get narratorLeadsTo => 'Ведёт к';
+
+  @override
+  String get narratorNoRoutes => 'Пока нет маршрутов';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

@@ -7,6 +7,7 @@ import '../data/dao/classifier_dao.dart';
 import '../data/dao/color_dao.dart';
 import '../data/dao/hashtag_dao.dart';
 import '../data/dao/module_dao.dart';
+import '../data/dao/narrator_dao.dart';
 import '../data/dao/scribe_dao.dart';
 
 final databaseProvider = FutureProvider<Database>((ref) async {
@@ -39,4 +40,8 @@ final chroniclerDaoProvider = Provider<AsyncValue<ChroniclerDao>>((ref) {
 
 final classifierDaoProvider = Provider<AsyncValue<ClassifierDao>>((ref) {
   return ref.watch(databaseProvider).whenData((db) => ClassifierDao(db));
+});
+
+final narratorDaoProvider = Provider<AsyncValue<NarratorDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => NarratorDao(db));
 });

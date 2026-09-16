@@ -261,6 +261,39 @@ class AppLocalizationsPt extends AppLocalizations {
   String get classifierDeleteFieldWarning => 'Isso também exclui o valor que cada item tem para ele.';
 
   @override
+  String get narratorScenes => 'Cenas';
+
+  @override
+  String get narratorNewScene => 'Nova cena';
+
+  @override
+  String get narratorNoScenes => 'Ainda não há cenas';
+
+  @override
+  String get narratorScript => 'Roteiro';
+
+  @override
+  String get narratorNewLine => 'Nova linha';
+
+  @override
+  String get narratorNoLines => 'Ainda não há linhas';
+
+  @override
+  String get narratorSpeaker => 'Falante';
+
+  @override
+  String get narratorLine => 'Linha';
+
+  @override
+  String get narratorRoutes => 'Rotas';
+
+  @override
+  String get narratorLeadsTo => 'Leva a';
+
+  @override
+  String get narratorNoRoutes => 'Ainda não há rotas';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

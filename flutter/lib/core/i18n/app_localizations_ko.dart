@@ -261,6 +261,39 @@ class AppLocalizationsKo extends AppLocalizations {
   String get classifierDeleteFieldWarning => '각 항목이 가진 이 필드의 값도 함께 삭제됩니다.';
 
   @override
+  String get narratorScenes => '장면';
+
+  @override
+  String get narratorNewScene => '새 장면';
+
+  @override
+  String get narratorNoScenes => '아직 장면이 없습니다';
+
+  @override
+  String get narratorScript => '스크립트';
+
+  @override
+  String get narratorNewLine => '새 줄';
+
+  @override
+  String get narratorNoLines => '아직 줄이 없습니다';
+
+  @override
+  String get narratorSpeaker => '화자';
+
+  @override
+  String get narratorLine => '줄';
+
+  @override
+  String get narratorRoutes => '경로';
+
+  @override
+  String get narratorLeadsTo => '다음으로';
+
+  @override
+  String get narratorNoRoutes => '아직 경로가 없습니다';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

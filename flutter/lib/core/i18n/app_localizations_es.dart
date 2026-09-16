@@ -261,6 +261,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get classifierDeleteFieldWarning => 'Esto también elimina el valor que cada elemento tiene para él.';
 
   @override
+  String get narratorScenes => 'Escenas';
+
+  @override
+  String get narratorNewScene => 'Nueva escena';
+
+  @override
+  String get narratorNoScenes => 'Aún no hay escenas';
+
+  @override
+  String get narratorScript => 'Guion';
+
+  @override
+  String get narratorNewLine => 'Nueva línea';
+
+  @override
+  String get narratorNoLines => 'Aún no hay líneas';
+
+  @override
+  String get narratorSpeaker => 'Hablante';
+
+  @override
+  String get narratorLine => 'Línea';
+
+  @override
+  String get narratorRoutes => 'Rutas';
+
+  @override
+  String get narratorLeadsTo => 'Lleva a';
+
+  @override
+  String get narratorNoRoutes => 'Aún no hay rutas';
+
+  @override
   String get settingsAppearance => 'Apariencia';
 
   @override

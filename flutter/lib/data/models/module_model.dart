@@ -133,7 +133,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Narrator',
     icon: Icons.forum_outlined,
     description: 'Dialogue graph / route board',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.author: ModuleKindInfo(
     kind: ModuleKind.author,

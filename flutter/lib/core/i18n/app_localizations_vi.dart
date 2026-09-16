@@ -261,6 +261,39 @@ class AppLocalizationsVi extends AppLocalizations {
   String get classifierDeleteFieldWarning => 'Thao tác này cũng xóa giá trị của trường đó ở mọi mục.';
 
   @override
+  String get narratorScenes => 'Cảnh';
+
+  @override
+  String get narratorNewScene => 'Cảnh mới';
+
+  @override
+  String get narratorNoScenes => 'Chưa có cảnh nào';
+
+  @override
+  String get narratorScript => 'Kịch bản';
+
+  @override
+  String get narratorNewLine => 'Dòng mới';
+
+  @override
+  String get narratorNoLines => 'Chưa có dòng nào';
+
+  @override
+  String get narratorSpeaker => 'Người nói';
+
+  @override
+  String get narratorLine => 'Dòng';
+
+  @override
+  String get narratorRoutes => 'Tuyến';
+
+  @override
+  String get narratorLeadsTo => 'Dẫn đến';
+
+  @override
+  String get narratorNoRoutes => 'Chưa có tuyến nào';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

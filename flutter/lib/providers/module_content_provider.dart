@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/models/author_model.dart';
 import '../data/models/chronicler_model.dart';
 import '../data/models/classifier_model.dart';
+import '../data/models/narrator_model.dart';
 import '../data/models/scribe_model.dart';
 import 'db_providers.dart';
 
@@ -86,5 +87,34 @@ final classifierValuesProvider =
     data: (d) => d.getValues(objectId),
     loading: () => Future.value(<int, String?>{}),
     error: (e, s) => Future<Map<int, String?>>.error(e, s),
+  );
+});
+
+final dialoguesProvider =
+    FutureProvider.family<List<DialogueModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(narratorDaoProvider);
+  return dao.when(
+    data: (d) => d.getDialogues(moduleId),
+    loading: () => Future.value(<DialogueModel>[]),
+    error: (e, s) => Future<List<DialogueModel>>.error(e, s),
+  );
+});
+
+final talksProvider = FutureProvider.family<List<TalkModel>, int>((ref, dialogueId) async {
+  final dao = ref.watch(narratorDaoProvider);
+  return dao.when(
+    data: (d) => d.getTalks(dialogueId),
+    loading: () => Future.value(<TalkModel>[]),
+    error: (e, s) => Future<List<TalkModel>>.error(e, s),
+  );
+});
+
+final storyEdgesProvider =
+    FutureProvider.family<List<StoryEdgeModel>, int>((ref, dialogueId) async {
+  final dao = ref.watch(narratorDaoProvider);
+  return dao.when(
+    data: (d) => d.getEdgesFrom(dialogueId),
+    loading: () => Future.value(<StoryEdgeModel>[]),
+    error: (e, s) => Future<List<StoryEdgeModel>>.error(e, s),
   );
 });

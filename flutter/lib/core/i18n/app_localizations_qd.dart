@@ -261,6 +261,39 @@ class AppLocalizationsQd extends AppLocalizations {
   String get classifierDeleteFieldWarning => 'Þis fordéþ éac þone weorþ þe ælc þing þǽrfore hafaþ.';
 
   @override
+  String get narratorScenes => 'Scenan';
+
+  @override
+  String get narratorNewScene => 'Niwe Scene';
+
+  @override
+  String get narratorNoScenes => 'Nán scene gíet';
+
+  @override
+  String get narratorScript => 'Gewrit';
+
+  @override
+  String get narratorNewLine => 'Niwe Líne';
+
+  @override
+  String get narratorNoLines => 'Nán líne gíet';
+
+  @override
+  String get narratorSpeaker => 'Sprecend';
+
+  @override
+  String get narratorLine => 'Líne';
+
+  @override
+  String get narratorRoutes => 'Weagas';
+
+  @override
+  String get narratorLeadsTo => 'Lǽdeþ tó';
+
+  @override
+  String get narratorNoRoutes => 'Nán weg gíet';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

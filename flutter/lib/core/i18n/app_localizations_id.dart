@@ -261,6 +261,39 @@ class AppLocalizationsId extends AppLocalizations {
   String get classifierDeleteFieldWarning => 'Ini juga menghapus nilai yang dimiliki setiap item untuk bidang itu.';
 
   @override
+  String get narratorScenes => 'Adegan';
+
+  @override
+  String get narratorNewScene => 'Adegan baru';
+
+  @override
+  String get narratorNoScenes => 'Belum ada adegan';
+
+  @override
+  String get narratorScript => 'Naskah';
+
+  @override
+  String get narratorNewLine => 'Baris baru';
+
+  @override
+  String get narratorNoLines => 'Belum ada baris';
+
+  @override
+  String get narratorSpeaker => 'Pembicara';
+
+  @override
+  String get narratorLine => 'Baris';
+
+  @override
+  String get narratorRoutes => 'Rute';
+
+  @override
+  String get narratorLeadsTo => 'Menuju ke';
+
+  @override
+  String get narratorNoRoutes => 'Belum ada rute';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

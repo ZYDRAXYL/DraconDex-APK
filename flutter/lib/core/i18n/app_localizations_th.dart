@@ -261,6 +261,39 @@ class AppLocalizationsTh extends AppLocalizations {
   String get classifierDeleteFieldWarning => 'การลบนี้จะลบค่าของฟิลด์นี้ในทุกรายการด้วย';
 
   @override
+  String get narratorScenes => 'ฉาก';
+
+  @override
+  String get narratorNewScene => 'ฉากใหม่';
+
+  @override
+  String get narratorNoScenes => 'ยังไม่มีฉาก';
+
+  @override
+  String get narratorScript => 'บท';
+
+  @override
+  String get narratorNewLine => 'บรรทัดใหม่';
+
+  @override
+  String get narratorNoLines => 'ยังไม่มีบรรทัด';
+
+  @override
+  String get narratorSpeaker => 'ผู้พูด';
+
+  @override
+  String get narratorLine => 'บรรทัด';
+
+  @override
+  String get narratorRoutes => 'เส้นทาง';
+
+  @override
+  String get narratorLeadsTo => 'ไปยัง';
+
+  @override
+  String get narratorNoRoutes => 'ยังไม่มีเส้นทาง';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

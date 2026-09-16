@@ -3,6 +3,7 @@ import '../../../data/models/module_model.dart';
 import 'author_content.dart';
 import 'chronicler_content.dart';
 import 'classifier_content.dart';
+import 'narrator_content.dart';
 import 'scribe_content.dart';
 
 /// Maps a module kind to its content editor.
@@ -23,6 +24,7 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       ModuleKind.scribe => ScribeContent(moduleId: module.id),
       ModuleKind.chronicler => ChroniclerContent(moduleId: module.id),
       ModuleKind.classifier => ClassifierContent(moduleId: module.id),
+      ModuleKind.narrator => NarratorContent(moduleId: module.id),
       // Folders have no content area at all; the caller returns early.
       ModuleKind.collector || ModuleKind.manager => null,
       // The notes field genuinely is the content for these two.
@@ -30,7 +32,6 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       // Still pending a dedicated editor.
       ModuleKind.locator ||
       ModuleKind.wanderer ||
-      ModuleKind.narrator ||
       ModuleKind.viewer ||
       ModuleKind.connector ||
       ModuleKind.sketcher ||
