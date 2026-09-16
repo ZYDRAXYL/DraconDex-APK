@@ -204,6 +204,42 @@ class AppLocalizationsTh extends AppLocalizations {
   String get scribeSwitchSide => 'สลับข้าง';
 
   @override
+  String get chroniclerEvents => 'เหตุการณ์';
+
+  @override
+  String get chroniclerNewEvent => 'เหตุการณ์ใหม่';
+
+  @override
+  String get chroniclerNoEvents => 'ยังไม่มีเหตุการณ์';
+
+  @override
+  String get chroniclerUntitledEvent => 'เหตุการณ์ไม่มีชื่อ';
+
+  @override
+  String get chroniclerStart => 'เริ่ม';
+
+  @override
+  String get chroniclerYear => 'ปี';
+
+  @override
+  String get chroniclerMonth => 'เดือน';
+
+  @override
+  String get chroniclerDay => 'วัน';
+
+  @override
+  String get chroniclerHour => 'ชั่วโมง';
+
+  @override
+  String get chroniclerMinute => 'นาที';
+
+  @override
+  String get chroniclerHasEnd => 'มีวันสิ้นสุด';
+
+  @override
+  String get chroniclerStory => 'เรื่องราว';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

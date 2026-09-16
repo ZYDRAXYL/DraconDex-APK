@@ -119,7 +119,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Chronicler',
     icon: Icons.timeline_outlined,
     description: 'Timeline of dated events',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.wanderer: ModuleKindInfo(
     kind: ModuleKind.wanderer,

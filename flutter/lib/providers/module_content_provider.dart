@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/models/author_model.dart';
+import '../data/models/chronicler_model.dart';
 import '../data/models/scribe_model.dart';
 import 'db_providers.dart';
 
@@ -32,5 +33,25 @@ final chatMessagesProvider = FutureProvider.family<List<ChatMessageModel>, int>(
     data: (d) => d.getMessages(sessionId),
     loading: () => Future.value(<ChatMessageModel>[]),
     error: (e, s) => Future<List<ChatMessageModel>>.error(e, s),
+  );
+});
+
+/// The module's timeline row, created on first open. Keyed by module id.
+final timelineProvider = FutureProvider.family<int?, int>((ref, moduleId) async {
+  final dao = ref.watch(chroniclerDaoProvider);
+  return dao.when(
+    data: (d) => d.ensureTimeline(moduleId),
+    loading: () => Future<int?>.value(null),
+    error: (e, s) => Future<int?>.error(e, s),
+  );
+});
+
+final timelineEventsProvider =
+    FutureProvider.family<List<TimelineEventModel>, int>((ref, timelineId) async {
+  final dao = ref.watch(chroniclerDaoProvider);
+  return dao.when(
+    data: (d) => d.getEvents(timelineId),
+    loading: () => Future.value(<TimelineEventModel>[]),
+    error: (e, s) => Future<List<TimelineEventModel>>.error(e, s),
   );
 });

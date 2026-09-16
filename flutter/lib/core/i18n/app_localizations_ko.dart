@@ -204,6 +204,42 @@ class AppLocalizationsKo extends AppLocalizations {
   String get scribeSwitchSide => '좌우 전환';
 
   @override
+  String get chroniclerEvents => '이벤트';
+
+  @override
+  String get chroniclerNewEvent => '새 이벤트';
+
+  @override
+  String get chroniclerNoEvents => '아직 이벤트가 없습니다';
+
+  @override
+  String get chroniclerUntitledEvent => '제목 없는 이벤트';
+
+  @override
+  String get chroniclerStart => '시작';
+
+  @override
+  String get chroniclerYear => '년';
+
+  @override
+  String get chroniclerMonth => '월';
+
+  @override
+  String get chroniclerDay => '일';
+
+  @override
+  String get chroniclerHour => '시';
+
+  @override
+  String get chroniclerMinute => '분';
+
+  @override
+  String get chroniclerHasEnd => '종료일 있음';
+
+  @override
+  String get chroniclerStory => '이야기';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

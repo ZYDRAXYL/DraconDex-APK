@@ -510,6 +510,78 @@ abstract class AppLocalizations {
   /// **'Switch side'**
   String get scribeSwitchSide;
 
+  /// No description provided for @chroniclerEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Events'**
+  String get chroniclerEvents;
+
+  /// No description provided for @chroniclerNewEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'New event'**
+  String get chroniclerNewEvent;
+
+  /// No description provided for @chroniclerNoEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'No events yet'**
+  String get chroniclerNoEvents;
+
+  /// No description provided for @chroniclerUntitledEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled event'**
+  String get chroniclerUntitledEvent;
+
+  /// No description provided for @chroniclerStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get chroniclerStart;
+
+  /// No description provided for @chroniclerYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get chroniclerYear;
+
+  /// No description provided for @chroniclerMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get chroniclerMonth;
+
+  /// No description provided for @chroniclerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get chroniclerDay;
+
+  /// No description provided for @chroniclerHour.
+  ///
+  /// In en, this message translates to:
+  /// **'Hour'**
+  String get chroniclerHour;
+
+  /// No description provided for @chroniclerMinute.
+  ///
+  /// In en, this message translates to:
+  /// **'Minute'**
+  String get chroniclerMinute;
+
+  /// No description provided for @chroniclerHasEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Has an end date'**
+  String get chroniclerHasEnd;
+
+  /// No description provided for @chroniclerStory.
+  ///
+  /// In en, this message translates to:
+  /// **'Story'**
+  String get chroniclerStory;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

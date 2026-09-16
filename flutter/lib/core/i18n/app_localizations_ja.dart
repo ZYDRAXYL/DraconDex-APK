@@ -204,6 +204,42 @@ class AppLocalizationsJa extends AppLocalizations {
   String get scribeSwitchSide => '左右を切り替え';
 
   @override
+  String get chroniclerEvents => 'イベント';
+
+  @override
+  String get chroniclerNewEvent => '新しいイベント';
+
+  @override
+  String get chroniclerNoEvents => 'まだイベントがありません';
+
+  @override
+  String get chroniclerUntitledEvent => '無題のイベント';
+
+  @override
+  String get chroniclerStart => '開始';
+
+  @override
+  String get chroniclerYear => '年';
+
+  @override
+  String get chroniclerMonth => '月';
+
+  @override
+  String get chroniclerDay => '日';
+
+  @override
+  String get chroniclerHour => '時';
+
+  @override
+  String get chroniclerMinute => '分';
+
+  @override
+  String get chroniclerHasEnd => '終了日あり';
+
+  @override
+  String get chroniclerStory => 'ストーリー';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

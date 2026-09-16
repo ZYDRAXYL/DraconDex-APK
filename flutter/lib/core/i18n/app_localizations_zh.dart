@@ -204,6 +204,42 @@ class AppLocalizationsZh extends AppLocalizations {
   String get scribeSwitchSide => '切换左右';
 
   @override
+  String get chroniclerEvents => '事件';
+
+  @override
+  String get chroniclerNewEvent => '新建事件';
+
+  @override
+  String get chroniclerNoEvents => '还没有事件';
+
+  @override
+  String get chroniclerUntitledEvent => '未命名事件';
+
+  @override
+  String get chroniclerStart => '开始';
+
+  @override
+  String get chroniclerYear => '年';
+
+  @override
+  String get chroniclerMonth => '月';
+
+  @override
+  String get chroniclerDay => '日';
+
+  @override
+  String get chroniclerHour => '时';
+
+  @override
+  String get chroniclerMinute => '分';
+
+  @override
+  String get chroniclerHasEnd => '有结束日期';
+
+  @override
+  String get chroniclerStory => '故事';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

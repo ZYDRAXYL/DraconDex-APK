@@ -204,6 +204,42 @@ class AppLocalizationsPt extends AppLocalizations {
   String get scribeSwitchSide => 'Trocar de lado';
 
   @override
+  String get chroniclerEvents => 'Eventos';
+
+  @override
+  String get chroniclerNewEvent => 'Novo evento';
+
+  @override
+  String get chroniclerNoEvents => 'Ainda não há eventos';
+
+  @override
+  String get chroniclerUntitledEvent => 'Evento sem título';
+
+  @override
+  String get chroniclerStart => 'Início';
+
+  @override
+  String get chroniclerYear => 'Ano';
+
+  @override
+  String get chroniclerMonth => 'Mês';
+
+  @override
+  String get chroniclerDay => 'Dia';
+
+  @override
+  String get chroniclerHour => 'Hora';
+
+  @override
+  String get chroniclerMinute => 'Minuto';
+
+  @override
+  String get chroniclerHasEnd => 'Tem data de fim';
+
+  @override
+  String get chroniclerStory => 'História';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

@@ -204,6 +204,42 @@ class AppLocalizationsId extends AppLocalizations {
   String get scribeSwitchSide => 'Ganti sisi';
 
   @override
+  String get chroniclerEvents => 'Peristiwa';
+
+  @override
+  String get chroniclerNewEvent => 'Peristiwa baru';
+
+  @override
+  String get chroniclerNoEvents => 'Belum ada peristiwa';
+
+  @override
+  String get chroniclerUntitledEvent => 'Peristiwa tanpa judul';
+
+  @override
+  String get chroniclerStart => 'Mulai';
+
+  @override
+  String get chroniclerYear => 'Tahun';
+
+  @override
+  String get chroniclerMonth => 'Bulan';
+
+  @override
+  String get chroniclerDay => 'Hari';
+
+  @override
+  String get chroniclerHour => 'Jam';
+
+  @override
+  String get chroniclerMinute => 'Menit';
+
+  @override
+  String get chroniclerHasEnd => 'Punya tanggal akhir';
+
+  @override
+  String get chroniclerStory => 'Cerita';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

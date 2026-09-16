@@ -204,6 +204,42 @@ class AppLocalizationsVi extends AppLocalizations {
   String get scribeSwitchSide => 'Đổi bên';
 
   @override
+  String get chroniclerEvents => 'Sự kiện';
+
+  @override
+  String get chroniclerNewEvent => 'Sự kiện mới';
+
+  @override
+  String get chroniclerNoEvents => 'Chưa có sự kiện nào';
+
+  @override
+  String get chroniclerUntitledEvent => 'Sự kiện chưa đặt tên';
+
+  @override
+  String get chroniclerStart => 'Bắt đầu';
+
+  @override
+  String get chroniclerYear => 'Năm';
+
+  @override
+  String get chroniclerMonth => 'Tháng';
+
+  @override
+  String get chroniclerDay => 'Ngày';
+
+  @override
+  String get chroniclerHour => 'Giờ';
+
+  @override
+  String get chroniclerMinute => 'Phút';
+
+  @override
+  String get chroniclerHasEnd => 'Có ngày kết thúc';
+
+  @override
+  String get chroniclerStory => 'Câu chuyện';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

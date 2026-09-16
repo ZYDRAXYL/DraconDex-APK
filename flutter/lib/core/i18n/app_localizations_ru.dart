@@ -204,6 +204,42 @@ class AppLocalizationsRu extends AppLocalizations {
   String get scribeSwitchSide => 'Сменить сторону';
 
   @override
+  String get chroniclerEvents => 'События';
+
+  @override
+  String get chroniclerNewEvent => 'Новое событие';
+
+  @override
+  String get chroniclerNoEvents => 'Пока нет событий';
+
+  @override
+  String get chroniclerUntitledEvent => 'Событие без названия';
+
+  @override
+  String get chroniclerStart => 'Начало';
+
+  @override
+  String get chroniclerYear => 'Год';
+
+  @override
+  String get chroniclerMonth => 'Месяц';
+
+  @override
+  String get chroniclerDay => 'День';
+
+  @override
+  String get chroniclerHour => 'Час';
+
+  @override
+  String get chroniclerMinute => 'Минута';
+
+  @override
+  String get chroniclerHasEnd => 'Есть дата окончания';
+
+  @override
+  String get chroniclerStory => 'История';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

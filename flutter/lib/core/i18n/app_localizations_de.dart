@@ -204,6 +204,42 @@ class AppLocalizationsDe extends AppLocalizations {
   String get scribeSwitchSide => 'Seite wechseln';
 
   @override
+  String get chroniclerEvents => 'Ereignisse';
+
+  @override
+  String get chroniclerNewEvent => 'Neues Ereignis';
+
+  @override
+  String get chroniclerNoEvents => 'Noch keine Ereignisse';
+
+  @override
+  String get chroniclerUntitledEvent => 'Unbenanntes Ereignis';
+
+  @override
+  String get chroniclerStart => 'Beginn';
+
+  @override
+  String get chroniclerYear => 'Jahr';
+
+  @override
+  String get chroniclerMonth => 'Monat';
+
+  @override
+  String get chroniclerDay => 'Tag';
+
+  @override
+  String get chroniclerHour => 'Stunde';
+
+  @override
+  String get chroniclerMinute => 'Minute';
+
+  @override
+  String get chroniclerHasEnd => 'Hat ein Enddatum';
+
+  @override
+  String get chroniclerStory => 'Handlung';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
 import '../core/database/database_helper.dart';
 import '../data/dao/author_dao.dart';
+import '../data/dao/chronicler_dao.dart';
 import '../data/dao/color_dao.dart';
 import '../data/dao/hashtag_dao.dart';
 import '../data/dao/module_dao.dart';
@@ -29,4 +30,8 @@ final authorDaoProvider = Provider<AsyncValue<AuthorDao>>((ref) {
 
 final scribeDaoProvider = Provider<AsyncValue<ScribeDao>>((ref) {
   return ref.watch(databaseProvider).whenData((db) => ScribeDao(db));
+});
+
+final chroniclerDaoProvider = Provider<AsyncValue<ChroniclerDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => ChroniclerDao(db));
 });

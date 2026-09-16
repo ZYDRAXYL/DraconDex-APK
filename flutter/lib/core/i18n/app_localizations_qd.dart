@@ -204,6 +204,42 @@ class AppLocalizationsQd extends AppLocalizations {
   String get scribeSwitchSide => 'Wend þa sídan';
 
   @override
+  String get chroniclerEvents => 'Gelimpas';
+
+  @override
+  String get chroniclerNewEvent => 'Niwe Gelimp';
+
+  @override
+  String get chroniclerNoEvents => 'Nán gelimp gíet';
+
+  @override
+  String get chroniclerUntitledEvent => 'Unnemned Gelimp';
+
+  @override
+  String get chroniclerStart => 'Ongin';
+
+  @override
+  String get chroniclerYear => 'Gear';
+
+  @override
+  String get chroniclerMonth => 'Monyth';
+
+  @override
+  String get chroniclerDay => 'Daeg';
+
+  @override
+  String get chroniclerHour => 'Houre';
+
+  @override
+  String get chroniclerMinute => 'Minyt';
+
+  @override
+  String get chroniclerHasEnd => 'Hafþ ende-daeg';
+
+  @override
+  String get chroniclerStory => 'Spell';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override
