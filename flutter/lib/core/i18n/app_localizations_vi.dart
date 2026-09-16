@@ -396,6 +396,30 @@ class AppLocalizationsVi extends AppLocalizations {
   String get designerLinkCancel => 'Hủy nối';
 
   @override
+  String get sketcherPages => 'Trang';
+
+  @override
+  String get sketcherNewPage => 'Trang mới';
+
+  @override
+  String get sketcherNoPages => 'Chưa có trang nào';
+
+  @override
+  String get sketcherDraw => 'Vẽ';
+
+  @override
+  String get sketcherPan => 'Kéo';
+
+  @override
+  String get sketcherUndo => 'Hoàn tác nét cuối';
+
+  @override
+  String get sketcherClear => 'Xóa trang';
+
+  @override
+  String get sketcherClearWarning => 'Thao tác này xóa mọi nét trên trang này.';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

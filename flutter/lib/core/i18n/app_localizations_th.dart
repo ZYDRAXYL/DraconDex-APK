@@ -396,6 +396,30 @@ class AppLocalizationsTh extends AppLocalizations {
   String get designerLinkCancel => 'ยกเลิกการเชื่อม';
 
   @override
+  String get sketcherPages => 'หน้า';
+
+  @override
+  String get sketcherNewPage => 'หน้าใหม่';
+
+  @override
+  String get sketcherNoPages => 'ยังไม่มีหน้า';
+
+  @override
+  String get sketcherDraw => 'วาด';
+
+  @override
+  String get sketcherPan => 'เลื่อน';
+
+  @override
+  String get sketcherUndo => 'เลิกทำเส้นล่าสุด';
+
+  @override
+  String get sketcherClear => 'ล้างหน้า';
+
+  @override
+  String get sketcherClearWarning => 'การทำเช่นนี้จะลบทุกเส้นในหน้านี้';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

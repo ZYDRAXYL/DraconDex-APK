@@ -396,6 +396,30 @@ class AppLocalizationsQd extends AppLocalizations {
   String get designerLinkCancel => 'Forlǽt þa Bindinge';
 
   @override
+  String get sketcherPages => 'Bladas';
+
+  @override
+  String get sketcherNewPage => 'Niwe Blad';
+
+  @override
+  String get sketcherNoPages => 'Nán blad gíet';
+
+  @override
+  String get sketcherDraw => 'Trahtian';
+
+  @override
+  String get sketcherPan => 'Styrian';
+
+  @override
+  String get sketcherUndo => 'Undón þone lætestan strican';
+
+  @override
+  String get sketcherClear => 'Clǽnsian þæt Blad';
+
+  @override
+  String get sketcherClearWarning => 'Þis ādīlgaþ ælcne strican on þissum blade.';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

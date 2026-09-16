@@ -894,6 +894,54 @@ abstract class AppLocalizations {
   /// **'Cancel link'**
   String get designerLinkCancel;
 
+  /// No description provided for @sketcherPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get sketcherPages;
+
+  /// No description provided for @sketcherNewPage.
+  ///
+  /// In en, this message translates to:
+  /// **'New page'**
+  String get sketcherNewPage;
+
+  /// No description provided for @sketcherNoPages.
+  ///
+  /// In en, this message translates to:
+  /// **'No pages yet'**
+  String get sketcherNoPages;
+
+  /// No description provided for @sketcherDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get sketcherDraw;
+
+  /// No description provided for @sketcherPan.
+  ///
+  /// In en, this message translates to:
+  /// **'Pan'**
+  String get sketcherPan;
+
+  /// No description provided for @sketcherUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo last stroke'**
+  String get sketcherUndo;
+
+  /// No description provided for @sketcherClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear page'**
+  String get sketcherClear;
+
+  /// No description provided for @sketcherClearWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This erases every stroke on this page.'**
+  String get sketcherClearWarning;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

@@ -175,7 +175,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Sketcher',
     icon: Icons.brush_outlined,
     description: 'Freehand drawing canvas',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.designer: ModuleKindInfo(
     kind: ModuleKind.designer,

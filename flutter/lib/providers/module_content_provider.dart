@@ -4,6 +4,7 @@ import '../data/models/chronicler_model.dart';
 import '../data/models/classifier_model.dart';
 import '../data/models/designer_model.dart';
 import '../data/models/narrator_model.dart';
+import '../data/models/sketcher_model.dart';
 import '../data/models/viewer_model.dart';
 import '../data/models/scribe_model.dart';
 import 'db_providers.dart';
@@ -170,5 +171,25 @@ final designEdgesProvider =
     data: (d) => d.getEdges(moduleId),
     loading: () => Future.value(<DesignEdgeModel>[]),
     error: (e, s) => Future<List<DesignEdgeModel>>.error(e, s),
+  );
+});
+
+final sketchPagesProvider =
+    FutureProvider.family<List<SketchPageModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(sketcherDaoProvider);
+  return dao.when(
+    data: (d) => d.getPages(moduleId),
+    loading: () => Future.value(<SketchPageModel>[]),
+    error: (e, s) => Future<List<SketchPageModel>>.error(e, s),
+  );
+});
+
+final sketchStrokesProvider =
+    FutureProvider.family<List<SketchStrokeModel>, int>((ref, pageId) async {
+  final dao = ref.watch(sketcherDaoProvider);
+  return dao.when(
+    data: (d) => d.getStrokes(pageId),
+    loading: () => Future.value(<SketchStrokeModel>[]),
+    error: (e, s) => Future<List<SketchStrokeModel>>.error(e, s),
   );
 });

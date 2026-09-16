@@ -396,6 +396,30 @@ class AppLocalizationsKo extends AppLocalizations {
   String get designerLinkCancel => '연결 취소';
 
   @override
+  String get sketcherPages => '페이지';
+
+  @override
+  String get sketcherNewPage => '새 페이지';
+
+  @override
+  String get sketcherNoPages => '아직 페이지가 없습니다';
+
+  @override
+  String get sketcherDraw => '그리기';
+
+  @override
+  String get sketcherPan => '이동';
+
+  @override
+  String get sketcherUndo => '마지막 획 취소';
+
+  @override
+  String get sketcherClear => '페이지 지우기';
+
+  @override
+  String get sketcherClearWarning => '이 페이지의 모든 획을 지웁니다.';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

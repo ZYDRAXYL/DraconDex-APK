@@ -396,6 +396,30 @@ class AppLocalizationsRu extends AppLocalizations {
   String get designerLinkCancel => 'Отменить связь';
 
   @override
+  String get sketcherPages => 'Страницы';
+
+  @override
+  String get sketcherNewPage => 'Новая страница';
+
+  @override
+  String get sketcherNoPages => 'Пока нет страниц';
+
+  @override
+  String get sketcherDraw => 'Рисовать';
+
+  @override
+  String get sketcherPan => 'Панорама';
+
+  @override
+  String get sketcherUndo => 'Отменить последний штрих';
+
+  @override
+  String get sketcherClear => 'Очистить страницу';
+
+  @override
+  String get sketcherClearWarning => 'Это сотрёт все штрихи на этой странице.';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

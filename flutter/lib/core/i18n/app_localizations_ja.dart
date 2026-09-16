@@ -396,6 +396,30 @@ class AppLocalizationsJa extends AppLocalizations {
   String get designerLinkCancel => '接続をキャンセル';
 
   @override
+  String get sketcherPages => 'ページ';
+
+  @override
+  String get sketcherNewPage => '新しいページ';
+
+  @override
+  String get sketcherNoPages => 'まだページがありません';
+
+  @override
+  String get sketcherDraw => '描く';
+
+  @override
+  String get sketcherPan => '移動';
+
+  @override
+  String get sketcherUndo => '最後の線を取り消す';
+
+  @override
+  String get sketcherClear => 'ページを消去';
+
+  @override
+  String get sketcherClearWarning => 'このページのすべての線を消します。';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

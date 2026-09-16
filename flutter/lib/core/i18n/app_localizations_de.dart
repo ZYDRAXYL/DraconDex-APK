@@ -396,6 +396,30 @@ class AppLocalizationsDe extends AppLocalizations {
   String get designerLinkCancel => 'Verbindung abbrechen';
 
   @override
+  String get sketcherPages => 'Seiten';
+
+  @override
+  String get sketcherNewPage => 'Neue Seite';
+
+  @override
+  String get sketcherNoPages => 'Noch keine Seiten';
+
+  @override
+  String get sketcherDraw => 'Zeichnen';
+
+  @override
+  String get sketcherPan => 'Verschieben';
+
+  @override
+  String get sketcherUndo => 'Letzten Strich rückgängig';
+
+  @override
+  String get sketcherClear => 'Seite leeren';
+
+  @override
+  String get sketcherClearWarning => 'Das löscht jeden Strich auf dieser Seite.';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

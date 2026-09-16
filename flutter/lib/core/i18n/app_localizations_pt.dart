@@ -396,6 +396,30 @@ class AppLocalizationsPt extends AppLocalizations {
   String get designerLinkCancel => 'Cancelar ligação';
 
   @override
+  String get sketcherPages => 'Páginas';
+
+  @override
+  String get sketcherNewPage => 'Nova página';
+
+  @override
+  String get sketcherNoPages => 'Ainda não há páginas';
+
+  @override
+  String get sketcherDraw => 'Desenhar';
+
+  @override
+  String get sketcherPan => 'Mover';
+
+  @override
+  String get sketcherUndo => 'Desfazer último traço';
+
+  @override
+  String get sketcherClear => 'Limpar página';
+
+  @override
+  String get sketcherClearWarning => 'Isso apaga todos os traços desta página.';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

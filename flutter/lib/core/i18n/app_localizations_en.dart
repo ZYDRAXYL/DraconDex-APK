@@ -396,6 +396,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get designerLinkCancel => 'Cancel link';
 
   @override
+  String get sketcherPages => 'Pages';
+
+  @override
+  String get sketcherNewPage => 'New page';
+
+  @override
+  String get sketcherNoPages => 'No pages yet';
+
+  @override
+  String get sketcherDraw => 'Draw';
+
+  @override
+  String get sketcherPan => 'Pan';
+
+  @override
+  String get sketcherUndo => 'Undo last stroke';
+
+  @override
+  String get sketcherClear => 'Clear page';
+
+  @override
+  String get sketcherClearWarning => 'This erases every stroke on this page.';
+
+  @override
   String get settingsAppearance => 'Appearance';
 
   @override

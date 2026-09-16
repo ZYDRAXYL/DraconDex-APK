@@ -396,6 +396,30 @@ class AppLocalizationsId extends AppLocalizations {
   String get designerLinkCancel => 'Batalkan tautan';
 
   @override
+  String get sketcherPages => 'Halaman';
+
+  @override
+  String get sketcherNewPage => 'Halaman baru';
+
+  @override
+  String get sketcherNoPages => 'Belum ada halaman';
+
+  @override
+  String get sketcherDraw => 'Gambar';
+
+  @override
+  String get sketcherPan => 'Geser';
+
+  @override
+  String get sketcherUndo => 'Batalkan goresan terakhir';
+
+  @override
+  String get sketcherClear => 'Kosongkan halaman';
+
+  @override
+  String get sketcherClearWarning => 'Ini menghapus semua goresan di halaman ini.';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

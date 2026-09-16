@@ -396,6 +396,30 @@ class AppLocalizationsZh extends AppLocalizations {
   String get designerLinkCancel => '取消连接';
 
   @override
+  String get sketcherPages => '页面';
+
+  @override
+  String get sketcherNewPage => '新建页面';
+
+  @override
+  String get sketcherNoPages => '还没有页面';
+
+  @override
+  String get sketcherDraw => '绘制';
+
+  @override
+  String get sketcherPan => '平移';
+
+  @override
+  String get sketcherUndo => '撤销上一笔';
+
+  @override
+  String get sketcherClear => '清空页面';
+
+  @override
+  String get sketcherClearWarning => '这会清除本页所有笔画。';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override
