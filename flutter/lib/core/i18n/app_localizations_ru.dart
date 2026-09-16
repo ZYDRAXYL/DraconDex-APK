@@ -354,6 +354,27 @@ class AppLocalizationsRu extends AppLocalizations {
   String get filterPickModule => 'Выберите модуль';
 
   @override
+  String get connectorRelations => 'Связи';
+
+  @override
+  String get connectorNoRelations => 'Пока нет связей';
+
+  @override
+  String get connectorAddRelation => 'Добавить связь';
+
+  @override
+  String get connectorFrom => 'От';
+
+  @override
+  String get connectorTo => 'К';
+
+  @override
+  String get connectorLabel => 'Метка';
+
+  @override
+  String get connectorNodes => 'Элементы в этой линзе';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

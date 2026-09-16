@@ -354,6 +354,27 @@ class AppLocalizationsPt extends AppLocalizations {
   String get filterPickModule => 'Escolher um módulo';
 
   @override
+  String get connectorRelations => 'Relações';
+
+  @override
+  String get connectorNoRelations => 'Ainda não há relações';
+
+  @override
+  String get connectorAddRelation => 'Adicionar relação';
+
+  @override
+  String get connectorFrom => 'De';
+
+  @override
+  String get connectorTo => 'Para';
+
+  @override
+  String get connectorLabel => 'Rótulo';
+
+  @override
+  String get connectorNodes => 'Itens nesta lente';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

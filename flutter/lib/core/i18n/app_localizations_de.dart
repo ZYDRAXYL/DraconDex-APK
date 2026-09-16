@@ -354,6 +354,27 @@ class AppLocalizationsDe extends AppLocalizations {
   String get filterPickModule => 'Modul wählen';
 
   @override
+  String get connectorRelations => 'Beziehungen';
+
+  @override
+  String get connectorNoRelations => 'Noch keine Beziehungen';
+
+  @override
+  String get connectorAddRelation => 'Beziehung hinzufügen';
+
+  @override
+  String get connectorFrom => 'Von';
+
+  @override
+  String get connectorTo => 'Nach';
+
+  @override
+  String get connectorLabel => 'Bezeichnung';
+
+  @override
+  String get connectorNodes => 'Einträge in dieser Linse';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

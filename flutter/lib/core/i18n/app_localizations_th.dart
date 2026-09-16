@@ -354,6 +354,27 @@ class AppLocalizationsTh extends AppLocalizations {
   String get filterPickModule => 'เลือกโมดูล';
 
   @override
+  String get connectorRelations => 'ความสัมพันธ์';
+
+  @override
+  String get connectorNoRelations => 'ยังไม่มีความสัมพันธ์';
+
+  @override
+  String get connectorAddRelation => 'เพิ่มความสัมพันธ์';
+
+  @override
+  String get connectorFrom => 'จาก';
+
+  @override
+  String get connectorTo => 'ไปยัง';
+
+  @override
+  String get connectorLabel => 'ป้ายกำกับ';
+
+  @override
+  String get connectorNodes => 'รายการในเลนส์นี้';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

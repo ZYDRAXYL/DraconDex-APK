@@ -354,6 +354,27 @@ class AppLocalizationsFr extends AppLocalizations {
   String get filterPickModule => 'Choisir un module';
 
   @override
+  String get connectorRelations => 'Relations';
+
+  @override
+  String get connectorNoRelations => 'Aucune relation pour l\'instant';
+
+  @override
+  String get connectorAddRelation => 'Ajouter une relation';
+
+  @override
+  String get connectorFrom => 'De';
+
+  @override
+  String get connectorTo => 'Vers';
+
+  @override
+  String get connectorLabel => 'Libellé';
+
+  @override
+  String get connectorNodes => 'Éléments dans cette lentille';
+
+  @override
   String get settingsAppearance => 'Apparence';
 
   @override

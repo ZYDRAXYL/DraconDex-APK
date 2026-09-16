@@ -810,6 +810,48 @@ abstract class AppLocalizations {
   /// **'Pick a module'**
   String get filterPickModule;
 
+  /// No description provided for @connectorRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'Relations'**
+  String get connectorRelations;
+
+  /// No description provided for @connectorNoRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'No relations yet'**
+  String get connectorNoRelations;
+
+  /// No description provided for @connectorAddRelation.
+  ///
+  /// In en, this message translates to:
+  /// **'Add relation'**
+  String get connectorAddRelation;
+
+  /// No description provided for @connectorFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get connectorFrom;
+
+  /// No description provided for @connectorTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get connectorTo;
+
+  /// No description provided for @connectorLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Label'**
+  String get connectorLabel;
+
+  /// No description provided for @connectorNodes.
+  ///
+  /// In en, this message translates to:
+  /// **'Items in this lens'**
+  String get connectorNodes;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

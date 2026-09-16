@@ -354,6 +354,27 @@ class AppLocalizationsKo extends AppLocalizations {
   String get filterPickModule => '모듈 선택';
 
   @override
+  String get connectorRelations => '관계';
+
+  @override
+  String get connectorNoRelations => '아직 관계가 없습니다';
+
+  @override
+  String get connectorAddRelation => '관계 추가';
+
+  @override
+  String get connectorFrom => '시작';
+
+  @override
+  String get connectorTo => '대상';
+
+  @override
+  String get connectorLabel => '라벨';
+
+  @override
+  String get connectorNodes => '이 렌즈의 항목';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

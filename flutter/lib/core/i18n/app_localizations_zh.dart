@@ -354,6 +354,27 @@ class AppLocalizationsZh extends AppLocalizations {
   String get filterPickModule => '选择模块';
 
   @override
+  String get connectorRelations => '关系';
+
+  @override
+  String get connectorNoRelations => '还没有关系';
+
+  @override
+  String get connectorAddRelation => '添加关系';
+
+  @override
+  String get connectorFrom => '从';
+
+  @override
+  String get connectorTo => '到';
+
+  @override
+  String get connectorLabel => '标签';
+
+  @override
+  String get connectorNodes => '此视图中的条目';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

@@ -354,6 +354,27 @@ class AppLocalizationsVi extends AppLocalizations {
   String get filterPickModule => 'Chọn mô-đun';
 
   @override
+  String get connectorRelations => 'Quan hệ';
+
+  @override
+  String get connectorNoRelations => 'Chưa có quan hệ nào';
+
+  @override
+  String get connectorAddRelation => 'Thêm quan hệ';
+
+  @override
+  String get connectorFrom => 'Từ';
+
+  @override
+  String get connectorTo => 'Đến';
+
+  @override
+  String get connectorLabel => 'Nhãn';
+
+  @override
+  String get connectorNodes => 'Mục trong ống kính này';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

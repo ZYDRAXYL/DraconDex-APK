@@ -354,6 +354,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get filterPickModule => 'Elige un módulo';
 
   @override
+  String get connectorRelations => 'Relaciones';
+
+  @override
+  String get connectorNoRelations => 'Aún no hay relaciones';
+
+  @override
+  String get connectorAddRelation => 'Añadir relación';
+
+  @override
+  String get connectorFrom => 'Desde';
+
+  @override
+  String get connectorTo => 'Hasta';
+
+  @override
+  String get connectorLabel => 'Etiqueta';
+
+  @override
+  String get connectorNodes => 'Elementos en esta lente';
+
+  @override
   String get settingsAppearance => 'Apariencia';
 
   @override

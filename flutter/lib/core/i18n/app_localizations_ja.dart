@@ -354,6 +354,27 @@ class AppLocalizationsJa extends AppLocalizations {
   String get filterPickModule => 'モジュールを選択';
 
   @override
+  String get connectorRelations => '関係';
+
+  @override
+  String get connectorNoRelations => 'まだ関係がありません';
+
+  @override
+  String get connectorAddRelation => '関係を追加';
+
+  @override
+  String get connectorFrom => '開始';
+
+  @override
+  String get connectorTo => '終了';
+
+  @override
+  String get connectorLabel => 'ラベル';
+
+  @override
+  String get connectorNodes => 'このレンズ内の項目';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

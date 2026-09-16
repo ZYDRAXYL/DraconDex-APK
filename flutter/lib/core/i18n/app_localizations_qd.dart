@@ -354,6 +354,27 @@ class AppLocalizationsQd extends AppLocalizations {
   String get filterPickModule => 'Céos Módul';
 
   @override
+  String get connectorRelations => 'Gefēran';
+
+  @override
+  String get connectorNoRelations => 'Nán gefēra gíet';
+
+  @override
+  String get connectorAddRelation => 'Ecan Gefēra';
+
+  @override
+  String get connectorFrom => 'Fram';
+
+  @override
+  String get connectorTo => 'Tó';
+
+  @override
+  String get connectorLabel => 'Nemning';
+
+  @override
+  String get connectorNodes => 'Þingas on þissum glæse';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

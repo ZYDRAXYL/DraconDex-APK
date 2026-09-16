@@ -168,7 +168,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Connector',
     icon: Icons.hub_outlined,
     description: 'Relationship graph over a saved filter',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.sketcher: ModuleKindInfo(
     kind: ModuleKind.sketcher,

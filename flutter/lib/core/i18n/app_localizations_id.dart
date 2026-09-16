@@ -354,6 +354,27 @@ class AppLocalizationsId extends AppLocalizations {
   String get filterPickModule => 'Pilih modul';
 
   @override
+  String get connectorRelations => 'Relasi';
+
+  @override
+  String get connectorNoRelations => 'Belum ada relasi';
+
+  @override
+  String get connectorAddRelation => 'Tambah relasi';
+
+  @override
+  String get connectorFrom => 'Dari';
+
+  @override
+  String get connectorTo => 'Ke';
+
+  @override
+  String get connectorLabel => 'Label';
+
+  @override
+  String get connectorNodes => 'Item dalam lensa ini';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override
