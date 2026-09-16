@@ -294,6 +294,66 @@ class AppLocalizationsFr extends AppLocalizations {
   String get narratorNoRoutes => 'Aucune route pour l\'instant';
 
   @override
+  String get viewerResults => 'Résultats';
+
+  @override
+  String get viewerNoFilter => 'Aucun filtre défini — ouvrez le filtre pour choisir ce que cette lentille affiche.';
+
+  @override
+  String get viewerNoResults => 'Rien ne correspond à ce filtre';
+
+  @override
+  String get viewerUntitled => 'Sans titre';
+
+  @override
+  String get filterTitle => 'Filtre';
+
+  @override
+  String get filterExplain => 'Toutes les règles d\'un groupe doivent correspondre. Un seul groupe suffit.';
+
+  @override
+  String get filterAnd => 'et';
+
+  @override
+  String get filterOr => 'ou';
+
+  @override
+  String get filterAddRule => 'Ajouter une règle';
+
+  @override
+  String get filterAddGroup => 'Ajouter un groupe';
+
+  @override
+  String get filterFieldName => 'Nom';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Type de module';
+
+  @override
+  String get filterFieldChildOf => 'Dans le module';
+
+  @override
+  String get filterOpIs => 'est';
+
+  @override
+  String get filterOpIsNot => 'n\'est pas';
+
+  @override
+  String get filterOpStartsWith => 'commence par';
+
+  @override
+  String get filterOpEndsWith => 'se termine par';
+
+  @override
+  String get filterOpContains => 'contient';
+
+  @override
+  String get filterPickModule => 'Choisir un module';
+
+  @override
   String get settingsAppearance => 'Apparence';
 
   @override

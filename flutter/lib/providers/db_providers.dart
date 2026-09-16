@@ -9,6 +9,7 @@ import '../data/dao/hashtag_dao.dart';
 import '../data/dao/module_dao.dart';
 import '../data/dao/narrator_dao.dart';
 import '../data/dao/scribe_dao.dart';
+import '../data/dao/viewer_dao.dart';
 
 final databaseProvider = FutureProvider<Database>((ref) async {
   return DatabaseHelper.instance.database;
@@ -44,4 +45,8 @@ final classifierDaoProvider = Provider<AsyncValue<ClassifierDao>>((ref) {
 
 final narratorDaoProvider = Provider<AsyncValue<NarratorDao>>((ref) {
   return ref.watch(databaseProvider).whenData((db) => NarratorDao(db));
+});
+
+final viewerDaoProvider = Provider<AsyncValue<ViewerDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => ViewerDao(db));
 });

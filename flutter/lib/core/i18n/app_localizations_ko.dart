@@ -294,6 +294,66 @@ class AppLocalizationsKo extends AppLocalizations {
   String get narratorNoRoutes => '아직 경로가 없습니다';
 
   @override
+  String get viewerResults => '결과';
+
+  @override
+  String get viewerNoFilter => '필터가 아직 없습니다 — 필터를 열어 이 렌즈가 보여줄 것을 선택하세요.';
+
+  @override
+  String get viewerNoResults => '이 필터와 일치하는 항목이 없습니다';
+
+  @override
+  String get viewerUntitled => '제목 없음';
+
+  @override
+  String get filterTitle => '필터';
+
+  @override
+  String get filterExplain => '한 그룹 안의 규칙은 모두 일치해야 합니다. 그룹 하나만 일치해도 충분합니다.';
+
+  @override
+  String get filterAnd => '그리고';
+
+  @override
+  String get filterOr => '또는';
+
+  @override
+  String get filterAddRule => '규칙 추가';
+
+  @override
+  String get filterAddGroup => '그룹 추가';
+
+  @override
+  String get filterFieldName => '이름';
+
+  @override
+  String get filterFieldHashtag => '해시태그';
+
+  @override
+  String get filterFieldKind => '모듈 종류';
+
+  @override
+  String get filterFieldChildOf => '모듈 안';
+
+  @override
+  String get filterOpIs => '다음과 같음';
+
+  @override
+  String get filterOpIsNot => '다음과 다름';
+
+  @override
+  String get filterOpStartsWith => '다음으로 시작';
+
+  @override
+  String get filterOpEndsWith => '다음으로 끝남';
+
+  @override
+  String get filterOpContains => '포함';
+
+  @override
+  String get filterPickModule => '모듈 선택';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

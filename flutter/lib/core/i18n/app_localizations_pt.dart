@@ -294,6 +294,66 @@ class AppLocalizationsPt extends AppLocalizations {
   String get narratorNoRoutes => 'Ainda não há rotas';
 
   @override
+  String get viewerResults => 'Resultados';
+
+  @override
+  String get viewerNoFilter => 'Ainda sem filtro — abra o filtro para escolher o que esta lente mostra.';
+
+  @override
+  String get viewerNoResults => 'Nada corresponde a este filtro';
+
+  @override
+  String get viewerUntitled => 'Sem título';
+
+  @override
+  String get filterTitle => 'Filtro';
+
+  @override
+  String get filterExplain => 'Todas as regras de um grupo devem corresponder. Basta um grupo corresponder.';
+
+  @override
+  String get filterAnd => 'e';
+
+  @override
+  String get filterOr => 'ou';
+
+  @override
+  String get filterAddRule => 'Adicionar regra';
+
+  @override
+  String get filterAddGroup => 'Adicionar grupo';
+
+  @override
+  String get filterFieldName => 'Nome';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Tipo de módulo';
+
+  @override
+  String get filterFieldChildOf => 'Dentro do módulo';
+
+  @override
+  String get filterOpIs => 'é';
+
+  @override
+  String get filterOpIsNot => 'não é';
+
+  @override
+  String get filterOpStartsWith => 'começa com';
+
+  @override
+  String get filterOpEndsWith => 'termina com';
+
+  @override
+  String get filterOpContains => 'contém';
+
+  @override
+  String get filterPickModule => 'Escolher um módulo';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

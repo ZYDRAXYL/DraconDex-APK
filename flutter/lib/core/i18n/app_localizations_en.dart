@@ -294,6 +294,66 @@ class AppLocalizationsEn extends AppLocalizations {
   String get narratorNoRoutes => 'No routes yet';
 
   @override
+  String get viewerResults => 'Results';
+
+  @override
+  String get viewerNoFilter => 'No filter set yet — open the filter to choose what this lens shows.';
+
+  @override
+  String get viewerNoResults => 'Nothing matches this filter';
+
+  @override
+  String get viewerUntitled => 'Untitled';
+
+  @override
+  String get filterTitle => 'Filter';
+
+  @override
+  String get filterExplain => 'Rules inside a group must all match. Any one group matching is enough.';
+
+  @override
+  String get filterAnd => 'and';
+
+  @override
+  String get filterOr => 'or';
+
+  @override
+  String get filterAddRule => 'Add rule';
+
+  @override
+  String get filterAddGroup => 'Add group';
+
+  @override
+  String get filterFieldName => 'Name';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Module kind';
+
+  @override
+  String get filterFieldChildOf => 'Inside module';
+
+  @override
+  String get filterOpIs => 'is';
+
+  @override
+  String get filterOpIsNot => 'is not';
+
+  @override
+  String get filterOpStartsWith => 'starts with';
+
+  @override
+  String get filterOpEndsWith => 'ends with';
+
+  @override
+  String get filterOpContains => 'contains';
+
+  @override
+  String get filterPickModule => 'Pick a module';
+
+  @override
   String get settingsAppearance => 'Appearance';
 
   @override

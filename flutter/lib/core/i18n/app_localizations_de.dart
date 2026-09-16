@@ -294,6 +294,66 @@ class AppLocalizationsDe extends AppLocalizations {
   String get narratorNoRoutes => 'Noch keine Routen';
 
   @override
+  String get viewerResults => 'Ergebnisse';
+
+  @override
+  String get viewerNoFilter => 'Noch kein Filter — öffne den Filter, um festzulegen, was diese Linse zeigt.';
+
+  @override
+  String get viewerNoResults => 'Nichts entspricht diesem Filter';
+
+  @override
+  String get viewerUntitled => 'Ohne Titel';
+
+  @override
+  String get filterTitle => 'Filter';
+
+  @override
+  String get filterExplain => 'Regeln in einer Gruppe müssen alle zutreffen. Eine zutreffende Gruppe genügt.';
+
+  @override
+  String get filterAnd => 'und';
+
+  @override
+  String get filterOr => 'oder';
+
+  @override
+  String get filterAddRule => 'Regel hinzufügen';
+
+  @override
+  String get filterAddGroup => 'Gruppe hinzufügen';
+
+  @override
+  String get filterFieldName => 'Name';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Modulart';
+
+  @override
+  String get filterFieldChildOf => 'Im Modul';
+
+  @override
+  String get filterOpIs => 'ist';
+
+  @override
+  String get filterOpIsNot => 'ist nicht';
+
+  @override
+  String get filterOpStartsWith => 'beginnt mit';
+
+  @override
+  String get filterOpEndsWith => 'endet mit';
+
+  @override
+  String get filterOpContains => 'enthält';
+
+  @override
+  String get filterPickModule => 'Modul wählen';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

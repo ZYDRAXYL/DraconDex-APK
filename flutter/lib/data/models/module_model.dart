@@ -161,7 +161,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Viewer',
     icon: Icons.visibility_outlined,
     description: 'Read-only saved-filter lens',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.connector: ModuleKindInfo(
     kind: ModuleKind.connector,

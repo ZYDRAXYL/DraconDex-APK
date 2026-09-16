@@ -294,6 +294,66 @@ class AppLocalizationsZh extends AppLocalizations {
   String get narratorNoRoutes => '还没有路线';
 
   @override
+  String get viewerResults => '结果';
+
+  @override
+  String get viewerNoFilter => '尚未设置筛选 — 打开筛选以选择此视图显示的内容。';
+
+  @override
+  String get viewerNoResults => '没有内容符合此筛选';
+
+  @override
+  String get viewerUntitled => '未命名';
+
+  @override
+  String get filterTitle => '筛选';
+
+  @override
+  String get filterExplain => '同一组内的规则必须全部符合，任意一组符合即可。';
+
+  @override
+  String get filterAnd => '并且';
+
+  @override
+  String get filterOr => '或者';
+
+  @override
+  String get filterAddRule => '添加规则';
+
+  @override
+  String get filterAddGroup => '添加分组';
+
+  @override
+  String get filterFieldName => '名称';
+
+  @override
+  String get filterFieldHashtag => '标签';
+
+  @override
+  String get filterFieldKind => '模块类型';
+
+  @override
+  String get filterFieldChildOf => '位于模块内';
+
+  @override
+  String get filterOpIs => '等于';
+
+  @override
+  String get filterOpIsNot => '不等于';
+
+  @override
+  String get filterOpStartsWith => '开头为';
+
+  @override
+  String get filterOpEndsWith => '结尾为';
+
+  @override
+  String get filterOpContains => '包含';
+
+  @override
+  String get filterPickModule => '选择模块';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

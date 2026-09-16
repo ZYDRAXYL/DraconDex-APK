@@ -294,6 +294,66 @@ class AppLocalizationsId extends AppLocalizations {
   String get narratorNoRoutes => 'Belum ada rute';
 
   @override
+  String get viewerResults => 'Hasil';
+
+  @override
+  String get viewerNoFilter => 'Belum ada filter — buka filter untuk memilih apa yang ditampilkan lensa ini.';
+
+  @override
+  String get viewerNoResults => 'Tidak ada yang cocok dengan filter ini';
+
+  @override
+  String get viewerUntitled => 'Tanpa judul';
+
+  @override
+  String get filterTitle => 'Filter';
+
+  @override
+  String get filterExplain => 'Semua aturan dalam satu grup harus cocok. Satu grup yang cocok sudah cukup.';
+
+  @override
+  String get filterAnd => 'dan';
+
+  @override
+  String get filterOr => 'atau';
+
+  @override
+  String get filterAddRule => 'Tambah aturan';
+
+  @override
+  String get filterAddGroup => 'Tambah grup';
+
+  @override
+  String get filterFieldName => 'Nama';
+
+  @override
+  String get filterFieldHashtag => 'Tagar';
+
+  @override
+  String get filterFieldKind => 'Jenis modul';
+
+  @override
+  String get filterFieldChildOf => 'Di dalam modul';
+
+  @override
+  String get filterOpIs => 'adalah';
+
+  @override
+  String get filterOpIsNot => 'bukan';
+
+  @override
+  String get filterOpStartsWith => 'diawali';
+
+  @override
+  String get filterOpEndsWith => 'diakhiri';
+
+  @override
+  String get filterOpContains => 'mengandung';
+
+  @override
+  String get filterPickModule => 'Pilih modul';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

@@ -294,6 +294,66 @@ class AppLocalizationsJa extends AppLocalizations {
   String get narratorNoRoutes => 'まだルートがありません';
 
   @override
+  String get viewerResults => '結果';
+
+  @override
+  String get viewerNoFilter => 'フィルタが未設定です — フィルタを開いて表示内容を選んでください。';
+
+  @override
+  String get viewerNoResults => 'このフィルタに一致するものはありません';
+
+  @override
+  String get viewerUntitled => '無題';
+
+  @override
+  String get filterTitle => 'フィルタ';
+
+  @override
+  String get filterExplain => 'グループ内のルールはすべて一致する必要があります。いずれか1グループが一致すれば十分です。';
+
+  @override
+  String get filterAnd => 'かつ';
+
+  @override
+  String get filterOr => 'または';
+
+  @override
+  String get filterAddRule => 'ルールを追加';
+
+  @override
+  String get filterAddGroup => 'グループを追加';
+
+  @override
+  String get filterFieldName => '名前';
+
+  @override
+  String get filterFieldHashtag => 'ハッシュタグ';
+
+  @override
+  String get filterFieldKind => 'モジュール種別';
+
+  @override
+  String get filterFieldChildOf => 'モジュール内';
+
+  @override
+  String get filterOpIs => 'が次と等しい';
+
+  @override
+  String get filterOpIsNot => 'が次と等しくない';
+
+  @override
+  String get filterOpStartsWith => 'で始まる';
+
+  @override
+  String get filterOpEndsWith => 'で終わる';
+
+  @override
+  String get filterOpContains => 'を含む';
+
+  @override
+  String get filterPickModule => 'モジュールを選択';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

@@ -294,6 +294,66 @@ class AppLocalizationsQd extends AppLocalizations {
   String get narratorNoRoutes => 'Nán weg gíet';
 
   @override
+  String get viewerResults => 'Fundas';
+
+  @override
+  String get viewerNoFilter => 'Nán sihþe gíet — ontýn þa sihþe tó céosanne hwæt þes glæs ætíewþ.';
+
+  @override
+  String get viewerNoResults => 'Náht gemæcþ þisse sihþe';
+
+  @override
+  String get viewerUntitled => 'Unnemned';
+
+  @override
+  String get filterTitle => 'Sihþe';
+
+  @override
+  String get filterExplain => 'Ealle rǽdas on ánum hēape sculon gemæccan. Án hēap genōg biþ.';
+
+  @override
+  String get filterAnd => 'and';
+
+  @override
+  String get filterOr => 'oþþe';
+
+  @override
+  String get filterAddRule => 'Ecan Rǽd';
+
+  @override
+  String get filterAddGroup => 'Ecan Hēap';
+
+  @override
+  String get filterFieldName => 'Nama';
+
+  @override
+  String get filterFieldHashtag => 'Mearcword';
+
+  @override
+  String get filterFieldKind => 'Cynn þæs Módules';
+
+  @override
+  String get filterFieldChildOf => 'Innan Módule';
+
+  @override
+  String get filterOpIs => 'is';
+
+  @override
+  String get filterOpIsNot => 'nis';
+
+  @override
+  String get filterOpStartsWith => 'onginþ mid';
+
+  @override
+  String get filterOpEndsWith => 'endaþ mid';
+
+  @override
+  String get filterOpContains => 'hæfþ innan';
+
+  @override
+  String get filterPickModule => 'Céos Módul';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

@@ -690,6 +690,126 @@ abstract class AppLocalizations {
   /// **'No routes yet'**
   String get narratorNoRoutes;
 
+  /// No description provided for @viewerResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get viewerResults;
+
+  /// No description provided for @viewerNoFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'No filter set yet — open the filter to choose what this lens shows.'**
+  String get viewerNoFilter;
+
+  /// No description provided for @viewerNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches this filter'**
+  String get viewerNoResults;
+
+  /// No description provided for @viewerUntitled.
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled'**
+  String get viewerUntitled;
+
+  /// No description provided for @filterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filterTitle;
+
+  /// No description provided for @filterExplain.
+  ///
+  /// In en, this message translates to:
+  /// **'Rules inside a group must all match. Any one group matching is enough.'**
+  String get filterExplain;
+
+  /// No description provided for @filterAnd.
+  ///
+  /// In en, this message translates to:
+  /// **'and'**
+  String get filterAnd;
+
+  /// No description provided for @filterOr.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get filterOr;
+
+  /// No description provided for @filterAddRule.
+  ///
+  /// In en, this message translates to:
+  /// **'Add rule'**
+  String get filterAddRule;
+
+  /// No description provided for @filterAddGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Add group'**
+  String get filterAddGroup;
+
+  /// No description provided for @filterFieldName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get filterFieldName;
+
+  /// No description provided for @filterFieldHashtag.
+  ///
+  /// In en, this message translates to:
+  /// **'Hashtag'**
+  String get filterFieldHashtag;
+
+  /// No description provided for @filterFieldKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Module kind'**
+  String get filterFieldKind;
+
+  /// No description provided for @filterFieldChildOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Inside module'**
+  String get filterFieldChildOf;
+
+  /// No description provided for @filterOpIs.
+  ///
+  /// In en, this message translates to:
+  /// **'is'**
+  String get filterOpIs;
+
+  /// No description provided for @filterOpIsNot.
+  ///
+  /// In en, this message translates to:
+  /// **'is not'**
+  String get filterOpIsNot;
+
+  /// No description provided for @filterOpStartsWith.
+  ///
+  /// In en, this message translates to:
+  /// **'starts with'**
+  String get filterOpStartsWith;
+
+  /// No description provided for @filterOpEndsWith.
+  ///
+  /// In en, this message translates to:
+  /// **'ends with'**
+  String get filterOpEndsWith;
+
+  /// No description provided for @filterOpContains.
+  ///
+  /// In en, this message translates to:
+  /// **'contains'**
+  String get filterOpContains;
+
+  /// No description provided for @filterPickModule.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a module'**
+  String get filterPickModule;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

@@ -294,6 +294,66 @@ class AppLocalizationsRu extends AppLocalizations {
   String get narratorNoRoutes => 'Пока нет маршрутов';
 
   @override
+  String get viewerResults => 'Результаты';
+
+  @override
+  String get viewerNoFilter => 'Фильтр ещё не задан — откройте фильтр, чтобы выбрать, что показывает эта линза.';
+
+  @override
+  String get viewerNoResults => 'Ничего не соответствует фильтру';
+
+  @override
+  String get viewerUntitled => 'Без названия';
+
+  @override
+  String get filterTitle => 'Фильтр';
+
+  @override
+  String get filterExplain => 'Все правила в группе должны совпасть. Достаточно совпадения одной группы.';
+
+  @override
+  String get filterAnd => 'и';
+
+  @override
+  String get filterOr => 'или';
+
+  @override
+  String get filterAddRule => 'Добавить правило';
+
+  @override
+  String get filterAddGroup => 'Добавить группу';
+
+  @override
+  String get filterFieldName => 'Имя';
+
+  @override
+  String get filterFieldHashtag => 'Хештег';
+
+  @override
+  String get filterFieldKind => 'Вид модуля';
+
+  @override
+  String get filterFieldChildOf => 'Внутри модуля';
+
+  @override
+  String get filterOpIs => 'равно';
+
+  @override
+  String get filterOpIsNot => 'не равно';
+
+  @override
+  String get filterOpStartsWith => 'начинается с';
+
+  @override
+  String get filterOpEndsWith => 'заканчивается на';
+
+  @override
+  String get filterOpContains => 'содержит';
+
+  @override
+  String get filterPickModule => 'Выберите модуль';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

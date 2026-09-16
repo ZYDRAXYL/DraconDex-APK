@@ -294,6 +294,66 @@ class AppLocalizationsVi extends AppLocalizations {
   String get narratorNoRoutes => 'Chưa có tuyến nào';
 
   @override
+  String get viewerResults => 'Kết quả';
+
+  @override
+  String get viewerNoFilter => 'Chưa đặt bộ lọc — mở bộ lọc để chọn thứ ống kính này hiển thị.';
+
+  @override
+  String get viewerNoResults => 'Không có gì khớp bộ lọc này';
+
+  @override
+  String get viewerUntitled => 'Chưa đặt tên';
+
+  @override
+  String get filterTitle => 'Bộ lọc';
+
+  @override
+  String get filterExplain => 'Mọi quy tắc trong một nhóm đều phải khớp. Chỉ cần một nhóm khớp là đủ.';
+
+  @override
+  String get filterAnd => 'và';
+
+  @override
+  String get filterOr => 'hoặc';
+
+  @override
+  String get filterAddRule => 'Thêm quy tắc';
+
+  @override
+  String get filterAddGroup => 'Thêm nhóm';
+
+  @override
+  String get filterFieldName => 'Tên';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Loại mô-đun';
+
+  @override
+  String get filterFieldChildOf => 'Trong mô-đun';
+
+  @override
+  String get filterOpIs => 'là';
+
+  @override
+  String get filterOpIsNot => 'không phải';
+
+  @override
+  String get filterOpStartsWith => 'bắt đầu bằng';
+
+  @override
+  String get filterOpEndsWith => 'kết thúc bằng';
+
+  @override
+  String get filterOpContains => 'chứa';
+
+  @override
+  String get filterPickModule => 'Chọn mô-đun';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

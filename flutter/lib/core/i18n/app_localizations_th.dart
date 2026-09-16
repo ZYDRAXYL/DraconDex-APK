@@ -294,6 +294,66 @@ class AppLocalizationsTh extends AppLocalizations {
   String get narratorNoRoutes => 'ยังไม่มีเส้นทาง';
 
   @override
+  String get viewerResults => 'ผลลัพธ์';
+
+  @override
+  String get viewerNoFilter => 'ยังไม่ได้ตั้งตัวกรอง — เปิดตัวกรองเพื่อเลือกสิ่งที่เลนส์นี้แสดง';
+
+  @override
+  String get viewerNoResults => 'ไม่มีอะไรตรงกับตัวกรองนี้';
+
+  @override
+  String get viewerUntitled => 'ไม่มีชื่อ';
+
+  @override
+  String get filterTitle => 'ตัวกรอง';
+
+  @override
+  String get filterExplain => 'กฎในกลุ่มเดียวกันต้องตรงทั้งหมด และตรงเพียงกลุ่มใดกลุ่มหนึ่งก็พอ';
+
+  @override
+  String get filterAnd => 'และ';
+
+  @override
+  String get filterOr => 'หรือ';
+
+  @override
+  String get filterAddRule => 'เพิ่มกฎ';
+
+  @override
+  String get filterAddGroup => 'เพิ่มกลุ่ม';
+
+  @override
+  String get filterFieldName => 'ชื่อ';
+
+  @override
+  String get filterFieldHashtag => 'แฮชแท็ก';
+
+  @override
+  String get filterFieldKind => 'ชนิดโมดูล';
+
+  @override
+  String get filterFieldChildOf => 'ในโมดูล';
+
+  @override
+  String get filterOpIs => 'เท่ากับ';
+
+  @override
+  String get filterOpIsNot => 'ไม่เท่ากับ';
+
+  @override
+  String get filterOpStartsWith => 'ขึ้นต้นด้วย';
+
+  @override
+  String get filterOpEndsWith => 'ลงท้ายด้วย';
+
+  @override
+  String get filterOpContains => 'มีคำว่า';
+
+  @override
+  String get filterPickModule => 'เลือกโมดูล';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

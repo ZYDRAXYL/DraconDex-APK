@@ -4,6 +4,7 @@ import 'author_content.dart';
 import 'chronicler_content.dart';
 import 'classifier_content.dart';
 import 'narrator_content.dart';
+import 'viewer_content.dart';
 import 'scribe_content.dart';
 
 /// Maps a module kind to its content editor.
@@ -25,6 +26,9 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       ModuleKind.chronicler => ChroniclerContent(moduleId: module.id),
       ModuleKind.classifier => ClassifierContent(moduleId: module.id),
       ModuleKind.narrator => NarratorContent(moduleId: module.id),
+      // Viewer filters the whole Nexus, not just this module, so it
+      // needs the Nexus the module belongs to as well.
+      ModuleKind.viewer => ViewerContent(moduleId: module.id, nexusId: module.nexusRef),
       // Folders have no content area at all; the caller returns early.
       ModuleKind.collector || ModuleKind.manager => null,
       // The notes field genuinely is the content for these two.
@@ -32,7 +36,6 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       // Still pending a dedicated editor.
       ModuleKind.locator ||
       ModuleKind.wanderer ||
-      ModuleKind.viewer ||
       ModuleKind.connector ||
       ModuleKind.sketcher ||
       ModuleKind.designer =>

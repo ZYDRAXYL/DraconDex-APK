@@ -3,6 +3,7 @@ import '../data/models/author_model.dart';
 import '../data/models/chronicler_model.dart';
 import '../data/models/classifier_model.dart';
 import '../data/models/narrator_model.dart';
+import '../data/models/viewer_model.dart';
 import '../data/models/scribe_model.dart';
 import 'db_providers.dart';
 
@@ -116,5 +117,37 @@ final storyEdgesProvider =
     data: (d) => d.getEdgesFrom(dialogueId),
     loading: () => Future.value(<StoryEdgeModel>[]),
     error: (e, s) => Future<List<StoryEdgeModel>>.error(e, s),
+  );
+});
+
+/// The vault-wide item index, keyed by Nexus. Shared by Viewer and Connector
+/// — both filter the same index, so they share the cache entry too.
+final viewerIndexProvider =
+    FutureProvider.family<List<IndexedItem>, int>((ref, nexusId) async {
+  final dao = ref.watch(viewerDaoProvider);
+  return dao.when(
+    data: (d) => d.index(nexusId),
+    loading: () => Future.value(<IndexedItem>[]),
+    error: (e, s) => Future<List<IndexedItem>>.error(e, s),
+  );
+});
+
+/// The module's saved filter, keyed by module id.
+final filterDefProvider = FutureProvider.family<FilterDef, int>((ref, moduleId) async {
+  final dao = ref.watch(viewerDaoProvider);
+  return dao.when(
+    data: (d) => d.getFilterDef(moduleId),
+    loading: () => Future.value(const FilterDef()),
+    error: (e, s) => Future<FilterDef>.error(e, s),
+  );
+});
+
+final relationsProvider =
+    FutureProvider.family<List<Map<String, Object?>>, int>((ref, nexusId) async {
+  final dao = ref.watch(viewerDaoProvider);
+  return dao.when(
+    data: (d) => d.getRelations(nexusId),
+    loading: () => Future.value(<Map<String, Object?>>[]),
+    error: (e, s) => Future<List<Map<String, Object?>>>.error(e, s),
   );
 });
