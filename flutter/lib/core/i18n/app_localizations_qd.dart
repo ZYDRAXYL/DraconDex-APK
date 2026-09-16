@@ -177,6 +177,33 @@ class AppLocalizationsQd extends AppLocalizations {
   String get notesHint => 'Notheth for thys modyxx…';
 
   @override
+  String get authorChapters => 'Chaptres';
+
+  @override
+  String get authorNewChapter => 'Niwe Chaptre';
+
+  @override
+  String get authorNoChapters => 'Nán chaptre gíet';
+
+  @override
+  String get authorContentHint => 'Wrít þis chaptre…';
+
+  @override
+  String get scribeSessions => 'Sessiouns';
+
+  @override
+  String get scribeNewSession => 'Niwe Sessioun';
+
+  @override
+  String get scribeNoSessions => 'Nán sessioun gíet';
+
+  @override
+  String get scribeMessageHint => 'Wrít ane message…';
+
+  @override
+  String get scribeSwitchSide => 'Wend þa sídan';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

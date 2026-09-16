@@ -177,6 +177,33 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notesHint => 'Заметки для этого модуля…';
 
   @override
+  String get authorChapters => 'Главы';
+
+  @override
+  String get authorNewChapter => 'Новая глава';
+
+  @override
+  String get authorNoChapters => 'Пока нет глав';
+
+  @override
+  String get authorContentHint => 'Напишите эту главу…';
+
+  @override
+  String get scribeSessions => 'Сессии';
+
+  @override
+  String get scribeNewSession => 'Новая сессия';
+
+  @override
+  String get scribeNoSessions => 'Пока нет сессий';
+
+  @override
+  String get scribeMessageHint => 'Напишите сообщение…';
+
+  @override
+  String get scribeSwitchSide => 'Сменить сторону';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

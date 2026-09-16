@@ -177,6 +177,33 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notesHint => 'このモジュールのメモ…';
 
   @override
+  String get authorChapters => '章';
+
+  @override
+  String get authorNewChapter => '新しい章';
+
+  @override
+  String get authorNoChapters => 'まだ章がありません';
+
+  @override
+  String get authorContentHint => 'この章を書く…';
+
+  @override
+  String get scribeSessions => 'セッション';
+
+  @override
+  String get scribeNewSession => '新しいセッション';
+
+  @override
+  String get scribeNoSessions => 'まだセッションがありません';
+
+  @override
+  String get scribeMessageHint => 'メッセージを入力…';
+
+  @override
+  String get scribeSwitchSide => '左右を切り替え';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

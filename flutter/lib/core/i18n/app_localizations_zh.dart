@@ -177,6 +177,33 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notesHint => '为此模块添加备注…';
 
   @override
+  String get authorChapters => '章节';
+
+  @override
+  String get authorNewChapter => '新建章节';
+
+  @override
+  String get authorNoChapters => '还没有章节';
+
+  @override
+  String get authorContentHint => '撰写本章…';
+
+  @override
+  String get scribeSessions => '会话';
+
+  @override
+  String get scribeNewSession => '新建会话';
+
+  @override
+  String get scribeNoSessions => '还没有会话';
+
+  @override
+  String get scribeMessageHint => '输入消息…';
+
+  @override
+  String get scribeSwitchSide => '切换左右';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

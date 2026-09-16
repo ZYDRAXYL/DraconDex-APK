@@ -140,14 +140,14 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Author',
     icon: Icons.menu_book_outlined,
     description: 'Book with chapters',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.scribe: ModuleKindInfo(
     kind: ModuleKind.scribe,
     label: 'Scribe',
     icon: Icons.chat_bubble_outline,
     description: 'Chat-style notes for this module',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.drafter: ModuleKindInfo(
     kind: ModuleKind.drafter,

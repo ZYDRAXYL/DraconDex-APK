@@ -177,6 +177,33 @@ class AppLocalizationsVi extends AppLocalizations {
   String get notesHint => 'Ghi chú cho mô-đun này…';
 
   @override
+  String get authorChapters => 'Chương';
+
+  @override
+  String get authorNewChapter => 'Chương mới';
+
+  @override
+  String get authorNoChapters => 'Chưa có chương nào';
+
+  @override
+  String get authorContentHint => 'Viết chương này…';
+
+  @override
+  String get scribeSessions => 'Phiên';
+
+  @override
+  String get scribeNewSession => 'Phiên mới';
+
+  @override
+  String get scribeNoSessions => 'Chưa có phiên nào';
+
+  @override
+  String get scribeMessageHint => 'Viết tin nhắn…';
+
+  @override
+  String get scribeSwitchSide => 'Đổi bên';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

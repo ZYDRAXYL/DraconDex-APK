@@ -456,6 +456,60 @@ abstract class AppLocalizations {
   /// **'Notes for this module…'**
   String get notesHint;
 
+  /// No description provided for @authorChapters.
+  ///
+  /// In en, this message translates to:
+  /// **'Chapters'**
+  String get authorChapters;
+
+  /// No description provided for @authorNewChapter.
+  ///
+  /// In en, this message translates to:
+  /// **'New chapter'**
+  String get authorNewChapter;
+
+  /// No description provided for @authorNoChapters.
+  ///
+  /// In en, this message translates to:
+  /// **'No chapters yet'**
+  String get authorNoChapters;
+
+  /// No description provided for @authorContentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write this chapter…'**
+  String get authorContentHint;
+
+  /// No description provided for @scribeSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions'**
+  String get scribeSessions;
+
+  /// No description provided for @scribeNewSession.
+  ///
+  /// In en, this message translates to:
+  /// **'New session'**
+  String get scribeNewSession;
+
+  /// No description provided for @scribeNoSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'No sessions yet'**
+  String get scribeNoSessions;
+
+  /// No description provided for @scribeMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a message…'**
+  String get scribeMessageHint;
+
+  /// No description provided for @scribeSwitchSide.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch side'**
+  String get scribeSwitchSide;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

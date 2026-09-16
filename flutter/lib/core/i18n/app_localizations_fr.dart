@@ -177,6 +177,33 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notesHint => 'Notes pour ce module…';
 
   @override
+  String get authorChapters => 'Chapitres';
+
+  @override
+  String get authorNewChapter => 'Nouveau chapitre';
+
+  @override
+  String get authorNoChapters => 'Aucun chapitre pour l\'instant';
+
+  @override
+  String get authorContentHint => 'Écrivez ce chapitre…';
+
+  @override
+  String get scribeSessions => 'Sessions';
+
+  @override
+  String get scribeNewSession => 'Nouvelle session';
+
+  @override
+  String get scribeNoSessions => 'Aucune session pour l\'instant';
+
+  @override
+  String get scribeMessageHint => 'Écrivez un message…';
+
+  @override
+  String get scribeSwitchSide => 'Changer de côté';
+
+  @override
   String get settingsAppearance => 'Apparence';
 
   @override

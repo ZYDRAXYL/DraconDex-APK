@@ -177,6 +177,33 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notesHint => '이 모듈에 대한 메모…';
 
   @override
+  String get authorChapters => '챕터';
+
+  @override
+  String get authorNewChapter => '새 챕터';
+
+  @override
+  String get authorNoChapters => '아직 챕터가 없습니다';
+
+  @override
+  String get authorContentHint => '이 챕터를 작성하세요…';
+
+  @override
+  String get scribeSessions => '세션';
+
+  @override
+  String get scribeNewSession => '새 세션';
+
+  @override
+  String get scribeNoSessions => '아직 세션이 없습니다';
+
+  @override
+  String get scribeMessageHint => '메시지를 입력하세요…';
+
+  @override
+  String get scribeSwitchSide => '좌우 전환';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

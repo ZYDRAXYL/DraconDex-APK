@@ -177,6 +177,33 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notesHint => 'Notas para este módulo…';
 
   @override
+  String get authorChapters => 'Capítulos';
+
+  @override
+  String get authorNewChapter => 'Novo capítulo';
+
+  @override
+  String get authorNoChapters => 'Ainda não há capítulos';
+
+  @override
+  String get authorContentHint => 'Escreva este capítulo…';
+
+  @override
+  String get scribeSessions => 'Sessões';
+
+  @override
+  String get scribeNewSession => 'Nova sessão';
+
+  @override
+  String get scribeNoSessions => 'Ainda não há sessões';
+
+  @override
+  String get scribeMessageHint => 'Escreva uma mensagem…';
+
+  @override
+  String get scribeSwitchSide => 'Trocar de lado';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

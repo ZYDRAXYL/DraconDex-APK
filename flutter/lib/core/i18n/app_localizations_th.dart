@@ -177,6 +177,33 @@ class AppLocalizationsTh extends AppLocalizations {
   String get notesHint => 'โน้ตสำหรับโมดูลนี้…';
 
   @override
+  String get authorChapters => 'บท';
+
+  @override
+  String get authorNewChapter => 'บทใหม่';
+
+  @override
+  String get authorNoChapters => 'ยังไม่มีบท';
+
+  @override
+  String get authorContentHint => 'เขียนบทนี้…';
+
+  @override
+  String get scribeSessions => 'เซสชัน';
+
+  @override
+  String get scribeNewSession => 'เซสชันใหม่';
+
+  @override
+  String get scribeNoSessions => 'ยังไม่มีเซสชัน';
+
+  @override
+  String get scribeMessageHint => 'เขียนข้อความ…';
+
+  @override
+  String get scribeSwitchSide => 'สลับข้าง';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

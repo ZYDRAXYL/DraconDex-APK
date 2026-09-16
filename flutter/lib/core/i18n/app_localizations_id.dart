@@ -177,6 +177,33 @@ class AppLocalizationsId extends AppLocalizations {
   String get notesHint => 'Catatan untuk modul ini…';
 
   @override
+  String get authorChapters => 'Bab';
+
+  @override
+  String get authorNewChapter => 'Bab baru';
+
+  @override
+  String get authorNoChapters => 'Belum ada bab';
+
+  @override
+  String get authorContentHint => 'Tulis bab ini…';
+
+  @override
+  String get scribeSessions => 'Sesi';
+
+  @override
+  String get scribeNewSession => 'Sesi baru';
+
+  @override
+  String get scribeNoSessions => 'Belum ada sesi';
+
+  @override
+  String get scribeMessageHint => 'Tulis pesan…';
+
+  @override
+  String get scribeSwitchSide => 'Ganti sisi';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override
