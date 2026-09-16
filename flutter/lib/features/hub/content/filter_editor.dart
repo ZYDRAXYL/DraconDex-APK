@@ -229,7 +229,7 @@ class _RuleRow extends StatelessWidget {
             ),
           if (rule.field == 'childOf')
             DropdownButton<int>(
-              value: modules.any((m) => m.id == rule.moduleId) ? rule.moduleId : null,
+              value: modules.any((m) => m.moduleId == rule.moduleId) ? rule.moduleId : null,
               isDense: true,
               isExpanded: true,
               hint: Text(l10n.filterPickModule),
