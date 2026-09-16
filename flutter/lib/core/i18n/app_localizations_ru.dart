@@ -375,6 +375,27 @@ class AppLocalizationsRu extends AppLocalizations {
   String get connectorNodes => 'Элементы в этой линзе';
 
   @override
+  String get designerBoard => 'Доска';
+
+  @override
+  String get designerNewNode => 'Новый узел';
+
+  @override
+  String get designerNode => 'Узел';
+
+  @override
+  String get designerNodeText => 'Текст';
+
+  @override
+  String get designerEmpty => 'Пока нет узлов';
+
+  @override
+  String get designerLinkHint => 'Коснитесь другого узла, чтобы соединить';
+
+  @override
+  String get designerLinkCancel => 'Отменить связь';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

@@ -375,6 +375,27 @@ class AppLocalizationsVi extends AppLocalizations {
   String get connectorNodes => 'Mục trong ống kính này';
 
   @override
+  String get designerBoard => 'Bảng';
+
+  @override
+  String get designerNewNode => 'Nút mới';
+
+  @override
+  String get designerNode => 'Nút';
+
+  @override
+  String get designerNodeText => 'Văn bản';
+
+  @override
+  String get designerEmpty => 'Chưa có nút nào';
+
+  @override
+  String get designerLinkHint => 'Chạm vào nút khác để nối';
+
+  @override
+  String get designerLinkCancel => 'Hủy nối';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

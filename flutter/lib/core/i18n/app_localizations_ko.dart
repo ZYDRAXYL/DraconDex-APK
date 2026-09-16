@@ -375,6 +375,27 @@ class AppLocalizationsKo extends AppLocalizations {
   String get connectorNodes => '이 렌즈의 항목';
 
   @override
+  String get designerBoard => '보드';
+
+  @override
+  String get designerNewNode => '새 노드';
+
+  @override
+  String get designerNode => '노드';
+
+  @override
+  String get designerNodeText => '텍스트';
+
+  @override
+  String get designerEmpty => '아직 노드가 없습니다';
+
+  @override
+  String get designerLinkHint => '연결할 다른 노드를 누르세요';
+
+  @override
+  String get designerLinkCancel => '연결 취소';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

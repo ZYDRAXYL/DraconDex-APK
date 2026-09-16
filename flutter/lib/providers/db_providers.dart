@@ -5,6 +5,7 @@ import '../data/dao/author_dao.dart';
 import '../data/dao/chronicler_dao.dart';
 import '../data/dao/classifier_dao.dart';
 import '../data/dao/color_dao.dart';
+import '../data/dao/designer_dao.dart';
 import '../data/dao/hashtag_dao.dart';
 import '../data/dao/module_dao.dart';
 import '../data/dao/narrator_dao.dart';
@@ -49,4 +50,8 @@ final narratorDaoProvider = Provider<AsyncValue<NarratorDao>>((ref) {
 
 final viewerDaoProvider = Provider<AsyncValue<ViewerDao>>((ref) {
   return ref.watch(databaseProvider).whenData((db) => ViewerDao(db));
+});
+
+final designerDaoProvider = Provider<AsyncValue<DesignerDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => DesignerDao(db));
 });

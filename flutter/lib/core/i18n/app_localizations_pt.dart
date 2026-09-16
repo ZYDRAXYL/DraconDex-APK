@@ -375,6 +375,27 @@ class AppLocalizationsPt extends AppLocalizations {
   String get connectorNodes => 'Itens nesta lente';
 
   @override
+  String get designerBoard => 'Quadro';
+
+  @override
+  String get designerNewNode => 'Novo nó';
+
+  @override
+  String get designerNode => 'Nó';
+
+  @override
+  String get designerNodeText => 'Texto';
+
+  @override
+  String get designerEmpty => 'Ainda não há nós';
+
+  @override
+  String get designerLinkHint => 'Toque em outro nó para conectá-lo';
+
+  @override
+  String get designerLinkCancel => 'Cancelar ligação';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

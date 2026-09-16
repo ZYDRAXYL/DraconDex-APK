@@ -375,6 +375,27 @@ class AppLocalizationsDe extends AppLocalizations {
   String get connectorNodes => 'Einträge in dieser Linse';
 
   @override
+  String get designerBoard => 'Tafel';
+
+  @override
+  String get designerNewNode => 'Neuer Knoten';
+
+  @override
+  String get designerNode => 'Knoten';
+
+  @override
+  String get designerNodeText => 'Text';
+
+  @override
+  String get designerEmpty => 'Noch keine Knoten';
+
+  @override
+  String get designerLinkHint => 'Tippe einen anderen Knoten an, um zu verbinden';
+
+  @override
+  String get designerLinkCancel => 'Verbindung abbrechen';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

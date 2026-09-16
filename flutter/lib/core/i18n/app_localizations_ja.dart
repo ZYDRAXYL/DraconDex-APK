@@ -375,6 +375,27 @@ class AppLocalizationsJa extends AppLocalizations {
   String get connectorNodes => 'このレンズ内の項目';
 
   @override
+  String get designerBoard => 'ボード';
+
+  @override
+  String get designerNewNode => '新しいノード';
+
+  @override
+  String get designerNode => 'ノード';
+
+  @override
+  String get designerNodeText => 'テキスト';
+
+  @override
+  String get designerEmpty => 'まだノードがありません';
+
+  @override
+  String get designerLinkHint => '接続するノードをタップしてください';
+
+  @override
+  String get designerLinkCancel => '接続をキャンセル';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

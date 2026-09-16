@@ -375,6 +375,27 @@ class AppLocalizationsQd extends AppLocalizations {
   String get connectorNodes => 'Þingas on þissum glæse';
 
   @override
+  String get designerBoard => 'Bord';
+
+  @override
+  String get designerNewNode => 'Niwe Cnotta';
+
+  @override
+  String get designerNode => 'Cnotta';
+
+  @override
+  String get designerNodeText => 'Gewrit';
+
+  @override
+  String get designerEmpty => 'Nán cnotta gíet';
+
+  @override
+  String get designerLinkHint => 'Hrepa óþerne cnottan tó bindanne';
+
+  @override
+  String get designerLinkCancel => 'Forlǽt þa Bindinge';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

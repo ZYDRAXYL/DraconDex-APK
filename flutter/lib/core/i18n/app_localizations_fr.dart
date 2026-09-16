@@ -375,6 +375,27 @@ class AppLocalizationsFr extends AppLocalizations {
   String get connectorNodes => 'Éléments dans cette lentille';
 
   @override
+  String get designerBoard => 'Tableau';
+
+  @override
+  String get designerNewNode => 'Nouveau nœud';
+
+  @override
+  String get designerNode => 'Nœud';
+
+  @override
+  String get designerNodeText => 'Texte';
+
+  @override
+  String get designerEmpty => 'Aucun nœud pour l\'instant';
+
+  @override
+  String get designerLinkHint => 'Touchez un autre nœud pour le relier';
+
+  @override
+  String get designerLinkCancel => 'Annuler le lien';
+
+  @override
   String get settingsAppearance => 'Apparence';
 
   @override

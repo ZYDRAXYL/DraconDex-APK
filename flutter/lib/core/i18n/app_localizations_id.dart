@@ -375,6 +375,27 @@ class AppLocalizationsId extends AppLocalizations {
   String get connectorNodes => 'Item dalam lensa ini';
 
   @override
+  String get designerBoard => 'Papan';
+
+  @override
+  String get designerNewNode => 'Simpul baru';
+
+  @override
+  String get designerNode => 'Simpul';
+
+  @override
+  String get designerNodeText => 'Teks';
+
+  @override
+  String get designerEmpty => 'Belum ada simpul';
+
+  @override
+  String get designerLinkHint => 'Ketuk simpul lain untuk menghubungkannya';
+
+  @override
+  String get designerLinkCancel => 'Batalkan tautan';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

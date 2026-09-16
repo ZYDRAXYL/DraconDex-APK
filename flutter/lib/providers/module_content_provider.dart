@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/models/author_model.dart';
 import '../data/models/chronicler_model.dart';
 import '../data/models/classifier_model.dart';
+import '../data/models/designer_model.dart';
 import '../data/models/narrator_model.dart';
 import '../data/models/viewer_model.dart';
 import '../data/models/scribe_model.dart';
@@ -149,5 +150,25 @@ final relationsProvider =
     data: (d) => d.getRelations(nexusId),
     loading: () => Future.value(<Map<String, Object?>>[]),
     error: (e, s) => Future<List<Map<String, Object?>>>.error(e, s),
+  );
+});
+
+final designNodesProvider =
+    FutureProvider.family<List<DesignNodeModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(designerDaoProvider);
+  return dao.when(
+    data: (d) => d.getNodes(moduleId),
+    loading: () => Future.value(<DesignNodeModel>[]),
+    error: (e, s) => Future<List<DesignNodeModel>>.error(e, s),
+  );
+});
+
+final designEdgesProvider =
+    FutureProvider.family<List<DesignEdgeModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(designerDaoProvider);
+  return dao.when(
+    data: (d) => d.getEdges(moduleId),
+    loading: () => Future.value(<DesignEdgeModel>[]),
+    error: (e, s) => Future<List<DesignEdgeModel>>.error(e, s),
   );
 });

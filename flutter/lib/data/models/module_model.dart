@@ -182,7 +182,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Designer',
     icon: Icons.account_tree_outlined,
     description: 'Free-form diagram board',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
 };
 

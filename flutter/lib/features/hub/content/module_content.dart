@@ -5,6 +5,7 @@ import 'chronicler_content.dart';
 import 'classifier_content.dart';
 import 'narrator_content.dart';
 import 'connector_content.dart';
+import 'designer_content.dart';
 import 'viewer_content.dart';
 import 'scribe_content.dart';
 
@@ -33,6 +34,7 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       // Connector shares the Viewer's index and filter; its edges are
       // Nexus-scoped entity_relation rows, so it needs the Nexus too.
       ModuleKind.connector => ConnectorContent(moduleId: module.id, nexusId: module.nexusRef),
+      ModuleKind.designer => DesignerContent(moduleId: module.id),
       // Folders have no content area at all; the caller returns early.
       ModuleKind.collector || ModuleKind.manager => null,
       // The notes field genuinely is the content for these two.
@@ -40,7 +42,6 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       // Still pending a dedicated editor.
       ModuleKind.locator ||
       ModuleKind.wanderer ||
-      ModuleKind.sketcher ||
-      ModuleKind.designer =>
+      ModuleKind.sketcher =>
         null,
     };

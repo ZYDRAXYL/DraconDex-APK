@@ -852,6 +852,48 @@ abstract class AppLocalizations {
   /// **'Items in this lens'**
   String get connectorNodes;
 
+  /// No description provided for @designerBoard.
+  ///
+  /// In en, this message translates to:
+  /// **'Board'**
+  String get designerBoard;
+
+  /// No description provided for @designerNewNode.
+  ///
+  /// In en, this message translates to:
+  /// **'New node'**
+  String get designerNewNode;
+
+  /// No description provided for @designerNode.
+  ///
+  /// In en, this message translates to:
+  /// **'Node'**
+  String get designerNode;
+
+  /// No description provided for @designerNodeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get designerNodeText;
+
+  /// No description provided for @designerEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No nodes yet'**
+  String get designerEmpty;
+
+  /// No description provided for @designerLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap another node to connect it'**
+  String get designerLinkHint;
+
+  /// No description provided for @designerLinkCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel link'**
+  String get designerLinkCancel;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

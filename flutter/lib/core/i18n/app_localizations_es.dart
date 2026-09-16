@@ -375,6 +375,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get connectorNodes => 'Elementos en esta lente';
 
   @override
+  String get designerBoard => 'Tablero';
+
+  @override
+  String get designerNewNode => 'Nuevo nodo';
+
+  @override
+  String get designerNode => 'Nodo';
+
+  @override
+  String get designerNodeText => 'Texto';
+
+  @override
+  String get designerEmpty => 'Aún no hay nodos';
+
+  @override
+  String get designerLinkHint => 'Toca otro nodo para conectarlo';
+
+  @override
+  String get designerLinkCancel => 'Cancelar enlace';
+
+  @override
   String get settingsAppearance => 'Apariencia';
 
   @override

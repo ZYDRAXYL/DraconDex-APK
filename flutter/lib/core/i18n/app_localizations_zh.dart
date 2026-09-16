@@ -375,6 +375,27 @@ class AppLocalizationsZh extends AppLocalizations {
   String get connectorNodes => '此视图中的条目';
 
   @override
+  String get designerBoard => '画板';
+
+  @override
+  String get designerNewNode => '新建节点';
+
+  @override
+  String get designerNode => '节点';
+
+  @override
+  String get designerNodeText => '文本';
+
+  @override
+  String get designerEmpty => '还没有节点';
+
+  @override
+  String get designerLinkHint => '点按另一个节点以连接';
+
+  @override
+  String get designerLinkCancel => '取消连接';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

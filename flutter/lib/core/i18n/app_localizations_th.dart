@@ -375,6 +375,27 @@ class AppLocalizationsTh extends AppLocalizations {
   String get connectorNodes => 'รายการในเลนส์นี้';
 
   @override
+  String get designerBoard => 'กระดาน';
+
+  @override
+  String get designerNewNode => 'โหนดใหม่';
+
+  @override
+  String get designerNode => 'โหนด';
+
+  @override
+  String get designerNodeText => 'ข้อความ';
+
+  @override
+  String get designerEmpty => 'ยังไม่มีโหนด';
+
+  @override
+  String get designerLinkHint => 'แตะโหนดอื่นเพื่อเชื่อมต่อ';
+
+  @override
+  String get designerLinkCancel => 'ยกเลิกการเชื่อม';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

@@ -375,6 +375,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectorNodes => 'Items in this lens';
 
   @override
+  String get designerBoard => 'Board';
+
+  @override
+  String get designerNewNode => 'New node';
+
+  @override
+  String get designerNode => 'Node';
+
+  @override
+  String get designerNodeText => 'Text';
+
+  @override
+  String get designerEmpty => 'No nodes yet';
+
+  @override
+  String get designerLinkHint => 'Tap another node to connect it';
+
+  @override
+  String get designerLinkCancel => 'Cancel link';
+
+  @override
   String get settingsAppearance => 'Appearance';
 
   @override
