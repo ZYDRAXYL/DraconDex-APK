@@ -177,6 +177,249 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notesHint => '为此模块添加备注…';
 
   @override
+  String get authorChapters => '章节';
+
+  @override
+  String get authorNewChapter => '新建章节';
+
+  @override
+  String get authorNoChapters => '还没有章节';
+
+  @override
+  String get authorContentHint => '撰写本章…';
+
+  @override
+  String get scribeSessions => '会话';
+
+  @override
+  String get scribeNewSession => '新建会话';
+
+  @override
+  String get scribeNoSessions => '还没有会话';
+
+  @override
+  String get scribeMessageHint => '输入消息…';
+
+  @override
+  String get scribeSwitchSide => '切换左右';
+
+  @override
+  String get chroniclerEvents => '事件';
+
+  @override
+  String get chroniclerNewEvent => '新建事件';
+
+  @override
+  String get chroniclerNoEvents => '还没有事件';
+
+  @override
+  String get chroniclerUntitledEvent => '未命名事件';
+
+  @override
+  String get chroniclerStart => '开始';
+
+  @override
+  String get chroniclerYear => '年';
+
+  @override
+  String get chroniclerMonth => '月';
+
+  @override
+  String get chroniclerDay => '日';
+
+  @override
+  String get chroniclerHour => '时';
+
+  @override
+  String get chroniclerMinute => '分';
+
+  @override
+  String get chroniclerHasEnd => '有结束日期';
+
+  @override
+  String get chroniclerStory => '故事';
+
+  @override
+  String get classifierFields => '字段';
+
+  @override
+  String get classifierNewField => '新建字段';
+
+  @override
+  String get classifierNoFields => '还没有字段';
+
+  @override
+  String get classifierItems => '条目';
+
+  @override
+  String get classifierNewItem => '新建条目';
+
+  @override
+  String get classifierNoItems => '还没有条目';
+
+  @override
+  String get classifierDeleteFieldWarning => '这也会删除每个条目在该字段中的值。';
+
+  @override
+  String get narratorScenes => '场景';
+
+  @override
+  String get narratorNewScene => '新建场景';
+
+  @override
+  String get narratorNoScenes => '还没有场景';
+
+  @override
+  String get narratorScript => '剧本';
+
+  @override
+  String get narratorNewLine => '新建台词';
+
+  @override
+  String get narratorNoLines => '还没有台词';
+
+  @override
+  String get narratorSpeaker => '说话者';
+
+  @override
+  String get narratorLine => '台词';
+
+  @override
+  String get narratorRoutes => '路线';
+
+  @override
+  String get narratorLeadsTo => '通向';
+
+  @override
+  String get narratorNoRoutes => '还没有路线';
+
+  @override
+  String get viewerResults => '结果';
+
+  @override
+  String get viewerNoFilter => '尚未设置筛选 — 打开筛选以选择此视图显示的内容。';
+
+  @override
+  String get viewerNoResults => '没有内容符合此筛选';
+
+  @override
+  String get viewerUntitled => '未命名';
+
+  @override
+  String get filterTitle => '筛选';
+
+  @override
+  String get filterExplain => '同一组内的规则必须全部符合，任意一组符合即可。';
+
+  @override
+  String get filterAnd => '并且';
+
+  @override
+  String get filterOr => '或者';
+
+  @override
+  String get filterAddRule => '添加规则';
+
+  @override
+  String get filterAddGroup => '添加分组';
+
+  @override
+  String get filterFieldName => '名称';
+
+  @override
+  String get filterFieldHashtag => '标签';
+
+  @override
+  String get filterFieldKind => '模块类型';
+
+  @override
+  String get filterFieldChildOf => '位于模块内';
+
+  @override
+  String get filterOpIs => '等于';
+
+  @override
+  String get filterOpIsNot => '不等于';
+
+  @override
+  String get filterOpStartsWith => '开头为';
+
+  @override
+  String get filterOpEndsWith => '结尾为';
+
+  @override
+  String get filterOpContains => '包含';
+
+  @override
+  String get filterPickModule => '选择模块';
+
+  @override
+  String get connectorRelations => '关系';
+
+  @override
+  String get connectorNoRelations => '还没有关系';
+
+  @override
+  String get connectorAddRelation => '添加关系';
+
+  @override
+  String get connectorFrom => '从';
+
+  @override
+  String get connectorTo => '到';
+
+  @override
+  String get connectorLabel => '标签';
+
+  @override
+  String get connectorNodes => '此视图中的条目';
+
+  @override
+  String get designerBoard => '画板';
+
+  @override
+  String get designerNewNode => '新建节点';
+
+  @override
+  String get designerNode => '节点';
+
+  @override
+  String get designerNodeText => '文本';
+
+  @override
+  String get designerEmpty => '还没有节点';
+
+  @override
+  String get designerLinkHint => '点按另一个节点以连接';
+
+  @override
+  String get designerLinkCancel => '取消连接';
+
+  @override
+  String get sketcherPages => '页面';
+
+  @override
+  String get sketcherNewPage => '新建页面';
+
+  @override
+  String get sketcherNoPages => '还没有页面';
+
+  @override
+  String get sketcherDraw => '绘制';
+
+  @override
+  String get sketcherPan => '平移';
+
+  @override
+  String get sketcherUndo => '撤销上一笔';
+
+  @override
+  String get sketcherClear => '清空页面';
+
+  @override
+  String get sketcherClearWarning => '这会清除本页所有笔画。';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

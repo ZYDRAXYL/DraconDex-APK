@@ -177,6 +177,249 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notesHint => 'Notas para este módulo…';
 
   @override
+  String get authorChapters => 'Capítulos';
+
+  @override
+  String get authorNewChapter => 'Novo capítulo';
+
+  @override
+  String get authorNoChapters => 'Ainda não há capítulos';
+
+  @override
+  String get authorContentHint => 'Escreva este capítulo…';
+
+  @override
+  String get scribeSessions => 'Sessões';
+
+  @override
+  String get scribeNewSession => 'Nova sessão';
+
+  @override
+  String get scribeNoSessions => 'Ainda não há sessões';
+
+  @override
+  String get scribeMessageHint => 'Escreva uma mensagem…';
+
+  @override
+  String get scribeSwitchSide => 'Trocar de lado';
+
+  @override
+  String get chroniclerEvents => 'Eventos';
+
+  @override
+  String get chroniclerNewEvent => 'Novo evento';
+
+  @override
+  String get chroniclerNoEvents => 'Ainda não há eventos';
+
+  @override
+  String get chroniclerUntitledEvent => 'Evento sem título';
+
+  @override
+  String get chroniclerStart => 'Início';
+
+  @override
+  String get chroniclerYear => 'Ano';
+
+  @override
+  String get chroniclerMonth => 'Mês';
+
+  @override
+  String get chroniclerDay => 'Dia';
+
+  @override
+  String get chroniclerHour => 'Hora';
+
+  @override
+  String get chroniclerMinute => 'Minuto';
+
+  @override
+  String get chroniclerHasEnd => 'Tem data de fim';
+
+  @override
+  String get chroniclerStory => 'História';
+
+  @override
+  String get classifierFields => 'Campos';
+
+  @override
+  String get classifierNewField => 'Novo campo';
+
+  @override
+  String get classifierNoFields => 'Ainda não há campos';
+
+  @override
+  String get classifierItems => 'Itens';
+
+  @override
+  String get classifierNewItem => 'Novo item';
+
+  @override
+  String get classifierNoItems => 'Ainda não há itens';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Isso também exclui o valor que cada item tem para ele.';
+
+  @override
+  String get narratorScenes => 'Cenas';
+
+  @override
+  String get narratorNewScene => 'Nova cena';
+
+  @override
+  String get narratorNoScenes => 'Ainda não há cenas';
+
+  @override
+  String get narratorScript => 'Roteiro';
+
+  @override
+  String get narratorNewLine => 'Nova linha';
+
+  @override
+  String get narratorNoLines => 'Ainda não há linhas';
+
+  @override
+  String get narratorSpeaker => 'Falante';
+
+  @override
+  String get narratorLine => 'Linha';
+
+  @override
+  String get narratorRoutes => 'Rotas';
+
+  @override
+  String get narratorLeadsTo => 'Leva a';
+
+  @override
+  String get narratorNoRoutes => 'Ainda não há rotas';
+
+  @override
+  String get viewerResults => 'Resultados';
+
+  @override
+  String get viewerNoFilter => 'Ainda sem filtro — abra o filtro para escolher o que esta lente mostra.';
+
+  @override
+  String get viewerNoResults => 'Nada corresponde a este filtro';
+
+  @override
+  String get viewerUntitled => 'Sem título';
+
+  @override
+  String get filterTitle => 'Filtro';
+
+  @override
+  String get filterExplain => 'Todas as regras de um grupo devem corresponder. Basta um grupo corresponder.';
+
+  @override
+  String get filterAnd => 'e';
+
+  @override
+  String get filterOr => 'ou';
+
+  @override
+  String get filterAddRule => 'Adicionar regra';
+
+  @override
+  String get filterAddGroup => 'Adicionar grupo';
+
+  @override
+  String get filterFieldName => 'Nome';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Tipo de módulo';
+
+  @override
+  String get filterFieldChildOf => 'Dentro do módulo';
+
+  @override
+  String get filterOpIs => 'é';
+
+  @override
+  String get filterOpIsNot => 'não é';
+
+  @override
+  String get filterOpStartsWith => 'começa com';
+
+  @override
+  String get filterOpEndsWith => 'termina com';
+
+  @override
+  String get filterOpContains => 'contém';
+
+  @override
+  String get filterPickModule => 'Escolher um módulo';
+
+  @override
+  String get connectorRelations => 'Relações';
+
+  @override
+  String get connectorNoRelations => 'Ainda não há relações';
+
+  @override
+  String get connectorAddRelation => 'Adicionar relação';
+
+  @override
+  String get connectorFrom => 'De';
+
+  @override
+  String get connectorTo => 'Para';
+
+  @override
+  String get connectorLabel => 'Rótulo';
+
+  @override
+  String get connectorNodes => 'Itens nesta lente';
+
+  @override
+  String get designerBoard => 'Quadro';
+
+  @override
+  String get designerNewNode => 'Novo nó';
+
+  @override
+  String get designerNode => 'Nó';
+
+  @override
+  String get designerNodeText => 'Texto';
+
+  @override
+  String get designerEmpty => 'Ainda não há nós';
+
+  @override
+  String get designerLinkHint => 'Toque em outro nó para conectá-lo';
+
+  @override
+  String get designerLinkCancel => 'Cancelar ligação';
+
+  @override
+  String get sketcherPages => 'Páginas';
+
+  @override
+  String get sketcherNewPage => 'Nova página';
+
+  @override
+  String get sketcherNoPages => 'Ainda não há páginas';
+
+  @override
+  String get sketcherDraw => 'Desenhar';
+
+  @override
+  String get sketcherPan => 'Mover';
+
+  @override
+  String get sketcherUndo => 'Desfazer último traço';
+
+  @override
+  String get sketcherClear => 'Limpar página';
+
+  @override
+  String get sketcherClearWarning => 'Isso apaga todos os traços desta página.';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

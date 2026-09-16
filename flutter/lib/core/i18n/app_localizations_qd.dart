@@ -177,6 +177,249 @@ class AppLocalizationsQd extends AppLocalizations {
   String get notesHint => 'Notheth for thys modyxx…';
 
   @override
+  String get authorChapters => 'Chaptres';
+
+  @override
+  String get authorNewChapter => 'Niwe Chaptre';
+
+  @override
+  String get authorNoChapters => 'Nán chaptre gíet';
+
+  @override
+  String get authorContentHint => 'Wrít þis chaptre…';
+
+  @override
+  String get scribeSessions => 'Sessiouns';
+
+  @override
+  String get scribeNewSession => 'Niwe Sessioun';
+
+  @override
+  String get scribeNoSessions => 'Nán sessioun gíet';
+
+  @override
+  String get scribeMessageHint => 'Wrít ane message…';
+
+  @override
+  String get scribeSwitchSide => 'Wend þa sídan';
+
+  @override
+  String get chroniclerEvents => 'Gelimpas';
+
+  @override
+  String get chroniclerNewEvent => 'Niwe Gelimp';
+
+  @override
+  String get chroniclerNoEvents => 'Nán gelimp gíet';
+
+  @override
+  String get chroniclerUntitledEvent => 'Unnemned Gelimp';
+
+  @override
+  String get chroniclerStart => 'Ongin';
+
+  @override
+  String get chroniclerYear => 'Gear';
+
+  @override
+  String get chroniclerMonth => 'Monyth';
+
+  @override
+  String get chroniclerDay => 'Daeg';
+
+  @override
+  String get chroniclerHour => 'Houre';
+
+  @override
+  String get chroniclerMinute => 'Minyt';
+
+  @override
+  String get chroniclerHasEnd => 'Hafþ ende-daeg';
+
+  @override
+  String get chroniclerStory => 'Spell';
+
+  @override
+  String get classifierFields => 'Feldas';
+
+  @override
+  String get classifierNewField => 'Niwe Feld';
+
+  @override
+  String get classifierNoFields => 'Nán feld gíet';
+
+  @override
+  String get classifierItems => 'Þingas';
+
+  @override
+  String get classifierNewItem => 'Niwe Þing';
+
+  @override
+  String get classifierNoItems => 'Nán þing gíet';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Þis fordéþ éac þone weorþ þe ælc þing þǽrfore hafaþ.';
+
+  @override
+  String get narratorScenes => 'Scenan';
+
+  @override
+  String get narratorNewScene => 'Niwe Scene';
+
+  @override
+  String get narratorNoScenes => 'Nán scene gíet';
+
+  @override
+  String get narratorScript => 'Gewrit';
+
+  @override
+  String get narratorNewLine => 'Niwe Líne';
+
+  @override
+  String get narratorNoLines => 'Nán líne gíet';
+
+  @override
+  String get narratorSpeaker => 'Sprecend';
+
+  @override
+  String get narratorLine => 'Líne';
+
+  @override
+  String get narratorRoutes => 'Weagas';
+
+  @override
+  String get narratorLeadsTo => 'Lǽdeþ tó';
+
+  @override
+  String get narratorNoRoutes => 'Nán weg gíet';
+
+  @override
+  String get viewerResults => 'Fundas';
+
+  @override
+  String get viewerNoFilter => 'Nán sihþe gíet — ontýn þa sihþe tó céosanne hwæt þes glæs ætíewþ.';
+
+  @override
+  String get viewerNoResults => 'Náht gemæcþ þisse sihþe';
+
+  @override
+  String get viewerUntitled => 'Unnemned';
+
+  @override
+  String get filterTitle => 'Sihþe';
+
+  @override
+  String get filterExplain => 'Ealle rǽdas on ánum hēape sculon gemæccan. Án hēap genōg biþ.';
+
+  @override
+  String get filterAnd => 'and';
+
+  @override
+  String get filterOr => 'oþþe';
+
+  @override
+  String get filterAddRule => 'Ecan Rǽd';
+
+  @override
+  String get filterAddGroup => 'Ecan Hēap';
+
+  @override
+  String get filterFieldName => 'Nama';
+
+  @override
+  String get filterFieldHashtag => 'Mearcword';
+
+  @override
+  String get filterFieldKind => 'Cynn þæs Módules';
+
+  @override
+  String get filterFieldChildOf => 'Innan Módule';
+
+  @override
+  String get filterOpIs => 'is';
+
+  @override
+  String get filterOpIsNot => 'nis';
+
+  @override
+  String get filterOpStartsWith => 'onginþ mid';
+
+  @override
+  String get filterOpEndsWith => 'endaþ mid';
+
+  @override
+  String get filterOpContains => 'hæfþ innan';
+
+  @override
+  String get filterPickModule => 'Céos Módul';
+
+  @override
+  String get connectorRelations => 'Gefēran';
+
+  @override
+  String get connectorNoRelations => 'Nán gefēra gíet';
+
+  @override
+  String get connectorAddRelation => 'Ecan Gefēra';
+
+  @override
+  String get connectorFrom => 'Fram';
+
+  @override
+  String get connectorTo => 'Tó';
+
+  @override
+  String get connectorLabel => 'Nemning';
+
+  @override
+  String get connectorNodes => 'Þingas on þissum glæse';
+
+  @override
+  String get designerBoard => 'Bord';
+
+  @override
+  String get designerNewNode => 'Niwe Cnotta';
+
+  @override
+  String get designerNode => 'Cnotta';
+
+  @override
+  String get designerNodeText => 'Gewrit';
+
+  @override
+  String get designerEmpty => 'Nán cnotta gíet';
+
+  @override
+  String get designerLinkHint => 'Hrepa óþerne cnottan tó bindanne';
+
+  @override
+  String get designerLinkCancel => 'Forlǽt þa Bindinge';
+
+  @override
+  String get sketcherPages => 'Bladas';
+
+  @override
+  String get sketcherNewPage => 'Niwe Blad';
+
+  @override
+  String get sketcherNoPages => 'Nán blad gíet';
+
+  @override
+  String get sketcherDraw => 'Trahtian';
+
+  @override
+  String get sketcherPan => 'Styrian';
+
+  @override
+  String get sketcherUndo => 'Undón þone lætestan strican';
+
+  @override
+  String get sketcherClear => 'Clǽnsian þæt Blad';
+
+  @override
+  String get sketcherClearWarning => 'Þis ādīlgaþ ælcne strican on þissum blade.';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

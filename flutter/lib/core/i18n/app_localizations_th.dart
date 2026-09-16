@@ -177,6 +177,249 @@ class AppLocalizationsTh extends AppLocalizations {
   String get notesHint => 'โน้ตสำหรับโมดูลนี้…';
 
   @override
+  String get authorChapters => 'บท';
+
+  @override
+  String get authorNewChapter => 'บทใหม่';
+
+  @override
+  String get authorNoChapters => 'ยังไม่มีบท';
+
+  @override
+  String get authorContentHint => 'เขียนบทนี้…';
+
+  @override
+  String get scribeSessions => 'เซสชัน';
+
+  @override
+  String get scribeNewSession => 'เซสชันใหม่';
+
+  @override
+  String get scribeNoSessions => 'ยังไม่มีเซสชัน';
+
+  @override
+  String get scribeMessageHint => 'เขียนข้อความ…';
+
+  @override
+  String get scribeSwitchSide => 'สลับข้าง';
+
+  @override
+  String get chroniclerEvents => 'เหตุการณ์';
+
+  @override
+  String get chroniclerNewEvent => 'เหตุการณ์ใหม่';
+
+  @override
+  String get chroniclerNoEvents => 'ยังไม่มีเหตุการณ์';
+
+  @override
+  String get chroniclerUntitledEvent => 'เหตุการณ์ไม่มีชื่อ';
+
+  @override
+  String get chroniclerStart => 'เริ่ม';
+
+  @override
+  String get chroniclerYear => 'ปี';
+
+  @override
+  String get chroniclerMonth => 'เดือน';
+
+  @override
+  String get chroniclerDay => 'วัน';
+
+  @override
+  String get chroniclerHour => 'ชั่วโมง';
+
+  @override
+  String get chroniclerMinute => 'นาที';
+
+  @override
+  String get chroniclerHasEnd => 'มีวันสิ้นสุด';
+
+  @override
+  String get chroniclerStory => 'เรื่องราว';
+
+  @override
+  String get classifierFields => 'ฟิลด์';
+
+  @override
+  String get classifierNewField => 'ฟิลด์ใหม่';
+
+  @override
+  String get classifierNoFields => 'ยังไม่มีฟิลด์';
+
+  @override
+  String get classifierItems => 'รายการ';
+
+  @override
+  String get classifierNewItem => 'รายการใหม่';
+
+  @override
+  String get classifierNoItems => 'ยังไม่มีรายการ';
+
+  @override
+  String get classifierDeleteFieldWarning => 'การลบนี้จะลบค่าของฟิลด์นี้ในทุกรายการด้วย';
+
+  @override
+  String get narratorScenes => 'ฉาก';
+
+  @override
+  String get narratorNewScene => 'ฉากใหม่';
+
+  @override
+  String get narratorNoScenes => 'ยังไม่มีฉาก';
+
+  @override
+  String get narratorScript => 'บท';
+
+  @override
+  String get narratorNewLine => 'บรรทัดใหม่';
+
+  @override
+  String get narratorNoLines => 'ยังไม่มีบรรทัด';
+
+  @override
+  String get narratorSpeaker => 'ผู้พูด';
+
+  @override
+  String get narratorLine => 'บรรทัด';
+
+  @override
+  String get narratorRoutes => 'เส้นทาง';
+
+  @override
+  String get narratorLeadsTo => 'ไปยัง';
+
+  @override
+  String get narratorNoRoutes => 'ยังไม่มีเส้นทาง';
+
+  @override
+  String get viewerResults => 'ผลลัพธ์';
+
+  @override
+  String get viewerNoFilter => 'ยังไม่ได้ตั้งตัวกรอง — เปิดตัวกรองเพื่อเลือกสิ่งที่เลนส์นี้แสดง';
+
+  @override
+  String get viewerNoResults => 'ไม่มีอะไรตรงกับตัวกรองนี้';
+
+  @override
+  String get viewerUntitled => 'ไม่มีชื่อ';
+
+  @override
+  String get filterTitle => 'ตัวกรอง';
+
+  @override
+  String get filterExplain => 'กฎในกลุ่มเดียวกันต้องตรงทั้งหมด และตรงเพียงกลุ่มใดกลุ่มหนึ่งก็พอ';
+
+  @override
+  String get filterAnd => 'และ';
+
+  @override
+  String get filterOr => 'หรือ';
+
+  @override
+  String get filterAddRule => 'เพิ่มกฎ';
+
+  @override
+  String get filterAddGroup => 'เพิ่มกลุ่ม';
+
+  @override
+  String get filterFieldName => 'ชื่อ';
+
+  @override
+  String get filterFieldHashtag => 'แฮชแท็ก';
+
+  @override
+  String get filterFieldKind => 'ชนิดโมดูล';
+
+  @override
+  String get filterFieldChildOf => 'ในโมดูล';
+
+  @override
+  String get filterOpIs => 'เท่ากับ';
+
+  @override
+  String get filterOpIsNot => 'ไม่เท่ากับ';
+
+  @override
+  String get filterOpStartsWith => 'ขึ้นต้นด้วย';
+
+  @override
+  String get filterOpEndsWith => 'ลงท้ายด้วย';
+
+  @override
+  String get filterOpContains => 'มีคำว่า';
+
+  @override
+  String get filterPickModule => 'เลือกโมดูล';
+
+  @override
+  String get connectorRelations => 'ความสัมพันธ์';
+
+  @override
+  String get connectorNoRelations => 'ยังไม่มีความสัมพันธ์';
+
+  @override
+  String get connectorAddRelation => 'เพิ่มความสัมพันธ์';
+
+  @override
+  String get connectorFrom => 'จาก';
+
+  @override
+  String get connectorTo => 'ไปยัง';
+
+  @override
+  String get connectorLabel => 'ป้ายกำกับ';
+
+  @override
+  String get connectorNodes => 'รายการในเลนส์นี้';
+
+  @override
+  String get designerBoard => 'กระดาน';
+
+  @override
+  String get designerNewNode => 'โหนดใหม่';
+
+  @override
+  String get designerNode => 'โหนด';
+
+  @override
+  String get designerNodeText => 'ข้อความ';
+
+  @override
+  String get designerEmpty => 'ยังไม่มีโหนด';
+
+  @override
+  String get designerLinkHint => 'แตะโหนดอื่นเพื่อเชื่อมต่อ';
+
+  @override
+  String get designerLinkCancel => 'ยกเลิกการเชื่อม';
+
+  @override
+  String get sketcherPages => 'หน้า';
+
+  @override
+  String get sketcherNewPage => 'หน้าใหม่';
+
+  @override
+  String get sketcherNoPages => 'ยังไม่มีหน้า';
+
+  @override
+  String get sketcherDraw => 'วาด';
+
+  @override
+  String get sketcherPan => 'เลื่อน';
+
+  @override
+  String get sketcherUndo => 'เลิกทำเส้นล่าสุด';
+
+  @override
+  String get sketcherClear => 'ล้างหน้า';
+
+  @override
+  String get sketcherClearWarning => 'การทำเช่นนี้จะลบทุกเส้นในหน้านี้';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

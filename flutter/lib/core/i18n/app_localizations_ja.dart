@@ -177,6 +177,249 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notesHint => 'このモジュールのメモ…';
 
   @override
+  String get authorChapters => '章';
+
+  @override
+  String get authorNewChapter => '新しい章';
+
+  @override
+  String get authorNoChapters => 'まだ章がありません';
+
+  @override
+  String get authorContentHint => 'この章を書く…';
+
+  @override
+  String get scribeSessions => 'セッション';
+
+  @override
+  String get scribeNewSession => '新しいセッション';
+
+  @override
+  String get scribeNoSessions => 'まだセッションがありません';
+
+  @override
+  String get scribeMessageHint => 'メッセージを入力…';
+
+  @override
+  String get scribeSwitchSide => '左右を切り替え';
+
+  @override
+  String get chroniclerEvents => 'イベント';
+
+  @override
+  String get chroniclerNewEvent => '新しいイベント';
+
+  @override
+  String get chroniclerNoEvents => 'まだイベントがありません';
+
+  @override
+  String get chroniclerUntitledEvent => '無題のイベント';
+
+  @override
+  String get chroniclerStart => '開始';
+
+  @override
+  String get chroniclerYear => '年';
+
+  @override
+  String get chroniclerMonth => '月';
+
+  @override
+  String get chroniclerDay => '日';
+
+  @override
+  String get chroniclerHour => '時';
+
+  @override
+  String get chroniclerMinute => '分';
+
+  @override
+  String get chroniclerHasEnd => '終了日あり';
+
+  @override
+  String get chroniclerStory => 'ストーリー';
+
+  @override
+  String get classifierFields => 'フィールド';
+
+  @override
+  String get classifierNewField => '新しいフィールド';
+
+  @override
+  String get classifierNoFields => 'まだフィールドがありません';
+
+  @override
+  String get classifierItems => '項目';
+
+  @override
+  String get classifierNewItem => '新しい項目';
+
+  @override
+  String get classifierNoItems => 'まだ項目がありません';
+
+  @override
+  String get classifierDeleteFieldWarning => '各項目が持つこのフィールドの値もすべて削除されます。';
+
+  @override
+  String get narratorScenes => 'シーン';
+
+  @override
+  String get narratorNewScene => '新しいシーン';
+
+  @override
+  String get narratorNoScenes => 'まだシーンがありません';
+
+  @override
+  String get narratorScript => 'スクリプト';
+
+  @override
+  String get narratorNewLine => '新しい行';
+
+  @override
+  String get narratorNoLines => 'まだ行がありません';
+
+  @override
+  String get narratorSpeaker => '話者';
+
+  @override
+  String get narratorLine => '行';
+
+  @override
+  String get narratorRoutes => 'ルート';
+
+  @override
+  String get narratorLeadsTo => '次へ';
+
+  @override
+  String get narratorNoRoutes => 'まだルートがありません';
+
+  @override
+  String get viewerResults => '結果';
+
+  @override
+  String get viewerNoFilter => 'フィルタが未設定です — フィルタを開いて表示内容を選んでください。';
+
+  @override
+  String get viewerNoResults => 'このフィルタに一致するものはありません';
+
+  @override
+  String get viewerUntitled => '無題';
+
+  @override
+  String get filterTitle => 'フィルタ';
+
+  @override
+  String get filterExplain => 'グループ内のルールはすべて一致する必要があります。いずれか1グループが一致すれば十分です。';
+
+  @override
+  String get filterAnd => 'かつ';
+
+  @override
+  String get filterOr => 'または';
+
+  @override
+  String get filterAddRule => 'ルールを追加';
+
+  @override
+  String get filterAddGroup => 'グループを追加';
+
+  @override
+  String get filterFieldName => '名前';
+
+  @override
+  String get filterFieldHashtag => 'ハッシュタグ';
+
+  @override
+  String get filterFieldKind => 'モジュール種別';
+
+  @override
+  String get filterFieldChildOf => 'モジュール内';
+
+  @override
+  String get filterOpIs => 'が次と等しい';
+
+  @override
+  String get filterOpIsNot => 'が次と等しくない';
+
+  @override
+  String get filterOpStartsWith => 'で始まる';
+
+  @override
+  String get filterOpEndsWith => 'で終わる';
+
+  @override
+  String get filterOpContains => 'を含む';
+
+  @override
+  String get filterPickModule => 'モジュールを選択';
+
+  @override
+  String get connectorRelations => '関係';
+
+  @override
+  String get connectorNoRelations => 'まだ関係がありません';
+
+  @override
+  String get connectorAddRelation => '関係を追加';
+
+  @override
+  String get connectorFrom => '開始';
+
+  @override
+  String get connectorTo => '終了';
+
+  @override
+  String get connectorLabel => 'ラベル';
+
+  @override
+  String get connectorNodes => 'このレンズ内の項目';
+
+  @override
+  String get designerBoard => 'ボード';
+
+  @override
+  String get designerNewNode => '新しいノード';
+
+  @override
+  String get designerNode => 'ノード';
+
+  @override
+  String get designerNodeText => 'テキスト';
+
+  @override
+  String get designerEmpty => 'まだノードがありません';
+
+  @override
+  String get designerLinkHint => '接続するノードをタップしてください';
+
+  @override
+  String get designerLinkCancel => '接続をキャンセル';
+
+  @override
+  String get sketcherPages => 'ページ';
+
+  @override
+  String get sketcherNewPage => '新しいページ';
+
+  @override
+  String get sketcherNoPages => 'まだページがありません';
+
+  @override
+  String get sketcherDraw => '描く';
+
+  @override
+  String get sketcherPan => '移動';
+
+  @override
+  String get sketcherUndo => '最後の線を取り消す';
+
+  @override
+  String get sketcherClear => 'ページを消去';
+
+  @override
+  String get sketcherClearWarning => 'このページのすべての線を消します。';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

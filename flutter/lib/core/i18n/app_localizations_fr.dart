@@ -177,6 +177,249 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notesHint => 'Notes pour ce module…';
 
   @override
+  String get authorChapters => 'Chapitres';
+
+  @override
+  String get authorNewChapter => 'Nouveau chapitre';
+
+  @override
+  String get authorNoChapters => 'Aucun chapitre pour l\'instant';
+
+  @override
+  String get authorContentHint => 'Écrivez ce chapitre…';
+
+  @override
+  String get scribeSessions => 'Sessions';
+
+  @override
+  String get scribeNewSession => 'Nouvelle session';
+
+  @override
+  String get scribeNoSessions => 'Aucune session pour l\'instant';
+
+  @override
+  String get scribeMessageHint => 'Écrivez un message…';
+
+  @override
+  String get scribeSwitchSide => 'Changer de côté';
+
+  @override
+  String get chroniclerEvents => 'Événements';
+
+  @override
+  String get chroniclerNewEvent => 'Nouvel événement';
+
+  @override
+  String get chroniclerNoEvents => 'Aucun événement pour l\'instant';
+
+  @override
+  String get chroniclerUntitledEvent => 'Événement sans titre';
+
+  @override
+  String get chroniclerStart => 'Début';
+
+  @override
+  String get chroniclerYear => 'Année';
+
+  @override
+  String get chroniclerMonth => 'Mois';
+
+  @override
+  String get chroniclerDay => 'Jour';
+
+  @override
+  String get chroniclerHour => 'Heure';
+
+  @override
+  String get chroniclerMinute => 'Minute';
+
+  @override
+  String get chroniclerHasEnd => 'A une date de fin';
+
+  @override
+  String get chroniclerStory => 'Récit';
+
+  @override
+  String get classifierFields => 'Champs';
+
+  @override
+  String get classifierNewField => 'Nouveau champ';
+
+  @override
+  String get classifierNoFields => 'Aucun champ pour l\'instant';
+
+  @override
+  String get classifierItems => 'Éléments';
+
+  @override
+  String get classifierNewItem => 'Nouvel élément';
+
+  @override
+  String get classifierNoItems => 'Aucun élément pour l\'instant';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Cela supprime aussi la valeur que chaque élément possède pour ce champ.';
+
+  @override
+  String get narratorScenes => 'Scènes';
+
+  @override
+  String get narratorNewScene => 'Nouvelle scène';
+
+  @override
+  String get narratorNoScenes => 'Aucune scène pour l\'instant';
+
+  @override
+  String get narratorScript => 'Script';
+
+  @override
+  String get narratorNewLine => 'Nouvelle réplique';
+
+  @override
+  String get narratorNoLines => 'Aucune réplique pour l\'instant';
+
+  @override
+  String get narratorSpeaker => 'Locuteur';
+
+  @override
+  String get narratorLine => 'Réplique';
+
+  @override
+  String get narratorRoutes => 'Routes';
+
+  @override
+  String get narratorLeadsTo => 'Mène à';
+
+  @override
+  String get narratorNoRoutes => 'Aucune route pour l\'instant';
+
+  @override
+  String get viewerResults => 'Résultats';
+
+  @override
+  String get viewerNoFilter => 'Aucun filtre défini — ouvrez le filtre pour choisir ce que cette lentille affiche.';
+
+  @override
+  String get viewerNoResults => 'Rien ne correspond à ce filtre';
+
+  @override
+  String get viewerUntitled => 'Sans titre';
+
+  @override
+  String get filterTitle => 'Filtre';
+
+  @override
+  String get filterExplain => 'Toutes les règles d\'un groupe doivent correspondre. Un seul groupe suffit.';
+
+  @override
+  String get filterAnd => 'et';
+
+  @override
+  String get filterOr => 'ou';
+
+  @override
+  String get filterAddRule => 'Ajouter une règle';
+
+  @override
+  String get filterAddGroup => 'Ajouter un groupe';
+
+  @override
+  String get filterFieldName => 'Nom';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Type de module';
+
+  @override
+  String get filterFieldChildOf => 'Dans le module';
+
+  @override
+  String get filterOpIs => 'est';
+
+  @override
+  String get filterOpIsNot => 'n\'est pas';
+
+  @override
+  String get filterOpStartsWith => 'commence par';
+
+  @override
+  String get filterOpEndsWith => 'se termine par';
+
+  @override
+  String get filterOpContains => 'contient';
+
+  @override
+  String get filterPickModule => 'Choisir un module';
+
+  @override
+  String get connectorRelations => 'Relations';
+
+  @override
+  String get connectorNoRelations => 'Aucune relation pour l\'instant';
+
+  @override
+  String get connectorAddRelation => 'Ajouter une relation';
+
+  @override
+  String get connectorFrom => 'De';
+
+  @override
+  String get connectorTo => 'Vers';
+
+  @override
+  String get connectorLabel => 'Libellé';
+
+  @override
+  String get connectorNodes => 'Éléments dans cette lentille';
+
+  @override
+  String get designerBoard => 'Tableau';
+
+  @override
+  String get designerNewNode => 'Nouveau nœud';
+
+  @override
+  String get designerNode => 'Nœud';
+
+  @override
+  String get designerNodeText => 'Texte';
+
+  @override
+  String get designerEmpty => 'Aucun nœud pour l\'instant';
+
+  @override
+  String get designerLinkHint => 'Touchez un autre nœud pour le relier';
+
+  @override
+  String get designerLinkCancel => 'Annuler le lien';
+
+  @override
+  String get sketcherPages => 'Pages';
+
+  @override
+  String get sketcherNewPage => 'Nouvelle page';
+
+  @override
+  String get sketcherNoPages => 'Aucune page pour l\'instant';
+
+  @override
+  String get sketcherDraw => 'Dessiner';
+
+  @override
+  String get sketcherPan => 'Déplacer';
+
+  @override
+  String get sketcherUndo => 'Annuler le dernier trait';
+
+  @override
+  String get sketcherClear => 'Vider la page';
+
+  @override
+  String get sketcherClearWarning => 'Cela efface tous les traits de cette page.';
+
+  @override
   String get settingsAppearance => 'Apparence';
 
   @override

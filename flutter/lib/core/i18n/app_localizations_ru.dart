@@ -177,6 +177,249 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notesHint => 'Заметки для этого модуля…';
 
   @override
+  String get authorChapters => 'Главы';
+
+  @override
+  String get authorNewChapter => 'Новая глава';
+
+  @override
+  String get authorNoChapters => 'Пока нет глав';
+
+  @override
+  String get authorContentHint => 'Напишите эту главу…';
+
+  @override
+  String get scribeSessions => 'Сессии';
+
+  @override
+  String get scribeNewSession => 'Новая сессия';
+
+  @override
+  String get scribeNoSessions => 'Пока нет сессий';
+
+  @override
+  String get scribeMessageHint => 'Напишите сообщение…';
+
+  @override
+  String get scribeSwitchSide => 'Сменить сторону';
+
+  @override
+  String get chroniclerEvents => 'События';
+
+  @override
+  String get chroniclerNewEvent => 'Новое событие';
+
+  @override
+  String get chroniclerNoEvents => 'Пока нет событий';
+
+  @override
+  String get chroniclerUntitledEvent => 'Событие без названия';
+
+  @override
+  String get chroniclerStart => 'Начало';
+
+  @override
+  String get chroniclerYear => 'Год';
+
+  @override
+  String get chroniclerMonth => 'Месяц';
+
+  @override
+  String get chroniclerDay => 'День';
+
+  @override
+  String get chroniclerHour => 'Час';
+
+  @override
+  String get chroniclerMinute => 'Минута';
+
+  @override
+  String get chroniclerHasEnd => 'Есть дата окончания';
+
+  @override
+  String get chroniclerStory => 'История';
+
+  @override
+  String get classifierFields => 'Поля';
+
+  @override
+  String get classifierNewField => 'Новое поле';
+
+  @override
+  String get classifierNoFields => 'Пока нет полей';
+
+  @override
+  String get classifierItems => 'Элементы';
+
+  @override
+  String get classifierNewItem => 'Новый элемент';
+
+  @override
+  String get classifierNoItems => 'Пока нет элементов';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Это также удалит значение этого поля у каждого элемента.';
+
+  @override
+  String get narratorScenes => 'Сцены';
+
+  @override
+  String get narratorNewScene => 'Новая сцена';
+
+  @override
+  String get narratorNoScenes => 'Пока нет сцен';
+
+  @override
+  String get narratorScript => 'Сценарий';
+
+  @override
+  String get narratorNewLine => 'Новая строка';
+
+  @override
+  String get narratorNoLines => 'Пока нет строк';
+
+  @override
+  String get narratorSpeaker => 'Говорящий';
+
+  @override
+  String get narratorLine => 'Строка';
+
+  @override
+  String get narratorRoutes => 'Маршруты';
+
+  @override
+  String get narratorLeadsTo => 'Ведёт к';
+
+  @override
+  String get narratorNoRoutes => 'Пока нет маршрутов';
+
+  @override
+  String get viewerResults => 'Результаты';
+
+  @override
+  String get viewerNoFilter => 'Фильтр ещё не задан — откройте фильтр, чтобы выбрать, что показывает эта линза.';
+
+  @override
+  String get viewerNoResults => 'Ничего не соответствует фильтру';
+
+  @override
+  String get viewerUntitled => 'Без названия';
+
+  @override
+  String get filterTitle => 'Фильтр';
+
+  @override
+  String get filterExplain => 'Все правила в группе должны совпасть. Достаточно совпадения одной группы.';
+
+  @override
+  String get filterAnd => 'и';
+
+  @override
+  String get filterOr => 'или';
+
+  @override
+  String get filterAddRule => 'Добавить правило';
+
+  @override
+  String get filterAddGroup => 'Добавить группу';
+
+  @override
+  String get filterFieldName => 'Имя';
+
+  @override
+  String get filterFieldHashtag => 'Хештег';
+
+  @override
+  String get filterFieldKind => 'Вид модуля';
+
+  @override
+  String get filterFieldChildOf => 'Внутри модуля';
+
+  @override
+  String get filterOpIs => 'равно';
+
+  @override
+  String get filterOpIsNot => 'не равно';
+
+  @override
+  String get filterOpStartsWith => 'начинается с';
+
+  @override
+  String get filterOpEndsWith => 'заканчивается на';
+
+  @override
+  String get filterOpContains => 'содержит';
+
+  @override
+  String get filterPickModule => 'Выберите модуль';
+
+  @override
+  String get connectorRelations => 'Связи';
+
+  @override
+  String get connectorNoRelations => 'Пока нет связей';
+
+  @override
+  String get connectorAddRelation => 'Добавить связь';
+
+  @override
+  String get connectorFrom => 'От';
+
+  @override
+  String get connectorTo => 'К';
+
+  @override
+  String get connectorLabel => 'Метка';
+
+  @override
+  String get connectorNodes => 'Элементы в этой линзе';
+
+  @override
+  String get designerBoard => 'Доска';
+
+  @override
+  String get designerNewNode => 'Новый узел';
+
+  @override
+  String get designerNode => 'Узел';
+
+  @override
+  String get designerNodeText => 'Текст';
+
+  @override
+  String get designerEmpty => 'Пока нет узлов';
+
+  @override
+  String get designerLinkHint => 'Коснитесь другого узла, чтобы соединить';
+
+  @override
+  String get designerLinkCancel => 'Отменить связь';
+
+  @override
+  String get sketcherPages => 'Страницы';
+
+  @override
+  String get sketcherNewPage => 'Новая страница';
+
+  @override
+  String get sketcherNoPages => 'Пока нет страниц';
+
+  @override
+  String get sketcherDraw => 'Рисовать';
+
+  @override
+  String get sketcherPan => 'Панорама';
+
+  @override
+  String get sketcherUndo => 'Отменить последний штрих';
+
+  @override
+  String get sketcherClear => 'Очистить страницу';
+
+  @override
+  String get sketcherClearWarning => 'Это сотрёт все штрихи на этой странице.';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

@@ -177,6 +177,249 @@ class AppLocalizationsVi extends AppLocalizations {
   String get notesHint => 'Ghi chú cho mô-đun này…';
 
   @override
+  String get authorChapters => 'Chương';
+
+  @override
+  String get authorNewChapter => 'Chương mới';
+
+  @override
+  String get authorNoChapters => 'Chưa có chương nào';
+
+  @override
+  String get authorContentHint => 'Viết chương này…';
+
+  @override
+  String get scribeSessions => 'Phiên';
+
+  @override
+  String get scribeNewSession => 'Phiên mới';
+
+  @override
+  String get scribeNoSessions => 'Chưa có phiên nào';
+
+  @override
+  String get scribeMessageHint => 'Viết tin nhắn…';
+
+  @override
+  String get scribeSwitchSide => 'Đổi bên';
+
+  @override
+  String get chroniclerEvents => 'Sự kiện';
+
+  @override
+  String get chroniclerNewEvent => 'Sự kiện mới';
+
+  @override
+  String get chroniclerNoEvents => 'Chưa có sự kiện nào';
+
+  @override
+  String get chroniclerUntitledEvent => 'Sự kiện chưa đặt tên';
+
+  @override
+  String get chroniclerStart => 'Bắt đầu';
+
+  @override
+  String get chroniclerYear => 'Năm';
+
+  @override
+  String get chroniclerMonth => 'Tháng';
+
+  @override
+  String get chroniclerDay => 'Ngày';
+
+  @override
+  String get chroniclerHour => 'Giờ';
+
+  @override
+  String get chroniclerMinute => 'Phút';
+
+  @override
+  String get chroniclerHasEnd => 'Có ngày kết thúc';
+
+  @override
+  String get chroniclerStory => 'Câu chuyện';
+
+  @override
+  String get classifierFields => 'Trường';
+
+  @override
+  String get classifierNewField => 'Trường mới';
+
+  @override
+  String get classifierNoFields => 'Chưa có trường nào';
+
+  @override
+  String get classifierItems => 'Mục';
+
+  @override
+  String get classifierNewItem => 'Mục mới';
+
+  @override
+  String get classifierNoItems => 'Chưa có mục nào';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Thao tác này cũng xóa giá trị của trường đó ở mọi mục.';
+
+  @override
+  String get narratorScenes => 'Cảnh';
+
+  @override
+  String get narratorNewScene => 'Cảnh mới';
+
+  @override
+  String get narratorNoScenes => 'Chưa có cảnh nào';
+
+  @override
+  String get narratorScript => 'Kịch bản';
+
+  @override
+  String get narratorNewLine => 'Dòng mới';
+
+  @override
+  String get narratorNoLines => 'Chưa có dòng nào';
+
+  @override
+  String get narratorSpeaker => 'Người nói';
+
+  @override
+  String get narratorLine => 'Dòng';
+
+  @override
+  String get narratorRoutes => 'Tuyến';
+
+  @override
+  String get narratorLeadsTo => 'Dẫn đến';
+
+  @override
+  String get narratorNoRoutes => 'Chưa có tuyến nào';
+
+  @override
+  String get viewerResults => 'Kết quả';
+
+  @override
+  String get viewerNoFilter => 'Chưa đặt bộ lọc — mở bộ lọc để chọn thứ ống kính này hiển thị.';
+
+  @override
+  String get viewerNoResults => 'Không có gì khớp bộ lọc này';
+
+  @override
+  String get viewerUntitled => 'Chưa đặt tên';
+
+  @override
+  String get filterTitle => 'Bộ lọc';
+
+  @override
+  String get filterExplain => 'Mọi quy tắc trong một nhóm đều phải khớp. Chỉ cần một nhóm khớp là đủ.';
+
+  @override
+  String get filterAnd => 'và';
+
+  @override
+  String get filterOr => 'hoặc';
+
+  @override
+  String get filterAddRule => 'Thêm quy tắc';
+
+  @override
+  String get filterAddGroup => 'Thêm nhóm';
+
+  @override
+  String get filterFieldName => 'Tên';
+
+  @override
+  String get filterFieldHashtag => 'Hashtag';
+
+  @override
+  String get filterFieldKind => 'Loại mô-đun';
+
+  @override
+  String get filterFieldChildOf => 'Trong mô-đun';
+
+  @override
+  String get filterOpIs => 'là';
+
+  @override
+  String get filterOpIsNot => 'không phải';
+
+  @override
+  String get filterOpStartsWith => 'bắt đầu bằng';
+
+  @override
+  String get filterOpEndsWith => 'kết thúc bằng';
+
+  @override
+  String get filterOpContains => 'chứa';
+
+  @override
+  String get filterPickModule => 'Chọn mô-đun';
+
+  @override
+  String get connectorRelations => 'Quan hệ';
+
+  @override
+  String get connectorNoRelations => 'Chưa có quan hệ nào';
+
+  @override
+  String get connectorAddRelation => 'Thêm quan hệ';
+
+  @override
+  String get connectorFrom => 'Từ';
+
+  @override
+  String get connectorTo => 'Đến';
+
+  @override
+  String get connectorLabel => 'Nhãn';
+
+  @override
+  String get connectorNodes => 'Mục trong ống kính này';
+
+  @override
+  String get designerBoard => 'Bảng';
+
+  @override
+  String get designerNewNode => 'Nút mới';
+
+  @override
+  String get designerNode => 'Nút';
+
+  @override
+  String get designerNodeText => 'Văn bản';
+
+  @override
+  String get designerEmpty => 'Chưa có nút nào';
+
+  @override
+  String get designerLinkHint => 'Chạm vào nút khác để nối';
+
+  @override
+  String get designerLinkCancel => 'Hủy nối';
+
+  @override
+  String get sketcherPages => 'Trang';
+
+  @override
+  String get sketcherNewPage => 'Trang mới';
+
+  @override
+  String get sketcherNoPages => 'Chưa có trang nào';
+
+  @override
+  String get sketcherDraw => 'Vẽ';
+
+  @override
+  String get sketcherPan => 'Kéo';
+
+  @override
+  String get sketcherUndo => 'Hoàn tác nét cuối';
+
+  @override
+  String get sketcherClear => 'Xóa trang';
+
+  @override
+  String get sketcherClearWarning => 'Thao tác này xóa mọi nét trên trang này.';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

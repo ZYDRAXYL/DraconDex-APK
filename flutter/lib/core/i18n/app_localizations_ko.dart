@@ -177,6 +177,249 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notesHint => '이 모듈에 대한 메모…';
 
   @override
+  String get authorChapters => '챕터';
+
+  @override
+  String get authorNewChapter => '새 챕터';
+
+  @override
+  String get authorNoChapters => '아직 챕터가 없습니다';
+
+  @override
+  String get authorContentHint => '이 챕터를 작성하세요…';
+
+  @override
+  String get scribeSessions => '세션';
+
+  @override
+  String get scribeNewSession => '새 세션';
+
+  @override
+  String get scribeNoSessions => '아직 세션이 없습니다';
+
+  @override
+  String get scribeMessageHint => '메시지를 입력하세요…';
+
+  @override
+  String get scribeSwitchSide => '좌우 전환';
+
+  @override
+  String get chroniclerEvents => '이벤트';
+
+  @override
+  String get chroniclerNewEvent => '새 이벤트';
+
+  @override
+  String get chroniclerNoEvents => '아직 이벤트가 없습니다';
+
+  @override
+  String get chroniclerUntitledEvent => '제목 없는 이벤트';
+
+  @override
+  String get chroniclerStart => '시작';
+
+  @override
+  String get chroniclerYear => '년';
+
+  @override
+  String get chroniclerMonth => '월';
+
+  @override
+  String get chroniclerDay => '일';
+
+  @override
+  String get chroniclerHour => '시';
+
+  @override
+  String get chroniclerMinute => '분';
+
+  @override
+  String get chroniclerHasEnd => '종료일 있음';
+
+  @override
+  String get chroniclerStory => '이야기';
+
+  @override
+  String get classifierFields => '필드';
+
+  @override
+  String get classifierNewField => '새 필드';
+
+  @override
+  String get classifierNoFields => '아직 필드가 없습니다';
+
+  @override
+  String get classifierItems => '항목';
+
+  @override
+  String get classifierNewItem => '새 항목';
+
+  @override
+  String get classifierNoItems => '아직 항목이 없습니다';
+
+  @override
+  String get classifierDeleteFieldWarning => '각 항목이 가진 이 필드의 값도 함께 삭제됩니다.';
+
+  @override
+  String get narratorScenes => '장면';
+
+  @override
+  String get narratorNewScene => '새 장면';
+
+  @override
+  String get narratorNoScenes => '아직 장면이 없습니다';
+
+  @override
+  String get narratorScript => '스크립트';
+
+  @override
+  String get narratorNewLine => '새 줄';
+
+  @override
+  String get narratorNoLines => '아직 줄이 없습니다';
+
+  @override
+  String get narratorSpeaker => '화자';
+
+  @override
+  String get narratorLine => '줄';
+
+  @override
+  String get narratorRoutes => '경로';
+
+  @override
+  String get narratorLeadsTo => '다음으로';
+
+  @override
+  String get narratorNoRoutes => '아직 경로가 없습니다';
+
+  @override
+  String get viewerResults => '결과';
+
+  @override
+  String get viewerNoFilter => '필터가 아직 없습니다 — 필터를 열어 이 렌즈가 보여줄 것을 선택하세요.';
+
+  @override
+  String get viewerNoResults => '이 필터와 일치하는 항목이 없습니다';
+
+  @override
+  String get viewerUntitled => '제목 없음';
+
+  @override
+  String get filterTitle => '필터';
+
+  @override
+  String get filterExplain => '한 그룹 안의 규칙은 모두 일치해야 합니다. 그룹 하나만 일치해도 충분합니다.';
+
+  @override
+  String get filterAnd => '그리고';
+
+  @override
+  String get filterOr => '또는';
+
+  @override
+  String get filterAddRule => '규칙 추가';
+
+  @override
+  String get filterAddGroup => '그룹 추가';
+
+  @override
+  String get filterFieldName => '이름';
+
+  @override
+  String get filterFieldHashtag => '해시태그';
+
+  @override
+  String get filterFieldKind => '모듈 종류';
+
+  @override
+  String get filterFieldChildOf => '모듈 안';
+
+  @override
+  String get filterOpIs => '다음과 같음';
+
+  @override
+  String get filterOpIsNot => '다음과 다름';
+
+  @override
+  String get filterOpStartsWith => '다음으로 시작';
+
+  @override
+  String get filterOpEndsWith => '다음으로 끝남';
+
+  @override
+  String get filterOpContains => '포함';
+
+  @override
+  String get filterPickModule => '모듈 선택';
+
+  @override
+  String get connectorRelations => '관계';
+
+  @override
+  String get connectorNoRelations => '아직 관계가 없습니다';
+
+  @override
+  String get connectorAddRelation => '관계 추가';
+
+  @override
+  String get connectorFrom => '시작';
+
+  @override
+  String get connectorTo => '대상';
+
+  @override
+  String get connectorLabel => '라벨';
+
+  @override
+  String get connectorNodes => '이 렌즈의 항목';
+
+  @override
+  String get designerBoard => '보드';
+
+  @override
+  String get designerNewNode => '새 노드';
+
+  @override
+  String get designerNode => '노드';
+
+  @override
+  String get designerNodeText => '텍스트';
+
+  @override
+  String get designerEmpty => '아직 노드가 없습니다';
+
+  @override
+  String get designerLinkHint => '연결할 다른 노드를 누르세요';
+
+  @override
+  String get designerLinkCancel => '연결 취소';
+
+  @override
+  String get sketcherPages => '페이지';
+
+  @override
+  String get sketcherNewPage => '새 페이지';
+
+  @override
+  String get sketcherNoPages => '아직 페이지가 없습니다';
+
+  @override
+  String get sketcherDraw => '그리기';
+
+  @override
+  String get sketcherPan => '이동';
+
+  @override
+  String get sketcherUndo => '마지막 획 취소';
+
+  @override
+  String get sketcherClear => '페이지 지우기';
+
+  @override
+  String get sketcherClearWarning => '이 페이지의 모든 획을 지웁니다.';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

@@ -456,6 +456,492 @@ abstract class AppLocalizations {
   /// **'Notes for this module…'**
   String get notesHint;
 
+  /// No description provided for @authorChapters.
+  ///
+  /// In en, this message translates to:
+  /// **'Chapters'**
+  String get authorChapters;
+
+  /// No description provided for @authorNewChapter.
+  ///
+  /// In en, this message translates to:
+  /// **'New chapter'**
+  String get authorNewChapter;
+
+  /// No description provided for @authorNoChapters.
+  ///
+  /// In en, this message translates to:
+  /// **'No chapters yet'**
+  String get authorNoChapters;
+
+  /// No description provided for @authorContentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write this chapter…'**
+  String get authorContentHint;
+
+  /// No description provided for @scribeSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions'**
+  String get scribeSessions;
+
+  /// No description provided for @scribeNewSession.
+  ///
+  /// In en, this message translates to:
+  /// **'New session'**
+  String get scribeNewSession;
+
+  /// No description provided for @scribeNoSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'No sessions yet'**
+  String get scribeNoSessions;
+
+  /// No description provided for @scribeMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a message…'**
+  String get scribeMessageHint;
+
+  /// No description provided for @scribeSwitchSide.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch side'**
+  String get scribeSwitchSide;
+
+  /// No description provided for @chroniclerEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Events'**
+  String get chroniclerEvents;
+
+  /// No description provided for @chroniclerNewEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'New event'**
+  String get chroniclerNewEvent;
+
+  /// No description provided for @chroniclerNoEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'No events yet'**
+  String get chroniclerNoEvents;
+
+  /// No description provided for @chroniclerUntitledEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled event'**
+  String get chroniclerUntitledEvent;
+
+  /// No description provided for @chroniclerStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get chroniclerStart;
+
+  /// No description provided for @chroniclerYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get chroniclerYear;
+
+  /// No description provided for @chroniclerMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get chroniclerMonth;
+
+  /// No description provided for @chroniclerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get chroniclerDay;
+
+  /// No description provided for @chroniclerHour.
+  ///
+  /// In en, this message translates to:
+  /// **'Hour'**
+  String get chroniclerHour;
+
+  /// No description provided for @chroniclerMinute.
+  ///
+  /// In en, this message translates to:
+  /// **'Minute'**
+  String get chroniclerMinute;
+
+  /// No description provided for @chroniclerHasEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Has an end date'**
+  String get chroniclerHasEnd;
+
+  /// No description provided for @chroniclerStory.
+  ///
+  /// In en, this message translates to:
+  /// **'Story'**
+  String get chroniclerStory;
+
+  /// No description provided for @classifierFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Fields'**
+  String get classifierFields;
+
+  /// No description provided for @classifierNewField.
+  ///
+  /// In en, this message translates to:
+  /// **'New field'**
+  String get classifierNewField;
+
+  /// No description provided for @classifierNoFields.
+  ///
+  /// In en, this message translates to:
+  /// **'No fields yet'**
+  String get classifierNoFields;
+
+  /// No description provided for @classifierItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get classifierItems;
+
+  /// No description provided for @classifierNewItem.
+  ///
+  /// In en, this message translates to:
+  /// **'New item'**
+  String get classifierNewItem;
+
+  /// No description provided for @classifierNoItems.
+  ///
+  /// In en, this message translates to:
+  /// **'No items yet'**
+  String get classifierNoItems;
+
+  /// No description provided for @classifierDeleteFieldWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This also deletes the value every item holds for it.'**
+  String get classifierDeleteFieldWarning;
+
+  /// No description provided for @narratorScenes.
+  ///
+  /// In en, this message translates to:
+  /// **'Scenes'**
+  String get narratorScenes;
+
+  /// No description provided for @narratorNewScene.
+  ///
+  /// In en, this message translates to:
+  /// **'New scene'**
+  String get narratorNewScene;
+
+  /// No description provided for @narratorNoScenes.
+  ///
+  /// In en, this message translates to:
+  /// **'No scenes yet'**
+  String get narratorNoScenes;
+
+  /// No description provided for @narratorScript.
+  ///
+  /// In en, this message translates to:
+  /// **'Script'**
+  String get narratorScript;
+
+  /// No description provided for @narratorNewLine.
+  ///
+  /// In en, this message translates to:
+  /// **'New line'**
+  String get narratorNewLine;
+
+  /// No description provided for @narratorNoLines.
+  ///
+  /// In en, this message translates to:
+  /// **'No lines yet'**
+  String get narratorNoLines;
+
+  /// No description provided for @narratorSpeaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Speaker'**
+  String get narratorSpeaker;
+
+  /// No description provided for @narratorLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Line'**
+  String get narratorLine;
+
+  /// No description provided for @narratorRoutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Routes'**
+  String get narratorRoutes;
+
+  /// No description provided for @narratorLeadsTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Leads to'**
+  String get narratorLeadsTo;
+
+  /// No description provided for @narratorNoRoutes.
+  ///
+  /// In en, this message translates to:
+  /// **'No routes yet'**
+  String get narratorNoRoutes;
+
+  /// No description provided for @viewerResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get viewerResults;
+
+  /// No description provided for @viewerNoFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'No filter set yet — open the filter to choose what this lens shows.'**
+  String get viewerNoFilter;
+
+  /// No description provided for @viewerNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches this filter'**
+  String get viewerNoResults;
+
+  /// No description provided for @viewerUntitled.
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled'**
+  String get viewerUntitled;
+
+  /// No description provided for @filterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filterTitle;
+
+  /// No description provided for @filterExplain.
+  ///
+  /// In en, this message translates to:
+  /// **'Rules inside a group must all match. Any one group matching is enough.'**
+  String get filterExplain;
+
+  /// No description provided for @filterAnd.
+  ///
+  /// In en, this message translates to:
+  /// **'and'**
+  String get filterAnd;
+
+  /// No description provided for @filterOr.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get filterOr;
+
+  /// No description provided for @filterAddRule.
+  ///
+  /// In en, this message translates to:
+  /// **'Add rule'**
+  String get filterAddRule;
+
+  /// No description provided for @filterAddGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Add group'**
+  String get filterAddGroup;
+
+  /// No description provided for @filterFieldName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get filterFieldName;
+
+  /// No description provided for @filterFieldHashtag.
+  ///
+  /// In en, this message translates to:
+  /// **'Hashtag'**
+  String get filterFieldHashtag;
+
+  /// No description provided for @filterFieldKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Module kind'**
+  String get filterFieldKind;
+
+  /// No description provided for @filterFieldChildOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Inside module'**
+  String get filterFieldChildOf;
+
+  /// No description provided for @filterOpIs.
+  ///
+  /// In en, this message translates to:
+  /// **'is'**
+  String get filterOpIs;
+
+  /// No description provided for @filterOpIsNot.
+  ///
+  /// In en, this message translates to:
+  /// **'is not'**
+  String get filterOpIsNot;
+
+  /// No description provided for @filterOpStartsWith.
+  ///
+  /// In en, this message translates to:
+  /// **'starts with'**
+  String get filterOpStartsWith;
+
+  /// No description provided for @filterOpEndsWith.
+  ///
+  /// In en, this message translates to:
+  /// **'ends with'**
+  String get filterOpEndsWith;
+
+  /// No description provided for @filterOpContains.
+  ///
+  /// In en, this message translates to:
+  /// **'contains'**
+  String get filterOpContains;
+
+  /// No description provided for @filterPickModule.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a module'**
+  String get filterPickModule;
+
+  /// No description provided for @connectorRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'Relations'**
+  String get connectorRelations;
+
+  /// No description provided for @connectorNoRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'No relations yet'**
+  String get connectorNoRelations;
+
+  /// No description provided for @connectorAddRelation.
+  ///
+  /// In en, this message translates to:
+  /// **'Add relation'**
+  String get connectorAddRelation;
+
+  /// No description provided for @connectorFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get connectorFrom;
+
+  /// No description provided for @connectorTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get connectorTo;
+
+  /// No description provided for @connectorLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Label'**
+  String get connectorLabel;
+
+  /// No description provided for @connectorNodes.
+  ///
+  /// In en, this message translates to:
+  /// **'Items in this lens'**
+  String get connectorNodes;
+
+  /// No description provided for @designerBoard.
+  ///
+  /// In en, this message translates to:
+  /// **'Board'**
+  String get designerBoard;
+
+  /// No description provided for @designerNewNode.
+  ///
+  /// In en, this message translates to:
+  /// **'New node'**
+  String get designerNewNode;
+
+  /// No description provided for @designerNode.
+  ///
+  /// In en, this message translates to:
+  /// **'Node'**
+  String get designerNode;
+
+  /// No description provided for @designerNodeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get designerNodeText;
+
+  /// No description provided for @designerEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No nodes yet'**
+  String get designerEmpty;
+
+  /// No description provided for @designerLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap another node to connect it'**
+  String get designerLinkHint;
+
+  /// No description provided for @designerLinkCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel link'**
+  String get designerLinkCancel;
+
+  /// No description provided for @sketcherPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get sketcherPages;
+
+  /// No description provided for @sketcherNewPage.
+  ///
+  /// In en, this message translates to:
+  /// **'New page'**
+  String get sketcherNewPage;
+
+  /// No description provided for @sketcherNoPages.
+  ///
+  /// In en, this message translates to:
+  /// **'No pages yet'**
+  String get sketcherNoPages;
+
+  /// No description provided for @sketcherDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get sketcherDraw;
+
+  /// No description provided for @sketcherPan.
+  ///
+  /// In en, this message translates to:
+  /// **'Pan'**
+  String get sketcherPan;
+
+  /// No description provided for @sketcherUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo last stroke'**
+  String get sketcherUndo;
+
+  /// No description provided for @sketcherClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear page'**
+  String get sketcherClear;
+
+  /// No description provided for @sketcherClearWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This erases every stroke on this page.'**
+  String get sketcherClearWarning;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

@@ -177,6 +177,249 @@ class AppLocalizationsId extends AppLocalizations {
   String get notesHint => 'Catatan untuk modul ini…';
 
   @override
+  String get authorChapters => 'Bab';
+
+  @override
+  String get authorNewChapter => 'Bab baru';
+
+  @override
+  String get authorNoChapters => 'Belum ada bab';
+
+  @override
+  String get authorContentHint => 'Tulis bab ini…';
+
+  @override
+  String get scribeSessions => 'Sesi';
+
+  @override
+  String get scribeNewSession => 'Sesi baru';
+
+  @override
+  String get scribeNoSessions => 'Belum ada sesi';
+
+  @override
+  String get scribeMessageHint => 'Tulis pesan…';
+
+  @override
+  String get scribeSwitchSide => 'Ganti sisi';
+
+  @override
+  String get chroniclerEvents => 'Peristiwa';
+
+  @override
+  String get chroniclerNewEvent => 'Peristiwa baru';
+
+  @override
+  String get chroniclerNoEvents => 'Belum ada peristiwa';
+
+  @override
+  String get chroniclerUntitledEvent => 'Peristiwa tanpa judul';
+
+  @override
+  String get chroniclerStart => 'Mulai';
+
+  @override
+  String get chroniclerYear => 'Tahun';
+
+  @override
+  String get chroniclerMonth => 'Bulan';
+
+  @override
+  String get chroniclerDay => 'Hari';
+
+  @override
+  String get chroniclerHour => 'Jam';
+
+  @override
+  String get chroniclerMinute => 'Menit';
+
+  @override
+  String get chroniclerHasEnd => 'Punya tanggal akhir';
+
+  @override
+  String get chroniclerStory => 'Cerita';
+
+  @override
+  String get classifierFields => 'Bidang';
+
+  @override
+  String get classifierNewField => 'Bidang baru';
+
+  @override
+  String get classifierNoFields => 'Belum ada bidang';
+
+  @override
+  String get classifierItems => 'Item';
+
+  @override
+  String get classifierNewItem => 'Item baru';
+
+  @override
+  String get classifierNoItems => 'Belum ada item';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Ini juga menghapus nilai yang dimiliki setiap item untuk bidang itu.';
+
+  @override
+  String get narratorScenes => 'Adegan';
+
+  @override
+  String get narratorNewScene => 'Adegan baru';
+
+  @override
+  String get narratorNoScenes => 'Belum ada adegan';
+
+  @override
+  String get narratorScript => 'Naskah';
+
+  @override
+  String get narratorNewLine => 'Baris baru';
+
+  @override
+  String get narratorNoLines => 'Belum ada baris';
+
+  @override
+  String get narratorSpeaker => 'Pembicara';
+
+  @override
+  String get narratorLine => 'Baris';
+
+  @override
+  String get narratorRoutes => 'Rute';
+
+  @override
+  String get narratorLeadsTo => 'Menuju ke';
+
+  @override
+  String get narratorNoRoutes => 'Belum ada rute';
+
+  @override
+  String get viewerResults => 'Hasil';
+
+  @override
+  String get viewerNoFilter => 'Belum ada filter — buka filter untuk memilih apa yang ditampilkan lensa ini.';
+
+  @override
+  String get viewerNoResults => 'Tidak ada yang cocok dengan filter ini';
+
+  @override
+  String get viewerUntitled => 'Tanpa judul';
+
+  @override
+  String get filterTitle => 'Filter';
+
+  @override
+  String get filterExplain => 'Semua aturan dalam satu grup harus cocok. Satu grup yang cocok sudah cukup.';
+
+  @override
+  String get filterAnd => 'dan';
+
+  @override
+  String get filterOr => 'atau';
+
+  @override
+  String get filterAddRule => 'Tambah aturan';
+
+  @override
+  String get filterAddGroup => 'Tambah grup';
+
+  @override
+  String get filterFieldName => 'Nama';
+
+  @override
+  String get filterFieldHashtag => 'Tagar';
+
+  @override
+  String get filterFieldKind => 'Jenis modul';
+
+  @override
+  String get filterFieldChildOf => 'Di dalam modul';
+
+  @override
+  String get filterOpIs => 'adalah';
+
+  @override
+  String get filterOpIsNot => 'bukan';
+
+  @override
+  String get filterOpStartsWith => 'diawali';
+
+  @override
+  String get filterOpEndsWith => 'diakhiri';
+
+  @override
+  String get filterOpContains => 'mengandung';
+
+  @override
+  String get filterPickModule => 'Pilih modul';
+
+  @override
+  String get connectorRelations => 'Relasi';
+
+  @override
+  String get connectorNoRelations => 'Belum ada relasi';
+
+  @override
+  String get connectorAddRelation => 'Tambah relasi';
+
+  @override
+  String get connectorFrom => 'Dari';
+
+  @override
+  String get connectorTo => 'Ke';
+
+  @override
+  String get connectorLabel => 'Label';
+
+  @override
+  String get connectorNodes => 'Item dalam lensa ini';
+
+  @override
+  String get designerBoard => 'Papan';
+
+  @override
+  String get designerNewNode => 'Simpul baru';
+
+  @override
+  String get designerNode => 'Simpul';
+
+  @override
+  String get designerNodeText => 'Teks';
+
+  @override
+  String get designerEmpty => 'Belum ada simpul';
+
+  @override
+  String get designerLinkHint => 'Ketuk simpul lain untuk menghubungkannya';
+
+  @override
+  String get designerLinkCancel => 'Batalkan tautan';
+
+  @override
+  String get sketcherPages => 'Halaman';
+
+  @override
+  String get sketcherNewPage => 'Halaman baru';
+
+  @override
+  String get sketcherNoPages => 'Belum ada halaman';
+
+  @override
+  String get sketcherDraw => 'Gambar';
+
+  @override
+  String get sketcherPan => 'Geser';
+
+  @override
+  String get sketcherUndo => 'Batalkan goresan terakhir';
+
+  @override
+  String get sketcherClear => 'Kosongkan halaman';
+
+  @override
+  String get sketcherClearWarning => 'Ini menghapus semua goresan di halaman ini.';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

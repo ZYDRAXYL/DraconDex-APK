@@ -9,6 +9,7 @@ import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../widgets/confirm_dialog.dart';
+import 'content/module_content.dart';
 import 'dialogs/module_dialog.dart';
 import 'widgets/module_collection_view.dart';
 
@@ -254,6 +255,19 @@ class _ModuleContent extends StatelessWidget {
     final info = module.kindInfo;
     final isFolder = module.kind == ModuleKind.collector || module.kind == ModuleKind.manager;
     if (isFolder) return const SizedBox.shrink();
+
+    // Kinds with a real editor render it instead of the shared notes field.
+    // moduleContentFor() returns null for the ones not ported yet, which is
+    // exactly the set still flagged contentImplemented: false below.
+    final dedicated = moduleContentFor(module);
+    if (dedicated != null) {
+      return Column(
+        children: [
+          dedicated,
+          const Divider(height: 1),
+        ],
+      );
+    }
 
     return Column(
       children: [
