@@ -240,6 +240,27 @@ class AppLocalizationsQd extends AppLocalizations {
   String get chroniclerStory => 'Spell';
 
   @override
+  String get classifierFields => 'Feldas';
+
+  @override
+  String get classifierNewField => 'Niwe Feld';
+
+  @override
+  String get classifierNoFields => 'Nán feld gíet';
+
+  @override
+  String get classifierItems => 'Þingas';
+
+  @override
+  String get classifierNewItem => 'Niwe Þing';
+
+  @override
+  String get classifierNoItems => 'Nán þing gíet';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Þis fordéþ éac þone weorþ þe ælc þing þǽrfore hafaþ.';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

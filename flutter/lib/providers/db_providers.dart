@@ -3,6 +3,7 @@ import 'package:sqflite/sqflite.dart';
 import '../core/database/database_helper.dart';
 import '../data/dao/author_dao.dart';
 import '../data/dao/chronicler_dao.dart';
+import '../data/dao/classifier_dao.dart';
 import '../data/dao/color_dao.dart';
 import '../data/dao/hashtag_dao.dart';
 import '../data/dao/module_dao.dart';
@@ -34,4 +35,8 @@ final scribeDaoProvider = Provider<AsyncValue<ScribeDao>>((ref) {
 
 final chroniclerDaoProvider = Provider<AsyncValue<ChroniclerDao>>((ref) {
   return ref.watch(databaseProvider).whenData((db) => ChroniclerDao(db));
+});
+
+final classifierDaoProvider = Provider<AsyncValue<ClassifierDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => ClassifierDao(db));
 });

@@ -240,6 +240,27 @@ class AppLocalizationsKo extends AppLocalizations {
   String get chroniclerStory => '이야기';
 
   @override
+  String get classifierFields => '필드';
+
+  @override
+  String get classifierNewField => '새 필드';
+
+  @override
+  String get classifierNoFields => '아직 필드가 없습니다';
+
+  @override
+  String get classifierItems => '항목';
+
+  @override
+  String get classifierNewItem => '새 항목';
+
+  @override
+  String get classifierNoItems => '아직 항목이 없습니다';
+
+  @override
+  String get classifierDeleteFieldWarning => '각 항목이 가진 이 필드의 값도 함께 삭제됩니다.';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

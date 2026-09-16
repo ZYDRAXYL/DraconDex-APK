@@ -105,7 +105,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Classifier',
     icon: Icons.category_outlined,
     description: 'Category / object / field system',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.locator: ModuleKindInfo(
     kind: ModuleKind.locator,

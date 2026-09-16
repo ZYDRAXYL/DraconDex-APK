@@ -240,6 +240,27 @@ class AppLocalizationsJa extends AppLocalizations {
   String get chroniclerStory => 'ストーリー';
 
   @override
+  String get classifierFields => 'フィールド';
+
+  @override
+  String get classifierNewField => '新しいフィールド';
+
+  @override
+  String get classifierNoFields => 'まだフィールドがありません';
+
+  @override
+  String get classifierItems => '項目';
+
+  @override
+  String get classifierNewItem => '新しい項目';
+
+  @override
+  String get classifierNoItems => 'まだ項目がありません';
+
+  @override
+  String get classifierDeleteFieldWarning => '各項目が持つこのフィールドの値もすべて削除されます。';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

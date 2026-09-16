@@ -240,6 +240,27 @@ class AppLocalizationsPt extends AppLocalizations {
   String get chroniclerStory => 'História';
 
   @override
+  String get classifierFields => 'Campos';
+
+  @override
+  String get classifierNewField => 'Novo campo';
+
+  @override
+  String get classifierNoFields => 'Ainda não há campos';
+
+  @override
+  String get classifierItems => 'Itens';
+
+  @override
+  String get classifierNewItem => 'Novo item';
+
+  @override
+  String get classifierNoItems => 'Ainda não há itens';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Isso também exclui o valor que cada item tem para ele.';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

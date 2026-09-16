@@ -240,6 +240,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get chroniclerStory => 'Historia';
 
   @override
+  String get classifierFields => 'Campos';
+
+  @override
+  String get classifierNewField => 'Nuevo campo';
+
+  @override
+  String get classifierNoFields => 'Aún no hay campos';
+
+  @override
+  String get classifierItems => 'Elementos';
+
+  @override
+  String get classifierNewItem => 'Nuevo elemento';
+
+  @override
+  String get classifierNoItems => 'Aún no hay elementos';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Esto también elimina el valor que cada elemento tiene para él.';
+
+  @override
   String get settingsAppearance => 'Apariencia';
 
   @override

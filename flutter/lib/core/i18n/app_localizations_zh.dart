@@ -240,6 +240,27 @@ class AppLocalizationsZh extends AppLocalizations {
   String get chroniclerStory => '故事';
 
   @override
+  String get classifierFields => '字段';
+
+  @override
+  String get classifierNewField => '新建字段';
+
+  @override
+  String get classifierNoFields => '还没有字段';
+
+  @override
+  String get classifierItems => '条目';
+
+  @override
+  String get classifierNewItem => '新建条目';
+
+  @override
+  String get classifierNoItems => '还没有条目';
+
+  @override
+  String get classifierDeleteFieldWarning => '这也会删除每个条目在该字段中的值。';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

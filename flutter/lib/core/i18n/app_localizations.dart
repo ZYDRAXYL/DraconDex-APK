@@ -582,6 +582,48 @@ abstract class AppLocalizations {
   /// **'Story'**
   String get chroniclerStory;
 
+  /// No description provided for @classifierFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Fields'**
+  String get classifierFields;
+
+  /// No description provided for @classifierNewField.
+  ///
+  /// In en, this message translates to:
+  /// **'New field'**
+  String get classifierNewField;
+
+  /// No description provided for @classifierNoFields.
+  ///
+  /// In en, this message translates to:
+  /// **'No fields yet'**
+  String get classifierNoFields;
+
+  /// No description provided for @classifierItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get classifierItems;
+
+  /// No description provided for @classifierNewItem.
+  ///
+  /// In en, this message translates to:
+  /// **'New item'**
+  String get classifierNewItem;
+
+  /// No description provided for @classifierNoItems.
+  ///
+  /// In en, this message translates to:
+  /// **'No items yet'**
+  String get classifierNoItems;
+
+  /// No description provided for @classifierDeleteFieldWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This also deletes the value every item holds for it.'**
+  String get classifierDeleteFieldWarning;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

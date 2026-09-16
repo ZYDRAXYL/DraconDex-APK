@@ -240,6 +240,27 @@ class AppLocalizationsId extends AppLocalizations {
   String get chroniclerStory => 'Cerita';
 
   @override
+  String get classifierFields => 'Bidang';
+
+  @override
+  String get classifierNewField => 'Bidang baru';
+
+  @override
+  String get classifierNoFields => 'Belum ada bidang';
+
+  @override
+  String get classifierItems => 'Item';
+
+  @override
+  String get classifierNewItem => 'Item baru';
+
+  @override
+  String get classifierNoItems => 'Belum ada item';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Ini juga menghapus nilai yang dimiliki setiap item untuk bidang itu.';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

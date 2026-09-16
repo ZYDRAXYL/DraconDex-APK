@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../data/models/module_model.dart';
 import 'author_content.dart';
 import 'chronicler_content.dart';
+import 'classifier_content.dart';
 import 'scribe_content.dart';
 
 /// Maps a module kind to its content editor.
@@ -21,12 +22,12 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       ModuleKind.author => AuthorContent(moduleId: module.id),
       ModuleKind.scribe => ScribeContent(moduleId: module.id),
       ModuleKind.chronicler => ChroniclerContent(moduleId: module.id),
+      ModuleKind.classifier => ClassifierContent(moduleId: module.id),
       // Folders have no content area at all; the caller returns early.
       ModuleKind.collector || ModuleKind.manager => null,
       // The notes field genuinely is the content for these two.
       ModuleKind.inspector || ModuleKind.drafter => null,
       // Still pending a dedicated editor.
-      ModuleKind.classifier ||
       ModuleKind.locator ||
       ModuleKind.wanderer ||
       ModuleKind.narrator ||

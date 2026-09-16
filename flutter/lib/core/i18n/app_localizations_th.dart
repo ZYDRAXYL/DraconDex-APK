@@ -240,6 +240,27 @@ class AppLocalizationsTh extends AppLocalizations {
   String get chroniclerStory => 'เรื่องราว';
 
   @override
+  String get classifierFields => 'ฟิลด์';
+
+  @override
+  String get classifierNewField => 'ฟิลด์ใหม่';
+
+  @override
+  String get classifierNoFields => 'ยังไม่มีฟิลด์';
+
+  @override
+  String get classifierItems => 'รายการ';
+
+  @override
+  String get classifierNewItem => 'รายการใหม่';
+
+  @override
+  String get classifierNoItems => 'ยังไม่มีรายการ';
+
+  @override
+  String get classifierDeleteFieldWarning => 'การลบนี้จะลบค่าของฟิลด์นี้ในทุกรายการด้วย';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

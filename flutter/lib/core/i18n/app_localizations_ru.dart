@@ -240,6 +240,27 @@ class AppLocalizationsRu extends AppLocalizations {
   String get chroniclerStory => 'История';
 
   @override
+  String get classifierFields => 'Поля';
+
+  @override
+  String get classifierNewField => 'Новое поле';
+
+  @override
+  String get classifierNoFields => 'Пока нет полей';
+
+  @override
+  String get classifierItems => 'Элементы';
+
+  @override
+  String get classifierNewItem => 'Новый элемент';
+
+  @override
+  String get classifierNoItems => 'Пока нет элементов';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Это также удалит значение этого поля у каждого элемента.';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

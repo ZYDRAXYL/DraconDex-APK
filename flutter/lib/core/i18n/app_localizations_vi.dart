@@ -240,6 +240,27 @@ class AppLocalizationsVi extends AppLocalizations {
   String get chroniclerStory => 'Câu chuyện';
 
   @override
+  String get classifierFields => 'Trường';
+
+  @override
+  String get classifierNewField => 'Trường mới';
+
+  @override
+  String get classifierNoFields => 'Chưa có trường nào';
+
+  @override
+  String get classifierItems => 'Mục';
+
+  @override
+  String get classifierNewItem => 'Mục mới';
+
+  @override
+  String get classifierNoItems => 'Chưa có mục nào';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Thao tác này cũng xóa giá trị của trường đó ở mọi mục.';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

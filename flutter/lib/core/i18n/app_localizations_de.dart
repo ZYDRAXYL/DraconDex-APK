@@ -240,6 +240,27 @@ class AppLocalizationsDe extends AppLocalizations {
   String get chroniclerStory => 'Handlung';
 
   @override
+  String get classifierFields => 'Felder';
+
+  @override
+  String get classifierNewField => 'Neues Feld';
+
+  @override
+  String get classifierNoFields => 'Noch keine Felder';
+
+  @override
+  String get classifierItems => 'Einträge';
+
+  @override
+  String get classifierNewItem => 'Neuer Eintrag';
+
+  @override
+  String get classifierNoItems => 'Noch keine Einträge';
+
+  @override
+  String get classifierDeleteFieldWarning => 'Damit wird auch der Wert gelöscht, den jeder Eintrag dafür hat.';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

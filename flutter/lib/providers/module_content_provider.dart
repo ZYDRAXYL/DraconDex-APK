@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/models/author_model.dart';
 import '../data/models/chronicler_model.dart';
+import '../data/models/classifier_model.dart';
 import '../data/models/scribe_model.dart';
 import 'db_providers.dart';
 
@@ -53,5 +54,37 @@ final timelineEventsProvider =
     data: (d) => d.getEvents(timelineId),
     loading: () => Future.value(<TimelineEventModel>[]),
     error: (e, s) => Future<List<TimelineEventModel>>.error(e, s),
+  );
+});
+
+final classifierFieldsProvider =
+    FutureProvider.family<List<ClassifierFieldModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(classifierDaoProvider);
+  return dao.when(
+    data: (d) => d.getFields(moduleId),
+    loading: () => Future.value(<ClassifierFieldModel>[]),
+    error: (e, s) => Future<List<ClassifierFieldModel>>.error(e, s),
+  );
+});
+
+final classifierItemsProvider =
+    FutureProvider.family<List<ClassifierItemModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(classifierDaoProvider);
+  return dao.when(
+    data: (d) => d.getItems(moduleId),
+    loading: () => Future.value(<ClassifierItemModel>[]),
+    error: (e, s) => Future<List<ClassifierItemModel>>.error(e, s),
+  );
+});
+
+/// The values one item holds, keyed by field id. A missing key means the
+/// field was never filled in, which is not the same as an empty string.
+final classifierValuesProvider =
+    FutureProvider.family<Map<int, String?>, int>((ref, objectId) async {
+  final dao = ref.watch(classifierDaoProvider);
+  return dao.when(
+    data: (d) => d.getValues(objectId),
+    loading: () => Future.value(<int, String?>{}),
+    error: (e, s) => Future<Map<int, String?>>.error(e, s),
   );
 });
