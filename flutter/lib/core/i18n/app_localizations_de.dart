@@ -420,6 +420,33 @@ class AppLocalizationsDe extends AppLocalizations {
   String get sketcherClearWarning => 'Das löscht jeden Strich auf dieser Seite.';
 
   @override
+  String get locatorAreas => 'Gebiete';
+
+  @override
+  String get locatorNewArea => 'Neues Gebiet';
+
+  @override
+  String get locatorNoAreas => 'Noch keine Gebiete';
+
+  @override
+  String get locatorUntitledArea => 'Unbenanntes Gebiet';
+
+  @override
+  String get locatorToolDraw => 'Zeichnen';
+
+  @override
+  String get locatorToolMove => 'Bewegen';
+
+  @override
+  String get locatorUndoPoint => 'Letzten Punkt rückgängig';
+
+  @override
+  String get locatorDrawHint => 'Tippe auf die Karte, um Punkte zu setzen';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Damit werden das Gebiet und alle seine Punkte gelöscht.';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

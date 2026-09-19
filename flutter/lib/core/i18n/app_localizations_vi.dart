@@ -420,6 +420,33 @@ class AppLocalizationsVi extends AppLocalizations {
   String get sketcherClearWarning => 'Thao tác này xóa mọi nét trên trang này.';
 
   @override
+  String get locatorAreas => 'Khu vực';
+
+  @override
+  String get locatorNewArea => 'Khu vực mới';
+
+  @override
+  String get locatorNoAreas => 'Chưa có khu vực nào';
+
+  @override
+  String get locatorUntitledArea => 'Khu vực chưa đặt tên';
+
+  @override
+  String get locatorToolDraw => 'Vẽ';
+
+  @override
+  String get locatorToolMove => 'Di chuyển';
+
+  @override
+  String get locatorUndoPoint => 'Hoàn tác điểm cuối';
+
+  @override
+  String get locatorDrawHint => 'Chạm vào bản đồ để đặt điểm';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Thao tác này xóa khu vực và mọi điểm của nó.';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

@@ -420,6 +420,33 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sketcherClearWarning => 'Это сотрёт все штрихи на этой странице.';
 
   @override
+  String get locatorAreas => 'Области';
+
+  @override
+  String get locatorNewArea => 'Новая область';
+
+  @override
+  String get locatorNoAreas => 'Пока нет областей';
+
+  @override
+  String get locatorUntitledArea => 'Область без названия';
+
+  @override
+  String get locatorToolDraw => 'Рисовать';
+
+  @override
+  String get locatorToolMove => 'Двигать';
+
+  @override
+  String get locatorUndoPoint => 'Отменить последнюю точку';
+
+  @override
+  String get locatorDrawHint => 'Коснитесь карты, чтобы поставить точки';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Это удалит область и все её точки.';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

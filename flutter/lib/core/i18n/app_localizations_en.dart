@@ -420,6 +420,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sketcherClearWarning => 'This erases every stroke on this page.';
 
   @override
+  String get locatorAreas => 'Areas';
+
+  @override
+  String get locatorNewArea => 'New area';
+
+  @override
+  String get locatorNoAreas => 'No areas yet';
+
+  @override
+  String get locatorUntitledArea => 'Untitled area';
+
+  @override
+  String get locatorToolDraw => 'Draw';
+
+  @override
+  String get locatorToolMove => 'Move';
+
+  @override
+  String get locatorUndoPoint => 'Undo last point';
+
+  @override
+  String get locatorDrawHint => 'Tap the map to place points';
+
+  @override
+  String get locatorDeleteAreaWarning => 'This deletes the area and all its points.';
+
+  @override
   String get settingsAppearance => 'Appearance';
 
   @override

@@ -420,6 +420,33 @@ class AppLocalizationsFr extends AppLocalizations {
   String get sketcherClearWarning => 'Cela efface tous les traits de cette page.';
 
   @override
+  String get locatorAreas => 'Zones';
+
+  @override
+  String get locatorNewArea => 'Nouvelle zone';
+
+  @override
+  String get locatorNoAreas => 'Aucune zone pour l\'instant';
+
+  @override
+  String get locatorUntitledArea => 'Zone sans titre';
+
+  @override
+  String get locatorToolDraw => 'Dessiner';
+
+  @override
+  String get locatorToolMove => 'Déplacer';
+
+  @override
+  String get locatorUndoPoint => 'Annuler le dernier point';
+
+  @override
+  String get locatorDrawHint => 'Touchez la carte pour placer des points';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Cela supprime la zone et tous ses points.';
+
+  @override
   String get settingsAppearance => 'Apparence';
 
   @override

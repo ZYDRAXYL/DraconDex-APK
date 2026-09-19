@@ -420,6 +420,33 @@ class AppLocalizationsId extends AppLocalizations {
   String get sketcherClearWarning => 'Ini menghapus semua goresan di halaman ini.';
 
   @override
+  String get locatorAreas => 'Area';
+
+  @override
+  String get locatorNewArea => 'Area baru';
+
+  @override
+  String get locatorNoAreas => 'Belum ada area';
+
+  @override
+  String get locatorUntitledArea => 'Area tanpa judul';
+
+  @override
+  String get locatorToolDraw => 'Gambar';
+
+  @override
+  String get locatorToolMove => 'Pindah';
+
+  @override
+  String get locatorUndoPoint => 'Batalkan titik terakhir';
+
+  @override
+  String get locatorDrawHint => 'Ketuk peta untuk menempatkan titik';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Ini menghapus area dan semua titiknya.';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

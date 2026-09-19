@@ -112,7 +112,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Locator',
     icon: Icons.map_outlined,
     description: 'Map canvas with drawable areas',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.chronicler: ModuleKindInfo(
     kind: ModuleKind.chronicler,

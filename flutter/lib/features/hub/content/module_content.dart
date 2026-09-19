@@ -6,6 +6,7 @@ import 'classifier_content.dart';
 import 'narrator_content.dart';
 import 'connector_content.dart';
 import 'designer_content.dart';
+import 'locator_content.dart';
 import 'sketcher_content.dart';
 import 'viewer_content.dart';
 import 'scribe_content.dart';
@@ -37,10 +38,11 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       ModuleKind.connector => ConnectorContent(moduleId: module.id, nexusId: module.nexusRef),
       ModuleKind.designer => DesignerContent(moduleId: module.id),
       ModuleKind.sketcher => SketcherContent(moduleId: module.id),
+      ModuleKind.locator => LocatorContent(moduleId: module.id),
       // Folders have no content area at all; the caller returns early.
       ModuleKind.collector || ModuleKind.manager => null,
       // The notes field genuinely is the content for these two.
       ModuleKind.inspector || ModuleKind.drafter => null,
       // Still pending a dedicated editor.
-      ModuleKind.locator || ModuleKind.wanderer => null,
+      ModuleKind.wanderer => null,
     };

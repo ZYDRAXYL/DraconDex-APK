@@ -420,6 +420,33 @@ class AppLocalizationsZh extends AppLocalizations {
   String get sketcherClearWarning => '这会清除本页所有笔画。';
 
   @override
+  String get locatorAreas => '区域';
+
+  @override
+  String get locatorNewArea => '新建区域';
+
+  @override
+  String get locatorNoAreas => '还没有区域';
+
+  @override
+  String get locatorUntitledArea => '未命名区域';
+
+  @override
+  String get locatorToolDraw => '绘制';
+
+  @override
+  String get locatorToolMove => '移动';
+
+  @override
+  String get locatorUndoPoint => '撤销上一个点';
+
+  @override
+  String get locatorDrawHint => '点按地图放置点';
+
+  @override
+  String get locatorDeleteAreaWarning => '这会删除该区域及其所有点。';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

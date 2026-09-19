@@ -420,6 +420,33 @@ class AppLocalizationsPt extends AppLocalizations {
   String get sketcherClearWarning => 'Isso apaga todos os traços desta página.';
 
   @override
+  String get locatorAreas => 'Áreas';
+
+  @override
+  String get locatorNewArea => 'Nova área';
+
+  @override
+  String get locatorNoAreas => 'Ainda não há áreas';
+
+  @override
+  String get locatorUntitledArea => 'Área sem título';
+
+  @override
+  String get locatorToolDraw => 'Desenhar';
+
+  @override
+  String get locatorToolMove => 'Mover';
+
+  @override
+  String get locatorUndoPoint => 'Desfazer último ponto';
+
+  @override
+  String get locatorDrawHint => 'Toque no mapa para colocar pontos';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Isso exclui a área e todos os seus pontos.';
+
+  @override
   String get settingsAppearance => 'Aparência';
 
   @override

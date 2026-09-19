@@ -420,6 +420,33 @@ class AppLocalizationsKo extends AppLocalizations {
   String get sketcherClearWarning => '이 페이지의 모든 획을 지웁니다.';
 
   @override
+  String get locatorAreas => '영역';
+
+  @override
+  String get locatorNewArea => '새 영역';
+
+  @override
+  String get locatorNoAreas => '아직 영역이 없습니다';
+
+  @override
+  String get locatorUntitledArea => '제목 없는 영역';
+
+  @override
+  String get locatorToolDraw => '그리기';
+
+  @override
+  String get locatorToolMove => '이동';
+
+  @override
+  String get locatorUndoPoint => '마지막 점 취소';
+
+  @override
+  String get locatorDrawHint => '지도를 눌러 점을 찍으세요';
+
+  @override
+  String get locatorDeleteAreaWarning => '영역과 모든 점을 삭제합니다.';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

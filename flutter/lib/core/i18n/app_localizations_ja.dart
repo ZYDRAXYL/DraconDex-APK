@@ -420,6 +420,33 @@ class AppLocalizationsJa extends AppLocalizations {
   String get sketcherClearWarning => 'このページのすべての線を消します。';
 
   @override
+  String get locatorAreas => 'エリア';
+
+  @override
+  String get locatorNewArea => '新しいエリア';
+
+  @override
+  String get locatorNoAreas => 'まだエリアがありません';
+
+  @override
+  String get locatorUntitledArea => '無題のエリア';
+
+  @override
+  String get locatorToolDraw => '描く';
+
+  @override
+  String get locatorToolMove => '移動';
+
+  @override
+  String get locatorUndoPoint => '最後の点を取り消す';
+
+  @override
+  String get locatorDrawHint => '地図をタップして点を置きます';
+
+  @override
+  String get locatorDeleteAreaWarning => 'エリアとそのすべての点を削除します。';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

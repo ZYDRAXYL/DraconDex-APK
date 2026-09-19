@@ -942,6 +942,60 @@ abstract class AppLocalizations {
   /// **'This erases every stroke on this page.'**
   String get sketcherClearWarning;
 
+  /// No description provided for @locatorAreas.
+  ///
+  /// In en, this message translates to:
+  /// **'Areas'**
+  String get locatorAreas;
+
+  /// No description provided for @locatorNewArea.
+  ///
+  /// In en, this message translates to:
+  /// **'New area'**
+  String get locatorNewArea;
+
+  /// No description provided for @locatorNoAreas.
+  ///
+  /// In en, this message translates to:
+  /// **'No areas yet'**
+  String get locatorNoAreas;
+
+  /// No description provided for @locatorUntitledArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled area'**
+  String get locatorUntitledArea;
+
+  /// No description provided for @locatorToolDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get locatorToolDraw;
+
+  /// No description provided for @locatorToolMove.
+  ///
+  /// In en, this message translates to:
+  /// **'Move'**
+  String get locatorToolMove;
+
+  /// No description provided for @locatorUndoPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo last point'**
+  String get locatorUndoPoint;
+
+  /// No description provided for @locatorDrawHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the map to place points'**
+  String get locatorDrawHint;
+
+  /// No description provided for @locatorDeleteAreaWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This deletes the area and all its points.'**
+  String get locatorDeleteAreaWarning;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

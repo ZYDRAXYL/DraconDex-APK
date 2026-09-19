@@ -420,6 +420,33 @@ class AppLocalizationsQd extends AppLocalizations {
   String get sketcherClearWarning => 'Þis ādīlgaþ ælcne strican on þissum blade.';
 
   @override
+  String get locatorAreas => 'Landas';
+
+  @override
+  String get locatorNewArea => 'Niwe Land';
+
+  @override
+  String get locatorNoAreas => 'Nán land gíet';
+
+  @override
+  String get locatorUntitledArea => 'Unnemned Land';
+
+  @override
+  String get locatorToolDraw => 'Trahtian';
+
+  @override
+  String get locatorToolMove => 'Styrian';
+
+  @override
+  String get locatorUndoPoint => 'Undón þone lætestan prican';
+
+  @override
+  String get locatorDrawHint => 'Hrepa þone landcarte tó settanne prican';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Þis fordéþ þæt land and ealle his prican.';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override
