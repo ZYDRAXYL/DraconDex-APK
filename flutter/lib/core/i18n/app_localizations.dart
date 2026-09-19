@@ -996,6 +996,60 @@ abstract class AppLocalizations {
   /// **'This deletes the area and all its points.'**
   String get locatorDeleteAreaWarning;
 
+  /// No description provided for @wandererPins.
+  ///
+  /// In en, this message translates to:
+  /// **'Pins'**
+  String get wandererPins;
+
+  /// No description provided for @wandererNoPins.
+  ///
+  /// In en, this message translates to:
+  /// **'No pins yet'**
+  String get wandererNoPins;
+
+  /// No description provided for @wandererPlacing.
+  ///
+  /// In en, this message translates to:
+  /// **'Placing'**
+  String get wandererPlacing;
+
+  /// No description provided for @wandererPlaceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the map to place a pin'**
+  String get wandererPlaceHint;
+
+  /// No description provided for @wandererPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin'**
+  String get wandererPin;
+
+  /// No description provided for @wandererLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Label'**
+  String get wandererLabel;
+
+  /// No description provided for @wandererLinkedEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked event'**
+  String get wandererLinkedEvent;
+
+  /// No description provided for @wandererNoLink.
+  ///
+  /// In en, this message translates to:
+  /// **'No link'**
+  String get wandererNoLink;
+
+  /// No description provided for @wandererNoEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'No timeline events in this Nexus yet'**
+  String get wandererNoEvents;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

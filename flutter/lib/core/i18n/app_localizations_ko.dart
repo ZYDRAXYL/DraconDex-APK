@@ -447,6 +447,33 @@ class AppLocalizationsKo extends AppLocalizations {
   String get locatorDeleteAreaWarning => '영역과 모든 점을 삭제합니다.';
 
   @override
+  String get wandererPins => '핀';
+
+  @override
+  String get wandererNoPins => '아직 핀이 없습니다';
+
+  @override
+  String get wandererPlacing => '배치 중';
+
+  @override
+  String get wandererPlaceHint => '지도를 눌러 핀을 놓으세요';
+
+  @override
+  String get wandererPin => '핀';
+
+  @override
+  String get wandererLabel => '라벨';
+
+  @override
+  String get wandererLinkedEvent => '연결된 이벤트';
+
+  @override
+  String get wandererNoLink => '연결 없음';
+
+  @override
+  String get wandererNoEvents => '이 Nexus에는 아직 타임라인 이벤트가 없습니다';
+
+  @override
   String get settingsAppearance => '화면';
 
   @override

@@ -447,6 +447,33 @@ class AppLocalizationsZh extends AppLocalizations {
   String get locatorDeleteAreaWarning => '这会删除该区域及其所有点。';
 
   @override
+  String get wandererPins => '图钉';
+
+  @override
+  String get wandererNoPins => '还没有图钉';
+
+  @override
+  String get wandererPlacing => '放置中';
+
+  @override
+  String get wandererPlaceHint => '点按地图放置图钉';
+
+  @override
+  String get wandererPin => '图钉';
+
+  @override
+  String get wandererLabel => '标签';
+
+  @override
+  String get wandererLinkedEvent => '关联事件';
+
+  @override
+  String get wandererNoLink => '未关联';
+
+  @override
+  String get wandererNoEvents => '此 Nexus 中还没有时间线事件';
+
+  @override
   String get settingsAppearance => '外观';
 
   @override

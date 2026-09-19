@@ -447,6 +447,33 @@ class AppLocalizationsId extends AppLocalizations {
   String get locatorDeleteAreaWarning => 'Ini menghapus area dan semua titiknya.';
 
   @override
+  String get wandererPins => 'Penanda';
+
+  @override
+  String get wandererNoPins => 'Belum ada penanda';
+
+  @override
+  String get wandererPlacing => 'Menempatkan';
+
+  @override
+  String get wandererPlaceHint => 'Ketuk peta untuk menempatkan penanda';
+
+  @override
+  String get wandererPin => 'Penanda';
+
+  @override
+  String get wandererLabel => 'Label';
+
+  @override
+  String get wandererLinkedEvent => 'Peristiwa tertaut';
+
+  @override
+  String get wandererNoLink => 'Tanpa tautan';
+
+  @override
+  String get wandererNoEvents => 'Belum ada peristiwa linimasa di Nexus ini';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

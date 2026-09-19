@@ -447,6 +447,33 @@ class AppLocalizationsTh extends AppLocalizations {
   String get locatorDeleteAreaWarning => 'การลบนี้จะลบพื้นที่และจุดทั้งหมดของมัน';
 
   @override
+  String get wandererPins => 'หมุด';
+
+  @override
+  String get wandererNoPins => 'ยังไม่มีหมุด';
+
+  @override
+  String get wandererPlacing => 'กำลังวาง';
+
+  @override
+  String get wandererPlaceHint => 'แตะแผนที่เพื่อวางหมุด';
+
+  @override
+  String get wandererPin => 'หมุด';
+
+  @override
+  String get wandererLabel => 'ป้ายกำกับ';
+
+  @override
+  String get wandererLinkedEvent => 'เหตุการณ์ที่เชื่อม';
+
+  @override
+  String get wandererNoLink => 'ไม่มีการเชื่อม';
+
+  @override
+  String get wandererNoEvents => 'ยังไม่มีเหตุการณ์ในเส้นเวลาของ Nexus นี้';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

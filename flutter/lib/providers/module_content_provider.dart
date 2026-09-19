@@ -7,6 +7,7 @@ import '../data/models/locator_model.dart';
 import '../data/models/narrator_model.dart';
 import '../data/models/sketcher_model.dart';
 import '../data/models/viewer_model.dart';
+import '../data/models/wanderer_model.dart';
 import '../data/models/scribe_model.dart';
 import 'db_providers.dart';
 
@@ -211,5 +212,25 @@ final mapAreasProvider = FutureProvider.family<List<MapAreaModel>, int>((ref, ma
     data: (d) => d.getAreas(mapId),
     loading: () => Future.value(<MapAreaModel>[]),
     error: (e, s) => Future<List<MapAreaModel>>.error(e, s),
+  );
+});
+
+final mapPinsProvider = FutureProvider.family<List<MapEventModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(wandererDaoProvider);
+  return dao.when(
+    data: (d) => d.getPins(moduleId),
+    loading: () => Future.value(<MapEventModel>[]),
+    error: (e, s) => Future<List<MapEventModel>>.error(e, s),
+  );
+});
+
+/// Timeline events across the Nexus, for the Wanderer's link picker.
+final linkableEventsProvider =
+    FutureProvider.family<List<LinkableEvent>, int>((ref, nexusId) async {
+  final dao = ref.watch(wandererDaoProvider);
+  return dao.when(
+    data: (d) => d.listNexusEvents(nexusId),
+    loading: () => Future.value(<LinkableEvent>[]),
+    error: (e, s) => Future<List<LinkableEvent>>.error(e, s),
   );
 });

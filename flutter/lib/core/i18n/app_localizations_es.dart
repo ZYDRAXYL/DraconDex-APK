@@ -447,6 +447,33 @@ class AppLocalizationsEs extends AppLocalizations {
   String get locatorDeleteAreaWarning => 'Esto elimina el área y todos sus puntos.';
 
   @override
+  String get wandererPins => 'Marcadores';
+
+  @override
+  String get wandererNoPins => 'Aún no hay marcadores';
+
+  @override
+  String get wandererPlacing => 'Colocando';
+
+  @override
+  String get wandererPlaceHint => 'Toca el mapa para colocar un marcador';
+
+  @override
+  String get wandererPin => 'Marcador';
+
+  @override
+  String get wandererLabel => 'Etiqueta';
+
+  @override
+  String get wandererLinkedEvent => 'Evento vinculado';
+
+  @override
+  String get wandererNoLink => 'Sin vínculo';
+
+  @override
+  String get wandererNoEvents => 'Aún no hay eventos de línea temporal en este Nexus';
+
+  @override
   String get settingsAppearance => 'Apariencia';
 
   @override

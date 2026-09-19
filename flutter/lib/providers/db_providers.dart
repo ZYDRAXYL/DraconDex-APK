@@ -13,6 +13,7 @@ import '../data/dao/narrator_dao.dart';
 import '../data/dao/scribe_dao.dart';
 import '../data/dao/sketcher_dao.dart';
 import '../data/dao/viewer_dao.dart';
+import '../data/dao/wanderer_dao.dart';
 
 final databaseProvider = FutureProvider<Database>((ref) async {
   return DatabaseHelper.instance.database;
@@ -64,4 +65,8 @@ final sketcherDaoProvider = Provider<AsyncValue<SketcherDao>>((ref) {
 
 final locatorDaoProvider = Provider<AsyncValue<LocatorDao>>((ref) {
   return ref.watch(databaseProvider).whenData((db) => LocatorDao(db));
+});
+
+final wandererDaoProvider = Provider<AsyncValue<WandererDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => WandererDao(db));
 });

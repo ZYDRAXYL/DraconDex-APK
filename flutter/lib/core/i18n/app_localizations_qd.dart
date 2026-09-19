@@ -447,6 +447,33 @@ class AppLocalizationsQd extends AppLocalizations {
   String get locatorDeleteAreaWarning => 'Þis fordéþ þæt land and ealle his prican.';
 
   @override
+  String get wandererPins => 'Prican';
+
+  @override
+  String get wandererNoPins => 'Nán prica gíet';
+
+  @override
+  String get wandererPlacing => 'Settende';
+
+  @override
+  String get wandererPlaceHint => 'Hrepa þone landcarte tó settanne pricany';
+
+  @override
+  String get wandererPin => 'Prica';
+
+  @override
+  String get wandererLabel => 'Nemning';
+
+  @override
+  String get wandererLinkedEvent => 'Gebunden Gelimp';
+
+  @override
+  String get wandererNoLink => 'Nán bend';
+
+  @override
+  String get wandererNoEvents => 'Nán tídlínu-gelimp on þissum Nexus gíet';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

@@ -447,6 +447,33 @@ class AppLocalizationsRu extends AppLocalizations {
   String get locatorDeleteAreaWarning => 'Это удалит область и все её точки.';
 
   @override
+  String get wandererPins => 'Метки';
+
+  @override
+  String get wandererNoPins => 'Пока нет меток';
+
+  @override
+  String get wandererPlacing => 'Размещение';
+
+  @override
+  String get wandererPlaceHint => 'Коснитесь карты, чтобы поставить метку';
+
+  @override
+  String get wandererPin => 'Метка';
+
+  @override
+  String get wandererLabel => 'Подпись';
+
+  @override
+  String get wandererLinkedEvent => 'Связанное событие';
+
+  @override
+  String get wandererNoLink => 'Без связи';
+
+  @override
+  String get wandererNoEvents => 'В этом Nexus пока нет событий на линии времени';
+
+  @override
   String get settingsAppearance => 'Внешний вид';
 
   @override

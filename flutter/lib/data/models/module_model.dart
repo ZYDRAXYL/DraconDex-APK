@@ -126,7 +126,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Wanderer',
     icon: Icons.explore_outlined,
     description: 'Timeline events pinned on a map',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.narrator: ModuleKindInfo(
     kind: ModuleKind.narrator,
