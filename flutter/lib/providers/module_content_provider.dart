@@ -3,9 +3,11 @@ import '../data/models/author_model.dart';
 import '../data/models/chronicler_model.dart';
 import '../data/models/classifier_model.dart';
 import '../data/models/designer_model.dart';
+import '../data/models/locator_model.dart';
 import '../data/models/narrator_model.dart';
 import '../data/models/sketcher_model.dart';
 import '../data/models/viewer_model.dart';
+import '../data/models/wanderer_model.dart';
 import '../data/models/scribe_model.dart';
 import 'db_providers.dart';
 
@@ -191,5 +193,44 @@ final sketchStrokesProvider =
     data: (d) => d.getStrokes(pageId),
     loading: () => Future.value(<SketchStrokeModel>[]),
     error: (e, s) => Future<List<SketchStrokeModel>>.error(e, s),
+  );
+});
+
+/// The module's map row, created on first open. Keyed by module id.
+final moduleMapProvider = FutureProvider.family<MapModel?, int>((ref, moduleId) async {
+  final dao = ref.watch(locatorDaoProvider);
+  return dao.when(
+    data: (d) => d.ensureMap(moduleId),
+    loading: () => Future<MapModel?>.value(null),
+    error: (e, s) => Future<MapModel?>.error(e, s),
+  );
+});
+
+final mapAreasProvider = FutureProvider.family<List<MapAreaModel>, int>((ref, mapId) async {
+  final dao = ref.watch(locatorDaoProvider);
+  return dao.when(
+    data: (d) => d.getAreas(mapId),
+    loading: () => Future.value(<MapAreaModel>[]),
+    error: (e, s) => Future<List<MapAreaModel>>.error(e, s),
+  );
+});
+
+final mapPinsProvider = FutureProvider.family<List<MapEventModel>, int>((ref, moduleId) async {
+  final dao = ref.watch(wandererDaoProvider);
+  return dao.when(
+    data: (d) => d.getPins(moduleId),
+    loading: () => Future.value(<MapEventModel>[]),
+    error: (e, s) => Future<List<MapEventModel>>.error(e, s),
+  );
+});
+
+/// Timeline events across the Nexus, for the Wanderer's link picker.
+final linkableEventsProvider =
+    FutureProvider.family<List<LinkableEvent>, int>((ref, nexusId) async {
+  final dao = ref.watch(wandererDaoProvider);
+  return dao.when(
+    data: (d) => d.listNexusEvents(nexusId),
+    loading: () => Future.value(<LinkableEvent>[]),
+    error: (e, s) => Future<List<LinkableEvent>>.error(e, s),
   );
 });

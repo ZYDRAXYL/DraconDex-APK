@@ -420,6 +420,60 @@ class AppLocalizationsVi extends AppLocalizations {
   String get sketcherClearWarning => 'Thao tác này xóa mọi nét trên trang này.';
 
   @override
+  String get locatorAreas => 'Khu vực';
+
+  @override
+  String get locatorNewArea => 'Khu vực mới';
+
+  @override
+  String get locatorNoAreas => 'Chưa có khu vực nào';
+
+  @override
+  String get locatorUntitledArea => 'Khu vực chưa đặt tên';
+
+  @override
+  String get locatorToolDraw => 'Vẽ';
+
+  @override
+  String get locatorToolMove => 'Di chuyển';
+
+  @override
+  String get locatorUndoPoint => 'Hoàn tác điểm cuối';
+
+  @override
+  String get locatorDrawHint => 'Chạm vào bản đồ để đặt điểm';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Thao tác này xóa khu vực và mọi điểm của nó.';
+
+  @override
+  String get wandererPins => 'Ghim';
+
+  @override
+  String get wandererNoPins => 'Chưa có ghim nào';
+
+  @override
+  String get wandererPlacing => 'Đang đặt';
+
+  @override
+  String get wandererPlaceHint => 'Chạm vào bản đồ để đặt ghim';
+
+  @override
+  String get wandererPin => 'Ghim';
+
+  @override
+  String get wandererLabel => 'Nhãn';
+
+  @override
+  String get wandererLinkedEvent => 'Sự kiện liên kết';
+
+  @override
+  String get wandererNoLink => 'Không liên kết';
+
+  @override
+  String get wandererNoEvents => 'Chưa có sự kiện dòng thời gian nào trong Nexus này';
+
+  @override
   String get settingsAppearance => 'Giao diện';
 
   @override

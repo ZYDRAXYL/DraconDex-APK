@@ -420,6 +420,60 @@ class AppLocalizationsTh extends AppLocalizations {
   String get sketcherClearWarning => 'การทำเช่นนี้จะลบทุกเส้นในหน้านี้';
 
   @override
+  String get locatorAreas => 'พื้นที่';
+
+  @override
+  String get locatorNewArea => 'พื้นที่ใหม่';
+
+  @override
+  String get locatorNoAreas => 'ยังไม่มีพื้นที่';
+
+  @override
+  String get locatorUntitledArea => 'พื้นที่ไม่มีชื่อ';
+
+  @override
+  String get locatorToolDraw => 'วาด';
+
+  @override
+  String get locatorToolMove => 'เลื่อน';
+
+  @override
+  String get locatorUndoPoint => 'เลิกทำจุดล่าสุด';
+
+  @override
+  String get locatorDrawHint => 'แตะแผนที่เพื่อวางจุด';
+
+  @override
+  String get locatorDeleteAreaWarning => 'การลบนี้จะลบพื้นที่และจุดทั้งหมดของมัน';
+
+  @override
+  String get wandererPins => 'หมุด';
+
+  @override
+  String get wandererNoPins => 'ยังไม่มีหมุด';
+
+  @override
+  String get wandererPlacing => 'กำลังวาง';
+
+  @override
+  String get wandererPlaceHint => 'แตะแผนที่เพื่อวางหมุด';
+
+  @override
+  String get wandererPin => 'หมุด';
+
+  @override
+  String get wandererLabel => 'ป้ายกำกับ';
+
+  @override
+  String get wandererLinkedEvent => 'เหตุการณ์ที่เชื่อม';
+
+  @override
+  String get wandererNoLink => 'ไม่มีการเชื่อม';
+
+  @override
+  String get wandererNoEvents => 'ยังไม่มีเหตุการณ์ในเส้นเวลาของ Nexus นี้';
+
+  @override
   String get settingsAppearance => 'รูปลักษณ์';
 
   @override

@@ -7,11 +7,13 @@ import '../data/dao/classifier_dao.dart';
 import '../data/dao/color_dao.dart';
 import '../data/dao/designer_dao.dart';
 import '../data/dao/hashtag_dao.dart';
+import '../data/dao/locator_dao.dart';
 import '../data/dao/module_dao.dart';
 import '../data/dao/narrator_dao.dart';
 import '../data/dao/scribe_dao.dart';
 import '../data/dao/sketcher_dao.dart';
 import '../data/dao/viewer_dao.dart';
+import '../data/dao/wanderer_dao.dart';
 
 final databaseProvider = FutureProvider<Database>((ref) async {
   return DatabaseHelper.instance.database;
@@ -59,4 +61,12 @@ final designerDaoProvider = Provider<AsyncValue<DesignerDao>>((ref) {
 
 final sketcherDaoProvider = Provider<AsyncValue<SketcherDao>>((ref) {
   return ref.watch(databaseProvider).whenData((db) => SketcherDao(db));
+});
+
+final locatorDaoProvider = Provider<AsyncValue<LocatorDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => LocatorDao(db));
+});
+
+final wandererDaoProvider = Provider<AsyncValue<WandererDao>>((ref) {
+  return ref.watch(databaseProvider).whenData((db) => WandererDao(db));
 });

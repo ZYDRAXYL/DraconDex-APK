@@ -420,6 +420,60 @@ class AppLocalizationsJa extends AppLocalizations {
   String get sketcherClearWarning => 'このページのすべての線を消します。';
 
   @override
+  String get locatorAreas => 'エリア';
+
+  @override
+  String get locatorNewArea => '新しいエリア';
+
+  @override
+  String get locatorNoAreas => 'まだエリアがありません';
+
+  @override
+  String get locatorUntitledArea => '無題のエリア';
+
+  @override
+  String get locatorToolDraw => '描く';
+
+  @override
+  String get locatorToolMove => '移動';
+
+  @override
+  String get locatorUndoPoint => '最後の点を取り消す';
+
+  @override
+  String get locatorDrawHint => '地図をタップして点を置きます';
+
+  @override
+  String get locatorDeleteAreaWarning => 'エリアとそのすべての点を削除します。';
+
+  @override
+  String get wandererPins => 'ピン';
+
+  @override
+  String get wandererNoPins => 'まだピンがありません';
+
+  @override
+  String get wandererPlacing => '配置中';
+
+  @override
+  String get wandererPlaceHint => '地図をタップしてピンを置きます';
+
+  @override
+  String get wandererPin => 'ピン';
+
+  @override
+  String get wandererLabel => 'ラベル';
+
+  @override
+  String get wandererLinkedEvent => 'リンクされたイベント';
+
+  @override
+  String get wandererNoLink => 'リンクなし';
+
+  @override
+  String get wandererNoEvents => 'この Nexus にはまだタイムラインイベントがありません';
+
+  @override
   String get settingsAppearance => '外観';
 
   @override

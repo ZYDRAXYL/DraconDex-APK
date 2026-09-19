@@ -942,6 +942,114 @@ abstract class AppLocalizations {
   /// **'This erases every stroke on this page.'**
   String get sketcherClearWarning;
 
+  /// No description provided for @locatorAreas.
+  ///
+  /// In en, this message translates to:
+  /// **'Areas'**
+  String get locatorAreas;
+
+  /// No description provided for @locatorNewArea.
+  ///
+  /// In en, this message translates to:
+  /// **'New area'**
+  String get locatorNewArea;
+
+  /// No description provided for @locatorNoAreas.
+  ///
+  /// In en, this message translates to:
+  /// **'No areas yet'**
+  String get locatorNoAreas;
+
+  /// No description provided for @locatorUntitledArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled area'**
+  String get locatorUntitledArea;
+
+  /// No description provided for @locatorToolDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get locatorToolDraw;
+
+  /// No description provided for @locatorToolMove.
+  ///
+  /// In en, this message translates to:
+  /// **'Move'**
+  String get locatorToolMove;
+
+  /// No description provided for @locatorUndoPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo last point'**
+  String get locatorUndoPoint;
+
+  /// No description provided for @locatorDrawHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the map to place points'**
+  String get locatorDrawHint;
+
+  /// No description provided for @locatorDeleteAreaWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This deletes the area and all its points.'**
+  String get locatorDeleteAreaWarning;
+
+  /// No description provided for @wandererPins.
+  ///
+  /// In en, this message translates to:
+  /// **'Pins'**
+  String get wandererPins;
+
+  /// No description provided for @wandererNoPins.
+  ///
+  /// In en, this message translates to:
+  /// **'No pins yet'**
+  String get wandererNoPins;
+
+  /// No description provided for @wandererPlacing.
+  ///
+  /// In en, this message translates to:
+  /// **'Placing'**
+  String get wandererPlacing;
+
+  /// No description provided for @wandererPlaceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the map to place a pin'**
+  String get wandererPlaceHint;
+
+  /// No description provided for @wandererPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin'**
+  String get wandererPin;
+
+  /// No description provided for @wandererLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Label'**
+  String get wandererLabel;
+
+  /// No description provided for @wandererLinkedEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked event'**
+  String get wandererLinkedEvent;
+
+  /// No description provided for @wandererNoLink.
+  ///
+  /// In en, this message translates to:
+  /// **'No link'**
+  String get wandererNoLink;
+
+  /// No description provided for @wandererNoEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'No timeline events in this Nexus yet'**
+  String get wandererNoEvents;
+
   /// No description provided for @settingsAppearance.
   ///
   /// In en, this message translates to:

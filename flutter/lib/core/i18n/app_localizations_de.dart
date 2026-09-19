@@ -420,6 +420,60 @@ class AppLocalizationsDe extends AppLocalizations {
   String get sketcherClearWarning => 'Das löscht jeden Strich auf dieser Seite.';
 
   @override
+  String get locatorAreas => 'Gebiete';
+
+  @override
+  String get locatorNewArea => 'Neues Gebiet';
+
+  @override
+  String get locatorNoAreas => 'Noch keine Gebiete';
+
+  @override
+  String get locatorUntitledArea => 'Unbenanntes Gebiet';
+
+  @override
+  String get locatorToolDraw => 'Zeichnen';
+
+  @override
+  String get locatorToolMove => 'Bewegen';
+
+  @override
+  String get locatorUndoPoint => 'Letzten Punkt rückgängig';
+
+  @override
+  String get locatorDrawHint => 'Tippe auf die Karte, um Punkte zu setzen';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Damit werden das Gebiet und alle seine Punkte gelöscht.';
+
+  @override
+  String get wandererPins => 'Marker';
+
+  @override
+  String get wandererNoPins => 'Noch keine Marker';
+
+  @override
+  String get wandererPlacing => 'Setzen';
+
+  @override
+  String get wandererPlaceHint => 'Tippe auf die Karte, um einen Marker zu setzen';
+
+  @override
+  String get wandererPin => 'Marker';
+
+  @override
+  String get wandererLabel => 'Bezeichnung';
+
+  @override
+  String get wandererLinkedEvent => 'Verknüpftes Ereignis';
+
+  @override
+  String get wandererNoLink => 'Keine Verknüpfung';
+
+  @override
+  String get wandererNoEvents => 'Noch keine Zeitleisten-Ereignisse in diesem Nexus';
+
+  @override
   String get settingsAppearance => 'Erscheinungsbild';
 
   @override

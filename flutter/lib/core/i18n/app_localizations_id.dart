@@ -420,6 +420,60 @@ class AppLocalizationsId extends AppLocalizations {
   String get sketcherClearWarning => 'Ini menghapus semua goresan di halaman ini.';
 
   @override
+  String get locatorAreas => 'Area';
+
+  @override
+  String get locatorNewArea => 'Area baru';
+
+  @override
+  String get locatorNoAreas => 'Belum ada area';
+
+  @override
+  String get locatorUntitledArea => 'Area tanpa judul';
+
+  @override
+  String get locatorToolDraw => 'Gambar';
+
+  @override
+  String get locatorToolMove => 'Pindah';
+
+  @override
+  String get locatorUndoPoint => 'Batalkan titik terakhir';
+
+  @override
+  String get locatorDrawHint => 'Ketuk peta untuk menempatkan titik';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Ini menghapus area dan semua titiknya.';
+
+  @override
+  String get wandererPins => 'Penanda';
+
+  @override
+  String get wandererNoPins => 'Belum ada penanda';
+
+  @override
+  String get wandererPlacing => 'Menempatkan';
+
+  @override
+  String get wandererPlaceHint => 'Ketuk peta untuk menempatkan penanda';
+
+  @override
+  String get wandererPin => 'Penanda';
+
+  @override
+  String get wandererLabel => 'Label';
+
+  @override
+  String get wandererLinkedEvent => 'Peristiwa tertaut';
+
+  @override
+  String get wandererNoLink => 'Tanpa tautan';
+
+  @override
+  String get wandererNoEvents => 'Belum ada peristiwa linimasa di Nexus ini';
+
+  @override
   String get settingsAppearance => 'Tampilan';
 
   @override

@@ -420,6 +420,60 @@ class AppLocalizationsQd extends AppLocalizations {
   String get sketcherClearWarning => 'Þis ādīlgaþ ælcne strican on þissum blade.';
 
   @override
+  String get locatorAreas => 'Landas';
+
+  @override
+  String get locatorNewArea => 'Niwe Land';
+
+  @override
+  String get locatorNoAreas => 'Nán land gíet';
+
+  @override
+  String get locatorUntitledArea => 'Unnemned Land';
+
+  @override
+  String get locatorToolDraw => 'Trahtian';
+
+  @override
+  String get locatorToolMove => 'Styrian';
+
+  @override
+  String get locatorUndoPoint => 'Undón þone lætestan prican';
+
+  @override
+  String get locatorDrawHint => 'Hrepa þone landcarte tó settanne prican';
+
+  @override
+  String get locatorDeleteAreaWarning => 'Þis fordéþ þæt land and ealle his prican.';
+
+  @override
+  String get wandererPins => 'Prican';
+
+  @override
+  String get wandererNoPins => 'Nán prica gíet';
+
+  @override
+  String get wandererPlacing => 'Settende';
+
+  @override
+  String get wandererPlaceHint => 'Hrepa þone landcarte tó settanne pricany';
+
+  @override
+  String get wandererPin => 'Prica';
+
+  @override
+  String get wandererLabel => 'Nemning';
+
+  @override
+  String get wandererLinkedEvent => 'Gebunden Gelimp';
+
+  @override
+  String get wandererNoLink => 'Nán bend';
+
+  @override
+  String get wandererNoEvents => 'Nán tídlínu-gelimp on þissum Nexus gíet';
+
+  @override
   String get settingsAppearance => 'Vysazh';
 
   @override

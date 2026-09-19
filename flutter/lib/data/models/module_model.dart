@@ -112,7 +112,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Locator',
     icon: Icons.map_outlined,
     description: 'Map canvas with drawable areas',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.chronicler: ModuleKindInfo(
     kind: ModuleKind.chronicler,
@@ -126,7 +126,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Wanderer',
     icon: Icons.explore_outlined,
     description: 'Timeline events pinned on a map',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
   ModuleKind.narrator: ModuleKindInfo(
     kind: ModuleKind.narrator,

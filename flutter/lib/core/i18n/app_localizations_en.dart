@@ -420,6 +420,60 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sketcherClearWarning => 'This erases every stroke on this page.';
 
   @override
+  String get locatorAreas => 'Areas';
+
+  @override
+  String get locatorNewArea => 'New area';
+
+  @override
+  String get locatorNoAreas => 'No areas yet';
+
+  @override
+  String get locatorUntitledArea => 'Untitled area';
+
+  @override
+  String get locatorToolDraw => 'Draw';
+
+  @override
+  String get locatorToolMove => 'Move';
+
+  @override
+  String get locatorUndoPoint => 'Undo last point';
+
+  @override
+  String get locatorDrawHint => 'Tap the map to place points';
+
+  @override
+  String get locatorDeleteAreaWarning => 'This deletes the area and all its points.';
+
+  @override
+  String get wandererPins => 'Pins';
+
+  @override
+  String get wandererNoPins => 'No pins yet';
+
+  @override
+  String get wandererPlacing => 'Placing';
+
+  @override
+  String get wandererPlaceHint => 'Tap the map to place a pin';
+
+  @override
+  String get wandererPin => 'Pin';
+
+  @override
+  String get wandererLabel => 'Label';
+
+  @override
+  String get wandererLinkedEvent => 'Linked event';
+
+  @override
+  String get wandererNoLink => 'No link';
+
+  @override
+  String get wandererNoEvents => 'No timeline events in this Nexus yet';
+
+  @override
   String get settingsAppearance => 'Appearance';
 
   @override
