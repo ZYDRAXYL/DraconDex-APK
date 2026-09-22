@@ -10,11 +10,28 @@ DraconDex monorepo until the 2026-09-10 split; the directory prefix is unchanged
 because `pubspec.yaml` declares its assets relative to its own package dir.
 
 Riverpod-based, structured under `flutter/lib/{core,data,providers,widgets,features}/`.
-It opens the same SQLite vault format as the desktop app but is developed
-independently and is **behind** it: there is no `module` table here at all, so
-none of the desktop app's v3 module-tree system exists yet, and several legacy
-modules (Hero, Writer, Scribe, Sage, Artisan, wikilinks, IDE shell) are not
-implemented on this side either.
+It opens the same SQLite vault format as the desktop app, and it **does have** the
+v3 module-tree system: `data/dao/module_dao.dart` ("Data access for the v3 module
+system"), the nest tree and builder shell under `features/builder/`, and the kind
+registry `moduleKindInfo` in `data/models/module_model.dart` — where all 15 kinds
+are `contentImplemented: true`.
+
+Eleven of them have a dedicated editor under `features/hub/content/`. The other
+four return `null` from `moduleContentFor()` for reasons that are deliberate, not
+gaps: `inspector` and `drafter` fall back to the shared notes field, which is what
+the desktop app does too (both write `module.description`), and `collector` is a
+folder with no content area. Only **`manager` genuinely differs** — it is treated
+as a folder here, while the desktop app gives it a four-view container.
+
+**`moduleKindInfo`'s `contentImplemented` flag and `moduleContentFor()` are the
+source of truth for what is ported — read them, not prose.** This paragraph used
+to say there was no `module` table here at all; that was copied into
+`DraconDex-APP/docs/V5.md` and used to route v5 work away from this repo for
+several sessions before anyone checked it against the code.
+
+Still genuinely missing on this side: the legacy modules (Hero, Writer, Scribe,
+Sage, Artisan, IDE shell) and wikilinks — nothing under `flutter/lib` implements
+`[[...]]` parsing or writes the `wiki_link` index.
 
 ## This tree also builds the PWA — do not fork it
 
