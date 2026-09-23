@@ -59,7 +59,10 @@ class _ModuleDialogState extends ConsumerState<ModuleDialog> {
                   mainAxisSpacing: 8,
                   crossAxisSpacing: 8,
                   childAspectRatio: 1.1,
-                  children: ModuleKind.values.map((k) {
+                  // Diviner is opened, not created, here: this app's pinned
+                  // vault schema (sdb.lock.json) predates 'diviner' in the
+                  // module.kind CHECK, so an INSERT would be refused.
+                  children: ModuleKind.values.where((k) => k != ModuleKind.diviner).map((k) {
                     final info = moduleKindInfo[k]!;
                     final selected = _kind == k;
                     return InkWell(

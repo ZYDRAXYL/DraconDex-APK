@@ -47,4 +47,6 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       ModuleKind.collector || ModuleKind.manager => null,
       // The notes field genuinely is the content for these two.
       ModuleKind.inspector || ModuleKind.drafter => null,
+      // Not ported yet (V5.md §11.5): the notes field and the warning.
+      ModuleKind.diviner => null,
     };

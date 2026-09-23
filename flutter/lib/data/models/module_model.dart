@@ -50,7 +50,11 @@ enum ModuleKind {
   viewer,
   connector,
   sketcher,
-  designer;
+  designer,
+  // V5.md §11.5 — random tables and dice. Registered so a vault that holds
+  // one opens it by its real kind instead of falling back to collector;
+  // the editor is not ported yet (contentImplemented: false below).
+  diviner;
 
   String get id => name;
 
@@ -211,6 +215,14 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     icon: Icons.account_tree_outlined,
     description: 'Free-form diagram board',
     contentImplemented: true,
+  ),
+  ModuleKind.diviner: ModuleKindInfo(
+    kind: ModuleKind.diviner,
+    category: ModuleCategory.data,
+    label: 'Diviner',
+    icon: Icons.casino_outlined,
+    description: 'Random tables and dice rolls',
+    contentImplemented: false,
   ),
 };
 
