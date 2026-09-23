@@ -60,8 +60,20 @@ enum ModuleKind {
       );
 }
 
+/// What a kind IS, by where its content comes from — the desktop's
+/// KIND_CATEGORY (DraconDex-EXE hub/kinds.js, DraconDex-APP docs/V5.md §9):
+///   structure  holds modules, not content (collector)
+///   view       shows other modules' content; deleting one loses only a
+///              layout or a selection (manager, viewer, connector — the last
+///              two become the desktop's exhibitor with APK V3)
+///   data       owns content; deleting one deletes what was written in it
+/// `required` below is the parity check: a 16th kind without a category is
+/// a compile error, which the desktop gets from check.mjs instead.
+enum ModuleCategory { structure, view, data }
+
 class ModuleKindInfo {
   final ModuleKind kind;
+  final ModuleCategory category;
   final String label;
   final IconData icon;
   final String description;
@@ -71,6 +83,7 @@ class ModuleKindInfo {
 
   const ModuleKindInfo({
     required this.kind,
+    required this.category,
     required this.label,
     required this.icon,
     required this.description,
@@ -81,6 +94,7 @@ class ModuleKindInfo {
 const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ModuleKind.collector: ModuleKindInfo(
     kind: ModuleKind.collector,
+    category: ModuleCategory.structure,
     label: 'Collector',
     icon: Icons.folder,
     description: 'Plain folder — groups children only',
@@ -88,6 +102,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.manager: ModuleKindInfo(
     kind: ModuleKind.manager,
+    category: ModuleCategory.view,
     label: 'Manager',
     icon: Icons.dashboard_outlined,
     description: 'Container showing this module\'s children',
@@ -95,6 +110,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.inspector: ModuleKindInfo(
     kind: ModuleKind.inspector,
+    category: ModuleCategory.data,
     label: 'Inspector',
     icon: Icons.description_outlined,
     description: 'A single note document',
@@ -102,6 +118,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.classifier: ModuleKindInfo(
     kind: ModuleKind.classifier,
+    category: ModuleCategory.data,
     label: 'Classifier',
     icon: Icons.category_outlined,
     description: 'Category / object / field system',
@@ -109,6 +126,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.locator: ModuleKindInfo(
     kind: ModuleKind.locator,
+    category: ModuleCategory.data,
     label: 'Locator',
     icon: Icons.map_outlined,
     description: 'Map canvas with drawable areas',
@@ -116,6 +134,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.chronicler: ModuleKindInfo(
     kind: ModuleKind.chronicler,
+    category: ModuleCategory.data,
     label: 'Chronicler',
     icon: Icons.timeline_outlined,
     description: 'Timeline of dated events',
@@ -123,6 +142,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.wanderer: ModuleKindInfo(
     kind: ModuleKind.wanderer,
+    category: ModuleCategory.data,
     label: 'Wanderer',
     icon: Icons.explore_outlined,
     description: 'Timeline events pinned on a map',
@@ -130,6 +150,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.narrator: ModuleKindInfo(
     kind: ModuleKind.narrator,
+    category: ModuleCategory.data,
     label: 'Narrator',
     icon: Icons.forum_outlined,
     description: 'Dialogue graph / route board',
@@ -137,6 +158,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.author: ModuleKindInfo(
     kind: ModuleKind.author,
+    category: ModuleCategory.data,
     label: 'Author',
     icon: Icons.menu_book_outlined,
     description: 'Book with chapters',
@@ -144,6 +166,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.scribe: ModuleKindInfo(
     kind: ModuleKind.scribe,
+    category: ModuleCategory.data,
     label: 'Scribe',
     icon: Icons.chat_bubble_outline,
     description: 'Chat-style notes for this module',
@@ -151,6 +174,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.drafter: ModuleKindInfo(
     kind: ModuleKind.drafter,
+    category: ModuleCategory.data,
     label: 'Drafter',
     icon: Icons.edit_note_outlined,
     description: 'A blank markdown page',
@@ -158,6 +182,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.viewer: ModuleKindInfo(
     kind: ModuleKind.viewer,
+    category: ModuleCategory.view,
     label: 'Viewer',
     icon: Icons.visibility_outlined,
     description: 'Read-only saved-filter lens',
@@ -165,6 +190,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.connector: ModuleKindInfo(
     kind: ModuleKind.connector,
+    category: ModuleCategory.view,
     label: 'Connector',
     icon: Icons.hub_outlined,
     description: 'Relationship graph over a saved filter',
@@ -172,6 +198,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.sketcher: ModuleKindInfo(
     kind: ModuleKind.sketcher,
+    category: ModuleCategory.data,
     label: 'Sketcher',
     icon: Icons.brush_outlined,
     description: 'Freehand drawing canvas',
@@ -179,6 +206,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.designer: ModuleKindInfo(
     kind: ModuleKind.designer,
+    category: ModuleCategory.data,
     label: 'Designer',
     icon: Icons.account_tree_outlined,
     description: 'Free-form diagram board',
