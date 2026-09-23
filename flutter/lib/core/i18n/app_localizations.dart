@@ -774,6 +774,12 @@ abstract class AppLocalizations {
   /// **'Inside module'**
   String get filterFieldChildOf;
 
+  /// No description provided for @filterFieldHandle.
+  ///
+  /// In en, this message translates to:
+  /// **'Handle'**
+  String get filterFieldHandle;
+
   /// No description provided for @filterOpIs.
   ///
   /// In en, this message translates to:

@@ -336,6 +336,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get filterFieldChildOf => 'ในโมดูล';
 
   @override
+  String get filterFieldHandle => 'แฮนเดิล';
+
+  @override
   String get filterOpIs => 'เท่ากับ';
 
   @override

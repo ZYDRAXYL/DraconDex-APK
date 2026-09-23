@@ -336,6 +336,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get filterFieldChildOf => '位于模块内';
 
   @override
+  String get filterFieldHandle => '句柄';
+
+  @override
   String get filterOpIs => '等于';
 
   @override

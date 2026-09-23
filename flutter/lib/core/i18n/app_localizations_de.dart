@@ -336,6 +336,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get filterFieldChildOf => 'Im Modul';
 
   @override
+  String get filterFieldHandle => 'Kürzel';
+
+  @override
   String get filterOpIs => 'ist';
 
   @override

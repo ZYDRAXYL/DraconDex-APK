@@ -336,6 +336,9 @@ class AppLocalizationsQd extends AppLocalizations {
   String get filterFieldChildOf => 'Innan Módule';
 
   @override
+  String get filterFieldHandle => 'Handyl';
+
+  @override
   String get filterOpIs => 'is';
 
   @override

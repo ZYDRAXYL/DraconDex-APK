@@ -109,6 +109,7 @@
   "filterFieldHashtag": "แฮชแท็ก",
   "filterFieldKind": "ชนิดโมดูล",
   "filterFieldChildOf": "ในโมดูล",
+  "filterFieldHandle": "แฮนเดิล",
   "filterOpIs": "เท่ากับ",
   "filterOpIsNot": "ไม่เท่ากับ",
   "filterOpStartsWith": "ขึ้นต้นด้วย",

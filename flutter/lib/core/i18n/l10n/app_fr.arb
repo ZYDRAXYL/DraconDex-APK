@@ -109,6 +109,7 @@
   "filterFieldHashtag": "Hashtag",
   "filterFieldKind": "Type de module",
   "filterFieldChildOf": "Dans le module",
+  "filterFieldHandle": "Identifiant",
   "filterOpIs": "est",
   "filterOpIsNot": "n'est pas",
   "filterOpStartsWith": "commence par",

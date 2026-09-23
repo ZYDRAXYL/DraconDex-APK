@@ -336,6 +336,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get filterFieldChildOf => 'Dentro do módulo';
 
   @override
+  String get filterFieldHandle => 'Identificador';
+
+  @override
   String get filterOpIs => 'é';
 
   @override

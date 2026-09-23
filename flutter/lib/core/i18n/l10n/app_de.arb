@@ -109,6 +109,7 @@
   "filterFieldHashtag": "Hashtag",
   "filterFieldKind": "Modulart",
   "filterFieldChildOf": "Im Modul",
+  "filterFieldHandle": "Kürzel",
   "filterOpIs": "ist",
   "filterOpIsNot": "ist nicht",
   "filterOpStartsWith": "beginnt mit",

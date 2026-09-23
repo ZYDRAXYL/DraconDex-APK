@@ -336,6 +336,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get filterFieldChildOf => 'Inside module';
 
   @override
+  String get filterFieldHandle => 'Handle';
+
+  @override
   String get filterOpIs => 'is';
 
   @override

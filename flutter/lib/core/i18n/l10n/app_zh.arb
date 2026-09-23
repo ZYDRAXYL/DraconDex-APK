@@ -109,6 +109,7 @@
   "filterFieldHashtag": "标签",
   "filterFieldKind": "模块类型",
   "filterFieldChildOf": "位于模块内",
+  "filterFieldHandle": "句柄",
   "filterOpIs": "等于",
   "filterOpIsNot": "不等于",
   "filterOpStartsWith": "开头为",

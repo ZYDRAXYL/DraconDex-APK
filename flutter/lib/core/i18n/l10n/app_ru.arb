@@ -109,6 +109,7 @@
   "filterFieldHashtag": "Хештег",
   "filterFieldKind": "Вид модуля",
   "filterFieldChildOf": "Внутри модуля",
+  "filterFieldHandle": "Хэндл",
   "filterOpIs": "равно",
   "filterOpIsNot": "не равно",
   "filterOpStartsWith": "начинается с",

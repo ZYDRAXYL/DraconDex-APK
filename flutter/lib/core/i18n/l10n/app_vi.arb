@@ -109,6 +109,7 @@
   "filterFieldHashtag": "Hashtag",
   "filterFieldKind": "Loại mô-đun",
   "filterFieldChildOf": "Trong mô-đun",
+  "filterFieldHandle": "Handle",
   "filterOpIs": "là",
   "filterOpIsNot": "không phải",
   "filterOpStartsWith": "bắt đầu bằng",

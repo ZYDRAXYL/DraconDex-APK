@@ -336,6 +336,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get filterFieldChildOf => 'Внутри модуля';
 
   @override
+  String get filterFieldHandle => 'Хэндл';
+
+  @override
   String get filterOpIs => 'равно';
 
   @override

@@ -336,6 +336,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get filterFieldChildOf => 'モジュール内';
 
   @override
+  String get filterFieldHandle => 'ハンドル';
+
+  @override
   String get filterOpIs => 'が次と等しい';
 
   @override

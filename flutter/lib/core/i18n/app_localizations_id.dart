@@ -336,6 +336,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get filterFieldChildOf => 'Di dalam modul';
 
   @override
+  String get filterFieldHandle => 'Handle';
+
+  @override
   String get filterOpIs => 'adalah';
 
   @override

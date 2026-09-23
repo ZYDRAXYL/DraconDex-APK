@@ -109,6 +109,7 @@
   "filterFieldHashtag": "Hashtag",
   "filterFieldKind": "Module kind",
   "filterFieldChildOf": "Inside module",
+  "filterFieldHandle": "Handle",
   "filterOpIs": "is",
   "filterOpIsNot": "is not",
   "filterOpStartsWith": "starts with",

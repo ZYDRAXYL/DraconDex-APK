@@ -336,6 +336,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get filterFieldChildOf => 'Trong mô-đun';
 
   @override
+  String get filterFieldHandle => 'Handle';
+
+  @override
   String get filterOpIs => 'là';
 
   @override

@@ -109,6 +109,7 @@
   "filterFieldHashtag": "Mearcword",
   "filterFieldKind": "Cynn þæs Módules",
   "filterFieldChildOf": "Innan Módule",
+  "filterFieldHandle": "Handyl",
   "filterOpIs": "is",
   "filterOpIsNot": "nis",
   "filterOpStartsWith": "onginþ mid",

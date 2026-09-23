@@ -109,6 +109,7 @@
   "filterFieldHashtag": "ハッシュタグ",
   "filterFieldKind": "モジュール種別",
   "filterFieldChildOf": "モジュール内",
+  "filterFieldHandle": "ハンドル",
   "filterOpIs": "が次と等しい",
   "filterOpIsNot": "が次と等しくない",
   "filterOpStartsWith": "で始まる",

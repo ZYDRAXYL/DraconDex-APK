@@ -336,6 +336,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get filterFieldChildOf => '모듈 안';
 
   @override
+  String get filterFieldHandle => '핸들';
+
+  @override
   String get filterOpIs => '다음과 같음';
 
   @override

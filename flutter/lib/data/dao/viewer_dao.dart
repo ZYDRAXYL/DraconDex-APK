@@ -19,22 +19,28 @@ class ViewerDao {
   /// Tags are attached afterwards for the two kinds that have link tables, so
   /// the union itself stays a flat select per source.
   Future<List<IndexedItem>> index(int nexusId) async {
-    const sql = '''
+    // module.handle came in with the desktop's handle work; a vault this app
+    // created before then may not have the column, and a SELECT naming it
+    // would fail the whole index — so it is read only when it exists.
+    final moduleCols = await db.rawQuery('PRAGMA table_info(module)');
+    final handleExpr = moduleCols.any((c) => c['name'] == 'handle') ? 'm.handle' : 'NULL';
+    final sql = '''
       SELECT 'module_' || m.id AS key, 'module' AS item_kind, m.name AS name,
              m.id AS module_id, m.name AS module_name, m.kind AS module_kind,
-             m.parent_id AS module_parent, uc.color_code AS color_code
+             m.parent_id AS module_parent, uc.color_code AS color_code,
+             $handleExpr AS handle
         FROM module m LEFT JOIN use_color uc ON m.color = uc.id
        WHERE m.nexus_ref = ?
 
       UNION ALL
       SELECT 'cobj_' || co.id, 'object', co.name,
-             m.id, m.name, m.kind, m.parent_id, NULL
+             m.id, m.name, m.kind, m.parent_id, NULL, NULL
         FROM classifier_object co JOIN module m ON co.module_ref = m.id
        WHERE m.nexus_ref = ?
 
       UNION ALL
       SELECT 'tlev_' || te.id, 'event', COALESCE(te.event_name, ''),
-             m.id, m.name, m.kind, m.parent_id, NULL
+             m.id, m.name, m.kind, m.parent_id, NULL, NULL
         FROM timeline_event te
         JOIN timeline t ON te.timeline_id = t.id
         JOIN module m ON t.module_ref = m.id
@@ -42,19 +48,19 @@ class ViewerDao {
 
       UNION ALL
       SELECT 'sdlg_' || sd.id, 'dialogue', sd.name,
-             m.id, m.name, m.kind, m.parent_id, NULL
+             m.id, m.name, m.kind, m.parent_id, NULL, NULL
         FROM story_dialogue sd JOIN module m ON sd.module_ref = m.id
        WHERE m.nexus_ref = ?
 
       UNION ALL
       SELECT 'bchp_' || bc.id, 'chapter', bc.name,
-             m.id, m.name, m.kind, m.parent_id, NULL
+             m.id, m.name, m.kind, m.parent_id, NULL, NULL
         FROM book_chapter bc JOIN module m ON bc.module_ref = m.id
        WHERE m.nexus_ref = ?
 
       UNION ALL
       SELECT 'chss_' || cs.id, 'chat', cs.name,
-             m.id, m.name, m.kind, m.parent_id, NULL
+             m.id, m.name, m.kind, m.parent_id, NULL, NULL
         FROM chat_session cs JOIN module m ON cs.module_ref = m.id
        WHERE m.nexus_ref = ?
     ''';
@@ -79,6 +85,7 @@ class ViewerDao {
         moduleKind: r['module_kind'] as String? ?? 'collector',
         moduleParentId: r['module_parent'] as int?,
         colorCode: r['color_code'] as String?,
+        handle: r['handle'] as String?,
         tags: switch (itemKind) {
           'module' => moduleTags[r['module_id'] as int] ?? const [],
           'event' => eventTags[int.parse(key.substring(5))] ?? const [],

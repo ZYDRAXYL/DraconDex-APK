@@ -109,6 +109,7 @@
   "filterFieldHashtag": "Tagar",
   "filterFieldKind": "Jenis modul",
   "filterFieldChildOf": "Di dalam modul",
+  "filterFieldHandle": "Handle",
   "filterOpIs": "adalah",
   "filterOpIsNot": "bukan",
   "filterOpStartsWith": "diawali",
