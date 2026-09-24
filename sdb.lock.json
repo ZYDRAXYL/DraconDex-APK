@@ -3,7 +3,7 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "c50e47db814709edef3320b2f0368707de0fb07f",
+    "ref": "aa5e03ab233d4e5736a6a6e4986cf9134ed0b30f",
     "version": "2.0.0"
   },
   "expect": {
@@ -13,7 +13,7 @@
   "vendored": {
     "flutter/lib/core/database/vault_schema.g.dart": {
       "artifact": "generated/flutter/vault_schema.g.dart",
-      "sha256": "c5b27bb7f3db4ace6c0e302560207008b1477e8cbeaddcec310c92dc242eddc4"
+      "sha256": "51e4ca33897bd3f8907907ff46cc1f4793c68d8782db65b84eb8f208794f3d62"
     },
     "flutter/lib/data/services/supabase_schema.dart": {
       "artifact": "generated/flutter/supabase_schema.dart",
