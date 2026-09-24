@@ -1486,4 +1486,145 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get divQuickRoll => 'Solo tirar: 3d6';
+
+  @override
+  String get trashTitle => 'Papelera';
+
+  @override
+  String get trashMoved => 'Movido a la papelera';
+
+  @override
+  String get trashEmptyAll => 'Vaciar la papelera';
+
+  @override
+  String get trashEmptyConfirm => 'Todo lo que hay en la papelera se borra para siempre.';
+
+  @override
+  String get trashNothing => 'La papelera está vacía';
+
+  @override
+  String get trashNote => 'Un módulo restaurado vuelve con todo su contenido y sus relaciones, pero sin su historial de versiones.';
+
+  @override
+  String get trashRestore => 'Restaurar';
+
+  @override
+  String get trashModules => 'módulos';
+
+  @override
+  String get trashDeleteForever => '¿Borrar para siempre? No se podrá restaurar.';
+
+  @override
+  String get problemsTitle => 'Problemas';
+
+  @override
+  String get problemsLinks => 'Enlaces sin resolver';
+
+  @override
+  String get problemsEmpty => 'Módulos vacíos';
+
+  @override
+  String get problemsRelations => 'Relaciones con un extremo perdido';
+
+  @override
+  String get problemsNone => 'No se encontraron problemas';
+
+  @override
+  String get assetsTitle => 'Recursos';
+
+  @override
+  String get assetsFromDevice => 'Añadir desde este dispositivo';
+
+  @override
+  String get assetsAddUrl => 'Añadir enlace (URL)';
+
+  @override
+  String get assetsNotice => 'Los recursos se quedan en este dispositivo: la sincronización lleva los nombres, no los archivos.';
+
+  @override
+  String get assetsNone => 'Aún no hay recursos';
+
+  @override
+  String get assetsTooBig => 'Demasiado grande para el navegador';
+
+  @override
+  String get pbChooseImage => 'Elegir imagen';
+
+  @override
+  String get csvImportTitle => 'Importar un CSV';
+
+  @override
+  String get fromTemplate => 'Desde una plantilla';
+
+  @override
+  String get guideTitle => 'La guía';
+
+  @override
+  String get guideDesc => 'Un pequeño mundo que muestra cada tipo';
+
+  @override
+  String get guideAdd => 'Añadir la guía';
+
+  @override
+  String get mddxImport => 'Importar un archivo de módulo (.mddx)';
+
+  @override
+  String get mddxExport => 'Exportar como .mddx';
+
+  @override
+  String get mddxNotModule => 'Ese archivo no es un módulo de DraconDex';
+
+  @override
+  String get kindCatStructure => 'Estructura';
+
+  @override
+  String get kindCatView => 'Vista';
+
+  @override
+  String get kindCatData => 'Datos';
+
+  @override
+  String get kindGroupNotes => 'Notas y documentos';
+
+  @override
+  String get kindGroupData => 'Datos y categorías';
+
+  @override
+  String get kindGroupMapTime => 'Mapas y tiempo';
+
+  @override
+  String get kindGroupStory => 'Historia';
+
+  @override
+  String get kindGroupDraw => 'Dibujo y diseño';
+
+  @override
+  String get nexusStartWith => 'Empezar con';
+
+  @override
+  String get nexusStartEmpty => 'Nada — un Nexus vacío';
+
+  @override
+  String get csvPick => 'Elegir un archivo CSV';
+
+  @override
+  String get csvHint => 'La primera fila nombra los campos; la primera columna, los elementos.';
+
+  @override
+  String get csvCreate => 'Crear el Classifier';
+
+  @override
+  String get csvSkip => 'Omitir';
+
+  @override
+  String get csvNameColumn => 'Nombres';
+
+  @override
+  String get csvTruncated => 'solo las primeras 5.000 filas';
+
+  @override
+  String get csvTooLarge => 'El archivo supera 8 MB';
+
+  @override
+  String get csvEmpty => 'No hay filas: se necesita un encabezado y al menos una fila';
 }

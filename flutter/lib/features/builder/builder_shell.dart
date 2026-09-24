@@ -6,9 +6,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/i18n/app_localizations.dart';
 import '../../core/layout/breakpoints.dart';
+import '../../data/services/bundle_service.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../providers/shell_layout_provider.dart';
+import '../hub/dialogs/new_module_sheet.dart';
 import 'builder_rail.dart';
 import 'hub_location.dart';
 import 'hub_sidebar.dart';
@@ -264,7 +266,10 @@ class BuilderNavibar extends ConsumerWidget {
             _NavibarButton(
               icon: Icons.more_horiz,
               label: l10n.navMore,
-              onTap: () => showMoreSheet(context),
+              onTap: () => showMoreSheet(context, onAddGuide: (nx) async {
+                final spec = await BundleService.loadGuide(Localizations.localeOf(context).languageCode);
+                if (context.mounted) await createFromTemplate(context, ref, nx, null, spec);
+              }),
             ),
           ],
         ),

@@ -1486,4 +1486,145 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get divQuickRoll => 'Просто бросить: 3d6';
+
+  @override
+  String get trashTitle => 'Корзина';
+
+  @override
+  String get trashMoved => 'Перемещено в корзину';
+
+  @override
+  String get trashEmptyAll => 'Очистить корзину';
+
+  @override
+  String get trashEmptyConfirm => 'Всё в корзине будет удалено навсегда.';
+
+  @override
+  String get trashNothing => 'Корзина пуста';
+
+  @override
+  String get trashNote => 'Восстановленный модуль вернётся со всем содержимым и связями — но без истории версий.';
+
+  @override
+  String get trashRestore => 'Восстановить';
+
+  @override
+  String get trashModules => 'модулей';
+
+  @override
+  String get trashDeleteForever => 'Удалить навсегда? Восстановить будет нельзя.';
+
+  @override
+  String get problemsTitle => 'Проблемы';
+
+  @override
+  String get problemsLinks => 'Неразрешённые ссылки';
+
+  @override
+  String get problemsEmpty => 'Пустые модули';
+
+  @override
+  String get problemsRelations => 'Связи без одного конца';
+
+  @override
+  String get problemsNone => 'Проблем не найдено';
+
+  @override
+  String get assetsTitle => 'Ресурсы';
+
+  @override
+  String get assetsFromDevice => 'Добавить с устройства';
+
+  @override
+  String get assetsAddUrl => 'Добавить ссылку (URL)';
+
+  @override
+  String get assetsNotice => 'Ресурсы остаются на этом устройстве: синхронизация переносит имена, а не файлы.';
+
+  @override
+  String get assetsNone => 'Ресурсов пока нет';
+
+  @override
+  String get assetsTooBig => 'Слишком большой для браузера';
+
+  @override
+  String get pbChooseImage => 'Выбрать изображение';
+
+  @override
+  String get csvImportTitle => 'Импорт CSV';
+
+  @override
+  String get fromTemplate => 'Из шаблона';
+
+  @override
+  String get guideTitle => 'Руководство';
+
+  @override
+  String get guideDesc => 'Небольшой мир, показывающий каждый тип';
+
+  @override
+  String get guideAdd => 'Добавить руководство';
+
+  @override
+  String get mddxImport => 'Импорт файла модуля (.mddx)';
+
+  @override
+  String get mddxExport => 'Экспорт в .mddx';
+
+  @override
+  String get mddxNotModule => 'Этот файл не является модулем DraconDex';
+
+  @override
+  String get kindCatStructure => 'Структура';
+
+  @override
+  String get kindCatView => 'Представление';
+
+  @override
+  String get kindCatData => 'Данные';
+
+  @override
+  String get kindGroupNotes => 'Заметки и документы';
+
+  @override
+  String get kindGroupData => 'Данные и категории';
+
+  @override
+  String get kindGroupMapTime => 'Карты и время';
+
+  @override
+  String get kindGroupStory => 'Сюжет';
+
+  @override
+  String get kindGroupDraw => 'Рисунок и дизайн';
+
+  @override
+  String get nexusStartWith => 'Начать с';
+
+  @override
+  String get nexusStartEmpty => 'Ничего — пустой Nexus';
+
+  @override
+  String get csvPick => 'Выбрать файл CSV';
+
+  @override
+  String get csvHint => 'Первая строка — имена полей, первый столбец — имена элементов.';
+
+  @override
+  String get csvCreate => 'Создать Classifier';
+
+  @override
+  String get csvSkip => 'Пропустить';
+
+  @override
+  String get csvNameColumn => 'Имена';
+
+  @override
+  String get csvTruncated => 'только первые 5000 строк';
+
+  @override
+  String get csvTooLarge => 'Файл больше 8 МБ';
+
+  @override
+  String get csvEmpty => 'Нет строк — нужен заголовок и хотя бы одна строка';
 }

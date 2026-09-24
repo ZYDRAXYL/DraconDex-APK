@@ -1486,4 +1486,145 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get divQuickRoll => 'Tung nhanh: 3d6';
+
+  @override
+  String get trashTitle => 'Thùng rác';
+
+  @override
+  String get trashMoved => 'Đã chuyển vào thùng rác';
+
+  @override
+  String get trashEmptyAll => 'Dọn thùng rác';
+
+  @override
+  String get trashEmptyConfirm => 'Mọi thứ trong thùng rác sẽ bị xóa vĩnh viễn.';
+
+  @override
+  String get trashNothing => 'Thùng rác trống';
+
+  @override
+  String get trashNote => 'Mô-đun được khôi phục sẽ trở lại cùng mọi thứ bên trong và quan hệ — nhưng không có lịch sử phiên bản.';
+
+  @override
+  String get trashRestore => 'Khôi phục';
+
+  @override
+  String get trashModules => 'mô-đun';
+
+  @override
+  String get trashDeleteForever => 'Xóa vĩnh viễn? Sau đó không thể khôi phục.';
+
+  @override
+  String get problemsTitle => 'Vấn đề';
+
+  @override
+  String get problemsLinks => 'Liên kết chưa khớp';
+
+  @override
+  String get problemsEmpty => 'Mô-đun trống';
+
+  @override
+  String get problemsRelations => 'Quan hệ thiếu một đầu';
+
+  @override
+  String get problemsNone => 'Không có vấn đề';
+
+  @override
+  String get assetsTitle => 'Tài nguyên';
+
+  @override
+  String get assetsFromDevice => 'Thêm từ thiết bị này';
+
+  @override
+  String get assetsAddUrl => 'Thêm liên kết (URL)';
+
+  @override
+  String get assetsNotice => 'Tài nguyên ở lại thiết bị này: đồng bộ chỉ mang tên, không mang tệp.';
+
+  @override
+  String get assetsNone => 'Chưa có tài nguyên';
+
+  @override
+  String get assetsTooBig => 'Quá lớn để lưu trong trình duyệt';
+
+  @override
+  String get pbChooseImage => 'Chọn ảnh';
+
+  @override
+  String get csvImportTitle => 'Nhập CSV';
+
+  @override
+  String get fromTemplate => 'Từ mẫu';
+
+  @override
+  String get guideTitle => 'Hướng dẫn';
+
+  @override
+  String get guideDesc => 'Một thế giới nhỏ giới thiệu mọi loại';
+
+  @override
+  String get guideAdd => 'Thêm hướng dẫn';
+
+  @override
+  String get mddxImport => 'Nhập tệp mô-đun (.mddx)';
+
+  @override
+  String get mddxExport => 'Xuất thành .mddx';
+
+  @override
+  String get mddxNotModule => 'Tệp đó không phải mô-đun DraconDex';
+
+  @override
+  String get kindCatStructure => 'Cấu trúc';
+
+  @override
+  String get kindCatView => 'Góc nhìn';
+
+  @override
+  String get kindCatData => 'Dữ liệu';
+
+  @override
+  String get kindGroupNotes => 'Ghi chú & tài liệu';
+
+  @override
+  String get kindGroupData => 'Dữ liệu & danh mục';
+
+  @override
+  String get kindGroupMapTime => 'Bản đồ & thời gian';
+
+  @override
+  String get kindGroupStory => 'Cốt truyện';
+
+  @override
+  String get kindGroupDraw => 'Vẽ & thiết kế';
+
+  @override
+  String get nexusStartWith => 'Bắt đầu với';
+
+  @override
+  String get nexusStartEmpty => 'Trống — Nexus rỗng';
+
+  @override
+  String get csvPick => 'Chọn tệp CSV';
+
+  @override
+  String get csvHint => 'Hàng đầu là tên trường, cột đầu là tên phần tử.';
+
+  @override
+  String get csvCreate => 'Tạo Classifier';
+
+  @override
+  String get csvSkip => 'Bỏ qua';
+
+  @override
+  String get csvNameColumn => 'Tên';
+
+  @override
+  String get csvTruncated => 'chỉ 5.000 hàng đầu';
+
+  @override
+  String get csvTooLarge => 'Tệp lớn hơn 8 MB';
+
+  @override
+  String get csvEmpty => 'Không có hàng — cần tiêu đề và ít nhất một hàng';
 }

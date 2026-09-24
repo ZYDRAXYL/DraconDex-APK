@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/module_model.dart';
+import '../../../data/services/bundle_service.dart';
 import '../../../providers/db_providers.dart';
 
 class NexusDialog extends ConsumerStatefulWidget {
@@ -15,6 +16,10 @@ class NexusDialog extends ConsumerStatefulWidget {
 class _NexusDialogState extends ConsumerState<NexusDialog> {
   late final TextEditingController _name;
   late final TextEditingController _memo;
+
+  /// What a new Nexus starts with: '' empty, 'guide', or a bundle's id.
+  String _start = '';
+  Future<List<Map<String, dynamic>>>? _bundles;
 
   @override
   void initState() {
@@ -42,6 +47,24 @@ class _NexusDialogState extends ConsumerState<NexusDialog> {
           TextField(controller: _name, autofocus: true, decoration: InputDecoration(labelText: '${l10n.labelName} *')),
           const SizedBox(height: 12),
           TextField(controller: _memo, decoration: InputDecoration(labelText: l10n.labelMemo), maxLines: 2),
+          if (widget.existing == null) ...[
+            const SizedBox(height: 12),
+            FutureBuilder<List<Map<String, dynamic>>>(
+              future: _bundles ??= BundleService.loadBundles(Localizations.localeOf(context).languageCode),
+              builder: (context, snap) => DropdownButtonFormField<String>(
+                initialValue: _start,
+                isExpanded: true,
+                decoration: InputDecoration(labelText: l10n.nexusStartWith),
+                items: [
+                  DropdownMenuItem(value: '', child: Text(l10n.nexusStartEmpty)),
+                  DropdownMenuItem(value: 'guide', child: Text(l10n.guideTitle)),
+                  for (final b in snap.data ?? const <Map<String, dynamic>>[])
+                    DropdownMenuItem(value: '${b['id']}', child: Text('${b['name']}')),
+                ],
+                onChanged: (v) => setState(() => _start = v ?? ''),
+              ),
+            ),
+          ],
         ],
       ),
       actions: [
@@ -55,6 +78,7 @@ class _NexusDialogState extends ConsumerState<NexusDialog> {
     final name = _name.text.trim();
     if (name.isEmpty) return;
     final memo = _memo.text.trim().isEmpty ? null : _memo.text.trim();
+    final locale = Localizations.localeOf(context).languageCode;
     // Was: the DAO's own AsyncValue.error branch was the only thing caught
     // here, so an exception thrown by createNexus/updateNexus itself (e.g. a
     // DB write failure) propagated straight out of this async callback —
@@ -67,7 +91,17 @@ class _NexusDialogState extends ConsumerState<NexusDialog> {
       await ref.read(moduleDaoProvider).when(
         data: (d) async {
           if (widget.existing == null) {
-            await d.createNexus(name: name, memo: memo);
+            final id = await d.createNexus(name: name, memo: memo);
+            if (_start.isNotEmpty) {
+              Map<String, dynamic> spec;
+              if (_start == 'guide') {
+                spec = await BundleService.loadGuide(locale);
+              } else {
+                final b = (await BundleService.loadBundles(locale)).firstWhere((b) => b['id'] == _start);
+                spec = {...(b['spec'] as Map<String, dynamic>), 'name': b['name'], 'icon': b['icon']};
+              }
+              await BundleService.create(d.db, id, null, spec);
+            }
           } else {
             await d.updateNexus(widget.existing!.id, name: name, memo: memo, colorId: widget.existing!.colorId);
           }

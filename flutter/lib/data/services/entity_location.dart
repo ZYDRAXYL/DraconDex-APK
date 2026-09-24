@@ -37,6 +37,11 @@ class EntityLocation {
       prefix = 'module';
       id = mid;
     }
+    if (prefix == 'file') {
+      // An asset has no page; its link opens the Nexus's Asset Nest.
+      final r = await db.rawQuery('SELECT nexus_ref FROM import_file WHERE id=?', [id]);
+      return r.isEmpty ? null : '/assets/${r.first['nexus_ref']}';
+    }
     final sql = _owner[prefix];
     if (sql == null) return null;
     final r = await db.rawQuery(sql, [id]);

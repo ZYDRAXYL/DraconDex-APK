@@ -7,6 +7,10 @@ import '../../features/search/search_screen.dart';
 import '../../features/tags/tags_screen.dart';
 import '../../features/colors/colors_screen.dart';
 import '../../features/settings/settings_screen.dart';
+import '../../features/tools/assets_screen.dart';
+import '../../features/tools/csv_screen.dart';
+import '../../features/tools/problems_screen.dart';
+import '../../features/tools/trash_screen.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
 
@@ -71,6 +75,22 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/tags',
       builder: (ctx, state) => const TagsScreen(),
+    ),
+    GoRoute(
+      path: '/trash/:nexusId',
+      builder: (ctx, state) => TrashScreen(nexusId: int.parse(state.pathParameters['nexusId']!)),
+    ),
+    GoRoute(
+      path: '/assets/:nexusId',
+      builder: (ctx, state) => AssetsScreen(nexusId: int.parse(state.pathParameters['nexusId']!)),
+    ),
+    GoRoute(
+      path: '/csv/:nexusId',
+      builder: (ctx, state) => CsvScreen(nexusId: int.parse(state.pathParameters['nexusId']!)),
+    ),
+    GoRoute(
+      path: '/problems/:nexusId',
+      builder: (ctx, state) => ProblemsScreen(nexusId: int.parse(state.pathParameters['nexusId']!)),
     ),
   ],
 );

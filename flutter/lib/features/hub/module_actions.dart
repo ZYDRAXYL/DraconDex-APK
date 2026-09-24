@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../core/i18n/app_localizations.dart';
 import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
+import '../../data/services/mddx.dart';
+import '../../data/services/trash_service.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
-import '../../widgets/confirm_dialog.dart';
 import '../../widgets/row_menu.dart';
+import '../tools/trash_screen.dart';
 import 'dialogs/module_dialog.dart';
 
 /// A module's menu — one list for every place a module is a row (a tile, a
@@ -52,6 +55,17 @@ List<RowAction> moduleRowActions(
       },
     ),
     RowAction(
+      label: l10n.mddxExport,
+      icon: Icons.ios_share,
+      onTap: () async {
+        final db = await ref.read(databaseProvider.future);
+        final bytes = await Mddx.export(db, nexusId, module.id);
+        if (bytes == null) return;
+        final safe = module.name.replaceAll(RegExp(r'[\\/:*?"<>|]'), '_');
+        await Share.shareXFiles([XFile.fromData(bytes, mimeType: 'application/json', name: '$safe.mddx')]);
+      },
+    ),
+    RowAction(
       label: l10n.btnDelete,
       icon: Icons.delete_outline,
       danger: true,
@@ -67,19 +81,26 @@ void _refreshModule(WidgetRef ref, ModuleModel module) {
   ref.invalidate(nexusIndexProvider(module.nexusRef));
 }
 
+/// A delete goes to the Trash (V5.md §11.4): no confirm, an Undo instead.
 Future<void> _deleteModule(BuildContext context, WidgetRef ref, ModuleModel module, {required bool onOwnPage}) async {
   final l10n = AppLocalizations.of(context)!;
-  final ok = await showConfirmDialog(
-    context,
-    title: '${l10n.confirmDeleteTitle}: "${module.name}"',
-    message: l10n.deleteModuleMessage,
-  );
-  if (!ok) return;
-  final dao = ref.read(moduleDaoProvider).valueOrNull;
-  await dao?.deleteModule(module.id);
+  final messenger = ScaffoldMessenger.of(context);
+  final router = GoRouter.of(context);
+  final db = await ref.read(databaseProvider.future);
+  final trashId = await TrashService.trashModule(db, module.nexusRef, module.id);
+  if (trashId == null) return;
   _refreshModule(ref, module);
+  refreshAfterTrash(ref, module.nexusRef);
   await ref.read(recentViewsProvider.notifier).removeForModule(module.nexusRef, module.id);
-  if (onOwnPage && context.mounted) {
-    context.go(RecentView.locationFor(module.nexusRef, module.parentId));
-  }
+  if (onOwnPage) router.go(RecentView.locationFor(module.nexusRef, module.parentId));
+  messenger.showSnackBar(SnackBar(
+    content: Text('${l10n.trashMoved}: ${module.name}'),
+    action: SnackBarAction(
+      label: l10n.btnUndo,
+      onPressed: () async {
+        final id = await restoreFromTrash(ref, module.nexusRef, trashId);
+        if (id != null && onOwnPage) router.go(RecentView.locationFor(module.nexusRef, id));
+      },
+    ),
+  ));
 }

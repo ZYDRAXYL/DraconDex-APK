@@ -1486,4 +1486,145 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get divQuickRoll => '直接掷: 3d6';
+
+  @override
+  String get trashTitle => '回收站';
+
+  @override
+  String get trashMoved => '已移到回收站';
+
+  @override
+  String get trashEmptyAll => '清空回收站';
+
+  @override
+  String get trashEmptyConfirm => '回收站中的所有内容将被永久删除。';
+
+  @override
+  String get trashNothing => '回收站是空的';
+
+  @override
+  String get trashNote => '恢复的模块会带回其全部内容和关系——但不包括版本历史。';
+
+  @override
+  String get trashRestore => '恢复';
+
+  @override
+  String get trashModules => '个模块';
+
+  @override
+  String get trashDeleteForever => '永久删除？之后将无法恢复。';
+
+  @override
+  String get problemsTitle => '问题';
+
+  @override
+  String get problemsLinks => '未解析的链接';
+
+  @override
+  String get problemsEmpty => '空模块';
+
+  @override
+  String get problemsRelations => '缺少一端的关系';
+
+  @override
+  String get problemsNone => '未发现问题';
+
+  @override
+  String get assetsTitle => '资源';
+
+  @override
+  String get assetsFromDevice => '从此设备添加';
+
+  @override
+  String get assetsAddUrl => '添加链接 (URL)';
+
+  @override
+  String get assetsNotice => '资源保留在此设备上：同步只带名称，不带文件。';
+
+  @override
+  String get assetsNone => '暂无资源';
+
+  @override
+  String get assetsTooBig => '太大，无法保存在浏览器中';
+
+  @override
+  String get pbChooseImage => '选择图片';
+
+  @override
+  String get csvImportTitle => '导入 CSV';
+
+  @override
+  String get fromTemplate => '从模板';
+
+  @override
+  String get guideTitle => '指南';
+
+  @override
+  String get guideDesc => '展示每种类型的小世界';
+
+  @override
+  String get guideAdd => '添加指南';
+
+  @override
+  String get mddxImport => '导入模块文件 (.mddx)';
+
+  @override
+  String get mddxExport => '导出为 .mddx';
+
+  @override
+  String get mddxNotModule => '该文件不是 DraconDex 模块';
+
+  @override
+  String get kindCatStructure => '结构';
+
+  @override
+  String get kindCatView => '视图';
+
+  @override
+  String get kindCatData => '数据';
+
+  @override
+  String get kindGroupNotes => '笔记与文档';
+
+  @override
+  String get kindGroupData => '数据与分类';
+
+  @override
+  String get kindGroupMapTime => '地图与时间';
+
+  @override
+  String get kindGroupStory => '故事';
+
+  @override
+  String get kindGroupDraw => '绘图与设计';
+
+  @override
+  String get nexusStartWith => '开始内容';
+
+  @override
+  String get nexusStartEmpty => '无 — 空的 Nexus';
+
+  @override
+  String get csvPick => '选择 CSV 文件';
+
+  @override
+  String get csvHint => '第一行为字段名，第一列为元素名。';
+
+  @override
+  String get csvCreate => '创建 Classifier';
+
+  @override
+  String get csvSkip => '跳过';
+
+  @override
+  String get csvNameColumn => '名称';
+
+  @override
+  String get csvTruncated => '仅前 5,000 行';
+
+  @override
+  String get csvTooLarge => '文件超过 8 MB';
+
+  @override
+  String get csvEmpty => '没有可导入的行 — 需要表头和至少一行';
 }

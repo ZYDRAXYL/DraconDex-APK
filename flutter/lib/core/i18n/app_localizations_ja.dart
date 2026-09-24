@@ -1486,4 +1486,145 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get divQuickRoll => '振るだけ: 3d6';
+
+  @override
+  String get trashTitle => 'ゴミ箱';
+
+  @override
+  String get trashMoved => 'ゴミ箱に移動しました';
+
+  @override
+  String get trashEmptyAll => 'ゴミ箱を空にする';
+
+  @override
+  String get trashEmptyConfirm => 'ゴミ箱の中身はすべて完全に削除されます。';
+
+  @override
+  String get trashNothing => 'ゴミ箱は空です';
+
+  @override
+  String get trashNote => '復元したモジュールは中身と関係ごと戻りますが、バージョン履歴は戻りません。';
+
+  @override
+  String get trashRestore => '復元';
+
+  @override
+  String get trashModules => 'モジュール';
+
+  @override
+  String get trashDeleteForever => '完全に削除しますか？以後は復元できません。';
+
+  @override
+  String get problemsTitle => '問題';
+
+  @override
+  String get problemsLinks => '未解決のリンク';
+
+  @override
+  String get problemsEmpty => '空のモジュール';
+
+  @override
+  String get problemsRelations => '端が失われた関係';
+
+  @override
+  String get problemsNone => '問題は見つかりませんでした';
+
+  @override
+  String get assetsTitle => 'アセット';
+
+  @override
+  String get assetsFromDevice => 'この端末から追加';
+
+  @override
+  String get assetsAddUrl => 'リンク (URL) を追加';
+
+  @override
+  String get assetsNotice => 'アセットはこの端末に残ります。同期されるのは名前だけで、ファイルは送られません。';
+
+  @override
+  String get assetsNone => 'まだアセットはありません';
+
+  @override
+  String get assetsTooBig => 'ブラウザに保存するには大きすぎます';
+
+  @override
+  String get pbChooseImage => '画像を選ぶ';
+
+  @override
+  String get csvImportTitle => 'CSVを取り込む';
+
+  @override
+  String get fromTemplate => 'テンプレートから';
+
+  @override
+  String get guideTitle => 'ガイド';
+
+  @override
+  String get guideDesc => 'すべての種類を見せる小さな世界';
+
+  @override
+  String get guideAdd => 'ガイドを追加';
+
+  @override
+  String get mddxImport => 'モジュールファイルを取り込む (.mddx)';
+
+  @override
+  String get mddxExport => '.mddxで書き出す';
+
+  @override
+  String get mddxNotModule => 'そのファイルはDraconDexのモジュールではありません';
+
+  @override
+  String get kindCatStructure => '構造';
+
+  @override
+  String get kindCatView => 'ビュー';
+
+  @override
+  String get kindCatData => 'データ';
+
+  @override
+  String get kindGroupNotes => 'メモ・文書';
+
+  @override
+  String get kindGroupData => 'データ・カテゴリ';
+
+  @override
+  String get kindGroupMapTime => '地図と時間';
+
+  @override
+  String get kindGroupStory => '物語';
+
+  @override
+  String get kindGroupDraw => '描画とデザイン';
+
+  @override
+  String get nexusStartWith => '開始内容';
+
+  @override
+  String get nexusStartEmpty => 'なし — 空のNexus';
+
+  @override
+  String get csvPick => 'CSVファイルを選ぶ';
+
+  @override
+  String get csvHint => '1行目がフィールド名、1列目が要素名です。';
+
+  @override
+  String get csvCreate => 'Classifierを作成';
+
+  @override
+  String get csvSkip => '取り込まない';
+
+  @override
+  String get csvNameColumn => '名前';
+
+  @override
+  String get csvTruncated => '最初の5,000行のみ';
+
+  @override
+  String get csvTooLarge => 'ファイルが8MBを超えています';
+
+  @override
+  String get csvEmpty => '取り込む行がありません — 見出しと少なくとも1行が必要です';
 }

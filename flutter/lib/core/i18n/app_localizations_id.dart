@@ -1486,4 +1486,145 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get divQuickRoll => 'Lempar saja: 3d6';
+
+  @override
+  String get trashTitle => 'Sampah';
+
+  @override
+  String get trashMoved => 'Dipindah ke Sampah';
+
+  @override
+  String get trashEmptyAll => 'Kosongkan Sampah';
+
+  @override
+  String get trashEmptyConfirm => 'Semua isi Sampah dihapus permanen.';
+
+  @override
+  String get trashNothing => 'Sampah kosong';
+
+  @override
+  String get trashNote => 'Modul yang dipulihkan kembali dengan semua isi dan relasinya — tetapi tanpa riwayat versi.';
+
+  @override
+  String get trashRestore => 'Pulihkan';
+
+  @override
+  String get trashModules => 'modul';
+
+  @override
+  String get trashDeleteForever => 'Hapus permanen? Tidak bisa dipulihkan lagi.';
+
+  @override
+  String get problemsTitle => 'Masalah';
+
+  @override
+  String get problemsLinks => 'Tautan tak terselesaikan';
+
+  @override
+  String get problemsEmpty => 'Modul kosong';
+
+  @override
+  String get problemsRelations => 'Relasi dengan ujung hilang';
+
+  @override
+  String get problemsNone => 'Tidak ada masalah';
+
+  @override
+  String get assetsTitle => 'Aset';
+
+  @override
+  String get assetsFromDevice => 'Tambah dari perangkat ini';
+
+  @override
+  String get assetsAddUrl => 'Tambah tautan (URL)';
+
+  @override
+  String get assetsNotice => 'Aset tetap di perangkat ini: sinkronisasi membawa namanya, bukan berkasnya.';
+
+  @override
+  String get assetsNone => 'Belum ada aset';
+
+  @override
+  String get assetsTooBig => 'Terlalu besar untuk peramban';
+
+  @override
+  String get pbChooseImage => 'Pilih gambar';
+
+  @override
+  String get csvImportTitle => 'Impor CSV';
+
+  @override
+  String get fromTemplate => 'Dari templat';
+
+  @override
+  String get guideTitle => 'Panduan';
+
+  @override
+  String get guideDesc => 'Dunia kecil yang menampilkan setiap jenis';
+
+  @override
+  String get guideAdd => 'Tambah panduan';
+
+  @override
+  String get mddxImport => 'Impor berkas modul (.mddx)';
+
+  @override
+  String get mddxExport => 'Ekspor sebagai .mddx';
+
+  @override
+  String get mddxNotModule => 'Berkas itu bukan modul DraconDex';
+
+  @override
+  String get kindCatStructure => 'Struktur';
+
+  @override
+  String get kindCatView => 'Tampilan';
+
+  @override
+  String get kindCatData => 'Data';
+
+  @override
+  String get kindGroupNotes => 'Catatan & dokumen';
+
+  @override
+  String get kindGroupData => 'Data & kategori';
+
+  @override
+  String get kindGroupMapTime => 'Peta & waktu';
+
+  @override
+  String get kindGroupStory => 'Cerita';
+
+  @override
+  String get kindGroupDraw => 'Gambar & desain';
+
+  @override
+  String get nexusStartWith => 'Mulai dengan';
+
+  @override
+  String get nexusStartEmpty => 'Kosong — Nexus kosong';
+
+  @override
+  String get csvPick => 'Pilih berkas CSV';
+
+  @override
+  String get csvHint => 'Baris pertama adalah nama bidang, kolom pertama nama elemen.';
+
+  @override
+  String get csvCreate => 'Buat Classifier';
+
+  @override
+  String get csvSkip => 'Lewati';
+
+  @override
+  String get csvNameColumn => 'Nama';
+
+  @override
+  String get csvTruncated => 'hanya 5.000 baris pertama';
+
+  @override
+  String get csvTooLarge => 'Berkas lebih dari 8 MB';
+
+  @override
+  String get csvEmpty => 'Tidak ada baris — perlu judul dan minimal satu baris';
 }

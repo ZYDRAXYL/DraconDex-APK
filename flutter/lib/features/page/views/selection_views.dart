@@ -75,6 +75,10 @@ void refreshSelection(WidgetRef ref, ComponentCtx ctx) {
   ref.invalidate(relationsProvider(ctx.nexusId));
 }
 
+/// A module shows its own kind's icon; anything else its item kind's.
+IconData itemIcon(IndexedItem it) =>
+    it.itemKind == 'module' ? (moduleKindInfo[ModuleKind.fromId(it.moduleKind)]?.icon ?? Icons.folder_outlined) : itemKindIcon(it.itemKind);
+
 IconData itemKindIcon(String itemKind) => switch (itemKind) {
       'module' => Icons.folder_outlined,
       'object' => Icons.category_outlined,
@@ -208,7 +212,7 @@ class _Table extends ConsumerWidget {
                   ),
                 ])),
                 DataCell(Text(it.moduleName)),
-                DataCell(Icon(itemKindIcon(it.itemKind), size: 18)),
+                DataCell(Icon(itemIcon(it), size: 18)),
                 DataCell(Text(it.tags.map((t) => '#$t').join(' '))),
               ],
             ),
@@ -229,7 +233,7 @@ class _Cards extends ConsumerWidget {
     return PageGrid(children: [
       for (final it in data.items)
         TileCard(
-          leading: Icon(itemKindIcon(it.itemKind), size: 18, color: hexColor(it.colorCode)),
+          leading: Icon(itemIcon(it), size: 18, color: hexColor(it.colorCode)),
           title: it.name.isEmpty ? l.viewerUntitled : it.name,
           subtitle: [it.moduleName, if (it.tags.isNotEmpty) it.tags.map((t) => '#$t').join(' ')].join('\n'),
           onTap: () => openItem(context, ref, it),
@@ -250,7 +254,7 @@ class _List extends ConsumerWidget {
       for (final it in data.items)
         ListTile(
           dense: true,
-          leading: Icon(itemKindIcon(it.itemKind), size: 20, color: hexColor(it.colorCode)),
+          leading: Icon(itemIcon(it), size: 20, color: hexColor(it.colorCode)),
           title: Text(it.name.isEmpty ? l.viewerUntitled : it.name, overflow: TextOverflow.ellipsis),
           subtitle: Text(it.moduleName),
           onTap: () => openItem(context, ref, it),
@@ -290,7 +294,7 @@ class _Board extends ConsumerWidget {
                 margin: const EdgeInsets.only(bottom: 6),
                 child: ListTile(
                   dense: true,
-                  leading: Icon(itemKindIcon(it.itemKind), size: 18, color: hexColor(it.colorCode)),
+                  leading: Icon(itemIcon(it), size: 18, color: hexColor(it.colorCode)),
                   title: Text(it.name.isEmpty ? l.viewerUntitled : it.name, maxLines: 2, overflow: TextOverflow.ellipsis),
                   subtitle: data.groupBy == 'module' ? null : Text(it.moduleName, style: theme.textTheme.bodySmall),
                   onTap: () => openItem(context, ref, it),

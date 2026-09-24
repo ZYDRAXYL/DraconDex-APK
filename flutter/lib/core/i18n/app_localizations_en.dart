@@ -1486,4 +1486,145 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get divQuickRoll => 'Just roll: 3d6';
+
+  @override
+  String get trashTitle => 'Trash';
+
+  @override
+  String get trashMoved => 'Moved to the Trash';
+
+  @override
+  String get trashEmptyAll => 'Empty the Trash';
+
+  @override
+  String get trashEmptyConfirm => 'Everything in the Trash is deleted for good.';
+
+  @override
+  String get trashNothing => 'The Trash is empty';
+
+  @override
+  String get trashNote => 'A restored module comes back with everything that was in it and its relations — but not its version history.';
+
+  @override
+  String get trashRestore => 'Restore';
+
+  @override
+  String get trashModules => 'modules';
+
+  @override
+  String get trashDeleteForever => 'Delete this for good? It cannot be restored after this.';
+
+  @override
+  String get problemsTitle => 'Problems';
+
+  @override
+  String get problemsLinks => 'Unresolved links';
+
+  @override
+  String get problemsEmpty => 'Empty modules';
+
+  @override
+  String get problemsRelations => 'Relations with a missing end';
+
+  @override
+  String get problemsNone => 'No problems found';
+
+  @override
+  String get assetsTitle => 'Assets';
+
+  @override
+  String get assetsFromDevice => 'Add from this device';
+
+  @override
+  String get assetsAddUrl => 'Add a link (URL)';
+
+  @override
+  String get assetsNotice => 'Assets stay on this device: sync carries their names, not the files.';
+
+  @override
+  String get assetsNone => 'No assets yet';
+
+  @override
+  String get assetsTooBig => 'Too big to keep in the browser';
+
+  @override
+  String get pbChooseImage => 'Choose an image';
+
+  @override
+  String get csvImportTitle => 'Import a CSV';
+
+  @override
+  String get fromTemplate => 'From a template';
+
+  @override
+  String get guideTitle => 'The guide';
+
+  @override
+  String get guideDesc => 'A small working world that shows every kind';
+
+  @override
+  String get guideAdd => 'Add the guide';
+
+  @override
+  String get mddxImport => 'Import a module file (.mddx)';
+
+  @override
+  String get mddxExport => 'Export as .mddx';
+
+  @override
+  String get mddxNotModule => 'That file is not a DraconDex module';
+
+  @override
+  String get kindCatStructure => 'Structure';
+
+  @override
+  String get kindCatView => 'View';
+
+  @override
+  String get kindCatData => 'Data';
+
+  @override
+  String get kindGroupNotes => 'Notes & documents';
+
+  @override
+  String get kindGroupData => 'Data & categories';
+
+  @override
+  String get kindGroupMapTime => 'Maps & time';
+
+  @override
+  String get kindGroupStory => 'Story';
+
+  @override
+  String get kindGroupDraw => 'Drawing & design';
+
+  @override
+  String get nexusStartWith => 'Start with';
+
+  @override
+  String get nexusStartEmpty => 'Nothing — an empty Nexus';
+
+  @override
+  String get csvPick => 'Choose a CSV file';
+
+  @override
+  String get csvHint => 'The first row names the fields, the first column names the elements.';
+
+  @override
+  String get csvCreate => 'Create the Classifier';
+
+  @override
+  String get csvSkip => 'Leave out';
+
+  @override
+  String get csvNameColumn => 'Names';
+
+  @override
+  String get csvTruncated => 'only the first 5,000 rows';
+
+  @override
+  String get csvTooLarge => 'That file is over 8 MB';
+
+  @override
+  String get csvEmpty => 'No rows to import — a header and at least one row are needed';
 }

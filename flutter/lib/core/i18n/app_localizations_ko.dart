@@ -1486,4 +1486,145 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get divQuickRoll => '그냥 굴리기: 3d6';
+
+  @override
+  String get trashTitle => '휴지통';
+
+  @override
+  String get trashMoved => '휴지통으로 이동함';
+
+  @override
+  String get trashEmptyAll => '휴지통 비우기';
+
+  @override
+  String get trashEmptyConfirm => '휴지통의 모든 항목이 영구 삭제됩니다.';
+
+  @override
+  String get trashNothing => '휴지통이 비어 있습니다';
+
+  @override
+  String get trashNote => '복원한 모듈은 안의 모든 것과 관계와 함께 돌아오지만 버전 기록은 돌아오지 않습니다.';
+
+  @override
+  String get trashRestore => '복원';
+
+  @override
+  String get trashModules => '모듈';
+
+  @override
+  String get trashDeleteForever => '영구 삭제할까요? 이후에는 복원할 수 없습니다.';
+
+  @override
+  String get problemsTitle => '문제';
+
+  @override
+  String get problemsLinks => '해결되지 않은 링크';
+
+  @override
+  String get problemsEmpty => '빈 모듈';
+
+  @override
+  String get problemsRelations => '한쪽 끝이 없는 관계';
+
+  @override
+  String get problemsNone => '문제가 없습니다';
+
+  @override
+  String get assetsTitle => '에셋';
+
+  @override
+  String get assetsFromDevice => '이 기기에서 추가';
+
+  @override
+  String get assetsAddUrl => '링크 (URL) 추가';
+
+  @override
+  String get assetsNotice => '에셋은 이 기기에 남습니다. 동기화는 이름만 옮기고 파일은 옮기지 않습니다.';
+
+  @override
+  String get assetsNone => '아직 에셋이 없습니다';
+
+  @override
+  String get assetsTooBig => '브라우저에 두기에는 너무 큽니다';
+
+  @override
+  String get pbChooseImage => '이미지 선택';
+
+  @override
+  String get csvImportTitle => 'CSV 가져오기';
+
+  @override
+  String get fromTemplate => '템플릿에서';
+
+  @override
+  String get guideTitle => '가이드';
+
+  @override
+  String get guideDesc => '모든 종류를 보여 주는 작은 세계';
+
+  @override
+  String get guideAdd => '가이드 추가';
+
+  @override
+  String get mddxImport => '모듈 파일 가져오기 (.mddx)';
+
+  @override
+  String get mddxExport => '.mddx로 내보내기';
+
+  @override
+  String get mddxNotModule => '그 파일은 DraconDex 모듈이 아닙니다';
+
+  @override
+  String get kindCatStructure => '구조';
+
+  @override
+  String get kindCatView => '보기';
+
+  @override
+  String get kindCatData => '데이터';
+
+  @override
+  String get kindGroupNotes => '메모·문서';
+
+  @override
+  String get kindGroupData => '데이터·범주';
+
+  @override
+  String get kindGroupMapTime => '지도와 시간';
+
+  @override
+  String get kindGroupStory => '이야기';
+
+  @override
+  String get kindGroupDraw => '그리기와 디자인';
+
+  @override
+  String get nexusStartWith => '시작 내용';
+
+  @override
+  String get nexusStartEmpty => '없음 — 빈 Nexus';
+
+  @override
+  String get csvPick => 'CSV 파일 선택';
+
+  @override
+  String get csvHint => '첫 행은 필드 이름, 첫 열은 요소 이름입니다.';
+
+  @override
+  String get csvCreate => 'Classifier 만들기';
+
+  @override
+  String get csvSkip => '제외';
+
+  @override
+  String get csvNameColumn => '이름';
+
+  @override
+  String get csvTruncated => '처음 5,000행만';
+
+  @override
+  String get csvTooLarge => '파일이 8MB를 넘습니다';
+
+  @override
+  String get csvEmpty => '가져올 행이 없습니다 — 머리글과 한 행 이상이 필요합니다';
 }

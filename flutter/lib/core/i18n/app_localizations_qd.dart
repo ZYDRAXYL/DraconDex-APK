@@ -1486,4 +1486,145 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get divQuickRoll => 'Just cast: 3d6';
+
+  @override
+  String get trashTitle => 'Voidhold';
+
+  @override
+  String get trashMoved => 'Cast to the Voidhold';
+
+  @override
+  String get trashEmptyAll => 'Void the Voidhold';
+
+  @override
+  String get trashEmptyConfirm => 'All within is voided for good.';
+
+  @override
+  String get trashNothing => 'The Voidhold is bare';
+
+  @override
+  String get trashNote => 'A restored module returns whole, save its ere-versions.';
+
+  @override
+  String get trashRestore => 'Restore';
+
+  @override
+  String get trashModules => 'modules';
+
+  @override
+  String get trashDeleteForever => 'Void for good? It returns nae more.';
+
+  @override
+  String get problemsTitle => 'Woes';
+
+  @override
+  String get problemsLinks => 'Unbound links';
+
+  @override
+  String get problemsEmpty => 'Bare modules';
+
+  @override
+  String get problemsRelations => 'Binds with a lost end';
+
+  @override
+  String get problemsNone => 'Nar woes found';
+
+  @override
+  String get assetsTitle => 'Hoard';
+
+  @override
+  String get assetsFromDevice => 'Add from this device';
+
+  @override
+  String get assetsAddUrl => 'Add a vei (URL)';
+
+  @override
+  String get assetsNotice => 'The hoard stays here: sync bears names, not files.';
+
+  @override
+  String get assetsNone => 'Nar hoard yet';
+
+  @override
+  String get assetsTooBig => 'Too great for the browser';
+
+  @override
+  String get pbChooseImage => 'Kaer an image';
+
+  @override
+  String get csvImportTitle => 'Bring in a CSV';
+
+  @override
+  String get fromTemplate => 'From a pattern';
+
+  @override
+  String get guideTitle => 'The lore-guide';
+
+  @override
+  String get guideDesc => 'A wee world of every kind';
+
+  @override
+  String get guideAdd => 'Add the lore-guide';
+
+  @override
+  String get mddxImport => 'Bring in a module file (.mddx)';
+
+  @override
+  String get mddxExport => 'Send forth as .mddx';
+
+  @override
+  String get mddxNotModule => 'That file is nae a module';
+
+  @override
+  String get kindCatStructure => 'Frame';
+
+  @override
+  String get kindCatView => 'Sight';
+
+  @override
+  String get kindCatData => 'Lore';
+
+  @override
+  String get kindGroupNotes => 'Rhun & scrolls';
+
+  @override
+  String get kindGroupData => 'Lore & kinds';
+
+  @override
+  String get kindGroupMapTime => 'Mhaps & time';
+
+  @override
+  String get kindGroupStory => 'Tale';
+
+  @override
+  String get kindGroupDraw => 'Drawing & craft';
+
+  @override
+  String get nexusStartWith => 'Begin with';
+
+  @override
+  String get nexusStartEmpty => 'Naught — a bare Nexus';
+
+  @override
+  String get csvPick => 'Kaer a CSV';
+
+  @override
+  String get csvHint => 'First row names the fields, first column the ossa.';
+
+  @override
+  String get csvCreate => 'Forge the Classifier';
+
+  @override
+  String get csvSkip => 'Leave out';
+
+  @override
+  String get csvNameColumn => 'Names';
+
+  @override
+  String get csvTruncated => 'only the first 5,000 rows';
+
+  @override
+  String get csvTooLarge => 'That file is over 8 MB';
+
+  @override
+  String get csvEmpty => 'Nar rows — a head and one row are needed';
 }

@@ -14,7 +14,7 @@ import '../builder/breadcrumb_title.dart';
 import '../builder/view_mode_button.dart';
 import '../page/module_page.dart';
 import '../page/page_actions.dart';
-import 'dialogs/module_dialog.dart';
+import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
 
@@ -192,10 +192,7 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
           : FloatingActionButton(
         tooltip: l10n.newModuleTooltip,
         onPressed: () async {
-          await showDialog(
-            context: context,
-            builder: (_) => ModuleDialog(nexusId: nexusId, parentId: moduleId),
-          );
+          await showNewModuleSheet(context, ref, nexusId, moduleId);
           ref.invalidate(moduleChildrenProvider(_childrenKey));
           ref.invalidate(nexusIndexProvider(nexusId));
         },

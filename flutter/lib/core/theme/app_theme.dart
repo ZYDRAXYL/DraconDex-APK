@@ -99,8 +99,8 @@ class AppTheme {
         backgroundColor: raised,
         selectedIconTheme: IconThemeData(color: accent),
         unselectedIconTheme: IconThemeData(color: t2),
-        selectedLabelTextStyle: TextStyle(color: accent),
-        unselectedLabelTextStyle: TextStyle(color: t2),
+        selectedLabelTextStyle: TextStyle(color: accent, fontFamily: 'NotoSans'),
+        unselectedLabelTextStyle: TextStyle(color: t2, fontFamily: 'NotoSans'),
         indicatorColor: accent.withValues(alpha: 0.15),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -132,8 +132,8 @@ class AppTheme {
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: accent, width: 2),
         ),
-        labelStyle: TextStyle(color: t2),
-        hintStyle: TextStyle(color: t3),
+        labelStyle: TextStyle(color: t2, fontFamily: 'NotoSans'),
+        hintStyle: TextStyle(color: t3, fontFamily: 'NotoSans'),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -151,7 +151,9 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: raised,
-        labelStyle: TextStyle(color: t1),
+        // The family too: a style given here replaces the theme's, and the web
+        // build bundles no fallback font — without it the label draws nothing.
+        labelStyle: TextStyle(color: t1, fontFamily: 'NotoSans'),
         side: BorderSide(color: border),
       ),
       listTileTheme: ListTileThemeData(
@@ -161,7 +163,7 @@ class AppTheme {
       ),
       popupMenuTheme: PopupMenuThemeData(
         color: raised,
-        textStyle: TextStyle(color: t1),
+        textStyle: TextStyle(color: t1, fontFamily: 'NotoSans'),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
           side: BorderSide(color: border),
@@ -169,8 +171,8 @@ class AppTheme {
       ),
       dialogTheme: DialogThemeData(
         backgroundColor: surface,
-        titleTextStyle: TextStyle(color: t1, fontSize: 18, fontWeight: FontWeight.bold),
-        contentTextStyle: TextStyle(color: t2),
+        titleTextStyle: TextStyle(color: t1, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'NotoSans'),
+        contentTextStyle: TextStyle(color: t2, fontFamily: 'NotoSans'),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );

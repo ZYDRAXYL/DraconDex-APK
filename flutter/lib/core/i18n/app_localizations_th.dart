@@ -1486,4 +1486,145 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get divQuickRoll => 'ทอยเฉย ๆ: 3d6';
+
+  @override
+  String get trashTitle => 'ถังขยะ';
+
+  @override
+  String get trashMoved => 'ย้ายไปถังขยะแล้ว';
+
+  @override
+  String get trashEmptyAll => 'ล้างถังขยะ';
+
+  @override
+  String get trashEmptyConfirm => 'ทุกอย่างในถังขยะจะถูกลบถาวร';
+
+  @override
+  String get trashNothing => 'ถังขยะว่าง';
+
+  @override
+  String get trashNote => 'โมดูลที่กู้คืนจะกลับมาพร้อมทุกอย่างข้างในและความสัมพันธ์ — แต่ไม่รวมประวัติเวอร์ชัน';
+
+  @override
+  String get trashRestore => 'กู้คืน';
+
+  @override
+  String get trashModules => 'โมดูล';
+
+  @override
+  String get trashDeleteForever => 'ลบถาวรหรือไม่? จะกู้คืนไม่ได้อีก';
+
+  @override
+  String get problemsTitle => 'ปัญหา';
+
+  @override
+  String get problemsLinks => 'ลิงก์ที่หาไม่พบ';
+
+  @override
+  String get problemsEmpty => 'โมดูลว่าง';
+
+  @override
+  String get problemsRelations => 'ความสัมพันธ์ที่ปลายหายไป';
+
+  @override
+  String get problemsNone => 'ไม่พบปัญหา';
+
+  @override
+  String get assetsTitle => 'ไฟล์ประกอบ';
+
+  @override
+  String get assetsFromDevice => 'เพิ่มจากเครื่องนี้';
+
+  @override
+  String get assetsAddUrl => 'เพิ่มลิงก์ (URL)';
+
+  @override
+  String get assetsNotice => 'ไฟล์ประกอบอยู่บนเครื่องนี้เท่านั้น: การซิงก์ส่งแค่ชื่อ ไม่ส่งไฟล์';
+
+  @override
+  String get assetsNone => 'ยังไม่มีไฟล์ประกอบ';
+
+  @override
+  String get assetsTooBig => 'ใหญ่เกินกว่าจะเก็บในเบราว์เซอร์';
+
+  @override
+  String get pbChooseImage => 'เลือกรูป';
+
+  @override
+  String get csvImportTitle => 'นำเข้า CSV';
+
+  @override
+  String get fromTemplate => 'จากเทมเพลต';
+
+  @override
+  String get guideTitle => 'คู่มือ';
+
+  @override
+  String get guideDesc => 'โลกตัวอย่างเล็ก ๆ ที่พาดูทุกชนิด';
+
+  @override
+  String get guideAdd => 'เพิ่มคู่มือ';
+
+  @override
+  String get mddxImport => 'นำเข้าไฟล์โมดูล (.mddx)';
+
+  @override
+  String get mddxExport => 'ส่งออกเป็น .mddx';
+
+  @override
+  String get mddxNotModule => 'ไฟล์นี้ไม่ใช่โมดูล DraconDex';
+
+  @override
+  String get kindCatStructure => 'โครงสร้าง';
+
+  @override
+  String get kindCatView => 'มุมมอง';
+
+  @override
+  String get kindCatData => 'ข้อมูล';
+
+  @override
+  String get kindGroupNotes => 'บันทึก/เอกสาร';
+
+  @override
+  String get kindGroupData => 'ข้อมูล/หมวดหมู่';
+
+  @override
+  String get kindGroupMapTime => 'แผนที่และเวลา';
+
+  @override
+  String get kindGroupStory => 'เนื้อเรื่อง';
+
+  @override
+  String get kindGroupDraw => 'วาดและออกแบบ';
+
+  @override
+  String get nexusStartWith => 'เริ่มด้วย';
+
+  @override
+  String get nexusStartEmpty => 'ว่างเปล่า';
+
+  @override
+  String get csvPick => 'เลือกไฟล์ CSV';
+
+  @override
+  String get csvHint => 'แถวแรกคือชื่อฟิลด์ คอลัมน์แรกคือชื่อองค์ประกอบ';
+
+  @override
+  String get csvCreate => 'สร้าง Classifier';
+
+  @override
+  String get csvSkip => 'ไม่นำเข้า';
+
+  @override
+  String get csvNameColumn => 'ชื่อ';
+
+  @override
+  String get csvTruncated => 'เฉพาะ 5,000 แถวแรก';
+
+  @override
+  String get csvTooLarge => 'ไฟล์ใหญ่เกิน 8 MB';
+
+  @override
+  String get csvEmpty => 'ไม่มีแถวให้นำเข้า — ต้องมีหัวตารางและอย่างน้อยหนึ่งแถว';
 }

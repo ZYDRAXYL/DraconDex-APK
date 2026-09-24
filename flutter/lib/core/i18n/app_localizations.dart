@@ -3074,6 +3074,288 @@ abstract class AppLocalizations {
   /// **'Just roll: 3d6'**
   String get divQuickRoll;
 
+  /// No description provided for @trashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Trash'**
+  String get trashTitle;
+
+  /// No description provided for @trashMoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Moved to the Trash'**
+  String get trashMoved;
+
+  /// No description provided for @trashEmptyAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty the Trash'**
+  String get trashEmptyAll;
+
+  /// No description provided for @trashEmptyConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything in the Trash is deleted for good.'**
+  String get trashEmptyConfirm;
+
+  /// No description provided for @trashNothing.
+  ///
+  /// In en, this message translates to:
+  /// **'The Trash is empty'**
+  String get trashNothing;
+
+  /// No description provided for @trashNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A restored module comes back with everything that was in it and its relations — but not its version history.'**
+  String get trashNote;
+
+  /// No description provided for @trashRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get trashRestore;
+
+  /// No description provided for @trashModules.
+  ///
+  /// In en, this message translates to:
+  /// **'modules'**
+  String get trashModules;
+
+  /// No description provided for @trashDeleteForever.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this for good? It cannot be restored after this.'**
+  String get trashDeleteForever;
+
+  /// No description provided for @problemsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Problems'**
+  String get problemsTitle;
+
+  /// No description provided for @problemsLinks.
+  ///
+  /// In en, this message translates to:
+  /// **'Unresolved links'**
+  String get problemsLinks;
+
+  /// No description provided for @problemsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty modules'**
+  String get problemsEmpty;
+
+  /// No description provided for @problemsRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'Relations with a missing end'**
+  String get problemsRelations;
+
+  /// No description provided for @problemsNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No problems found'**
+  String get problemsNone;
+
+  /// No description provided for @assetsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assets'**
+  String get assetsTitle;
+
+  /// No description provided for @assetsFromDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Add from this device'**
+  String get assetsFromDevice;
+
+  /// No description provided for @assetsAddUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a link (URL)'**
+  String get assetsAddUrl;
+
+  /// No description provided for @assetsNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Assets stay on this device: sync carries their names, not the files.'**
+  String get assetsNotice;
+
+  /// No description provided for @assetsNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No assets yet'**
+  String get assetsNone;
+
+  /// No description provided for @assetsTooBig.
+  ///
+  /// In en, this message translates to:
+  /// **'Too big to keep in the browser'**
+  String get assetsTooBig;
+
+  /// No description provided for @pbChooseImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an image'**
+  String get pbChooseImage;
+
+  /// No description provided for @csvImportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Import a CSV'**
+  String get csvImportTitle;
+
+  /// No description provided for @fromTemplate.
+  ///
+  /// In en, this message translates to:
+  /// **'From a template'**
+  String get fromTemplate;
+
+  /// No description provided for @guideTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The guide'**
+  String get guideTitle;
+
+  /// No description provided for @guideDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A small working world that shows every kind'**
+  String get guideDesc;
+
+  /// No description provided for @guideAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the guide'**
+  String get guideAdd;
+
+  /// No description provided for @mddxImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import a module file (.mddx)'**
+  String get mddxImport;
+
+  /// No description provided for @mddxExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export as .mddx'**
+  String get mddxExport;
+
+  /// No description provided for @mddxNotModule.
+  ///
+  /// In en, this message translates to:
+  /// **'That file is not a DraconDex module'**
+  String get mddxNotModule;
+
+  /// No description provided for @kindCatStructure.
+  ///
+  /// In en, this message translates to:
+  /// **'Structure'**
+  String get kindCatStructure;
+
+  /// No description provided for @kindCatView.
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get kindCatView;
+
+  /// No description provided for @kindCatData.
+  ///
+  /// In en, this message translates to:
+  /// **'Data'**
+  String get kindCatData;
+
+  /// No description provided for @kindGroupNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes & documents'**
+  String get kindGroupNotes;
+
+  /// No description provided for @kindGroupData.
+  ///
+  /// In en, this message translates to:
+  /// **'Data & categories'**
+  String get kindGroupData;
+
+  /// No description provided for @kindGroupMapTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Maps & time'**
+  String get kindGroupMapTime;
+
+  /// No description provided for @kindGroupStory.
+  ///
+  /// In en, this message translates to:
+  /// **'Story'**
+  String get kindGroupStory;
+
+  /// No description provided for @kindGroupDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Drawing & design'**
+  String get kindGroupDraw;
+
+  /// No description provided for @nexusStartWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with'**
+  String get nexusStartWith;
+
+  /// No description provided for @nexusStartEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing — an empty Nexus'**
+  String get nexusStartEmpty;
+
+  /// No description provided for @csvPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a CSV file'**
+  String get csvPick;
+
+  /// No description provided for @csvHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The first row names the fields, the first column names the elements.'**
+  String get csvHint;
+
+  /// No description provided for @csvCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create the Classifier'**
+  String get csvCreate;
+
+  /// No description provided for @csvSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave out'**
+  String get csvSkip;
+
+  /// No description provided for @csvNameColumn.
+  ///
+  /// In en, this message translates to:
+  /// **'Names'**
+  String get csvNameColumn;
+
+  /// No description provided for @csvTruncated.
+  ///
+  /// In en, this message translates to:
+  /// **'only the first 5,000 rows'**
+  String get csvTruncated;
+
+  /// No description provided for @csvTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'That file is over 8 MB'**
+  String get csvTooLarge;
+
+  /// No description provided for @csvEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No rows to import — a header and at least one row are needed'**
+  String get csvEmpty;
+
 }
 
 class _AppLocalizationsDelegate

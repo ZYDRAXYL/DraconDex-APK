@@ -7,6 +7,7 @@ import '../../data/dao/page_block_dao.dart';
 import '../../data/models/module_model.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
+import '../tools/assets_screen.dart';
 import 'arrange_mode.dart';
 import 'component_registry.dart';
 import 'core_components.dart';
@@ -328,20 +329,42 @@ class ImageBlock extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final image = imageBlockBuilder?.call(context, ref, block);
+    // The picture is an Asset Nest file, as on the desktop: source_key file_<id>.
+    final f = RegExp(r'^file_(\d+)$').firstMatch(block.sourceKey ?? '');
+    final bytes = f == null ? null : ref.watch(assetBytesProvider(int.parse(f[1]!))).valueOrNull;
+    Future<void> choose() async {
+      final id = await pickAsset(context, ref, nexusId, imagesOnly: true);
+      if (id == null) return;
+      final dao = await ref.read(pageBlockDaoProvider.future);
+      await dao.update(block.id, sourceKey: 'file_$id');
+      ref.invalidate(pageProvider(PageKey(block.moduleId, block.itemKey == '*' ? null : block.itemKey)));
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        image ??
-            Container(
-              height: 120,
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(Icons.image_outlined, size: 36),
+        if (bytes != null)
+          GestureDetector(
+            onLongPress: choose,
+            child: ClipRRect(borderRadius: BorderRadius.circular(8), child: Image.memory(bytes, fit: BoxFit.contain, gaplessPlayback: true)),
+          )
+        else
+          Container(
+            height: 120,
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerLow,
+              borderRadius: BorderRadius.circular(8),
             ),
+            child: Center(
+              child: TextButton.icon(
+                onPressed: choose,
+                icon: const Icon(Icons.add_photo_alternate_outlined),
+                label: Text(l10n.pbChooseImage),
+              ),
+            ),
+          ),
         if ((block.content ?? '').isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 4),
@@ -395,9 +418,6 @@ final moduleViewProvider = FutureProvider.autoDispose.family<String?, int>((ref,
   final m = {for (final x in r) x['ui_key']: x['ui_value'] as String?};
   return m['activeView'] ?? m['view'];
 });
-
-/// Set by the Asset Nest: draws an image block's picture.
-Widget? Function(BuildContext context, WidgetRef ref, PageBlock block)? imageBlockBuilder;
 
 /// Whether this module shows its children list under its page: a Collector
 /// IS its children; every other kind is its page.
