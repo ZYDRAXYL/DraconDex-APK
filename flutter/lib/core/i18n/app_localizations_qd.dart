@@ -1324,4 +1324,64 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'Nar setha — setha an ossa.';
+
+  @override
+  String get auStatusIdea => 'Ydhra';
+
+  @override
+  String get auStatusDraft => 'Rhun-first';
+
+  @override
+  String get auStatusRevised => 'Wreyth';
+
+  @override
+  String get auStatusDone => 'Zharra';
+
+  @override
+  String get auSynopsis => 'Ossa-rhun';
+
+  @override
+  String get auPov => 'Eye of';
+
+  @override
+  String get btnPrevious => 'Ere';
+
+  @override
+  String get btnNext => 'Hence';
+
+  @override
+  String get narAddRoute => 'Vhael vei';
+
+  @override
+  String get narScript => 'Rhun-weave';
+
+  @override
+  String get narPlayTest => 'Play-wrey';
+
+  @override
+  String get narRestart => 'Anew';
+
+  @override
+  String get narShowHidden => 'Show the veiled';
+
+  @override
+  String get narVariables => 'Shiftra';
+
+  @override
+  String get narNoVariables => 'Nar shiftra in this Nexus';
+
+  @override
+  String get narPlayEnd => 'The end — nar vei onward.';
+
+  @override
+  String get narNoOptionOpen => 'Nar kaer open with these shiftra.';
+
+  @override
+  String get narHiddenByCondition => 'veiled by its bind';
+
+  @override
+  String get chrCompareWith => 'Weigh with';
+
+  @override
+  String get chrNoOtherLine => 'Nar other Chronicler to weigh';
 }

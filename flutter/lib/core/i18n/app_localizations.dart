@@ -2750,6 +2750,126 @@ abstract class AppLocalizations {
   /// **'Nothing placed yet — place an element or add a note.'**
   String get exhSceneEmpty;
 
+  /// No description provided for @auStatusIdea.
+  ///
+  /// In en, this message translates to:
+  /// **'Idea'**
+  String get auStatusIdea;
+
+  /// No description provided for @auStatusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get auStatusDraft;
+
+  /// No description provided for @auStatusRevised.
+  ///
+  /// In en, this message translates to:
+  /// **'Revised'**
+  String get auStatusRevised;
+
+  /// No description provided for @auStatusDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get auStatusDone;
+
+  /// No description provided for @auSynopsis.
+  ///
+  /// In en, this message translates to:
+  /// **'Synopsis'**
+  String get auSynopsis;
+
+  /// No description provided for @auPov.
+  ///
+  /// In en, this message translates to:
+  /// **'Point of view'**
+  String get auPov;
+
+  /// No description provided for @btnPrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get btnPrevious;
+
+  /// No description provided for @btnNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get btnNext;
+
+  /// No description provided for @narAddRoute.
+  ///
+  /// In en, this message translates to:
+  /// **'Add route'**
+  String get narAddRoute;
+
+  /// No description provided for @narScript.
+  ///
+  /// In en, this message translates to:
+  /// **'Script'**
+  String get narScript;
+
+  /// No description provided for @narPlayTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Play-test'**
+  String get narPlayTest;
+
+  /// No description provided for @narRestart.
+  ///
+  /// In en, this message translates to:
+  /// **'Restart'**
+  String get narRestart;
+
+  /// No description provided for @narShowHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Show hidden options'**
+  String get narShowHidden;
+
+  /// No description provided for @narVariables.
+  ///
+  /// In en, this message translates to:
+  /// **'Variables'**
+  String get narVariables;
+
+  /// No description provided for @narNoVariables.
+  ///
+  /// In en, this message translates to:
+  /// **'No story variables in this Nexus'**
+  String get narNoVariables;
+
+  /// No description provided for @narPlayEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'The end — no route leads on.'**
+  String get narPlayEnd;
+
+  /// No description provided for @narNoOptionOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'No option is open with these variables.'**
+  String get narNoOptionOpen;
+
+  /// No description provided for @narHiddenByCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'hidden by its condition'**
+  String get narHiddenByCondition;
+
+  /// No description provided for @chrCompareWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare with'**
+  String get chrCompareWith;
+
+  /// No description provided for @chrNoOtherLine.
+  ///
+  /// In en, this message translates to:
+  /// **'No other Chronicler in this Nexus to compare with'**
+  String get chrNoOtherLine;
+
 }
 
 class _AppLocalizationsDelegate

@@ -113,6 +113,10 @@ class ComponentDef {
   final bool once;
   final bool borrow;
   final bool canvas;
+
+  /// With [canvas]: which presets are the canvas ones — empty means all.
+  /// A Narrator's board is a canvas; its reader is text and stays inline.
+  final Set<String> canvasPresets;
   final String Function(AppLocalizations l10n) label;
   final Widget Function(BuildContext context, ComponentCtx ctx) build;
 
@@ -125,7 +129,10 @@ class ComponentDef {
     this.once = false,
     this.borrow = false,
     this.canvas = false,
+    this.canvasPresets = const {},
   });
+
+  bool canvasFor(String preset) => canvas && (canvasPresets.isEmpty || canvasPresets.contains(preset));
 }
 
 String kindViewId(ModuleKind kind) => '${kind.id}.view';

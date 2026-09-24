@@ -1324,4 +1324,64 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'Пока ничего нет — разместите элемент или добавьте заметку.';
+
+  @override
+  String get auStatusIdea => 'Идея';
+
+  @override
+  String get auStatusDraft => 'Черновик';
+
+  @override
+  String get auStatusRevised => 'Исправлено';
+
+  @override
+  String get auStatusDone => 'Готово';
+
+  @override
+  String get auSynopsis => 'Синопсис';
+
+  @override
+  String get auPov => 'Точка зрения';
+
+  @override
+  String get btnPrevious => 'Назад';
+
+  @override
+  String get btnNext => 'Далее';
+
+  @override
+  String get narAddRoute => 'Добавить маршрут';
+
+  @override
+  String get narScript => 'Сценарий';
+
+  @override
+  String get narPlayTest => 'Проверить';
+
+  @override
+  String get narRestart => 'Заново';
+
+  @override
+  String get narShowHidden => 'Показать скрытые варианты';
+
+  @override
+  String get narVariables => 'Переменные';
+
+  @override
+  String get narNoVariables => 'В этом Nexus нет переменных сюжета';
+
+  @override
+  String get narPlayEnd => 'Конец — дальше маршрутов нет.';
+
+  @override
+  String get narNoOptionOpen => 'При этих переменных нет доступных вариантов.';
+
+  @override
+  String get narHiddenByCondition => 'скрыт условием';
+
+  @override
+  String get chrCompareWith => 'Сравнить с';
+
+  @override
+  String get chrNoOtherLine => 'В этом Nexus нет другого Chronicler для сравнения';
 }

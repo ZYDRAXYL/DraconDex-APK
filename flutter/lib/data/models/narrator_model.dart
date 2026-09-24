@@ -5,9 +5,8 @@
 //   story_talk      one line inside a scene, ordered
 //   story_edge      "this scene leads to that one", UNIQUE(from_ref, to_ref)
 //
-// pos_x/pos_y are read but never written here. They position nodes on the
-// desktop's route board; this editor is a list, so writing them would move
-// the user's desktop layout for no reason.
+// pos_x/pos_y position a scene on the route board — the desktop's and, since
+// APK V3, the phone's board view, which writes them when a scene is dragged.
 
 class DialogueModel {
   final int id;
@@ -16,12 +15,18 @@ class DialogueModel {
   final String? description;
   final String? colorCode;
 
+  /// Where the desktop's route board (and the phone's) places the scene.
+  final double posX;
+  final double posY;
+
   const DialogueModel({
     required this.id,
     required this.moduleRef,
     required this.name,
     this.description,
     this.colorCode,
+    this.posX = 0,
+    this.posY = 0,
   });
 
   factory DialogueModel.fromMap(Map<String, dynamic> m) => DialogueModel(
@@ -30,6 +35,8 @@ class DialogueModel {
         name: m['name'] as String,
         description: m['description'] as String?,
         colorCode: m['color_code'] as String?,
+        posX: (m['pos_x'] as num?)?.toDouble() ?? 0,
+        posY: (m['pos_y'] as num?)?.toDouble() ?? 0,
       );
 }
 

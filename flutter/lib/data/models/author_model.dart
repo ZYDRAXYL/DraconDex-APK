@@ -11,6 +11,12 @@ class ChapterModel {
   final int order;
   final String updatedAt;
 
+  /// The corkboard card (V5.md §11.6): a synopsis, where the chapter stands
+  /// (idea/draft/revised/done), and whose point of view it is told from.
+  final String? synopsis;
+  final String? status;
+  final String? povKey;
+
   const ChapterModel({
     required this.id,
     required this.moduleRef,
@@ -19,6 +25,9 @@ class ChapterModel {
     this.content,
     this.order = 0,
     this.updatedAt = '',
+    this.synopsis,
+    this.status,
+    this.povKey,
   });
 
   factory ChapterModel.fromMap(Map<String, dynamic> m) => ChapterModel(
@@ -29,5 +38,8 @@ class ChapterModel {
         content: m['chapter_content'] as String?,
         order: m['chapter_order'] as int? ?? 0,
         updatedAt: m['update_at'] as String? ?? '',
+        synopsis: m['synopsis'] as String?,
+        status: m['status'] as String?,
+        povKey: m['pov_key'] as String?,
       );
 }

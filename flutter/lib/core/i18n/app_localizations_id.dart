@@ -1324,4 +1324,64 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'Belum ada yang ditempatkan — tempatkan elemen atau tambah catatan.';
+
+  @override
+  String get auStatusIdea => 'Ide';
+
+  @override
+  String get auStatusDraft => 'Draf';
+
+  @override
+  String get auStatusRevised => 'Direvisi';
+
+  @override
+  String get auStatusDone => 'Selesai';
+
+  @override
+  String get auSynopsis => 'Sinopsis';
+
+  @override
+  String get auPov => 'Sudut pandang';
+
+  @override
+  String get btnPrevious => 'Sebelumnya';
+
+  @override
+  String get btnNext => 'Berikutnya';
+
+  @override
+  String get narAddRoute => 'Tambah rute';
+
+  @override
+  String get narScript => 'Naskah';
+
+  @override
+  String get narPlayTest => 'Uji main';
+
+  @override
+  String get narRestart => 'Mulai ulang';
+
+  @override
+  String get narShowHidden => 'Tampilkan opsi tersembunyi';
+
+  @override
+  String get narVariables => 'Variabel';
+
+  @override
+  String get narNoVariables => 'Tidak ada variabel cerita di Nexus ini';
+
+  @override
+  String get narPlayEnd => 'Tamat — tidak ada rute lanjutan.';
+
+  @override
+  String get narNoOptionOpen => 'Tidak ada opsi yang terbuka dengan variabel ini.';
+
+  @override
+  String get narHiddenByCondition => 'disembunyikan oleh syaratnya';
+
+  @override
+  String get chrCompareWith => 'Bandingkan dengan';
+
+  @override
+  String get chrNoOtherLine => 'Tidak ada Chronicler lain di Nexus ini untuk dibandingkan';
 }

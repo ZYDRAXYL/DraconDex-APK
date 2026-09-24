@@ -67,6 +67,20 @@ class AuthorDao {
     await WikiService.reindexSource(db, 'bchp', id);
   }
 
+  /// The corkboard's facts, one or more at a time (EXE setChapterMeta).
+  Future<void> setChapterMeta(int id, {String? synopsis, String? status, String? povKey, bool clearPov = false}) async {
+    final set = <String, Object?>{
+      'synopsis': ?synopsis,
+      if (status != null) 'status': status.isEmpty ? null : status,
+      if (povKey != null || clearPov) 'pov_key': povKey,
+    };
+    if (set.isEmpty) return;
+    await db.rawUpdate(
+      "UPDATE book_chapter SET ${set.keys.map((k) => '$k=?').join(',')},update_at=datetime('now') WHERE id=?",
+      [...set.values, id],
+    );
+  }
+
   Future<void> deleteChapter(int id) async {
     await db.delete('book_chapter', where: 'id=?', whereArgs: [id]);
   }

@@ -1324,4 +1324,64 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'Aún no hay nada — coloca un elemento o añade una nota.';
+
+  @override
+  String get auStatusIdea => 'Idea';
+
+  @override
+  String get auStatusDraft => 'Borrador';
+
+  @override
+  String get auStatusRevised => 'Revisado';
+
+  @override
+  String get auStatusDone => 'Hecho';
+
+  @override
+  String get auSynopsis => 'Sinopsis';
+
+  @override
+  String get auPov => 'Punto de vista';
+
+  @override
+  String get btnPrevious => 'Anterior';
+
+  @override
+  String get btnNext => 'Siguiente';
+
+  @override
+  String get narAddRoute => 'Añadir ruta';
+
+  @override
+  String get narScript => 'Guion';
+
+  @override
+  String get narPlayTest => 'Probar';
+
+  @override
+  String get narRestart => 'Reiniciar';
+
+  @override
+  String get narShowHidden => 'Mostrar opciones ocultas';
+
+  @override
+  String get narVariables => 'Variables';
+
+  @override
+  String get narNoVariables => 'No hay variables de historia en este Nexus';
+
+  @override
+  String get narPlayEnd => 'Fin — ninguna ruta sigue.';
+
+  @override
+  String get narNoOptionOpen => 'Ninguna opción está abierta con estas variables.';
+
+  @override
+  String get narHiddenByCondition => 'oculta por su condición';
+
+  @override
+  String get chrCompareWith => 'Comparar con';
+
+  @override
+  String get chrNoOtherLine => 'No hay otro Chronicler en este Nexus para comparar';
 }

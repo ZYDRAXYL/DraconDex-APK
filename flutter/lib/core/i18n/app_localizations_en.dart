@@ -1324,4 +1324,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'Nothing placed yet — place an element or add a note.';
+
+  @override
+  String get auStatusIdea => 'Idea';
+
+  @override
+  String get auStatusDraft => 'Draft';
+
+  @override
+  String get auStatusRevised => 'Revised';
+
+  @override
+  String get auStatusDone => 'Done';
+
+  @override
+  String get auSynopsis => 'Synopsis';
+
+  @override
+  String get auPov => 'Point of view';
+
+  @override
+  String get btnPrevious => 'Previous';
+
+  @override
+  String get btnNext => 'Next';
+
+  @override
+  String get narAddRoute => 'Add route';
+
+  @override
+  String get narScript => 'Script';
+
+  @override
+  String get narPlayTest => 'Play-test';
+
+  @override
+  String get narRestart => 'Restart';
+
+  @override
+  String get narShowHidden => 'Show hidden options';
+
+  @override
+  String get narVariables => 'Variables';
+
+  @override
+  String get narNoVariables => 'No story variables in this Nexus';
+
+  @override
+  String get narPlayEnd => 'The end — no route leads on.';
+
+  @override
+  String get narNoOptionOpen => 'No option is open with these variables.';
+
+  @override
+  String get narHiddenByCondition => 'hidden by its condition';
+
+  @override
+  String get chrCompareWith => 'Compare with';
+
+  @override
+  String get chrNoOtherLine => 'No other Chronicler in this Nexus to compare with';
 }

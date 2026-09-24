@@ -182,7 +182,7 @@ class ComponentBlockView extends ConsumerWidget {
     final preset = resolvePreset(def, block, moduleView);
     final ctx = ComponentCtx(page: page, block: block, source: source, itemKey: itemKey, wide: wide, preset: preset);
     Widget body = def.build(context, ctx);
-    if (def.canvas) {
+    if (def.canvasFor(preset)) {
       body = CanvasFrame(
         title: source.name,
         wide: wide,

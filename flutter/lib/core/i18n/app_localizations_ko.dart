@@ -1324,4 +1324,64 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => '아직 배치된 것이 없습니다 — 요소를 배치하거나 메모를 추가하세요.';
+
+  @override
+  String get auStatusIdea => '아이디어';
+
+  @override
+  String get auStatusDraft => '초안';
+
+  @override
+  String get auStatusRevised => '수정됨';
+
+  @override
+  String get auStatusDone => '완료';
+
+  @override
+  String get auSynopsis => '시놉시스';
+
+  @override
+  String get auPov => '시점';
+
+  @override
+  String get btnPrevious => '이전';
+
+  @override
+  String get btnNext => '다음';
+
+  @override
+  String get narAddRoute => '경로 추가';
+
+  @override
+  String get narScript => '대본';
+
+  @override
+  String get narPlayTest => '플레이 테스트';
+
+  @override
+  String get narRestart => '다시 시작';
+
+  @override
+  String get narShowHidden => '숨긴 선택지 표시';
+
+  @override
+  String get narVariables => '변수';
+
+  @override
+  String get narNoVariables => '이 Nexus에는 스토리 변수가 없습니다';
+
+  @override
+  String get narPlayEnd => '끝 — 이어지는 경로가 없습니다.';
+
+  @override
+  String get narNoOptionOpen => '이 변수로는 열린 선택지가 없습니다.';
+
+  @override
+  String get narHiddenByCondition => '조건에 의해 숨김';
+
+  @override
+  String get chrCompareWith => '비교 대상';
+
+  @override
+  String get chrNoOtherLine => '이 Nexus에 비교할 다른 Chronicler가 없습니다';
 }

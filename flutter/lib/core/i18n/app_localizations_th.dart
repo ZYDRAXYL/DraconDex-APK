@@ -1324,4 +1324,64 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'ยังไม่มีอะไรในฉาก — วางองค์ประกอบหรือเพิ่มโน้ต';
+
+  @override
+  String get auStatusIdea => 'ไอเดีย';
+
+  @override
+  String get auStatusDraft => 'ร่าง';
+
+  @override
+  String get auStatusRevised => 'แก้แล้ว';
+
+  @override
+  String get auStatusDone => 'เสร็จ';
+
+  @override
+  String get auSynopsis => 'เรื่องย่อ';
+
+  @override
+  String get auPov => 'มุมมองของ';
+
+  @override
+  String get btnPrevious => 'ก่อนหน้า';
+
+  @override
+  String get btnNext => 'ถัดไป';
+
+  @override
+  String get narAddRoute => 'เพิ่มเส้นทาง';
+
+  @override
+  String get narScript => 'บท';
+
+  @override
+  String get narPlayTest => 'ทดลองเล่น';
+
+  @override
+  String get narRestart => 'เริ่มใหม่';
+
+  @override
+  String get narShowHidden => 'แสดงตัวเลือกที่ซ่อน';
+
+  @override
+  String get narVariables => 'ตัวแปร';
+
+  @override
+  String get narNoVariables => 'ยังไม่มีตัวแปรเรื่องใน Nexus นี้';
+
+  @override
+  String get narPlayEnd => 'จบ — ไม่มีเส้นทางต่อ';
+
+  @override
+  String get narNoOptionOpen => 'ไม่มีตัวเลือกที่เปิดด้วยค่าตัวแปรนี้';
+
+  @override
+  String get narHiddenByCondition => 'ซ่อนด้วยเงื่อนไข';
+
+  @override
+  String get chrCompareWith => 'เทียบกับ';
+
+  @override
+  String get chrNoOtherLine => 'ไม่มี Chronicler อื่นใน Nexus นี้ให้เทียบ';
 }

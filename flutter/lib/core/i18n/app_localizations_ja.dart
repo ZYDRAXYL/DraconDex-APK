@@ -1324,4 +1324,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'まだ何も配置されていません — 要素を配置するかメモを追加します。';
+
+  @override
+  String get auStatusIdea => 'アイデア';
+
+  @override
+  String get auStatusDraft => '下書き';
+
+  @override
+  String get auStatusRevised => '推敲済み';
+
+  @override
+  String get auStatusDone => '完成';
+
+  @override
+  String get auSynopsis => 'あらすじ';
+
+  @override
+  String get auPov => '視点';
+
+  @override
+  String get btnPrevious => '前へ';
+
+  @override
+  String get btnNext => '次へ';
+
+  @override
+  String get narAddRoute => 'ルートを追加';
+
+  @override
+  String get narScript => '台本';
+
+  @override
+  String get narPlayTest => 'テストプレイ';
+
+  @override
+  String get narRestart => '最初から';
+
+  @override
+  String get narShowHidden => '隠れた選択肢を表示';
+
+  @override
+  String get narVariables => '変数';
+
+  @override
+  String get narNoVariables => 'このNexusにはストーリー変数がありません';
+
+  @override
+  String get narPlayEnd => '終わり — 続くルートはありません。';
+
+  @override
+  String get narNoOptionOpen => 'この変数では選べる選択肢がありません。';
+
+  @override
+  String get narHiddenByCondition => '条件により非表示';
+
+  @override
+  String get chrCompareWith => '比較対象';
+
+  @override
+  String get chrNoOtherLine => 'このNexusに比較できる他のChroniclerはありません';
 }

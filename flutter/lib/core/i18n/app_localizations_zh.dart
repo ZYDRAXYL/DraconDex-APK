@@ -1324,4 +1324,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => '尚未放置任何内容 — 放置元素或添加便签。';
+
+  @override
+  String get auStatusIdea => '构思';
+
+  @override
+  String get auStatusDraft => '草稿';
+
+  @override
+  String get auStatusRevised => '已修订';
+
+  @override
+  String get auStatusDone => '完成';
+
+  @override
+  String get auSynopsis => '梗概';
+
+  @override
+  String get auPov => '视角';
+
+  @override
+  String get btnPrevious => '上一个';
+
+  @override
+  String get btnNext => '下一个';
+
+  @override
+  String get narAddRoute => '添加路线';
+
+  @override
+  String get narScript => '剧本';
+
+  @override
+  String get narPlayTest => '试玩';
+
+  @override
+  String get narRestart => '重新开始';
+
+  @override
+  String get narShowHidden => '显示隐藏选项';
+
+  @override
+  String get narVariables => '变量';
+
+  @override
+  String get narNoVariables => '此 Nexus 中没有故事变量';
+
+  @override
+  String get narPlayEnd => '结束 — 没有后续路线。';
+
+  @override
+  String get narNoOptionOpen => '在这些变量下没有可选项。';
+
+  @override
+  String get narHiddenByCondition => '因条件隐藏';
+
+  @override
+  String get chrCompareWith => '对比';
+
+  @override
+  String get chrNoOtherLine => '此 Nexus 中没有可对比的其他 Chronicler';
 }

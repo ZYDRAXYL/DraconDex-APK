@@ -1324,4 +1324,64 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get exhSceneEmpty => 'Chưa có gì — hãy đặt phần tử hoặc thêm ghi chú.';
+
+  @override
+  String get auStatusIdea => 'Ý tưởng';
+
+  @override
+  String get auStatusDraft => 'Bản nháp';
+
+  @override
+  String get auStatusRevised => 'Đã sửa';
+
+  @override
+  String get auStatusDone => 'Xong';
+
+  @override
+  String get auSynopsis => 'Tóm tắt';
+
+  @override
+  String get auPov => 'Góc nhìn';
+
+  @override
+  String get btnPrevious => 'Trước';
+
+  @override
+  String get btnNext => 'Tiếp';
+
+  @override
+  String get narAddRoute => 'Thêm tuyến';
+
+  @override
+  String get narScript => 'Kịch bản';
+
+  @override
+  String get narPlayTest => 'Chơi thử';
+
+  @override
+  String get narRestart => 'Bắt đầu lại';
+
+  @override
+  String get narShowHidden => 'Hiện lựa chọn ẩn';
+
+  @override
+  String get narVariables => 'Biến';
+
+  @override
+  String get narNoVariables => 'Nexus này chưa có biến cốt truyện';
+
+  @override
+  String get narPlayEnd => 'Hết — không còn tuyến nào.';
+
+  @override
+  String get narNoOptionOpen => 'Không có lựa chọn nào mở với các biến này.';
+
+  @override
+  String get narHiddenByCondition => 'bị ẩn bởi điều kiện';
+
+  @override
+  String get chrCompareWith => 'So sánh với';
+
+  @override
+  String get chrNoOtherLine => 'Nexus này không có Chronicler khác để so sánh';
 }
