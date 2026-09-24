@@ -681,8 +681,15 @@ class VaultSnapshotService {
 
       // Every id map a linker key can point at. Built here because sketch pins
       // and design nodes are the first rows that have to resolve one.
+      //
+      // tlev/sdlg (APP docs/V5.md §11.1): both maps existed above but were
+      // never registered, so every pull dropped relations, sketch pins and
+      // Designer links that pointed at an event or a dialogue — the same bug
+      // EXE had, copied from its importer. EXE now derives this list from
+      // one registry (db/entity-kinds.js); this side follows in APK V3.
       final keyMaps = <String, Map<int, int>>{
         'module': modMap, 'cobj': cobjMap, 'bchp': bchpMap, 'chss': chssMap,
+        'tlev': evtMap, 'sdlg': dlgMap,
       };
 
       var droppedPins = 0;
