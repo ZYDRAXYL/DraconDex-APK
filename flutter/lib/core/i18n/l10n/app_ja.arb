@@ -452,5 +452,19 @@
   "narNoOptionOpen": "この変数では選べる選択肢がありません。",
   "narHiddenByCondition": "条件により非表示",
   "chrCompareWith": "比較対象",
-  "chrNoOtherLine": "このNexusに比較できる他のChroniclerはありません"
+  "chrNoOtherLine": "このNexusに比較できる他のChroniclerはありません",
+  "scribeNoMessages": "まだメッセージはありません",
+  "wndLocator": "地図 (Locator)",
+  "wndNoLocator": "このNexusにはまだLocatorがありません — ピンはそのエリアに置かれます。",
+  "wndPickLocator": "これらのピンが置かれるLocatorを選びます。",
+  "wndNoAreas": "そのLocatorにはまだエリアがありません",
+  "wndAddPin": "ここにピンを置く",
+  "skExportPng": "PNGで共有",
+  "dgPanel": "コマ",
+  "dgBalloon": "吹き出し",
+  "dgLinkFrom": "接続先…",
+  "dgPanelShows": "Sketcherのページを表示",
+  "dgBalloonSpeaker": "話し手",
+  "dgNumberByPosition": "位置で番号付け",
+  "dgShowOrder": "読む順を表示"
 }

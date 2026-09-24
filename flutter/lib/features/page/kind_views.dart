@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../../data/models/module_model.dart';
-import '../hub/content/designer_content.dart';
 import '../hub/content/locator_content.dart';
-import '../hub/content/scribe_content.dart';
-import '../hub/content/sketcher_content.dart';
-import '../hub/content/wanderer_content.dart';
 import 'component_registry.dart';
 import 'core_components.dart';
 import 'views/author_views.dart';
 import 'views/chronicler_views.dart';
 import 'views/classifier_views.dart';
+import 'views/designer_views.dart';
 import 'views/narrator_views.dart';
+import 'views/scribe_views.dart';
 import 'views/selection_views.dart';
+import 'views/sketcher_views.dart';
+import 'views/wanderer_views.dart';
 
 /// `<kind>.view` for every kind that has a page, with the desktop's presets
 /// (EXE renderer/mod/*.js registerComponent) — the 43 views of V5.md §12:
@@ -26,10 +26,10 @@ final List<ComponentDef> kindViewComponents = [
       (c, x) => SelectionView(ctx: x),
       canvas: true, canvasPresets: {'scene', 'graph'}),
   _view(ModuleKind.wanderer, ['area', 'map', 'timeline'],
-      (c, x) => WandererContent(moduleId: x.source.id, nexusId: x.nexusId),
-      canvas: true, canvasPresets: {'area', 'map'}, borrow: false),
+      (c, x) => WandererView(ctx: x),
+      canvas: true, canvasPresets: {'map'}, borrow: false),
   _view(ModuleKind.sketcher, ['canvas', 'pages', 'gallery', 'export'],
-      (c, x) => SketcherContent(moduleId: x.source.id),
+      (c, x) => SketcherView(ctx: x),
       canvas: true, canvasPresets: {'canvas'}),
   _view(ModuleKind.author, ['editor', 'board', 'outline', 'reading', 'book'],
       (c, x) => AuthorView(ctx: x)),
@@ -43,11 +43,11 @@ final List<ComponentDef> kindViewComponents = [
   // A Manager is a selection now (V5.md §8.9): the modules its filter picks.
   _view(ModuleKind.manager, ['cards', 'list', 'table', 'graph'], (c, x) => SelectionView(ctx: x)),
   _view(ModuleKind.designer, ['canvas', 'outline', 'matrix'],
-      (c, x) => DesignerContent(moduleId: x.source.id),
+      (c, x) => DesignerView(ctx: x),
       canvas: true, canvasPresets: {'canvas'}),
-  _view(ModuleKind.scribe, ['chat', 'transcript'], (c, x) => ScribeContent(moduleId: x.source.id)),
+  _view(ModuleKind.scribe, ['chat', 'transcript'], (c, x) => ScribeView(ctx: x)),
   _view(ModuleKind.diviner, const [], (c, x) => NotYetOnMobile(label: x.source.kindInfo.label)),
-  _view(ModuleKind.locator, const [], (c, x) => LocatorContent(moduleId: x.source.id), canvas: true),
+  _view(ModuleKind.locator, const [], (c, x) => LocatorContent(moduleId: x.source.id, boardHeight: fullBoard(c, x)), canvas: true),
   // The module's description IS the document for these two, so each is
   // `once` — two live editors on one text would overwrite each other.
   _view(ModuleKind.drafter, const [], (c, x) => DescriptionDocument(module: x.source, tall: true), once: true),
@@ -74,3 +74,8 @@ ComponentDef _view(
       label: (_) => moduleKindInfo[kind]!.label,
       build: build,
     );
+
+/// A board's height: its page size, or the whole screen in full screen
+/// (less the frame's app bar and the board's own toolbar).
+double fullBoard(BuildContext context, ComponentCtx x) =>
+    x.fullScreen ? (MediaQuery.of(context).size.height - kToolbarHeight - 140).clamp(360, 4000) : 360;

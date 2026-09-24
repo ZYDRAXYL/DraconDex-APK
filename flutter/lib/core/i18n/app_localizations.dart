@@ -2870,6 +2870,90 @@ abstract class AppLocalizations {
   /// **'No other Chronicler in this Nexus to compare with'**
   String get chrNoOtherLine;
 
+  /// No description provided for @scribeNoMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'No messages yet'**
+  String get scribeNoMessages;
+
+  /// No description provided for @wndLocator.
+  ///
+  /// In en, this message translates to:
+  /// **'Map (Locator)'**
+  String get wndLocator;
+
+  /// No description provided for @wndNoLocator.
+  ///
+  /// In en, this message translates to:
+  /// **'No Locator in this Nexus yet — its areas are what pins stand in.'**
+  String get wndNoLocator;
+
+  /// No description provided for @wndPickLocator.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the Locator whose areas these pins stand in.'**
+  String get wndPickLocator;
+
+  /// No description provided for @wndNoAreas.
+  ///
+  /// In en, this message translates to:
+  /// **'That Locator has no areas yet'**
+  String get wndNoAreas;
+
+  /// No description provided for @wndAddPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Put a pin here'**
+  String get wndAddPin;
+
+  /// No description provided for @skExportPng.
+  ///
+  /// In en, this message translates to:
+  /// **'Share as PNG'**
+  String get skExportPng;
+
+  /// No description provided for @dgPanel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panel (comic)'**
+  String get dgPanel;
+
+  /// No description provided for @dgBalloon.
+  ///
+  /// In en, this message translates to:
+  /// **'Speech balloon'**
+  String get dgBalloon;
+
+  /// No description provided for @dgLinkFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to…'**
+  String get dgLinkFrom;
+
+  /// No description provided for @dgPanelShows.
+  ///
+  /// In en, this message translates to:
+  /// **'Show a Sketcher page'**
+  String get dgPanelShows;
+
+  /// No description provided for @dgBalloonSpeaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Who speaks'**
+  String get dgBalloonSpeaker;
+
+  /// No description provided for @dgNumberByPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Number by position'**
+  String get dgNumberByPosition;
+
+  /// No description provided for @dgShowOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Show reading order'**
+  String get dgShowOrder;
+
 }
 
 class _AppLocalizationsDelegate

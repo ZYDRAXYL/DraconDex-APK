@@ -452,5 +452,19 @@
   "narNoOptionOpen": "이 변수로는 열린 선택지가 없습니다.",
   "narHiddenByCondition": "조건에 의해 숨김",
   "chrCompareWith": "비교 대상",
-  "chrNoOtherLine": "이 Nexus에 비교할 다른 Chronicler가 없습니다"
+  "chrNoOtherLine": "이 Nexus에 비교할 다른 Chronicler가 없습니다",
+  "scribeNoMessages": "아직 메시지가 없습니다",
+  "wndLocator": "지도 (Locator)",
+  "wndNoLocator": "아직 이 Nexus에 Locator가 없습니다 — 핀은 그 영역에 놓입니다.",
+  "wndPickLocator": "이 핀들이 놓일 Locator를 고르세요.",
+  "wndNoAreas": "그 Locator에는 아직 영역이 없습니다",
+  "wndAddPin": "여기에 핀 두기",
+  "skExportPng": "PNG로 공유",
+  "dgPanel": "칸 (만화)",
+  "dgBalloon": "말풍선",
+  "dgLinkFrom": "연결 대상…",
+  "dgPanelShows": "Sketcher 페이지 표시",
+  "dgBalloonSpeaker": "말하는 이",
+  "dgNumberByPosition": "위치순으로 번호 매기기",
+  "dgShowOrder": "읽는 순서 표시"
 }

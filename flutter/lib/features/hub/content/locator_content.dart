@@ -22,7 +22,10 @@ import '../../../widgets/confirm_dialog.dart';
 ///   outside the widget and being clipped away.
 class LocatorContent extends ConsumerWidget {
   final int moduleId;
-  const LocatorContent({super.key, required this.moduleId});
+  /// The board's height: 360 on a page, the screen's in full screen.
+  final double boardHeight;
+
+  const LocatorContent({super.key, required this.moduleId, this.boardHeight = 360});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,7 +43,7 @@ class LocatorContent extends ConsumerWidget {
       ),
       data: (map) => map == null
           ? const SizedBox.shrink()
-          : _MapBoard(moduleId: moduleId, mapId: map.id),
+          : _MapBoard(moduleId: moduleId, mapId: map.id, boardHeight: boardHeight),
     );
   }
 }
@@ -48,7 +51,8 @@ class LocatorContent extends ConsumerWidget {
 class _MapBoard extends ConsumerStatefulWidget {
   final int moduleId;
   final int mapId;
-  const _MapBoard({required this.moduleId, required this.mapId});
+  final double boardHeight;
+  const _MapBoard({required this.moduleId, required this.mapId, required this.boardHeight});
 
   @override
   ConsumerState<_MapBoard> createState() => _MapBoardState();
@@ -247,7 +251,7 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
               child: SizedBox(
-                height: 360,
+                height: widget.boardHeight,
                 child: ClipRect(
                   child: InteractiveViewer(
                     constrained: false,

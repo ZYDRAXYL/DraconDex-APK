@@ -452,5 +452,19 @@
   "narNoOptionOpen": "ไม่มีตัวเลือกที่เปิดด้วยค่าตัวแปรนี้",
   "narHiddenByCondition": "ซ่อนด้วยเงื่อนไข",
   "chrCompareWith": "เทียบกับ",
-  "chrNoOtherLine": "ไม่มี Chronicler อื่นใน Nexus นี้ให้เทียบ"
+  "chrNoOtherLine": "ไม่มี Chronicler อื่นใน Nexus นี้ให้เทียบ",
+  "scribeNoMessages": "ยังไม่มีข้อความ",
+  "wndLocator": "แผนที่ (Locator)",
+  "wndNoLocator": "ยังไม่มี Locator ใน Nexus นี้ — หมุดจะอยู่ในพื้นที่ของมัน",
+  "wndPickLocator": "เลือก Locator ที่หมุดเหล่านี้อยู่ในพื้นที่ของมัน",
+  "wndNoAreas": "Locator นั้นยังไม่มีพื้นที่",
+  "wndAddPin": "ใส่หมุดในพื้นที่นี้",
+  "skExportPng": "แชร์เป็น PNG",
+  "dgPanel": "ช่องการ์ตูน",
+  "dgBalloon": "บอลลูนคำพูด",
+  "dgLinkFrom": "เชื่อมไปยัง…",
+  "dgPanelShows": "แสดงหน้า Sketcher",
+  "dgBalloonSpeaker": "ผู้พูด",
+  "dgNumberByPosition": "เรียงเลขตามตำแหน่ง",
+  "dgShowOrder": "แสดงลำดับการอ่าน"
 }

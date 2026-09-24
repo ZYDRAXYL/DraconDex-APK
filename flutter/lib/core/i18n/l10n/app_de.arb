@@ -452,5 +452,19 @@
   "narNoOptionOpen": "Mit diesen Variablen ist keine Option offen.",
   "narHiddenByCondition": "durch Bedingung verborgen",
   "chrCompareWith": "Vergleichen mit",
-  "chrNoOtherLine": "Kein anderer Chronicler in diesem Nexus zum Vergleichen"
+  "chrNoOtherLine": "Kein anderer Chronicler in diesem Nexus zum Vergleichen",
+  "scribeNoMessages": "Noch keine Nachrichten",
+  "wndLocator": "Karte (Locator)",
+  "wndNoLocator": "Noch kein Locator in diesem Nexus — in seinen Gebieten stehen die Pins.",
+  "wndPickLocator": "Wähle den Locator, in dessen Gebieten diese Pins stehen.",
+  "wndNoAreas": "Dieser Locator hat noch keine Gebiete",
+  "wndAddPin": "Einen Pin hierher setzen",
+  "skExportPng": "Als PNG teilen",
+  "dgPanel": "Panel (Comic)",
+  "dgBalloon": "Sprechblase",
+  "dgLinkFrom": "Verbinden mit…",
+  "dgPanelShows": "Sketcher-Seite zeigen",
+  "dgBalloonSpeaker": "Wer spricht",
+  "dgNumberByPosition": "Nach Position nummerieren",
+  "dgShowOrder": "Lesereihenfolge zeigen"
 }

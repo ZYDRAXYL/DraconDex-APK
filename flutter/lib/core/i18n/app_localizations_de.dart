@@ -1384,4 +1384,46 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => 'Kein anderer Chronicler in diesem Nexus zum Vergleichen';
+
+  @override
+  String get scribeNoMessages => 'Noch keine Nachrichten';
+
+  @override
+  String get wndLocator => 'Karte (Locator)';
+
+  @override
+  String get wndNoLocator => 'Noch kein Locator in diesem Nexus — in seinen Gebieten stehen die Pins.';
+
+  @override
+  String get wndPickLocator => 'Wähle den Locator, in dessen Gebieten diese Pins stehen.';
+
+  @override
+  String get wndNoAreas => 'Dieser Locator hat noch keine Gebiete';
+
+  @override
+  String get wndAddPin => 'Einen Pin hierher setzen';
+
+  @override
+  String get skExportPng => 'Als PNG teilen';
+
+  @override
+  String get dgPanel => 'Panel (Comic)';
+
+  @override
+  String get dgBalloon => 'Sprechblase';
+
+  @override
+  String get dgLinkFrom => 'Verbinden mit…';
+
+  @override
+  String get dgPanelShows => 'Sketcher-Seite zeigen';
+
+  @override
+  String get dgBalloonSpeaker => 'Wer spricht';
+
+  @override
+  String get dgNumberByPosition => 'Nach Position nummerieren';
+
+  @override
+  String get dgShowOrder => 'Lesereihenfolge zeigen';
 }

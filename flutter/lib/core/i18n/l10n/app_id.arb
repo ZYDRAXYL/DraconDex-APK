@@ -452,5 +452,19 @@
   "narNoOptionOpen": "Tidak ada opsi yang terbuka dengan variabel ini.",
   "narHiddenByCondition": "disembunyikan oleh syaratnya",
   "chrCompareWith": "Bandingkan dengan",
-  "chrNoOtherLine": "Tidak ada Chronicler lain di Nexus ini untuk dibandingkan"
+  "chrNoOtherLine": "Tidak ada Chronicler lain di Nexus ini untuk dibandingkan",
+  "scribeNoMessages": "Belum ada pesan",
+  "wndLocator": "Peta (Locator)",
+  "wndNoLocator": "Belum ada Locator di Nexus ini — area-nya tempat pin berada.",
+  "wndPickLocator": "Pilih Locator tempat pin-pin ini berada.",
+  "wndNoAreas": "Locator itu belum punya area",
+  "wndAddPin": "Taruh pin di sini",
+  "skExportPng": "Bagikan sebagai PNG",
+  "dgPanel": "Panel (komik)",
+  "dgBalloon": "Balon kata",
+  "dgLinkFrom": "Hubungkan ke…",
+  "dgPanelShows": "Tampilkan halaman Sketcher",
+  "dgBalloonSpeaker": "Siapa yang bicara",
+  "dgNumberByPosition": "Beri nomor menurut posisi",
+  "dgShowOrder": "Tampilkan urutan baca"
 }

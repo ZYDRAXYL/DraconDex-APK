@@ -452,5 +452,19 @@
   "narNoOptionOpen": "Nar kaer open with these shiftra.",
   "narHiddenByCondition": "veiled by its bind",
   "chrCompareWith": "Weigh with",
-  "chrNoOtherLine": "Nar other Chronicler to weigh"
+  "chrNoOtherLine": "Nar other Chronicler to weigh",
+  "scribeNoMessages": "Nar rhun yet",
+  "wndLocator": "Mhap (Locator)",
+  "wndNoLocator": "Nar Locator yet — its lands hold the pins.",
+  "wndPickLocator": "Kaer the Locator these pins stand in.",
+  "wndNoAreas": "That Locator has nar lands",
+  "wndAddPin": "Setha a pin here",
+  "skExportPng": "Share as PNG",
+  "dgPanel": "Frame (tale-art)",
+  "dgBalloon": "Speech-orb",
+  "dgLinkFrom": "Bind to…",
+  "dgPanelShows": "Show a Sketcher leaf",
+  "dgBalloonSpeaker": "Who speaks",
+  "dgNumberByPosition": "Number by place",
+  "dgShowOrder": "Show reading order"
 }

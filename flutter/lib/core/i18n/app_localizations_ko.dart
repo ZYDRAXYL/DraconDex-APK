@@ -1384,4 +1384,46 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => '이 Nexus에 비교할 다른 Chronicler가 없습니다';
+
+  @override
+  String get scribeNoMessages => '아직 메시지가 없습니다';
+
+  @override
+  String get wndLocator => '지도 (Locator)';
+
+  @override
+  String get wndNoLocator => '아직 이 Nexus에 Locator가 없습니다 — 핀은 그 영역에 놓입니다.';
+
+  @override
+  String get wndPickLocator => '이 핀들이 놓일 Locator를 고르세요.';
+
+  @override
+  String get wndNoAreas => '그 Locator에는 아직 영역이 없습니다';
+
+  @override
+  String get wndAddPin => '여기에 핀 두기';
+
+  @override
+  String get skExportPng => 'PNG로 공유';
+
+  @override
+  String get dgPanel => '칸 (만화)';
+
+  @override
+  String get dgBalloon => '말풍선';
+
+  @override
+  String get dgLinkFrom => '연결 대상…';
+
+  @override
+  String get dgPanelShows => 'Sketcher 페이지 표시';
+
+  @override
+  String get dgBalloonSpeaker => '말하는 이';
+
+  @override
+  String get dgNumberByPosition => '위치순으로 번호 매기기';
+
+  @override
+  String get dgShowOrder => '읽는 순서 표시';
 }

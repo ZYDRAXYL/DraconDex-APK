@@ -1384,4 +1384,46 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => 'Nar other Chronicler to weigh';
+
+  @override
+  String get scribeNoMessages => 'Nar rhun yet';
+
+  @override
+  String get wndLocator => 'Mhap (Locator)';
+
+  @override
+  String get wndNoLocator => 'Nar Locator yet — its lands hold the pins.';
+
+  @override
+  String get wndPickLocator => 'Kaer the Locator these pins stand in.';
+
+  @override
+  String get wndNoAreas => 'That Locator has nar lands';
+
+  @override
+  String get wndAddPin => 'Setha a pin here';
+
+  @override
+  String get skExportPng => 'Share as PNG';
+
+  @override
+  String get dgPanel => 'Frame (tale-art)';
+
+  @override
+  String get dgBalloon => 'Speech-orb';
+
+  @override
+  String get dgLinkFrom => 'Bind to…';
+
+  @override
+  String get dgPanelShows => 'Show a Sketcher leaf';
+
+  @override
+  String get dgBalloonSpeaker => 'Who speaks';
+
+  @override
+  String get dgNumberByPosition => 'Number by place';
+
+  @override
+  String get dgShowOrder => 'Show reading order';
 }

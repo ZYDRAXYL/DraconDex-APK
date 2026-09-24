@@ -452,5 +452,19 @@
   "narNoOptionOpen": "При этих переменных нет доступных вариантов.",
   "narHiddenByCondition": "скрыт условием",
   "chrCompareWith": "Сравнить с",
-  "chrNoOtherLine": "В этом Nexus нет другого Chronicler для сравнения"
+  "chrNoOtherLine": "В этом Nexus нет другого Chronicler для сравнения",
+  "scribeNoMessages": "Сообщений пока нет",
+  "wndLocator": "Карта (Locator)",
+  "wndNoLocator": "В этом Nexus пока нет Locator — метки стоят в его областях.",
+  "wndPickLocator": "Выберите Locator, в областях которого стоят эти метки.",
+  "wndNoAreas": "У этого Locator пока нет областей",
+  "wndAddPin": "Поставить метку сюда",
+  "skExportPng": "Поделиться PNG",
+  "dgPanel": "Панель (комикс)",
+  "dgBalloon": "Речевой пузырь",
+  "dgLinkFrom": "Соединить с…",
+  "dgPanelShows": "Показать страницу Sketcher",
+  "dgBalloonSpeaker": "Кто говорит",
+  "dgNumberByPosition": "Пронумеровать по положению",
+  "dgShowOrder": "Показать порядок чтения"
 }

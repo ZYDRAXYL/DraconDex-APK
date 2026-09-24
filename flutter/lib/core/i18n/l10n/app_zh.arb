@@ -452,5 +452,19 @@
   "narNoOptionOpen": "在这些变量下没有可选项。",
   "narHiddenByCondition": "因条件隐藏",
   "chrCompareWith": "对比",
-  "chrNoOtherLine": "此 Nexus 中没有可对比的其他 Chronicler"
+  "chrNoOtherLine": "此 Nexus 中没有可对比的其他 Chronicler",
+  "scribeNoMessages": "暂无消息",
+  "wndLocator": "地图 (Locator)",
+  "wndNoLocator": "此 Nexus 中还没有 Locator — 图钉位于其区域中。",
+  "wndPickLocator": "选择这些图钉所在区域的 Locator。",
+  "wndNoAreas": "该 Locator 还没有区域",
+  "wndAddPin": "在此放置图钉",
+  "skExportPng": "以 PNG 分享",
+  "dgPanel": "分格（漫画）",
+  "dgBalloon": "对话气泡",
+  "dgLinkFrom": "连接到…",
+  "dgPanelShows": "显示 Sketcher 页面",
+  "dgBalloonSpeaker": "说话者",
+  "dgNumberByPosition": "按位置编号",
+  "dgShowOrder": "显示阅读顺序"
 }

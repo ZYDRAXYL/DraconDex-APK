@@ -452,5 +452,19 @@
   "narNoOptionOpen": "Không có lựa chọn nào mở với các biến này.",
   "narHiddenByCondition": "bị ẩn bởi điều kiện",
   "chrCompareWith": "So sánh với",
-  "chrNoOtherLine": "Nexus này không có Chronicler khác để so sánh"
+  "chrNoOtherLine": "Nexus này không có Chronicler khác để so sánh",
+  "scribeNoMessages": "Chưa có tin nhắn",
+  "wndLocator": "Bản đồ (Locator)",
+  "wndNoLocator": "Nexus này chưa có Locator — ghim nằm trong các vùng của nó.",
+  "wndPickLocator": "Chọn Locator chứa các ghim này.",
+  "wndNoAreas": "Locator đó chưa có vùng nào",
+  "wndAddPin": "Đặt ghim vào đây",
+  "skExportPng": "Chia sẻ dạng PNG",
+  "dgPanel": "Khung (truyện tranh)",
+  "dgBalloon": "Bong bóng thoại",
+  "dgLinkFrom": "Nối tới…",
+  "dgPanelShows": "Hiện một trang Sketcher",
+  "dgBalloonSpeaker": "Ai nói",
+  "dgNumberByPosition": "Đánh số theo vị trí",
+  "dgShowOrder": "Hiện thứ tự đọc"
 }

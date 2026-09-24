@@ -33,6 +33,24 @@ class SketcherDao {
     return id;
   }
 
+  Future<void> renamePage(int id, String name) async {
+    final old = await db.rawQuery(
+        'SELECT p.name, m.nexus_ref FROM sketch_page p JOIN module m ON p.module_ref=m.id WHERE p.id=?', [id]);
+    await db.rawUpdate("UPDATE sketch_page SET name=?,update_at=datetime('now') WHERE id=?", [name, id]);
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'skpg_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
+  }
+
+  /// Rewrites page_order to [idsInOrder] in one transaction.
+  Future<void> reorderPages(List<int> idsInOrder) async {
+    await db.transaction((txn) async {
+      for (var i = 0; i < idsInOrder.length; i++) {
+        await txn.rawUpdate('UPDATE sketch_page SET page_order=? WHERE id=?', [i, idsInOrder[i]]);
+      }
+    });
+  }
+
   Future<void> deletePage(int id) async {
     await db.delete('sketch_page', where: 'id=?', whereArgs: [id]);
   }

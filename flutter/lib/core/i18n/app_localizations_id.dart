@@ -1384,4 +1384,46 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => 'Tidak ada Chronicler lain di Nexus ini untuk dibandingkan';
+
+  @override
+  String get scribeNoMessages => 'Belum ada pesan';
+
+  @override
+  String get wndLocator => 'Peta (Locator)';
+
+  @override
+  String get wndNoLocator => 'Belum ada Locator di Nexus ini — area-nya tempat pin berada.';
+
+  @override
+  String get wndPickLocator => 'Pilih Locator tempat pin-pin ini berada.';
+
+  @override
+  String get wndNoAreas => 'Locator itu belum punya area';
+
+  @override
+  String get wndAddPin => 'Taruh pin di sini';
+
+  @override
+  String get skExportPng => 'Bagikan sebagai PNG';
+
+  @override
+  String get dgPanel => 'Panel (komik)';
+
+  @override
+  String get dgBalloon => 'Balon kata';
+
+  @override
+  String get dgLinkFrom => 'Hubungkan ke…';
+
+  @override
+  String get dgPanelShows => 'Tampilkan halaman Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'Siapa yang bicara';
+
+  @override
+  String get dgNumberByPosition => 'Beri nomor menurut posisi';
+
+  @override
+  String get dgShowOrder => 'Tampilkan urutan baca';
 }

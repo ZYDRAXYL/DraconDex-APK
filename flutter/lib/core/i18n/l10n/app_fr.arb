@@ -452,5 +452,19 @@
   "narNoOptionOpen": "Aucune option n'est ouverte avec ces variables.",
   "narHiddenByCondition": "masquée par sa condition",
   "chrCompareWith": "Comparer avec",
-  "chrNoOtherLine": "Aucun autre Chronicler dans ce Nexus à comparer"
+  "chrNoOtherLine": "Aucun autre Chronicler dans ce Nexus à comparer",
+  "scribeNoMessages": "Aucun message pour l'instant",
+  "wndLocator": "Carte (Locator)",
+  "wndNoLocator": "Pas encore de Locator dans ce Nexus — les épingles se trouvent dans ses zones.",
+  "wndPickLocator": "Choisissez le Locator dont les zones contiennent ces épingles.",
+  "wndNoAreas": "Ce Locator n'a pas encore de zones",
+  "wndAddPin": "Placer une épingle ici",
+  "skExportPng": "Partager en PNG",
+  "dgPanel": "Case (BD)",
+  "dgBalloon": "Bulle",
+  "dgLinkFrom": "Relier à…",
+  "dgPanelShows": "Afficher une page Sketcher",
+  "dgBalloonSpeaker": "Qui parle",
+  "dgNumberByPosition": "Numéroter par position",
+  "dgShowOrder": "Afficher l'ordre de lecture"
 }

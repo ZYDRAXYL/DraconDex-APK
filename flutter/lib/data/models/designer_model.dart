@@ -21,6 +21,15 @@ class DesignNodeModel {
   /// Stored as free text (a CSS colour on the desktop), not a use_color id.
   final String? color;
 
+  /// Comic pages (V5.md §11.6, EXE designer-comic.js): a panel shows what
+  /// [linkerKey] names (a Sketcher page), a balloon's [linkerKey] is its
+  /// speaker. NULL [w]/[h] is the shape's natural size; [readOrder] NULL is
+  /// not part of the reading order.
+  final String? linkerKey;
+  final double? w;
+  final double? h;
+  final int? readOrder;
+
   const DesignNodeModel({
     required this.id,
     required this.moduleRef,
@@ -29,6 +38,10 @@ class DesignNodeModel {
     this.y = 0,
     this.text,
     this.color,
+    this.linkerKey,
+    this.w,
+    this.h,
+    this.readOrder,
   });
 
   factory DesignNodeModel.fromMap(Map<String, dynamic> m) => DesignNodeModel(
@@ -40,6 +53,10 @@ class DesignNodeModel {
         y: (m['y'] as num?)?.toDouble() ?? 0,
         text: m['node_text'] as String?,
         color: m['color'] as String?,
+        linkerKey: m['linker_key'] as String?,
+        w: (m['w'] as num?)?.toDouble(),
+        h: (m['h'] as num?)?.toDouble(),
+        readOrder: m['read_order'] as int?,
       );
 }
 

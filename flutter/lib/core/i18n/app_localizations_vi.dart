@@ -1384,4 +1384,46 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => 'Nexus này không có Chronicler khác để so sánh';
+
+  @override
+  String get scribeNoMessages => 'Chưa có tin nhắn';
+
+  @override
+  String get wndLocator => 'Bản đồ (Locator)';
+
+  @override
+  String get wndNoLocator => 'Nexus này chưa có Locator — ghim nằm trong các vùng của nó.';
+
+  @override
+  String get wndPickLocator => 'Chọn Locator chứa các ghim này.';
+
+  @override
+  String get wndNoAreas => 'Locator đó chưa có vùng nào';
+
+  @override
+  String get wndAddPin => 'Đặt ghim vào đây';
+
+  @override
+  String get skExportPng => 'Chia sẻ dạng PNG';
+
+  @override
+  String get dgPanel => 'Khung (truyện tranh)';
+
+  @override
+  String get dgBalloon => 'Bong bóng thoại';
+
+  @override
+  String get dgLinkFrom => 'Nối tới…';
+
+  @override
+  String get dgPanelShows => 'Hiện một trang Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'Ai nói';
+
+  @override
+  String get dgNumberByPosition => 'Đánh số theo vị trí';
+
+  @override
+  String get dgShowOrder => 'Hiện thứ tự đọc';
 }

@@ -1384,4 +1384,46 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => 'このNexusに比較できる他のChroniclerはありません';
+
+  @override
+  String get scribeNoMessages => 'まだメッセージはありません';
+
+  @override
+  String get wndLocator => '地図 (Locator)';
+
+  @override
+  String get wndNoLocator => 'このNexusにはまだLocatorがありません — ピンはそのエリアに置かれます。';
+
+  @override
+  String get wndPickLocator => 'これらのピンが置かれるLocatorを選びます。';
+
+  @override
+  String get wndNoAreas => 'そのLocatorにはまだエリアがありません';
+
+  @override
+  String get wndAddPin => 'ここにピンを置く';
+
+  @override
+  String get skExportPng => 'PNGで共有';
+
+  @override
+  String get dgPanel => 'コマ';
+
+  @override
+  String get dgBalloon => '吹き出し';
+
+  @override
+  String get dgLinkFrom => '接続先…';
+
+  @override
+  String get dgPanelShows => 'Sketcherのページを表示';
+
+  @override
+  String get dgBalloonSpeaker => '話し手';
+
+  @override
+  String get dgNumberByPosition => '位置で番号付け';
+
+  @override
+  String get dgShowOrder => '読む順を表示';
 }

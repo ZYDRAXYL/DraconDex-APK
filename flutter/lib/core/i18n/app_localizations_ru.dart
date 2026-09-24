@@ -1384,4 +1384,46 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => 'В этом Nexus нет другого Chronicler для сравнения';
+
+  @override
+  String get scribeNoMessages => 'Сообщений пока нет';
+
+  @override
+  String get wndLocator => 'Карта (Locator)';
+
+  @override
+  String get wndNoLocator => 'В этом Nexus пока нет Locator — метки стоят в его областях.';
+
+  @override
+  String get wndPickLocator => 'Выберите Locator, в областях которого стоят эти метки.';
+
+  @override
+  String get wndNoAreas => 'У этого Locator пока нет областей';
+
+  @override
+  String get wndAddPin => 'Поставить метку сюда';
+
+  @override
+  String get skExportPng => 'Поделиться PNG';
+
+  @override
+  String get dgPanel => 'Панель (комикс)';
+
+  @override
+  String get dgBalloon => 'Речевой пузырь';
+
+  @override
+  String get dgLinkFrom => 'Соединить с…';
+
+  @override
+  String get dgPanelShows => 'Показать страницу Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'Кто говорит';
+
+  @override
+  String get dgNumberByPosition => 'Пронумеровать по положению';
+
+  @override
+  String get dgShowOrder => 'Показать порядок чтения';
 }

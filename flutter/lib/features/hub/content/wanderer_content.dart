@@ -21,7 +21,10 @@ class WandererContent extends ConsumerStatefulWidget {
   final int moduleId;
   final int nexusId;
 
-  const WandererContent({super.key, required this.moduleId, required this.nexusId});
+  /// The board's height: 360 on a page, the screen's in full screen.
+  final double boardHeight;
+
+  const WandererContent({super.key, required this.moduleId, required this.nexusId, this.boardHeight = 360});
 
   @override
   ConsumerState<WandererContent> createState() => _WandererContentState();
@@ -188,7 +191,7 @@ class _WandererContentState extends ConsumerState<WandererContent> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
               child: SizedBox(
-                height: 360,
+                height: widget.boardHeight,
                 child: ClipRect(
                   child: InteractiveViewer(
                     constrained: false,

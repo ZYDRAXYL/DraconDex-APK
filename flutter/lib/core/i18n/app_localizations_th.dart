@@ -1384,4 +1384,46 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => 'ไม่มี Chronicler อื่นใน Nexus นี้ให้เทียบ';
+
+  @override
+  String get scribeNoMessages => 'ยังไม่มีข้อความ';
+
+  @override
+  String get wndLocator => 'แผนที่ (Locator)';
+
+  @override
+  String get wndNoLocator => 'ยังไม่มี Locator ใน Nexus นี้ — หมุดจะอยู่ในพื้นที่ของมัน';
+
+  @override
+  String get wndPickLocator => 'เลือก Locator ที่หมุดเหล่านี้อยู่ในพื้นที่ของมัน';
+
+  @override
+  String get wndNoAreas => 'Locator นั้นยังไม่มีพื้นที่';
+
+  @override
+  String get wndAddPin => 'ใส่หมุดในพื้นที่นี้';
+
+  @override
+  String get skExportPng => 'แชร์เป็น PNG';
+
+  @override
+  String get dgPanel => 'ช่องการ์ตูน';
+
+  @override
+  String get dgBalloon => 'บอลลูนคำพูด';
+
+  @override
+  String get dgLinkFrom => 'เชื่อมไปยัง…';
+
+  @override
+  String get dgPanelShows => 'แสดงหน้า Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'ผู้พูด';
+
+  @override
+  String get dgNumberByPosition => 'เรียงเลขตามตำแหน่ง';
+
+  @override
+  String get dgShowOrder => 'แสดงลำดับการอ่าน';
 }

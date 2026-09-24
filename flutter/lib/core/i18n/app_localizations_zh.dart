@@ -1384,4 +1384,46 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get chrNoOtherLine => '此 Nexus 中没有可对比的其他 Chronicler';
+
+  @override
+  String get scribeNoMessages => '暂无消息';
+
+  @override
+  String get wndLocator => '地图 (Locator)';
+
+  @override
+  String get wndNoLocator => '此 Nexus 中还没有 Locator — 图钉位于其区域中。';
+
+  @override
+  String get wndPickLocator => '选择这些图钉所在区域的 Locator。';
+
+  @override
+  String get wndNoAreas => '该 Locator 还没有区域';
+
+  @override
+  String get wndAddPin => '在此放置图钉';
+
+  @override
+  String get skExportPng => '以 PNG 分享';
+
+  @override
+  String get dgPanel => '分格（漫画）';
+
+  @override
+  String get dgBalloon => '对话气泡';
+
+  @override
+  String get dgLinkFrom => '连接到…';
+
+  @override
+  String get dgPanelShows => '显示 Sketcher 页面';
+
+  @override
+  String get dgBalloonSpeaker => '说话者';
+
+  @override
+  String get dgNumberByPosition => '按位置编号';
+
+  @override
+  String get dgShowOrder => '显示阅读顺序';
 }
