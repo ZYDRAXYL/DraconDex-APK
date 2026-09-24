@@ -1,10 +1,13 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show debugPrint, kIsWeb;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'db_factory.dart';
+import '../../data/services/legacy_notes.dart';
 import 'file_export.dart';
+import 'module_parents.dart';
 import 'vault_schema.g.dart';
+import 'vault_upgrade.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._();
@@ -50,7 +53,22 @@ class DatabaseHelper {
     for (final sql in vaultCreateStatements) {
       await db.execute(sql);
     }
+    // Each step below is idempotent and cheap once done. A failure is
+    // logged and the app still opens — the same trade EXE's migrations
+    // make: an old table left as it was still reads, a vault that will not
+    // open reads nothing.
+    Future<void> step(String name, Future<void> Function() body) async {
+      try {
+        await body();
+      } catch (e) {
+        debugPrint('vault open: $name failed: $e');
+      }
+    }
+
+    await step('schema upgrade', () => VaultUpgrade().run(db));
     await _migrateModuleAttributes(db);
+    await step('legacy notes', () => LegacyNotes.migrateAll(db));
+    await step('module parents', () => db.transaction((txn) => normalizeModuleParents(txn)));
     await _ensureDefaultNexus(db);
   }
 

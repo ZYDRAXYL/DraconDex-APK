@@ -173,7 +173,11 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      // Only a Collector holds modules (v5, APP docs/V5.md §8.8): on any
+      // other page "new module" would have nowhere valid to put one.
+      floatingActionButton: moduleId != null && module?.kind != ModuleKind.collector
+          ? null
+          : FloatingActionButton(
         tooltip: l10n.newModuleTooltip,
         onPressed: () async {
           await showDialog(

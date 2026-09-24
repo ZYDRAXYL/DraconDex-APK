@@ -4,7 +4,6 @@ import 'author_content.dart';
 import 'chronicler_content.dart';
 import 'classifier_content.dart';
 import 'narrator_content.dart';
-import 'connector_content.dart';
 import 'designer_content.dart';
 import 'locator_content.dart';
 import 'sketcher_content.dart';
@@ -31,12 +30,9 @@ Widget? moduleContentFor(ModuleModel module) => switch (module.kind) {
       ModuleKind.chronicler => ChroniclerContent(moduleId: module.id),
       ModuleKind.classifier => ClassifierContent(moduleId: module.id),
       ModuleKind.narrator => NarratorContent(moduleId: module.id),
-      // Viewer filters the whole Nexus, not just this module, so it
+      // An Exhibitor filters the whole Nexus, not just this module, so it
       // needs the Nexus the module belongs to as well.
-      ModuleKind.viewer => ViewerContent(moduleId: module.id, nexusId: module.nexusRef),
-      // Connector shares the Viewer's index and filter; its edges are
-      // Nexus-scoped entity_relation rows, so it needs the Nexus too.
-      ModuleKind.connector => ConnectorContent(moduleId: module.id, nexusId: module.nexusRef),
+      ModuleKind.exhibitor => ViewerContent(moduleId: module.id, nexusId: module.nexusRef),
       ModuleKind.designer => DesignerContent(moduleId: module.id),
       ModuleKind.sketcher => SketcherContent(moduleId: module.id),
       ModuleKind.locator => LocatorContent(moduleId: module.id),

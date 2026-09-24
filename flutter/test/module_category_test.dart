@@ -13,11 +13,17 @@ void main() {
       by.putIfAbsent(e.value.category, () => []).add(e.key.id);
     }
     expect(by[ModuleCategory.structure], ['collector']);
-    expect((by[ModuleCategory.view]!..sort()), ['connector', 'manager', 'viewer']);
-    // 12 since V5.md §11.5 added diviner (registered, not yet ported).
+    // v5 (V5.md §3) folded viewer + connector into exhibitor.
+    expect((by[ModuleCategory.view]!..sort()), ['exhibitor', 'manager']);
     expect(by[ModuleCategory.data]!.length, 12);
     // Notes live in module.description, yet they are data (§9.1).
     expect(moduleKindInfo[ModuleKind.inspector]!.category, ModuleCategory.data);
     expect(moduleKindInfo[ModuleKind.drafter]!.category, ModuleCategory.data);
+  });
+
+  test('pre-v5 kind ids still read, as the Exhibitor', () {
+    expect(ModuleKind.fromId('viewer'), ModuleKind.exhibitor);
+    expect(ModuleKind.fromId('connector'), ModuleKind.exhibitor);
+    expect(ModuleKind.fromId('nonsense'), ModuleKind.collector);
   });
 }

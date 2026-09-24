@@ -13,11 +13,10 @@ import 'package:dracondex/data/services/vault_snapshot_service.dart';
 /// imports the very same file. So this holds the Dart port to exactly what
 /// the desktop writes, not to a round trip of its own output.
 ///
-/// One gap is declared rather than hidden: this app does not import Diviner
-/// tables yet (APK V3 part 2), so anything pointing at a `divt_` key has
-/// nowhere to land. When the Diviner port lands, [notYet] becomes empty and
-/// the counts below must still hold.
-const notYet = <String>{'divt'};
+/// Families this app cannot import yet, if any — declared rather than hidden.
+/// Empty since APK V3 part 2 ported Diviner, Exhibitor and module presets:
+/// every row the desktop wrote must now land.
+const notYet = <String>{};
 
 void main() {
   sqfliteFfiInit();
@@ -48,6 +47,13 @@ void main() {
     expect(await count('SELECT COUNT(*) AS c FROM module WHERE nexus_ref=$nexusId'),
         list(fixture['modules']).length);
     expect(await count('SELECT COUNT(*) AS c FROM page_block'), list(fixture['pageBlocks']).length);
+    // The sections the port added in part 2 come across whole too.
+    final dvn = fixture['diviner'] as Map;
+    expect(await count('SELECT COUNT(*) AS c FROM diviner_table'), list(dvn['tables']).length);
+    expect(await count('SELECT COUNT(*) AS c FROM diviner_entry'), list(dvn['entries']).length);
+    final exh = fixture['exhibitor'] as Map;
+    expect(await count('SELECT COUNT(*) AS c FROM exhibit_node'), list(exh['nodes']).length);
+    expect(await count('SELECT COUNT(*) AS c FROM module_preset'), list(fixture['modulePresets']).length);
 
     final rels = list(fixture['relations']);
     final relGap = rels.where((e) => missing(e['fromKey']) || missing(e['toKey'])).length;
@@ -68,7 +74,7 @@ void main() {
     const tables = <String, String>{
       'module': 'module', 'cobj': 'classifier_object', 'bchp': 'book_chapter', 'chss': 'chat_session',
       'tlev': 'timeline_event', 'sdlg': 'story_dialogue', 'skpg': 'sketch_page', 'ctpl': 'classifier_template',
-      'note': 'note',
+      'note': 'note', 'divt': 'diviner_table',
     };
     Future<bool> exists(String key) async {
       final m = RegExp(r'^([a-z]+)_(\d+)$').firstMatch(key);
@@ -85,5 +91,28 @@ void main() {
     }
     final shared = await db.rawQuery("SELECT 1 FROM page_block WHERE item_key='*'");
     expect(shared, isNotEmpty, reason: 'the shared element layout');
+
+    // The other half of the contract: what this app WRITES has the desktop's
+    // shape — every section, and every field of every row. A field the
+    // desktop added and this serializer does not select would pass every
+    // import test above and still lose data on the way back.
+    final ours = (await VaultSnapshotService.serializeVault(db, nexusId))!;
+    Set<String>? fieldsOf(Object? rows) =>
+        rows is List && rows.isNotEmpty ? (rows.first as Map).keys.cast<String>().toSet() : null;
+    expect(ours.keys.toSet(), fixture.keys.toSet(), reason: 'top-level sections');
+    for (final section in fixture.keys) {
+      final theirs = fixture[section];
+      final mine = ours[section];
+      if (theirs is List) {
+        final f = fieldsOf(theirs);
+        if (f != null) expect(fieldsOf(mine), f, reason: section);
+      } else if (theirs is Map && section != 'nexus') {
+        expect((mine as Map).keys.toSet(), theirs.keys.toSet(), reason: section);
+        for (final sub in theirs.keys) {
+          final f = fieldsOf(theirs[sub]);
+          if (f != null) expect(fieldsOf(mine[sub]), f, reason: '$section.$sub');
+        }
+      }
+    }
   });
 }

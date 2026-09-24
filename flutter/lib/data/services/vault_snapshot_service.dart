@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:sqflite/sqflite.dart';
+
+import '../../core/database/module_parents.dart';
+import '../../core/entity/entity_kinds.dart';
+import '../models/module_model.dart';
 
 /// The `dracondex-vault-snapshot` format — the Dart half of a contract whose
 /// other half is `serializeVault` / `applySnapshotCore` in
@@ -51,6 +57,7 @@ class VaultSnapshotService {
     DatabaseExecutor db,
     int nexusId, {
     List<int>? moduleIds,
+    String? appVersion,
   }) async {
     final nexusRows = await db.rawQuery('''
       SELECT n.name, n.memo, c.color_code AS colorCode
@@ -111,7 +118,7 @@ class VaultSnapshotService {
       'templates': await all('''
         SELECT t.id, t.module_ref AS moduleId, t.object_ref AS objectId, t.description,
                t.attribute_type AS attributeType, t.levelable, t.has_condition AS hasCondition,
-               t.display_order AS displayOrder
+               t.display_order AS displayOrder, t.options
         FROM classifier_template t JOIN module m ON t.module_ref=m.id
         WHERE m.nexus_ref=? ORDER BY t.id'''),
       'attributes': await all('''
@@ -181,6 +188,7 @@ class VaultSnapshotService {
       JOIN timeline_event e ON e.start_at=d.id OR e.end_at=d.id
       JOIN timeline t ON e.timeline_id=t.id JOIN module m ON t.module_ref=m.id
       WHERE m.nexus_ref=?''');
+    // Growable: a time-bound relation adds the dates of its span below.
     final dates = dateRows.map((d) => <String, Object?>{'key': dateKey(d), ...d}).toList();
 
     final wanderer = <String, Object?>{
@@ -209,7 +217,8 @@ class VaultSnapshotService {
       // defaults to 'talk' on re-insert) and its options would be gone.
       'choiceOptions': await all('''
         SELECT o.talk_ref AS talkId, o.option_text AS text, o.effect_kind AS effectKind,
-               o.effect_text AS effectText, o.jump_ref AS jumpId, o.option_order AS "order"
+               o.effect_text AS effectText, o.jump_ref AS jumpId, o.option_order AS "order",
+               o.condition, o.set_ops AS setOps
         FROM story_choice_option o
         JOIN story_talk tk ON o.talk_ref=tk.id JOIN story_dialogue d ON tk.dialogue_ref=d.id
         JOIN module m ON d.module_ref=m.id WHERE m.nexus_ref=? ORDER BY o.id'''),
@@ -218,7 +227,7 @@ class VaultSnapshotService {
     final author = <String, Object?>{
       'chapters': await all('''
         SELECT ch.id, ch.module_ref AS moduleId, ch.name, ch.chapter_content AS content,
-               ch.chapter_order AS "order"
+               ch.chapter_order AS "order", ch.synopsis, ch.status, ch.pov_key AS povKey
         FROM book_chapter ch JOIN module m ON ch.module_ref=m.id
         WHERE m.nexus_ref=? ORDER BY ch.id'''),
     };
@@ -253,7 +262,7 @@ class VaultSnapshotService {
     final designer = <String, Object?>{
       'nodes': await all('''
         SELECT n.id, n.module_ref AS moduleId, n.shape, n.x, n.y, n.node_text AS text,
-               n.color, n.linker_key AS linkerKey
+               n.color, n.linker_key AS linkerKey, n.w, n.h, n.read_order AS readOrder
         FROM design_node n JOIN module m ON n.module_ref=m.id
         WHERE m.nexus_ref=? ORDER BY n.id'''),
       'edges': await all('''
@@ -261,14 +270,76 @@ class VaultSnapshotService {
         FROM design_edge e JOIN module m ON e.module_ref=m.id WHERE m.nexus_ref=?'''),
     };
 
-    final relations = await allGlobal('''
-      SELECT from_key AS fromKey, to_key AS toKey, label
-      FROM entity_relation WHERE nexus_ref=? ORDER BY id''');
+    // v5 Part 7 (§11.5): Diviner tables, their entries and roll history. An
+    // entry's linker_key (divt_<id> = roll that table) is a key like any other.
+    final diviner = <String, Object?>{
+      'tables': await all('''
+        SELECT t.id, t.module_ref AS moduleId, t.name, t.dice, t.mode, t.display_order AS "order"
+        FROM diviner_table t JOIN module m ON t.module_ref=m.id WHERE m.nexus_ref=? ORDER BY t.id'''),
+      'entries': await all('''
+        SELECT e.id, e.table_ref AS tableId, e.weight, e.range_lo AS lo, e.range_hi AS hi,
+               e.entry_text AS text, e.linker_key AS linkerKey, e.display_order AS "order"
+        FROM diviner_entry e JOIN diviner_table t ON e.table_ref=t.id
+        JOIN module m ON t.module_ref=m.id WHERE m.nexus_ref=? ORDER BY e.id'''),
+      'rolls': await all('''
+        SELECT r.table_ref AS tableId, r.dice_result AS dice, r.entry_ref AS entryId,
+               r.result_text AS text, r.create_at AS createAt
+        FROM diviner_roll r JOIN diviner_table t ON r.table_ref=t.id
+        JOIN module m ON t.module_ref=m.id WHERE m.nexus_ref=? ORDER BY r.id'''),
+    };
+
+    // v5 (APP docs/V5.md §3.5): rel_type / directed / moduleRef travel with
+    // the relation. A time-bound relation (§11.6) carries its span as date
+    // KEYS — the same lookups.dates the events use — never row ids.
+    final relationRows = await allGlobal('''
+      SELECT r.from_key AS fromKey, r.to_key AS toKey, r.label,
+             r.rel_type AS relType, r.directed, r.module_ref AS moduleId,
+             f.day AS fDay, f.month AS fMonth, f.years AS fYears, f.hour AS fHour, f.minute AS fMinute,
+             u.day AS uDay, u.month AS uMonth, u.years AS uYears, u.hour AS uHour, u.minute AS uMinute
+      FROM entity_relation r
+      LEFT JOIN timeline_date f ON r.valid_from=f.id LEFT JOIN timeline_date u ON r.valid_to=u.id
+      WHERE r.nexus_ref=? ORDER BY r.id''');
+    final relations = <Map<String, Object?>>[];
+    for (final r in relationRows) {
+      Map<String, Object?>? span(String p) => r['${p}Years'] == null
+          ? null
+          : {
+              'day': r['${p}Day'], 'month': r['${p}Month'], 'years': r['${p}Years'],
+              'hour': r['${p}Hour'], 'minute': r['${p}Minute'],
+            };
+      final from = span('f');
+      final to = span('u');
+      for (final d in [from, to]) {
+        if (d != null && !dates.any((x) => x['key'] == dateKey(d))) dates.add({'key': dateKey(d), ...d});
+      }
+      relations.add({
+        'fromKey': r['fromKey'], 'toKey': r['toKey'], 'label': r['label'],
+        'relType': r['relType'], 'directed': r['directed'], 'moduleId': r['moduleId'],
+        'validFrom': from == null ? null : dateKey(from),
+        'validTo': to == null ? null : dateKey(to),
+      });
+    }
+
+    // v5 Exhibitor scenes, module-scoped like designer.
+    final exhibitor = <String, Object?>{
+      'nodes': await all('''
+        SELECT n.id, n.module_ref AS moduleId, n.parent_id AS parentId, n.node_type AS nodeType,
+               n.linker_key AS linkerKey, n.label, n.x, n.y, n.w, n.h, n.z, n.rotation, n.scale,
+               n.locked, n.hidden, n.color, n.props
+        FROM exhibit_node n JOIN module m ON n.module_ref=m.id
+        WHERE m.nexus_ref=? ORDER BY n.id'''),
+      'views': await all('''
+        SELECT v.module_ref AS moduleId, v.scale, v.tx, v.ty, v.bg_linker_key AS bgLinkerKey, v.grid, v.snap
+        FROM exhibit_view v JOIN module m ON v.module_ref=m.id WHERE m.nexus_ref=?'''),
+    };
 
     // Nexus-scoped like relations, so allGlobal — a single module cannot carry
     // the whole vault's calendar templates.
     final calendarTemplates = await allGlobal('''
       SELECT name, spec, builtin FROM calendar_template WHERE nexus_ref=? ORDER BY id''');
+    // v5 Part 6 (§10.8): the user's module presets — nexus-scoped the same way.
+    final modulePresets = await allGlobal('''
+      SELECT kind, name, spec FROM module_preset WHERE nexus_ref=? ORDER BY id''');
 
     final notes = <String, Object?>{
       'folders': await allGlobal('''
@@ -330,7 +401,7 @@ class VaultSnapshotService {
     return <String, Object?>{
       'format': format,
       'version': version,
-      'app': null,
+      'app': appVersion,
       'exportedAt': DateTime.now().toUtc().toIso8601String(),
       'nexus': {'name': nexus['name'], 'memo': nexus['memo'], 'colorCode': nexus['colorCode']},
       'lookups': {'colors': colors.toList(), 'hashtags': hashtags, 'dates': dates},
@@ -350,6 +421,9 @@ class VaultSnapshotService {
       'relations': relations,
       'notes': notes,
       'calendarTemplates': calendarTemplates,
+      'exhibitor': exhibitor,
+      'modulePresets': modulePresets,
+      'diviner': diviner,
     };
   }
 
@@ -363,8 +437,37 @@ class VaultSnapshotService {
   /// relation, note and calendar template in it is deleted first. The receive
   /// flow creates an empty Nexus for this and never points it at one the user
   /// is working in.
-  static Future<SnapshotApplyResult> applySnapshot(
-      Database db, int nexusId, Object? payload) async {
+  static Future<SnapshotApplyResult> applySnapshot(Database db, int nexusId, Object? payload) =>
+      applySnapshotCore(db, nexusId, payload, wipe: true, updateNexusMeta: true);
+
+  /// Module-subtree merge-in — a `.mddx` import, a trash restore. Additive:
+  /// never wipes the target Nexus, and the snapshot's root module(s) land
+  /// under [parentModuleId] (top level when null).
+  static Future<SnapshotApplyResult> importModuleSnapshot(
+    Database db,
+    int nexusId,
+    int? parentModuleId,
+    Object? payload,
+  ) =>
+      applySnapshotCore(db, nexusId, payload, reparentRootTo: parentModuleId);
+
+  /// The shared core of both — a transliteration of EXE `applySnapshotCore`
+  /// (db/sync.js), including its insert order, which is a dependency order.
+  /// Three things differ between callers:
+  ///   [wipe]            clear the Nexus's synced content first
+  ///   [updateNexusMeta] overwrite the Nexus row's memo/colour
+  ///   [reparentRootTo]  where a module whose parent is not in the payload
+  ///                     lands (null = top level)
+  /// The result carries the key maps it built — the trash restores saved
+  /// relations through them.
+  static Future<SnapshotApplyResult> applySnapshotCore(
+    Database db,
+    int nexusId,
+    Object? payload, {
+    bool wipe = false,
+    bool updateNexusMeta = false,
+    int? reparentRootTo,
+  }) async {
     if (!validate(payload)) return SnapshotApplyResult.failed('bad_snapshot');
     final p = (payload as Map).cast<String, Object?>();
 
@@ -380,14 +483,15 @@ class VaultSnapshotService {
     // OUTSIDE any transaction — inside one it is a silent no-op, which is how
     // you end up with a file full of orphans that looks fine (docs/VAULTS.md).
     await db.transaction((txn) async {
-      // The wipe. `module` CASCADEs to every per-kind child, v3
-      // map -> map_area -> map_point and timeline -> timeline_event included.
-      await txn.rawDelete('DELETE FROM module WHERE nexus_ref=?', [nexusId]);
-      await txn.rawDelete('DELETE FROM entity_relation WHERE nexus_ref=?', [nexusId]);
-      await txn.rawDelete('DELETE FROM note WHERE nexus_ref=?', [nexusId]);
-      await txn.rawDelete('DELETE FROM note_folder WHERE nexus_ref=?', [nexusId]);
-      await txn.rawDelete('DELETE FROM wiki_link WHERE nexus_ref=?', [nexusId]);
-      await txn.rawDelete('DELETE FROM calendar_template WHERE nexus_ref=?', [nexusId]);
+      if (wipe) {
+        // module CASCADEs to every per-kind child, v3 map -> map_area ->
+        // map_point and timeline -> timeline_event included.
+        for (final t in const [
+          'module', 'entity_relation', 'note', 'note_folder', 'wiki_link', 'calendar_template', 'module_preset',
+        ]) {
+          await txn.rawDelete('DELETE FROM $t WHERE nexus_ref=?', [nexusId]);
+        }
+      }
 
       // --- lookups, by natural key -------------------------------------
       final lookups = sect(p['lookups']);
@@ -425,26 +529,33 @@ class VaultSnapshotService {
 
       // The local Nexus NAME is kept: it is UNIQUE per install, and the
       // sender's name is display information, not an identity to adopt.
-      final nexusMeta = sect(p['nexus']);
-      await txn.rawUpdate(
-          "UPDATE nexus SET memo=?, color=?, update_at=datetime('now') WHERE id=?",
-          [nexusMeta['memo'], colorId(nexusMeta['colorCode']), nexusId]);
+      if (updateNexusMeta) {
+        final nexusMeta = sect(p['nexus']);
+        await txn.rawUpdate(
+            "UPDATE nexus SET memo=?, color=?, update_at=datetime('now') WHERE id=?",
+            [nexusMeta['memo'], colorId(nexusMeta['colorCode']), nexusId]);
+      }
 
       // --- modules, parents first --------------------------------------
-      // BFS rather than the snapshot's own order, so a child can never land
-      // before the parent it points at.
+      // A subtree's root still names its old parent, which is not in the
+      // payload (a .mddx of a nested module, a trashed module) — so a root
+      // is "no parent, or a parent that is not here", and it lands where
+      // the caller says.
       final modMap = <int, int>{};
-      var pending = arr(p['modules']);
+      final legacyKind = <int, String>{}; // old id -> 'viewer'|'connector'
+      final allModules = arr(p['modules']);
+      final inPayload = {for (final m in allModules) m['id']};
+      bool isRoot(Map<String, Object?> m) => m['parentId'] == null || !inPayload.contains(m['parentId']);
+      var pending = allModules;
       while (pending.isNotEmpty) {
         final next = <Map<String, Object?>>[];
         var progressed = false;
         for (final m in pending) {
-          final oldParent = m['parentId'];
-          if (oldParent is int && !modMap.containsKey(oldParent)) {
+          if (!isRoot(m) && !modMap.containsKey(m['parentId'])) {
             next.add(m);
             continue;
           }
-          final parentId = oldParent is int ? modMap[oldParent] : null;
+          final parentId = isRoot(m) ? reparentRootTo : modMap[m['parentId']];
 
           // A handle is unique per Nexus and this one may already be taken.
           // Dropping the clash to NULL keeps the module importable; throwing
@@ -453,24 +564,27 @@ class VaultSnapshotService {
           Object? handle = m['handle'];
           if (handle != null) {
             final clash = await txn.rawQuery(
-                'SELECT id FROM module WHERE nexus_ref=? AND handle=? COLLATE NOCASE',
-                [nexusId, handle]);
+                'SELECT id FROM module WHERE nexus_ref=? AND handle=? COLLATE NOCASE', [nexusId, handle]);
             if (clash.isNotEmpty) handle = null;
           }
-
+          final kind = '${m['kind']}';
+          final legacy = ModuleKind.legacyIds[kind]?.id;
           final id = await txn.rawInsert(
             'INSERT INTO module (nexus_ref, parent_id, name, kind, icon, icon_color, color, '
             'description, display_order, pinned, cat_type, handle, create_at, update_at) '
             "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,COALESCE(?,datetime('now')),COALESCE(?,datetime('now')))",
             <Object?>[
-              nexusId, parentId, m['name'], m['kind'], m['icon'],
+              nexusId, parentId, m['name'], legacy ?? kind, m['icon'],
               colorId(m['iconColorCode']), colorId(m['colorCode']),
               m['description'], m['displayOrder'] ?? 0, m['pinned'] ?? 0,
               m['catType'], handle, m['createAt'], m['updateAt'],
             ],
           );
           final oldId = m['id'];
-          if (oldId is int) modMap[oldId] = id;
+          if (oldId is int) {
+            modMap[oldId] = id;
+            if (legacy != null) legacyKind[oldId] = kind;
+          }
           progressed = true;
         }
         if (!progressed) break; // orphaned parentIds — drop the remainder
@@ -492,8 +606,7 @@ class VaultSnapshotService {
         final m = mod(tg['moduleId']);
         final tagId = tagMap[tg['tagName']];
         if (m == null || tagId == null) continue;
-        await txn.rawInsert(
-            'INSERT OR IGNORE INTO module_hashtag (module_ref, hashtag_id) VALUES (?,?)',
+        await txn.rawInsert('INSERT OR IGNORE INTO module_hashtag (module_ref, hashtag_id) VALUES (?,?)',
             <Object?>[m, tagId]);
       }
 
@@ -516,11 +629,11 @@ class VaultSnapshotService {
         if (objectId is int && !cobjMap.containsKey(objectId)) continue;
         final id = await txn.rawInsert(
             'INSERT INTO classifier_template (module_ref, object_ref, description, attribute_type, '
-            'levelable, has_condition, display_order) VALUES (?,?,?,?,?,?,?)',
+            'levelable, has_condition, display_order, options) VALUES (?,?,?,?,?,?,?,?)',
             <Object?>[
               m, objectId is int ? cobjMap[objectId] : null, t['description'],
               t['attributeType'] ?? 'text', t['levelable'] ?? 0, t['hasCondition'] ?? 0,
-              t['displayOrder'] ?? 0,
+              t['displayOrder'] ?? 0, t['options'],
             ]);
         final oldId = t['id'];
         if (oldId is int) ctplMap[oldId] = id;
@@ -539,8 +652,7 @@ class VaultSnapshotService {
       for (final r in arr(loc['maps'])) {
         final m = mod(r['moduleId']);
         if (m == null) continue;
-        final id = await txn.rawInsert(
-            'INSERT INTO map (map_name, module_ref, color) VALUES (?,?,?)',
+        final id = await txn.rawInsert('INSERT INTO map (map_name, module_ref, color) VALUES (?,?,?)',
             <Object?>[r['name'], m, colorId(r['colorCode'])]);
         final oldId = r['id'];
         if (oldId is int) mapMap[oldId] = id;
@@ -549,8 +661,7 @@ class VaultSnapshotService {
       for (final r in arr(loc['areas'])) {
         final mapId = mapMap[r['mapId']];
         if (mapId == null) continue;
-        final id = await txn.rawInsert(
-            'INSERT INTO map_area (map_id, area_name, color) VALUES (?,?,?)',
+        final id = await txn.rawInsert('INSERT INTO map_area (map_id, area_name, color) VALUES (?,?,?)',
             <Object?>[mapId, r['name'], colorId(r['colorCode'])]);
         final oldId = r['id'];
         if (oldId is int) areaMap[oldId] = id;
@@ -567,8 +678,7 @@ class VaultSnapshotService {
       for (final t in arr(chr['timelines'])) {
         final m = mod(t['moduleId']);
         if (m == null) continue;
-        final id = await txn.rawInsert(
-            'INSERT INTO timeline (line_name, module_ref, color) VALUES (?,?,?)',
+        final id = await txn.rawInsert('INSERT INTO timeline (line_name, module_ref, color) VALUES (?,?,?)',
             <Object?>[t['name'], m, colorId(t['colorCode'])]);
         final oldId = t['id'];
         if (oldId is int) tlMap[oldId] = id;
@@ -595,8 +705,7 @@ class VaultSnapshotService {
         if (m == null) continue;
         await txn.rawInsert(
             'INSERT INTO map_event (module_ref, event_ref, area_ref, label, x, y) VALUES (?,?,?,?,?,?)',
-            <Object?>[m, evtMap[me['eventId']], areaMap[me['areaId']], me['label'],
-                      me['x'] ?? 0, me['y'] ?? 0]);
+            <Object?>[m, evtMap[me['eventId']], areaMap[me['areaId']], me['label'], me['x'] ?? 0, me['y'] ?? 0]);
       }
 
       final nar = sect(p['narrator']);
@@ -625,43 +734,52 @@ class VaultSnapshotService {
         if (dlg == null) continue;
         final id = await txn.rawInsert(
             'INSERT INTO story_talk (dialogue_ref, speaker, talk_sentence, row_type, talk_order) VALUES (?,?,?,?,?)',
-            <Object?>[dlg, tk['speaker'], tk['sentence'],
-                      tk['rowType'] == 'choice' ? 'choice' : 'talk', tk['order'] ?? 0]);
+            <Object?>[dlg, tk['speaker'], tk['sentence'], tk['rowType'] == 'choice' ? 'choice' : 'talk', tk['order'] ?? 0]);
         final oldId = tk['id'];
         if (oldId is int) talkMap[oldId] = id;
       }
+      // condition / set_ops hold entity keys (§11.6) — remapped once every
+      // key map exists, below; stored raw here only for the ids.
+      final pendingKeyJson = <(String, String, int, String)>[];
       for (final op in arr(nar['choiceOptions'])) {
         final talk = talkMap[op['talkId']];
         if (talk == null) continue;
         final jump = op['jumpId'];
-        await txn.rawInsert(
+        final id = await txn.rawInsert(
             'INSERT INTO story_choice_option (talk_ref, option_text, effect_kind, effect_text, jump_ref, option_order) '
             'VALUES (?,?,?,?,?,?)',
             <Object?>[talk, op['text'], op['effectKind'] ?? 'none', op['effectText'],
                       jump is int ? dlgMap[jump] : null, op['order'] ?? 0]);
+        final cond = op['condition'];
+        final ops = op['setOps'];
+        if (cond is String && cond.isNotEmpty) pendingKeyJson.add(('story_choice_option', 'condition', id, cond));
+        if (ops is String && ops.isNotEmpty) pendingKeyJson.add(('story_choice_option', 'set_ops', id, ops));
       }
 
       final bchpMap = <int, int>{};
+      final pendingKeys = <(String, String, int, String)>[]; // single-key columns, remapped below
       for (final ch in arr(sect(p['author'])['chapters'])) {
         final m = mod(ch['moduleId']);
         if (m == null) continue;
         final id = await txn.rawInsert(
-            'INSERT INTO book_chapter (module_ref, name, chapter_content, chapter_order) VALUES (?,?,?,?)',
-            <Object?>[m, ch['name'], ch['content'], ch['order'] ?? 0]);
+            'INSERT INTO book_chapter (module_ref, name, chapter_content, chapter_order, synopsis, status) VALUES (?,?,?,?,?,?)',
+            <Object?>[m, ch['name'], ch['content'], ch['order'] ?? 0, ch['synopsis'], ch['status']]);
         final oldId = ch['id'];
         if (oldId is int) bchpMap[oldId] = id;
+        final pov = ch['povKey'];
+        if (pov is String && pov.isNotEmpty) pendingKeys.add(('book_chapter', 'pov_key', id, pov));
       }
 
       final cht = sect(p['chatscribe']);
       final chssMap = <int, int>{};
-      for (final s in arr(cht['sessions'])) {
-        final m = mod(s['moduleId']);
+      for (final ses in arr(cht['sessions'])) {
+        final m = mod(ses['moduleId']);
         if (m == null) continue;
         final id = await txn.rawInsert(
             'INSERT INTO chat_session (module_ref, name, session_order, create_at) '
             "VALUES (?,?,?,COALESCE(?,datetime('now')))",
-            <Object?>[m, s['name'], s['order'] ?? 0, s['createAt']]);
-        final oldId = s['id'];
+            <Object?>[m, ses['name'], ses['order'] ?? 0, ses['createAt']]);
+        final oldId = ses['id'];
         if (oldId is int) chssMap[oldId] = id;
       }
       for (final msg in arr(cht['messages'])) {
@@ -677,8 +795,7 @@ class VaultSnapshotService {
       for (final pg in arr(skt['pages'])) {
         final m = mod(pg['moduleId']);
         if (m == null) continue;
-        final id = await txn.rawInsert(
-            'INSERT INTO sketch_page (module_ref, name, page_order) VALUES (?,?,?)',
+        final id = await txn.rawInsert('INSERT INTO sketch_page (module_ref, name, page_order) VALUES (?,?,?)',
             <Object?>[m, pg['name'], pg['order'] ?? 0]);
         final oldId = pg['id'];
         if (oldId is int) pageMap[oldId] = id;
@@ -690,11 +807,44 @@ class VaultSnapshotService {
             <Object?>[page, st['color'], st['width'] ?? 3, st['points']]);
       }
 
+      // Diviner (§11.5) — before the key maps, which need divtMap; an
+      // entry's linker_key is remapped with the other deferred single keys.
+      final dvn = sect(p['diviner']);
+      final divtMap = <int, int>{};
+      final dveMap = <int, int>{};
+      for (final t in arr(dvn['tables'])) {
+        final m = mod(t['moduleId']);
+        if (m == null) continue;
+        final id = await txn.rawInsert(
+            'INSERT INTO diviner_table (module_ref, name, dice, mode, display_order) VALUES (?,?,?,?,?)',
+            <Object?>[m, t['name'], t['dice'], t['mode'] == 'join' ? 'join' : 'pick', t['order'] ?? 0]);
+        final oldId = t['id'];
+        if (oldId is int) divtMap[oldId] = id;
+      }
+      for (final e in arr(dvn['entries'])) {
+        final table = divtMap[e['tableId']];
+        if (table == null) continue;
+        final id = await txn.rawInsert(
+            'INSERT INTO diviner_entry (table_ref, weight, range_lo, range_hi, entry_text, display_order) VALUES (?,?,?,?,?,?)',
+            <Object?>[table, e['weight'] ?? 1, e['lo'], e['hi'], e['text'], e['order'] ?? 0]);
+        final oldId = e['id'];
+        if (oldId is int) dveMap[oldId] = id;
+        final lk = e['linkerKey'];
+        if (lk is String && lk.isNotEmpty) pendingKeys.add(('diviner_entry', 'linker_key', id, lk));
+      }
+      for (final r in arr(dvn['rolls'])) {
+        final table = divtMap[r['tableId']];
+        if (table == null) continue;
+        final entry = r['entryId'];
+        await txn.rawInsert(
+            "INSERT INTO diviner_roll (table_ref, dice_result, entry_ref, result_text, create_at) VALUES (?,?,?,?,COALESCE(?,datetime('now')))",
+            <Object?>[table, r['dice'], entry is int ? dveMap[entry] : null, r['text'], r['createAt']]);
+      }
+
       // --- notes (folder tree parents-first) ------------------------------
       // Before the key maps: a sketch pin, a Designer link or a relation can
       // point at a note, so note_<id> has to resolve from the first row that
-      // uses a key. Built after the pins, it dropped every note-linked pin and
-      // Designer node (found by the shared snapshot fixture, Procress 12 part 0).
+      // uses a key (found by the shared snapshot fixture, Procress 12 part 0).
       final nts = sect(p['notes']);
       final nfMap = <int, int>{};
       var pendingF = arr(nts['folders']);
@@ -709,8 +859,7 @@ class VaultSnapshotService {
           }
           final id = await txn.rawInsert(
               'INSERT INTO note_folder (nexus_ref, parent_ref, name, color) VALUES (?,?,?,?)',
-              <Object?>[nexusId, oldParent is int ? nfMap[oldParent] : null,
-                        f['name'], colorId(f['colorCode'])]);
+              <Object?>[nexusId, oldParent is int ? nfMap[oldParent] : null, f['name'], colorId(f['colorCode'])]);
           final oldId = f['id'];
           if (oldId is int) nfMap[oldId] = id;
           progressed = true;
@@ -718,35 +867,37 @@ class VaultSnapshotService {
         if (!progressed) break;
         pendingF = next;
       }
-
       final noteMap = <int, int>{};
       for (final n in arr(nts['notes'])) {
         final folderId = n['folderId'];
         final id = await txn.rawInsert(
-            'INSERT OR IGNORE INTO note (nexus_ref, folder_ref, title, content, color, pinned) '
-            'VALUES (?,?,?,?,?,?)',
+            'INSERT OR IGNORE INTO note (nexus_ref, folder_ref, title, content, color, pinned) VALUES (?,?,?,?,?,?)',
             <Object?>[nexusId, folderId is int ? nfMap[folderId] : null, n['title'],
                       n['content'] ?? '', colorId(n['colorCode']), n['pinned'] ?? 0]);
-        // OR IGNORE reports 0 when the row was skipped (a title collision).
-        // Leaving it out of the map is what stops a relation pointing at a
-        // note that was never inserted.
+        // OR IGNORE reports 0 when the row was skipped (a title collision):
+        // leaving it out of the map stops anything pointing at a note that
+        // was never inserted.
         final oldId = n['id'];
         if (id != 0 && oldId is int) noteMap[oldId] = id;
       }
 
-      // Every id map a linker key can point at. Built here because sketch pins
-      // and design nodes are the first rows that have to resolve one.
-      //
-      // tlev/sdlg (APP docs/V5.md §11.1): both maps existed above but were
-      // never registered, so every pull dropped relations, sketch pins and
-      // Designer links that pointed at an event or a dialogue — the same bug
-      // EXE had, copied from its importer. EXE now derives this list from
-      // one registry (db/entity-kinds.js); this side follows in APK V3.
-      final keyMaps = <String, Map<int, int>>{
-        'module': modMap, 'cobj': cobjMap, 'bchp': bchpMap, 'chss': chssMap,
-        'tlev': evtMap, 'sdlg': dlgMap, 'skpg': pageMap, 'ctpl': ctplMap,
-        'note': noteMap,
-      };
+      // The key maps come from the vendored ENTITY_KINDS (DraconDex-SDB):
+      // every family that declares `sync` gets its map, by name, and one
+      // that is missing throws instead of dropping rows. Registering them by
+      // hand here is what dropped tlev_/sdlg_ endpoints on every pull (§11.1).
+      final keyMaps = EntityKinds.keyMaps({
+        'modMap': modMap, 'cobjMap': cobjMap, 'ctplMap': ctplMap, 'bchpMap': bchpMap,
+        'chssMap': chssMap, 'evtMap': evtMap, 'dlgMap': dlgMap, 'noteMap': noteMap,
+        'pageMap': pageMap, 'divtMap': divtMap,
+      });
+      // Key columns written before the maps were complete: a single key that
+      // cannot be mapped is cleared; a JSON list entry that cannot is left out.
+      for (final (table, col, id, key) in pendingKeys) {
+        await txn.rawUpdate('UPDATE $table SET $col=? WHERE id=?', [remapEntityKey(key, keyMaps), id]);
+      }
+      for (final (table, col, id, json) in pendingKeyJson) {
+        await txn.rawUpdate('UPDATE $table SET $col=? WHERE id=?', [remapKeyList(json, keyMaps), id]);
+      }
 
       var droppedPins = 0;
       for (final pn in arr(skt['pins'])) {
@@ -770,10 +921,10 @@ class VaultSnapshotService {
         if (m == null) continue;
         final k = n['linkerKey'] == null ? null : remapEntityKey(n['linkerKey'], keyMaps);
         final id = await txn.rawInsert(
-            'INSERT INTO design_node (module_ref, shape, x, y, node_text, color, linker_key) '
-            'VALUES (?,?,?,?,?,?,?)',
-            <Object?>[m, n['shape'] ?? 'box', n['x'] ?? 0, n['y'] ?? 0,
-                      n['text'], n['color'], k]);
+            'INSERT INTO design_node (module_ref, shape, x, y, node_text, color, linker_key, w, h, read_order) '
+            'VALUES (?,?,?,?,?,?,?,?,?,?)',
+            <Object?>[m, n['shape'] ?? 'box', n['x'] ?? 0, n['y'] ?? 0, n['text'], n['color'], k,
+                      n['w'], n['h'], n['readOrder']]);
         final oldId = n['id'];
         if (oldId is int) dnodeMap[oldId] = id;
       }
@@ -787,10 +938,37 @@ class VaultSnapshotService {
             <Object?>[m, from, to, e['label']]);
       }
 
+      var droppedRelations = 0;
+      final relations = arr(p['relations']);
+      for (final rel in relations) {
+        final fk = remapEntityKey(rel['fromKey'], keyMaps);
+        final tk = remapEntityKey(rel['toKey'], keyMaps);
+        // A Classifier relation FIELD's row names its field in rel_type
+        // (ctpl_<id>, §11.3); a row whose field did not come across has lost
+        // its owner and is dropped.
+        final relType = rel['relType'];
+        final isField = relType is String && RegExp(r'^ctpl_\d+$').hasMatch(relType);
+        final rt = isField ? remapEntityKey(relType, keyMaps) : relType;
+        if (fk == null || tk == null || (relType != null && relType != '' && rt == null)) {
+          droppedRelations++;
+          continue;
+        }
+        final validFrom = rel['validFrom'];
+        final validTo = rel['validTo'];
+        await txn.rawInsert(
+            'INSERT OR IGNORE INTO entity_relation (nexus_ref, from_key, to_key, label, rel_type, directed, module_ref, valid_from, valid_to) '
+            'VALUES (?,?,?,?,?,?,?,?,?)',
+            <Object?>[
+              nexusId, fk, tk, rel['label'], rt, rel['directed'] == 0 ? 0 : 1, mod(rel['moduleId']),
+              validFrom is String ? dateMap[validFrom] : null, validTo is String ? dateMap[validTo] : null,
+            ]);
+      }
 
-      // Page blocks: item_key / source_key are entity keys, so they wait for
-      // every map. '*' (the shared element layout) is not a key and stays.
-      // Parents first, the same BFS as modules.
+      // Page blocks (§12): item_key / source_key are entity keys, so they
+      // wait for every map. '*' (the shared element layout) is not a key. An
+      // element page whose element did not come across is dropped; a borrowed
+      // component whose source did not is kept, pointing at nothing. Parents
+      // first — a columns block before the blocks inside it.
       final blockMap = <int, int>{};
       var pendingBlocks = arr(p['pageBlocks']);
       while (pendingBlocks.isNotEmpty) {
@@ -806,13 +984,14 @@ class VaultSnapshotService {
           }
           final item = b['itemKey'];
           final itemKey = item == null || item == '*' ? item : remapEntityKey(item, keyMaps);
-          if (item != null && itemKey == null) continue; // its element did not come along
+          if (item != null && itemKey == null) continue;
+          final src = b['sourceKey'];
           final id = await txn.rawInsert(
             'INSERT INTO page_block (module_ref, item_key, parent_id, block_type, component, source_key, '
             'config, content, prop_name, prop_type, block_order) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
             <Object?>[
               m, itemKey, oldParent is int ? blockMap[oldParent] : null,
-              b['type'] ?? 'component', b['component'], remapEntityKey(b['sourceKey'], keyMaps),
+              b['type'] ?? 'component', b['component'], src == null || src == '' ? null : remapEntityKey(src, keyMaps),
               b['config'], b['content'], b['propName'], b['propType'], b['order'] ?? 0,
             ],
           );
@@ -824,72 +1003,154 @@ class VaultSnapshotService {
         pendingBlocks = next;
       }
 
-      var droppedRelations = 0;
-      for (final rel in arr(p['relations'])) {
-        final fk = remapEntityKey(rel['fromKey'], keyMaps);
-        final tk = remapEntityKey(rel['toKey'], keyMaps);
-        if (fk == null || tk == null) {
-          droppedRelations++;
-          continue;
+      // v5 Exhibitor scenes — after every key map exists. A node whose
+      // entity did not come across keeps its place and label with the link
+      // cleared, rather than vanishing from the user's layout.
+      final exh = sect(p['exhibitor']);
+      final enodeMap = <int, int>{};
+      final enodeParents = <(int, int)>[];
+      for (final n in arr(exh['nodes'])) {
+        final m = mod(n['moduleId']);
+        if (m == null) continue;
+        final k = n['linkerKey'] == null ? null : remapEntityKey(n['linkerKey'], keyMaps);
+        final id = await txn.rawInsert(
+            'INSERT INTO exhibit_node (module_ref, node_type, linker_key, label, x, y, w, h, z, rotation, scale, locked, hidden, color, props) '
+            'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+            <Object?>[
+              m, n['nodeType'] ?? 'entity', k, n['label'], n['x'] ?? 0, n['y'] ?? 0, n['w'], n['h'],
+              n['z'] ?? 0, n['rotation'] ?? 0, n['scale'] ?? 1, _truthy(n['locked']) ? 1 : 0,
+              _truthy(n['hidden']) ? 1 : 0, n['color'], remapExhibitProps(n['props'], ctplMap),
+            ]);
+        final oldId = n['id'];
+        final parent = n['parentId'];
+        if (oldId is int) {
+          enodeMap[oldId] = id;
+          if (parent is int) enodeParents.add((oldId, parent));
         }
+      }
+      for (final (id, pid) in enodeParents) {
+        if (enodeMap.containsKey(pid)) {
+          await txn.rawUpdate('UPDATE exhibit_node SET parent_id=? WHERE id=?', [enodeMap[pid], enodeMap[id]]);
+        }
+      }
+      for (final v in arr(exh['views'])) {
+        final m = mod(v['moduleId']);
+        if (m == null) continue;
+        final bg = v['bgLinkerKey'] == null ? null : remapEntityKey(v['bgLinkerKey'], keyMaps);
         await txn.rawInsert(
-            'INSERT OR IGNORE INTO entity_relation (nexus_ref, from_key, to_key, label) VALUES (?,?,?,?)',
-            <Object?>[nexusId, fk, tk, rel['label']]);
+            'INSERT OR IGNORE INTO exhibit_view (module_ref, scale, tx, ty, bg_linker_key, grid, snap) VALUES (?,?,?,?,?,?,?)',
+            <Object?>[m, v['scale'] ?? 1, v['tx'] ?? 0, v['ty'] ?? 0, bg, v['grid'] == 0 ? 0 : 1, _truthy(v['snap']) ? 1 : 0]);
       }
 
       // Templates carry no entity ids, so unlike relations they need no remap.
-      // A name collision keeps the target's own copy rather than overwriting a
-      // calendar the user may already be using.
+      // A name collision keeps the target's own copy.
       for (final ct in arr(p['calendarTemplates'])) {
         if (ct['name'] == null || ct['spec'] == null) continue;
         await txn.rawInsert(
             'INSERT OR IGNORE INTO calendar_template (nexus_ref, name, spec, builtin) VALUES (?,?,?,?)',
-            <Object?>[nexusId, ct['name'], ct['spec'],
-                      (ct['builtin'] == 1 || ct['builtin'] == true) ? 1 : 0]);
+            <Object?>[nexusId, ct['name'], ct['spec'], _truthy(ct['builtin']) ? 1 : 0]);
+      }
+      // Presets are self-contained too (their spec holds colour CODES).
+      for (final pr in arr(p['modulePresets'])) {
+        if (pr['kind'] == null || pr['name'] == null || pr['spec'] is! String) continue;
+        await txn.rawInsert('INSERT OR IGNORE INTO module_preset (nexus_ref, kind, name, spec) VALUES (?,?,?,?)',
+            <Object?>[nexusId, pr['kind'], pr['name'], pr['spec']]);
       }
 
       // module_ui LAST: Wanderer's mapModule/timelineModule values are module
       // ids and have to go through modMap. Every other ui value is copied
-      // verbatim — an entity id embedded in one (a Viewer filter definition,
-      // say) stays stale, which is a documented limitation of the format on
-      // both sides, not a difference between them.
+      // verbatim — an entity id embedded in one (a filter definition) stays
+      // stale, a documented limitation of the format on both sides.
       for (final u in arr(p['moduleUi'])) {
         final m = mod(u['moduleId']);
         if (m == null) continue;
         Object? value = u['value'];
+        // A pre-v5 Connector's saved view maps the way the kind migration
+        // maps it in place: graph -> the Scene, edge list -> Edges.
+        if (u['key'] == 'activeView' && legacyKind[u['moduleId']] == 'connector') {
+          value = u['value'] == 'edgelist' ? 'edges' : 'scene';
+        }
         if (u['key'] == 'mapModule' || u['key'] == 'timelineModule') {
           final target = modMap[int.tryParse('${u['value']}')];
           if (target == null) continue;
           value = '$target';
         }
-        await txn.rawInsert(
-            'INSERT OR IGNORE INTO module_ui (module_ref, ui_key, ui_value) VALUES (?,?,?)',
+        await txn.rawInsert('INSERT OR IGNORE INTO module_ui (module_ref, ui_key, ui_value) VALUES (?,?,?)',
             <Object?>[m, u['key'], value]);
       }
+      for (final e in legacyKind.entries) {
+        if (e.value != 'connector') continue;
+        await txn.rawInsert("INSERT OR IGNORE INTO module_ui (module_ref, ui_key, ui_value) VALUES (?,'activeView','scene')", [modMap[e.key]]);
+        await txn.rawInsert("INSERT OR IGNORE INTO module_ui (module_ref, ui_key, ui_value) VALUES (?,'seedScene','1')", [modMap[e.key]]);
+      }
+
+      // A snapshot from an older app can carry modules under a non-Collector
+      // — wrapped the same way the v5 rule wraps them on open.
+      await normalizeModuleParents(txn);
 
       result = SnapshotApplyResult(
         ok: true,
         modules: modMap.length,
         notes: noteMap.length,
-        relations: arr(p['relations']).length - droppedRelations,
+        relations: relations.length - droppedRelations,
         droppedRelations: droppedRelations,
         droppedPins: droppedPins,
+        keyMaps: keyMaps,
       );
     });
 
+    if (result.ok) await afterApply?.call(db, nexusId);
     return result;
+  }
+
+  /// Runs after a successful apply, outside its transaction — the wiki-link
+  /// index rebuild (EXE rebuilds it after every pull). Set by the app at
+  /// start-up; tests leave it null.
+  static Future<void> Function(Database db, int nexusId)? afterApply;
+
+  static bool _truthy(Object? v) => v == true || v == 1;
+
+  /// A §7.9 card/table keeps the classifier_template ids it shows in props
+  /// (fields / columns). Those ids are renumbered on apply like every other
+  /// row; a field that did not come across drops out of the list.
+  static Object? remapExhibitProps(Object? props, Map<int, int> tplMap) {
+    if (props is! String) return props;
+    Object? p;
+    try {
+      p = jsonDecode(props);
+    } catch (_) {
+      return props;
+    }
+    if (p is! Map) return props;
+    for (final k in const ['fields', 'columns']) {
+      final list = p[k];
+      if (list is List) {
+        p[k] = [for (final id in list) if (id is int && tplMap.containsKey(id)) tplMap[id]];
+      }
+    }
+    return jsonEncode(p);
+  }
+
+  /// A JSON list of {key, …} (story_choice_option.condition / set_ops) with
+  /// every key remapped; entries whose key cannot be mapped are left out.
+  static String? remapKeyList(String json, Map<String, Map<int, int>> maps) {
+    Object? list;
+    try {
+      list = jsonDecode(json);
+    } catch (_) {
+      return null;
+    }
+    if (list is! List) return null;
+    final out = [
+      for (final e in list)
+        if (e is Map && remapEntityKey(e['key'], maps) != null) {...e, 'key': remapEntityKey(e['key'], maps)},
+    ];
+    return out.isEmpty ? null : jsonEncode(out);
   }
 
   /// `"module_12"` -> `"module_57"` through the per-kind maps; null when it
   /// cannot be mapped (a legacy kind, or a row this snapshot no longer holds).
-  static String? remapEntityKey(Object? key, Map<String, Map<int, int>> maps) {
-    final m = RegExp(r'^([a-z]+)_(\d+)$').firstMatch('${key ?? ''}');
-    if (m == null) return null;
-    final map = maps[m.group(1)];
-    if (map == null) return null;
-    final mapped = map[int.parse(m.group(2)!)];
-    return mapped == null ? null : '${m.group(1)}_$mapped';
-  }
+  static String? remapEntityKey(Object? key, Map<String, Map<int, int>> maps) => EntityKinds.remap(key, maps);
 
   /// "This module and every descendant", walked in memory rather than with a
   /// recursive CTE — same reason as the JS: it must not depend on the SQLite
@@ -928,6 +1189,7 @@ class SnapshotApplyResult {
     this.relations = 0,
     this.droppedRelations = 0,
     this.droppedPins = 0,
+    this.keyMaps = const {},
   });
 
   factory SnapshotApplyResult.failed(String code) => SnapshotApplyResult(ok: false, code: code);
@@ -939,4 +1201,8 @@ class SnapshotApplyResult {
   final int relations;
   final int droppedRelations;
   final int droppedPins;
+
+  /// old id -> new id per key family — the trash restores saved relations
+  /// through them.
+  final Map<String, Map<int, int>> keyMaps;
 }

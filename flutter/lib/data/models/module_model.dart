@@ -32,9 +32,12 @@ class NexusModel {
       );
 }
 
-/// The 15 module kinds (electron `module.kind` CHECK constraint). Each kind
-/// picks the content area a module screen shows; every kind can still hold
-/// children regardless, so nesting works the same everywhere.
+/// The module kinds of the v5 `module.kind` CHECK (DraconDex-SDB vault.sql).
+/// Each kind picks the content its page shows.
+///
+/// v5 (APP docs/V5.md §3) folded `viewer` and `connector` into `exhibitor`;
+/// [fromId] still reads the old ids — from a snapshot an older build wrote —
+/// the way EXE's V5_KIND_MAP does, and VaultUpgrade rewrites them in place.
 enum ModuleKind {
   collector,
   manager,
@@ -47,18 +50,23 @@ enum ModuleKind {
   author,
   scribe,
   drafter,
-  viewer,
-  connector,
+  exhibitor,
   sketcher,
   designer,
-  // V5.md §11.5 — random tables and dice. Registered so a vault that holds
-  // one opens it by its real kind instead of falling back to collector;
-  // the editor is not ported yet (contentImplemented: false below).
+  // V5.md §11.5 — random tables and dice.
   diviner;
 
   String get id => name;
 
-  static ModuleKind fromId(String id) => ModuleKind.values.firstWhere(
+  /// Pre-v5 kinds a snapshot or an old row can still carry.
+  static const Map<String, ModuleKind> legacyIds = {
+    'viewer': ModuleKind.exhibitor,
+    'connector': ModuleKind.exhibitor,
+  };
+
+  static ModuleKind fromId(String id) =>
+      legacyIds[id] ??
+      ModuleKind.values.firstWhere(
         (k) => k.name == id,
         orElse: () => ModuleKind.collector,
       );
@@ -68,8 +76,7 @@ enum ModuleKind {
 /// KIND_CATEGORY (DraconDex-EXE hub/kinds.js, DraconDex-APP docs/V5.md §9):
 ///   structure  holds modules, not content (collector)
 ///   view       shows other modules' content; deleting one loses only a
-///              layout or a selection (manager, viewer, connector — the last
-///              two become the desktop's exhibitor with APK V3)
+///              layout or a selection (manager, exhibitor)
 ///   data       owns content; deleting one deletes what was written in it
 /// `required` below is the parity check: a 16th kind without a category is
 /// a compile error, which the desktop gets from check.mjs instead.
@@ -184,20 +191,12 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     description: 'A blank markdown page',
     contentImplemented: true,
   ),
-  ModuleKind.viewer: ModuleKindInfo(
-    kind: ModuleKind.viewer,
+  ModuleKind.exhibitor: ModuleKindInfo(
+    kind: ModuleKind.exhibitor,
     category: ModuleCategory.view,
-    label: 'Viewer',
-    icon: Icons.visibility_outlined,
-    description: 'Read-only saved-filter lens',
-    contentImplemented: true,
-  ),
-  ModuleKind.connector: ModuleKindInfo(
-    kind: ModuleKind.connector,
-    category: ModuleCategory.view,
-    label: 'Connector',
+    label: 'Exhibitor',
     icon: Icons.hub_outlined,
-    description: 'Relationship graph over a saved filter',
+    description: 'A board of what a filter selects: scene, graph, table, cards',
     contentImplemented: true,
   ),
   ModuleKind.sketcher: ModuleKindInfo(

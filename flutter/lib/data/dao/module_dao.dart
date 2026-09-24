@@ -1,4 +1,6 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../../core/database/module_parents.dart';
 import '../models/module_model.dart';
 
 /// Data access for the v3 module system (Hub/Nexus nest): a Nexus is a
@@ -102,6 +104,8 @@ class ModuleDao {
     int? iconColorId,
     int? colorId,
   }) async {
+    // Only a Collector holds modules (v5, APP docs/V5.md §8.8).
+    await assertCollectorParent(db, parentId);
     final orderRows = await db.rawQuery(
       'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM module WHERE nexus_ref=? AND parent_id IS ?',
       [nexusRef, parentId],
@@ -151,6 +155,7 @@ class ModuleDao {
   /// after existing siblings there. Caller must ensure newParentId isn't [id]
   /// or one of its own descendants — see [isDescendant].
   Future<void> moveModule(int id, {required int nexusRef, int? newParentId}) async {
+    await assertCollectorParent(db, newParentId);
     final orderRows = await db.rawQuery(
       'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM module WHERE nexus_ref=? AND parent_id IS ?',
       [nexusRef, newParentId],
