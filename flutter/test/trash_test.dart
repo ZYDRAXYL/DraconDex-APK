@@ -40,6 +40,11 @@ void main() {
     await db.insert('entity_relation', {'nexus_ref': nx, 'from_key': 'cobj_$town', 'to_key': 'cobj_$ana', 'label': 'home of'});
     final f = await cls.createField(moduleRef: cast, description: 'Lives in', attributeType: 'relation');
     await cls.addFieldRelation(ana, f, 'cobj_$town');
+    final rank = await cls.createField(moduleRef: cast, description: 'Rank');
+    await cls.updateField(rank, description: 'Rank', type: 'text', levelable: true);
+    for (final lv in ['I', 'II']) {
+      await cls.updateLevelField(await cls.createLevel(ana, rank), 'level_label', lv);
+    }
 
     final tid = await TrashService.trashModule(db, nx, folder);
     expect(tid, isNotNull);
@@ -53,12 +58,16 @@ void main() {
     expect((await db.rawQuery('SELECT name FROM module WHERE id=?', [root])).single['name'], 'People');
     final newCast = (await db.rawQuery("SELECT id FROM module WHERE name='Cast'")).single['id'] as int;
     final newAna = (await db.rawQuery('SELECT id FROM classifier_object WHERE module_ref=?', [newCast])).single['id'] as int;
-    final newField = (await db.rawQuery('SELECT id FROM classifier_template WHERE module_ref=?', [newCast])).single['id'] as int;
+    final newField =
+        (await db.rawQuery("SELECT id FROM classifier_template WHERE module_ref=? AND description='Lives in'", [newCast])).single['id'] as int;
     final rels = await db.rawQuery('SELECT from_key, to_key, rel_type FROM entity_relation ORDER BY id');
     expect(rels.map((r) => (r['from_key'], r['to_key'], r['rel_type'])).toSet(), {
       ('cobj_$town', 'cobj_$newAna', null),
       ('cobj_$newAna', 'cobj_$town', 'ctpl_$newField'),
     });
+    // A levelled field's rows come back on the new object and field.
+    final newRank = (await cls.getFields(newCast)).firstWhere((x) => x.description == 'Rank');
+    expect([for (final r in (await cls.getLevels(newAna))[newRank.id]!) r.levelLabel], ['I', 'II']);
     expect(await TrashService.list(db, nx), isEmpty);
   });
 

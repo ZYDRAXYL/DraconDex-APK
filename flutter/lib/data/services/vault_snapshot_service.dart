@@ -128,6 +128,16 @@ class VaultSnapshotService {
         FROM classifier_attribute a
         JOIN classifier_object o ON a.object_ref=o.id
         JOIN module m ON o.module_ref=m.id WHERE m.nexus_ref=?'''),
+      // A levelled / conditioned field's value is its rows (EXE sync.js
+      // classifier.levels). A missing key reads as none, so older snapshots
+      // import unchanged.
+      'levels': await all('''
+        SELECT l.object_ref AS objectId, l.template_ref AS templateId,
+               l.level_label AS levelLabel, l.condition_value AS conditionValue,
+               l.info_value AS infoValue, l.display_order AS displayOrder
+        FROM classifier_level l
+        JOIN classifier_object o ON l.object_ref=o.id
+        JOIN module m ON o.module_ref=m.id WHERE m.nexus_ref=? ORDER BY l.display_order, l.id'''),
     };
 
     // v3 Locator/Chronicler rows have module_ref set (project_id NULL) —
@@ -646,6 +656,15 @@ class VaultSnapshotService {
         await txn.rawInsert(
             'INSERT OR IGNORE INTO classifier_attribute (object_ref, template_ref, attribute_value) VALUES (?,?,?)',
             <Object?>[obj, tpl, a['value']]);
+      }
+      for (final l in arr(cls['levels'])) {
+        final obj = cobjMap[l['objectId']];
+        final tpl = ctplMap[l['templateId']];
+        if (obj == null || tpl == null) continue;
+        await txn.rawInsert(
+            'INSERT INTO classifier_level (object_ref, template_ref, level_label, condition_value, info_value, display_order) '
+            'VALUES (?,?,?,?,?,?)',
+            <Object?>[obj, tpl, l['levelLabel'], l['conditionValue'], l['infoValue'], l['displayOrder'] ?? 0]);
       }
 
       final loc = sect(p['locator']);

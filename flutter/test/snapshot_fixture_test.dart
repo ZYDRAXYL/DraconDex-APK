@@ -54,6 +54,14 @@ void main() {
     final exh = fixture['exhibitor'] as Map;
     expect(await count('SELECT COUNT(*) AS c FROM exhibit_node'), list(exh['nodes']).length);
     expect(await count('SELECT COUNT(*) AS c FROM module_preset'), list(fixture['modulePresets']).length);
+    // A levelled field keeps its value in classifier_level, not an attribute.
+    final lv = list((fixture['classifier'] as Map)['levels']);
+    expect(lv, isNotEmpty);
+    final rows = await db.rawQuery('''SELECT l.level_label, l.condition_value, l.info_value FROM classifier_level l
+        JOIN classifier_object o ON o.id=l.object_ref JOIN classifier_template t ON t.id=l.template_ref
+        WHERE o.name='Mira' AND t.description='Rank' ORDER BY l.display_order''');
+    expect([for (final r in rows) (r['level_label'], r['condition_value'], r['info_value'])],
+        [for (final x in lv) (x['levelLabel'], x['conditionValue'], x['infoValue'])]);
 
     final rels = list(fixture['relations']);
     final relGap = rels.where((e) => missing(e['fromKey']) || missing(e['toKey'])).length;
