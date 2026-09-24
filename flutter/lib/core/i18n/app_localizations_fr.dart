@@ -1009,4 +1009,130 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'Créer';
+
+  @override
+  String get btnUndo => 'Annuler';
+
+  @override
+  String get pbAddBlock => 'Ajouter un bloc';
+
+  @override
+  String get pbAddHere => 'Ajouter ici';
+
+  @override
+  String get pbAddProperty => 'Ajouter une propriété';
+
+  @override
+  String get pbArrange => 'Organiser la page';
+
+  @override
+  String get pbArrangeDone => 'Terminé';
+
+  @override
+  String get pbArrangeHint => 'Glissez pour réordonner. Un bloc de colonnes se déplace d’un seul tenant.';
+
+  @override
+  String get pbArrangeShared => 'Voici la mise en page partagée par tous les éléments de ce module. Séparez d’abord la page pour ne modifier qu’elle.';
+
+  @override
+  String get pbBacklinks => 'Lié depuis';
+
+  @override
+  String get pbBlockDeleted => 'Bloc supprimé';
+
+  @override
+  String get pbBorrow => 'Une vue d’un autre module';
+
+  @override
+  String get pbColumn => 'Colonne';
+
+  @override
+  String get pbColumns => 'Colonnes';
+
+  @override
+  String get pbDivider => 'Séparateur';
+
+  @override
+  String get pbFullScreen => 'Plein écran';
+
+  @override
+  String get pbHeading => 'Titre';
+
+  @override
+  String get pbImage => 'Image';
+
+  @override
+  String get pbItemBody => 'Élément';
+
+  @override
+  String get pbItemEmpty => 'Rien d’écrit ici pour l’instant.';
+
+  @override
+  String get pbNoRelated => 'Aucun lien pour l’instant';
+
+  @override
+  String get pbNotOnMobile => 'pas encore dans cette appli';
+
+  @override
+  String get pbOnlyOnce => 'ne peut figurer qu’une fois sur une page';
+
+  @override
+  String get pbOpenFullScreen => 'Ouvrir';
+
+  @override
+  String get pbOutgoing => 'Lie vers';
+
+  @override
+  String get pbPropName => 'Nom';
+
+  @override
+  String get pbPropType => 'Type';
+
+  @override
+  String get pbProperties => 'Propriétés';
+
+  @override
+  String get pbRelated => 'Associé';
+
+  @override
+  String get pbRelations => 'Relations';
+
+  @override
+  String get pbRevert => 'Revenir à la mise en page partagée';
+
+  @override
+  String get pbSharedLayout => 'La mise en page partagée de toutes les pages d’élément de ce module.';
+
+  @override
+  String get pbSourceGone => 'ce qu’il montrait n’existe plus';
+
+  @override
+  String get pbSplit => 'Donner à cette page sa propre mise en page';
+
+  @override
+  String get pbTags => 'Tags';
+
+  @override
+  String get pbText => 'Texte';
+
+  @override
+  String get pbTextEmpty => 'Texte vide — touchez pour écrire';
+
+  @override
+  String get propTypeCheckbox => 'Case à cocher';
+
+  @override
+  String get propTypeDate => 'Date';
+
+  @override
+  String get propTypeNumber => 'Nombre';
+
+  @override
+  String get propTypeText => 'Texte';
+
+  @override
+  String get propTypeTextarea => 'Texte long';
+
+  @override
+  String get propTypeUrl => 'Lien';
 }

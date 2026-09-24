@@ -1009,4 +1009,130 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'Forge';
+
+  @override
+  String get btnUndo => 'Unmake';
+
+  @override
+  String get pbAddBlock => 'Add a stone';
+
+  @override
+  String get pbAddHere => 'Add here';
+
+  @override
+  String get pbAddProperty => 'Add a trait';
+
+  @override
+  String get pbArrange => 'Order the vhaelen';
+
+  @override
+  String get pbArrangeDone => 'Done';
+
+  @override
+  String get pbArrangeHint => 'Drag to reorder. A block of columns moveth whole.';
+
+  @override
+  String get pbArrangeShared => 'This is the layout every thing of this module shareth. Sunder the vhaelen first to change but this one.';
+
+  @override
+  String get pbBacklinks => 'Bound from';
+
+  @override
+  String get pbBlockDeleted => 'Stone taken away';
+
+  @override
+  String get pbBorrow => 'A sight from another module';
+
+  @override
+  String get pbColumn => 'Pillar';
+
+  @override
+  String get pbColumns => 'Pillars';
+
+  @override
+  String get pbDivider => 'Sundering line';
+
+  @override
+  String get pbFullScreen => 'Whole sight';
+
+  @override
+  String get pbHeading => 'Heading';
+
+  @override
+  String get pbImage => 'Likeness';
+
+  @override
+  String get pbItemBody => 'Thing';
+
+  @override
+  String get pbItemEmpty => 'Naught writ here yet.';
+
+  @override
+  String get pbNoRelated => 'No bonds yet';
+
+  @override
+  String get pbNotOnMobile => 'not in this craft yet';
+
+  @override
+  String get pbOnlyOnce => 'may stand but once upon a vhaelen';
+
+  @override
+  String get pbOpenFullScreen => 'Ossa';
+
+  @override
+  String get pbOutgoing => 'Bindeth to';
+
+  @override
+  String get pbPropName => 'Name';
+
+  @override
+  String get pbPropType => 'Kind';
+
+  @override
+  String get pbProperties => 'Traits';
+
+  @override
+  String get pbRelated => 'Kindred';
+
+  @override
+  String get pbRelations => 'Bonds';
+
+  @override
+  String get pbRevert => 'Back to the shared layout';
+
+  @override
+  String get pbSharedLayout => 'The shared layout of every thing-vhaelen of this module.';
+
+  @override
+  String get pbSourceGone => 'what it showed is gone';
+
+  @override
+  String get pbSplit => 'Give this vhaelen its own layout';
+
+  @override
+  String get pbTags => 'Marks';
+
+  @override
+  String get pbText => 'Writ';
+
+  @override
+  String get pbTextEmpty => 'Empty writ — touch to write';
+
+  @override
+  String get propTypeCheckbox => 'Mark-box';
+
+  @override
+  String get propTypeDate => 'Day';
+
+  @override
+  String get propTypeNumber => 'Number';
+
+  @override
+  String get propTypeText => 'Writ';
+
+  @override
+  String get propTypeTextarea => 'Long writ';
+
+  @override
+  String get propTypeUrl => 'Way-link';
 }

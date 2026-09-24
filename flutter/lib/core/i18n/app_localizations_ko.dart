@@ -1009,4 +1009,130 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => '만들기';
+
+  @override
+  String get btnUndo => '실행 취소';
+
+  @override
+  String get pbAddBlock => '블록 추가';
+
+  @override
+  String get pbAddHere => '여기에 추가';
+
+  @override
+  String get pbAddProperty => '속성 추가';
+
+  @override
+  String get pbArrange => '페이지 정리';
+
+  @override
+  String get pbArrangeDone => '완료';
+
+  @override
+  String get pbArrangeHint => '드래그해서 순서를 바꿉니다. 열 블록은 통째로 움직입니다.';
+
+  @override
+  String get pbArrangeShared => '이것은 이 모듈의 모든 요소가 공유하는 레이아웃입니다. 이 페이지만 바꾸려면 먼저 분리하세요.';
+
+  @override
+  String get pbBacklinks => '링크된 곳';
+
+  @override
+  String get pbBlockDeleted => '블록을 삭제했습니다';
+
+  @override
+  String get pbBorrow => '다른 모듈의 보기';
+
+  @override
+  String get pbColumn => '열';
+
+  @override
+  String get pbColumns => '열';
+
+  @override
+  String get pbDivider => '구분선';
+
+  @override
+  String get pbFullScreen => '전체 화면';
+
+  @override
+  String get pbHeading => '제목';
+
+  @override
+  String get pbImage => '이미지';
+
+  @override
+  String get pbItemBody => '요소';
+
+  @override
+  String get pbItemEmpty => '아직 적힌 것이 없습니다.';
+
+  @override
+  String get pbNoRelated => '아직 링크가 없습니다';
+
+  @override
+  String get pbNotOnMobile => '이 앱에는 아직 없습니다';
+
+  @override
+  String get pbOnlyOnce => '한 페이지에 한 번만 둘 수 있습니다';
+
+  @override
+  String get pbOpenFullScreen => '열기';
+
+  @override
+  String get pbOutgoing => '링크 대상';
+
+  @override
+  String get pbPropName => '이름';
+
+  @override
+  String get pbPropType => '유형';
+
+  @override
+  String get pbProperties => '속성';
+
+  @override
+  String get pbRelated => '관련';
+
+  @override
+  String get pbRelations => '관계';
+
+  @override
+  String get pbRevert => '공유 레이아웃으로 되돌리기';
+
+  @override
+  String get pbSharedLayout => '이 모듈의 모든 요소 페이지가 공유하는 레이아웃.';
+
+  @override
+  String get pbSourceGone => '보여 주던 것이 사라졌습니다';
+
+  @override
+  String get pbSplit => '이 페이지에 고유 레이아웃 주기';
+
+  @override
+  String get pbTags => '태그';
+
+  @override
+  String get pbText => '텍스트';
+
+  @override
+  String get pbTextEmpty => '빈 텍스트 — 눌러서 쓰기';
+
+  @override
+  String get propTypeCheckbox => '체크박스';
+
+  @override
+  String get propTypeDate => '날짜';
+
+  @override
+  String get propTypeNumber => '숫자';
+
+  @override
+  String get propTypeText => '텍스트';
+
+  @override
+  String get propTypeTextarea => '긴 텍스트';
+
+  @override
+  String get propTypeUrl => '링크';
 }

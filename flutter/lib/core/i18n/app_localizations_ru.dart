@@ -1009,4 +1009,130 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'Создать';
+
+  @override
+  String get btnUndo => 'Отменить';
+
+  @override
+  String get pbAddBlock => 'Добавить блок';
+
+  @override
+  String get pbAddHere => 'Добавить сюда';
+
+  @override
+  String get pbAddProperty => 'Добавить свойство';
+
+  @override
+  String get pbArrange => 'Упорядочить страницу';
+
+  @override
+  String get pbArrangeDone => 'Готово';
+
+  @override
+  String get pbArrangeHint => 'Перетащите, чтобы изменить порядок. Блок колонок перемещается целиком.';
+
+  @override
+  String get pbArrangeShared => 'Это общая раскладка всех элементов модуля. Чтобы изменить только эту страницу, сначала отделите её.';
+
+  @override
+  String get pbBacklinks => 'Ссылаются';
+
+  @override
+  String get pbBlockDeleted => 'Блок удалён';
+
+  @override
+  String get pbBorrow => 'Вид из другого модуля';
+
+  @override
+  String get pbColumn => 'Колонка';
+
+  @override
+  String get pbColumns => 'Колонки';
+
+  @override
+  String get pbDivider => 'Разделитель';
+
+  @override
+  String get pbFullScreen => 'Во весь экран';
+
+  @override
+  String get pbHeading => 'Заголовок';
+
+  @override
+  String get pbImage => 'Изображение';
+
+  @override
+  String get pbItemBody => 'Элемент';
+
+  @override
+  String get pbItemEmpty => 'Здесь пока ничего не написано.';
+
+  @override
+  String get pbNoRelated => 'Связей пока нет';
+
+  @override
+  String get pbNotOnMobile => 'пока нет в этом приложении';
+
+  @override
+  String get pbOnlyOnce => 'может быть на странице только один раз';
+
+  @override
+  String get pbOpenFullScreen => 'Открыть';
+
+  @override
+  String get pbOutgoing => 'Ссылается на';
+
+  @override
+  String get pbPropName => 'Имя';
+
+  @override
+  String get pbPropType => 'Тип';
+
+  @override
+  String get pbProperties => 'Свойства';
+
+  @override
+  String get pbRelated => 'Связанное';
+
+  @override
+  String get pbRelations => 'Связи';
+
+  @override
+  String get pbRevert => 'Вернуть общую раскладку';
+
+  @override
+  String get pbSharedLayout => 'Общая раскладка всех страниц элементов этого модуля.';
+
+  @override
+  String get pbSourceGone => 'то, что здесь показывалось, удалено';
+
+  @override
+  String get pbSplit => 'Дать странице свою раскладку';
+
+  @override
+  String get pbTags => 'Теги';
+
+  @override
+  String get pbText => 'Текст';
+
+  @override
+  String get pbTextEmpty => 'Пустой текст — нажмите, чтобы писать';
+
+  @override
+  String get propTypeCheckbox => 'Флажок';
+
+  @override
+  String get propTypeDate => 'Дата';
+
+  @override
+  String get propTypeNumber => 'Число';
+
+  @override
+  String get propTypeText => 'Текст';
+
+  @override
+  String get propTypeTextarea => 'Длинный текст';
+
+  @override
+  String get propTypeUrl => 'Ссылка';
 }

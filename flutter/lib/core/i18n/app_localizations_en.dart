@@ -1009,4 +1009,130 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'Create';
+
+  @override
+  String get btnUndo => 'Undo';
+
+  @override
+  String get pbAddBlock => 'Add block';
+
+  @override
+  String get pbAddHere => 'Add here';
+
+  @override
+  String get pbAddProperty => 'Add property';
+
+  @override
+  String get pbArrange => 'Arrange page';
+
+  @override
+  String get pbArrangeDone => 'Done';
+
+  @override
+  String get pbArrangeHint => 'Drag to reorder. A column block moves as one.';
+
+  @override
+  String get pbArrangeShared => 'This is the layout every element of this module shares. Split the page off first to change only this one.';
+
+  @override
+  String get pbBacklinks => 'Linked from';
+
+  @override
+  String get pbBlockDeleted => 'Block removed';
+
+  @override
+  String get pbBorrow => 'A view from another module';
+
+  @override
+  String get pbColumn => 'Column';
+
+  @override
+  String get pbColumns => 'Columns';
+
+  @override
+  String get pbDivider => 'Divider';
+
+  @override
+  String get pbFullScreen => 'Full screen';
+
+  @override
+  String get pbHeading => 'Heading';
+
+  @override
+  String get pbImage => 'Image';
+
+  @override
+  String get pbItemBody => 'Element';
+
+  @override
+  String get pbItemEmpty => 'Nothing written here yet.';
+
+  @override
+  String get pbNoRelated => 'No links yet';
+
+  @override
+  String get pbNotOnMobile => 'not in this app yet';
+
+  @override
+  String get pbOnlyOnce => 'can be on a page only once';
+
+  @override
+  String get pbOpenFullScreen => 'Open';
+
+  @override
+  String get pbOutgoing => 'Links to';
+
+  @override
+  String get pbPropName => 'Name';
+
+  @override
+  String get pbPropType => 'Type';
+
+  @override
+  String get pbProperties => 'Properties';
+
+  @override
+  String get pbRelated => 'Related';
+
+  @override
+  String get pbRelations => 'Relations';
+
+  @override
+  String get pbRevert => 'Back to the shared layout';
+
+  @override
+  String get pbSharedLayout => 'The shared layout of every element page of this module.';
+
+  @override
+  String get pbSourceGone => 'what this showed is gone';
+
+  @override
+  String get pbSplit => 'Give this page its own layout';
+
+  @override
+  String get pbTags => 'Tags';
+
+  @override
+  String get pbText => 'Text';
+
+  @override
+  String get pbTextEmpty => 'Empty text — tap to write';
+
+  @override
+  String get propTypeCheckbox => 'Checkbox';
+
+  @override
+  String get propTypeDate => 'Date';
+
+  @override
+  String get propTypeNumber => 'Number';
+
+  @override
+  String get propTypeText => 'Text';
+
+  @override
+  String get propTypeTextarea => 'Long text';
+
+  @override
+  String get propTypeUrl => 'Link';
 }

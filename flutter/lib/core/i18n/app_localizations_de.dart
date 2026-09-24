@@ -1009,4 +1009,130 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'Anlegen';
+
+  @override
+  String get btnUndo => 'Rückgängig';
+
+  @override
+  String get pbAddBlock => 'Block hinzufügen';
+
+  @override
+  String get pbAddHere => 'Hier hinzufügen';
+
+  @override
+  String get pbAddProperty => 'Eigenschaft hinzufügen';
+
+  @override
+  String get pbArrange => 'Seite anordnen';
+
+  @override
+  String get pbArrangeDone => 'Fertig';
+
+  @override
+  String get pbArrangeHint => 'Zum Umordnen ziehen. Ein Spaltenblock bewegt sich als Ganzes.';
+
+  @override
+  String get pbArrangeShared => 'Dies ist das Layout, das alle Elemente dieses Moduls teilen. Trenne die Seite zuerst ab, um nur diese zu ändern.';
+
+  @override
+  String get pbBacklinks => 'Verlinkt von';
+
+  @override
+  String get pbBlockDeleted => 'Block entfernt';
+
+  @override
+  String get pbBorrow => 'Eine Ansicht aus einem anderen Modul';
+
+  @override
+  String get pbColumn => 'Spalte';
+
+  @override
+  String get pbColumns => 'Spalten';
+
+  @override
+  String get pbDivider => 'Trennlinie';
+
+  @override
+  String get pbFullScreen => 'Vollbild';
+
+  @override
+  String get pbHeading => 'Überschrift';
+
+  @override
+  String get pbImage => 'Bild';
+
+  @override
+  String get pbItemBody => 'Element';
+
+  @override
+  String get pbItemEmpty => 'Hier steht noch nichts.';
+
+  @override
+  String get pbNoRelated => 'Noch keine Verknüpfungen';
+
+  @override
+  String get pbNotOnMobile => 'in dieser App noch nicht verfügbar';
+
+  @override
+  String get pbOnlyOnce => 'darf nur einmal auf einer Seite stehen';
+
+  @override
+  String get pbOpenFullScreen => 'Öffnen';
+
+  @override
+  String get pbOutgoing => 'Verlinkt auf';
+
+  @override
+  String get pbPropName => 'Name';
+
+  @override
+  String get pbPropType => 'Typ';
+
+  @override
+  String get pbProperties => 'Eigenschaften';
+
+  @override
+  String get pbRelated => 'Verwandt';
+
+  @override
+  String get pbRelations => 'Beziehungen';
+
+  @override
+  String get pbRevert => 'Zurück zum gemeinsamen Layout';
+
+  @override
+  String get pbSharedLayout => 'Das gemeinsame Layout aller Elementseiten dieses Moduls.';
+
+  @override
+  String get pbSourceGone => 'was dies zeigte, gibt es nicht mehr';
+
+  @override
+  String get pbSplit => 'Dieser Seite ein eigenes Layout geben';
+
+  @override
+  String get pbTags => 'Tags';
+
+  @override
+  String get pbText => 'Text';
+
+  @override
+  String get pbTextEmpty => 'Leerer Text — zum Schreiben tippen';
+
+  @override
+  String get propTypeCheckbox => 'Kontrollkästchen';
+
+  @override
+  String get propTypeDate => 'Datum';
+
+  @override
+  String get propTypeNumber => 'Zahl';
+
+  @override
+  String get propTypeText => 'Text';
+
+  @override
+  String get propTypeTextarea => 'Langer Text';
+
+  @override
+  String get propTypeUrl => 'Link';
 }

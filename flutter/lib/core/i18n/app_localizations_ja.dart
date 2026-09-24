@@ -1009,4 +1009,130 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => '作成';
+
+  @override
+  String get btnUndo => '元に戻す';
+
+  @override
+  String get pbAddBlock => 'ブロックを追加';
+
+  @override
+  String get pbAddHere => 'ここに追加';
+
+  @override
+  String get pbAddProperty => 'プロパティを追加';
+
+  @override
+  String get pbArrange => 'ページを配置';
+
+  @override
+  String get pbArrangeDone => '完了';
+
+  @override
+  String get pbArrangeHint => 'ドラッグで並べ替え。列ブロックはまとめて動きます。';
+
+  @override
+  String get pbArrangeShared => 'これはこのモジュールの全要素が共有するレイアウトです。このページだけ変えるには先に分離してください。';
+
+  @override
+  String get pbBacklinks => 'リンク元';
+
+  @override
+  String get pbBlockDeleted => 'ブロックを削除しました';
+
+  @override
+  String get pbBorrow => '別モジュールのビュー';
+
+  @override
+  String get pbColumn => '列';
+
+  @override
+  String get pbColumns => '列';
+
+  @override
+  String get pbDivider => '区切り線';
+
+  @override
+  String get pbFullScreen => '全画面';
+
+  @override
+  String get pbHeading => '見出し';
+
+  @override
+  String get pbImage => '画像';
+
+  @override
+  String get pbItemBody => '要素';
+
+  @override
+  String get pbItemEmpty => 'まだ何も書かれていません。';
+
+  @override
+  String get pbNoRelated => 'まだリンクはありません';
+
+  @override
+  String get pbNotOnMobile => 'このアプリではまだ使えません';
+
+  @override
+  String get pbOnlyOnce => '1ページに1つだけ置けます';
+
+  @override
+  String get pbOpenFullScreen => '開く';
+
+  @override
+  String get pbOutgoing => 'リンク先';
+
+  @override
+  String get pbPropName => '名前';
+
+  @override
+  String get pbPropType => '種類';
+
+  @override
+  String get pbProperties => 'プロパティ';
+
+  @override
+  String get pbRelated => '関連';
+
+  @override
+  String get pbRelations => '関係';
+
+  @override
+  String get pbRevert => '共有レイアウトに戻す';
+
+  @override
+  String get pbSharedLayout => 'このモジュールの全要素ページが共有するレイアウト。';
+
+  @override
+  String get pbSourceGone => '表示していたものはありません';
+
+  @override
+  String get pbSplit => 'このページに独自のレイアウトを持たせる';
+
+  @override
+  String get pbTags => 'タグ';
+
+  @override
+  String get pbText => 'テキスト';
+
+  @override
+  String get pbTextEmpty => '空のテキスト — タップして書く';
+
+  @override
+  String get propTypeCheckbox => 'チェックボックス';
+
+  @override
+  String get propTypeDate => '日付';
+
+  @override
+  String get propTypeNumber => '数値';
+
+  @override
+  String get propTypeText => 'テキスト';
+
+  @override
+  String get propTypeTextarea => '長いテキスト';
+
+  @override
+  String get propTypeUrl => 'リンク';
 }

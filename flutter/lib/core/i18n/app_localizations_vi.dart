@@ -1009,4 +1009,130 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'Tạo';
+
+  @override
+  String get btnUndo => 'Hoàn tác';
+
+  @override
+  String get pbAddBlock => 'Thêm khối';
+
+  @override
+  String get pbAddHere => 'Thêm vào đây';
+
+  @override
+  String get pbAddProperty => 'Thêm thuộc tính';
+
+  @override
+  String get pbArrange => 'Sắp xếp trang';
+
+  @override
+  String get pbArrangeDone => 'Xong';
+
+  @override
+  String get pbArrangeHint => 'Kéo để sắp xếp lại. Khối cột di chuyển nguyên khối.';
+
+  @override
+  String get pbArrangeShared => 'Đây là bố cục mà mọi phần tử của module này dùng chung. Hãy tách trang ra trước để chỉ đổi trang này.';
+
+  @override
+  String get pbBacklinks => 'Liên kết từ';
+
+  @override
+  String get pbBlockDeleted => 'Đã xoá khối';
+
+  @override
+  String get pbBorrow => 'Một góc nhìn từ module khác';
+
+  @override
+  String get pbColumn => 'Cột';
+
+  @override
+  String get pbColumns => 'Các cột';
+
+  @override
+  String get pbDivider => 'Đường phân cách';
+
+  @override
+  String get pbFullScreen => 'Toàn màn hình';
+
+  @override
+  String get pbHeading => 'Tiêu đề';
+
+  @override
+  String get pbImage => 'Hình ảnh';
+
+  @override
+  String get pbItemBody => 'Phần tử';
+
+  @override
+  String get pbItemEmpty => 'Chưa có gì được viết ở đây.';
+
+  @override
+  String get pbNoRelated => 'Chưa có liên kết';
+
+  @override
+  String get pbNotOnMobile => 'chưa có trong ứng dụng này';
+
+  @override
+  String get pbOnlyOnce => 'chỉ được có một lần trên một trang';
+
+  @override
+  String get pbOpenFullScreen => 'Mở';
+
+  @override
+  String get pbOutgoing => 'Liên kết đến';
+
+  @override
+  String get pbPropName => 'Tên';
+
+  @override
+  String get pbPropType => 'Loại';
+
+  @override
+  String get pbProperties => 'Thuộc tính';
+
+  @override
+  String get pbRelated => 'Liên quan';
+
+  @override
+  String get pbRelations => 'Quan hệ';
+
+  @override
+  String get pbRevert => 'Quay lại bố cục dùng chung';
+
+  @override
+  String get pbSharedLayout => 'Bố cục dùng chung cho mọi trang phần tử của module này.';
+
+  @override
+  String get pbSourceGone => 'nội dung được hiển thị đã không còn';
+
+  @override
+  String get pbSplit => 'Cho trang này bố cục riêng';
+
+  @override
+  String get pbTags => 'Thẻ';
+
+  @override
+  String get pbText => 'Văn bản';
+
+  @override
+  String get pbTextEmpty => 'Văn bản trống — chạm để viết';
+
+  @override
+  String get propTypeCheckbox => 'Hộp kiểm';
+
+  @override
+  String get propTypeDate => 'Ngày';
+
+  @override
+  String get propTypeNumber => 'Số';
+
+  @override
+  String get propTypeText => 'Văn bản';
+
+  @override
+  String get propTypeTextarea => 'Văn bản dài';
+
+  @override
+  String get propTypeUrl => 'Liên kết';
 }

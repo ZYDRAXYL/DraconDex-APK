@@ -1009,4 +1009,130 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => '创建';
+
+  @override
+  String get btnUndo => '撤销';
+
+  @override
+  String get pbAddBlock => '添加区块';
+
+  @override
+  String get pbAddHere => '添加到这里';
+
+  @override
+  String get pbAddProperty => '添加属性';
+
+  @override
+  String get pbArrange => '编排页面';
+
+  @override
+  String get pbArrangeDone => '完成';
+
+  @override
+  String get pbArrangeHint => '拖动以重新排序。分栏区块整体移动。';
+
+  @override
+  String get pbArrangeShared => '这是本模块所有元素共享的布局。若只想改这一页，请先把它分离出来。';
+
+  @override
+  String get pbBacklinks => '被链接自';
+
+  @override
+  String get pbBlockDeleted => '已移除区块';
+
+  @override
+  String get pbBorrow => '来自其他模块的视图';
+
+  @override
+  String get pbColumn => '栏';
+
+  @override
+  String get pbColumns => '分栏';
+
+  @override
+  String get pbDivider => '分隔线';
+
+  @override
+  String get pbFullScreen => '全屏';
+
+  @override
+  String get pbHeading => '标题';
+
+  @override
+  String get pbImage => '图片';
+
+  @override
+  String get pbItemBody => '元素';
+
+  @override
+  String get pbItemEmpty => '这里还没有内容。';
+
+  @override
+  String get pbNoRelated => '还没有链接';
+
+  @override
+  String get pbNotOnMobile => '本应用暂不支持';
+
+  @override
+  String get pbOnlyOnce => '每页只能放一次';
+
+  @override
+  String get pbOpenFullScreen => '打开';
+
+  @override
+  String get pbOutgoing => '链接到';
+
+  @override
+  String get pbPropName => '名称';
+
+  @override
+  String get pbPropType => '类型';
+
+  @override
+  String get pbProperties => '属性';
+
+  @override
+  String get pbRelated => '相关';
+
+  @override
+  String get pbRelations => '关系';
+
+  @override
+  String get pbRevert => '恢复共享布局';
+
+  @override
+  String get pbSharedLayout => '本模块所有元素页共享的布局。';
+
+  @override
+  String get pbSourceGone => '显示的内容已不存在';
+
+  @override
+  String get pbSplit => '让此页使用自己的布局';
+
+  @override
+  String get pbTags => '标签';
+
+  @override
+  String get pbText => '文本';
+
+  @override
+  String get pbTextEmpty => '空文本 — 轻点以书写';
+
+  @override
+  String get propTypeCheckbox => '复选框';
+
+  @override
+  String get propTypeDate => '日期';
+
+  @override
+  String get propTypeNumber => '数字';
+
+  @override
+  String get propTypeText => '文本';
+
+  @override
+  String get propTypeTextarea => '长文本';
+
+  @override
+  String get propTypeUrl => '链接';
 }

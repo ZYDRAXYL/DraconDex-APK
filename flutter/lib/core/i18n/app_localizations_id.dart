@@ -1009,4 +1009,130 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'Buat';
+
+  @override
+  String get btnUndo => 'Urungkan';
+
+  @override
+  String get pbAddBlock => 'Tambah blok';
+
+  @override
+  String get pbAddHere => 'Tambah di sini';
+
+  @override
+  String get pbAddProperty => 'Tambah properti';
+
+  @override
+  String get pbArrange => 'Atur halaman';
+
+  @override
+  String get pbArrangeDone => 'Selesai';
+
+  @override
+  String get pbArrangeHint => 'Seret untuk mengurutkan ulang. Blok kolom berpindah utuh.';
+
+  @override
+  String get pbArrangeShared => 'Ini tata letak yang dipakai bersama semua elemen modul ini. Pisahkan halaman dulu untuk mengubah yang ini saja.';
+
+  @override
+  String get pbBacklinks => 'Ditautkan dari';
+
+  @override
+  String get pbBlockDeleted => 'Blok dihapus';
+
+  @override
+  String get pbBorrow => 'Tampilan dari modul lain';
+
+  @override
+  String get pbColumn => 'Kolom';
+
+  @override
+  String get pbColumns => 'Kolom';
+
+  @override
+  String get pbDivider => 'Pemisah';
+
+  @override
+  String get pbFullScreen => 'Layar penuh';
+
+  @override
+  String get pbHeading => 'Judul';
+
+  @override
+  String get pbImage => 'Gambar';
+
+  @override
+  String get pbItemBody => 'Elemen';
+
+  @override
+  String get pbItemEmpty => 'Belum ada tulisan di sini.';
+
+  @override
+  String get pbNoRelated => 'Belum ada tautan';
+
+  @override
+  String get pbNotOnMobile => 'belum ada di aplikasi ini';
+
+  @override
+  String get pbOnlyOnce => 'hanya boleh sekali dalam satu halaman';
+
+  @override
+  String get pbOpenFullScreen => 'Buka';
+
+  @override
+  String get pbOutgoing => 'Menautkan ke';
+
+  @override
+  String get pbPropName => 'Nama';
+
+  @override
+  String get pbPropType => 'Jenis';
+
+  @override
+  String get pbProperties => 'Properti';
+
+  @override
+  String get pbRelated => 'Terkait';
+
+  @override
+  String get pbRelations => 'Relasi';
+
+  @override
+  String get pbRevert => 'Kembali ke tata letak bersama';
+
+  @override
+  String get pbSharedLayout => 'Tata letak bersama untuk semua halaman elemen modul ini.';
+
+  @override
+  String get pbSourceGone => 'yang ditampilkan sudah tidak ada';
+
+  @override
+  String get pbSplit => 'Beri halaman ini tata letak sendiri';
+
+  @override
+  String get pbTags => 'Tag';
+
+  @override
+  String get pbText => 'Teks';
+
+  @override
+  String get pbTextEmpty => 'Teks kosong — ketuk untuk menulis';
+
+  @override
+  String get propTypeCheckbox => 'Kotak centang';
+
+  @override
+  String get propTypeDate => 'Tanggal';
+
+  @override
+  String get propTypeNumber => 'Angka';
+
+  @override
+  String get propTypeText => 'Teks';
+
+  @override
+  String get propTypeTextarea => 'Teks panjang';
+
+  @override
+  String get propTypeUrl => 'Tautan';
 }

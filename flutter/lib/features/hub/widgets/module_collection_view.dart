@@ -18,11 +18,16 @@ class ModuleCollectionView extends StatelessWidget {
   final List<ModuleModel> modules;
   final BuilderViewMode mode;
 
+  /// Inside a page's own scroll view: sizes to its rows and leaves the
+  /// scrolling to the page.
+  final bool embedded;
+
   const ModuleCollectionView({
     super.key,
     required this.nexusId,
     required this.modules,
     required this.mode,
+    this.embedded = false,
   });
 
   @override
@@ -30,6 +35,8 @@ class ModuleCollectionView extends StatelessWidget {
     switch (mode) {
       case BuilderViewMode.grid:
         return GridView.builder(
+          shrinkWrap: embedded,
+          physics: embedded ? const NeverScrollableScrollPhysics() : null,
           padding: const EdgeInsets.all(12),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             // Wider tiles on a tablet: the phone's 170 across an iPad reads
@@ -44,11 +51,15 @@ class ModuleCollectionView extends StatelessWidget {
         );
       case BuilderViewMode.compact:
         return ListView.builder(
+          shrinkWrap: embedded,
+          physics: embedded ? const NeverScrollableScrollPhysics() : null,
           itemCount: modules.length,
           itemBuilder: (_, i) => ModuleTile(nexusId: nexusId, module: modules[i], dense: true),
         );
       case BuilderViewMode.list:
         return ListView.separated(
+          shrinkWrap: embedded,
+          physics: embedded ? const NeverScrollableScrollPhysics() : null,
           itemCount: modules.length,
           separatorBuilder: (_, _) => const Divider(height: 1),
           itemBuilder: (_, i) => ModuleTile(nexusId: nexusId, module: modules[i]),

@@ -1009,4 +1009,130 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get wikiCreateDrafter => 'สร้าง';
+
+  @override
+  String get btnUndo => 'เลิกทำ';
+
+  @override
+  String get pbAddBlock => 'เพิ่มบล็อก';
+
+  @override
+  String get pbAddHere => 'เพิ่มตรงนี้';
+
+  @override
+  String get pbAddProperty => 'เพิ่มคุณสมบัติ';
+
+  @override
+  String get pbArrange => 'จัดหน้า';
+
+  @override
+  String get pbArrangeDone => 'เสร็จ';
+
+  @override
+  String get pbArrangeHint => 'ลากเพื่อเรียงใหม่ บล็อกคอลัมน์ย้ายไปทั้งก้อน';
+
+  @override
+  String get pbArrangeShared => 'นี่คือเลย์เอาต์ที่ทุกองค์ประกอบของ module นี้ใช้ร่วมกัน ถ้าจะเปลี่ยนเฉพาะหน้านี้ ให้แยกหน้าออกก่อน';
+
+  @override
+  String get pbBacklinks => 'ลิงก์มาจาก';
+
+  @override
+  String get pbBlockDeleted => 'ลบบล็อกแล้ว';
+
+  @override
+  String get pbBorrow => 'มุมมองจาก module อื่น';
+
+  @override
+  String get pbColumn => 'คอลัมน์';
+
+  @override
+  String get pbColumns => 'คอลัมน์';
+
+  @override
+  String get pbDivider => 'เส้นคั่น';
+
+  @override
+  String get pbFullScreen => 'เต็มจอ';
+
+  @override
+  String get pbHeading => 'หัวข้อ';
+
+  @override
+  String get pbImage => 'รูปภาพ';
+
+  @override
+  String get pbItemBody => 'องค์ประกอบ';
+
+  @override
+  String get pbItemEmpty => 'ยังไม่มีอะไรเขียนไว้';
+
+  @override
+  String get pbNoRelated => 'ยังไม่มีลิงก์';
+
+  @override
+  String get pbNotOnMobile => 'ยังไม่มีในแอปนี้';
+
+  @override
+  String get pbOnlyOnce => 'อยู่ในหน้าได้ครั้งเดียว';
+
+  @override
+  String get pbOpenFullScreen => 'เปิด';
+
+  @override
+  String get pbOutgoing => 'ลิงก์ไปยัง';
+
+  @override
+  String get pbPropName => 'ชื่อ';
+
+  @override
+  String get pbPropType => 'ชนิด';
+
+  @override
+  String get pbProperties => 'คุณสมบัติ';
+
+  @override
+  String get pbRelated => 'ที่เกี่ยวข้อง';
+
+  @override
+  String get pbRelations => 'ความสัมพันธ์';
+
+  @override
+  String get pbRevert => 'กลับไปใช้เลย์เอาต์ร่วม';
+
+  @override
+  String get pbSharedLayout => 'เลย์เอาต์ร่วมของหน้าทุกองค์ประกอบใน module นี้';
+
+  @override
+  String get pbSourceGone => 'สิ่งที่แสดงอยู่ถูกลบไปแล้ว';
+
+  @override
+  String get pbSplit => 'ให้หน้านี้มีเลย์เอาต์ของตัวเอง';
+
+  @override
+  String get pbTags => 'แท็ก';
+
+  @override
+  String get pbText => 'ข้อความ';
+
+  @override
+  String get pbTextEmpty => 'ข้อความว่าง — แตะเพื่อเขียน';
+
+  @override
+  String get propTypeCheckbox => 'ช่องติ๊ก';
+
+  @override
+  String get propTypeDate => 'วันที่';
+
+  @override
+  String get propTypeNumber => 'ตัวเลข';
+
+  @override
+  String get propTypeText => 'ข้อความ';
+
+  @override
+  String get propTypeTextarea => 'ข้อความยาว';
+
+  @override
+  String get propTypeUrl => 'ลิงก์';
 }

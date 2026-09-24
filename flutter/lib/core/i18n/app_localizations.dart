@@ -2120,6 +2120,258 @@ abstract class AppLocalizations {
   /// **'Create'**
   String get wikiCreateDrafter;
 
+  /// No description provided for @btnUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get btnUndo;
+
+  /// No description provided for @pbAddBlock.
+  ///
+  /// In en, this message translates to:
+  /// **'Add block'**
+  String get pbAddBlock;
+
+  /// No description provided for @pbAddHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Add here'**
+  String get pbAddHere;
+
+  /// No description provided for @pbAddProperty.
+  ///
+  /// In en, this message translates to:
+  /// **'Add property'**
+  String get pbAddProperty;
+
+  /// No description provided for @pbArrange.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange page'**
+  String get pbArrange;
+
+  /// No description provided for @pbArrangeDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get pbArrangeDone;
+
+  /// No description provided for @pbArrangeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag to reorder. A column block moves as one.'**
+  String get pbArrangeHint;
+
+  /// No description provided for @pbArrangeShared.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the layout every element of this module shares. Split the page off first to change only this one.'**
+  String get pbArrangeShared;
+
+  /// No description provided for @pbBacklinks.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked from'**
+  String get pbBacklinks;
+
+  /// No description provided for @pbBlockDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Block removed'**
+  String get pbBlockDeleted;
+
+  /// No description provided for @pbBorrow.
+  ///
+  /// In en, this message translates to:
+  /// **'A view from another module'**
+  String get pbBorrow;
+
+  /// No description provided for @pbColumn.
+  ///
+  /// In en, this message translates to:
+  /// **'Column'**
+  String get pbColumn;
+
+  /// No description provided for @pbColumns.
+  ///
+  /// In en, this message translates to:
+  /// **'Columns'**
+  String get pbColumns;
+
+  /// No description provided for @pbDivider.
+  ///
+  /// In en, this message translates to:
+  /// **'Divider'**
+  String get pbDivider;
+
+  /// No description provided for @pbFullScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Full screen'**
+  String get pbFullScreen;
+
+  /// No description provided for @pbHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Heading'**
+  String get pbHeading;
+
+  /// No description provided for @pbImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get pbImage;
+
+  /// No description provided for @pbItemBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Element'**
+  String get pbItemBody;
+
+  /// No description provided for @pbItemEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing written here yet.'**
+  String get pbItemEmpty;
+
+  /// No description provided for @pbNoRelated.
+  ///
+  /// In en, this message translates to:
+  /// **'No links yet'**
+  String get pbNoRelated;
+
+  /// No description provided for @pbNotOnMobile.
+  ///
+  /// In en, this message translates to:
+  /// **'not in this app yet'**
+  String get pbNotOnMobile;
+
+  /// No description provided for @pbOnlyOnce.
+  ///
+  /// In en, this message translates to:
+  /// **'can be on a page only once'**
+  String get pbOnlyOnce;
+
+  /// No description provided for @pbOpenFullScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get pbOpenFullScreen;
+
+  /// No description provided for @pbOutgoing.
+  ///
+  /// In en, this message translates to:
+  /// **'Links to'**
+  String get pbOutgoing;
+
+  /// No description provided for @pbPropName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get pbPropName;
+
+  /// No description provided for @pbPropType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get pbPropType;
+
+  /// No description provided for @pbProperties.
+  ///
+  /// In en, this message translates to:
+  /// **'Properties'**
+  String get pbProperties;
+
+  /// No description provided for @pbRelated.
+  ///
+  /// In en, this message translates to:
+  /// **'Related'**
+  String get pbRelated;
+
+  /// No description provided for @pbRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'Relations'**
+  String get pbRelations;
+
+  /// No description provided for @pbRevert.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the shared layout'**
+  String get pbRevert;
+
+  /// No description provided for @pbSharedLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'The shared layout of every element page of this module.'**
+  String get pbSharedLayout;
+
+  /// No description provided for @pbSourceGone.
+  ///
+  /// In en, this message translates to:
+  /// **'what this showed is gone'**
+  String get pbSourceGone;
+
+  /// No description provided for @pbSplit.
+  ///
+  /// In en, this message translates to:
+  /// **'Give this page its own layout'**
+  String get pbSplit;
+
+  /// No description provided for @pbTags.
+  ///
+  /// In en, this message translates to:
+  /// **'Tags'**
+  String get pbTags;
+
+  /// No description provided for @pbText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get pbText;
+
+  /// No description provided for @pbTextEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty text — tap to write'**
+  String get pbTextEmpty;
+
+  /// No description provided for @propTypeCheckbox.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkbox'**
+  String get propTypeCheckbox;
+
+  /// No description provided for @propTypeDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get propTypeDate;
+
+  /// No description provided for @propTypeNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Number'**
+  String get propTypeNumber;
+
+  /// No description provided for @propTypeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get propTypeText;
+
+  /// No description provided for @propTypeTextarea.
+  ///
+  /// In en, this message translates to:
+  /// **'Long text'**
+  String get propTypeTextarea;
+
+  /// No description provided for @propTypeUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Link'**
+  String get propTypeUrl;
+
 }
 
 class _AppLocalizationsDelegate

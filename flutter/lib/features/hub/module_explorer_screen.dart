@@ -5,7 +5,6 @@ import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
 import '../../data/models/viewer_model.dart';
 import '../../providers/builder_view_provider.dart';
-import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
@@ -13,7 +12,8 @@ import '../../widgets/hiding_app_bar.dart';
 import '../../widgets/row_menu.dart';
 import '../builder/breadcrumb_title.dart';
 import '../builder/view_mode_button.dart';
-import 'content/module_content.dart';
+import '../page/module_page.dart';
+import '../page/page_actions.dart';
 import 'dialogs/module_dialog.dart';
 import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
@@ -141,34 +141,46 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                   RowMenuButton(
                     iconSize: 24,
                     title: module.name,
-                    actions: () => moduleRowActions(context, ref, module, onOwnPage: true),
+                    actions: () => [
+                      ...pageActions(context, ref, module, itemKey),
+                      ...moduleRowActions(context, ref, module, onOwnPage: true),
+                    ],
                   ),
               ],
             ),
           ),
-          if (itemKey != null) _ElementPageNotice(text: l10n.elementPageSoon),
-          if (module != null) _ModuleContent(module: module),
           Expanded(
-            child: childrenAsync.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (e, s) => Center(child: Text('Error: $e')),
-              data: (children) {
-                if (children.isEmpty) {
-                  return Center(
-                    child: Text(
-                      l10n.emptyModuleMessage,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+            child: ListView(
+              padding: const EdgeInsets.only(bottom: 88),
+              children: [
+                // The page: a stack of blocks (V5.md §12, APK-V3.md §10.4).
+                if (module != null && (itemKey != null || module.kind != ModuleKind.collector))
+                  ModulePage(moduleId: module.id, itemKey: itemKey),
+                // A Collector IS its children, and so is a Nexus root.
+                if (itemKey == null && showsChildren(module))
+                  childrenAsync.when(
+                    loading: () => const Padding(
+                        padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator())),
+                    error: (e, s) => Center(child: Text('Error: $e')),
+                    data: (children) => children.isEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.all(32),
+                            child: Text(
+                              l10n.emptyModuleMessage,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                                  ),
+                            ),
+                          )
+                        : ModuleCollectionView(
+                            nexusId: nexusId,
+                            modules: children,
+                            mode: viewMode,
+                            embedded: true,
                           ),
-                    ),
-                  );
-                }
-                return ModuleCollectionView(
-                  nexusId: nexusId,
-                  modules: children,
-                  mode: viewMode,
-                );
-              },
+                  ),
+              ],
             ),
           ),
         ],
@@ -188,141 +200,6 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
           ref.invalidate(nexusIndexProvider(nexusId));
         },
         child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-/// Stands in for an element's own page until Procress 12 part 2 builds it.
-class _ElementPageNotice extends StatelessWidget {
-  final String text;
-
-  const _ElementPageNotice({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      color: scheme.secondaryContainer.withValues(alpha: 0.5),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Text(text, style: Theme.of(context).textTheme.bodySmall),
-    );
-  }
-}
-
-/// The kind-specific content area shown above a module's own children list.
-/// Only a few kinds have a real editor so far (§docs/Architec.md §1.1 lists
-/// all 15) — everything else falls back to the shared notes field.
-class _ModuleContent extends StatelessWidget {
-  final ModuleModel module;
-  const _ModuleContent({required this.module});
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final info = module.kindInfo;
-    final isFolder = module.kind == ModuleKind.collector || module.kind == ModuleKind.manager;
-    if (isFolder) return const SizedBox.shrink();
-
-    // Kinds with a real editor render it instead of the shared notes field.
-    // moduleContentFor() returns null for the ones not ported yet, which is
-    // exactly the set still flagged contentImplemented: false below.
-    final dedicated = moduleContentFor(module);
-    if (dedicated != null) {
-      return Column(
-        children: [
-          dedicated,
-          const Divider(height: 1),
-        ],
-      );
-    }
-
-    return Column(
-      children: [
-        if (!info.contentImplemented)
-          Container(
-            width: double.infinity,
-            color: Theme.of(context).colorScheme.errorContainer.withValues(alpha: 0.4),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              l10n.kindContentUnavailable,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ),
-        // Capped rather than stretched: on an iPad in landscape the pane is
-        // wide enough that a full-width note field would run a line of prose
-        // past comfortable reading length. A phone is never this wide, so
-        // this changes nothing there.
-        Align(
-          alignment: AlignmentDirectional.centerStart,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 900),
-            child: _DescriptionEditor(
-              key: ValueKey(module.id),
-              moduleId: module.id,
-              initialText: module.description ?? '',
-            ),
-          ),
-        ),
-        const Divider(height: 1),
-      ],
-    );
-  }
-}
-
-class _DescriptionEditor extends ConsumerStatefulWidget {
-  final int moduleId;
-  final String initialText;
-  const _DescriptionEditor({super.key, required this.moduleId, required this.initialText});
-
-  @override
-  ConsumerState<_DescriptionEditor> createState() => _DescriptionEditorState();
-}
-
-class _DescriptionEditorState extends ConsumerState<_DescriptionEditor> {
-  late final TextEditingController _controller;
-  late final FocusNode _focusNode;
-  bool _dirty = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: widget.initialText);
-    _focusNode = FocusNode();
-    _focusNode.addListener(() {
-      if (!_focusNode.hasFocus) _save();
-    });
-  }
-
-  @override
-  void dispose() {
-    if (_dirty) _save();
-    _controller.dispose();
-    _focusNode.dispose();
-    super.dispose();
-  }
-
-  Future<void> _save() async {
-    if (!_dirty) return;
-    _dirty = false;
-    final dao = ref.read(moduleDaoProvider).valueOrNull;
-    await dao?.updateModuleDescription(widget.moduleId, _controller.text);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: TextField(
-        controller: _controller,
-        focusNode: _focusNode,
-        minLines: 3,
-        maxLines: 8,
-        decoration: InputDecoration(
-          hintText: AppLocalizations.of(context)!.notesHint,
-          border: const OutlineInputBorder(),
-        ),
-        onChanged: (_) => _dirty = true,
       ),
     );
   }
