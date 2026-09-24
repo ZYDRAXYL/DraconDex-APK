@@ -1426,4 +1426,64 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Mostrar ordem de leitura';
+
+  @override
+  String get divNewTable => 'Nova tabela';
+
+  @override
+  String get divDice => 'Dados';
+
+  @override
+  String get divDiceHelp => 'Vazio = ponderado';
+
+  @override
+  String get divBadDice => 'Não é uma expressão de dados';
+
+  @override
+  String get divModePick => 'Escolher um';
+
+  @override
+  String get divModeJoin => 'Juntar todos';
+
+  @override
+  String get divWeighted => 'Ponderado';
+
+  @override
+  String get divEntryText => 'Texto';
+
+  @override
+  String get divFrom => 'De';
+
+  @override
+  String get divTo => 'Até';
+
+  @override
+  String get divWeight => 'Peso';
+
+  @override
+  String get divRollsTable => 'Lançar outra tabela aqui';
+
+  @override
+  String get divLinkEntity => 'Nomear algo';
+
+  @override
+  String get divUnlink => 'Remover a ligação';
+
+  @override
+  String get divNoTables => 'Ainda não há tabelas';
+
+  @override
+  String get divRoll => 'Lançar';
+
+  @override
+  String get divEntries => 'Entradas';
+
+  @override
+  String get divNoEntries => 'Ainda não há entradas';
+
+  @override
+  String get divHistory => 'Histórico';
+
+  @override
+  String get divQuickRoll => 'Só lançar: 3d6';
 }

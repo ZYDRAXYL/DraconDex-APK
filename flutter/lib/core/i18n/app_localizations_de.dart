@@ -1426,4 +1426,64 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Lesereihenfolge zeigen';
+
+  @override
+  String get divNewTable => 'Neue Tabelle';
+
+  @override
+  String get divDice => 'Würfel';
+
+  @override
+  String get divDiceHelp => 'Leer = gewichtet';
+
+  @override
+  String get divBadDice => 'Kein Würfelausdruck';
+
+  @override
+  String get divModePick => 'Eins wählen';
+
+  @override
+  String get divModeJoin => 'Alle verbinden';
+
+  @override
+  String get divWeighted => 'Gewichtet';
+
+  @override
+  String get divEntryText => 'Text';
+
+  @override
+  String get divFrom => 'Von';
+
+  @override
+  String get divTo => 'Bis';
+
+  @override
+  String get divWeight => 'Gewicht';
+
+  @override
+  String get divRollsTable => 'Hier andere Tabelle würfeln';
+
+  @override
+  String get divLinkEntity => 'Etwas benennen';
+
+  @override
+  String get divUnlink => 'Verknüpfung entfernen';
+
+  @override
+  String get divNoTables => 'Noch keine Tabellen';
+
+  @override
+  String get divRoll => 'Würfeln';
+
+  @override
+  String get divEntries => 'Einträge';
+
+  @override
+  String get divNoEntries => 'Noch keine Einträge';
+
+  @override
+  String get divHistory => 'Verlauf';
+
+  @override
+  String get divQuickRoll => 'Einfach würfeln: 3d6';
 }

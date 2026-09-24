@@ -1426,4 +1426,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get dgShowOrder => '显示阅读顺序';
+
+  @override
+  String get divNewTable => '新表';
+
+  @override
+  String get divDice => '骰子';
+
+  @override
+  String get divDiceHelp => '留空 = 按权重';
+
+  @override
+  String get divBadDice => '不是骰子表达式';
+
+  @override
+  String get divModePick => '抽一个';
+
+  @override
+  String get divModeJoin => '全部连接';
+
+  @override
+  String get divWeighted => '按权重';
+
+  @override
+  String get divEntryText => '文本';
+
+  @override
+  String get divFrom => '从';
+
+  @override
+  String get divTo => '到';
+
+  @override
+  String get divWeight => '权重';
+
+  @override
+  String get divRollsTable => '在此掷另一张表';
+
+  @override
+  String get divLinkEntity => '指向某物';
+
+  @override
+  String get divUnlink => '移除链接';
+
+  @override
+  String get divNoTables => '还没有表';
+
+  @override
+  String get divRoll => '掷骰';
+
+  @override
+  String get divEntries => '条目';
+
+  @override
+  String get divNoEntries => '还没有条目';
+
+  @override
+  String get divHistory => '历史';
+
+  @override
+  String get divQuickRoll => '直接掷: 3d6';
 }

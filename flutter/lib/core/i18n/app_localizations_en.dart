@@ -1426,4 +1426,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Show reading order';
+
+  @override
+  String get divNewTable => 'New table';
+
+  @override
+  String get divDice => 'Dice';
+
+  @override
+  String get divDiceHelp => 'Empty = weighted';
+
+  @override
+  String get divBadDice => 'Not a dice expression';
+
+  @override
+  String get divModePick => 'Pick one';
+
+  @override
+  String get divModeJoin => 'Join all';
+
+  @override
+  String get divWeighted => 'Weighted';
+
+  @override
+  String get divEntryText => 'Text';
+
+  @override
+  String get divFrom => 'From';
+
+  @override
+  String get divTo => 'To';
+
+  @override
+  String get divWeight => 'Weight';
+
+  @override
+  String get divRollsTable => 'Roll another table here';
+
+  @override
+  String get divLinkEntity => 'Name something';
+
+  @override
+  String get divUnlink => 'Remove the link';
+
+  @override
+  String get divNoTables => 'No tables yet';
+
+  @override
+  String get divRoll => 'Roll';
+
+  @override
+  String get divEntries => 'Entries';
+
+  @override
+  String get divNoEntries => 'No entries yet';
+
+  @override
+  String get divHistory => 'History';
+
+  @override
+  String get divQuickRoll => 'Just roll: 3d6';
 }

@@ -1426,4 +1426,64 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Tampilkan urutan baca';
+
+  @override
+  String get divNewTable => 'Tabel baru';
+
+  @override
+  String get divDice => 'Dadu';
+
+  @override
+  String get divDiceHelp => 'Kosong = berbobot';
+
+  @override
+  String get divBadDice => 'Bukan ekspresi dadu';
+
+  @override
+  String get divModePick => 'Pilih satu';
+
+  @override
+  String get divModeJoin => 'Gabung semua';
+
+  @override
+  String get divWeighted => 'Berbobot';
+
+  @override
+  String get divEntryText => 'Teks';
+
+  @override
+  String get divFrom => 'Dari';
+
+  @override
+  String get divTo => 'Sampai';
+
+  @override
+  String get divWeight => 'Bobot';
+
+  @override
+  String get divRollsTable => 'Lempar tabel lain di sini';
+
+  @override
+  String get divLinkEntity => 'Sebut sesuatu';
+
+  @override
+  String get divUnlink => 'Hapus tautan';
+
+  @override
+  String get divNoTables => 'Belum ada tabel';
+
+  @override
+  String get divRoll => 'Lempar';
+
+  @override
+  String get divEntries => 'Entri';
+
+  @override
+  String get divNoEntries => 'Belum ada entri';
+
+  @override
+  String get divHistory => 'Riwayat';
+
+  @override
+  String get divQuickRoll => 'Lempar saja: 3d6';
 }

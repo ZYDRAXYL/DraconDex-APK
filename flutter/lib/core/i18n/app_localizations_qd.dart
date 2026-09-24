@@ -1426,4 +1426,64 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Show reading order';
+
+  @override
+  String get divNewTable => 'New lot-table';
+
+  @override
+  String get divDice => 'Bones';
+
+  @override
+  String get divDiceHelp => 'Void = weighed';
+
+  @override
+  String get divBadDice => 'Nar a bone-rune';
+
+  @override
+  String get divModePick => 'Kaer one';
+
+  @override
+  String get divModeJoin => 'Weave all';
+
+  @override
+  String get divWeighted => 'Weighed';
+
+  @override
+  String get divEntryText => 'Rhun';
+
+  @override
+  String get divFrom => 'From';
+
+  @override
+  String get divTo => 'To';
+
+  @override
+  String get divWeight => 'Weight';
+
+  @override
+  String get divRollsTable => 'Cast another lot here';
+
+  @override
+  String get divLinkEntity => 'Name a thing';
+
+  @override
+  String get divUnlink => 'Unbind';
+
+  @override
+  String get divNoTables => 'Nar lot-tables yet';
+
+  @override
+  String get divRoll => 'Cast';
+
+  @override
+  String get divEntries => 'Lots';
+
+  @override
+  String get divNoEntries => 'Nar lots yet';
+
+  @override
+  String get divHistory => 'Ere-casts';
+
+  @override
+  String get divQuickRoll => 'Just cast: 3d6';
 }

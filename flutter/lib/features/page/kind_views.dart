@@ -8,6 +8,7 @@ import 'views/author_views.dart';
 import 'views/chronicler_views.dart';
 import 'views/classifier_views.dart';
 import 'views/designer_views.dart';
+import 'views/diviner_views.dart';
 import 'views/narrator_views.dart';
 import 'views/scribe_views.dart';
 import 'views/selection_views.dart';
@@ -46,7 +47,7 @@ final List<ComponentDef> kindViewComponents = [
       (c, x) => DesignerView(ctx: x),
       canvas: true, canvasPresets: {'canvas'}),
   _view(ModuleKind.scribe, ['chat', 'transcript'], (c, x) => ScribeView(ctx: x)),
-  _view(ModuleKind.diviner, const [], (c, x) => NotYetOnMobile(label: x.source.kindInfo.label)),
+  _view(ModuleKind.diviner, const [], (c, x) => DivinerView(ctx: x)),
   _view(ModuleKind.locator, const [], (c, x) => LocatorContent(moduleId: x.source.id, boardHeight: fullBoard(c, x)), canvas: true),
   // The module's description IS the document for these two, so each is
   // `once` — two live editors on one text would overwrite each other.

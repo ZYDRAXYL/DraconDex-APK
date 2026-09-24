@@ -1426,4 +1426,64 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Hiện thứ tự đọc';
+
+  @override
+  String get divNewTable => 'Bảng mới';
+
+  @override
+  String get divDice => 'Xúc xắc';
+
+  @override
+  String get divDiceHelp => 'Để trống = theo trọng số';
+
+  @override
+  String get divBadDice => 'Không phải biểu thức xúc xắc';
+
+  @override
+  String get divModePick => 'Chọn một';
+
+  @override
+  String get divModeJoin => 'Nối tất cả';
+
+  @override
+  String get divWeighted => 'Theo trọng số';
+
+  @override
+  String get divEntryText => 'Văn bản';
+
+  @override
+  String get divFrom => 'Từ';
+
+  @override
+  String get divTo => 'Đến';
+
+  @override
+  String get divWeight => 'Trọng số';
+
+  @override
+  String get divRollsTable => 'Tung bảng khác tại đây';
+
+  @override
+  String get divLinkEntity => 'Gọi tên một thứ';
+
+  @override
+  String get divUnlink => 'Gỡ liên kết';
+
+  @override
+  String get divNoTables => 'Chưa có bảng';
+
+  @override
+  String get divRoll => 'Tung';
+
+  @override
+  String get divEntries => 'Mục';
+
+  @override
+  String get divNoEntries => 'Chưa có mục';
+
+  @override
+  String get divHistory => 'Lịch sử';
+
+  @override
+  String get divQuickRoll => 'Tung nhanh: 3d6';
 }

@@ -1426,4 +1426,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get dgShowOrder => '読む順を表示';
+
+  @override
+  String get divNewTable => '新しい表';
+
+  @override
+  String get divDice => 'ダイス';
+
+  @override
+  String get divDiceHelp => '空欄 = 重み付き';
+
+  @override
+  String get divBadDice => 'ダイス式ではありません';
+
+  @override
+  String get divModePick => '1つ選ぶ';
+
+  @override
+  String get divModeJoin => 'すべて連結';
+
+  @override
+  String get divWeighted => '重み付き';
+
+  @override
+  String get divEntryText => 'テキスト';
+
+  @override
+  String get divFrom => 'から';
+
+  @override
+  String get divTo => 'まで';
+
+  @override
+  String get divWeight => '重み';
+
+  @override
+  String get divRollsTable => 'ここで別の表を振る';
+
+  @override
+  String get divLinkEntity => '何かを指す';
+
+  @override
+  String get divUnlink => 'リンクを外す';
+
+  @override
+  String get divNoTables => 'まだ表がありません';
+
+  @override
+  String get divRoll => '振る';
+
+  @override
+  String get divEntries => '項目';
+
+  @override
+  String get divNoEntries => 'まだ項目がありません';
+
+  @override
+  String get divHistory => '履歴';
+
+  @override
+  String get divQuickRoll => '振るだけ: 3d6';
 }

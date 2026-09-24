@@ -2954,6 +2954,126 @@ abstract class AppLocalizations {
   /// **'Show reading order'**
   String get dgShowOrder;
 
+  /// No description provided for @divNewTable.
+  ///
+  /// In en, this message translates to:
+  /// **'New table'**
+  String get divNewTable;
+
+  /// No description provided for @divDice.
+  ///
+  /// In en, this message translates to:
+  /// **'Dice'**
+  String get divDice;
+
+  /// No description provided for @divDiceHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = weighted'**
+  String get divDiceHelp;
+
+  /// No description provided for @divBadDice.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a dice expression'**
+  String get divBadDice;
+
+  /// No description provided for @divModePick.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick one'**
+  String get divModePick;
+
+  /// No description provided for @divModeJoin.
+  ///
+  /// In en, this message translates to:
+  /// **'Join all'**
+  String get divModeJoin;
+
+  /// No description provided for @divWeighted.
+  ///
+  /// In en, this message translates to:
+  /// **'Weighted'**
+  String get divWeighted;
+
+  /// No description provided for @divEntryText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get divEntryText;
+
+  /// No description provided for @divFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get divFrom;
+
+  /// No description provided for @divTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get divTo;
+
+  /// No description provided for @divWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get divWeight;
+
+  /// No description provided for @divRollsTable.
+  ///
+  /// In en, this message translates to:
+  /// **'Roll another table here'**
+  String get divRollsTable;
+
+  /// No description provided for @divLinkEntity.
+  ///
+  /// In en, this message translates to:
+  /// **'Name something'**
+  String get divLinkEntity;
+
+  /// No description provided for @divUnlink.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove the link'**
+  String get divUnlink;
+
+  /// No description provided for @divNoTables.
+  ///
+  /// In en, this message translates to:
+  /// **'No tables yet'**
+  String get divNoTables;
+
+  /// No description provided for @divRoll.
+  ///
+  /// In en, this message translates to:
+  /// **'Roll'**
+  String get divRoll;
+
+  /// No description provided for @divEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'Entries'**
+  String get divEntries;
+
+  /// No description provided for @divNoEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'No entries yet'**
+  String get divNoEntries;
+
+  /// No description provided for @divHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get divHistory;
+
+  /// No description provided for @divQuickRoll.
+  ///
+  /// In en, this message translates to:
+  /// **'Just roll: 3d6'**
+  String get divQuickRoll;
+
 }
 
 class _AppLocalizationsDelegate

@@ -1426,4 +1426,64 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Afficher l\'ordre de lecture';
+
+  @override
+  String get divNewTable => 'Nouvelle table';
+
+  @override
+  String get divDice => 'Dés';
+
+  @override
+  String get divDiceHelp => 'Vide = pondéré';
+
+  @override
+  String get divBadDice => 'Pas une expression de dés';
+
+  @override
+  String get divModePick => 'En choisir un';
+
+  @override
+  String get divModeJoin => 'Tout joindre';
+
+  @override
+  String get divWeighted => 'Pondéré';
+
+  @override
+  String get divEntryText => 'Texte';
+
+  @override
+  String get divFrom => 'De';
+
+  @override
+  String get divTo => 'À';
+
+  @override
+  String get divWeight => 'Poids';
+
+  @override
+  String get divRollsTable => 'Lancer une autre table ici';
+
+  @override
+  String get divLinkEntity => 'Nommer quelque chose';
+
+  @override
+  String get divUnlink => 'Retirer le lien';
+
+  @override
+  String get divNoTables => 'Aucune table pour l\'instant';
+
+  @override
+  String get divRoll => 'Lancer';
+
+  @override
+  String get divEntries => 'Entrées';
+
+  @override
+  String get divNoEntries => 'Aucune entrée pour l\'instant';
+
+  @override
+  String get divHistory => 'Historique';
+
+  @override
+  String get divQuickRoll => 'Juste lancer : 3d6';
 }

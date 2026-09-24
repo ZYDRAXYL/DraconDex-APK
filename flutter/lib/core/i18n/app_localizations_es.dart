@@ -1426,4 +1426,64 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Mostrar orden de lectura';
+
+  @override
+  String get divNewTable => 'Nueva tabla';
+
+  @override
+  String get divDice => 'Dados';
+
+  @override
+  String get divDiceHelp => 'Vacío = ponderado';
+
+  @override
+  String get divBadDice => 'No es una expresión de dados';
+
+  @override
+  String get divModePick => 'Elegir uno';
+
+  @override
+  String get divModeJoin => 'Unir todos';
+
+  @override
+  String get divWeighted => 'Ponderado';
+
+  @override
+  String get divEntryText => 'Texto';
+
+  @override
+  String get divFrom => 'Desde';
+
+  @override
+  String get divTo => 'Hasta';
+
+  @override
+  String get divWeight => 'Peso';
+
+  @override
+  String get divRollsTable => 'Tirar otra tabla aquí';
+
+  @override
+  String get divLinkEntity => 'Nombrar algo';
+
+  @override
+  String get divUnlink => 'Quitar el vínculo';
+
+  @override
+  String get divNoTables => 'Aún no hay tablas';
+
+  @override
+  String get divRoll => 'Tirar';
+
+  @override
+  String get divEntries => 'Entradas';
+
+  @override
+  String get divNoEntries => 'Aún no hay entradas';
+
+  @override
+  String get divHistory => 'Historial';
+
+  @override
+  String get divQuickRoll => 'Solo tirar: 3d6';
 }

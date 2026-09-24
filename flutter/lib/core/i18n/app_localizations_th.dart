@@ -1426,4 +1426,64 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'แสดงลำดับการอ่าน';
+
+  @override
+  String get divNewTable => 'ตารางใหม่';
+
+  @override
+  String get divDice => 'ลูกเต๋า';
+
+  @override
+  String get divDiceHelp => 'ว่าง = สุ่มตามน้ำหนัก';
+
+  @override
+  String get divBadDice => 'ไม่ใช่รูปแบบลูกเต๋า';
+
+  @override
+  String get divModePick => 'สุ่มหนึ่ง';
+
+  @override
+  String get divModeJoin => 'ต่อทั้งหมด';
+
+  @override
+  String get divWeighted => 'ตามน้ำหนัก';
+
+  @override
+  String get divEntryText => 'ข้อความ';
+
+  @override
+  String get divFrom => 'จาก';
+
+  @override
+  String get divTo => 'ถึง';
+
+  @override
+  String get divWeight => 'น้ำหนัก';
+
+  @override
+  String get divRollsTable => 'ทอยตารางอื่นแทน';
+
+  @override
+  String get divLinkEntity => 'อ้างถึงสิ่งหนึ่ง';
+
+  @override
+  String get divUnlink => 'นำลิงก์ออก';
+
+  @override
+  String get divNoTables => 'ยังไม่มีตาราง';
+
+  @override
+  String get divRoll => 'ทอย';
+
+  @override
+  String get divEntries => 'รายการ';
+
+  @override
+  String get divNoEntries => 'ยังไม่มีรายการ';
+
+  @override
+  String get divHistory => 'ประวัติ';
+
+  @override
+  String get divQuickRoll => 'ทอยเฉย ๆ: 3d6';
 }

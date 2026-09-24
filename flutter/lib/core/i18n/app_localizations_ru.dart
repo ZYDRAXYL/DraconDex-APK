@@ -1426,4 +1426,64 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get dgShowOrder => 'Показать порядок чтения';
+
+  @override
+  String get divNewTable => 'Новая таблица';
+
+  @override
+  String get divDice => 'Кости';
+
+  @override
+  String get divDiceHelp => 'Пусто = по весу';
+
+  @override
+  String get divBadDice => 'Это не выражение для костей';
+
+  @override
+  String get divModePick => 'Выбрать одно';
+
+  @override
+  String get divModeJoin => 'Соединить все';
+
+  @override
+  String get divWeighted => 'По весу';
+
+  @override
+  String get divEntryText => 'Текст';
+
+  @override
+  String get divFrom => 'От';
+
+  @override
+  String get divTo => 'До';
+
+  @override
+  String get divWeight => 'Вес';
+
+  @override
+  String get divRollsTable => 'Бросить здесь другую таблицу';
+
+  @override
+  String get divLinkEntity => 'Указать что-то';
+
+  @override
+  String get divUnlink => 'Убрать связь';
+
+  @override
+  String get divNoTables => 'Таблиц пока нет';
+
+  @override
+  String get divRoll => 'Бросить';
+
+  @override
+  String get divEntries => 'Записи';
+
+  @override
+  String get divNoEntries => 'Записей пока нет';
+
+  @override
+  String get divHistory => 'История';
+
+  @override
+  String get divQuickRoll => 'Просто бросить: 3d6';
 }

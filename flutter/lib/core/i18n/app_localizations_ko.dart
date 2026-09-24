@@ -1426,4 +1426,64 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get dgShowOrder => '읽는 순서 표시';
+
+  @override
+  String get divNewTable => '새 표';
+
+  @override
+  String get divDice => '주사위';
+
+  @override
+  String get divDiceHelp => '비우면 = 가중치';
+
+  @override
+  String get divBadDice => '주사위 식이 아닙니다';
+
+  @override
+  String get divModePick => '하나 뽑기';
+
+  @override
+  String get divModeJoin => '모두 잇기';
+
+  @override
+  String get divWeighted => '가중치';
+
+  @override
+  String get divEntryText => '텍스트';
+
+  @override
+  String get divFrom => '부터';
+
+  @override
+  String get divTo => '까지';
+
+  @override
+  String get divWeight => '가중치';
+
+  @override
+  String get divRollsTable => '여기서 다른 표 굴리기';
+
+  @override
+  String get divLinkEntity => '무언가 지정';
+
+  @override
+  String get divUnlink => '링크 제거';
+
+  @override
+  String get divNoTables => '아직 표가 없습니다';
+
+  @override
+  String get divRoll => '굴리기';
+
+  @override
+  String get divEntries => '항목';
+
+  @override
+  String get divNoEntries => '아직 항목이 없습니다';
+
+  @override
+  String get divHistory => '기록';
+
+  @override
+  String get divQuickRoll => '그냥 굴리기: 3d6';
 }

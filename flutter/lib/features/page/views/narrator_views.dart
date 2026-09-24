@@ -442,8 +442,10 @@ class _ReaderState extends ConsumerState<_Reader> {
     final l = AppLocalizations.of(context)!;
     final mode = Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      child: Row(children: [
-        SegmentedButton<bool>(
+      child: Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: SegmentedButton<bool>(
+          showSelectedIcon: false,
           segments: [
             ButtonSegment(value: false, label: Text(l.narScript), icon: const Icon(Icons.menu_book_outlined)),
             ButtonSegment(value: true, label: Text(l.narPlayTest), icon: const Icon(Icons.play_arrow)),
@@ -454,7 +456,7 @@ class _ReaderState extends ConsumerState<_Reader> {
             if (_play) _start();
           },
         ),
-      ]),
+      ),
     );
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       mode,

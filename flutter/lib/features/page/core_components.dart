@@ -172,21 +172,6 @@ class DescriptionDocument extends ConsumerWidget {
   }
 }
 
-class NotYetOnMobile extends StatelessWidget {
-  final String label;
-  const NotYetOnMobile({super.key, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Text('$label · ${AppLocalizations.of(context)!.pbNotOnMobile}',
-          style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface.withValues(alpha: 0.6))),
-    );
-  }
-}
-
 class SharedLayoutNote extends StatelessWidget {
   final String text;
   const SharedLayoutNote({super.key, required this.text});
