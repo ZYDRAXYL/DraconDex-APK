@@ -1,4 +1,6 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/sketcher_model.dart';
 
 /// Data access for the Sketcher kind: a module's drawing pages and strokes.
@@ -22,11 +24,13 @@ class SketcherDao {
       'SELECT COALESCE(MAX(page_order),-1)+1 AS next FROM sketch_page WHERE module_ref=?',
       [moduleRef],
     );
-    return db.insert('sketch_page', {
+    final id = await db.insert('sketch_page', {
       'module_ref': moduleRef,
       'name': name,
       'page_order': Sqflite.firstIntValue(orderRows) ?? 0,
     });
+    await WikiService.resolveDangling(db, name, await WikiService.nexusOfModule(db, moduleRef));
+    return id;
   }
 
   Future<void> deletePage(int id) async {

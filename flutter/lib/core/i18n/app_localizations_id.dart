@@ -1003,4 +1003,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get elementPageSoon => 'Elemen ini akan punya halaman sendiri di pembaruan berikutnya. Untuk sekarang ia terbuka di dalam modulnya.';
+
+  @override
+  String get wikiUnresolved => 'Belum ada yang bernama ini. Buat halaman Drafter untuknya?';
+
+  @override
+  String get wikiCreateDrafter => 'Buat';
 }

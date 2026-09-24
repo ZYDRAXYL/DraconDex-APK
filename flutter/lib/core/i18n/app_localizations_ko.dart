@@ -1003,4 +1003,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get elementPageSoon => '이 요소는 다음 업데이트에서 자체 페이지를 갖게 됩니다. 지금은 모듈 안에서 열립니다.';
+
+  @override
+  String get wikiUnresolved => '아직 이 이름을 가진 것이 없습니다. 이 이름으로 Drafter 페이지를 만들까요?';
+
+  @override
+  String get wikiCreateDrafter => '만들기';
 }

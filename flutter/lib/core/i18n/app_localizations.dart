@@ -2108,6 +2108,18 @@ abstract class AppLocalizations {
   /// **'This element gets its own page in a coming update. For now it opens inside its module.'**
   String get elementPageSoon;
 
+  /// No description provided for @wikiUnresolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing has this name yet. Make a Drafter page for it?'**
+  String get wikiUnresolved;
+
+  /// No description provided for @wikiCreateDrafter.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get wikiCreateDrafter;
+
 }
 
 class _AppLocalizationsDelegate

@@ -1,4 +1,6 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/author_model.dart';
 
 /// Data access for the Author kind: the chapters of one module's book.
@@ -35,19 +37,26 @@ class AuthorDao {
       [moduleRef],
     );
     final nextOrder = Sqflite.firstIntValue(orderRows) ?? 0;
-    return db.insert('book_chapter', {
+    final id = await db.insert('book_chapter', {
       'module_ref': moduleRef,
       'name': name,
       'chapter_label': label,
       'chapter_order': nextOrder,
     });
+    await WikiService.resolveDangling(db, name, await WikiService.nexusOfModule(db, moduleRef));
+    return id;
   }
 
   Future<void> renameChapter(int id, String name, {String? label}) async {
+    final old = await db.rawQuery(
+        'SELECT ch.name, m.nexus_ref FROM book_chapter ch JOIN module m ON ch.module_ref=m.id WHERE ch.id=?', [id]);
     await db.rawUpdate(
       "UPDATE book_chapter SET name=?,chapter_label=?,update_at=datetime('now') WHERE id=?",
       [name, label, id],
     );
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'bchp_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
   }
 
   Future<void> updateChapterContent(int id, String? content) async {
@@ -55,6 +64,7 @@ class AuthorDao {
       "UPDATE book_chapter SET chapter_content=?,update_at=datetime('now') WHERE id=?",
       [content, id],
     );
+    await WikiService.reindexSource(db, 'bchp', id);
   }
 
   Future<void> deleteChapter(int id) async {

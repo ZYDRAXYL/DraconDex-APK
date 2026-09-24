@@ -325,5 +325,7 @@
   "searchContent": "Writ",
   "searchCommands": "Commandra",
   "searchEmpty": "Naught answereth",
-  "elementPageSoon": "This thing gaineth its own vhaelen in a coming update. For now it openeth within its module."
+  "elementPageSoon": "This thing gaineth its own vhaelen in a coming update. For now it openeth within its module.",
+  "wikiUnresolved": "Naught beareth this name yet. Shall a Drafter vhaelen be made for it?",
+  "wikiCreateDrafter": "Forge"
 }

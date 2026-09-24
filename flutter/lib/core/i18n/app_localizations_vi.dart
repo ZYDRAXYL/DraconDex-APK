@@ -1003,4 +1003,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get elementPageSoon => 'Phần tử này sẽ có trang riêng trong bản cập nhật tới. Hiện tại nó mở bên trong module của nó.';
+
+  @override
+  String get wikiUnresolved => 'Chưa có gì mang tên này. Tạo một trang Drafter cho nó?';
+
+  @override
+  String get wikiCreateDrafter => 'Tạo';
 }

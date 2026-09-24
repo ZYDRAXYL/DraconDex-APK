@@ -1,4 +1,6 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/chronicler_model.dart';
 
 /// Data access for the Chronicler kind: one timeline per module, and the
@@ -107,6 +109,7 @@ class ChroniclerDao {
       "update_at=datetime('now') WHERE id=?",
       [name, story, startDateId, endDateId, id],
     );
+    await WikiService.reindexSource(db, 'tlev', id);
   }
 
   Future<void> deleteEvent(int id) async {

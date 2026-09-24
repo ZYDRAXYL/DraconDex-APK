@@ -1,5 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
+import '../services/wiki_service.dart';
+
 import '../../core/database/module_parents.dart';
 import '../models/module_model.dart';
 
@@ -111,7 +113,7 @@ class ModuleDao {
       [nexusRef, parentId],
     );
     final nextOrder = Sqflite.firstIntValue(orderRows) ?? 0;
-    return db.insert('module', {
+    final id = await db.insert('module', {
       'nexus_ref': nexusRef,
       'parent_id': parentId,
       'name': name,
@@ -121,13 +123,21 @@ class ModuleDao {
       'color': colorId,
       'display_order': nextOrder,
     });
+    // [[links]] typed before this module existed now find it.
+    await WikiService.resolveDangling(db, name, nexusRef);
+    return id;
   }
 
   Future<void> renameModule(int id, String name) async {
+    final old = await db.rawQuery('SELECT name, nexus_ref FROM module WHERE id=?', [id]);
     await db.rawUpdate(
       "UPDATE module SET name=?,update_at=datetime('now') WHERE id=?",
       [name, id],
     );
+    // Every [[Old name]] that linked here follows the rename.
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'module_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
   }
 
   Future<void> updateModuleDescription(int id, String? description) async {
@@ -135,6 +145,7 @@ class ModuleDao {
       "UPDATE module SET description=?,update_at=datetime('now') WHERE id=?",
       [description, id],
     );
+    await WikiService.reindexSource(db, 'module', id);
   }
 
   Future<void> updateModuleAppearance(int id, {String? icon, int? iconColorId, int? colorId}) async {

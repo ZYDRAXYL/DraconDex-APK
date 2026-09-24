@@ -325,5 +325,7 @@
   "searchContent": "内容",
   "searchCommands": "命令",
   "searchEmpty": "没有匹配结果",
-  "elementPageSoon": "此元素将在后续更新中拥有自己的页面。目前它在所属模块内打开。"
+  "elementPageSoon": "此元素将在后续更新中拥有自己的页面。目前它在所属模块内打开。",
+  "wikiUnresolved": "还没有叫这个名字的内容。要为它创建一个 Drafter 页面吗？",
+  "wikiCreateDrafter": "创建"
 }

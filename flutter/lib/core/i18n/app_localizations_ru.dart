@@ -1003,4 +1003,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get elementPageSoon => 'У этого элемента появится своя страница в одном из следующих обновлений. Пока он открывается внутри своего модуля.';
+
+  @override
+  String get wikiUnresolved => 'Пока ничто не носит это имя. Создать для него страницу Drafter?';
+
+  @override
+  String get wikiCreateDrafter => 'Создать';
 }

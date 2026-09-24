@@ -325,5 +325,7 @@
   "searchContent": "Konten",
   "searchCommands": "Perintah",
   "searchEmpty": "Tidak ada hasil",
-  "elementPageSoon": "Elemen ini akan punya halaman sendiri di pembaruan berikutnya. Untuk sekarang ia terbuka di dalam modulnya."
+  "elementPageSoon": "Elemen ini akan punya halaman sendiri di pembaruan berikutnya. Untuk sekarang ia terbuka di dalam modulnya.",
+  "wikiUnresolved": "Belum ada yang bernama ini. Buat halaman Drafter untuknya?",
+  "wikiCreateDrafter": "Buat"
 }

@@ -325,5 +325,7 @@
   "searchContent": "Nội dung",
   "searchCommands": "Lệnh",
   "searchEmpty": "Không có kết quả",
-  "elementPageSoon": "Phần tử này sẽ có trang riêng trong bản cập nhật tới. Hiện tại nó mở bên trong module của nó."
+  "elementPageSoon": "Phần tử này sẽ có trang riêng trong bản cập nhật tới. Hiện tại nó mở bên trong module của nó.",
+  "wikiUnresolved": "Chưa có gì mang tên này. Tạo một trang Drafter cho nó?",
+  "wikiCreateDrafter": "Tạo"
 }

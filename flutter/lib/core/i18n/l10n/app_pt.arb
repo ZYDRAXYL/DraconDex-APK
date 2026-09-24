@@ -325,5 +325,7 @@
   "searchContent": "Conteúdo",
   "searchCommands": "Comandos",
   "searchEmpty": "Nenhum resultado",
-  "elementPageSoon": "Este elemento terá sua própria página em uma próxima atualização. Por enquanto, ele abre dentro do seu módulo."
+  "elementPageSoon": "Este elemento terá sua própria página em uma próxima atualização. Por enquanto, ele abre dentro do seu módulo.",
+  "wikiUnresolved": "Nada tem este nome ainda. Criar uma página Drafter para ele?",
+  "wikiCreateDrafter": "Criar"
 }

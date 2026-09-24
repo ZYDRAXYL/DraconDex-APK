@@ -1003,4 +1003,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get elementPageSoon => '此元素将在后续更新中拥有自己的页面。目前它在所属模块内打开。';
+
+  @override
+  String get wikiUnresolved => '还没有叫这个名字的内容。要为它创建一个 Drafter 页面吗？';
+
+  @override
+  String get wikiCreateDrafter => '创建';
 }

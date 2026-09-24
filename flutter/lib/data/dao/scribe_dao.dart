@@ -1,4 +1,6 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/scribe_model.dart';
 
 /// Data access for the Scribe kind: chat-style notes. A module owns sessions
@@ -22,18 +24,25 @@ class ScribeDao {
       [moduleRef],
     );
     final nextOrder = Sqflite.firstIntValue(orderRows) ?? 0;
-    return db.insert('chat_session', {
+    final id = await db.insert('chat_session', {
       'module_ref': moduleRef,
       'name': name,
       'session_order': nextOrder,
     });
+    await WikiService.resolveDangling(db, name, await WikiService.nexusOfModule(db, moduleRef));
+    return id;
   }
 
   Future<void> renameSession(int id, String name) async {
+    final old = await db.rawQuery(
+        'SELECT s.name, m.nexus_ref FROM chat_session s JOIN module m ON s.module_ref=m.id WHERE s.id=?', [id]);
     await db.rawUpdate(
       "UPDATE chat_session SET name=?,update_at=datetime('now') WHERE id=?",
       [name, id],
     );
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'chss_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
   }
 
   Future<void> deleteSession(int id) async {
@@ -69,11 +78,14 @@ class ScribeDao {
       "UPDATE chat_session SET update_at=datetime('now') WHERE id=?",
       [sessionRef],
     );
+    await WikiService.reindexSource(db, 'chss', sessionRef);
     return id;
   }
 
   Future<void> updateMessage(int id, String message) async {
     await db.rawUpdate('UPDATE chat_message SET message=? WHERE id=?', [message, id]);
+    final s = await db.rawQuery('SELECT session_ref FROM chat_message WHERE id=?', [id]);
+    if (s.isNotEmpty) await WikiService.reindexSource(db, 'chss', s.first['session_ref'] as int);
   }
 
   Future<void> deleteMessage(int id) async {

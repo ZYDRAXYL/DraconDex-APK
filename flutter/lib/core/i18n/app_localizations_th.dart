@@ -1003,4 +1003,10 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get elementPageSoon => 'องค์ประกอบนี้จะมีหน้าของตัวเองในอัปเดตถัดไป ตอนนี้จะเปิดอยู่ใน module ของมัน';
+
+  @override
+  String get wikiUnresolved => 'ยังไม่มีอะไรชื่อนี้ สร้างหน้า Drafter ชื่อนี้ไหม?';
+
+  @override
+  String get wikiCreateDrafter => 'สร้าง';
 }

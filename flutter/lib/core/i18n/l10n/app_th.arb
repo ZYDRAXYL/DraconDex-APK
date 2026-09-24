@@ -325,5 +325,7 @@
   "searchContent": "เนื้อหา",
   "searchCommands": "คำสั่ง",
   "searchEmpty": "ไม่พบผลลัพธ์",
-  "elementPageSoon": "องค์ประกอบนี้จะมีหน้าของตัวเองในอัปเดตถัดไป ตอนนี้จะเปิดอยู่ใน module ของมัน"
+  "elementPageSoon": "องค์ประกอบนี้จะมีหน้าของตัวเองในอัปเดตถัดไป ตอนนี้จะเปิดอยู่ใน module ของมัน",
+  "wikiUnresolved": "ยังไม่มีอะไรชื่อนี้ สร้างหน้า Drafter ชื่อนี้ไหม?",
+  "wikiCreateDrafter": "สร้าง"
 }

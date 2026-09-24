@@ -1003,4 +1003,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get elementPageSoon => 'この要素は今後のアップデートで専用ページを持ちます。今はモジュールの中で開きます。';
+
+  @override
+  String get wikiUnresolved => 'この名前のものはまだありません。この名前で Drafter ページを作りますか？';
+
+  @override
+  String get wikiCreateDrafter => '作成';
 }

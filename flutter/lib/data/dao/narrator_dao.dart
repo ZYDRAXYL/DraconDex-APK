@@ -1,4 +1,6 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/narrator_model.dart';
 
 /// Data access for the Narrator kind.
@@ -28,6 +30,7 @@ class NarratorDao {
       "UPDATE story_dialogue SET name=?,description=?,update_at=datetime('now') WHERE id=?",
       [name, description, id],
     );
+    await WikiService.reindexSource(db, 'sdlg', id);
   }
 
   Future<void> deleteDialogue(int id) async {

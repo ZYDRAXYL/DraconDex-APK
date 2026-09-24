@@ -1003,4 +1003,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get elementPageSoon => 'Dieses Element bekommt in einem kommenden Update eine eigene Seite. Vorerst öffnet es sich in seinem Modul.';
+
+  @override
+  String get wikiUnresolved => 'Noch trägt nichts diesen Namen. Eine Drafter-Seite dafür anlegen?';
+
+  @override
+  String get wikiCreateDrafter => 'Anlegen';
 }

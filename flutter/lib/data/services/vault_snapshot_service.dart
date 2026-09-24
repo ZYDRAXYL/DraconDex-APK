@@ -5,6 +5,7 @@ import 'package:sqflite/sqflite.dart';
 import '../../core/database/module_parents.dart';
 import '../../core/entity/entity_kinds.dart';
 import '../models/module_model.dart';
+import 'wiki_service.dart';
 
 /// The `dracondex-vault-snapshot` format — the Dart half of a contract whose
 /// other half is `serializeVault` / `applySnapshotCore` in
@@ -1103,10 +1104,11 @@ class VaultSnapshotService {
     return result;
   }
 
-  /// Runs after a successful apply, outside its transaction — the wiki-link
-  /// index rebuild (EXE rebuilds it after every pull). Set by the app at
-  /// start-up; tests leave it null.
-  static Future<void> Function(Database db, int nexusId)? afterApply;
+  /// Runs after a successful apply, outside its transaction: the wiki-link
+  /// index is rebuilt, as EXE rebuilds it after every pull — a snapshot
+  /// carries the texts, never the index.
+  static Future<void> Function(Database db, int nexusId)? afterApply =
+      (db, _) => WikiService.rebuildIndex(db);
 
   static bool _truthy(Object? v) => v == true || v == 1;
 

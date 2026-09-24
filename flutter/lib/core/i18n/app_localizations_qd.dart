@@ -1003,4 +1003,10 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get elementPageSoon => 'This thing gaineth its own vhaelen in a coming update. For now it openeth within its module.';
+
+  @override
+  String get wikiUnresolved => 'Naught beareth this name yet. Shall a Drafter vhaelen be made for it?';
+
+  @override
+  String get wikiCreateDrafter => 'Forge';
 }

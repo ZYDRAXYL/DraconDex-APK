@@ -1,4 +1,6 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/classifier_model.dart';
 
 /// Data access for the Classifier kind: the module's field definitions, the
@@ -67,18 +69,26 @@ class ClassifierDao {
       'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM classifier_object WHERE module_ref=?',
       [moduleRef],
     );
-    return db.insert('classifier_object', {
+    final id = await db.insert('classifier_object', {
       'module_ref': moduleRef,
       'name': name,
       'display_order': Sqflite.firstIntValue(orderRows) ?? 0,
     });
+    await WikiService.resolveDangling(db, name, await WikiService.nexusOfModule(db, moduleRef));
+    return id;
   }
 
   Future<void> updateItem(int id, {required String name, String? note}) async {
+    final old = await db.rawQuery(
+        'SELECT o.name, m.nexus_ref FROM classifier_object o JOIN module m ON o.module_ref=m.id WHERE o.id=?', [id]);
     await db.rawUpdate(
       "UPDATE classifier_object SET name=?,note=?,update_at=datetime('now') WHERE id=?",
       [name, note, id],
     );
+    await WikiService.reindexSource(db, 'cobj', id);
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'cobj_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
   }
 
   Future<void> deleteItem(int id) async {
@@ -113,5 +123,7 @@ class ClassifierDao {
       {'object_ref': objectRef, 'template_ref': templateRef, 'attribute_value': value},
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+    // A text field's value is part of the object's linkable text.
+    await WikiService.reindexSource(db, 'cobj', objectRef);
   }
 }
