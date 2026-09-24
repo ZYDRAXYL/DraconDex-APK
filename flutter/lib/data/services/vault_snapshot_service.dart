@@ -690,6 +690,50 @@ class VaultSnapshotService {
             <Object?>[page, st['color'], st['width'] ?? 3, st['points']]);
       }
 
+      // --- notes (folder tree parents-first) ------------------------------
+      // Before the key maps: a sketch pin, a Designer link or a relation can
+      // point at a note, so note_<id> has to resolve from the first row that
+      // uses a key. Built after the pins, it dropped every note-linked pin and
+      // Designer node (found by the shared snapshot fixture, Procress 12 part 0).
+      final nts = sect(p['notes']);
+      final nfMap = <int, int>{};
+      var pendingF = arr(nts['folders']);
+      while (pendingF.isNotEmpty) {
+        final next = <Map<String, Object?>>[];
+        var progressed = false;
+        for (final f in pendingF) {
+          final oldParent = f['parentId'];
+          if (oldParent is int && !nfMap.containsKey(oldParent)) {
+            next.add(f);
+            continue;
+          }
+          final id = await txn.rawInsert(
+              'INSERT INTO note_folder (nexus_ref, parent_ref, name, color) VALUES (?,?,?,?)',
+              <Object?>[nexusId, oldParent is int ? nfMap[oldParent] : null,
+                        f['name'], colorId(f['colorCode'])]);
+          final oldId = f['id'];
+          if (oldId is int) nfMap[oldId] = id;
+          progressed = true;
+        }
+        if (!progressed) break;
+        pendingF = next;
+      }
+
+      final noteMap = <int, int>{};
+      for (final n in arr(nts['notes'])) {
+        final folderId = n['folderId'];
+        final id = await txn.rawInsert(
+            'INSERT OR IGNORE INTO note (nexus_ref, folder_ref, title, content, color, pinned) '
+            'VALUES (?,?,?,?,?,?)',
+            <Object?>[nexusId, folderId is int ? nfMap[folderId] : null, n['title'],
+                      n['content'] ?? '', colorId(n['colorCode']), n['pinned'] ?? 0]);
+        // OR IGNORE reports 0 when the row was skipped (a title collision).
+        // Leaving it out of the map is what stops a relation pointing at a
+        // note that was never inserted.
+        final oldId = n['id'];
+        if (id != 0 && oldId is int) noteMap[oldId] = id;
+      }
+
       // Every id map a linker key can point at. Built here because sketch pins
       // and design nodes are the first rows that have to resolve one.
       //
@@ -701,6 +745,7 @@ class VaultSnapshotService {
       final keyMaps = <String, Map<int, int>>{
         'module': modMap, 'cobj': cobjMap, 'bchp': bchpMap, 'chss': chssMap,
         'tlev': evtMap, 'sdlg': dlgMap, 'skpg': pageMap, 'ctpl': ctplMap,
+        'note': noteMap,
       };
 
       var droppedPins = 0;
@@ -742,48 +787,6 @@ class VaultSnapshotService {
             <Object?>[m, from, to, e['label']]);
       }
 
-      // --- notes (folder tree parents-first), then relations -------------
-      final nts = sect(p['notes']);
-      final nfMap = <int, int>{};
-      var pendingF = arr(nts['folders']);
-      while (pendingF.isNotEmpty) {
-        final next = <Map<String, Object?>>[];
-        var progressed = false;
-        for (final f in pendingF) {
-          final oldParent = f['parentId'];
-          if (oldParent is int && !nfMap.containsKey(oldParent)) {
-            next.add(f);
-            continue;
-          }
-          final id = await txn.rawInsert(
-              'INSERT INTO note_folder (nexus_ref, parent_ref, name, color) VALUES (?,?,?,?)',
-              <Object?>[nexusId, oldParent is int ? nfMap[oldParent] : null,
-                        f['name'], colorId(f['colorCode'])]);
-          final oldId = f['id'];
-          if (oldId is int) nfMap[oldId] = id;
-          progressed = true;
-        }
-        if (!progressed) break;
-        pendingF = next;
-      }
-
-      final noteMap = <int, int>{};
-      for (final n in arr(nts['notes'])) {
-        final folderId = n['folderId'];
-        final id = await txn.rawInsert(
-            'INSERT OR IGNORE INTO note (nexus_ref, folder_ref, title, content, color, pinned) '
-            'VALUES (?,?,?,?,?,?)',
-            <Object?>[nexusId, folderId is int ? nfMap[folderId] : null, n['title'],
-                      n['content'] ?? '', colorId(n['colorCode']), n['pinned'] ?? 0]);
-        // OR IGNORE reports 0 when the row was skipped (a title collision).
-        // Leaving it out of the map is what stops a relation pointing at a
-        // note that was never inserted.
-        final oldId = n['id'];
-        if (id != 0 && oldId is int) noteMap[oldId] = id;
-      }
-      // note_<id> relation endpoints resolve through this too, so it joins the
-      // key maps only once the notes actually exist.
-      keyMaps['note'] = noteMap;
 
       // Page blocks: item_key / source_key are entity keys, so they wait for
       // every map. '*' (the shared element layout) is not a key and stays.

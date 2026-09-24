@@ -97,6 +97,10 @@ flutter:
 
   assets:
     - assets/images/
+    # Vendored from DraconDex-SDB templates/ (Procress 12 part 0): the genre
+    # bundles and the TH/EN guide. Read by APK V3's template picker.
+    - assets/templates/
+    - assets/templates/guide/
 
   fonts:
     - family: NotoSans
