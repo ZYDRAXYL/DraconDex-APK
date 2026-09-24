@@ -12,13 +12,22 @@ class HubLocation {
   /// null at a Nexus root, i.e. `/hub/3`.
   final int? moduleId;
 
-  const HubLocation({this.nexusId, this.moduleId});
+  /// An element page inside [moduleId] (`cobj_12`), i.e.
+  /// `/hub/3/module/12/item/cobj_12` — null on the module's own page.
+  final String? itemKey;
+
+  const HubLocation({this.nexusId, this.moduleId, this.itemKey});
 
   static const HubLocation none = HubLocation();
 
   bool get isHome => nexusId == null;
 
-  /// Parses `/`, `/hub/3` and `/hub/3/module/12`. Anything else — an
+  /// An entity key with a prefix and a row id, the shape every element key
+  /// in the vault has.
+  static final itemKeyPattern = RegExp(r'^[a-z]+_\d+$');
+
+  /// Parses `/`, `/hub/3`, `/hub/3/module/12` and
+  /// `/hub/3/module/12/item/cobj_4`. Anything else — an
   /// unrecognised or malformed path — resolves to [none] rather than
   /// throwing: this only drives a highlight.
   factory HubLocation.parse(String path) {
@@ -27,7 +36,11 @@ class HubLocation {
     final nexusId = int.tryParse(parts[1]);
     if (nexusId == null) return none;
     if (parts.length >= 4 && parts[2] == 'module') {
-      return HubLocation(nexusId: nexusId, moduleId: int.tryParse(parts[3]));
+      final moduleId = int.tryParse(parts[3]);
+      final item = parts.length >= 6 && parts[4] == 'item' && moduleId != null && itemKeyPattern.hasMatch(parts[5])
+          ? parts[5]
+          : null;
+      return HubLocation(nexusId: nexusId, moduleId: moduleId, itemKey: item);
     }
     return HubLocation(nexusId: nexusId);
   }

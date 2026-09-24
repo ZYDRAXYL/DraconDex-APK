@@ -4,9 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../core/layout/breakpoints.dart';
 
 /// Persisted chrome state for the tablet/desktop shell — how wide the hub
-/// panel is, whether it and the rail's labels are showing, and which of the
-/// panel's sections are open. Phone-shaped windows never read it (they have
-/// the Navibar instead), but it is kept app-wide rather than per-screen so a
+/// panel is and whether it and the rail's labels are showing. Phone-shaped
+/// windows never read it (they have the Navibar instead), but it is kept
+/// app-wide rather than per-screen so a
 /// rotation or a Split View resize lands back on the same arrangement.
 class ShellLayoutState {
   /// Whether the hub panel is on screen at all (the rail's panel toggle).
@@ -19,28 +19,21 @@ class ShellLayoutState {
   /// once it is dragged past a certain width.
   final bool railExtended;
 
-  /// Whether the panel's folder-views section is unfolded. The nest itself
-  /// has no such flag — it is what the panel is for, so it is always shown.
-  final bool recentSectionOpen;
-
   const ShellLayoutState({
     this.hubVisible = true,
     this.hubWidth = kHubPanelDefaultWidth,
     this.railExtended = false,
-    this.recentSectionOpen = false,
   });
 
   ShellLayoutState copyWith({
     bool? hubVisible,
     double? hubWidth,
     bool? railExtended,
-    bool? recentSectionOpen,
   }) {
     return ShellLayoutState(
       hubVisible: hubVisible ?? this.hubVisible,
       hubWidth: hubWidth ?? this.hubWidth,
       railExtended: railExtended ?? this.railExtended,
-      recentSectionOpen: recentSectionOpen ?? this.recentSectionOpen,
     );
   }
 }
@@ -49,7 +42,6 @@ class ShellLayoutNotifier extends Notifier<ShellLayoutState> {
   static const _keyHubVisible = 'shell_hub_visible';
   static const _keyHubWidth = 'shell_hub_width';
   static const _keyRailExtended = 'shell_rail_extended';
-  static const _keyRecentOpen = 'shell_section_recent';
 
   @override
   ShellLayoutState build() {
@@ -64,7 +56,6 @@ class ShellLayoutNotifier extends Notifier<ShellLayoutState> {
       hubWidth: (prefs.getDouble(_keyHubWidth) ?? kHubPanelDefaultWidth)
           .clamp(kHubPanelMinWidth, kHubPanelMaxWidth),
       railExtended: prefs.getBool(_keyRailExtended) ?? false,
-      recentSectionOpen: prefs.getBool(_keyRecentOpen) ?? false,
     );
   }
 
@@ -94,12 +85,6 @@ class ShellLayoutNotifier extends Notifier<ShellLayoutState> {
   }
 
   Future<void> toggleRailExtended() => setRailExtended(!state.railExtended);
-
-  Future<void> setRecentSectionOpen(bool open) async {
-    state = state.copyWith(recentSectionOpen: open);
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_keyRecentOpen, open);
-  }
 }
 
 final shellLayoutProvider =

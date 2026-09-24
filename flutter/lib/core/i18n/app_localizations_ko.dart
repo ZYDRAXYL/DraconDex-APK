@@ -582,15 +582,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get deleteHashtagConfirmTitle => '태그를 삭제할까요?';
 
   @override
-  String get builderNavHome => '홈';
-
-  @override
-  String get builderNavView => '보기';
-
-  @override
-  String get builderNavFolders => '폴더 보기';
-
-  @override
   String get viewModeTitle => '보기 모드';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get viewModeCompact => '간결';
-
-  @override
-  String get recentViewsTitle => '최근 본 항목';
-
-  @override
-  String get recentViewsEmpty => '최근 본 항목이 없습니다';
-
-  @override
-  String get recentViewsClear => '모두 지우기';
 
   @override
   String get builderNexusRootLabel => 'Nexus 루트';
@@ -961,4 +943,64 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => '링크에는 키가 들어 있어서, 보낸 쪽이 QR만 허용했더라도 사용할 수 있습니다.';
+
+  @override
+  String get navNest => '둥지';
+
+  @override
+  String get navSearch => '검색';
+
+  @override
+  String get navOpenPages => '페이지';
+
+  @override
+  String get navTools => '도구';
+
+  @override
+  String get navMore => '더 보기';
+
+  @override
+  String get openPagesTitle => '열린 페이지';
+
+  @override
+  String get openPagesEmpty => '열린 페이지가 없습니다. 연 페이지는 닫을 때까지 여기에 남습니다.';
+
+  @override
+  String get openPagesCloseAll => '모두 닫기';
+
+  @override
+  String get openPageClose => '페이지 닫기';
+
+  @override
+  String get rowOpen => '열기';
+
+  @override
+  String get rowMore => '추가 작업';
+
+  @override
+  String get crumbEmpty => '안에 아무것도 없음';
+
+  @override
+  String get goToTitle => '이동';
+
+  @override
+  String get goToHint => '이름, 경로 또는 @handle';
+
+  @override
+  String get searchHint => '이름, 텍스트, 명령 검색';
+
+  @override
+  String get searchThings => '항목';
+
+  @override
+  String get searchContent => '내용';
+
+  @override
+  String get searchCommands => '명령';
+
+  @override
+  String get searchEmpty => '일치하는 결과 없음';
+
+  @override
+  String get elementPageSoon => '이 요소는 다음 업데이트에서 자체 페이지를 갖게 됩니다. 지금은 모듈 안에서 열립니다.';
 }

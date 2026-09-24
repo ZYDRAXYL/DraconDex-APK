@@ -582,15 +582,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Xóa thẻ này?';
 
   @override
-  String get builderNavHome => 'Trang chủ';
-
-  @override
-  String get builderNavView => 'Xem';
-
-  @override
-  String get builderNavFolders => 'Xem thư mục';
-
-  @override
   String get viewModeTitle => 'Chế độ xem';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Gọn';
-
-  @override
-  String get recentViewsTitle => 'Xem gần đây';
-
-  @override
-  String get recentViewsEmpty => 'Chưa có mục nào gần đây';
-
-  @override
-  String get recentViewsClear => 'Xóa tất cả';
 
   @override
   String get builderNexusRootLabel => 'Gốc Nexus';
@@ -961,4 +943,64 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Liên kết mang sẵn khoá, nên vẫn dùng được kể cả khi người gửi chỉ cho phép mã QR.';
+
+  @override
+  String get navNest => 'Tổ';
+
+  @override
+  String get navSearch => 'Tìm kiếm';
+
+  @override
+  String get navOpenPages => 'Trang';
+
+  @override
+  String get navTools => 'Công cụ';
+
+  @override
+  String get navMore => 'Thêm';
+
+  @override
+  String get openPagesTitle => 'Trang đang mở';
+
+  @override
+  String get openPagesEmpty => 'Chưa có trang nào đang mở. Mỗi trang bạn mở sẽ ở đây cho đến khi bạn đóng nó.';
+
+  @override
+  String get openPagesCloseAll => 'Đóng tất cả';
+
+  @override
+  String get openPageClose => 'Đóng trang';
+
+  @override
+  String get rowOpen => 'Mở';
+
+  @override
+  String get rowMore => 'Thao tác khác';
+
+  @override
+  String get crumbEmpty => 'Không có gì bên trong';
+
+  @override
+  String get goToTitle => 'Đi tới';
+
+  @override
+  String get goToHint => 'Tên, đường dẫn hoặc @handle';
+
+  @override
+  String get searchHint => 'Tìm tên, nội dung và lệnh';
+
+  @override
+  String get searchThings => 'Mục';
+
+  @override
+  String get searchContent => 'Nội dung';
+
+  @override
+  String get searchCommands => 'Lệnh';
+
+  @override
+  String get searchEmpty => 'Không có kết quả';
+
+  @override
+  String get elementPageSoon => 'Phần tử này sẽ có trang riêng trong bản cập nhật tới. Hiện tại nó mở bên trong module của nó.';
 }

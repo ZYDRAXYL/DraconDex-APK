@@ -582,15 +582,6 @@ class AppLocalizationsTh extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'ลบแท็กนี้หรือไม่?';
 
   @override
-  String get builderNavHome => 'หน้าแรก';
-
-  @override
-  String get builderNavView => 'มุมมอง';
-
-  @override
-  String get builderNavFolders => 'โฟลเดอร์มุมมอง';
-
-  @override
   String get viewModeTitle => 'รูปแบบมุมมอง';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'กระชับ';
-
-  @override
-  String get recentViewsTitle => 'มุมมองล่าสุด';
-
-  @override
-  String get recentViewsEmpty => 'ยังไม่มีมุมมองล่าสุด';
-
-  @override
-  String get recentViewsClear => 'ล้างทั้งหมด';
 
   @override
   String get builderNexusRootLabel => 'รากของ Nexus';
@@ -961,4 +943,64 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'ลิงก์มีคีย์อยู่ในตัว จึงใช้ได้แม้ผู้ส่งจะอนุญาตเฉพาะการสแกน QR';
+
+  @override
+  String get navNest => 'รัง';
+
+  @override
+  String get navSearch => 'ค้นหา';
+
+  @override
+  String get navOpenPages => 'หน้า';
+
+  @override
+  String get navTools => 'เครื่องมือ';
+
+  @override
+  String get navMore => 'เพิ่มเติม';
+
+  @override
+  String get openPagesTitle => 'หน้าที่เปิด';
+
+  @override
+  String get openPagesEmpty => 'ยังไม่มีหน้าที่เปิด หน้าที่เปิดจะอยู่ตรงนี้จนกว่าจะปิด';
+
+  @override
+  String get openPagesCloseAll => 'ปิดทั้งหมด';
+
+  @override
+  String get openPageClose => 'ปิดหน้า';
+
+  @override
+  String get rowOpen => 'เปิด';
+
+  @override
+  String get rowMore => 'การกระทำเพิ่มเติม';
+
+  @override
+  String get crumbEmpty => 'ไม่มีอะไรข้างใน';
+
+  @override
+  String get goToTitle => 'ไปที่';
+
+  @override
+  String get goToHint => 'ชื่อ path หรือ @handle';
+
+  @override
+  String get searchHint => 'ค้นหาชื่อ ข้อความ และคำสั่ง';
+
+  @override
+  String get searchThings => 'สิ่งของ';
+
+  @override
+  String get searchContent => 'เนื้อหา';
+
+  @override
+  String get searchCommands => 'คำสั่ง';
+
+  @override
+  String get searchEmpty => 'ไม่พบผลลัพธ์';
+
+  @override
+  String get elementPageSoon => 'องค์ประกอบนี้จะมีหน้าของตัวเองในอัปเดตถัดไป ตอนนี้จะเปิดอยู่ใน module ของมัน';
 }

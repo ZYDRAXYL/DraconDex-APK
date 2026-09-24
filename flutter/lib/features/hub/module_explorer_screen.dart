@@ -1,31 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
+import '../../data/models/viewer_model.dart';
 import '../../providers/builder_view_provider.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
+import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
-import '../../widgets/confirm_dialog.dart';
+import '../../widgets/hiding_app_bar.dart';
+import '../../widgets/row_menu.dart';
+import '../builder/breadcrumb_title.dart';
+import '../builder/view_mode_button.dart';
 import 'content/module_content.dart';
 import 'dialogs/module_dialog.dart';
+import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
 
-/// One drill-down level of the Hub explorer, shown inside the Builder shell:
-/// the Nexus root (moduleId null) or a single module's own screen — its
-/// content area (if its kind has one) plus the modules nested under it.
-/// Reused recursively: drilling in pushes this same widget again with a
-/// deeper moduleId, file-explorer style.
+/// One page of the Hub, shown inside the Builder shell: the Nexus root
+/// (moduleId null), a single module's own page — its content area (if its
+/// kind has one) plus the modules nested under it — or, with [itemKey], one
+/// element of that module. Reused recursively: drilling in pushes this same
+/// widget again with a deeper moduleId, file-explorer style.
 ///
-/// Opening one records it in the Builder's folder-views history, which is
-/// what the Navibar's folder button lists.
+/// The title is the page's breadcrumb (APP docs/APK-V3.md §10.3), and the
+/// app bar keeps to two actions — the view mode and the page's ⋮ — with the
+/// FAB as the one main button (§5).
+///
+/// Opening one opens it as a page (the Navibar's "open pages").
 class ModuleExplorerScreen extends ConsumerStatefulWidget {
   final int nexusId;
   final int? moduleId;
 
-  const ModuleExplorerScreen({super.key, required this.nexusId, this.moduleId});
+  /// An element page (`cobj_12`) of [moduleId]. The element's own page —
+  /// its blocks — arrives with Procress 12 part 2; until then the route
+  /// shows the module with the element as the last crumb, so search results
+  /// and open pages already have somewhere to land.
+  final String? itemKey;
+
+  const ModuleExplorerScreen({super.key, required this.nexusId, this.moduleId, this.itemKey});
 
   @override
   ConsumerState<ModuleExplorerScreen> createState() => _ModuleExplorerScreenState();
@@ -33,27 +47,30 @@ class ModuleExplorerScreen extends ConsumerStatefulWidget {
 
 class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
   /// Last recorded entry, as key+title+color — re-records on a rename or a
-  /// recolor so the folder-views list never shows a stale label, but not on
-  /// every unrelated rebuild.
+  /// recolor so the open pages never show a stale label, but not on every
+  /// unrelated rebuild.
   String? _recordedSignature;
 
   int get nexusId => widget.nexusId;
   int? get moduleId => widget.moduleId;
+  String? get itemKey => widget.itemKey;
 
   ModuleChildrenKey get _childrenKey => ModuleChildrenKey(nexusId, moduleId);
 
-  /// Files this screen into the folder-views history once whatever it is
-  /// showing has actually loaded (a half-resolved '…' title is not worth
-  /// remembering). Deferred past the current frame — recording writes
-  /// provider state, which build() must not do.
-  void _recordRecentView(NexusModel? nexus, ModuleModel? module) {
+  /// Opens this screen as a page once whatever it is showing has actually
+  /// loaded (a half-resolved '…' title is not worth keeping). Deferred past
+  /// the current frame — recording writes provider state, which build() must
+  /// not do.
+  void _recordOpenPage(NexusModel? nexus, ModuleModel? module, IndexedItem? item) {
     if (nexus == null) return;
     if (moduleId != null && module == null) return;
+    if (itemKey != null && item == null) return;
 
     final view = RecentView(
       nexusId: nexusId,
       moduleId: moduleId,
-      title: module?.name ?? nexus.name,
+      itemKey: itemKey,
+      title: item?.name ?? module?.name ?? nexus.name,
       nexusName: nexus.name,
       kindId: module?.kind.id,
       colorCode: module?.colorCode ?? (moduleId == null ? nexus.colorCode : null),
@@ -69,17 +86,17 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
     });
   }
 
-  /// A folder-views entry can outlive what it points at — the module was
-  /// deleted, or it sat under a subtree that was. Landing on one resolves the
-  /// module to null (loaded, but absent), which is the moment to drop the
-  /// entry so the sheet stops offering the dead jump.
-  void _pruneIfMissing(AsyncValue<ModuleModel?>? moduleAsync) {
-    if (moduleId == null || moduleAsync == null) return;
-    if (!moduleAsync.hasValue || moduleAsync.value != null) return;
+  /// An open page can outlive what it points at — the module or element was
+  /// deleted, or it sat under a subtree that was. Landing on one resolves it
+  /// to null (loaded, but absent), which is the moment to close the page.
+  void _closeIfMissing(AsyncValue<ModuleModel?>? moduleAsync, AsyncValue<List<IndexedItem>>? indexAsync, IndexedItem? item) {
+    final moduleGone = moduleId != null && moduleAsync != null && moduleAsync.hasValue && moduleAsync.value == null;
+    final itemGone = itemKey != null && indexAsync != null && indexAsync.hasValue && item == null;
+    if (!moduleGone && !itemGone) return;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      ref.read(recentViewsProvider.notifier).remove(RecentView.keyFor(nexusId, moduleId));
+      ref.read(recentViewsProvider.notifier).remove(RecentView.keyFor(nexusId, moduleId, itemKey));
     });
   }
 
@@ -89,55 +106,47 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
     final nexusAsync = ref.watch(nexusProvider(nexusId));
     final moduleAsync = moduleId == null ? null : ref.watch(moduleProvider(moduleId!));
     final breadcrumbAsync = moduleId == null ? null : ref.watch(moduleBreadcrumbProvider(moduleId!));
+    final indexAsync = itemKey == null ? null : ref.watch(nexusIndexProvider(nexusId));
     final childrenAsync = ref.watch(moduleChildrenProvider(_childrenKey));
 
     final module = moduleAsync?.valueOrNull;
     final nexus = nexusAsync.valueOrNull;
-    final title = moduleId == null ? (nexus?.name ?? '…') : (module?.name ?? '…');
+    IndexedItem? item;
+    for (final it in indexAsync?.valueOrNull ?? const <IndexedItem>[]) {
+      if (it.key == itemKey && it.moduleId == moduleId) item = it;
+    }
     final viewMode = ref.watch(builderViewModeProvider);
 
-    _recordRecentView(nexus, module);
-    _pruneIfMissing(moduleAsync);
+    _recordOpenPage(nexus, module, item);
+    _closeIfMissing(moduleAsync, indexAsync, item);
+
+    final crumbs = <Crumb>[
+      Crumb(label: nexus?.name ?? '…', nexusId: nexusId),
+      for (final a in breadcrumbAsync?.valueOrNull ?? const <ModuleModel>[])
+        Crumb(label: a.name, nexusId: nexusId, moduleId: a.id),
+      if (moduleId != null) Crumb(label: module?.name ?? '…', nexusId: nexusId, moduleId: moduleId),
+      if (itemKey != null) Crumb(label: item?.name ?? '…', nexusId: nexusId, moduleId: moduleId, itemKey: itemKey),
+    ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title, overflow: TextOverflow.ellipsis),
-        actions: [
-          if (module != null) ...[
-            IconButton(
-              icon: Icon(module.pinned ? Icons.push_pin : Icons.push_pin_outlined),
-              tooltip: module.pinned ? l10n.btnUnpin : l10n.btnPin,
-              onPressed: () async {
-                await ref.read(moduleDaoProvider).when(
-                  data: (d) => d.setPinned(module.id, !module.pinned),
-                  loading: () async {},
-                  error: (_, _) async {},
-                );
-                ref.invalidate(moduleProvider(module.id));
-              },
-            ),
-            PopupMenuButton<String>(
-              onSelected: (v) => _onModuleAction(context, module, v),
-              itemBuilder: (_) => [
-                PopupMenuItem(value: 'rename', child: Text(l10n.btnRename)),
-                PopupMenuItem(value: 'delete', child: Text(l10n.btnDelete)),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          HidingAppBar(
+            appBar: AppBar(
+              title: BreadcrumbTitle(crumbs: crumbs),
+              actions: [
+                const ViewModeButton(),
+                if (module != null)
+                  RowMenuButton(
+                    iconSize: 24,
+                    title: module.name,
+                    actions: () => moduleRowActions(context, ref, module, onOwnPage: true),
+                  ),
               ],
             ),
-          ],
-        ],
-        bottom: moduleId == null
-            ? null
-            : PreferredSize(
-                preferredSize: const Size.fromHeight(32),
-                child: _Breadcrumb(
-                  nexusId: nexusId,
-                  nexusName: nexus?.name ?? '',
-                  ancestors: breadcrumbAsync?.valueOrNull ?? const [],
-                ),
-              ),
-      ),
-      body: Column(
-        children: [
+          ),
+          if (itemKey != null) _ElementPageNotice(text: l10n.elementPageSoon),
           if (module != null) _ModuleContent(module: module),
           Expanded(
             child: childrenAsync.when(
@@ -172,72 +181,27 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
             builder: (_) => ModuleDialog(nexusId: nexusId, parentId: moduleId),
           );
           ref.invalidate(moduleChildrenProvider(_childrenKey));
+          ref.invalidate(nexusIndexProvider(nexusId));
         },
         child: const Icon(Icons.add),
       ),
     );
   }
-
-  Future<void> _onModuleAction(BuildContext context, ModuleModel module, String action) async {
-    final l10n = AppLocalizations.of(context)!;
-    if (action == 'rename') {
-      await showDialog(context: context, builder: (_) => ModuleDialog(nexusId: nexusId, existing: module));
-      ref.invalidate(moduleProvider(module.id));
-      ref.invalidate(moduleChildrenProvider(ModuleChildrenKey(nexusId, module.parentId)));
-    } else if (action == 'delete') {
-      final ok = await showConfirmDialog(
-        context,
-        title: '${l10n.confirmDeleteTitle}: "${module.name}"',
-        message: l10n.deleteModuleMessage,
-      );
-      if (!ok) return;
-      final parentId = module.parentId;
-      await ref.read(moduleDaoProvider).when(
-        data: (d) => d.deleteModule(module.id),
-        loading: () async {},
-        error: (_, _) async {},
-      );
-      ref.invalidate(moduleChildrenProvider(ModuleChildrenKey(nexusId, parentId)));
-      await ref.read(recentViewsProvider.notifier).remove(RecentView.keyFor(nexusId, module.id));
-      if (context.mounted) context.pop();
-    }
-  }
 }
 
-class _Breadcrumb extends StatelessWidget {
-  final int nexusId;
-  final String nexusName;
-  final List<ModuleModel> ancestors;
+/// Stands in for an element's own page until Procress 12 part 2 builds it.
+class _ElementPageNotice extends StatelessWidget {
+  final String text;
 
-  const _Breadcrumb({required this.nexusId, required this.nexusName, required this.ancestors});
+  const _ElementPageNotice({required this.text});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final crumbs = <Widget>[
-      _crumb(context, nexusName, () => context.go('/hub/$nexusId')),
-    ];
-    for (final a in ancestors) {
-      crumbs.add(Icon(Icons.chevron_right, size: 16, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)));
-      crumbs.add(_crumb(context, a.name, () => context.go('/hub/$nexusId/module/${a.id}')));
-    }
+    final scheme = Theme.of(context).colorScheme;
     return Container(
-      alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(children: crumbs),
-      ),
-    );
-  }
-
-  Widget _crumb(BuildContext context, String label, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
-        child: Text(label, style: Theme.of(context).textTheme.bodySmall),
-      ),
+      color: scheme.secondaryContainer.withValues(alpha: 0.5),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Text(text, style: Theme.of(context).textTheme.bodySmall),
     );
   }
 }

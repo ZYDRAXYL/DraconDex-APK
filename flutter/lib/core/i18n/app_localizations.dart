@@ -1266,24 +1266,6 @@ abstract class AppLocalizations {
   /// **'Delete hashtag?'**
   String get deleteHashtagConfirmTitle;
 
-  /// No description provided for @builderNavHome.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get builderNavHome;
-
-  /// No description provided for @builderNavView.
-  ///
-  /// In en, this message translates to:
-  /// **'View'**
-  String get builderNavView;
-
-  /// No description provided for @builderNavFolders.
-  ///
-  /// In en, this message translates to:
-  /// **'Folder Views'**
-  String get builderNavFolders;
-
   /// No description provided for @viewModeTitle.
   ///
   /// In en, this message translates to:
@@ -1307,24 +1289,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Compact'**
   String get viewModeCompact;
-
-  /// No description provided for @recentViewsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Recent Views'**
-  String get recentViewsTitle;
-
-  /// No description provided for @recentViewsEmpty.
-  ///
-  /// In en, this message translates to:
-  /// **'No recent views yet'**
-  String get recentViewsEmpty;
-
-  /// No description provided for @recentViewsClear.
-  ///
-  /// In en, this message translates to:
-  /// **'Clear all'**
-  String get recentViewsClear;
 
   /// No description provided for @builderNexusRootLabel.
   ///
@@ -2024,6 +1988,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A link carries the key in it, so it works even when the sender allowed the QR code only.'**
   String get transferPasteLinkHint;
+  /// No description provided for @navNest.
+  ///
+  /// In en, this message translates to:
+  /// **'Nest'**
+  String get navNest;
+
+  /// No description provided for @navSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get navSearch;
+
+  /// No description provided for @navOpenPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get navOpenPages;
+
+  /// No description provided for @navTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get navTools;
+
+  /// No description provided for @navMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get navMore;
+
+  /// No description provided for @openPagesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Open pages'**
+  String get openPagesTitle;
+
+  /// No description provided for @openPagesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No pages open. Every page you open stays here until you close it.'**
+  String get openPagesEmpty;
+
+  /// No description provided for @openPagesCloseAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Close all'**
+  String get openPagesCloseAll;
+
+  /// No description provided for @openPageClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close page'**
+  String get openPageClose;
+
+  /// No description provided for @rowOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get rowOpen;
+
+  /// No description provided for @rowMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More actions'**
+  String get rowMore;
+
+  /// No description provided for @crumbEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing inside'**
+  String get crumbEmpty;
+
+  /// No description provided for @goToTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to'**
+  String get goToTitle;
+
+  /// No description provided for @goToHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A name, a path or @handle'**
+  String get goToHint;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search names, text and commands'**
+  String get searchHint;
+
+  /// No description provided for @searchThings.
+  ///
+  /// In en, this message translates to:
+  /// **'Things'**
+  String get searchThings;
+
+  /// No description provided for @searchContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Content'**
+  String get searchContent;
+
+  /// No description provided for @searchCommands.
+  ///
+  /// In en, this message translates to:
+  /// **'Commands'**
+  String get searchCommands;
+
+  /// No description provided for @searchEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches'**
+  String get searchEmpty;
+
+  /// No description provided for @elementPageSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'This element gets its own page in a coming update. For now it opens inside its module.'**
+  String get elementPageSoon;
+
 }
 
 class _AppLocalizationsDelegate

@@ -582,15 +582,6 @@ class AppLocalizationsQd extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Vhoreth thys markiss?';
 
   @override
-  String get builderNavHome => 'Hearthra';
-
-  @override
-  String get builderNavView => 'Skryen';
-
-  @override
-  String get builderNavFolders => 'Hoardskryen';
-
-  @override
   String get viewModeTitle => 'Skryen Vharokk';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Kompaktha';
-
-  @override
-  String get recentViewsTitle => 'Skryen Latharii';
-
-  @override
-  String get recentViewsEmpty => 'Grynn... no skryen yet-thra.';
-
-  @override
-  String get recentViewsClear => 'Vhoreth all';
 
   @override
   String get builderNexusRootLabel => 'Nexus Rootha';
@@ -961,4 +943,64 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Ythe lynk beryth ythe kaye wythyn yt, so yt servyth even whanne ythe sendyr suffryd ythe QR sygil alone.';
+
+  @override
+  String get navNest => 'Nystra';
+
+  @override
+  String get navSearch => 'Zharra';
+
+  @override
+  String get navOpenPages => 'Vhaelen';
+
+  @override
+  String get navTools => 'Thuukar';
+
+  @override
+  String get navMore => 'Mhorr';
+
+  @override
+  String get openPagesTitle => 'Vhaelen Ossa';
+
+  @override
+  String get openPagesEmpty => 'No vhaelen ossa. Each vhaelen thou openest bideth here till thou klemuurest it.';
+
+  @override
+  String get openPagesCloseAll => 'Klemuur all';
+
+  @override
+  String get openPageClose => 'Klemuur vhaelen';
+
+  @override
+  String get rowOpen => 'Ossa';
+
+  @override
+  String get rowMore => 'Mhorr deedra';
+
+  @override
+  String get crumbEmpty => 'Naught within';
+
+  @override
+  String get goToTitle => 'Draa to';
+
+  @override
+  String get goToHint => 'A name, a path or @handle';
+
+  @override
+  String get searchHint => 'Zharra names, writ and commandra';
+
+  @override
+  String get searchThings => 'Thingra';
+
+  @override
+  String get searchContent => 'Writ';
+
+  @override
+  String get searchCommands => 'Commandra';
+
+  @override
+  String get searchEmpty => 'Naught answereth';
+
+  @override
+  String get elementPageSoon => 'This thing gaineth its own vhaelen in a coming update. For now it openeth within its module.';
 }

@@ -582,15 +582,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Удалить тег?';
 
   @override
-  String get builderNavHome => 'Главная';
-
-  @override
-  String get builderNavView => 'Вид';
-
-  @override
-  String get builderNavFolders => 'Виды папок';
-
-  @override
   String get viewModeTitle => 'Режим просмотра';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Компактно';
-
-  @override
-  String get recentViewsTitle => 'Недавние виды';
-
-  @override
-  String get recentViewsEmpty => 'Пока нет недавних видов';
-
-  @override
-  String get recentViewsClear => 'Очистить всё';
 
   @override
   String get builderNexusRootLabel => 'Корень Nexus';
@@ -961,4 +943,64 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Ссылка несёт ключ в себе, поэтому работает даже если отправитель разрешил только QR-код.';
+
+  @override
+  String get navNest => 'Гнездо';
+
+  @override
+  String get navSearch => 'Поиск';
+
+  @override
+  String get navOpenPages => 'Страницы';
+
+  @override
+  String get navTools => 'Инструменты';
+
+  @override
+  String get navMore => 'Ещё';
+
+  @override
+  String get openPagesTitle => 'Открытые страницы';
+
+  @override
+  String get openPagesEmpty => 'Открытых страниц нет. Каждая открытая страница остаётся здесь, пока вы её не закроете.';
+
+  @override
+  String get openPagesCloseAll => 'Закрыть все';
+
+  @override
+  String get openPageClose => 'Закрыть страницу';
+
+  @override
+  String get rowOpen => 'Открыть';
+
+  @override
+  String get rowMore => 'Другие действия';
+
+  @override
+  String get crumbEmpty => 'Внутри ничего нет';
+
+  @override
+  String get goToTitle => 'Перейти';
+
+  @override
+  String get goToHint => 'Имя, путь или @handle';
+
+  @override
+  String get searchHint => 'Поиск по именам, тексту и командам';
+
+  @override
+  String get searchThings => 'Объекты';
+
+  @override
+  String get searchContent => 'Содержимое';
+
+  @override
+  String get searchCommands => 'Команды';
+
+  @override
+  String get searchEmpty => 'Ничего не найдено';
+
+  @override
+  String get elementPageSoon => 'У этого элемента появится своя страница в одном из следующих обновлений. Пока он открывается внутри своего модуля.';
 }

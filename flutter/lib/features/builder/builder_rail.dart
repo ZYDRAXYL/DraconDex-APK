@@ -4,19 +4,22 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/i18n/app_localizations.dart';
 import '../../core/layout/breakpoints.dart';
-import '../../providers/builder_view_provider.dart';
-import '../../providers/recent_views_provider.dart';
+import '../../data/models/module_model.dart';
+import '../../providers/navigation_providers.dart';
 import '../../providers/shell_layout_provider.dart';
+import '../../widgets/row_menu.dart';
+import 'builder_shell.dart';
+import 'hub_location.dart';
+import 'shell_sheets.dart';
 
 /// The tablet shell's vertical nav rail — the Flutter answer to the Electron
-/// build's `#nav-sidebar`, and the reason a tablet does not simply get the
-/// phone's bottom bar stretched wide.
+/// build's Activity Bar (V5.md §11.9), and the reason a tablet does not simply
+/// get the phone's bottom bar stretched wide.
 ///
-/// Same three Builder actions the Navibar has (home, view mode, folder
-/// views), plus the three tools that only fit in the phone's app bar (tags,
-/// colours, settings), plus the two pieces of chrome the phone has nowhere to
-/// put: the hub panel toggle and the labels toggle. Order matches the desktop
-/// rail — brand and navigation at the top, tools pinned to the bottom.
+/// APK V3 (APP docs/APK-V3.md §10.1): the places — Nest, Search, Labels —
+/// and the Tools menu, then the modules pinned in the Nexus the user is in,
+/// with Settings and the label toggle pinned to the bottom. The phone keeps
+/// Labels and Settings behind its "More" slot; a rail has the room.
 class BuilderRail extends ConsumerWidget {
   final String location;
 
@@ -25,17 +28,12 @@ class BuilderRail extends ConsumerWidget {
   /// cramped one, and the rail should not have to care which.
   final VoidCallback onToggleHub;
 
-  /// Makes sure the panel is on screen — used by the folder-views button,
-  /// which reveals a section of it rather than opening a sheet.
-  final VoidCallback onShowHub;
-
   final bool hubVisible;
 
   const BuilderRail({
     super.key,
     required this.location,
     required this.onToggleHub,
-    required this.onShowHub,
     required this.hubVisible,
   });
 
@@ -44,9 +42,11 @@ class BuilderRail extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final shell = ref.watch(shellLayoutProvider);
-    final mode = ref.watch(builderViewModeProvider);
-    final recentCount = ref.watch(recentViewsProvider).length;
-    final atHome = location == '/';
+    final here = HubLocation.parse(location);
+    final atNest = location == '/' || (here.nexusId != null && here.moduleId == null);
+    final pinned = here.nexusId == null
+        ? const <ModuleModel>[]
+        : ref.watch(pinnedModulesProvider(here.nexusId!)).valueOrNull ?? const <ModuleModel>[];
     final extended = shell.railExtended;
 
     // Material, not a bare Container: every row below is an InkWell, and ink
@@ -85,37 +85,46 @@ class BuilderRail extends ConsumerWidget {
                         ),
                         const Divider(height: 9, indent: 12, endIndent: 12),
                         _RailButton(
-                          icon: atHome ? Icons.home : Icons.home_outlined,
-                          label: l10n.builderNavHome,
+                          icon: atNest ? Icons.account_tree : Icons.account_tree_outlined,
+                          label: l10n.navNest,
                           extended: extended,
-                          highlighted: atHome,
-                          onTap: () => context.go('/'),
+                          highlighted: atNest,
+                          onTap: () => context.go(BuilderNavibar.nestTarget(location)),
                         ),
-                        _ViewModeRailButton(current: mode, extended: extended),
                         _RailButton(
-                          icon: Icons.folder_copy_outlined,
-                          label: l10n.builderNavFolders,
+                          icon: Icons.search,
+                          label: l10n.navSearch,
                           extended: extended,
-                          badgeCount: recentCount,
+                          highlighted: location == '/search',
                           onTap: () {
-                            onShowHub();
-                            ref.read(shellLayoutProvider.notifier).setRecentSectionOpen(true);
+                            if (location != '/search') context.push('/search');
                           },
                         ),
-                        const Spacer(),
-                        const Divider(height: 9, indent: 12, endIndent: 12),
                         _RailButton(
                           icon: Icons.sell_outlined,
                           label: l10n.moduleGlobalTags,
                           extended: extended,
                           onTap: () => context.push('/tags'),
                         ),
-                        _RailButton(
-                          icon: Icons.palette_outlined,
-                          label: l10n.moduleColors,
+                        _RailMenuButton(
+                          icon: Icons.handyman_outlined,
+                          label: l10n.navTools,
                           extended: extended,
-                          onTap: () => context.push('/colors'),
+                          actions: toolsActions(context),
                         ),
+                        if (pinned.isNotEmpty) ...[
+                          const Divider(height: 9, indent: 12, endIndent: 12),
+                          for (final m in pinned)
+                            _RailButton(
+                              icon: m.kindInfo.icon,
+                              label: m.name,
+                              extended: extended,
+                              highlighted: here.moduleId == m.id && here.itemKey == null,
+                              onTap: () => context.go('/hub/${m.nexusRef}/module/${m.id}'),
+                            ),
+                        ],
+                        const Spacer(),
+                        const Divider(height: 9, indent: 12, endIndent: 12),
                         _RailButton(
                           icon: Icons.settings_outlined,
                           label: l10n.moduleSettings,
@@ -191,48 +200,43 @@ class _RailBrand extends StatelessWidget {
   }
 }
 
-/// View mode opens a menu anchored on the rail rather than the phone's bottom
-/// sheet: a sheet sliding up from the far edge of a 12" screen to answer a
-/// button on the left of it reads as a different screen answering.
-class _ViewModeRailButton extends ConsumerWidget {
-  final BuilderViewMode current;
+/// A rail entry that opens a menu anchored on the rail rather than the
+/// phone's bottom sheet: a sheet sliding up from the far edge of a 12" screen
+/// to answer a button on the left of it reads as a different screen
+/// answering.
+class _RailMenuButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
   final bool extended;
+  final List<RowAction> actions;
 
-  const _ViewModeRailButton({required this.current, required this.extended});
+  const _RailMenuButton({
+    required this.icon,
+    required this.label,
+    required this.extended,
+    required this.actions,
+  });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-
-    String labelFor(BuilderViewMode mode) => switch (mode) {
-          BuilderViewMode.list => l10n.viewModeList,
-          BuilderViewMode.grid => l10n.viewModeGrid,
-          BuilderViewMode.compact => l10n.viewModeCompact,
-        };
-
-    return PopupMenuButton<BuilderViewMode>(
-      tooltip: l10n.viewModeTitle,
+  Widget build(BuildContext context) {
+    return PopupMenuButton<RowAction>(
+      tooltip: label,
       position: PopupMenuPosition.under,
-      onSelected: (mode) => ref.read(builderViewModeProvider.notifier).set(mode),
+      onSelected: (a) => a.onTap(),
       itemBuilder: (_) => [
-        for (final mode in BuilderViewMode.values)
-          PopupMenuItem<BuilderViewMode>(
-            value: mode,
+        for (final a in actions)
+          PopupMenuItem<RowAction>(
+            value: a,
             child: Row(
               children: [
-                Icon(mode.icon, size: 18),
+                Icon(a.icon, size: 18),
                 const SizedBox(width: 10),
-                Expanded(child: Text(labelFor(mode))),
-                if (mode == current) const Icon(Icons.check, size: 16),
+                Expanded(child: Text(a.label)),
               ],
             ),
           ),
       ],
-      child: _RailItemBody(
-        icon: current.icon,
-        label: l10n.builderNavView,
-        extended: extended,
-      ),
+      child: _RailItemBody(icon: icon, label: label, extended: extended),
     );
   }
 }
@@ -243,7 +247,6 @@ class _RailButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool extended;
   final bool highlighted;
-  final int badgeCount;
 
   const _RailButton({
     required this.icon,
@@ -251,7 +254,6 @@ class _RailButton extends StatelessWidget {
     required this.onTap,
     required this.extended,
     this.highlighted = false,
-    this.badgeCount = 0,
   });
 
   @override
@@ -268,7 +270,6 @@ class _RailButton extends StatelessWidget {
           label: label,
           extended: extended,
           highlighted: highlighted,
-          badgeCount: badgeCount,
         ),
       ),
     );
@@ -282,22 +283,19 @@ class _RailItemBody extends StatelessWidget {
   final String label;
   final bool extended;
   final bool highlighted;
-  final int badgeCount;
 
   const _RailItemBody({
     required this.icon,
     required this.label,
     required this.extended,
     this.highlighted = false,
-    this.badgeCount = 0,
   });
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final color = highlighted ? scheme.primary : scheme.onSurface.withValues(alpha: 0.75);
-    Widget iconWidget = Icon(icon, size: 22, color: color);
-    if (badgeCount > 0) iconWidget = Badge.count(count: badgeCount, child: iconWidget);
+    final iconWidget = Icon(icon, size: 22, color: color);
 
     final labelStyle = Theme.of(context).textTheme.labelSmall?.copyWith(color: color);
 
@@ -331,9 +329,8 @@ class _RailItemBody extends StatelessWidget {
                   label,
                   // Two lines, because 76dp of rail is not enough for the
                   // longer labels on one: driving the built app showed
-                  // "Folder Views" and "Hide hub panel" arriving as "Folder
-                  // Vie…" and "Hide hub …", which is a worse way to spend the
-                  // space than a second line.
+                  // "Hide hub panel" arriving as "Hide hub …", which is a
+                  // worse way to spend the space than a second line.
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,

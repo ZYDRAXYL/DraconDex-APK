@@ -582,15 +582,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Supprimer le tag ?';
 
   @override
-  String get builderNavHome => 'Accueil';
-
-  @override
-  String get builderNavView => 'Vue';
-
-  @override
-  String get builderNavFolders => 'Vues de dossier';
-
-  @override
   String get viewModeTitle => 'Mode d\'affichage';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Compact';
-
-  @override
-  String get recentViewsTitle => 'Vues récentes';
-
-  @override
-  String get recentViewsEmpty => 'Aucune vue récente';
-
-  @override
-  String get recentViewsClear => 'Tout effacer';
 
   @override
   String get builderNexusRootLabel => 'Racine du Nexus';
@@ -961,4 +943,64 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Le lien porte la clé en lui, donc il fonctionne même si l\'expéditeur n\'a autorisé que le QR code.';
+
+  @override
+  String get navNest => 'Nid';
+
+  @override
+  String get navSearch => 'Rechercher';
+
+  @override
+  String get navOpenPages => 'Pages';
+
+  @override
+  String get navTools => 'Outils';
+
+  @override
+  String get navMore => 'Plus';
+
+  @override
+  String get openPagesTitle => 'Pages ouvertes';
+
+  @override
+  String get openPagesEmpty => 'Aucune page ouverte. Chaque page ouverte reste ici jusqu’à ce que vous la fermiez.';
+
+  @override
+  String get openPagesCloseAll => 'Tout fermer';
+
+  @override
+  String get openPageClose => 'Fermer la page';
+
+  @override
+  String get rowOpen => 'Ouvrir';
+
+  @override
+  String get rowMore => 'Plus d’actions';
+
+  @override
+  String get crumbEmpty => 'Rien à l’intérieur';
+
+  @override
+  String get goToTitle => 'Aller à';
+
+  @override
+  String get goToHint => 'Un nom, un chemin ou @handle';
+
+  @override
+  String get searchHint => 'Rechercher des noms, du texte et des commandes';
+
+  @override
+  String get searchThings => 'Éléments';
+
+  @override
+  String get searchContent => 'Contenu';
+
+  @override
+  String get searchCommands => 'Commandes';
+
+  @override
+  String get searchEmpty => 'Aucun résultat';
+
+  @override
+  String get elementPageSoon => 'Cet élément aura sa propre page dans une prochaine mise à jour. Pour l’instant, il s’ouvre dans son module.';
 }

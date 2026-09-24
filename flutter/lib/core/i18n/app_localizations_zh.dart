@@ -582,15 +582,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get deleteHashtagConfirmTitle => '删除该标签？';
 
   @override
-  String get builderNavHome => '主页';
-
-  @override
-  String get builderNavView => '视图';
-
-  @override
-  String get builderNavFolders => '文件夹视图';
-
-  @override
   String get viewModeTitle => '视图模式';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get viewModeCompact => '紧凑';
-
-  @override
-  String get recentViewsTitle => '最近视图';
-
-  @override
-  String get recentViewsEmpty => '暂无最近视图';
-
-  @override
-  String get recentViewsClear => '全部清除';
 
   @override
   String get builderNexusRootLabel => 'Nexus 根目录';
@@ -961,4 +943,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => '链接本身带着密钥，所以即使发送方只允许二维码也能用。';
+
+  @override
+  String get navNest => '巢';
+
+  @override
+  String get navSearch => '搜索';
+
+  @override
+  String get navOpenPages => '页面';
+
+  @override
+  String get navTools => '工具';
+
+  @override
+  String get navMore => '更多';
+
+  @override
+  String get openPagesTitle => '已打开的页面';
+
+  @override
+  String get openPagesEmpty => '没有打开的页面。打开的每个页面都会留在这里，直到你关闭它。';
+
+  @override
+  String get openPagesCloseAll => '全部关闭';
+
+  @override
+  String get openPageClose => '关闭页面';
+
+  @override
+  String get rowOpen => '打开';
+
+  @override
+  String get rowMore => '更多操作';
+
+  @override
+  String get crumbEmpty => '里面没有内容';
+
+  @override
+  String get goToTitle => '转到';
+
+  @override
+  String get goToHint => '名称、路径或 @handle';
+
+  @override
+  String get searchHint => '搜索名称、文本和命令';
+
+  @override
+  String get searchThings => '事物';
+
+  @override
+  String get searchContent => '内容';
+
+  @override
+  String get searchCommands => '命令';
+
+  @override
+  String get searchEmpty => '没有匹配结果';
+
+  @override
+  String get elementPageSoon => '此元素将在后续更新中拥有自己的页面。目前它在所属模块内打开。';
 }

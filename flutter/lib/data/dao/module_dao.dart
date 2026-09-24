@@ -62,6 +62,16 @@ class ModuleDao {
     return rows.map(ModuleModel.fromMap).toList();
   }
 
+  /// Every pinned module of [nexusRef], at any depth.
+  Future<List<ModuleModel>> getPinnedModules(int nexusRef) async {
+    final rows = await db.rawQuery(
+      '$_selectModule WHERE m.nexus_ref=? AND m.pinned=1 '
+      'ORDER BY m.display_order, m.name COLLATE NOCASE',
+      [nexusRef],
+    );
+    return rows.map(ModuleModel.fromMap).toList();
+  }
+
   Future<ModuleModel?> getModule(int id) async {
     final rows = await db.rawQuery('$_selectModule WHERE m.id=?', [id]);
     if (rows.isEmpty) return null;

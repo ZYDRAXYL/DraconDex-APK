@@ -582,15 +582,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Hapus tag?';
 
   @override
-  String get builderNavHome => 'Beranda';
-
-  @override
-  String get builderNavView => 'Tampilan';
-
-  @override
-  String get builderNavFolders => 'Tampilan Folder';
-
-  @override
   String get viewModeTitle => 'Mode tampilan';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Ringkas';
-
-  @override
-  String get recentViewsTitle => 'Tampilan Terakhir';
-
-  @override
-  String get recentViewsEmpty => 'Belum ada tampilan terakhir';
-
-  @override
-  String get recentViewsClear => 'Hapus semua';
 
   @override
   String get builderNexusRootLabel => 'Akar Nexus';
@@ -961,4 +943,64 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Tautannya membawa kuncinya sendiri, jadi tetap bisa dipakai meski pengirim hanya mengizinkan kode QR.';
+
+  @override
+  String get navNest => 'Sarang';
+
+  @override
+  String get navSearch => 'Cari';
+
+  @override
+  String get navOpenPages => 'Halaman';
+
+  @override
+  String get navTools => 'Alat';
+
+  @override
+  String get navMore => 'Lainnya';
+
+  @override
+  String get openPagesTitle => 'Halaman terbuka';
+
+  @override
+  String get openPagesEmpty => 'Belum ada halaman terbuka. Setiap halaman yang dibuka tetap di sini sampai ditutup.';
+
+  @override
+  String get openPagesCloseAll => 'Tutup semua';
+
+  @override
+  String get openPageClose => 'Tutup halaman';
+
+  @override
+  String get rowOpen => 'Buka';
+
+  @override
+  String get rowMore => 'Tindakan lain';
+
+  @override
+  String get crumbEmpty => 'Tidak ada isinya';
+
+  @override
+  String get goToTitle => 'Pergi ke';
+
+  @override
+  String get goToHint => 'Nama, path, atau @handle';
+
+  @override
+  String get searchHint => 'Cari nama, teks, dan perintah';
+
+  @override
+  String get searchThings => 'Benda';
+
+  @override
+  String get searchContent => 'Konten';
+
+  @override
+  String get searchCommands => 'Perintah';
+
+  @override
+  String get searchEmpty => 'Tidak ada hasil';
+
+  @override
+  String get elementPageSoon => 'Elemen ini akan punya halaman sendiri di pembaruan berikutnya. Untuk sekarang ia terbuka di dalam modulnya.';
 }

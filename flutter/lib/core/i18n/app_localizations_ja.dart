@@ -582,15 +582,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'このタグを削除しますか?';
 
   @override
-  String get builderNavHome => 'ホーム';
-
-  @override
-  String get builderNavView => '表示';
-
-  @override
-  String get builderNavFolders => 'フォルダビュー';
-
-  @override
   String get viewModeTitle => '表示モード';
 
   @override
@@ -601,15 +592,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'コンパクト';
-
-  @override
-  String get recentViewsTitle => '最近のビュー';
-
-  @override
-  String get recentViewsEmpty => '最近のビューはまだありません';
-
-  @override
-  String get recentViewsClear => 'すべて消去';
 
   @override
   String get builderNexusRootLabel => 'Nexus のルート';
@@ -961,4 +943,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'リンクには鍵が含まれているため、送信側が QR のみを許可していても使えます。';
+
+  @override
+  String get navNest => '巣';
+
+  @override
+  String get navSearch => '検索';
+
+  @override
+  String get navOpenPages => 'ページ';
+
+  @override
+  String get navTools => 'ツール';
+
+  @override
+  String get navMore => 'その他';
+
+  @override
+  String get openPagesTitle => '開いているページ';
+
+  @override
+  String get openPagesEmpty => '開いているページはありません。開いたページは閉じるまでここに残ります。';
+
+  @override
+  String get openPagesCloseAll => 'すべて閉じる';
+
+  @override
+  String get openPageClose => 'ページを閉じる';
+
+  @override
+  String get rowOpen => '開く';
+
+  @override
+  String get rowMore => 'その他の操作';
+
+  @override
+  String get crumbEmpty => '中身はありません';
+
+  @override
+  String get goToTitle => '移動';
+
+  @override
+  String get goToHint => '名前、パス、または @handle';
+
+  @override
+  String get searchHint => '名前・本文・コマンドを検索';
+
+  @override
+  String get searchThings => 'もの';
+
+  @override
+  String get searchContent => '内容';
+
+  @override
+  String get searchCommands => 'コマンド';
+
+  @override
+  String get searchEmpty => '一致するものはありません';
+
+  @override
+  String get elementPageSoon => 'この要素は今後のアップデートで専用ページを持ちます。今はモジュールの中で開きます。';
 }
