@@ -1135,4 +1135,193 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'Link';
+
+  @override
+  String get viewTable => 'Tabela';
+
+  @override
+  String get viewListDetail => 'Lista · detalhe';
+
+  @override
+  String get viewRelations => 'Relações';
+
+  @override
+  String get viewGrid => 'Grade';
+
+  @override
+  String get viewScene => 'Cena';
+
+  @override
+  String get viewGraph => 'Grafo';
+
+  @override
+  String get viewCards => 'Cartões';
+
+  @override
+  String get viewBoard => 'Quadro';
+
+  @override
+  String get viewEdges => 'Arestas';
+
+  @override
+  String get viewArea => 'Área';
+
+  @override
+  String get viewMap => 'Mapa';
+
+  @override
+  String get viewTimeline => 'Linha do tempo';
+
+  @override
+  String get viewCanvas => 'Tela';
+
+  @override
+  String get viewPages => 'Páginas';
+
+  @override
+  String get viewGallery => 'Galeria';
+
+  @override
+  String get viewExport => 'Exportar';
+
+  @override
+  String get viewEditor => 'Editor';
+
+  @override
+  String get viewOutline => 'Esboço';
+
+  @override
+  String get viewReading => 'Leitura';
+
+  @override
+  String get viewBook => 'Livro';
+
+  @override
+  String get viewRoutes => 'Rotas';
+
+  @override
+  String get viewReader => 'Leitor';
+
+  @override
+  String get viewDialogue => 'Diálogo';
+
+  @override
+  String get viewOneline => 'Uma linha';
+
+  @override
+  String get viewDownline => 'Para baixo';
+
+  @override
+  String get viewCompare => 'Comparar';
+
+  @override
+  String get viewCalendar => 'Calendário';
+
+  @override
+  String get viewList => 'Lista';
+
+  @override
+  String get viewMatrix => 'Matriz';
+
+  @override
+  String get viewChat => 'Chat';
+
+  @override
+  String get viewTranscript => 'Registro';
+
+  @override
+  String get clsNoRelations => 'Ainda não há ligações entre estes elementos';
+
+  @override
+  String get clsTypeText => 'Texto';
+
+  @override
+  String get clsTypeTextarea => 'Texto longo';
+
+  @override
+  String get clsTypeNumber => 'Número';
+
+  @override
+  String get clsTypeDate => 'Data';
+
+  @override
+  String get clsTypeSelect => 'Escolha';
+
+  @override
+  String get clsTypeMulti => 'Escolha múltipla';
+
+  @override
+  String get clsTypeCheckbox => 'Caixa de seleção';
+
+  @override
+  String get clsTypeUrl => 'Link (URL)';
+
+  @override
+  String get clsTypeRelation => 'Relação';
+
+  @override
+  String get clsTypeFormula => 'Fórmula';
+
+  @override
+  String get clsFieldType => 'Tipo de campo';
+
+  @override
+  String get clsChoices => 'Opções (uma por linha)';
+
+  @override
+  String get clsFormulaHint => 'ex.: {HP} * 2';
+
+  @override
+  String get clsEditField => 'Editar campo';
+
+  @override
+  String get clsAddLink => 'Adicionar ligação';
+
+  @override
+  String get dateDay => 'Dia';
+
+  @override
+  String get dateMonth => 'Mês';
+
+  @override
+  String get dateYear => 'Ano';
+
+  @override
+  String get dateHour => 'Hora';
+
+  @override
+  String get dateMinute => 'Min';
+
+  @override
+  String get btnClear => 'Limpar';
+
+  @override
+  String get groupBy => 'Agrupar por';
+
+  @override
+  String get groupModule => 'Módulo';
+
+  @override
+  String get relDirected => 'Um sentido (→)';
+
+  @override
+  String get exhGroup => 'Grupo';
+
+  @override
+  String get exhNote => 'Nota';
+
+  @override
+  String get exhAddElement => 'Colocar um elemento';
+
+  @override
+  String get exhAddNote => 'Adicionar nota';
+
+  @override
+  String get exhAddGroup => 'Adicionar grupo';
+
+  @override
+  String get exhRemoveFromScene => 'Remover da cena';
+
+  @override
+  String get exhSceneEmpty => 'Nada colocado ainda — coloque um elemento ou adicione uma nota.';
 }

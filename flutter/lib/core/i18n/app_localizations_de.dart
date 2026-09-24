@@ -1135,4 +1135,193 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'Link';
+
+  @override
+  String get viewTable => 'Tabelle';
+
+  @override
+  String get viewListDetail => 'Liste · Detail';
+
+  @override
+  String get viewRelations => 'Beziehungen';
+
+  @override
+  String get viewGrid => 'Raster';
+
+  @override
+  String get viewScene => 'Szene';
+
+  @override
+  String get viewGraph => 'Graph';
+
+  @override
+  String get viewCards => 'Karten';
+
+  @override
+  String get viewBoard => 'Tafel';
+
+  @override
+  String get viewEdges => 'Kanten';
+
+  @override
+  String get viewArea => 'Bereich';
+
+  @override
+  String get viewMap => 'Karte';
+
+  @override
+  String get viewTimeline => 'Zeitleiste';
+
+  @override
+  String get viewCanvas => 'Leinwand';
+
+  @override
+  String get viewPages => 'Seiten';
+
+  @override
+  String get viewGallery => 'Galerie';
+
+  @override
+  String get viewExport => 'Export';
+
+  @override
+  String get viewEditor => 'Editor';
+
+  @override
+  String get viewOutline => 'Gliederung';
+
+  @override
+  String get viewReading => 'Lesen';
+
+  @override
+  String get viewBook => 'Buch';
+
+  @override
+  String get viewRoutes => 'Wege';
+
+  @override
+  String get viewReader => 'Leser';
+
+  @override
+  String get viewDialogue => 'Dialog';
+
+  @override
+  String get viewOneline => 'Eine Linie';
+
+  @override
+  String get viewDownline => 'Nach unten';
+
+  @override
+  String get viewCompare => 'Vergleichen';
+
+  @override
+  String get viewCalendar => 'Kalender';
+
+  @override
+  String get viewList => 'Liste';
+
+  @override
+  String get viewMatrix => 'Matrix';
+
+  @override
+  String get viewChat => 'Chat';
+
+  @override
+  String get viewTranscript => 'Protokoll';
+
+  @override
+  String get clsNoRelations => 'Noch keine Verknüpfungen zwischen diesen Elementen';
+
+  @override
+  String get clsTypeText => 'Text';
+
+  @override
+  String get clsTypeTextarea => 'Langer Text';
+
+  @override
+  String get clsTypeNumber => 'Zahl';
+
+  @override
+  String get clsTypeDate => 'Datum';
+
+  @override
+  String get clsTypeSelect => 'Auswahl';
+
+  @override
+  String get clsTypeMulti => 'Mehrfachauswahl';
+
+  @override
+  String get clsTypeCheckbox => 'Kontrollkästchen';
+
+  @override
+  String get clsTypeUrl => 'Link (URL)';
+
+  @override
+  String get clsTypeRelation => 'Beziehung';
+
+  @override
+  String get clsTypeFormula => 'Formel';
+
+  @override
+  String get clsFieldType => 'Feldtyp';
+
+  @override
+  String get clsChoices => 'Auswahlmöglichkeiten (eine pro Zeile)';
+
+  @override
+  String get clsFormulaHint => 'z. B. {HP} * 2';
+
+  @override
+  String get clsEditField => 'Feld bearbeiten';
+
+  @override
+  String get clsAddLink => 'Verknüpfung hinzufügen';
+
+  @override
+  String get dateDay => 'Tag';
+
+  @override
+  String get dateMonth => 'Monat';
+
+  @override
+  String get dateYear => 'Jahr';
+
+  @override
+  String get dateHour => 'Stunde';
+
+  @override
+  String get dateMinute => 'Min';
+
+  @override
+  String get btnClear => 'Leeren';
+
+  @override
+  String get groupBy => 'Gruppieren nach';
+
+  @override
+  String get groupModule => 'Modul';
+
+  @override
+  String get relDirected => 'Eine Richtung (→)';
+
+  @override
+  String get exhGroup => 'Gruppe';
+
+  @override
+  String get exhNote => 'Notiz';
+
+  @override
+  String get exhAddElement => 'Element platzieren';
+
+  @override
+  String get exhAddNote => 'Notiz hinzufügen';
+
+  @override
+  String get exhAddGroup => 'Gruppe hinzufügen';
+
+  @override
+  String get exhRemoveFromScene => 'Aus der Szene entfernen';
+
+  @override
+  String get exhSceneEmpty => 'Noch nichts platziert — ein Element platzieren oder eine Notiz hinzufügen.';
 }

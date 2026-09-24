@@ -1135,4 +1135,193 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'Way-link';
+
+  @override
+  String get viewTable => 'Table';
+
+  @override
+  String get viewListDetail => 'List · detail';
+
+  @override
+  String get viewRelations => 'Bonds';
+
+  @override
+  String get viewGrid => 'Lattice';
+
+  @override
+  String get viewScene => 'Scene';
+
+  @override
+  String get viewGraph => 'Web';
+
+  @override
+  String get viewCards => 'Cards';
+
+  @override
+  String get viewBoard => 'Board';
+
+  @override
+  String get viewEdges => 'Threads';
+
+  @override
+  String get viewArea => 'Reach';
+
+  @override
+  String get viewMap => 'Map';
+
+  @override
+  String get viewTimeline => 'Time-line';
+
+  @override
+  String get viewCanvas => 'Canvas';
+
+  @override
+  String get viewPages => 'Leaves';
+
+  @override
+  String get viewGallery => 'Gallery';
+
+  @override
+  String get viewExport => 'Send forth';
+
+  @override
+  String get viewEditor => 'Quill';
+
+  @override
+  String get viewOutline => 'Outline';
+
+  @override
+  String get viewReading => 'Reading';
+
+  @override
+  String get viewBook => 'Tome';
+
+  @override
+  String get viewRoutes => 'Paths';
+
+  @override
+  String get viewReader => 'Reader';
+
+  @override
+  String get viewDialogue => 'Parley';
+
+  @override
+  String get viewOneline => 'One line';
+
+  @override
+  String get viewDownline => 'Down the leaf';
+
+  @override
+  String get viewCompare => 'Weigh';
+
+  @override
+  String get viewCalendar => 'Reckoning';
+
+  @override
+  String get viewList => 'List';
+
+  @override
+  String get viewMatrix => 'Matrix';
+
+  @override
+  String get viewChat => 'Parley';
+
+  @override
+  String get viewTranscript => 'Chronicle';
+
+  @override
+  String get clsNoRelations => 'Vhaelen links nar';
+
+  @override
+  String get clsTypeText => 'Rhun';
+
+  @override
+  String get clsTypeTextarea => 'Rhun ossa';
+
+  @override
+  String get clsTypeNumber => 'Numen';
+
+  @override
+  String get clsTypeDate => 'Dael';
+
+  @override
+  String get clsTypeSelect => 'Kaer';
+
+  @override
+  String get clsTypeMulti => 'Kaer ossa';
+
+  @override
+  String get clsTypeCheckbox => 'Zharra-mark';
+
+  @override
+  String get clsTypeUrl => 'Vei (URL)';
+
+  @override
+  String get clsTypeRelation => 'Bindra';
+
+  @override
+  String get clsTypeFormula => 'Formael';
+
+  @override
+  String get clsFieldType => 'Kin of feld';
+
+  @override
+  String get clsChoices => 'Kaer (an per rhun)';
+
+  @override
+  String get clsFormulaHint => '{HP} * 2';
+
+  @override
+  String get clsEditField => 'Wrey feld';
+
+  @override
+  String get clsAddLink => 'Vhael bindra';
+
+  @override
+  String get dateDay => 'Dael';
+
+  @override
+  String get dateMonth => 'Mhon';
+
+  @override
+  String get dateYear => 'Yhar';
+
+  @override
+  String get dateHour => 'Hvor';
+
+  @override
+  String get dateMinute => 'Min';
+
+  @override
+  String get btnClear => 'Voidra';
+
+  @override
+  String get groupBy => 'Gathra by';
+
+  @override
+  String get groupModule => 'Modul';
+
+  @override
+  String get relDirected => 'An vei (→)';
+
+  @override
+  String get exhGroup => 'Gathra';
+
+  @override
+  String get exhNote => 'Rhun-mark';
+
+  @override
+  String get exhAddElement => 'Setha an ossa';
+
+  @override
+  String get exhAddNote => 'Vhael rhun-mark';
+
+  @override
+  String get exhAddGroup => 'Vhael gathra';
+
+  @override
+  String get exhRemoveFromScene => 'Voidra from scena';
+
+  @override
+  String get exhSceneEmpty => 'Nar setha — setha an ossa.';
 }

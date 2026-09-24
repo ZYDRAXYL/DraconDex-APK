@@ -23,27 +23,83 @@ class ComponentCtx {
   /// gets a thumbnail that opens full screen (APK-V3.md §4, §13 item 15).
   final bool wide;
 
+  /// The preset this block shows (see [resolvePreset]); '' for a component
+  /// without presets.
+  final String preset;
+
+  /// Drawn in the full-screen editor rather than on the page.
+  final bool fullScreen;
+
   const ComponentCtx({
     required this.page,
     required this.block,
     required this.source,
     required this.itemKey,
     required this.wide,
+    this.preset = '',
+    this.fullScreen = false,
   });
+
+  ComponentCtx copyWith({bool? fullScreen}) => ComponentCtx(
+        page: page,
+        block: block,
+        source: source,
+        itemKey: itemKey,
+        wide: wide,
+        preset: preset,
+        fullScreen: fullScreen ?? this.fullScreen,
+      );
 
   PageKey get key => PageKey(page.module.id, itemKey);
   int get nexusId => source.nexusRef;
   bool get borrowed => source.id != page.module.id;
 
-  /// The preset this block shows: its own, else the one the module was last
-  /// left on, else the component's first (EXE classifier.js:55).
-  String preset(ComponentDef def, String? moduleView) {
-    final own = block.preset;
-    if (own != null && def.presets.contains(own)) return own;
-    if (moduleView != null && def.presets.contains(moduleView)) return moduleView;
-    return def.presets.isEmpty ? '' : def.presets.first;
-  }
 }
+
+/// The preset a block shows: its own, else the one the module was last left
+/// on, else the component's first (EXE classifier.js:55).
+String resolvePreset(ComponentDef def, PageBlock block, String? moduleView) {
+  final own = block.preset;
+  if (own != null && def.presets.contains(own)) return own;
+  if (moduleView != null && def.presets.contains(moduleView)) return moduleView;
+  return def.presets.isEmpty ? '' : def.presets.first;
+}
+
+/// A preset's name on screen.
+String presetLabel(AppLocalizations l, String p) => switch (p) {
+      'table' => l.viewTable,
+      'listDetail' => l.viewListDetail,
+      'relationCat' => l.viewRelations,
+      'grid' => l.viewGrid,
+      'scene' => l.viewScene,
+      'graph' => l.viewGraph,
+      'cards' => l.viewCards,
+      'board' => l.viewBoard,
+      'edges' => l.viewEdges,
+      'area' => l.viewArea,
+      'map' => l.viewMap,
+      'timeline' => l.viewTimeline,
+      'canvas' => l.viewCanvas,
+      'pages' => l.viewPages,
+      'gallery' => l.viewGallery,
+      'export' => l.viewExport,
+      'editor' => l.viewEditor,
+      'outline' => l.viewOutline,
+      'reading' => l.viewReading,
+      'book' => l.viewBook,
+      'routes' => l.viewRoutes,
+      'reader' => l.viewReader,
+      'dialogue' => l.viewDialogue,
+      'oneline' => l.viewOneline,
+      'downline' => l.viewDownline,
+      'compare' => l.viewCompare,
+      'calendar' => l.viewCalendar,
+      'list' => l.viewList,
+      'matrix' => l.viewMatrix,
+      'chat' => l.viewChat,
+      'transcript' => l.viewTranscript,
+      _ => p,
+    };
 
 /// One registered component — the Flutter side of EXE registerComponent
 /// (renderer/page/registry.js). Flags are the desktop's:

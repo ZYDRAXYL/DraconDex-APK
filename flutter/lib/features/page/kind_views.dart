@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import '../../data/models/module_model.dart';
 import '../hub/content/author_content.dart';
 import '../hub/content/chronicler_content.dart';
-import '../hub/content/classifier_content.dart';
 import '../hub/content/designer_content.dart';
 import '../hub/content/locator_content.dart';
 import '../hub/content/narrator_content.dart';
 import '../hub/content/scribe_content.dart';
 import '../hub/content/sketcher_content.dart';
-import '../hub/content/viewer_content.dart';
 import '../hub/content/wanderer_content.dart';
 import 'component_registry.dart';
 import 'core_components.dart';
+import 'views/classifier_views.dart';
+import 'views/selection_views.dart';
 
 /// `<kind>.view` for every kind that has a page, with the desktop's presets
 /// (EXE renderer/mod/*.js registerComponent) — the 43 views of V5.md §12:
@@ -21,9 +21,9 @@ import 'core_components.dart';
 /// thumbnail on a phone (APK-V3.md §4), Wanderer cannot be borrowed.
 final List<ComponentDef> kindViewComponents = [
   _view(ModuleKind.classifier, ['table', 'listDetail', 'relationCat', 'grid'],
-      (c, x) => ClassifierContent(moduleId: x.source.id)),
+      (c, x) => ClassifierView(ctx: x)),
   _view(ModuleKind.exhibitor, ['scene', 'graph', 'table', 'cards', 'board', 'edges'],
-      (c, x) => ViewerContent(moduleId: x.source.id, nexusId: x.nexusId),
+      (c, x) => SelectionView(ctx: x),
       canvas: true),
   _view(ModuleKind.wanderer, ['area', 'map', 'timeline'],
       (c, x) => WandererContent(moduleId: x.source.id, nexusId: x.nexusId),
@@ -40,8 +40,7 @@ final List<ComponentDef> kindViewComponents = [
       (c, x) => ChroniclerContent(moduleId: x.source.id),
       canvas: true),
   // A Manager is a selection now (V5.md §8.9): the modules its filter picks.
-  _view(ModuleKind.manager, ['cards', 'list', 'table', 'graph'],
-      (c, x) => ViewerContent(moduleId: x.source.id, nexusId: x.nexusId)),
+  _view(ModuleKind.manager, ['cards', 'list', 'table', 'graph'], (c, x) => SelectionView(ctx: x)),
   _view(ModuleKind.designer, ['canvas', 'outline', 'matrix'],
       (c, x) => DesignerContent(moduleId: x.source.id),
       canvas: true),

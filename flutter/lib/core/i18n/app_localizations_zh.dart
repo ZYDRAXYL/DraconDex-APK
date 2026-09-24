@@ -1135,4 +1135,193 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get propTypeUrl => '链接';
+
+  @override
+  String get viewTable => '表格';
+
+  @override
+  String get viewListDetail => '列表 · 详情';
+
+  @override
+  String get viewRelations => '关系';
+
+  @override
+  String get viewGrid => '网格';
+
+  @override
+  String get viewScene => '场景';
+
+  @override
+  String get viewGraph => '关系图';
+
+  @override
+  String get viewCards => '卡片';
+
+  @override
+  String get viewBoard => '看板';
+
+  @override
+  String get viewEdges => '连线';
+
+  @override
+  String get viewArea => '区域';
+
+  @override
+  String get viewMap => '地图';
+
+  @override
+  String get viewTimeline => '时间线';
+
+  @override
+  String get viewCanvas => '画布';
+
+  @override
+  String get viewPages => '页面';
+
+  @override
+  String get viewGallery => '画廊';
+
+  @override
+  String get viewExport => '导出';
+
+  @override
+  String get viewEditor => '编辑器';
+
+  @override
+  String get viewOutline => '大纲';
+
+  @override
+  String get viewReading => '阅读';
+
+  @override
+  String get viewBook => '书本';
+
+  @override
+  String get viewRoutes => '路线';
+
+  @override
+  String get viewReader => '阅读器';
+
+  @override
+  String get viewDialogue => '对话';
+
+  @override
+  String get viewOneline => '单线';
+
+  @override
+  String get viewDownline => '纵向';
+
+  @override
+  String get viewCompare => '对比';
+
+  @override
+  String get viewCalendar => '日历';
+
+  @override
+  String get viewList => '列表';
+
+  @override
+  String get viewMatrix => '矩阵';
+
+  @override
+  String get viewChat => '聊天';
+
+  @override
+  String get viewTranscript => '记录';
+
+  @override
+  String get clsNoRelations => '这些元素之间还没有链接';
+
+  @override
+  String get clsTypeText => '文本';
+
+  @override
+  String get clsTypeTextarea => '长文本';
+
+  @override
+  String get clsTypeNumber => '数字';
+
+  @override
+  String get clsTypeDate => '日期';
+
+  @override
+  String get clsTypeSelect => '单选';
+
+  @override
+  String get clsTypeMulti => '多选';
+
+  @override
+  String get clsTypeCheckbox => '复选框';
+
+  @override
+  String get clsTypeUrl => '链接 (URL)';
+
+  @override
+  String get clsTypeRelation => '关系';
+
+  @override
+  String get clsTypeFormula => '公式';
+
+  @override
+  String get clsFieldType => '字段类型';
+
+  @override
+  String get clsChoices => '选项（每行一个）';
+
+  @override
+  String get clsFormulaHint => '例如 {HP} * 2';
+
+  @override
+  String get clsEditField => '编辑字段';
+
+  @override
+  String get clsAddLink => '添加链接';
+
+  @override
+  String get dateDay => '日';
+
+  @override
+  String get dateMonth => '月';
+
+  @override
+  String get dateYear => '年';
+
+  @override
+  String get dateHour => '时';
+
+  @override
+  String get dateMinute => '分';
+
+  @override
+  String get btnClear => '清除';
+
+  @override
+  String get groupBy => '分组依据';
+
+  @override
+  String get groupModule => '模块';
+
+  @override
+  String get relDirected => '单向 (→)';
+
+  @override
+  String get exhGroup => '分组';
+
+  @override
+  String get exhNote => '便签';
+
+  @override
+  String get exhAddElement => '放置元素';
+
+  @override
+  String get exhAddNote => '添加便签';
+
+  @override
+  String get exhAddGroup => '添加分组';
+
+  @override
+  String get exhRemoveFromScene => '从场景移除';
+
+  @override
+  String get exhSceneEmpty => '尚未放置任何内容 — 放置元素或添加便签。';
 }

@@ -178,12 +178,41 @@ class ComponentBlockView extends ConsumerWidget {
       return note('${def.label(l10n)} · ${l10n.pbSourceGone}');
     }
 
-    final ctx = ComponentCtx(page: page, block: block, source: source, itemKey: itemKey, wide: wide);
+    final moduleView = ref.watch(moduleViewProvider(source.id)).valueOrNull;
+    final preset = resolvePreset(def, block, moduleView);
+    final ctx = ComponentCtx(page: page, block: block, source: source, itemKey: itemKey, wide: wide, preset: preset);
     Widget body = def.build(context, ctx);
-    if (def.canvas) body = CanvasFrame(title: source.name, wide: wide, child: body);
+    if (def.canvas) {
+      body = CanvasFrame(
+        title: source.name,
+        wide: wide,
+        fullScreen: (context) => def.build(context, ctx.copyWith(fullScreen: true)),
+        child: body,
+      );
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        if (def.presets.length > 1)
+          PresetChips(
+            presets: def.presets,
+            current: preset,
+            onPick: (p) async {
+              final dao = await ref.read(pageBlockDaoProvider.future);
+              await dao.update(block.id, config: {...block.config, 'preset': p});
+              // The page's own view is also what the module opens on next —
+              // the desktop's activeView.
+              if (!ctx.borrowed) {
+                final db = await ref.read(databaseProvider.future);
+                await db.execute(
+                    "INSERT INTO module_ui (module_ref, ui_key, ui_value) VALUES (?,'activeView',?) "
+                    'ON CONFLICT(module_ref, ui_key) DO UPDATE SET ui_value=excluded.ui_value',
+                    [source!.id, p]);
+                ref.invalidate(moduleViewProvider(source.id));
+              }
+              ref.invalidate(pageProvider(PageKey(page.module.id, itemKey)));
+            },
+          ),
         if (ctx.borrowed || block.component == 'core.related')
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
@@ -210,16 +239,20 @@ class CanvasFrame extends StatelessWidget {
   final bool wide;
   final Widget child;
 
-  const CanvasFrame({super.key, required this.title, required this.wide, required this.child});
+  /// What the full-screen editor draws — the same component, told it has
+  /// the whole screen (pinch, pan, drag; APK-V3.md §4).
+  final WidgetBuilder? fullScreen;
+
+  const CanvasFrame({super.key, required this.title, required this.wide, required this.child, this.fullScreen});
 
   static const double thumbHeight = 220;
 
   void _open(BuildContext context) {
     Navigator.of(context, rootNavigator: true).push(MaterialPageRoute<void>(
       fullscreenDialog: true,
-      builder: (_) => Scaffold(
+      builder: (ctx) => Scaffold(
         appBar: AppBar(title: Text(title)),
-        body: SafeArea(child: SingleChildScrollView(child: child)),
+        body: SafeArea(child: fullScreen?.call(ctx) ?? SingleChildScrollView(child: child)),
       ),
     ));
   }
@@ -318,6 +351,50 @@ class ImageBlock extends ConsumerWidget {
     );
   }
 }
+
+/// A row of the component's presets — the desktop's view chips (V5.md §12:
+/// each old view is a preset of its kind's component).
+class PresetChips extends StatelessWidget {
+  final List<String> presets;
+  final String current;
+  final ValueChanged<String> onPick;
+
+  const PresetChips({super.key, required this.presets, required this.current, required this.onPick});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return SizedBox(
+      height: 44,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        children: [
+          for (final p in presets)
+            Padding(
+              padding: const EdgeInsets.only(right: 6),
+              child: ChoiceChip(
+                label: Text(presetLabel(l10n, p)),
+                selected: p == current,
+                visualDensity: VisualDensity.compact,
+                onSelected: (_) => onPick(p),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The view a module was last left on (module_ui activeView; Chronicler's
+/// older rows say `view`).
+final moduleViewProvider = FutureProvider.autoDispose.family<String?, int>((ref, moduleId) async {
+  final db = await ref.watch(databaseProvider.future);
+  final r = await db.rawQuery(
+      "SELECT ui_key, ui_value FROM module_ui WHERE module_ref=? AND ui_key IN ('activeView','view')", [moduleId]);
+  final m = {for (final x in r) x['ui_key']: x['ui_value'] as String?};
+  return m['activeView'] ?? m['view'];
+});
 
 /// Set by the Asset Nest: draws an image block's picture.
 Widget? Function(BuildContext context, WidgetRef ref, PageBlock block)? imageBlockBuilder;

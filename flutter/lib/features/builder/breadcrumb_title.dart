@@ -97,7 +97,7 @@ class BreadcrumbTitle extends StatelessWidget {
       // bar, so a short parent name is never cut to "N…" for nothing.
       parts.add(last
           ? Flexible(child: segment)
-          : ConstrainedBox(constraints: BoxConstraints(maxWidth: width * 0.26), child: segment));
+          : ConstrainedBox(constraints: BoxConstraints(maxWidth: width * 0.34), child: segment));
     }
 
     return GestureDetector(

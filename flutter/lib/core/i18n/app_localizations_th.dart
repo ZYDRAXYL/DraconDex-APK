@@ -1135,4 +1135,193 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'ลิงก์';
+
+  @override
+  String get viewTable => 'ตาราง';
+
+  @override
+  String get viewListDetail => 'รายการ · รายละเอียด';
+
+  @override
+  String get viewRelations => 'ความสัมพันธ์';
+
+  @override
+  String get viewGrid => 'กริด';
+
+  @override
+  String get viewScene => 'ฉาก';
+
+  @override
+  String get viewGraph => 'กราฟ';
+
+  @override
+  String get viewCards => 'การ์ด';
+
+  @override
+  String get viewBoard => 'บอร์ด';
+
+  @override
+  String get viewEdges => 'เส้นเชื่อม';
+
+  @override
+  String get viewArea => 'พื้นที่';
+
+  @override
+  String get viewMap => 'แผนที่';
+
+  @override
+  String get viewTimeline => 'เส้นเวลา';
+
+  @override
+  String get viewCanvas => 'ผืนผ้าใบ';
+
+  @override
+  String get viewPages => 'หน้า';
+
+  @override
+  String get viewGallery => 'แกลเลอรี';
+
+  @override
+  String get viewExport => 'ส่งออก';
+
+  @override
+  String get viewEditor => 'ตัวแก้ไข';
+
+  @override
+  String get viewOutline => 'โครงร่าง';
+
+  @override
+  String get viewReading => 'อ่าน';
+
+  @override
+  String get viewBook => 'หนังสือ';
+
+  @override
+  String get viewRoutes => 'เส้นทาง';
+
+  @override
+  String get viewReader => 'ผู้อ่าน';
+
+  @override
+  String get viewDialogue => 'บทสนทนา';
+
+  @override
+  String get viewOneline => 'เส้นเดียว';
+
+  @override
+  String get viewDownline => 'ไล่ลงหน้า';
+
+  @override
+  String get viewCompare => 'เปรียบเทียบ';
+
+  @override
+  String get viewCalendar => 'ปฏิทิน';
+
+  @override
+  String get viewList => 'รายการ';
+
+  @override
+  String get viewMatrix => 'เมทริกซ์';
+
+  @override
+  String get viewChat => 'แชต';
+
+  @override
+  String get viewTranscript => 'บันทึก';
+
+  @override
+  String get clsNoRelations => 'ยังไม่มีความเชื่อมโยงระหว่างองค์ประกอบเหล่านี้';
+
+  @override
+  String get clsTypeText => 'ข้อความ';
+
+  @override
+  String get clsTypeTextarea => 'ข้อความยาว';
+
+  @override
+  String get clsTypeNumber => 'ตัวเลข';
+
+  @override
+  String get clsTypeDate => 'วันที่';
+
+  @override
+  String get clsTypeSelect => 'ตัวเลือก';
+
+  @override
+  String get clsTypeMulti => 'หลายตัวเลือก';
+
+  @override
+  String get clsTypeCheckbox => 'ช่องทำเครื่องหมาย';
+
+  @override
+  String get clsTypeUrl => 'ลิงก์ (URL)';
+
+  @override
+  String get clsTypeRelation => 'ความสัมพันธ์';
+
+  @override
+  String get clsTypeFormula => 'สูตร';
+
+  @override
+  String get clsFieldType => 'ชนิดฟิลด์';
+
+  @override
+  String get clsChoices => 'ตัวเลือก (บรรทัดละหนึ่ง)';
+
+  @override
+  String get clsFormulaHint => 'เช่น {HP} * 2';
+
+  @override
+  String get clsEditField => 'แก้ไขฟิลด์';
+
+  @override
+  String get clsAddLink => 'เพิ่มลิงก์';
+
+  @override
+  String get dateDay => 'วัน';
+
+  @override
+  String get dateMonth => 'เดือน';
+
+  @override
+  String get dateYear => 'ปี';
+
+  @override
+  String get dateHour => 'ชั่วโมง';
+
+  @override
+  String get dateMinute => 'นาที';
+
+  @override
+  String get btnClear => 'ล้าง';
+
+  @override
+  String get groupBy => 'จัดกลุ่มตาม';
+
+  @override
+  String get groupModule => 'โมดูล';
+
+  @override
+  String get relDirected => 'ทิศทางเดียว (→)';
+
+  @override
+  String get exhGroup => 'กลุ่ม';
+
+  @override
+  String get exhNote => 'โน้ต';
+
+  @override
+  String get exhAddElement => 'วางองค์ประกอบ';
+
+  @override
+  String get exhAddNote => 'เพิ่มโน้ต';
+
+  @override
+  String get exhAddGroup => 'เพิ่มกลุ่ม';
+
+  @override
+  String get exhRemoveFromScene => 'นำออกจากฉาก';
+
+  @override
+  String get exhSceneEmpty => 'ยังไม่มีอะไรในฉาก — วางองค์ประกอบหรือเพิ่มโน้ต';
 }

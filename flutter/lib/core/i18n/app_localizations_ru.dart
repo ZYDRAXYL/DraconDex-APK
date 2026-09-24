@@ -1135,4 +1135,193 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'Ссылка';
+
+  @override
+  String get viewTable => 'Таблица';
+
+  @override
+  String get viewListDetail => 'Список · подробно';
+
+  @override
+  String get viewRelations => 'Связи';
+
+  @override
+  String get viewGrid => 'Сетка';
+
+  @override
+  String get viewScene => 'Сцена';
+
+  @override
+  String get viewGraph => 'Граф';
+
+  @override
+  String get viewCards => 'Карточки';
+
+  @override
+  String get viewBoard => 'Доска';
+
+  @override
+  String get viewEdges => 'Рёбра';
+
+  @override
+  String get viewArea => 'Область';
+
+  @override
+  String get viewMap => 'Карта';
+
+  @override
+  String get viewTimeline => 'Хронология';
+
+  @override
+  String get viewCanvas => 'Холст';
+
+  @override
+  String get viewPages => 'Страницы';
+
+  @override
+  String get viewGallery => 'Галерея';
+
+  @override
+  String get viewExport => 'Экспорт';
+
+  @override
+  String get viewEditor => 'Редактор';
+
+  @override
+  String get viewOutline => 'Структура';
+
+  @override
+  String get viewReading => 'Чтение';
+
+  @override
+  String get viewBook => 'Книга';
+
+  @override
+  String get viewRoutes => 'Маршруты';
+
+  @override
+  String get viewReader => 'Читатель';
+
+  @override
+  String get viewDialogue => 'Диалог';
+
+  @override
+  String get viewOneline => 'Одна линия';
+
+  @override
+  String get viewDownline => 'Вниз';
+
+  @override
+  String get viewCompare => 'Сравнить';
+
+  @override
+  String get viewCalendar => 'Календарь';
+
+  @override
+  String get viewList => 'Список';
+
+  @override
+  String get viewMatrix => 'Матрица';
+
+  @override
+  String get viewChat => 'Чат';
+
+  @override
+  String get viewTranscript => 'Журнал';
+
+  @override
+  String get clsNoRelations => 'Между этими элементами пока нет связей';
+
+  @override
+  String get clsTypeText => 'Текст';
+
+  @override
+  String get clsTypeTextarea => 'Длинный текст';
+
+  @override
+  String get clsTypeNumber => 'Число';
+
+  @override
+  String get clsTypeDate => 'Дата';
+
+  @override
+  String get clsTypeSelect => 'Выбор';
+
+  @override
+  String get clsTypeMulti => 'Множественный выбор';
+
+  @override
+  String get clsTypeCheckbox => 'Флажок';
+
+  @override
+  String get clsTypeUrl => 'Ссылка (URL)';
+
+  @override
+  String get clsTypeRelation => 'Связь';
+
+  @override
+  String get clsTypeFormula => 'Формула';
+
+  @override
+  String get clsFieldType => 'Тип поля';
+
+  @override
+  String get clsChoices => 'Варианты (по одному в строке)';
+
+  @override
+  String get clsFormulaHint => 'напр. {HP} * 2';
+
+  @override
+  String get clsEditField => 'Изменить поле';
+
+  @override
+  String get clsAddLink => 'Добавить связь';
+
+  @override
+  String get dateDay => 'День';
+
+  @override
+  String get dateMonth => 'Месяц';
+
+  @override
+  String get dateYear => 'Год';
+
+  @override
+  String get dateHour => 'Час';
+
+  @override
+  String get dateMinute => 'Мин';
+
+  @override
+  String get btnClear => 'Очистить';
+
+  @override
+  String get groupBy => 'Группировать по';
+
+  @override
+  String get groupModule => 'Модуль';
+
+  @override
+  String get relDirected => 'Одно направление (→)';
+
+  @override
+  String get exhGroup => 'Группа';
+
+  @override
+  String get exhNote => 'Заметка';
+
+  @override
+  String get exhAddElement => 'Разместить элемент';
+
+  @override
+  String get exhAddNote => 'Добавить заметку';
+
+  @override
+  String get exhAddGroup => 'Добавить группу';
+
+  @override
+  String get exhRemoveFromScene => 'Убрать со сцены';
+
+  @override
+  String get exhSceneEmpty => 'Пока ничего нет — разместите элемент или добавьте заметку.';
 }

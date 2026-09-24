@@ -40,6 +40,71 @@ class ClassifierDao {
     });
   }
 
+  /// Name, type and per-type options at once — the field dialog's save.
+  Future<void> updateField(int id, {required String description, required String type, String? options}) async {
+    await db.rawUpdate(
+      "UPDATE classifier_template SET description=?,attribute_type=?,options=?,update_at=datetime('now') WHERE id=?",
+      [description, type, options, id],
+    );
+  }
+
+  /// Every value of every item of a module, {object: {template: value}} —
+  /// one query for a table instead of one per row.
+  Future<Map<int, Map<int, String?>>> getModuleValues(int moduleRef) async {
+    final rows = await db.rawQuery(
+      'SELECT a.object_ref, a.template_ref, a.attribute_value FROM classifier_attribute a '
+      'JOIN classifier_object o ON a.object_ref=o.id WHERE o.module_ref=?',
+      [moduleRef],
+    );
+    final out = <int, Map<int, String?>>{};
+    for (final r in rows) {
+      (out[r['object_ref'] as int] ??= {})[r['template_ref'] as int] = r['attribute_value'] as String?;
+    }
+    return out;
+  }
+
+  /// A relation field's rows (EXE cls-field-types.js): ordinary relations,
+  /// from `cobj_<object>`, typed `ctpl_<field>`.
+  Future<List<({int id, String from, String to, int field})>> getFieldRelations(int moduleRef) async {
+    final rows = await db.rawQuery(
+      "SELECT r.id, r.from_key, r.to_key, r.rel_type FROM entity_relation r "
+      "JOIN classifier_object o ON r.from_key='cobj_'||o.id "
+      "WHERE o.module_ref=? AND r.rel_type LIKE 'ctpl\\_%' ESCAPE '\\' ORDER BY r.id",
+      [moduleRef],
+    );
+    return [
+      for (final r in rows)
+        (
+          id: r['id'] as int,
+          from: r['from_key'] as String,
+          to: r['to_key'] as String,
+          field: int.tryParse((r['rel_type'] as String).substring(5)) ?? 0,
+        ),
+    ];
+  }
+
+  Future<void> addFieldRelation(int objectId, int fieldId, String toKey) async {
+    final m = await db.rawQuery(
+        'SELECT m.nexus_ref, m.id FROM classifier_object o JOIN module m ON o.module_ref=m.id WHERE o.id=?', [objectId]);
+    if (m.isEmpty) return;
+    await db.insert(
+      'entity_relation',
+      {
+        'nexus_ref': m.first['nexus_ref'],
+        'module_ref': m.first['id'],
+        'from_key': 'cobj_$objectId',
+        'to_key': toKey,
+        'rel_type': 'ctpl_$fieldId',
+        'directed': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
+  }
+
+  Future<void> deleteRelation(int id) async {
+    await db.delete('entity_relation', where: 'id=?', whereArgs: [id]);
+  }
+
   Future<void> renameField(int id, String description) async {
     await db.rawUpdate(
       "UPDATE classifier_template SET description=?,update_at=datetime('now') WHERE id=?",

@@ -1135,4 +1135,193 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get propTypeUrl => '링크';
+
+  @override
+  String get viewTable => '표';
+
+  @override
+  String get viewListDetail => '목록 · 상세';
+
+  @override
+  String get viewRelations => '관계';
+
+  @override
+  String get viewGrid => '그리드';
+
+  @override
+  String get viewScene => '장면';
+
+  @override
+  String get viewGraph => '그래프';
+
+  @override
+  String get viewCards => '카드';
+
+  @override
+  String get viewBoard => '보드';
+
+  @override
+  String get viewEdges => '연결선';
+
+  @override
+  String get viewArea => '영역';
+
+  @override
+  String get viewMap => '지도';
+
+  @override
+  String get viewTimeline => '타임라인';
+
+  @override
+  String get viewCanvas => '캔버스';
+
+  @override
+  String get viewPages => '페이지';
+
+  @override
+  String get viewGallery => '갤러리';
+
+  @override
+  String get viewExport => '내보내기';
+
+  @override
+  String get viewEditor => '편집기';
+
+  @override
+  String get viewOutline => '개요';
+
+  @override
+  String get viewReading => '읽기';
+
+  @override
+  String get viewBook => '책';
+
+  @override
+  String get viewRoutes => '경로';
+
+  @override
+  String get viewReader => '리더';
+
+  @override
+  String get viewDialogue => '대화';
+
+  @override
+  String get viewOneline => '한 줄';
+
+  @override
+  String get viewDownline => '세로';
+
+  @override
+  String get viewCompare => '비교';
+
+  @override
+  String get viewCalendar => '달력';
+
+  @override
+  String get viewList => '목록';
+
+  @override
+  String get viewMatrix => '매트릭스';
+
+  @override
+  String get viewChat => '채팅';
+
+  @override
+  String get viewTranscript => '기록';
+
+  @override
+  String get clsNoRelations => '아직 이 요소들 사이에 링크가 없습니다';
+
+  @override
+  String get clsTypeText => '텍스트';
+
+  @override
+  String get clsTypeTextarea => '긴 텍스트';
+
+  @override
+  String get clsTypeNumber => '숫자';
+
+  @override
+  String get clsTypeDate => '날짜';
+
+  @override
+  String get clsTypeSelect => '선택';
+
+  @override
+  String get clsTypeMulti => '다중 선택';
+
+  @override
+  String get clsTypeCheckbox => '체크박스';
+
+  @override
+  String get clsTypeUrl => '링크 (URL)';
+
+  @override
+  String get clsTypeRelation => '관계';
+
+  @override
+  String get clsTypeFormula => '수식';
+
+  @override
+  String get clsFieldType => '필드 유형';
+
+  @override
+  String get clsChoices => '선택지 (줄마다 하나)';
+
+  @override
+  String get clsFormulaHint => '예: {HP} * 2';
+
+  @override
+  String get clsEditField => '필드 편집';
+
+  @override
+  String get clsAddLink => '링크 추가';
+
+  @override
+  String get dateDay => '일';
+
+  @override
+  String get dateMonth => '월';
+
+  @override
+  String get dateYear => '년';
+
+  @override
+  String get dateHour => '시';
+
+  @override
+  String get dateMinute => '분';
+
+  @override
+  String get btnClear => '지우기';
+
+  @override
+  String get groupBy => '그룹 기준';
+
+  @override
+  String get groupModule => '모듈';
+
+  @override
+  String get relDirected => '한 방향 (→)';
+
+  @override
+  String get exhGroup => '그룹';
+
+  @override
+  String get exhNote => '메모';
+
+  @override
+  String get exhAddElement => '요소 배치';
+
+  @override
+  String get exhAddNote => '메모 추가';
+
+  @override
+  String get exhAddGroup => '그룹 추가';
+
+  @override
+  String get exhRemoveFromScene => '장면에서 제거';
+
+  @override
+  String get exhSceneEmpty => '아직 배치된 것이 없습니다 — 요소를 배치하거나 메모를 추가하세요.';
 }

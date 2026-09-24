@@ -1135,4 +1135,193 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'Tautan';
+
+  @override
+  String get viewTable => 'Tabel';
+
+  @override
+  String get viewListDetail => 'Daftar · rincian';
+
+  @override
+  String get viewRelations => 'Relasi';
+
+  @override
+  String get viewGrid => 'Kisi';
+
+  @override
+  String get viewScene => 'Adegan';
+
+  @override
+  String get viewGraph => 'Graf';
+
+  @override
+  String get viewCards => 'Kartu';
+
+  @override
+  String get viewBoard => 'Papan';
+
+  @override
+  String get viewEdges => 'Sisi';
+
+  @override
+  String get viewArea => 'Area';
+
+  @override
+  String get viewMap => 'Peta';
+
+  @override
+  String get viewTimeline => 'Linimasa';
+
+  @override
+  String get viewCanvas => 'Kanvas';
+
+  @override
+  String get viewPages => 'Halaman';
+
+  @override
+  String get viewGallery => 'Galeri';
+
+  @override
+  String get viewExport => 'Ekspor';
+
+  @override
+  String get viewEditor => 'Penyunting';
+
+  @override
+  String get viewOutline => 'Kerangka';
+
+  @override
+  String get viewReading => 'Membaca';
+
+  @override
+  String get viewBook => 'Buku';
+
+  @override
+  String get viewRoutes => 'Rute';
+
+  @override
+  String get viewReader => 'Pembaca';
+
+  @override
+  String get viewDialogue => 'Dialog';
+
+  @override
+  String get viewOneline => 'Satu garis';
+
+  @override
+  String get viewDownline => 'Menurun';
+
+  @override
+  String get viewCompare => 'Bandingkan';
+
+  @override
+  String get viewCalendar => 'Kalender';
+
+  @override
+  String get viewList => 'Daftar';
+
+  @override
+  String get viewMatrix => 'Matriks';
+
+  @override
+  String get viewChat => 'Obrolan';
+
+  @override
+  String get viewTranscript => 'Log';
+
+  @override
+  String get clsNoRelations => 'Belum ada tautan antar elemen ini';
+
+  @override
+  String get clsTypeText => 'Teks';
+
+  @override
+  String get clsTypeTextarea => 'Teks panjang';
+
+  @override
+  String get clsTypeNumber => 'Angka';
+
+  @override
+  String get clsTypeDate => 'Tanggal';
+
+  @override
+  String get clsTypeSelect => 'Pilihan';
+
+  @override
+  String get clsTypeMulti => 'Pilihan ganda';
+
+  @override
+  String get clsTypeCheckbox => 'Kotak centang';
+
+  @override
+  String get clsTypeUrl => 'Tautan (URL)';
+
+  @override
+  String get clsTypeRelation => 'Relasi';
+
+  @override
+  String get clsTypeFormula => 'Rumus';
+
+  @override
+  String get clsFieldType => 'Jenis bidang';
+
+  @override
+  String get clsChoices => 'Pilihan (satu per baris)';
+
+  @override
+  String get clsFormulaHint => 'mis. {HP} * 2';
+
+  @override
+  String get clsEditField => 'Ubah bidang';
+
+  @override
+  String get clsAddLink => 'Tambah tautan';
+
+  @override
+  String get dateDay => 'Hari';
+
+  @override
+  String get dateMonth => 'Bulan';
+
+  @override
+  String get dateYear => 'Tahun';
+
+  @override
+  String get dateHour => 'Jam';
+
+  @override
+  String get dateMinute => 'Mnt';
+
+  @override
+  String get btnClear => 'Hapus isi';
+
+  @override
+  String get groupBy => 'Kelompokkan menurut';
+
+  @override
+  String get groupModule => 'Modul';
+
+  @override
+  String get relDirected => 'Satu arah (→)';
+
+  @override
+  String get exhGroup => 'Grup';
+
+  @override
+  String get exhNote => 'Catatan';
+
+  @override
+  String get exhAddElement => 'Tempatkan elemen';
+
+  @override
+  String get exhAddNote => 'Tambah catatan';
+
+  @override
+  String get exhAddGroup => 'Tambah grup';
+
+  @override
+  String get exhRemoveFromScene => 'Hapus dari adegan';
+
+  @override
+  String get exhSceneEmpty => 'Belum ada yang ditempatkan — tempatkan elemen atau tambah catatan.';
 }

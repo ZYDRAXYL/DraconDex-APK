@@ -1135,4 +1135,193 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'リンク';
+
+  @override
+  String get viewTable => '表';
+
+  @override
+  String get viewListDetail => 'リスト・詳細';
+
+  @override
+  String get viewRelations => '関係';
+
+  @override
+  String get viewGrid => 'グリッド';
+
+  @override
+  String get viewScene => 'シーン';
+
+  @override
+  String get viewGraph => 'グラフ';
+
+  @override
+  String get viewCards => 'カード';
+
+  @override
+  String get viewBoard => 'ボード';
+
+  @override
+  String get viewEdges => 'エッジ';
+
+  @override
+  String get viewArea => 'エリア';
+
+  @override
+  String get viewMap => '地図';
+
+  @override
+  String get viewTimeline => 'タイムライン';
+
+  @override
+  String get viewCanvas => 'キャンバス';
+
+  @override
+  String get viewPages => 'ページ';
+
+  @override
+  String get viewGallery => 'ギャラリー';
+
+  @override
+  String get viewExport => '書き出し';
+
+  @override
+  String get viewEditor => 'エディタ';
+
+  @override
+  String get viewOutline => 'アウトライン';
+
+  @override
+  String get viewReading => '読む';
+
+  @override
+  String get viewBook => '本';
+
+  @override
+  String get viewRoutes => 'ルート';
+
+  @override
+  String get viewReader => 'リーダー';
+
+  @override
+  String get viewDialogue => '会話';
+
+  @override
+  String get viewOneline => '一本線';
+
+  @override
+  String get viewDownline => '縦';
+
+  @override
+  String get viewCompare => '比較';
+
+  @override
+  String get viewCalendar => 'カレンダー';
+
+  @override
+  String get viewList => 'リスト';
+
+  @override
+  String get viewMatrix => 'マトリクス';
+
+  @override
+  String get viewChat => 'チャット';
+
+  @override
+  String get viewTranscript => 'ログ';
+
+  @override
+  String get clsNoRelations => 'これらの要素間のリンクはまだありません';
+
+  @override
+  String get clsTypeText => 'テキスト';
+
+  @override
+  String get clsTypeTextarea => '長文';
+
+  @override
+  String get clsTypeNumber => '数値';
+
+  @override
+  String get clsTypeDate => '日付';
+
+  @override
+  String get clsTypeSelect => '選択';
+
+  @override
+  String get clsTypeMulti => '複数選択';
+
+  @override
+  String get clsTypeCheckbox => 'チェックボックス';
+
+  @override
+  String get clsTypeUrl => 'リンク (URL)';
+
+  @override
+  String get clsTypeRelation => '関係';
+
+  @override
+  String get clsTypeFormula => '数式';
+
+  @override
+  String get clsFieldType => 'フィールドの種類';
+
+  @override
+  String get clsChoices => '選択肢（1行に1つ）';
+
+  @override
+  String get clsFormulaHint => '例: {HP} * 2';
+
+  @override
+  String get clsEditField => 'フィールドを編集';
+
+  @override
+  String get clsAddLink => 'リンクを追加';
+
+  @override
+  String get dateDay => '日';
+
+  @override
+  String get dateMonth => '月';
+
+  @override
+  String get dateYear => '年';
+
+  @override
+  String get dateHour => '時';
+
+  @override
+  String get dateMinute => '分';
+
+  @override
+  String get btnClear => 'クリア';
+
+  @override
+  String get groupBy => 'グループ化';
+
+  @override
+  String get groupModule => 'モジュール';
+
+  @override
+  String get relDirected => '一方向 (→)';
+
+  @override
+  String get exhGroup => 'グループ';
+
+  @override
+  String get exhNote => 'メモ';
+
+  @override
+  String get exhAddElement => '要素を配置';
+
+  @override
+  String get exhAddNote => 'メモを追加';
+
+  @override
+  String get exhAddGroup => 'グループを追加';
+
+  @override
+  String get exhRemoveFromScene => 'シーンから外す';
+
+  @override
+  String get exhSceneEmpty => 'まだ何も配置されていません — 要素を配置するかメモを追加します。';
 }

@@ -23,6 +23,7 @@ import '../../widgets/row_menu.dart';
 import '../../widgets/wiki_field.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
+import 'views/classifier_views.dart';
 
 /// Properties, Related, and an element page's body — the three components
 /// every page can hold (EXE renderer/page/blocks.js, item-page.js).
@@ -404,11 +405,12 @@ class _TagRow extends ConsumerWidget {
               avatar: t.colorCode == null ? null : ColorDot(colorCode: t.colorCode, size: 10),
               label: Text('#${t.name}'),
             ),
-          ActionChip(
-            visualDensity: VisualDensity.compact,
-            avatar: const Icon(Icons.sell_outlined, size: 16),
+          TextButton.icon(
+            icon: const Icon(Icons.sell_outlined, size: 18),
             label: Text(AppLocalizations.of(context)!.pbTags),
             onPressed: () => _pickTags(context, ref, tags),
+            style: TextButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
           ),
         ],
       ),
@@ -584,6 +586,7 @@ class ItemBody extends ConsumerWidget {
               await saved();
             },
           ),
+        if (data.classifierModule != null) ClsItemFields(moduleId: data.classifierModule!, itemId: data.id),
         for (final f in data.fields)
           InkWell(
             onTap: f.editable
@@ -594,6 +597,7 @@ class ItemBody extends ConsumerWidget {
                     final db = await ref.read(databaseProvider.future);
                     await ClassifierDao(db).setValue(objectRef: data.id, templateRef: f.templateId, value: next);
                     await saved();
+                    if (data.classifierModule != null) ref.invalidate(clsDataProvider(data.classifierModule!));
                   }
                 : null,
             child: Padding(
@@ -618,7 +622,7 @@ class ItemBody extends ConsumerWidget {
         if (data.lines.isNotEmpty)
           for (final line in data.lines)
             Padding(padding: const EdgeInsets.symmetric(vertical: 2), child: MarkdownView(text: line, nexusId: module.nexusRef)),
-        if (data.text == null && data.fields.isEmpty && data.lines.isEmpty)
+        if (data.text == null && data.fields.isEmpty && data.lines.isEmpty && data.classifierModule == null)
           Text(l10n.pbItemEmpty, style: theme.textTheme.bodySmall),
       ],
     );
@@ -641,8 +645,9 @@ class _ItemBodyData {
   final Future<void> Function(Database db, String v)? saveText;
   final List<_Field> fields;
   final List<String> lines;
+  final int? classifierModule;
   const _ItemBodyData(this.id, this.name,
-      {this.text, this.saveText, this.fields = const [], this.lines = const []});
+      {this.text, this.saveText, this.fields = const [], this.lines = const [], this.classifierModule});
 }
 
 final _itemBodyProvider = FutureProvider.autoDispose.family<_ItemBodyData?, String>((ref, key) async {
@@ -653,17 +658,20 @@ final _itemBodyProvider = FutureProvider.autoDispose.family<_ItemBodyData?, Stri
   final name = await EntityKinds.nameOf(db, key) ?? key;
   switch (prefix) {
     case 'cobj':
-      final o = await db.rawQuery('SELECT name, note FROM classifier_object WHERE id=?', [id]);
+      final o = await db.rawQuery('SELECT name, note, module_ref FROM classifier_object WHERE id=?', [id]);
       if (o.isEmpty) return null;
       final fields = await db.rawQuery('''
         SELECT t.id, t.description, t.attribute_type, a.attribute_value FROM classifier_template t
         JOIN classifier_object o ON o.module_ref = t.module_ref
         LEFT JOIN classifier_attribute a ON a.template_ref = t.id AND a.object_ref = o.id
-        WHERE o.id=? AND (t.object_ref IS NULL OR t.object_ref = o.id)
+        WHERE o.id=? AND t.object_ref = o.id
         ORDER BY t.display_order, t.id''', [id]);
       return _ItemBodyData(id, name,
           text: o.first['note'] as String? ?? '',
           saveText: (d, v) => ClassifierDao(d).updateItem(id, name: o.first['name'] as String, note: v),
+          // The module's shared fields draw through ClsItemFields, typed;
+          // only the element's private ones (desktop-made) are listed here.
+          classifierModule: o.first['module_ref'] as int,
           fields: [
             for (final f in fields)
               if (f['attribute_type'] != 'relation' && f['attribute_type'] != 'formula')

@@ -2372,6 +2372,384 @@ abstract class AppLocalizations {
   /// **'Link'**
   String get propTypeUrl;
 
+  /// No description provided for @viewTable.
+  ///
+  /// In en, this message translates to:
+  /// **'Table'**
+  String get viewTable;
+
+  /// No description provided for @viewListDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'List · detail'**
+  String get viewListDetail;
+
+  /// No description provided for @viewRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'Relations'**
+  String get viewRelations;
+
+  /// No description provided for @viewGrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid'**
+  String get viewGrid;
+
+  /// No description provided for @viewScene.
+  ///
+  /// In en, this message translates to:
+  /// **'Scene'**
+  String get viewScene;
+
+  /// No description provided for @viewGraph.
+  ///
+  /// In en, this message translates to:
+  /// **'Graph'**
+  String get viewGraph;
+
+  /// No description provided for @viewCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get viewCards;
+
+  /// No description provided for @viewBoard.
+  ///
+  /// In en, this message translates to:
+  /// **'Board'**
+  String get viewBoard;
+
+  /// No description provided for @viewEdges.
+  ///
+  /// In en, this message translates to:
+  /// **'Edges'**
+  String get viewEdges;
+
+  /// No description provided for @viewArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Area'**
+  String get viewArea;
+
+  /// No description provided for @viewMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get viewMap;
+
+  /// No description provided for @viewTimeline.
+  ///
+  /// In en, this message translates to:
+  /// **'Timeline'**
+  String get viewTimeline;
+
+  /// No description provided for @viewCanvas.
+  ///
+  /// In en, this message translates to:
+  /// **'Canvas'**
+  String get viewCanvas;
+
+  /// No description provided for @viewPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get viewPages;
+
+  /// No description provided for @viewGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get viewGallery;
+
+  /// No description provided for @viewExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export'**
+  String get viewExport;
+
+  /// No description provided for @viewEditor.
+  ///
+  /// In en, this message translates to:
+  /// **'Editor'**
+  String get viewEditor;
+
+  /// No description provided for @viewOutline.
+  ///
+  /// In en, this message translates to:
+  /// **'Outline'**
+  String get viewOutline;
+
+  /// No description provided for @viewReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading'**
+  String get viewReading;
+
+  /// No description provided for @viewBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get viewBook;
+
+  /// No description provided for @viewRoutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Routes'**
+  String get viewRoutes;
+
+  /// No description provided for @viewReader.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader'**
+  String get viewReader;
+
+  /// No description provided for @viewDialogue.
+  ///
+  /// In en, this message translates to:
+  /// **'Dialogue'**
+  String get viewDialogue;
+
+  /// No description provided for @viewOneline.
+  ///
+  /// In en, this message translates to:
+  /// **'One line'**
+  String get viewOneline;
+
+  /// No description provided for @viewDownline.
+  ///
+  /// In en, this message translates to:
+  /// **'Down the page'**
+  String get viewDownline;
+
+  /// No description provided for @viewCompare.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare'**
+  String get viewCompare;
+
+  /// No description provided for @viewCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get viewCalendar;
+
+  /// No description provided for @viewList.
+  ///
+  /// In en, this message translates to:
+  /// **'List'**
+  String get viewList;
+
+  /// No description provided for @viewMatrix.
+  ///
+  /// In en, this message translates to:
+  /// **'Matrix'**
+  String get viewMatrix;
+
+  /// No description provided for @viewChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get viewChat;
+
+  /// No description provided for @viewTranscript.
+  ///
+  /// In en, this message translates to:
+  /// **'Log'**
+  String get viewTranscript;
+
+  /// No description provided for @clsNoRelations.
+  ///
+  /// In en, this message translates to:
+  /// **'No links between these elements yet'**
+  String get clsNoRelations;
+
+  /// No description provided for @clsTypeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get clsTypeText;
+
+  /// No description provided for @clsTypeTextarea.
+  ///
+  /// In en, this message translates to:
+  /// **'Long text'**
+  String get clsTypeTextarea;
+
+  /// No description provided for @clsTypeNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Number'**
+  String get clsTypeNumber;
+
+  /// No description provided for @clsTypeDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get clsTypeDate;
+
+  /// No description provided for @clsTypeSelect.
+  ///
+  /// In en, this message translates to:
+  /// **'Choice'**
+  String get clsTypeSelect;
+
+  /// No description provided for @clsTypeMulti.
+  ///
+  /// In en, this message translates to:
+  /// **'Multiple choice'**
+  String get clsTypeMulti;
+
+  /// No description provided for @clsTypeCheckbox.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkbox'**
+  String get clsTypeCheckbox;
+
+  /// No description provided for @clsTypeUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Link (URL)'**
+  String get clsTypeUrl;
+
+  /// No description provided for @clsTypeRelation.
+  ///
+  /// In en, this message translates to:
+  /// **'Relation'**
+  String get clsTypeRelation;
+
+  /// No description provided for @clsTypeFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'Formula'**
+  String get clsTypeFormula;
+
+  /// No description provided for @clsFieldType.
+  ///
+  /// In en, this message translates to:
+  /// **'Field type'**
+  String get clsFieldType;
+
+  /// No description provided for @clsChoices.
+  ///
+  /// In en, this message translates to:
+  /// **'Choices (one per line)'**
+  String get clsChoices;
+
+  /// No description provided for @clsFormulaHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. {HP} * 2'**
+  String get clsFormulaHint;
+
+  /// No description provided for @clsEditField.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit field'**
+  String get clsEditField;
+
+  /// No description provided for @clsAddLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a link'**
+  String get clsAddLink;
+
+  /// No description provided for @dateDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get dateDay;
+
+  /// No description provided for @dateMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get dateMonth;
+
+  /// No description provided for @dateYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get dateYear;
+
+  /// No description provided for @dateHour.
+  ///
+  /// In en, this message translates to:
+  /// **'Hour'**
+  String get dateHour;
+
+  /// No description provided for @dateMinute.
+  ///
+  /// In en, this message translates to:
+  /// **'Min'**
+  String get dateMinute;
+
+  /// No description provided for @btnClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get btnClear;
+
+  /// No description provided for @groupBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Group by'**
+  String get groupBy;
+
+  /// No description provided for @groupModule.
+  ///
+  /// In en, this message translates to:
+  /// **'Module'**
+  String get groupModule;
+
+  /// No description provided for @relDirected.
+  ///
+  /// In en, this message translates to:
+  /// **'One direction (→)'**
+  String get relDirected;
+
+  /// No description provided for @exhGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get exhGroup;
+
+  /// No description provided for @exhNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get exhNote;
+
+  /// No description provided for @exhAddElement.
+  ///
+  /// In en, this message translates to:
+  /// **'Place an element'**
+  String get exhAddElement;
+
+  /// No description provided for @exhAddNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a note'**
+  String get exhAddNote;
+
+  /// No description provided for @exhAddGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a group'**
+  String get exhAddGroup;
+
+  /// No description provided for @exhRemoveFromScene.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from the scene'**
+  String get exhRemoveFromScene;
+
+  /// No description provided for @exhSceneEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing placed yet — place an element or add a note.'**
+  String get exhSceneEmpty;
+
 }
 
 class _AppLocalizationsDelegate

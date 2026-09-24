@@ -1135,4 +1135,193 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get propTypeUrl => 'Liên kết';
+
+  @override
+  String get viewTable => 'Bảng';
+
+  @override
+  String get viewListDetail => 'Danh sách · chi tiết';
+
+  @override
+  String get viewRelations => 'Quan hệ';
+
+  @override
+  String get viewGrid => 'Lưới';
+
+  @override
+  String get viewScene => 'Cảnh';
+
+  @override
+  String get viewGraph => 'Đồ thị';
+
+  @override
+  String get viewCards => 'Thẻ';
+
+  @override
+  String get viewBoard => 'Bảng ghim';
+
+  @override
+  String get viewEdges => 'Cạnh nối';
+
+  @override
+  String get viewArea => 'Khu vực';
+
+  @override
+  String get viewMap => 'Bản đồ';
+
+  @override
+  String get viewTimeline => 'Dòng thời gian';
+
+  @override
+  String get viewCanvas => 'Khung vẽ';
+
+  @override
+  String get viewPages => 'Trang';
+
+  @override
+  String get viewGallery => 'Bộ sưu tập';
+
+  @override
+  String get viewExport => 'Xuất';
+
+  @override
+  String get viewEditor => 'Trình soạn';
+
+  @override
+  String get viewOutline => 'Dàn ý';
+
+  @override
+  String get viewReading => 'Đọc';
+
+  @override
+  String get viewBook => 'Sách';
+
+  @override
+  String get viewRoutes => 'Lộ trình';
+
+  @override
+  String get viewReader => 'Trình đọc';
+
+  @override
+  String get viewDialogue => 'Hội thoại';
+
+  @override
+  String get viewOneline => 'Một dòng';
+
+  @override
+  String get viewDownline => 'Theo chiều dọc';
+
+  @override
+  String get viewCompare => 'So sánh';
+
+  @override
+  String get viewCalendar => 'Lịch';
+
+  @override
+  String get viewList => 'Danh sách';
+
+  @override
+  String get viewMatrix => 'Ma trận';
+
+  @override
+  String get viewChat => 'Trò chuyện';
+
+  @override
+  String get viewTranscript => 'Nhật ký';
+
+  @override
+  String get clsNoRelations => 'Chưa có liên kết giữa các phần tử này';
+
+  @override
+  String get clsTypeText => 'Văn bản';
+
+  @override
+  String get clsTypeTextarea => 'Văn bản dài';
+
+  @override
+  String get clsTypeNumber => 'Số';
+
+  @override
+  String get clsTypeDate => 'Ngày';
+
+  @override
+  String get clsTypeSelect => 'Lựa chọn';
+
+  @override
+  String get clsTypeMulti => 'Nhiều lựa chọn';
+
+  @override
+  String get clsTypeCheckbox => 'Hộp kiểm';
+
+  @override
+  String get clsTypeUrl => 'Liên kết (URL)';
+
+  @override
+  String get clsTypeRelation => 'Quan hệ';
+
+  @override
+  String get clsTypeFormula => 'Công thức';
+
+  @override
+  String get clsFieldType => 'Kiểu trường';
+
+  @override
+  String get clsChoices => 'Lựa chọn (mỗi dòng một)';
+
+  @override
+  String get clsFormulaHint => 'vd: {HP} * 2';
+
+  @override
+  String get clsEditField => 'Sửa trường';
+
+  @override
+  String get clsAddLink => 'Thêm liên kết';
+
+  @override
+  String get dateDay => 'Ngày';
+
+  @override
+  String get dateMonth => 'Tháng';
+
+  @override
+  String get dateYear => 'Năm';
+
+  @override
+  String get dateHour => 'Giờ';
+
+  @override
+  String get dateMinute => 'Phút';
+
+  @override
+  String get btnClear => 'Xóa';
+
+  @override
+  String get groupBy => 'Nhóm theo';
+
+  @override
+  String get groupModule => 'Mô-đun';
+
+  @override
+  String get relDirected => 'Một chiều (→)';
+
+  @override
+  String get exhGroup => 'Nhóm';
+
+  @override
+  String get exhNote => 'Ghi chú';
+
+  @override
+  String get exhAddElement => 'Đặt phần tử';
+
+  @override
+  String get exhAddNote => 'Thêm ghi chú';
+
+  @override
+  String get exhAddGroup => 'Thêm nhóm';
+
+  @override
+  String get exhRemoveFromScene => 'Gỡ khỏi cảnh';
+
+  @override
+  String get exhSceneEmpty => 'Chưa có gì — hãy đặt phần tử hoặc thêm ghi chú.';
 }
