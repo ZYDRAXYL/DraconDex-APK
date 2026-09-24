@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../services/wiki_service.dart';
 import '../models/scribe_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Scribe kind: chat-style notes. A module owns sessions
 /// (`chat_session`); a session owns messages (`chat_message`). Both cascade
@@ -46,6 +47,7 @@ class ScribeDao {
   }
 
   Future<void> deleteSession(int id) async {
+    await PageBlockDao(db).clearItem('chss_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('chat_session', where: 'id=?', whereArgs: [id]);
   }
 

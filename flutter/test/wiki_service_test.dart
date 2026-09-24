@@ -5,6 +5,8 @@ import 'package:dracondex/core/database/vault_schema.g.dart';
 import 'package:dracondex/data/dao/author_dao.dart';
 import 'package:dracondex/data/dao/classifier_dao.dart';
 import 'package:dracondex/data/dao/module_dao.dart';
+import 'package:dracondex/data/dao/narrator_dao.dart';
+import 'package:dracondex/data/dao/wanderer_dao.dart';
 import 'package:dracondex/data/models/module_model.dart';
 import 'package:dracondex/data/services/entity_location.dart';
 import 'package:dracondex/data/services/legacy_notes.dart';
@@ -105,6 +107,36 @@ void main() {
     expect(await EntityLocation.of(db, 'note_$note'), '/hub/$nx/module/$mid');
     expect(await EntityLocation.of(db, 'file_1'), isNull);
     expect(await EntityLocation.of(db, 'cobj_999'), isNull);
+  });
+
+  test('dialogues, tables, sketch pages and map pins open their own pages; a deleted one takes its page', () async {
+    final db = await openVault();
+    final nx = await db.insert('nexus', {'name': 'W'});
+    final dao = ModuleDao(db);
+    Future<(int, int)> made(String name, ModuleKind kind, String table, Map<String, Object?> row) async {
+      final m = await dao.createModule(nexusRef: nx, name: name, kind: kind);
+      return (m, await db.insert(table, {'module_ref': m, ...row}));
+    }
+
+    final pages = {
+      'sdlg': await made('Story', ModuleKind.narrator, 'story_dialogue', {'name': 'Meeting'}),
+      'divt': await made('Rumors', ModuleKind.diviner, 'diviner_table', {'name': 'Tavern'}),
+      'skpg': await made('Sketch', ModuleKind.sketcher, 'sketch_page', {'name': 'Harbor'}),
+      'mevt': await made('Travels', ModuleKind.wanderer, 'map_event', {'x': 1, 'y': 2}),
+    };
+    for (final MapEntry(key: prefix, value: (m, id)) in pages.entries) {
+      expect(await EntityLocation.of(db, '${prefix}_$id'), '/hub/$nx/module/$m/item/${prefix}_$id', reason: prefix);
+      await db.insert('page_block', {'module_ref': m, 'item_key': '${prefix}_$id', 'block_type': 'text', 'content': 'Notes'});
+    }
+    Future<int> blocks(String key) async =>
+        (await db.rawQuery('SELECT COUNT(*) AS c FROM page_block WHERE item_key=?', [key])).single['c'] as int;
+    final (_, pin) = pages['mevt']!;
+    expect(await blocks('mevt_$pin'), greaterThan(0));
+    await WandererDao(db).deletePin(pin);
+    expect(await blocks('mevt_$pin'), 0, reason: "a deleted pin's page goes with it");
+    final (_, dlg) = pages['sdlg']!;
+    await NarratorDao(db).deleteDialogue(dlg);
+    expect(await blocks('sdlg_$dlg'), 0);
   });
 
   test('the [[ autocomplete sees only an unclosed link before the cursor', () {

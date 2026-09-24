@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../services/wiki_service.dart';
 import '../models/sketcher_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Sketcher kind: a module's drawing pages and strokes.
 ///
@@ -52,6 +53,7 @@ class SketcherDao {
   }
 
   Future<void> deletePage(int id) async {
+    await PageBlockDao(db).clearItem('skpg_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('sketch_page', where: 'id=?', whereArgs: [id]);
   }
 

@@ -5,6 +5,7 @@ import '../../../data/models/wanderer_model.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../page/views/view_common.dart';
 
 /// Wanderer kind: timeline events pinned onto a map.
 ///
@@ -99,6 +100,11 @@ class _WandererContentState extends ConsumerState<WandererContent> {
             ),
           ),
           actions: [
+            // A pin has its own page (mevt_, V5.md §12.4): notes, properties, links.
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop('page'),
+              child: Text(l10n.rowOpen),
+            ),
             TextButton(
               onPressed: () => Navigator.of(ctx).pop('delete'),
               child: Text(l10n.btnDelete),
@@ -112,6 +118,10 @@ class _WandererContentState extends ConsumerState<WandererContent> {
       ),
     );
     if (action == null) return;
+    if (action == 'page') {
+      if (mounted) openElement(context, widget.nexusId, widget.moduleId, 'mevt_${pin.id}');
+      return;
+    }
     final dao = ref.read(wandererDaoProvider).valueOrNull;
     if (dao == null) return;
     if (action == 'delete') {

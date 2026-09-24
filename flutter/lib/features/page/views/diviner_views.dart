@@ -299,6 +299,12 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
           ),
           const SizedBox(width: 8),
           IconButton(tooltip: l.btnEdit, icon: const Icon(Icons.tune), onPressed: () => _tableDialog(t)),
+          // The table's own page (V5.md §12.4): its notes, properties and links.
+          IconButton(
+            tooltip: l.rowOpen,
+            icon: const Icon(Icons.open_in_new),
+            onPressed: () => openElement(context, widget.ctx.nexusId, _id, 'divt_${t['id']}'),
+          ),
           const Spacer(),
           Text(t['mode'] == 'join' ? l.divModeJoin : (dice ? '${t['dice']}' : l.divWeighted), style: theme.textTheme.labelMedium),
         ]),

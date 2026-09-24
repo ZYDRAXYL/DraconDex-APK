@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../services/wiki_service.dart';
 import '../models/classifier_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Classifier kind: the module's field definitions, the
 /// items under it, and the value each item holds for each field.
@@ -159,6 +160,7 @@ class ClassifierDao {
   }
 
   Future<void> deleteItem(int id) async {
+    await PageBlockDao(db).clearItem('cobj_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('classifier_object', where: 'id=?', whereArgs: [id]);
   }
 

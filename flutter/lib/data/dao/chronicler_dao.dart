@@ -3,6 +3,7 @@ import 'package:sqflite/sqflite.dart';
 import '../../core/calendar/calendar_engine.dart';
 import '../services/wiki_service.dart';
 import '../models/chronicler_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Chronicler kind: one timeline per module, and the
 /// dated events on it.
@@ -121,6 +122,7 @@ class ChroniclerDao {
   }
 
   Future<void> deleteEvent(int id) async {
+    await PageBlockDao(db).clearItem('tlev_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('timeline_event', where: 'id=?', whereArgs: [id]);
   }
 }

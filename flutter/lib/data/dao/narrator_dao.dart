@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../services/wiki_service.dart';
 import '../models/narrator_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Narrator kind.
 class NarratorDao {
@@ -34,6 +35,7 @@ class NarratorDao {
   }
 
   Future<void> deleteDialogue(int id) async {
+    await PageBlockDao(db).clearItem('sdlg_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('story_dialogue', where: 'id=?', whereArgs: [id]);
   }
 

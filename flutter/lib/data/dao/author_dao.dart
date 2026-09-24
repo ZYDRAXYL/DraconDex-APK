@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../services/wiki_service.dart';
 import '../models/author_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Author kind: the chapters of one module's book.
 /// Every row is keyed by `module_ref`, so a module owns its chapters outright
@@ -82,6 +83,7 @@ class AuthorDao {
   }
 
   Future<void> deleteChapter(int id) async {
+    await PageBlockDao(db).clearItem('bchp_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('book_chapter', where: 'id=?', whereArgs: [id]);
   }
 

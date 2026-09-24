@@ -18,13 +18,14 @@ class EntityLocation {
     'skpg': 'SELECT m.id AS m, m.nexus_ref AS n FROM sketch_page x JOIN module m ON x.module_ref=m.id WHERE x.id=?',
     'divt': 'SELECT m.id AS m, m.nexus_ref AS n FROM diviner_table x JOIN module m ON x.module_ref=m.id WHERE x.id=?',
     'exn': 'SELECT m.id AS m, m.nexus_ref AS n FROM exhibit_node x JOIN module m ON x.module_ref=m.id WHERE x.id=?',
+    'mevt': 'SELECT m.id AS m, m.nexus_ref AS n FROM map_event x JOIN module m ON x.module_ref=m.id WHERE x.id=?',
     'tlev': 'SELECT m.id AS m, m.nexus_ref AS n FROM timeline_event x JOIN timeline t ON x.timeline_id=t.id '
         'JOIN module m ON t.module_ref=m.id WHERE x.id=?',
   };
 
   /// An element whose page opens as the element itself; anything else in a
   /// module (an event, a node) opens its module, as on the desktop.
-  static const _elementPages = {'cobj', 'bchp', 'chss', 'sdlg', 'skpg', 'divt'};
+  static const _elementPages = {'cobj', 'bchp', 'chss', 'sdlg', 'skpg', 'divt', 'mevt'};
 
   static Future<String?> of(DatabaseExecutor db, String key) async {
     final k = EntityKinds.parse(key);

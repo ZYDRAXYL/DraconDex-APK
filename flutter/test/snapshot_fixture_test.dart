@@ -82,7 +82,7 @@ void main() {
     const tables = <String, String>{
       'module': 'module', 'cobj': 'classifier_object', 'bchp': 'book_chapter', 'chss': 'chat_session',
       'tlev': 'timeline_event', 'sdlg': 'story_dialogue', 'skpg': 'sketch_page', 'ctpl': 'classifier_template',
-      'note': 'note', 'divt': 'diviner_table',
+      'note': 'note', 'divt': 'diviner_table', 'mevt': 'map_event',
     };
     Future<bool> exists(String key) async {
       final m = RegExp(r'^([a-z]+)_(\d+)$').firstMatch(key);
@@ -95,6 +95,15 @@ void main() {
       expect(await exists(row['to_key']! as String), isTrue, reason: '${row['to_key']}');
     }
     for (final row in await db.rawQuery('SELECT linker_key FROM sketch_pin')) {
+      expect(await exists(row['linker_key']! as String), isTrue, reason: '${row['linker_key']}');
+    }
+    // Map pins keep their links (SDB 2.0.3): before, map_event.linker_key
+    // travelled in no snapshot and every pin came back unlinked.
+    final mapPins = list((fixture['wanderer'] as Map)['mapEvents']).where((p) => p['linkerKey'] != null).toList();
+    expect(mapPins, isNotEmpty);
+    final mapLinks = await db.rawQuery('SELECT linker_key FROM map_event WHERE linker_key IS NOT NULL');
+    expect(mapLinks.length, mapPins.where((p) => !missing(p['linkerKey'])).length);
+    for (final row in mapLinks) {
       expect(await exists(row['linker_key']! as String), isTrue, reason: '${row['linker_key']}');
     }
     final shared = await db.rawQuery("SELECT 1 FROM page_block WHERE item_key='*'");

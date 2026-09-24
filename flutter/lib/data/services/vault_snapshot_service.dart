@@ -204,8 +204,8 @@ class VaultSnapshotService {
 
     final wanderer = <String, Object?>{
       'mapEvents': await all('''
-        SELECT me.module_ref AS moduleId, me.event_ref AS eventId, me.area_ref AS areaId,
-               me.label, me.x, me.y
+        SELECT me.id, me.module_ref AS moduleId, me.event_ref AS eventId, me.area_ref AS areaId,
+               me.label, me.linker_key AS linkerKey, me.x, me.y
         FROM map_event me JOIN module m ON me.module_ref=m.id
         WHERE m.nexus_ref=? ORDER BY me.id'''),
     };
@@ -720,12 +720,21 @@ class VaultSnapshotService {
         if (oldId is int) evtMap[oldId] = id;
       }
 
+      // A pin is an entity (mevt_, SDB 2.0.3) and its linker_key points at
+      // any element — remapped with the other key columns below. Before,
+      // neither travelled and a synced pin lost its link (EXE sync.js).
+      final mevtMap = <int, int>{};
+      final pinLinks = <(String, String, int, String)>[];
       for (final me in arr(sect(p['wanderer'])['mapEvents'])) {
         final m = mod(me['moduleId']);
         if (m == null) continue;
-        await txn.rawInsert(
+        final id = await txn.rawInsert(
             'INSERT INTO map_event (module_ref, event_ref, area_ref, label, x, y) VALUES (?,?,?,?,?,?)',
             <Object?>[m, evtMap[me['eventId']], areaMap[me['areaId']], me['label'], me['x'] ?? 0, me['y'] ?? 0]);
+        final oldId = me['id'];
+        if (oldId is int) mevtMap[oldId] = id;
+        final lk = me['linkerKey'];
+        if (lk is String && lk.isNotEmpty) pinLinks.add(('map_event', 'linker_key', id, lk));
       }
 
       final nar = sect(p['narrator']);
@@ -777,7 +786,7 @@ class VaultSnapshotService {
       }
 
       final bchpMap = <int, int>{};
-      final pendingKeys = <(String, String, int, String)>[]; // single-key columns, remapped below
+      final pendingKeys = <(String, String, int, String)>[...pinLinks]; // single-key columns, remapped below
       for (final ch in arr(sect(p['author'])['chapters'])) {
         final m = mod(ch['moduleId']);
         if (m == null) continue;
@@ -908,7 +917,7 @@ class VaultSnapshotService {
       final keyMaps = EntityKinds.keyMaps({
         'modMap': modMap, 'cobjMap': cobjMap, 'ctplMap': ctplMap, 'bchpMap': bchpMap,
         'chssMap': chssMap, 'evtMap': evtMap, 'dlgMap': dlgMap, 'noteMap': noteMap,
-        'pageMap': pageMap, 'divtMap': divtMap,
+        'pageMap': pageMap, 'divtMap': divtMap, 'mevtMap': mevtMap,
       });
       // Key columns written before the maps were complete: a single key that
       // cannot be mapped is cleared; a JSON list entry that cannot is left out.

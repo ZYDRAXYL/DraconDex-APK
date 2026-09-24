@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/entity/entity_kinds.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
-import '../../data/models/viewer_model.dart';
 import '../../providers/builder_view_provider.dart';
+import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
@@ -61,16 +62,16 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
   /// loaded (a half-resolved '…' title is not worth keeping). Deferred past
   /// the current frame — recording writes provider state, which build() must
   /// not do.
-  void _recordOpenPage(NexusModel? nexus, ModuleModel? module, IndexedItem? item) {
+  void _recordOpenPage(NexusModel? nexus, ModuleModel? module, String? itemName) {
     if (nexus == null) return;
     if (moduleId != null && module == null) return;
-    if (itemKey != null && item == null) return;
+    if (itemKey != null && itemName == null) return;
 
     final view = RecentView(
       nexusId: nexusId,
       moduleId: moduleId,
       itemKey: itemKey,
-      title: item?.name ?? module?.name ?? nexus.name,
+      title: itemName ?? module?.name ?? nexus.name,
       nexusName: nexus.name,
       kindId: module?.kind.id,
       colorCode: module?.colorCode ?? (moduleId == null ? nexus.colorCode : null),
@@ -89,9 +90,9 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
   /// An open page can outlive what it points at — the module or element was
   /// deleted, or it sat under a subtree that was. Landing on one resolves it
   /// to null (loaded, but absent), which is the moment to close the page.
-  void _closeIfMissing(AsyncValue<ModuleModel?>? moduleAsync, AsyncValue<List<IndexedItem>>? indexAsync, IndexedItem? item) {
+  void _closeIfMissing(AsyncValue<ModuleModel?>? moduleAsync, AsyncValue<String?>? itemAsync) {
     final moduleGone = moduleId != null && moduleAsync != null && moduleAsync.hasValue && moduleAsync.value == null;
-    final itemGone = itemKey != null && indexAsync != null && indexAsync.hasValue && item == null;
+    final itemGone = itemKey != null && itemAsync != null && itemAsync.hasValue && itemAsync.value == null;
     if (!moduleGone && !itemGone) return;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -106,26 +107,23 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
     final nexusAsync = ref.watch(nexusProvider(nexusId));
     final moduleAsync = moduleId == null ? null : ref.watch(moduleProvider(moduleId!));
     final breadcrumbAsync = moduleId == null ? null : ref.watch(moduleBreadcrumbProvider(moduleId!));
-    final indexAsync = itemKey == null ? null : ref.watch(nexusIndexProvider(nexusId));
+    final itemAsync = itemKey == null ? null : ref.watch(_itemNameProvider((nexusId, itemKey!)));
     final childrenAsync = ref.watch(moduleChildrenProvider(_childrenKey));
 
     final module = moduleAsync?.valueOrNull;
     final nexus = nexusAsync.valueOrNull;
-    IndexedItem? item;
-    for (final it in indexAsync?.valueOrNull ?? const <IndexedItem>[]) {
-      if (it.key == itemKey && it.moduleId == moduleId) item = it;
-    }
+    final itemName = itemAsync?.valueOrNull;
     final viewMode = ref.watch(builderViewModeProvider);
 
-    _recordOpenPage(nexus, module, item);
-    _closeIfMissing(moduleAsync, indexAsync, item);
+    _recordOpenPage(nexus, module, itemName);
+    _closeIfMissing(moduleAsync, itemAsync);
 
     final crumbs = <Crumb>[
       Crumb(label: nexus?.name ?? '…', nexusId: nexusId),
       for (final a in breadcrumbAsync?.valueOrNull ?? const <ModuleModel>[])
         Crumb(label: a.name, nexusId: nexusId, moduleId: a.id),
       if (moduleId != null) Crumb(label: module?.name ?? '…', nexusId: nexusId, moduleId: moduleId),
-      if (itemKey != null) Crumb(label: item?.name ?? '…', nexusId: nexusId, moduleId: moduleId, itemKey: itemKey),
+      if (itemKey != null) Crumb(label: itemName ?? '…', nexusId: nexusId, moduleId: moduleId, itemKey: itemKey),
     ];
 
     return Scaffold(
@@ -201,3 +199,14 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
     );
   }
 }
+
+/// An element page's name, by its family's lookup (ENTITY_KINDS), so every
+/// family with a page is named — the Nexus index lists only the ones filters
+/// and the Exhibitor show, which leaves out Diviner tables and map pins.
+/// Null when the element is gone. Re-read whenever the index is (a rename).
+final _itemNameProvider = FutureProvider.autoDispose.family<String?, (int, String)>((ref, arg) async {
+  final (nexusId, key) = arg;
+  ref.watch(nexusIndexProvider(nexusId));
+  final db = await ref.watch(databaseProvider.future);
+  return EntityKinds.nameOf(db, key);
+});

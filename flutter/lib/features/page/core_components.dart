@@ -7,9 +7,11 @@ import '../../core/entity/entity_kinds.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../data/dao/author_dao.dart';
 import '../../data/dao/classifier_dao.dart';
+import '../../data/dao/diviner_dao.dart';
 import '../../data/dao/hashtag_dao.dart';
 import '../../data/dao/narrator_dao.dart';
 import '../../data/dao/page_block_dao.dart';
+import '../../data/dao/wanderer_dao.dart';
 import '../../data/models/hashtag_model.dart';
 import '../../data/models/module_model.dart';
 import '../../data/services/entity_location.dart';
@@ -24,6 +26,7 @@ import '../../widgets/wiki_field.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
 import 'views/classifier_views.dart';
+import 'views/sketcher_views.dart';
 
 /// Properties, Related, and an element page's body — the three components
 /// every page can hold (EXE renderer/page/blocks.js, item-page.js).
@@ -572,6 +575,11 @@ class ItemBody extends ConsumerWidget {
             },
           ),
         if (data.classifierModule != null) ClsItemFields(moduleId: data.classifierModule!, itemId: data.id),
+        if (data.sketchPage != null)
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 320),
+            child: Card(margin: const EdgeInsets.symmetric(vertical: 4), child: SketchThumb(pageId: data.sketchPage!)),
+          ),
         for (final f in data.fields)
           InkWell(
             onTap: f.editable
@@ -607,7 +615,8 @@ class ItemBody extends ConsumerWidget {
         if (data.lines.isNotEmpty)
           for (final line in data.lines)
             Padding(padding: const EdgeInsets.symmetric(vertical: 2), child: MarkdownView(text: line, nexusId: module.nexusRef)),
-        if (data.text == null && data.fields.isEmpty && data.lines.isEmpty && data.classifierModule == null)
+        if (data.divinerTable != null) _RollRow(tableId: data.divinerTable!),
+        if (data.text == null && data.fields.isEmpty && data.lines.isEmpty && data.classifierModule == null && data.sketchPage == null)
           Text(l10n.pbItemEmpty, style: theme.textTheme.bodySmall),
       ],
     );
@@ -631,8 +640,16 @@ class _ItemBodyData {
   final List<_Field> fields;
   final List<String> lines;
   final int? classifierModule;
+  final int? sketchPage;
+  final int? divinerTable;
   const _ItemBodyData(this.id, this.name,
-      {this.text, this.saveText, this.fields = const [], this.lines = const [], this.classifierModule});
+      {this.text,
+      this.saveText,
+      this.fields = const [],
+      this.lines = const [],
+      this.classifierModule,
+      this.sketchPage,
+      this.divinerTable});
 }
 
 final _itemBodyProvider = FutureProvider.autoDispose.family<_ItemBodyData?, String>((ref, key) async {
@@ -673,9 +690,44 @@ final _itemBodyProvider = FutureProvider.autoDispose.family<_ItemBodyData?, Stri
     case 'sdlg':
       final s = await db.rawQuery('SELECT name, description FROM story_dialogue WHERE id=?', [id]);
       if (s.isEmpty) return null;
+      // The dialogue's lines under its description, choices as their
+      // options (EXE mod/item.js); editing them stays on the board.
+      final talks = await db.rawQuery(
+          'SELECT id, row_type, speaker, talk_sentence FROM story_talk WHERE dialogue_ref=? ORDER BY talk_order, id', [id]);
+      final opts = await db.rawQuery(
+          'SELECT o.talk_ref, o.option_text FROM story_choice_option o JOIN story_talk t ON o.talk_ref=t.id '
+          'WHERE t.dialogue_ref=? ORDER BY o.talk_ref, o.option_order, o.id', [id]);
       return _ItemBodyData(id, name,
           text: s.first['description'] as String? ?? '',
-          saveText: (d, v) => NarratorDao(d).updateDialogue(id, name: s.first['name'] as String, description: v));
+          saveText: (d, v) => NarratorDao(d).updateDialogue(id, name: s.first['name'] as String, description: v),
+          lines: [
+            for (final t in talks)
+              if (t['row_type'] == 'choice')
+                for (final o in opts.where((o) => o['talk_ref'] == t['id'])) '- ${o['option_text'] ?? '…'}'
+              else
+                "${(t['speaker'] as String?)?.isNotEmpty == true ? '**${t['speaker']}** ' : ''}${t['talk_sentence'] ?? ''}",
+          ]);
+    case 'divt':
+      final e = await db.rawQuery(
+          'SELECT entry_text, linker_key FROM diviner_entry WHERE table_ref=? ORDER BY display_order, id', [id]);
+      return _ItemBodyData(id, name,
+          divinerTable: id, lines: [for (final (i, r) in e.indexed) '${i + 1}. ${r['entry_text'] ?? r['linker_key'] ?? '…'}']);
+    case 'skpg':
+      return _ItemBodyData(id, name, sketchPage: id);
+    case 'mevt':
+      final p = await db.rawQuery('''
+        SELECT me.label, me.linker_key, te.event_name FROM map_event me
+        LEFT JOIN timeline_event te ON te.id=me.event_ref WHERE me.id=?''', [id]);
+      if (p.isEmpty) return null;
+      final linked = p.first['linker_key'] as String?;
+      final linkedName = linked == null ? null : await EntityKinds.nameOf(db, linked);
+      return _ItemBodyData(id, name,
+          text: p.first['label'] as String? ?? '',
+          saveText: (d, v) => WandererDao(d).setLabel(id, v.trim()),
+          lines: [
+            if (p.first['event_name'] != null) '⏱ ${p.first['event_name']}',
+            if (linkedName != null) '→ $linkedName',
+          ]);
     case 'chss':
       final msgs = await db.rawQuery('SELECT message FROM chat_message WHERE session_ref=? ORDER BY id', [id]);
       return _ItemBodyData(id, name, lines: [for (final m in msgs) m['message'] as String? ?? '']);
@@ -683,3 +735,36 @@ final _itemBodyProvider = FutureProvider.autoDispose.family<_ItemBodyData?, Stri
       return _ItemBodyData(id, name);
   }
 });
+
+/// A Diviner table's page rolls it in place (EXE rollItemDivinerTable).
+class _RollRow extends ConsumerStatefulWidget {
+  final int tableId;
+  const _RollRow({required this.tableId});
+
+  @override
+  ConsumerState<_RollRow> createState() => _RollRowState();
+}
+
+class _RollRowState extends ConsumerState<_RollRow> {
+  String? _result;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(children: [
+        Expanded(child: Text(_result ?? '', style: Theme.of(context).textTheme.titleSmall)),
+        FilledButton.icon(
+          icon: const Icon(Icons.casino_outlined, size: 18),
+          label: Text(l.divRoll),
+          onPressed: () async {
+            final db = await ref.read(databaseProvider.future);
+            final r = await DivinerDao(db).roll(widget.tableId);
+            if (mounted) setState(() => _result = r.text);
+          },
+        ),
+      ]),
+    );
+  }
+}
