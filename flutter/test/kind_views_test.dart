@@ -100,14 +100,14 @@ void main() {
     return (db, m);
   }
 
-  Future<void> pump(WidgetTester tester, ModuleKind kind, String preset, Size size) async {
+  Future<void> pump(WidgetTester tester, ModuleKind kind, String preset, Size size, [String locale = 'en']) async {
     SharedPreferences.setMockInitialValues({});
     final (db, mod) = (await tester.runAsync(() => seed(kind, preset)))!;
     await tester.binding.setSurfaceSize(size);
     await tester.pumpWidget(ProviderScope(
       overrides: [databaseProvider.overrideWith((ref) async => db)],
       child: MaterialApp(
-        locale: const Locale('en'),
+        locale: Locale(locale),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         home: Scaffold(body: SingleChildScrollView(child: ModulePage(moduleId: mod))),
@@ -129,6 +129,10 @@ void main() {
       testWidgets('${kind.id} · ${preset.isEmpty ? '(one view)' : preset}', (tester) async {
         await pump(tester, kind, preset, const Size(390, 820));
         await pump(tester, kind, preset, const Size(1000, 800));
+        // Two of the added locales, whose strings run longer than English,
+        // on a phone — an overflow there is a layout bug, not a translation.
+        await pump(tester, kind, preset, const Size(390, 820), 'it');
+        await pump(tester, kind, preset, const Size(390, 820), 'uk');
       });
     }
   }

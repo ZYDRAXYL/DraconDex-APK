@@ -14,6 +14,7 @@ import '../component_registry.dart';
 import '../core_components.dart';
 import '../module_page.dart';
 import 'graph_view.dart';
+import 'node_canvas.dart';
 import 'selection_views.dart';
 import 'view_common.dart';
 
@@ -138,6 +139,12 @@ class _ExhibitorSceneState extends ConsumerState<ExhibitorScene> {
 
   Offset _pos(ExhNode n) => _drag[n.id] ?? Offset(n.x, n.y);
 
+  /// Groups and notes resize from a corner grip in full screen; the desktop
+  /// reads the same w/h (exhNodeSize) though it has no grip of its own.
+  final Map<int, Size> _resize = {};
+  Size _size(ExhNode n) => _resize[n.id] ?? n.size;
+  static bool _resizable(ExhNode n) => !n.locked && (n.type == 'group' || n.type == 'note');
+
   String _title(ExhNode n, AppLocalizations l) =>
       n.label?.isNotEmpty == true ? n.label! : (n.key != null ? widget.data.nameOf(n.key!) : (n.type == 'group' ? l.exhGroup : l.exhNote));
 
@@ -223,7 +230,7 @@ class _ExhibitorSceneState extends ConsumerState<ExhibitorScene> {
 
     var world = Rect.zero;
     for (final n in top) {
-      world = world.expandToInclude(_pos(n) & n.size);
+      world = world.expandToInclude(_pos(n) & _size(n));
     }
     world = world.inflate(80);
     final origin = world.topLeft;
@@ -239,7 +246,7 @@ class _ExhibitorSceneState extends ConsumerState<ExhibitorScene> {
 
     Widget nodeWidget(ExhNode n) {
       final p = _pos(n) - origin;
-      final s = n.size;
+      final s = _size(n);
       final stroke = hexColor(n.color) ?? scheme.primary;
       final Widget body = switch (n.type) {
         'group' => Container(
@@ -316,8 +323,8 @@ class _ExhibitorSceneState extends ConsumerState<ExhibitorScene> {
                 for (final e in edges)
                   if (keyed[e.from] != null && keyed[e.to] != null)
                     (
-                      (_pos(keyed[e.from]!) - origin) + keyed[e.from]!.size.center(Offset.zero),
-                      (_pos(keyed[e.to]!) - origin) + keyed[e.to]!.size.center(Offset.zero),
+                      (_pos(keyed[e.from]!) - origin) + _size(keyed[e.from]!).center(Offset.zero),
+                      (_pos(keyed[e.to]!) - origin) + _size(keyed[e.to]!).center(Offset.zero),
                       e.label,
                     ),
               ],
@@ -326,6 +333,27 @@ class _ExhibitorSceneState extends ConsumerState<ExhibitorScene> {
           ),
         ),
         for (final n in top) nodeWidget(n),
+        if (widget.ctx.fullScreen)
+          for (final n in top.where(_resizable))
+            Positioned(
+              left: _pos(n).dx - origin.dx + _size(n).width - ResizeGrip.size / 2,
+              top: _pos(n).dy - origin.dy + _size(n).height - ResizeGrip.size / 2,
+              child: ResizeGrip(
+                onDrag: (d) => setState(() {
+                  final s = _size(n);
+                  _resize[n.id] = Size((s.width + d.dx).clamp(60, 4000), (s.height + d.dy).clamp(40, 4000));
+                }),
+                onEnd: () async {
+                  final s = _resize[n.id];
+                  if (s == null) return;
+                  final db = await ref.read(databaseProvider.future);
+                  await db.rawUpdate(
+                      "UPDATE exhibit_node SET w=?, h=?, update_at=datetime('now') WHERE id=?", [s.width, s.height, n.id]);
+                  await _refresh();
+                  if (mounted) setState(() => _resize.remove(n.id));
+                },
+              ),
+            ),
       ]),
     );
 

@@ -1729,4 +1729,40 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Classici';
+
+  @override
+  String get kindRecent => 'Recenti';
+
+  @override
+  String get clsLevelable => 'Livellabile';
+
+  @override
+  String get clsCondition => 'Condizione';
+
+  @override
+  String get levelColLevel => 'Livello';
+
+  @override
+  String get levelColInfo => 'Info';
+
+  @override
+  String get levelAddRow => 'Aggiungi riga';
+
+  @override
+  String get levelNoRows => 'Nessuna riga';
+
+  @override
+  String get confirmDeleteLevelRow => 'Eliminare questa riga?';
+
+  @override
+  String get clsLevelAndCondition => 'Livello e condizione';
+
+  @override
+  String get clsLevelAndConditionHint => 'Trasforma un campo in una tabella di righe (livelli) o lega il valore a una condizione.';
+
+  @override
+  String get clsInsertAbove => 'Inserisci riga sopra';
+
+  @override
+  String get clsInsertBelow => 'Inserisci riga sotto';
 }

@@ -1732,4 +1732,40 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Clásico';
+
+  @override
+  String get kindRecent => 'Recientes';
+
+  @override
+  String get clsLevelable => 'Nivelable';
+
+  @override
+  String get clsCondition => 'Condición';
+
+  @override
+  String get levelColLevel => 'Nivel';
+
+  @override
+  String get levelColInfo => 'Información';
+
+  @override
+  String get levelAddRow => 'Añadir fila';
+
+  @override
+  String get levelNoRows => 'Aún no hay filas';
+
+  @override
+  String get confirmDeleteLevelRow => '¿Eliminar esta fila?';
+
+  @override
+  String get clsLevelAndCondition => 'Nivel y condición';
+
+  @override
+  String get clsLevelAndConditionHint => 'Convierte un campo en una tabla de filas (niveles) o vincula su valor a una condición.';
+
+  @override
+  String get clsInsertAbove => 'Insertar fila arriba';
+
+  @override
+  String get clsInsertBelow => 'Insertar fila abajo';
 }

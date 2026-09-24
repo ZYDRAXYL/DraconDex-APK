@@ -41,10 +41,12 @@ class ClassifierDao {
   }
 
   /// Name, type and per-type options at once — the field dialog's save.
-  Future<void> updateField(int id, {required String description, required String type, String? options}) async {
+  Future<void> updateField(int id,
+      {required String description, required String type, String? options, bool? levelable, bool? hasCondition}) async {
     await db.rawUpdate(
-      "UPDATE classifier_template SET description=?,attribute_type=?,options=?,update_at=datetime('now') WHERE id=?",
-      [description, type, options, id],
+      "UPDATE classifier_template SET description=?,attribute_type=?,options=?,"
+      "levelable=COALESCE(?,levelable),has_condition=COALESCE(?,has_condition),update_at=datetime('now') WHERE id=?",
+      [description, type, options, levelable == null ? null : (levelable ? 1 : 0), hasCondition == null ? null : (hasCondition ? 1 : 0), id],
     );
   }
 
@@ -159,6 +161,59 @@ class ClassifierDao {
   Future<void> deleteItem(int id) async {
     await db.delete('classifier_object', where: 'id=?', whereArgs: [id]);
   }
+
+  // ---- level rows (classifier_level) --------------------------------------
+  // The port of EXE db/classifier.js getLevels…moveLevels. All three value
+  // columns are kept whatever the flags say, so a field that gains a flag
+  // later keeps what was typed.
+
+  /// {template_ref: rows in order} for one object.
+  Future<Map<int, List<ClassifierLevelModel>>> getLevels(int objectRef) async {
+    final out = <int, List<ClassifierLevelModel>>{};
+    for (final r in await db.rawQuery('SELECT * FROM classifier_level WHERE object_ref=? ORDER BY display_order, id', [objectRef])) {
+      final l = ClassifierLevelModel.fromMap(r);
+      (out[l.templateRef] ??= []).add(l);
+    }
+    return out;
+  }
+
+  /// {object_ref: {template_ref: rows}} for a whole module — the table's cells.
+  Future<Map<int, Map<int, List<ClassifierLevelModel>>>> getModuleLevels(int moduleRef) async {
+    final out = <int, Map<int, List<ClassifierLevelModel>>>{};
+    for (final r in await db.rawQuery(
+        'SELECT cl.* FROM classifier_level cl JOIN classifier_object o ON cl.object_ref=o.id '
+        'WHERE o.module_ref=? ORDER BY cl.display_order, cl.id',
+        [moduleRef])) {
+      final l = ClassifierLevelModel.fromMap(r);
+      ((out[l.objectRef] ??= {})[l.templateRef] ??= []).add(l);
+    }
+    return out;
+  }
+
+  Future<int> createLevel(int objectRef, int templateRef) async {
+    final m = await db.rawQuery(
+        'SELECT COALESCE(MAX(display_order),-1)+1 AS n FROM classifier_level WHERE object_ref=? AND template_ref=?', [objectRef, templateRef]);
+    return db.insert('classifier_level', {'object_ref': objectRef, 'template_ref': templateRef, 'display_order': Sqflite.firstIntValue(m) ?? 0});
+  }
+
+  static const levelColumns = ['level_label', 'condition_value', 'info_value'];
+
+  Future<void> updateLevelField(int id, String column, String value) async {
+    if (!levelColumns.contains(column)) throw ArgumentError.value(column, 'column');
+    await db.rawUpdate("UPDATE classifier_level SET $column=?, update_at=datetime('now') WHERE id=?", [value, id]);
+  }
+
+  Future<void> deleteLevel(int id) => db.delete('classifier_level', where: 'id=?', whereArgs: [id]);
+
+  /// The whole order at once; object AND template are both asserted so a
+  /// stale id from another row set cannot be renumbered into this one.
+  Future<void> moveLevels(int objectRef, int templateRef, List<int> orderedIds) => db.transaction((tx) async {
+        for (var i = 0; i < orderedIds.length; i++) {
+          await tx.rawUpdate(
+              "UPDATE classifier_level SET display_order=?, update_at=datetime('now') WHERE id=? AND object_ref=? AND template_ref=?",
+              [i, orderedIds[i], objectRef, templateRef]);
+        }
+      });
 
   // ---- values (classifier_attribute) --------------------------------------
 

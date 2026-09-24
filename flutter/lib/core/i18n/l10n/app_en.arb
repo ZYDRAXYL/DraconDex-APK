@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Folder/Project/…",
   "moduleInside": "inside",
   "nameModeUnique": "Unique",
-  "nameModeClassic": "Classic"
+  "nameModeClassic": "Classic",
+  "kindRecent": "Recent",
+  "clsLevelable": "Levelable",
+  "clsCondition": "Condition",
+  "levelColLevel": "Level",
+  "levelColInfo": "Info",
+  "levelAddRow": "Add row",
+  "levelNoRows": "No rows yet",
+  "confirmDeleteLevelRow": "Delete this row?",
+  "clsLevelAndCondition": "Level & Condition",
+  "clsLevelAndConditionHint": "Turn a field into a table of rows (levels), or tie its value to a condition.",
+  "clsInsertAbove": "Insert row above",
+  "clsInsertBelow": "Insert row below"
 }

@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Carpeta/Proyecto/…",
   "moduleInside": "dentro",
   "nameModeUnique": "Único",
-  "nameModeClassic": "Clásico"
+  "nameModeClassic": "Clásico",
+  "kindRecent": "Recientes",
+  "clsLevelable": "Nivelable",
+  "clsCondition": "Condición",
+  "levelColLevel": "Nivel",
+  "levelColInfo": "Información",
+  "levelAddRow": "Añadir fila",
+  "levelNoRows": "Aún no hay filas",
+  "confirmDeleteLevelRow": "¿Eliminar esta fila?",
+  "clsLevelAndCondition": "Nivel y condición",
+  "clsLevelAndConditionHint": "Convierte un campo en una tabla de filas (niveles) o vincula su valor a una condición.",
+  "clsInsertAbove": "Insertar fila arriba",
+  "clsInsertBelow": "Insertar fila abajo"
 }

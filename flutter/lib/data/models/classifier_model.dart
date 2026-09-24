@@ -23,6 +23,11 @@ class ClassifierFieldModel {
   /// formula {"expr":"..."}.
   final String? options;
 
+  /// Level & Condition (EXE classifier-fields.js): the field's value is a
+  /// table of rows in classifier_level instead of one attribute cell.
+  final bool levelable;
+  final bool hasCondition;
+
   const ClassifierFieldModel({
     required this.id,
     required this.moduleRef,
@@ -30,7 +35,15 @@ class ClassifierFieldModel {
     this.attributeType = 'text',
     this.order = 0,
     this.options,
+    this.levelable = false,
+    this.hasCondition = false,
   });
+
+  bool get isLevelled => levelable || hasCondition;
+
+  /// The columns a row shows (EXE clsLevelColumns): level only when
+  /// levelable, condition only when conditioned, info always.
+  List<String> get levelColumns => [if (levelable) 'level_label', if (hasCondition) 'condition_value', 'info_value'];
 
   /// The ten types the desktop knows (EXE cls-field-types.js); anything else
   /// reads as text.
@@ -59,7 +72,30 @@ class ClassifierFieldModel {
         attributeType: m['attribute_type'] as String? ?? 'text',
         order: m['display_order'] as int? ?? 0,
         options: m['options'] as String?,
+        levelable: (m['levelable'] as int? ?? 0) != 0,
+        hasCondition: (m['has_condition'] as int? ?? 0) != 0,
       );
+}
+
+/// One row of a levelled field (classifier_level): per object, per field.
+class ClassifierLevelModel {
+  final int id;
+  final int objectRef;
+  final int templateRef;
+  final String? levelLabel;
+  final String? conditionValue;
+  final String? infoValue;
+  const ClassifierLevelModel(this.id, this.objectRef, this.templateRef, this.levelLabel, this.conditionValue, this.infoValue);
+
+  factory ClassifierLevelModel.fromMap(Map<String, dynamic> m) => ClassifierLevelModel(
+      m['id'] as int, m['object_ref'] as int, m['template_ref'] as int,
+      m['level_label'] as String?, m['condition_value'] as String?, m['info_value'] as String?);
+
+  String? operator [](String column) => switch (column) {
+        'level_label' => levelLabel,
+        'condition_value' => conditionValue,
+        _ => infoValue,
+      };
 }
 
 /// A multi-choice value: a JSON array, or a bare legacy string.

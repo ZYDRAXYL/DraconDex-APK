@@ -2,6 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/dao/module_dao.dart';
@@ -25,6 +26,28 @@ const kindGroups = <(ModuleCategory, String?, List<ModuleKind>)>[
   (ModuleCategory.data, 'story', [ModuleKind.narrator, ModuleKind.author, ModuleKind.scribe]),
   (ModuleCategory.data, 'draw', [ModuleKind.sketcher, ModuleKind.designer]),
 ];
+
+/// The last three kinds created, most recent first (EXE hub/menus.js
+/// ddx.recentKinds) — a per-device convenience, so an empty list is fine.
+const _recentKey = 'recentKinds';
+
+Future<List<ModuleKind>> recentKinds() async {
+  try {
+    final ids = (await SharedPreferences.getInstance()).getStringList(_recentKey) ?? const [];
+    return [for (final id in ids) if (ModuleKind.values.any((k) => k.id == id)) ModuleKind.fromId(id)].take(3).toList();
+  } catch (_) {
+    return const [];
+  }
+}
+
+Future<void> rememberRecentKind(ModuleKind kind) async {
+  try {
+    final next = [kind, ...(await recentKinds()).where((k) => k != kind)].take(3);
+    await (await SharedPreferences.getInstance()).setStringList(_recentKey, [for (final k in next) k.id]);
+  } catch (_) {
+    // Blocked storage: the list just stays empty.
+  }
+}
 
 void refreshTree(WidgetRef ref, int nexusId) {
   ref.invalidate(moduleChildrenProvider);
@@ -101,6 +124,7 @@ Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId
       final name = await askText(context, kindName(l, kind), initial: kindName(l, kind), label: l.labelName);
       if (name == null) return;
       final id = await ModuleDao(db).createModule(nexusRef: nexusId, parentId: parentId, name: name, kind: kind);
+      await rememberRecentKind(kind);
       refreshTree(ref, nexusId);
       router.push(RecentView.locationFor(nexusId, id));
     case 'template':
@@ -132,6 +156,15 @@ class _KindSheet extends StatefulWidget {
 
 class _KindSheetState extends State<_KindSheet> {
   String _q = '';
+  List<ModuleKind> _recent = const [];
+
+  @override
+  void initState() {
+    super.initState();
+    recentKinds().then((r) {
+      if (mounted) setState(() => _recent = r);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +189,21 @@ class _KindSheetState extends State<_KindSheet> {
           'story' => l.kindGroupStory,
           _ => l.kindGroupDraw,
         };
+    Widget kindRow(ModuleKind k) => ListTile(
+          dense: true,
+          leading: Icon(moduleKindInfo[k]!.icon),
+          title: Text(kindName(l, k)),
+          subtitle: Text(kindDesc(l, k), maxLines: 1, overflow: TextOverflow.ellipsis),
+          onTap: () => Navigator.pop(context, k),
+        );
     final rows = <Widget>[];
+    if (q.isEmpty && _recent.isNotEmpty) {
+      rows.add(Padding(
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 2),
+        child: Text(l.kindRecent.toUpperCase(), style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.primary)),
+      ));
+      rows.addAll(_recent.map(kindRow));
+    }
     ModuleCategory? last;
     for (final (c, s, kinds) in kindGroups) {
       final shown = kinds.where(hit).toList();
@@ -175,14 +222,7 @@ class _KindSheetState extends State<_KindSheet> {
         ));
       }
       for (final k in shown) {
-        final i = moduleKindInfo[k]!;
-        rows.add(ListTile(
-          dense: true,
-          leading: Icon(i.icon),
-          title: Text(kindName(l, k)),
-          subtitle: Text(kindDesc(l, k), maxLines: 1, overflow: TextOverflow.ellipsis),
-          onTap: () => Navigator.pop(context, k),
-        ));
+        rows.add(kindRow(k));
       }
     }
     return Padding(

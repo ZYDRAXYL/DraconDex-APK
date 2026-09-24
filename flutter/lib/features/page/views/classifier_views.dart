@@ -41,7 +41,12 @@ class ClsData {
 
   /// Names of every key a relation here points at.
   final Map<String, String> names;
-  const ClsData(this.fields, this.items, this.values, this.relations, this.names);
+
+  /// {object: {field: rows}} of the levelled fields.
+  final Map<int, Map<int, List<ClassifierLevelModel>>> levels;
+  const ClsData(this.fields, this.items, this.values, this.relations, this.names, [this.levels = const {}]);
+
+  List<ClassifierLevelModel> levelsOf(int item, int field) => levels[item]?[field] ?? const [];
 
   Map<int, String?> valuesOf(int item) => values[item] ?? const {};
 
@@ -50,6 +55,14 @@ class ClsData {
 
   /// A value as text, whatever its type.
   String text(ClassifierItemModel item, ClassifierFieldModel f, AppLocalizations l) {
+    if (f.isLevelled) {
+      // The desktop's folded summary: the last row's level (or condition),
+      // and how many rows there are.
+      final rows = levelsOf(item.id, f.id);
+      if (rows.isEmpty) return '';
+      final last = rows.last.levelLabel ?? rows.last.conditionValue ?? '';
+      return last.isEmpty ? '${rows.length}' : '$last · ${rows.length}';
+    }
     final raw = valuesOf(item.id)[f.id] ?? '';
     return switch (f.type) {
       'checkbox' => raw == '1' ? '✓' : '',
@@ -87,7 +100,8 @@ final clsDataProvider = FutureProvider.autoDispose.family<ClsData, int>((ref, mo
       names[it.key] = it.name;
     }
   }
-  return ClsData(fields, items, values, rels, names);
+  final levels = fields.any((f) => f.isLevelled) ? await dao.getModuleLevels(moduleId) : const <int, Map<int, List<ClassifierLevelModel>>>{};
+  return ClsData(fields, items, values, rels, names, levels);
 });
 
 void _refresh(WidgetRef ref, int moduleId) {
@@ -328,6 +342,9 @@ class ClsItemFields extends ConsumerWidget {
     if (data.fields.isEmpty) return EmptyHint(l.classifierNoFields);
     return Column(children: [
       for (final f in data.fields)
+        if (f.isLevelled)
+          ClsLevelTable(moduleId: moduleId, itemId: item.id, field: f, rows: data.levelsOf(item.id, f.id))
+        else
         ListTile(
           dense: true,
           leading: Icon(clsTypeIcon(f.type), size: 18),
@@ -497,6 +514,22 @@ String formatClsDate(int d, int m, int y, [int h = 0, int mi = 0]) {
 /// cls-field-types.js clsFieldValueHtml).
 Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, ClassifierItemModel item,
     ClassifierFieldModel f, ClsData data) async {
+  if (f.isLevelled) {
+    // A levelled value is its rows: edit them in a sheet over the table.
+    await showModalBottomSheet<void>(
+      context: context,
+      useRootNavigator: true,
+      showDragHandle: true,
+      isScrollControlled: true,
+      builder: (_) => Consumer(builder: (context, ref, _) {
+        final d = ref.watch(clsDataProvider(moduleId)).valueOrNull ?? data;
+        return SingleChildScrollView(
+          child: ClsLevelTable(moduleId: moduleId, itemId: item.id, field: f, rows: d.levelsOf(item.id, f.id)),
+        );
+      }),
+    );
+    return;
+  }
   final l = AppLocalizations.of(context)!;
   final raw = data.valuesOf(item.id)[f.id] ?? '';
   final nexus = await _nexusOf(ref, moduleId);
@@ -688,6 +721,7 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
   final choices = TextEditingController(text: f?.choices.join('\n') ?? '');
   final expr = TextEditingController(text: f?.opts['expr'] as String? ?? '');
   var type = f?.type ?? 'text';
+  var levelable = f?.levelable ?? false, hasCondition = f?.hasCondition ?? false;
   final result = await showDialog<String>(
     context: context,
     builder: (d) => StatefulBuilder(
@@ -722,6 +756,26 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
               const SizedBox(height: 12),
               TextField(controller: expr, decoration: InputDecoration(labelText: l.clsTypeFormula, hintText: l.clsFormulaHint)),
             ],
+            ExpansionTile(
+              tilePadding: EdgeInsets.zero,
+              initiallyExpanded: levelable || hasCondition,
+              title: Text(l.clsLevelAndCondition),
+              subtitle: Text(l.clsLevelAndConditionHint, style: Theme.of(d).textTheme.bodySmall),
+              children: [
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l.clsLevelable),
+                  value: levelable,
+                  onChanged: (v) => setLocal(() => levelable = v),
+                ),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l.clsCondition),
+                  value: hasCondition,
+                  onChanged: (v) => setLocal(() => hasCondition = v),
+                ),
+              ],
+            ),
           ]),
         ),
         actions: [
@@ -761,10 +815,174 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
     final options = opts.isEmpty ? null : jsonEncode(opts);
     if (f == null) {
       final id = await dao.createField(moduleRef: moduleId, description: n, attributeType: type);
-      await dao.updateField(id, description: n, type: type, options: options);
+      await dao.updateField(id, description: n, type: type, options: options, levelable: levelable, hasCondition: hasCondition);
     } else {
-      await dao.updateField(f.id, description: n, type: type, options: options);
+      await dao.updateField(f.id, description: n, type: type, options: options, levelable: levelable, hasCondition: hasCondition);
     }
   }
   _refresh(ref, moduleId);
+}
+
+// ── level & condition rows ───────────────────────────────────────────────
+
+/// A levelled field's rows on one element (EXE classifier-detail.js
+/// renderClassifierLevelTableHtml): the columns its flags ask for, reordered
+/// by the handle, each row edited in a sheet, inserted above/below or
+/// deleted from its menu.
+class ClsLevelTable extends ConsumerWidget {
+  final int moduleId;
+  final int itemId;
+  final ClassifierFieldModel field;
+  final List<ClassifierLevelModel> rows;
+  const ClsLevelTable({super.key, required this.moduleId, required this.itemId, required this.field, required this.rows});
+
+  static String columnLabel(AppLocalizations l, String c) => switch (c) {
+    'level_label' => l.levelColLevel,
+    'condition_value' => l.clsCondition,
+    _ => l.levelColInfo,
+  };
+
+  Future<ClassifierDao> _dao(WidgetRef ref) async => ClassifierDao(await ref.read(databaseProvider.future));
+
+  void _done(WidgetRef ref) {
+    _refresh(ref, moduleId);
+    ref.invalidate(classifierValuesProvider(itemId));
+  }
+
+  /// Appends a row, then moves it to [at] (EXE insertClassifierLevel).
+  Future<void> _insert(BuildContext context, WidgetRef ref, int at) async {
+    final dao = await _dao(ref);
+    final id = await dao.createLevel(itemId, field.id);
+    final ids = [for (final r in rows) r.id]..insert(at.clamp(0, rows.length), id);
+    await dao.moveLevels(itemId, field.id, ids);
+    _done(ref);
+    if (context.mounted) await _edit(context, ref, id, null);
+  }
+
+  Future<void> _edit(BuildContext context, WidgetRef ref, int id, ClassifierLevelModel? row) async {
+    final l = AppLocalizations.of(context)!;
+    final cols = field.levelColumns;
+    final ctl = {for (final c in cols) c: TextEditingController(text: row?[c] ?? '')};
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: Text(field.description),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (final c in cols)
+                TextField(
+                  controller: ctl[c],
+                  autofocus: c == cols.first,
+                  minLines: 1,
+                  maxLines: c == 'info_value' ? 5 : 1,
+                  decoration: InputDecoration(labelText: columnLabel(l, c)),
+                ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d), child: Text(l.btnCancel)),
+          FilledButton(onPressed: () => Navigator.pop(d, true), child: Text(l.btnSave)),
+        ],
+      ),
+    );
+    final values = {for (final e in ctl.entries) e.key: e.value.text.trim()};
+    for (final c in ctl.values) {
+      c.dispose();
+    }
+    if (ok != true) return;
+    final dao = await _dao(ref);
+    for (final e in values.entries) {
+      if (e.value != (row?[e.key] ?? '')) await dao.updateLevelField(id, e.key, e.value);
+    }
+    _done(ref);
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final cols = field.levelColumns;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 8, 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.format_list_numbered, size: 18, color: theme.colorScheme.onSurfaceVariant),
+              const SizedBox(width: 16),
+              Expanded(child: Text(field.description, style: theme.textTheme.labelMedium)),
+              TextButton.icon(icon: const Icon(Icons.add, size: 18), label: Text(l.levelAddRow), onPressed: () => _insert(context, ref, rows.length)),
+            ],
+          ),
+          if (rows.isEmpty)
+            Padding(
+              padding: const EdgeInsets.only(left: 34, bottom: 4),
+              child: Text(l.levelNoRows, style: theme.textTheme.bodySmall),
+            )
+          else
+            ReorderableListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              buildDefaultDragHandles: false,
+              onReorderItem: (from, to) async {
+                final ids = [for (final r in rows) r.id];
+                ids.insert(to, ids.removeAt(from));
+                await (await _dao(ref)).moveLevels(itemId, field.id, ids);
+                _done(ref);
+              },
+              children: [
+                for (final (i, r) in rows.indexed)
+                  ListTile(
+                    key: ValueKey(r.id),
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator, size: 20)),
+                    title: Text.rich(
+                      TextSpan(
+                        children: [
+                          for (final (j, c) in cols.where((c) => c != 'info_value').indexed) ...[
+                            if (j > 0) const TextSpan(text: '  ·  '),
+                            TextSpan(
+                              text: (r[c] ?? '').isEmpty ? '—' : r[c],
+                              style: const TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                          if (cols.length > 1) const TextSpan(text: '  '),
+                          TextSpan(text: r.infoValue ?? ''),
+                        ],
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    onTap: () => _edit(context, ref, r.id, r),
+                    trailing: PopupMenuButton<String>(
+                      onSelected: (v) async {
+                        switch (v) {
+                          case 'above':
+                            await _insert(context, ref, i);
+                          case 'below':
+                            await _insert(context, ref, i + 1);
+                          case 'delete':
+                            if (!await showConfirmDialog(context, message: l.confirmDeleteLevelRow)) return;
+                            await (await _dao(ref)).deleteLevel(r.id);
+                            _done(ref);
+                        }
+                      },
+                      itemBuilder: (_) => [
+                        PopupMenuItem(value: 'above', child: Text(l.clsInsertAbove)),
+                        PopupMenuItem(value: 'below', child: Text(l.clsInsertBelow)),
+                        PopupMenuItem(value: 'delete', child: Text(l.btnDelete)),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
 }

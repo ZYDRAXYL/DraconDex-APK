@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Thư mục/Dự án/…",
   "moduleInside": "bên trong",
   "nameModeUnique": "Riêng",
-  "nameModeClassic": "Cổ điển"
+  "nameModeClassic": "Cổ điển",
+  "kindRecent": "Gần đây",
+  "clsLevelable": "Có thể lên cấp",
+  "clsCondition": "Điều kiện",
+  "levelColLevel": "Cấp",
+  "levelColInfo": "Thông tin",
+  "levelAddRow": "Thêm hàng",
+  "levelNoRows": "Chưa có hàng",
+  "confirmDeleteLevelRow": "Xóa hàng này?",
+  "clsLevelAndCondition": "Cấp & Điều kiện",
+  "clsLevelAndConditionHint": "Biến trường thành bảng nhiều hàng (cấp), hoặc gắn giá trị với một điều kiện.",
+  "clsInsertAbove": "Chèn hàng phía trên",
+  "clsInsertBelow": "Chèn hàng phía dưới"
 }

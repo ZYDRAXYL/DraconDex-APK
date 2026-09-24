@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Ordner/Projekt/…",
   "moduleInside": "darin",
   "nameModeUnique": "Eigen",
-  "nameModeClassic": "Klassisch"
+  "nameModeClassic": "Klassisch",
+  "kindRecent": "Zuletzt",
+  "clsLevelable": "Levelbar",
+  "clsCondition": "Bedingung",
+  "levelColLevel": "Stufe",
+  "levelColInfo": "Info",
+  "levelAddRow": "Zeile hinzufügen",
+  "levelNoRows": "Noch keine Zeilen",
+  "confirmDeleteLevelRow": "Diese Zeile löschen?",
+  "clsLevelAndCondition": "Stufe & Bedingung",
+  "clsLevelAndConditionHint": "Macht ein Feld zu einer Zeilentabelle (Stufen) oder knüpft seinen Wert an eine Bedingung.",
+  "clsInsertAbove": "Zeile darüber einfügen",
+  "clsInsertBelow": "Zeile darunter einfügen"
 }

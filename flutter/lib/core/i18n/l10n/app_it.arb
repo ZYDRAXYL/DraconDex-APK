@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Cartella/Progetto/…",
   "moduleInside": "dentro",
   "nameModeUnique": "Unici",
-  "nameModeClassic": "Classici"
+  "nameModeClassic": "Classici",
+  "kindRecent": "Recenti",
+  "clsLevelable": "Livellabile",
+  "clsCondition": "Condizione",
+  "levelColLevel": "Livello",
+  "levelColInfo": "Info",
+  "levelAddRow": "Aggiungi riga",
+  "levelNoRows": "Nessuna riga",
+  "confirmDeleteLevelRow": "Eliminare questa riga?",
+  "clsLevelAndCondition": "Livello e condizione",
+  "clsLevelAndConditionHint": "Trasforma un campo in una tabella di righe (livelli) o lega il valore a una condizione.",
+  "clsInsertAbove": "Inserisci riga sopra",
+  "clsInsertBelow": "Inserisci riga sotto"
 }

@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Pasta/Projeto/…",
   "moduleInside": "dentro",
   "nameModeUnique": "Único",
-  "nameModeClassic": "Clássico"
+  "nameModeClassic": "Clássico",
+  "kindRecent": "Recentes",
+  "clsLevelable": "Nivelável",
+  "clsCondition": "Condição",
+  "levelColLevel": "Nível",
+  "levelColInfo": "Informação",
+  "levelAddRow": "Adicionar linha",
+  "levelNoRows": "Ainda não há linhas",
+  "confirmDeleteLevelRow": "Excluir esta linha?",
+  "clsLevelAndCondition": "Nível e condição",
+  "clsLevelAndConditionHint": "Transforma um campo numa tabela de linhas (níveis) ou liga o valor a uma condição.",
+  "clsInsertAbove": "Inserir linha acima",
+  "clsInsertBelow": "Inserir linha abaixo"
 }

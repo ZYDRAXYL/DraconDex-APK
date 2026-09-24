@@ -1729,4 +1729,40 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Klasik';
+
+  @override
+  String get kindRecent => 'Son kullanılanlar';
+
+  @override
+  String get clsLevelable => 'Seviyelenebilir';
+
+  @override
+  String get clsCondition => 'Koşul';
+
+  @override
+  String get levelColLevel => 'Seviye';
+
+  @override
+  String get levelColInfo => 'Bilgi';
+
+  @override
+  String get levelAddRow => 'Satır ekle';
+
+  @override
+  String get levelNoRows => 'Henüz satır yok';
+
+  @override
+  String get confirmDeleteLevelRow => 'Bu satır silinsin mi?';
+
+  @override
+  String get clsLevelAndCondition => 'Seviye ve koşul';
+
+  @override
+  String get clsLevelAndConditionHint => 'Bir alanı satır tablosuna (seviyeler) çevirir ya da değerini bir koşula bağlar.';
+
+  @override
+  String get clsInsertAbove => 'Üste satır ekle';
+
+  @override
+  String get clsInsertBelow => 'Alta satır ekle';
 }

@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = โฟลเดอร์/โปรเจกต์/…",
   "moduleInside": "รายการข้างใน",
   "nameModeUnique": "เฉพาะ",
-  "nameModeClassic": "คลาสสิก"
+  "nameModeClassic": "คลาสสิก",
+  "kindRecent": "ล่าสุด",
+  "clsLevelable": "Levelable",
+  "clsCondition": "Condition",
+  "levelColLevel": "เลเวล",
+  "levelColInfo": "ข้อมูล",
+  "levelAddRow": "เพิ่มแถว",
+  "levelNoRows": "ยังไม่มีแถว",
+  "confirmDeleteLevelRow": "ลบแถวนี้?",
+  "clsLevelAndCondition": "Level และ Condition",
+  "clsLevelAndConditionHint": "ทำให้ฟิลด์เป็นตารางหลายแถว (level) หรือผูกค่ากับเงื่อนไข",
+  "clsInsertAbove": "แทรกแถวด้านบน",
+  "clsInsertBelow": "แทรกแถวด้านล่าง"
 }

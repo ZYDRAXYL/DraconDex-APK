@@ -1732,4 +1732,40 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get nameModeClassic => '클래식';
+
+  @override
+  String get kindRecent => '최근';
+
+  @override
+  String get clsLevelable => '레벨 가능';
+
+  @override
+  String get clsCondition => '조건';
+
+  @override
+  String get levelColLevel => '레벨';
+
+  @override
+  String get levelColInfo => '정보';
+
+  @override
+  String get levelAddRow => '행 추가';
+
+  @override
+  String get levelNoRows => '행이 없습니다';
+
+  @override
+  String get confirmDeleteLevelRow => '이 행을 삭제할까요?';
+
+  @override
+  String get clsLevelAndCondition => '레벨 및 조건';
+
+  @override
+  String get clsLevelAndConditionHint => '필드를 행 표(레벨)로 만들거나 값을 조건에 연결합니다.';
+
+  @override
+  String get clsInsertAbove => '위에 행 삽입';
+
+  @override
+  String get clsInsertBelow => '아래에 행 삽입';
 }

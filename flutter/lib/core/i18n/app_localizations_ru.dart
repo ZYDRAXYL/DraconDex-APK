@@ -1732,4 +1732,40 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Классические';
+
+  @override
+  String get kindRecent => 'Недавние';
+
+  @override
+  String get clsLevelable => 'Прокачиваемый';
+
+  @override
+  String get clsCondition => 'Условие';
+
+  @override
+  String get levelColLevel => 'Уровень';
+
+  @override
+  String get levelColInfo => 'Информация';
+
+  @override
+  String get levelAddRow => 'Добавить строку';
+
+  @override
+  String get levelNoRows => 'Строк пока нет';
+
+  @override
+  String get confirmDeleteLevelRow => 'Удалить эту строку?';
+
+  @override
+  String get clsLevelAndCondition => 'Уровень и условие';
+
+  @override
+  String get clsLevelAndConditionHint => 'Превращает поле в таблицу строк (уровней) или привязывает значение к условию.';
+
+  @override
+  String get clsInsertAbove => 'Вставить строку выше';
+
+  @override
+  String get clsInsertBelow => 'Вставить строку ниже';
 }

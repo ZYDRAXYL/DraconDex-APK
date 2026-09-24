@@ -1732,4 +1732,40 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Klasik';
+
+  @override
+  String get kindRecent => 'Terbaru';
+
+  @override
+  String get clsLevelable => 'Bisa Naik Level';
+
+  @override
+  String get clsCondition => 'Kondisi';
+
+  @override
+  String get levelColLevel => 'Level';
+
+  @override
+  String get levelColInfo => 'Info';
+
+  @override
+  String get levelAddRow => 'Tambah baris';
+
+  @override
+  String get levelNoRows => 'Belum ada baris';
+
+  @override
+  String get confirmDeleteLevelRow => 'Hapus baris ini?';
+
+  @override
+  String get clsLevelAndCondition => 'Level & Kondisi';
+
+  @override
+  String get clsLevelAndConditionHint => 'Jadikan bidang tabel berbaris (level), atau kaitkan nilainya dengan kondisi.';
+
+  @override
+  String get clsInsertAbove => 'Sisipkan baris di atas';
+
+  @override
+  String get clsInsertBelow => 'Sisipkan baris di bawah';
 }

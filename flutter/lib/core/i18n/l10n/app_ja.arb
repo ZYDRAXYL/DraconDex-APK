@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = フォルダ/プロジェクト/…",
   "moduleInside": "件",
   "nameModeUnique": "固有",
-  "nameModeClassic": "クラシック"
+  "nameModeClassic": "クラシック",
+  "kindRecent": "最近",
+  "clsLevelable": "レベル可能",
+  "clsCondition": "条件",
+  "levelColLevel": "レベル",
+  "levelColInfo": "情報",
+  "levelAddRow": "行を追加",
+  "levelNoRows": "行がありません",
+  "confirmDeleteLevelRow": "この行を削除しますか？",
+  "clsLevelAndCondition": "レベルと条件",
+  "clsLevelAndConditionHint": "フィールドを行の表（レベル）にしたり、値を条件に結びつけたりします。",
+  "clsInsertAbove": "上に行を挿入",
+  "clsInsertBelow": "下に行を挿入"
 }

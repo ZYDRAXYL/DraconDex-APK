@@ -267,6 +267,12 @@ class _DesignerViewState extends ConsumerState<DesignerView> {
         await (await _dao()).moveNode(id, p.dx, p.dy);
         _refresh();
       },
+      // Only the comic shapes take a size on the desktop (dgComicDecorate).
+      resizable: (id) => const {'panel', 'balloon'}.contains(byId[id]!.shape),
+      onResized: (id, s) async {
+        await (await _dao()).resizeNode(id, s.width, s.height);
+        _refresh();
+      },
     );
   }
 

@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = 폴더/프로젝트/…",
   "moduleInside": "개 포함",
   "nameModeUnique": "고유",
-  "nameModeClassic": "클래식"
+  "nameModeClassic": "클래식",
+  "kindRecent": "최근",
+  "clsLevelable": "레벨 가능",
+  "clsCondition": "조건",
+  "levelColLevel": "레벨",
+  "levelColInfo": "정보",
+  "levelAddRow": "행 추가",
+  "levelNoRows": "행이 없습니다",
+  "confirmDeleteLevelRow": "이 행을 삭제할까요?",
+  "clsLevelAndCondition": "레벨 및 조건",
+  "clsLevelAndConditionHint": "필드를 행 표(레벨)로 만들거나 값을 조건에 연결합니다.",
+  "clsInsertAbove": "위에 행 삽입",
+  "clsInsertBelow": "아래에 행 삽입"
 }

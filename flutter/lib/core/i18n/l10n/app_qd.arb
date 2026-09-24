@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Foldre/Projecte/…",
   "moduleInside": "within",
   "nameModeUnique": "Unique",
-  "nameModeClassic": "Elder"
+  "nameModeClassic": "Elder",
+  "kindRecent": "Of late",
+  "clsLevelable": "Levylabyl",
+  "clsCondition": "Condytion",
+  "levelColLevel": "Levyl",
+  "levelColInfo": "Infa",
+  "levelAddRow": "Ecan Rowe",
+  "levelNoRows": "Na Rowes yet",
+  "confirmDeleteLevelRow": "Strike this row?",
+  "clsLevelAndCondition": "Level & Condition",
+  "clsLevelAndConditionHint": "Turn a field into a table of rows (levels), or bind its value to a condition.",
+  "clsInsertAbove": "Insert row above",
+  "clsInsertBelow": "Insert row below"
 }

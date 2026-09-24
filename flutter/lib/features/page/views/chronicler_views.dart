@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../../../core/calendar/calendar_engine.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/dao/chronicler_dao.dart';
 import '../../../data/models/chronicler_model.dart';
@@ -15,11 +16,17 @@ import 'graph_view.dart';
 import 'view_common.dart';
 
 /// The Chronicler's four presets (EXE mod/chronicler.js CHRONICLER_VIEWS):
-/// oneline, downline, compare, calendar. Dates stay calendar-agnostic
-/// integers (a Nexus may run on an invented calendar), so positions come
-/// from an ordinal that only needs to be monotonic, not a real day count.
+/// oneline, downline, compare, calendar. Positions are minutes since the
+/// epoch of the module's own calendar (core/calendar/calendar_engine.dart),
+/// so a 40-day month or a 15-month year is spaced truly.
 
-int dateOrdinal(TimelineDateModel d) => (((d.years * 13 + d.month) * 32 + d.day) * 24 + d.hour) * 60 + d.minute;
+int dateOrdinal(CalSpec spec, TimelineDateModel d) =>
+    calToOrdinal(spec, CalParts(d.years, math.max(1, d.month), math.max(1, d.day), d.hour, d.minute))!;
+
+final calendarSpecProvider = FutureProvider.autoDispose.family<CalSpec, int>((ref, moduleId) async {
+  final db = await ref.watch(databaseProvider.future);
+  return ChroniclerDao(db).getCalendar(moduleId);
+});
 
 /// The desktop's fmtDate: D/M/Y, the time only when there is one.
 String fmtDate(TimelineDateModel d) {
@@ -45,12 +52,13 @@ class ChroniclerView extends ConsumerWidget {
     // write there refreshes the drawings through timelineEventsProvider.
     final tl = ref.watch(timelineProvider(id)).valueOrNull;
     final evs = tl == null ? null : ref.watch(timelineEventsProvider(tl)).valueOrNull;
-    if (evs == null) return const SizedBox(height: 48);
+    final spec = ref.watch(calendarSpecProvider(id)).valueOrNull;
+    if (evs == null || spec == null) return const SizedBox(height: 48);
     final Widget graph = switch (ctx.preset) {
-      'downline' => _Downline(ctx: ctx, evs: evs),
-      'compare' => _Compare(ctx: ctx, evs: evs),
-      'calendar' => _Calendar(ctx: ctx, evs: evs),
-      _ => _Oneline(ctx: ctx, evs: evs),
+      'downline' => _Downline(ctx: ctx, spec: spec, evs: evs),
+      'compare' => _Compare(ctx: ctx, spec: spec, evs: evs),
+      'calendar' => _Calendar(ctx: ctx, spec: spec, evs: evs),
+      _ => _Oneline(ctx: ctx, spec: spec, evs: evs),
     };
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       if (evs.isNotEmpty || ctx.preset == 'compare') graph,
@@ -66,17 +74,19 @@ void _open(BuildContext context, ComponentCtx ctx, TimelineEventModel e) =>
 /// below so neighbours do not overwrite each other.
 class _Oneline extends StatelessWidget {
   final ComponentCtx ctx;
+  final CalSpec spec;
   final List<TimelineEventModel> evs;
-  const _Oneline({required this.ctx, required this.evs});
+  const _Oneline({required this.ctx, required this.spec, required this.evs});
 
   @override
-  Widget build(BuildContext context) => _Track(ctx: ctx, lines: [(evs, hexColor(ctx.source.colorCode))]);
+  Widget build(BuildContext context) => _Track(ctx: ctx, spec: spec, lines: [(evs, hexColor(ctx.source.colorCode))]);
 }
 
 class _Compare extends ConsumerWidget {
   final ComponentCtx ctx;
+  final CalSpec spec;
   final List<TimelineEventModel> evs;
-  const _Compare({required this.ctx, required this.evs});
+  const _Compare({required this.ctx, required this.spec, required this.evs});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -105,7 +115,7 @@ class _Compare extends ConsumerWidget {
     final b = ref.watch(_eventsOfModuleProvider(pick)).valueOrNull ?? const [];
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       picker,
-      _Track(ctx: ctx, lines: [(evs, hexColor(ctx.source.colorCode)), (b, const Color(0xFFF97316))]),
+      _Track(ctx: ctx, spec: spec, lines: [(evs, hexColor(ctx.source.colorCode)), (b, const Color(0xFFF97316))]),
     ]);
   }
 }
@@ -126,15 +136,16 @@ final _otherLinesProvider = FutureProvider.autoDispose.family<(int?, List<(int, 
 /// links join events on the very same date (the same timeline_date row).
 class _Track extends StatelessWidget {
   final ComponentCtx ctx;
+  final CalSpec spec;
   final List<(List<TimelineEventModel>, Color?)> lines;
-  const _Track({required this.ctx, required this.lines});
+  const _Track({required this.ctx, required this.spec, required this.lines});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final all = [for (final (e, _) in lines) ...e];
     if (all.isEmpty) return const SizedBox.shrink();
-    final ts = [for (final e in all) dateOrdinal(e.start)];
+    final ts = [for (final e in all) dateOrdinal(spec, e.start)];
     final min = ts.reduce(math.min), max = ts.reduce(math.max);
     final span = math.max(1, max - min);
     const margin = 60.0;
@@ -144,7 +155,7 @@ class _Track extends StatelessWidget {
       final usable = width - 2 * margin;
       final lineGap = 150.0;
       final height = 60.0 + lineGap * lines.length;
-      double xOf(TimelineEventModel e) => margin + (dateOrdinal(e.start) - min) / span * usable;
+      double xOf(TimelineEventModel e) => margin + (dateOrdinal(spec, e.start) - min) / span * usable;
       double yOf(int line) => 75.0 + lineGap * line;
       final dots = <Widget>[];
       for (var li = 0; li < lines.length; li++) {
@@ -245,20 +256,21 @@ class _TrackPainter extends CustomPainter {
 /// Top to bottom on a true time scale — the phone's natural direction.
 class _Downline extends StatelessWidget {
   final ComponentCtx ctx;
+  final CalSpec spec;
   final List<TimelineEventModel> evs;
-  const _Downline({required this.ctx, required this.evs});
+  const _Downline({required this.ctx, required this.spec, required this.evs});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     const top = 26.0, lineX = 40.0;
     final h = math.max(360.0, math.min(720.0, evs.length * 96.0));
-    final ts = [for (final e in evs) dateOrdinal(e.start)];
+    final ts = [for (final e in evs) dateOrdinal(spec, e.start)];
     final min = ts.reduce(math.min), span = math.max(1, ts.reduce(math.max) - min);
     // Evenly spread when crowded: true scale, but never two labels on one row.
     final ys = <double>[];
     for (final e in evs) {
-      var y = top + (dateOrdinal(e.start) - min) / span * (h - 2 * top);
+      var y = top + (dateOrdinal(spec, e.start) - min) / span * (h - 2 * top);
       if (ys.isNotEmpty && y < ys.last + 22) y = ys.last + 22;
       ys.add(y);
     }
@@ -293,14 +305,16 @@ class _Downline extends StatelessWidget {
   }
 }
 
-/// A month at a time. The desktop's custom calendars (module_ui
-/// calendarConfig) are not read here yet: a month shows as many days as the
-/// longest of 30 or its latest event, with no weekday header — nothing that
-/// assumes the Gregorian calendar.
+/// A month at a time, in the module's own calendar: its month names and
+/// lengths (leap cycles included), and a week that runs on across months,
+/// so day 1 lands under whichever weekday the cycle reached (EXE
+/// mod/chronicler-calendar.js). A calendar without a week cycle is a plain
+/// grid of seven.
 class _Calendar extends StatefulWidget {
   final ComponentCtx ctx;
+  final CalSpec spec;
   final List<TimelineEventModel> evs;
-  const _Calendar({required this.ctx, required this.evs});
+  const _Calendar({required this.ctx, required this.spec, required this.evs});
 
   @override
   State<_Calendar> createState() => _CalendarState();
@@ -308,16 +322,15 @@ class _Calendar extends StatefulWidget {
 
 class _CalendarState extends State<_Calendar> {
   late int _y = widget.evs.isEmpty ? 1 : widget.evs.first.start.years;
-  late int _m = widget.evs.isEmpty ? 1 : widget.evs.first.start.month;
-
-  int get _monthsPerYear => math.max(12, widget.evs.fold(0, (a, e) => math.max(a, e.start.month)));
+  late int _m = widget.evs.isEmpty ? 1 : widget.evs.first.start.month.clamp(1, calMonthsInYear(widget.spec));
 
   void _step(int d) => setState(() {
+        final n = calMonthsInYear(widget.spec);
         _m += d;
         if (_m < 1) {
-          _m = _monthsPerYear;
+          _m = n;
           _y--;
-        } else if (_m > _monthsPerYear) {
+        } else if (_m > n) {
           _m = 1;
           _y++;
         }
@@ -326,21 +339,34 @@ class _CalendarState extends State<_Calendar> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final spec = widget.spec;
     final inMonth = [for (final e in widget.evs) if (e.start.years == _y && e.start.month == _m) e];
-    final days = math.max(30, inMonth.fold(0, (a, e) => math.max(a, e.start.day)));
+    final days = calMonthLength(spec, _y, _m - 1);
+    final weekdays = calWeekdayNames(spec);
+    final cols = weekdays.isEmpty ? 7 : weekdays.length;
+    final lead = weekdays.isEmpty ? 0 : calCycleSlot(spec, 'week', calDayIndex(spec, _y, _m, 1));
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         IconButton(icon: const Icon(Icons.chevron_left), onPressed: () => _step(-1)),
-        Text('$_m / $_y', style: theme.textTheme.titleMedium),
+        Flexible(child: Text('${calMonthLabel(spec, _m - 1)} $_y', style: theme.textTheme.titleMedium, overflow: TextOverflow.ellipsis)),
         IconButton(icon: const Icon(Icons.chevron_right), onPressed: () => _step(1)),
       ]),
+      if (weekdays.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Row(children: [
+            for (final w in weekdays)
+              Expanded(child: Text(w, textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.clip, style: theme.textTheme.labelSmall)),
+          ]),
+        ),
       GridView.count(
-        crossAxisCount: 7,
+        crossAxisCount: cols,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 8),
         childAspectRatio: 0.8,
         children: [
+          for (var i = 0; i < lead; i++) const SizedBox.shrink(),
           for (var d = 1; d <= days; d++)
             Container(
               margin: const EdgeInsets.all(1),

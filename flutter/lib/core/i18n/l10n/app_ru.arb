@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Папка/Проект/…",
   "moduleInside": "внутри",
   "nameModeUnique": "Уникальные",
-  "nameModeClassic": "Классические"
+  "nameModeClassic": "Классические",
+  "kindRecent": "Недавние",
+  "clsLevelable": "Прокачиваемый",
+  "clsCondition": "Условие",
+  "levelColLevel": "Уровень",
+  "levelColInfo": "Информация",
+  "levelAddRow": "Добавить строку",
+  "levelNoRows": "Строк пока нет",
+  "confirmDeleteLevelRow": "Удалить эту строку?",
+  "clsLevelAndCondition": "Уровень и условие",
+  "clsLevelAndConditionHint": "Превращает поле в таблицу строк (уровней) или привязывает значение к условию.",
+  "clsInsertAbove": "Вставить строку выше",
+  "clsInsertBelow": "Вставить строку ниже"
 }

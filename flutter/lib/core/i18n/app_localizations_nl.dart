@@ -1729,4 +1729,40 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Klassiek';
+
+  @override
+  String get kindRecent => 'Recent';
+
+  @override
+  String get clsLevelable => 'Levelbaar';
+
+  @override
+  String get clsCondition => 'Voorwaarde';
+
+  @override
+  String get levelColLevel => 'Niveau';
+
+  @override
+  String get levelColInfo => 'Info';
+
+  @override
+  String get levelAddRow => 'Rij toevoegen';
+
+  @override
+  String get levelNoRows => 'Nog geen rijen';
+
+  @override
+  String get confirmDeleteLevelRow => 'Deze rij verwijderen?';
+
+  @override
+  String get clsLevelAndCondition => 'Niveau & voorwaarde';
+
+  @override
+  String get clsLevelAndConditionHint => 'Maak van een veld een tabel met rijen (niveaus), of koppel de waarde aan een voorwaarde.';
+
+  @override
+  String get clsInsertAbove => 'Rij erboven invoegen';
+
+  @override
+  String get clsInsertBelow => 'Rij eronder invoegen';
 }

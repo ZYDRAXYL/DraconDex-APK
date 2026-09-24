@@ -1729,4 +1729,40 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Класичні';
+
+  @override
+  String get kindRecent => 'Нещодавні';
+
+  @override
+  String get clsLevelable => 'Прокачуваний';
+
+  @override
+  String get clsCondition => 'Умова';
+
+  @override
+  String get levelColLevel => 'Рівень';
+
+  @override
+  String get levelColInfo => 'Інформація';
+
+  @override
+  String get levelAddRow => 'Додати рядок';
+
+  @override
+  String get levelNoRows => 'Рядків ще немає';
+
+  @override
+  String get confirmDeleteLevelRow => 'Видалити цей рядок?';
+
+  @override
+  String get clsLevelAndCondition => 'Рівень і умова';
+
+  @override
+  String get clsLevelAndConditionHint => 'Перетворює поле на таблицю рядків (рівнів) або привʼязує значення до умови.';
+
+  @override
+  String get clsInsertAbove => 'Вставити рядок вище';
+
+  @override
+  String get clsInsertBelow => 'Вставити рядок нижче';
 }

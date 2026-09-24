@@ -1732,4 +1732,40 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'คลาสสิก';
+
+  @override
+  String get kindRecent => 'ล่าสุด';
+
+  @override
+  String get clsLevelable => 'Levelable';
+
+  @override
+  String get clsCondition => 'Condition';
+
+  @override
+  String get levelColLevel => 'เลเวล';
+
+  @override
+  String get levelColInfo => 'ข้อมูล';
+
+  @override
+  String get levelAddRow => 'เพิ่มแถว';
+
+  @override
+  String get levelNoRows => 'ยังไม่มีแถว';
+
+  @override
+  String get confirmDeleteLevelRow => 'ลบแถวนี้?';
+
+  @override
+  String get clsLevelAndCondition => 'Level และ Condition';
+
+  @override
+  String get clsLevelAndConditionHint => 'ทำให้ฟิลด์เป็นตารางหลายแถว (level) หรือผูกค่ากับเงื่อนไข';
+
+  @override
+  String get clsInsertAbove => 'แทรกแถวด้านบน';
+
+  @override
+  String get clsInsertBelow => 'แทรกแถวด้านล่าง';
 }

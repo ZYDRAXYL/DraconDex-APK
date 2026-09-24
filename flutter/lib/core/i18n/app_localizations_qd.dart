@@ -1732,4 +1732,40 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Elder';
+
+  @override
+  String get kindRecent => 'Of late';
+
+  @override
+  String get clsLevelable => 'Levylabyl';
+
+  @override
+  String get clsCondition => 'Condytion';
+
+  @override
+  String get levelColLevel => 'Levyl';
+
+  @override
+  String get levelColInfo => 'Infa';
+
+  @override
+  String get levelAddRow => 'Ecan Rowe';
+
+  @override
+  String get levelNoRows => 'Na Rowes yet';
+
+  @override
+  String get confirmDeleteLevelRow => 'Strike this row?';
+
+  @override
+  String get clsLevelAndCondition => 'Level & Condition';
+
+  @override
+  String get clsLevelAndConditionHint => 'Turn a field into a table of rows (levels), or bind its value to a condition.';
+
+  @override
+  String get clsInsertAbove => 'Insert row above';
+
+  @override
+  String get clsInsertBelow => 'Insert row below';
 }

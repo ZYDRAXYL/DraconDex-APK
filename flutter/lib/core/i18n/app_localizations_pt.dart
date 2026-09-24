@@ -1732,4 +1732,40 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Clássico';
+
+  @override
+  String get kindRecent => 'Recentes';
+
+  @override
+  String get clsLevelable => 'Nivelável';
+
+  @override
+  String get clsCondition => 'Condição';
+
+  @override
+  String get levelColLevel => 'Nível';
+
+  @override
+  String get levelColInfo => 'Informação';
+
+  @override
+  String get levelAddRow => 'Adicionar linha';
+
+  @override
+  String get levelNoRows => 'Ainda não há linhas';
+
+  @override
+  String get confirmDeleteLevelRow => 'Excluir esta linha?';
+
+  @override
+  String get clsLevelAndCondition => 'Nível e condição';
+
+  @override
+  String get clsLevelAndConditionHint => 'Transforma um campo numa tabela de linhas (níveis) ou liga o valor a uma condição.';
+
+  @override
+  String get clsInsertAbove => 'Inserir linha acima';
+
+  @override
+  String get clsInsertBelow => 'Inserir linha abaixo';
 }

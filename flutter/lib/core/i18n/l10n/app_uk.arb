@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Тека/Проєкт/…",
   "moduleInside": "всередині",
   "nameModeUnique": "Унікальні",
-  "nameModeClassic": "Класичні"
+  "nameModeClassic": "Класичні",
+  "kindRecent": "Нещодавні",
+  "clsLevelable": "Прокачуваний",
+  "clsCondition": "Умова",
+  "levelColLevel": "Рівень",
+  "levelColInfo": "Інформація",
+  "levelAddRow": "Додати рядок",
+  "levelNoRows": "Рядків ще немає",
+  "confirmDeleteLevelRow": "Видалити цей рядок?",
+  "clsLevelAndCondition": "Рівень і умова",
+  "clsLevelAndConditionHint": "Перетворює поле на таблицю рядків (рівнів) або привʼязує значення до умови.",
+  "clsInsertAbove": "Вставити рядок вище",
+  "clsInsertBelow": "Вставити рядок нижче"
 }

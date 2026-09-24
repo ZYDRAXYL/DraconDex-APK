@@ -339,19 +339,29 @@ class _BookState extends State<_Book> {
         const SizedBox(height: 16),
         MarkdownView(text: chapterText(c.content), nexusId: widget.ctx.nexusId, style: theme.textTheme.bodyLarge?.copyWith(height: 1.7)),
         const SizedBox(height: 16),
+        // Flexible labels: "Precedente"/"Попередній" do not fit a phone
+        // row at full length next to the counter.
         Row(children: [
-          TextButton.icon(
-            onPressed: i > 0 ? () => setState(() => _i = i - 1) : null,
-            icon: const Icon(Icons.chevron_left),
-            label: Text(l.btnPrevious),
+          Flexible(
+            child: TextButton.icon(
+              onPressed: i > 0 ? () => setState(() => _i = i - 1) : null,
+              icon: const Icon(Icons.chevron_left),
+              label: Text(l.btnPrevious, maxLines: 1, overflow: TextOverflow.ellipsis),
+            ),
           ),
-          const Spacer(),
-          Text('${i + 1} / ${cs.length}', style: theme.textTheme.labelSmall),
-          const Spacer(),
-          TextButton.icon(
-            onPressed: i < cs.length - 1 ? () => setState(() => _i = i + 1) : null,
-            icon: const Icon(Icons.chevron_right),
-            label: Text(l.btnNext),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text('${i + 1} / ${cs.length}', style: theme.textTheme.labelSmall),
+          ),
+          Flexible(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: TextButton.icon(
+                onPressed: i < cs.length - 1 ? () => setState(() => _i = i + 1) : null,
+                icon: const Icon(Icons.chevron_right),
+                label: Text(l.btnNext, maxLines: 1, overflow: TextOverflow.ellipsis),
+              ),
+            ),
           ),
         ]),
       ]),

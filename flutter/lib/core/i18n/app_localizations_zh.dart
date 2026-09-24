@@ -1732,4 +1732,40 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get nameModeClassic => '经典';
+
+  @override
+  String get kindRecent => '最近';
+
+  @override
+  String get clsLevelable => '可升级';
+
+  @override
+  String get clsCondition => '条件';
+
+  @override
+  String get levelColLevel => '等级';
+
+  @override
+  String get levelColInfo => '信息';
+
+  @override
+  String get levelAddRow => '添加行';
+
+  @override
+  String get levelNoRows => '暂无行';
+
+  @override
+  String get confirmDeleteLevelRow => '删除此行？';
+
+  @override
+  String get clsLevelAndCondition => '等级与条件';
+
+  @override
+  String get clsLevelAndConditionHint => '将字段变成多行表（等级），或将其值与条件关联。';
+
+  @override
+  String get clsInsertAbove => '在上方插入行';
+
+  @override
+  String get clsInsertBelow => '在下方插入行';
 }

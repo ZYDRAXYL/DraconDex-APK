@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Folder/Proyek/…",
   "moduleInside": "di dalam",
   "nameModeUnique": "Unik",
-  "nameModeClassic": "Klasik"
+  "nameModeClassic": "Klasik",
+  "kindRecent": "Terbaru",
+  "clsLevelable": "Bisa Naik Level",
+  "clsCondition": "Kondisi",
+  "levelColLevel": "Level",
+  "levelColInfo": "Info",
+  "levelAddRow": "Tambah baris",
+  "levelNoRows": "Belum ada baris",
+  "confirmDeleteLevelRow": "Hapus baris ini?",
+  "clsLevelAndCondition": "Level & Kondisi",
+  "clsLevelAndConditionHint": "Jadikan bidang tabel berbaris (level), atau kaitkan nilainya dengan kondisi.",
+  "clsInsertAbove": "Sisipkan baris di atas",
+  "clsInsertBelow": "Sisipkan baris di bawah"
 }

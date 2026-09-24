@@ -1,5 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 
+import '../../core/calendar/calendar_engine.dart';
 import '../services/wiki_service.dart';
 import '../models/chronicler_model.dart';
 
@@ -8,6 +9,13 @@ import '../models/chronicler_model.dart';
 class ChroniclerDao {
   final Database db;
   ChroniclerDao(this.db);
+
+  /// The module's calendar (module_ui.calendarConfig, authored on the
+  /// desktop), or the international one when it has none.
+  Future<CalSpec> getCalendar(int moduleRef) async {
+    final r = await db.rawQuery("SELECT ui_value FROM module_ui WHERE module_ref=? AND ui_key='calendarConfig'", [moduleRef]);
+    return calSpecNormalize(r.isEmpty ? null : r.first['ui_value']);
+  }
 
   /// The module's timeline, created on first use. A module has at most one;
   /// `timeline.module_ref` is what ties it to the module, and the Electron

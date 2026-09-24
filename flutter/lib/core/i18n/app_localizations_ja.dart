@@ -1732,4 +1732,40 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'クラシック';
+
+  @override
+  String get kindRecent => '最近';
+
+  @override
+  String get clsLevelable => 'レベル可能';
+
+  @override
+  String get clsCondition => '条件';
+
+  @override
+  String get levelColLevel => 'レベル';
+
+  @override
+  String get levelColInfo => '情報';
+
+  @override
+  String get levelAddRow => '行を追加';
+
+  @override
+  String get levelNoRows => '行がありません';
+
+  @override
+  String get confirmDeleteLevelRow => 'この行を削除しますか？';
+
+  @override
+  String get clsLevelAndCondition => 'レベルと条件';
+
+  @override
+  String get clsLevelAndConditionHint => 'フィールドを行の表（レベル）にしたり、値を条件に結びつけたりします。';
+
+  @override
+  String get clsInsertAbove => '上に行を挿入';
+
+  @override
+  String get clsInsertBelow => '下に行を挿入';
 }

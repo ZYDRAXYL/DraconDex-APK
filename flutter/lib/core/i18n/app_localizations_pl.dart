@@ -1729,4 +1729,40 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Klasyczne';
+
+  @override
+  String get kindRecent => 'Ostatnie';
+
+  @override
+  String get clsLevelable => 'Z poziomami';
+
+  @override
+  String get clsCondition => 'Warunek';
+
+  @override
+  String get levelColLevel => 'Poziom';
+
+  @override
+  String get levelColInfo => 'Informacje';
+
+  @override
+  String get levelAddRow => 'Dodaj wiersz';
+
+  @override
+  String get levelNoRows => 'Brak wierszy';
+
+  @override
+  String get confirmDeleteLevelRow => 'Usunąć ten wiersz?';
+
+  @override
+  String get clsLevelAndCondition => 'Poziom i warunek';
+
+  @override
+  String get clsLevelAndConditionHint => 'Zamienia pole w tabelę wierszy (poziomów) lub wiąże wartość z warunkiem.';
+
+  @override
+  String get clsInsertAbove => 'Wstaw wiersz powyżej';
+
+  @override
+  String get clsInsertBelow => 'Wstaw wiersz poniżej';
 }

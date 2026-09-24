@@ -31,6 +31,12 @@ class NodeCanvas extends StatefulWidget {
   final void Function(int id)? onLongPress;
   final Future<void> Function(int id, Offset pos)? onMoved;
 
+  /// Full screen only: the boxes this names get a corner grip, and the size
+  /// they were dragged to is saved here (never below [minSize]).
+  final bool Function(int id)? resizable;
+  final Future<void> Function(int id, Size size)? onResized;
+  final Size minSize;
+
   const NodeCanvas({
     super.key,
     required this.nodes,
@@ -39,6 +45,9 @@ class NodeCanvas extends StatefulWidget {
     this.onTap,
     this.onLongPress,
     this.onMoved,
+    this.resizable,
+    this.onResized,
+    this.minSize = const Size(40, 30),
   });
 
   @override
@@ -47,8 +56,10 @@ class NodeCanvas extends StatefulWidget {
 
 class _NodeCanvasState extends State<NodeCanvas> {
   final Map<int, Offset> _drag = {};
+  final Map<int, Size> _resize = {};
 
   Offset _pos(CanvasNode n) => _drag[n.id] ?? n.pos;
+  Size _size(CanvasNode n) => _resize[n.id] ?? n.size;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +67,7 @@ class _NodeCanvasState extends State<NodeCanvas> {
     var world = Rect.zero;
     var first = true;
     for (final n in widget.nodes) {
-      final r = _pos(n) & n.size;
+      final r = _pos(n) & _size(n);
       world = first ? r : world.expandToInclude(r);
       first = false;
     }
@@ -74,8 +85,8 @@ class _NodeCanvasState extends State<NodeCanvas> {
               for (final l in widget.links)
                 if (byId[l.from] != null && byId[l.to] != null)
                   (
-                    (_pos(byId[l.from]!) - o) & byId[l.from]!.size,
-                    (_pos(byId[l.to]!) - o) & byId[l.to]!.size,
+                    (_pos(byId[l.from]!) - o) & _size(byId[l.from]!),
+                    (_pos(byId[l.to]!) - o) & _size(byId[l.to]!),
                     l.label ?? '',
                   ),
             ], scheme),
@@ -85,8 +96,8 @@ class _NodeCanvasState extends State<NodeCanvas> {
           Positioned(
             left: _pos(n).dx - o.dx,
             top: _pos(n).dy - o.dy,
-            width: n.size.width,
-            height: n.size.height,
+            width: _size(n).width,
+            height: _size(n).height,
             child: GestureDetector(
               onTap: widget.onTap == null ? null : () => widget.onTap!(n.id),
               onLongPress: widget.onLongPress == null ? null : () => widget.onLongPress!(n.id),
@@ -102,6 +113,26 @@ class _NodeCanvasState extends State<NodeCanvas> {
               child: n.child,
             ),
           ),
+        if (widget.fullScreen && widget.onResized != null)
+          for (final n in widget.nodes)
+            if (widget.resizable?.call(n.id) ?? true)
+              Positioned(
+                left: _pos(n).dx - o.dx + _size(n).width - ResizeGrip.size / 2,
+                top: _pos(n).dy - o.dy + _size(n).height - ResizeGrip.size / 2,
+                child: ResizeGrip(
+                  onDrag: (d) => setState(() {
+                    final s = _size(n);
+                    _resize[n.id] = Size(
+                        (s.width + d.dx).clamp(widget.minSize.width, 4000), (s.height + d.dy).clamp(widget.minSize.height, 4000));
+                  }),
+                  onEnd: () async {
+                    final s = _resize[n.id];
+                    if (s == null) return;
+                    await widget.onResized!(n.id, s);
+                    if (mounted) setState(() => _resize.remove(n.id));
+                  },
+                ),
+              ),
       ]),
     );
     if (widget.fullScreen) {
@@ -162,4 +193,37 @@ class _LinkPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_LinkPainter old) => true;
+}
+
+/// The corner handle a box resizes by (EXE .dg-resize): a finger-sized hit
+/// area around a small visible mark, so it wins over the board's pan.
+class ResizeGrip extends StatelessWidget {
+  static const size = 28.0;
+  final void Function(Offset delta) onDrag;
+  final Future<void> Function() onEnd;
+  const ResizeGrip({super.key, required this.onDrag, required this.onEnd});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onPanUpdate: (d) => onDrag(d.delta),
+      onPanEnd: (_) => onEnd(),
+      child: SizedBox.square(
+        dimension: size,
+        child: Center(
+          child: Container(
+            width: 12,
+            height: 12,
+            decoration: BoxDecoration(
+              color: scheme.primary,
+              border: Border.all(color: scheme.surface, width: 1.5),
+              borderRadius: BorderRadius.circular(3),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

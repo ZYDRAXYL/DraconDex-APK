@@ -3576,6 +3576,78 @@ abstract class AppLocalizations {
   /// **'Classic'**
   String get nameModeClassic;
 
+  /// No description provided for @kindRecent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get kindRecent;
+
+  /// No description provided for @clsLevelable.
+  ///
+  /// In en, this message translates to:
+  /// **'Levelable'**
+  String get clsLevelable;
+
+  /// No description provided for @clsCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Condition'**
+  String get clsCondition;
+
+  /// No description provided for @levelColLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get levelColLevel;
+
+  /// No description provided for @levelColInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get levelColInfo;
+
+  /// No description provided for @levelAddRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Add row'**
+  String get levelAddRow;
+
+  /// No description provided for @levelNoRows.
+  ///
+  /// In en, this message translates to:
+  /// **'No rows yet'**
+  String get levelNoRows;
+
+  /// No description provided for @confirmDeleteLevelRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this row?'**
+  String get confirmDeleteLevelRow;
+
+  /// No description provided for @clsLevelAndCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Level & Condition'**
+  String get clsLevelAndCondition;
+
+  /// No description provided for @clsLevelAndConditionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn a field into a table of rows (levels), or tie its value to a condition.'**
+  String get clsLevelAndConditionHint;
+
+  /// No description provided for @clsInsertAbove.
+  ///
+  /// In en, this message translates to:
+  /// **'Insert row above'**
+  String get clsInsertAbove;
+
+  /// No description provided for @clsInsertBelow.
+  ///
+  /// In en, this message translates to:
+  /// **'Insert row below'**
+  String get clsInsertBelow;
+
 }
 
 class _AppLocalizationsDelegate

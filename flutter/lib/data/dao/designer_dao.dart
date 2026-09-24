@@ -38,6 +38,11 @@ class DesignerDao {
     );
   }
 
+  /// A comic panel or balloon dragged by its corner grip (EXE resizeNode).
+  Future<void> resizeNode(int id, double w, double h) async {
+    await db.rawUpdate("UPDATE design_node SET w=?,h=?,update_at=datetime('now') WHERE id=?", [w, h, id]);
+  }
+
   Future<void> updateNode(int id, {String? text, String? shape}) async {
     await db.rawUpdate(
       "UPDATE design_node SET node_text=?,shape=?,update_at=datetime('now') WHERE id=?",

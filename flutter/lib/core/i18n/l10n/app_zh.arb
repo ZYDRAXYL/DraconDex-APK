@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = 文件夹/项目/…",
   "moduleInside": "项",
   "nameModeUnique": "独有",
-  "nameModeClassic": "经典"
+  "nameModeClassic": "经典",
+  "kindRecent": "最近",
+  "clsLevelable": "可升级",
+  "clsCondition": "条件",
+  "levelColLevel": "等级",
+  "levelColInfo": "信息",
+  "levelAddRow": "添加行",
+  "levelNoRows": "暂无行",
+  "confirmDeleteLevelRow": "删除此行？",
+  "clsLevelAndCondition": "等级与条件",
+  "clsLevelAndConditionHint": "将字段变成多行表（等级），或将其值与条件关联。",
+  "clsInsertAbove": "在上方插入行",
+  "clsInsertBelow": "在下方插入行"
 }

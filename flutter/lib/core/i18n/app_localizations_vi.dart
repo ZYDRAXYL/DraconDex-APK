@@ -1732,4 +1732,40 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Cổ điển';
+
+  @override
+  String get kindRecent => 'Gần đây';
+
+  @override
+  String get clsLevelable => 'Có thể lên cấp';
+
+  @override
+  String get clsCondition => 'Điều kiện';
+
+  @override
+  String get levelColLevel => 'Cấp';
+
+  @override
+  String get levelColInfo => 'Thông tin';
+
+  @override
+  String get levelAddRow => 'Thêm hàng';
+
+  @override
+  String get levelNoRows => 'Chưa có hàng';
+
+  @override
+  String get confirmDeleteLevelRow => 'Xóa hàng này?';
+
+  @override
+  String get clsLevelAndCondition => 'Cấp & Điều kiện';
+
+  @override
+  String get clsLevelAndConditionHint => 'Biến trường thành bảng nhiều hàng (cấp), hoặc gắn giá trị với một điều kiện.';
+
+  @override
+  String get clsInsertAbove => 'Chèn hàng phía trên';
+
+  @override
+  String get clsInsertBelow => 'Chèn hàng phía dưới';
 }

@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Map/Project/…",
   "moduleInside": "erin",
   "nameModeUnique": "Uniek",
-  "nameModeClassic": "Klassiek"
+  "nameModeClassic": "Klassiek",
+  "kindRecent": "Recent",
+  "clsLevelable": "Levelbaar",
+  "clsCondition": "Voorwaarde",
+  "levelColLevel": "Niveau",
+  "levelColInfo": "Info",
+  "levelAddRow": "Rij toevoegen",
+  "levelNoRows": "Nog geen rijen",
+  "confirmDeleteLevelRow": "Deze rij verwijderen?",
+  "clsLevelAndCondition": "Niveau & voorwaarde",
+  "clsLevelAndConditionHint": "Maak van een veld een tabel met rijen (niveaus), of koppel de waarde aan een voorwaarde.",
+  "clsInsertAbove": "Rij erboven invoegen",
+  "clsInsertBelow": "Rij eronder invoegen"
 }

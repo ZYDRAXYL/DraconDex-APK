@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Folder/Projekt/…",
   "moduleInside": "w środku",
   "nameModeUnique": "Unikalne",
-  "nameModeClassic": "Klasyczne"
+  "nameModeClassic": "Klasyczne",
+  "kindRecent": "Ostatnie",
+  "clsLevelable": "Z poziomami",
+  "clsCondition": "Warunek",
+  "levelColLevel": "Poziom",
+  "levelColInfo": "Informacje",
+  "levelAddRow": "Dodaj wiersz",
+  "levelNoRows": "Brak wierszy",
+  "confirmDeleteLevelRow": "Usunąć ten wiersz?",
+  "clsLevelAndCondition": "Poziom i warunek",
+  "clsLevelAndConditionHint": "Zamienia pole w tabelę wierszy (poziomów) lub wiąże wartość z warunkiem.",
+  "clsInsertAbove": "Wstaw wiersz powyżej",
+  "clsInsertBelow": "Wstaw wiersz poniżej"
 }

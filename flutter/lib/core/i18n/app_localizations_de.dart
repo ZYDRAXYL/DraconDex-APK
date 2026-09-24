@@ -1732,4 +1732,40 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get nameModeClassic => 'Klassisch';
+
+  @override
+  String get kindRecent => 'Zuletzt';
+
+  @override
+  String get clsLevelable => 'Levelbar';
+
+  @override
+  String get clsCondition => 'Bedingung';
+
+  @override
+  String get levelColLevel => 'Stufe';
+
+  @override
+  String get levelColInfo => 'Info';
+
+  @override
+  String get levelAddRow => 'Zeile hinzufügen';
+
+  @override
+  String get levelNoRows => 'Noch keine Zeilen';
+
+  @override
+  String get confirmDeleteLevelRow => 'Diese Zeile löschen?';
+
+  @override
+  String get clsLevelAndCondition => 'Stufe & Bedingung';
+
+  @override
+  String get clsLevelAndConditionHint => 'Macht ein Feld zu einer Zeilentabelle (Stufen) oder knüpft seinen Wert an eine Bedingung.';
+
+  @override
+  String get clsInsertAbove => 'Zeile darüber einfügen';
+
+  @override
+  String get clsInsertBelow => 'Zeile darunter einfügen';
 }

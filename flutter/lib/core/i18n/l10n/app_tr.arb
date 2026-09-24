@@ -573,5 +573,17 @@
   "moduleNameModeHint": "Unique = Collector/Manager/… · Classic = Klasör/Proje/…",
   "moduleInside": "içeride",
   "nameModeUnique": "Özgün",
-  "nameModeClassic": "Klasik"
+  "nameModeClassic": "Klasik",
+  "kindRecent": "Son kullanılanlar",
+  "clsLevelable": "Seviyelenebilir",
+  "clsCondition": "Koşul",
+  "levelColLevel": "Seviye",
+  "levelColInfo": "Bilgi",
+  "levelAddRow": "Satır ekle",
+  "levelNoRows": "Henüz satır yok",
+  "confirmDeleteLevelRow": "Bu satır silinsin mi?",
+  "clsLevelAndCondition": "Seviye ve koşul",
+  "clsLevelAndConditionHint": "Bir alanı satır tablosuna (seviyeler) çevirir ya da değerini bir koşula bağlar.",
+  "clsInsertAbove": "Üste satır ekle",
+  "clsInsertBelow": "Alta satır ekle"
 }
