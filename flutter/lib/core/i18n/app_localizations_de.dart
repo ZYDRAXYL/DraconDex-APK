@@ -1627,4 +1627,109 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get csvEmpty => 'Keine Zeilen — Kopfzeile und mindestens eine Zeile nötig';
+
+  @override
+  String get kindClassicCollector => 'Ordner';
+
+  @override
+  String get kindDescCollector => 'Ordner, der andere Module gruppiert';
+
+  @override
+  String get kindClassicManager => 'Projekt';
+
+  @override
+  String get kindDescManager => 'Untermodule als Karten, Liste oder Tabelle durchsuchen';
+
+  @override
+  String get kindClassicInspector => 'Detail';
+
+  @override
+  String get kindDescInspector => 'Eine Notizseite mit den Details dieses Elements';
+
+  @override
+  String get kindClassicClassifier => 'Kategorie';
+
+  @override
+  String get kindDescClassifier => 'Elemente mit eigenen Feldern kategorisieren';
+
+  @override
+  String get kindClassicLocator => 'Karte';
+
+  @override
+  String get kindDescLocator => 'Karte mit Pins und Flächen';
+
+  @override
+  String get kindClassicChronicler => 'Zeitleiste';
+
+  @override
+  String get kindDescChronicler => 'Zeitleiste datierter Ereignisse';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Kartenpins verknüpft mit Zeitleisten-Ereignissen';
+
+  @override
+  String get kindClassicNarrator => 'Story';
+
+  @override
+  String get kindDescNarrator => 'Verbundene Dialogknoten auf einem Routenboard';
+
+  @override
+  String get kindClassicAuthor => 'Buch';
+
+  @override
+  String get kindDescAuthor => 'Buch mit Kapiteln und Schreibeditor';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Chat-artige Sitzungsnotizen';
+
+  @override
+  String get kindClassicDrafter => 'Dokument';
+
+  @override
+  String get kindDescDrafter => 'Leere Markdown-Seite';
+
+  @override
+  String get kindClassicExhibitor => 'Ausstellung';
+
+  @override
+  String get kindDescExhibitor => 'Szene, Graph und Tabellen verknüpfter Elemente — hier werden Beziehungen gezeichnet';
+
+  @override
+  String get kindClassicSketcher => 'Zeichnung';
+
+  @override
+  String get kindDescSketcher => 'Freihand-Zeichenfläche';
+
+  @override
+  String get kindClassicDesigner => 'Graph';
+
+  @override
+  String get kindDescDesigner => 'Freies Diagramm mit Formen und Pfeilen';
+
+  @override
+  String get kindClassicDiviner => 'Zufallstabelle';
+
+  @override
+  String get kindDescDiviner => 'Zufallstabellen und Würfelwürfe';
+
+  @override
+  String get moduleNameMode => 'Modulnamen';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Ordner/Projekt/…';
+
+  @override
+  String get moduleInside => 'darin';
+
+  @override
+  String get nameModeUnique => 'Eigen';
+
+  @override
+  String get nameModeClassic => 'Klassisch';
 }

@@ -1627,4 +1627,109 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get csvEmpty => 'Aucune ligne — il faut un en-tête et au moins une ligne';
+
+  @override
+  String get kindClassicCollector => 'Dossier';
+
+  @override
+  String get kindDescCollector => 'Dossier regroupant d\'autres modules';
+
+  @override
+  String get kindClassicManager => 'Projet';
+
+  @override
+  String get kindDescManager => 'Parcourir les modules enfants en cartes, liste ou tableau';
+
+  @override
+  String get kindClassicInspector => 'Détail';
+
+  @override
+  String get kindDescInspector => 'Une page de notes pour le détail de cet élément';
+
+  @override
+  String get kindClassicClassifier => 'Catégorie';
+
+  @override
+  String get kindDescClassifier => 'Classer les éléments avec des champs personnalisés';
+
+  @override
+  String get kindClassicLocator => 'Carte';
+
+  @override
+  String get kindDescLocator => 'Carte avec épingles et zones';
+
+  @override
+  String get kindClassicChronicler => 'Chronologie';
+
+  @override
+  String get kindDescChronicler => 'Chronologie d\'événements datés';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Épingles de carte liées à des événements de la chronologie';
+
+  @override
+  String get kindClassicNarrator => 'Histoire';
+
+  @override
+  String get kindDescNarrator => 'Nœuds de dialogue reliés sur un tableau d\'itinéraire';
+
+  @override
+  String get kindClassicAuthor => 'Livre';
+
+  @override
+  String get kindDescAuthor => 'Livre avec chapitres et éditeur d\'écriture';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Notes de session façon chat';
+
+  @override
+  String get kindClassicDrafter => 'Document';
+
+  @override
+  String get kindDescDrafter => 'Page markdown vierge';
+
+  @override
+  String get kindClassicExhibitor => 'Exposition';
+
+  @override
+  String get kindDescExhibitor => 'Scène, graphe et tableaux des éléments liés — là où l\'on dessine les relations';
+
+  @override
+  String get kindClassicSketcher => 'Dessin';
+
+  @override
+  String get kindDescSketcher => 'Canevas de dessin libre';
+
+  @override
+  String get kindClassicDesigner => 'Graphe';
+
+  @override
+  String get kindDescDesigner => 'Diagramme libre avec formes et flèches';
+
+  @override
+  String get kindClassicDiviner => 'Table aléatoire';
+
+  @override
+  String get kindDescDiviner => 'Tables aléatoires et jets de dés';
+
+  @override
+  String get moduleNameMode => 'Noms des modules';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Dossier/Projet/…';
+
+  @override
+  String get moduleInside => 'à l’intérieur';
+
+  @override
+  String get nameModeUnique => 'Unique';
+
+  @override
+  String get nameModeClassic => 'Classique';
 }

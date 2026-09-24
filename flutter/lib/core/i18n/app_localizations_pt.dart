@@ -1627,4 +1627,109 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get csvEmpty => 'Sem linhas — é preciso um cabeçalho e pelo menos uma linha';
+
+  @override
+  String get kindClassicCollector => 'Pasta';
+
+  @override
+  String get kindDescCollector => 'Pasta que agrupa outros módulos';
+
+  @override
+  String get kindClassicManager => 'Projeto';
+
+  @override
+  String get kindDescManager => 'Veja os módulos filhos em cartões, lista ou tabela';
+
+  @override
+  String get kindClassicInspector => 'Detalhe';
+
+  @override
+  String get kindDescInspector => 'Uma página de notas com os detalhes deste item';
+
+  @override
+  String get kindClassicClassifier => 'Categoria';
+
+  @override
+  String get kindDescClassifier => 'Categorize itens com campos personalizados';
+
+  @override
+  String get kindClassicLocator => 'Mapa';
+
+  @override
+  String get kindDescLocator => 'Mapa com pinos e áreas';
+
+  @override
+  String get kindClassicChronicler => 'Linha do tempo';
+
+  @override
+  String get kindDescChronicler => 'Linha do tempo de eventos com data';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Pinos do mapa ligados a eventos da linha do tempo';
+
+  @override
+  String get kindClassicNarrator => 'História';
+
+  @override
+  String get kindDescNarrator => 'Nós de diálogo conectados em um quadro de rotas';
+
+  @override
+  String get kindClassicAuthor => 'Livro';
+
+  @override
+  String get kindDescAuthor => 'Livro com capítulos e editor de escrita';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Notas de sessão estilo chat';
+
+  @override
+  String get kindClassicDrafter => 'Documento';
+
+  @override
+  String get kindDescDrafter => 'Página markdown em branco';
+
+  @override
+  String get kindClassicExhibitor => 'Exposição';
+
+  @override
+  String get kindDescExhibitor => 'Cena, grafo e tabelas de itens vinculados — onde as relações são desenhadas';
+
+  @override
+  String get kindClassicSketcher => 'Desenho';
+
+  @override
+  String get kindDescSketcher => 'Tela de desenho livre';
+
+  @override
+  String get kindClassicDesigner => 'Grafo';
+
+  @override
+  String get kindDescDesigner => 'Diagrama livre com formas e setas';
+
+  @override
+  String get kindClassicDiviner => 'Tabela aleatória';
+
+  @override
+  String get kindDescDiviner => 'Tabelas aleatórias e rolagens de dados';
+
+  @override
+  String get moduleNameMode => 'Nomes de módulo';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Pasta/Projeto/…';
+
+  @override
+  String get moduleInside => 'dentro';
+
+  @override
+  String get nameModeUnique => 'Único';
+
+  @override
+  String get nameModeClassic => 'Clássico';
 }

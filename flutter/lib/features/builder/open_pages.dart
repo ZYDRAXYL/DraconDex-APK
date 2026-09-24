@@ -137,7 +137,7 @@ class _PageCard extends ConsumerWidget {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     final kind = view.kind;
-    final kindLabel = kind == null ? l10n.builderNexusRootLabel : moduleKindInfo[kind]!.label;
+    final kindLabel = kind == null ? l10n.builderNexusRootLabel : kindName(l10n, kind);
     final subtitle = view.moduleId == null || view.nexusName.isEmpty ? kindLabel : '${view.nexusName} · $kindLabel';
     void close() => closeOpenPage(ref, GoRouter.of(context), view, current: current);
 

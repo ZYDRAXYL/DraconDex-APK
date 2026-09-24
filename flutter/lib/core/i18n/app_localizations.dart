@@ -10,12 +10,17 @@ import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_fr.dart';
 import 'app_localizations_id.dart';
+import 'app_localizations_it.dart';
 import 'app_localizations_ja.dart';
 import 'app_localizations_ko.dart';
+import 'app_localizations_nl.dart';
+import 'app_localizations_pl.dart';
 import 'app_localizations_pt.dart';
 import 'app_localizations_qd.dart';
 import 'app_localizations_ru.dart';
 import 'app_localizations_th.dart';
+import 'app_localizations_tr.dart';
+import 'app_localizations_uk.dart';
 import 'app_localizations_vi.dart';
 import 'app_localizations_zh.dart';
 
@@ -110,12 +115,17 @@ abstract class AppLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('id'),
+    Locale('it'),
     Locale('ja'),
     Locale('ko'),
+    Locale('nl'),
+    Locale('pl'),
     Locale('pt'),
     Locale('qd'),
     Locale('ru'),
     Locale('th'),
+    Locale('tr'),
+    Locale('uk'),
     Locale('vi'),
     Locale('zh'),
   ];
@@ -3356,6 +3366,216 @@ abstract class AppLocalizations {
   /// **'No rows to import — a header and at least one row are needed'**
   String get csvEmpty;
 
+  /// No description provided for @kindClassicCollector.
+  ///
+  /// In en, this message translates to:
+  /// **'Folder'**
+  String get kindClassicCollector;
+
+  /// No description provided for @kindDescCollector.
+  ///
+  /// In en, this message translates to:
+  /// **'Folder that groups other modules'**
+  String get kindDescCollector;
+
+  /// No description provided for @kindClassicManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Project'**
+  String get kindClassicManager;
+
+  /// No description provided for @kindDescManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse child modules as cards, list or table'**
+  String get kindDescManager;
+
+  /// No description provided for @kindClassicInspector.
+  ///
+  /// In en, this message translates to:
+  /// **'Detail'**
+  String get kindClassicInspector;
+
+  /// No description provided for @kindDescInspector.
+  ///
+  /// In en, this message translates to:
+  /// **'One note page for this item'**
+  String get kindDescInspector;
+
+  /// No description provided for @kindClassicClassifier.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get kindClassicClassifier;
+
+  /// No description provided for @kindDescClassifier.
+  ///
+  /// In en, this message translates to:
+  /// **'Categorize items with custom fields'**
+  String get kindDescClassifier;
+
+  /// No description provided for @kindClassicLocator.
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get kindClassicLocator;
+
+  /// No description provided for @kindDescLocator.
+  ///
+  /// In en, this message translates to:
+  /// **'Map with pins and areas'**
+  String get kindDescLocator;
+
+  /// No description provided for @kindClassicChronicler.
+  ///
+  /// In en, this message translates to:
+  /// **'Timeline'**
+  String get kindClassicChronicler;
+
+  /// No description provided for @kindDescChronicler.
+  ///
+  /// In en, this message translates to:
+  /// **'Timeline of dated events'**
+  String get kindDescChronicler;
+
+  /// No description provided for @kindClassicWanderer.
+  ///
+  /// In en, this message translates to:
+  /// **'TimeMap'**
+  String get kindClassicWanderer;
+
+  /// No description provided for @kindDescWanderer.
+  ///
+  /// In en, this message translates to:
+  /// **'Map pins linked to timeline events'**
+  String get kindDescWanderer;
+
+  /// No description provided for @kindClassicNarrator.
+  ///
+  /// In en, this message translates to:
+  /// **'Story'**
+  String get kindClassicNarrator;
+
+  /// No description provided for @kindDescNarrator.
+  ///
+  /// In en, this message translates to:
+  /// **'Dialogue nodes on a connected route board'**
+  String get kindDescNarrator;
+
+  /// No description provided for @kindClassicAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get kindClassicAuthor;
+
+  /// No description provided for @kindDescAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'Book with chapters and a writing editor'**
+  String get kindDescAuthor;
+
+  /// No description provided for @kindClassicScribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get kindClassicScribe;
+
+  /// No description provided for @kindDescScribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat-style session notes'**
+  String get kindDescScribe;
+
+  /// No description provided for @kindClassicDrafter.
+  ///
+  /// In en, this message translates to:
+  /// **'Doc'**
+  String get kindClassicDrafter;
+
+  /// No description provided for @kindDescDrafter.
+  ///
+  /// In en, this message translates to:
+  /// **'Blank markdown page'**
+  String get kindDescDrafter;
+
+  /// No description provided for @kindClassicExhibitor.
+  ///
+  /// In en, this message translates to:
+  /// **'Exhibit'**
+  String get kindClassicExhibitor;
+
+  /// No description provided for @kindDescExhibitor.
+  ///
+  /// In en, this message translates to:
+  /// **'Scene, graph and tables of linked items — where relations are drawn'**
+  String get kindDescExhibitor;
+
+  /// No description provided for @kindClassicSketcher.
+  ///
+  /// In en, this message translates to:
+  /// **'Drawing'**
+  String get kindClassicSketcher;
+
+  /// No description provided for @kindDescSketcher.
+  ///
+  /// In en, this message translates to:
+  /// **'Freehand drawing canvas'**
+  String get kindDescSketcher;
+
+  /// No description provided for @kindClassicDesigner.
+  ///
+  /// In en, this message translates to:
+  /// **'Graph'**
+  String get kindClassicDesigner;
+
+  /// No description provided for @kindDescDesigner.
+  ///
+  /// In en, this message translates to:
+  /// **'Free-form diagram with shapes and arrows'**
+  String get kindDescDesigner;
+
+  /// No description provided for @kindClassicDiviner.
+  ///
+  /// In en, this message translates to:
+  /// **'Random table'**
+  String get kindClassicDiviner;
+
+  /// No description provided for @kindDescDiviner.
+  ///
+  /// In en, this message translates to:
+  /// **'Random tables and dice rolls'**
+  String get kindDescDiviner;
+
+  /// No description provided for @moduleNameMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Module names'**
+  String get moduleNameMode;
+
+  /// No description provided for @moduleNameModeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Unique = Collector/Manager/… · Classic = Folder/Project/…'**
+  String get moduleNameModeHint;
+
+  /// No description provided for @moduleInside.
+  ///
+  /// In en, this message translates to:
+  /// **'inside'**
+  String get moduleInside;
+
+  /// No description provided for @nameModeUnique.
+  ///
+  /// In en, this message translates to:
+  /// **'Unique'**
+  String get nameModeUnique;
+
+  /// No description provided for @nameModeClassic.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic'**
+  String get nameModeClassic;
+
 }
 
 class _AppLocalizationsDelegate
@@ -3374,12 +3594,17 @@ class _AppLocalizationsDelegate
     'es',
     'fr',
     'id',
+    'it',
     'ja',
     'ko',
+    'nl',
+    'pl',
     'pt',
     'qd',
     'ru',
     'th',
+    'tr',
+    'uk',
     'vi',
     'zh',
   ].contains(locale.languageCode);
@@ -3401,10 +3626,16 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsFr();
     case 'id':
       return AppLocalizationsId();
+    case 'it':
+      return AppLocalizationsIt();
     case 'ja':
       return AppLocalizationsJa();
     case 'ko':
       return AppLocalizationsKo();
+    case 'nl':
+      return AppLocalizationsNl();
+    case 'pl':
+      return AppLocalizationsPl();
     case 'pt':
       return AppLocalizationsPt();
     case 'qd':
@@ -3413,6 +3644,10 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsRu();
     case 'th':
       return AppLocalizationsTh();
+    case 'tr':
+      return AppLocalizationsTr();
+    case 'uk':
+      return AppLocalizationsUk();
     case 'vi':
       return AppLocalizationsVi();
     case 'zh':

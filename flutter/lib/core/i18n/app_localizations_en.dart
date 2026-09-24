@@ -1627,4 +1627,109 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get csvEmpty => 'No rows to import — a header and at least one row are needed';
+
+  @override
+  String get kindClassicCollector => 'Folder';
+
+  @override
+  String get kindDescCollector => 'Folder that groups other modules';
+
+  @override
+  String get kindClassicManager => 'Project';
+
+  @override
+  String get kindDescManager => 'Browse child modules as cards, list or table';
+
+  @override
+  String get kindClassicInspector => 'Detail';
+
+  @override
+  String get kindDescInspector => 'One note page for this item';
+
+  @override
+  String get kindClassicClassifier => 'Category';
+
+  @override
+  String get kindDescClassifier => 'Categorize items with custom fields';
+
+  @override
+  String get kindClassicLocator => 'Map';
+
+  @override
+  String get kindDescLocator => 'Map with pins and areas';
+
+  @override
+  String get kindClassicChronicler => 'Timeline';
+
+  @override
+  String get kindDescChronicler => 'Timeline of dated events';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Map pins linked to timeline events';
+
+  @override
+  String get kindClassicNarrator => 'Story';
+
+  @override
+  String get kindDescNarrator => 'Dialogue nodes on a connected route board';
+
+  @override
+  String get kindClassicAuthor => 'Book';
+
+  @override
+  String get kindDescAuthor => 'Book with chapters and a writing editor';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Chat-style session notes';
+
+  @override
+  String get kindClassicDrafter => 'Doc';
+
+  @override
+  String get kindDescDrafter => 'Blank markdown page';
+
+  @override
+  String get kindClassicExhibitor => 'Exhibit';
+
+  @override
+  String get kindDescExhibitor => 'Scene, graph and tables of linked items — where relations are drawn';
+
+  @override
+  String get kindClassicSketcher => 'Drawing';
+
+  @override
+  String get kindDescSketcher => 'Freehand drawing canvas';
+
+  @override
+  String get kindClassicDesigner => 'Graph';
+
+  @override
+  String get kindDescDesigner => 'Free-form diagram with shapes and arrows';
+
+  @override
+  String get kindClassicDiviner => 'Random table';
+
+  @override
+  String get kindDescDiviner => 'Random tables and dice rolls';
+
+  @override
+  String get moduleNameMode => 'Module names';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Folder/Project/…';
+
+  @override
+  String get moduleInside => 'inside';
+
+  @override
+  String get nameModeUnique => 'Unique';
+
+  @override
+  String get nameModeClassic => 'Classic';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/i18n/app_localizations.dart';
 import '../../../core/layout/breakpoints.dart';
 import '../../../data/models/module_model.dart';
 import '../../../providers/builder_view_provider.dart';
@@ -78,6 +79,7 @@ class ModuleTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final info = module.kindInfo;
+    final l10n = AppLocalizations.of(context)!;
     List<RowAction> actions() => moduleRowActions(context, ref, module);
     return ListTile(
       dense: dense,
@@ -86,7 +88,8 @@ class ModuleTile extends ConsumerWidget {
       title: Text(module.name, maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: dense
           ? null
-          : Text(info.label + (module.childCount != null && module.childCount! > 0 ? ' · ${module.childCount} inside' : '')),
+          : Text(kindName(l10n, module.kind) +
+              (module.childCount != null && module.childCount! > 0 ? ' · ${module.childCount} ${l10n.moduleInside}' : '')),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -146,7 +149,7 @@ class ModuleCard extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      info.label,
+                      kindName(AppLocalizations.of(context)!, module.kind),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.bodySmall?.copyWith(

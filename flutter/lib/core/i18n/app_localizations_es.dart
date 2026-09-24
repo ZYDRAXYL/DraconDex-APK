@@ -1627,4 +1627,109 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get csvEmpty => 'No hay filas: se necesita un encabezado y al menos una fila';
+
+  @override
+  String get kindClassicCollector => 'Carpeta';
+
+  @override
+  String get kindDescCollector => 'Carpeta que agrupa otros módulos';
+
+  @override
+  String get kindClassicManager => 'Proyecto';
+
+  @override
+  String get kindDescManager => 'Explora los módulos hijos como tarjetas, lista o tabla';
+
+  @override
+  String get kindClassicInspector => 'Detalle';
+
+  @override
+  String get kindDescInspector => 'Una página de notas con el detalle de este elemento';
+
+  @override
+  String get kindClassicClassifier => 'Categoría';
+
+  @override
+  String get kindDescClassifier => 'Clasifica elementos con campos personalizados';
+
+  @override
+  String get kindClassicLocator => 'Mapa';
+
+  @override
+  String get kindDescLocator => 'Mapa con chinchetas y áreas';
+
+  @override
+  String get kindClassicChronicler => 'Línea de tiempo';
+
+  @override
+  String get kindDescChronicler => 'Línea de tiempo de eventos con fecha';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Chinchetas del mapa vinculadas a eventos de la línea de tiempo';
+
+  @override
+  String get kindClassicNarrator => 'Historia';
+
+  @override
+  String get kindDescNarrator => 'Nodos de diálogo conectados en un tablero de rutas';
+
+  @override
+  String get kindClassicAuthor => 'Libro';
+
+  @override
+  String get kindDescAuthor => 'Libro con capítulos y editor de escritura';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Notas de sesión estilo chat';
+
+  @override
+  String get kindClassicDrafter => 'Documento';
+
+  @override
+  String get kindDescDrafter => 'Página markdown en blanco';
+
+  @override
+  String get kindClassicExhibitor => 'Exposición';
+
+  @override
+  String get kindDescExhibitor => 'Escena, grafo y tablas de elementos vinculados — donde se dibujan las relaciones';
+
+  @override
+  String get kindClassicSketcher => 'Dibujo';
+
+  @override
+  String get kindDescSketcher => 'Lienzo de dibujo libre';
+
+  @override
+  String get kindClassicDesigner => 'Grafo';
+
+  @override
+  String get kindDescDesigner => 'Diagrama libre con formas y flechas';
+
+  @override
+  String get kindClassicDiviner => 'Tabla aleatoria';
+
+  @override
+  String get kindDescDiviner => 'Tablas aleatorias y tiradas de dados';
+
+  @override
+  String get moduleNameMode => 'Nombres de módulo';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Carpeta/Proyecto/…';
+
+  @override
+  String get moduleInside => 'dentro';
+
+  @override
+  String get nameModeUnique => 'Único';
+
+  @override
+  String get nameModeClassic => 'Clásico';
 }

@@ -1627,4 +1627,109 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get csvEmpty => 'Không có hàng — cần tiêu đề và ít nhất một hàng';
+
+  @override
+  String get kindClassicCollector => 'Thư mục';
+
+  @override
+  String get kindDescCollector => 'Thư mục nhóm các module khác';
+
+  @override
+  String get kindClassicManager => 'Dự án';
+
+  @override
+  String get kindDescManager => 'Xem module con dạng thẻ, danh sách hoặc bảng';
+
+  @override
+  String get kindClassicInspector => 'Chi tiết';
+
+  @override
+  String get kindDescInspector => 'Một trang ghi chú chi tiết cho mục này';
+
+  @override
+  String get kindClassicClassifier => 'Danh mục';
+
+  @override
+  String get kindDescClassifier => 'Phân loại mục với các trường tùy chỉnh';
+
+  @override
+  String get kindClassicLocator => 'Bản đồ';
+
+  @override
+  String get kindDescLocator => 'Bản đồ có ghim và khu vực';
+
+  @override
+  String get kindClassicChronicler => 'Dòng thời gian';
+
+  @override
+  String get kindDescChronicler => 'Dòng thời gian các sự kiện theo ngày';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Liên kết ghim bản đồ với sự kiện dòng thời gian';
+
+  @override
+  String get kindClassicNarrator => 'Cốt truyện';
+
+  @override
+  String get kindDescNarrator => 'Các nút hội thoại nối trên bảng lộ trình';
+
+  @override
+  String get kindClassicAuthor => 'Sách';
+
+  @override
+  String get kindDescAuthor => 'Sách có chương và trình soạn thảo';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Ghi chú dạng phiên trò chuyện';
+
+  @override
+  String get kindClassicDrafter => 'Tài liệu';
+
+  @override
+  String get kindDescDrafter => 'Trang markdown trống';
+
+  @override
+  String get kindClassicExhibitor => 'Trưng bày';
+
+  @override
+  String get kindDescExhibitor => 'Cảnh, đồ thị và bảng của các mục liên kết — nơi vẽ quan hệ';
+
+  @override
+  String get kindClassicSketcher => 'Bản vẽ';
+
+  @override
+  String get kindDescSketcher => 'Canvas vẽ tay tự do';
+
+  @override
+  String get kindClassicDesigner => 'Đồ thị';
+
+  @override
+  String get kindDescDesigner => 'Sơ đồ tự do với hình khối và mũi tên';
+
+  @override
+  String get kindClassicDiviner => 'Bảng ngẫu nhiên';
+
+  @override
+  String get kindDescDiviner => 'Bảng ngẫu nhiên và gieo xúc xắc';
+
+  @override
+  String get moduleNameMode => 'Tên module';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Thư mục/Dự án/…';
+
+  @override
+  String get moduleInside => 'bên trong';
+
+  @override
+  String get nameModeUnique => 'Riêng';
+
+  @override
+  String get nameModeClassic => 'Cổ điển';
 }

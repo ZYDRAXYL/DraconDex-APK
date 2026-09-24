@@ -213,7 +213,7 @@ class _RuleRow extends StatelessWidget {
               children: [
                 for (final k in ModuleKind.values)
                   FilterChip(
-                    label: Text(moduleKindInfo[k]!.label,
+                    label: Text(kindName(AppLocalizations.of(context)!, k),
                         style: theme.textTheme.labelSmall),
                     selected: rule.values.contains(k.id),
                     onSelected: (on) {

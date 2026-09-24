@@ -54,6 +54,22 @@ class SettingsScreen extends ConsumerWidget {
               onChanged: (v) => notifier.setUiScale(v),
             ),
           ),
+          ListTile(
+            title: Text(l10n.moduleNameMode),
+            subtitle: Text(l10n.moduleNameModeHint),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+            child: SegmentedButton<bool>(
+              showSelectedIcon: false,
+              segments: [
+                ButtonSegment(value: true, label: Text(l10n.nameModeClassic)),
+                ButtonSegment(value: false, label: Text(l10n.nameModeUnique)),
+              ],
+              selected: {settings.classicNames},
+              onSelectionChanged: (v) => notifier.setClassicNames(v.first),
+            ),
+          ),
           const Divider(),
           _SectionHeader(l10n.languageLabel),
           RadioGroup<String>(
@@ -319,6 +335,11 @@ class SettingsScreen extends ConsumerWidget {
     'fr': 'Français',
     'de': 'Deutsch',
     'ru': 'Русский',
+    'it': 'Italiano',
+    'nl': 'Nederlands',
+    'pl': 'Polski',
+    'uk': 'Українська',
+    'tr': 'Türkçe',
     'qd': '🐉 Draconic',
   };
 }

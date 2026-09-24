@@ -1627,4 +1627,109 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get csvEmpty => '没有可导入的行 — 需要表头和至少一行';
+
+  @override
+  String get kindClassicCollector => '文件夹';
+
+  @override
+  String get kindDescCollector => '用于归类其他模块的文件夹';
+
+  @override
+  String get kindClassicManager => '项目';
+
+  @override
+  String get kindDescManager => '以卡片、列表或表格浏览子模块';
+
+  @override
+  String get kindClassicInspector => '详情';
+
+  @override
+  String get kindDescInspector => '该项目的单页详情笔记';
+
+  @override
+  String get kindClassicClassifier => '分类';
+
+  @override
+  String get kindDescClassifier => '用自定义字段对项目分类';
+
+  @override
+  String get kindClassicLocator => '地图';
+
+  @override
+  String get kindDescLocator => '带图钉和区域的地图';
+
+  @override
+  String get kindClassicChronicler => '时间线';
+
+  @override
+  String get kindDescChronicler => '带日期事件的时间线';
+
+  @override
+  String get kindClassicWanderer => '时间地图';
+
+  @override
+  String get kindDescWanderer => '把地图图钉与时间线事件关联';
+
+  @override
+  String get kindClassicNarrator => '故事';
+
+  @override
+  String get kindDescNarrator => '以路线板连接的对话节点';
+
+  @override
+  String get kindClassicAuthor => '书';
+
+  @override
+  String get kindDescAuthor => '带章节和写作编辑器的书';
+
+  @override
+  String get kindClassicScribe => '聊天';
+
+  @override
+  String get kindDescScribe => '聊天式会话笔记';
+
+  @override
+  String get kindClassicDrafter => '文档';
+
+  @override
+  String get kindDescDrafter => '空白 Markdown 页面';
+
+  @override
+  String get kindClassicExhibitor => '展台';
+
+  @override
+  String get kindDescExhibitor => '关联项目的场景、图和表格 — 在这里绘制关系';
+
+  @override
+  String get kindClassicSketcher => '绘图';
+
+  @override
+  String get kindDescSketcher => '自由绘画画布';
+
+  @override
+  String get kindClassicDesigner => '图表';
+
+  @override
+  String get kindDescDesigner => '用形状和箭头绘制的自由图表';
+
+  @override
+  String get kindClassicDiviner => '随机表';
+
+  @override
+  String get kindDescDiviner => '随机表与掷骰';
+
+  @override
+  String get moduleNameMode => '模块名称';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = 文件夹/项目/…';
+
+  @override
+  String get moduleInside => '项';
+
+  @override
+  String get nameModeUnique => '独有';
+
+  @override
+  String get nameModeClassic => '经典';
 }

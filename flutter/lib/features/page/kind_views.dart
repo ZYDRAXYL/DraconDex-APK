@@ -72,7 +72,7 @@ ComponentDef _view(
       canvasPresets: canvasPresets,
       borrow: borrow,
       once: once,
-      label: (_) => moduleKindInfo[kind]!.label,
+      label: (l) => kindName(l, kind),
       build: build,
     );
 

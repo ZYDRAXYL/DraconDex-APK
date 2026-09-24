@@ -1627,4 +1627,109 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get csvEmpty => '가져올 행이 없습니다 — 머리글과 한 행 이상이 필요합니다';
+
+  @override
+  String get kindClassicCollector => '폴더';
+
+  @override
+  String get kindDescCollector => '다른 모듈을 묶는 폴더';
+
+  @override
+  String get kindClassicManager => '프로젝트';
+
+  @override
+  String get kindDescManager => '하위 모듈을 카드·목록·표로 보기';
+
+  @override
+  String get kindClassicInspector => '상세';
+
+  @override
+  String get kindDescInspector => '이 항목의 상세 내용을 담은 노트 한 장';
+
+  @override
+  String get kindClassicClassifier => '카테고리';
+
+  @override
+  String get kindDescClassifier => '커스텀 필드로 항목 분류';
+
+  @override
+  String get kindClassicLocator => '지도';
+
+  @override
+  String get kindDescLocator => '핀과 영역이 있는 지도';
+
+  @override
+  String get kindClassicChronicler => '타임라인';
+
+  @override
+  String get kindDescChronicler => '날짜별 이벤트 타임라인';
+
+  @override
+  String get kindClassicWanderer => '타임맵';
+
+  @override
+  String get kindDescWanderer => '지도 핀과 타임라인 이벤트를 연결';
+
+  @override
+  String get kindClassicNarrator => '스토리';
+
+  @override
+  String get kindDescNarrator => '대화 노드를 잇는 경로 보드';
+
+  @override
+  String get kindClassicAuthor => '북';
+
+  @override
+  String get kindDescAuthor => '챕터와 글쓰기 에디터가 있는 책';
+
+  @override
+  String get kindClassicScribe => '챗';
+
+  @override
+  String get kindDescScribe => '채팅형 세션 노트';
+
+  @override
+  String get kindClassicDrafter => '문서';
+
+  @override
+  String get kindDescDrafter => '빈 마크다운 페이지';
+
+  @override
+  String get kindClassicExhibitor => '전시';
+
+  @override
+  String get kindDescExhibitor => '연결된 항목의 장면·그래프·표 — 관계는 여기서 그립니다';
+
+  @override
+  String get kindClassicSketcher => '드로잉';
+
+  @override
+  String get kindDescSketcher => '자유롭게 그리는 캔버스';
+
+  @override
+  String get kindClassicDesigner => '그래프';
+
+  @override
+  String get kindDescDesigner => '도형과 화살표로 만드는 자유 다이어그램';
+
+  @override
+  String get kindClassicDiviner => '랜덤 표';
+
+  @override
+  String get kindDescDiviner => '랜덤 표와 주사위 굴림';
+
+  @override
+  String get moduleNameMode => '모듈 이름';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = 폴더/프로젝트/…';
+
+  @override
+  String get moduleInside => '개 포함';
+
+  @override
+  String get nameModeUnique => '고유';
+
+  @override
+  String get nameModeClassic => '클래식';
 }

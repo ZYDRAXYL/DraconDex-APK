@@ -1627,4 +1627,109 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get csvEmpty => '取り込む行がありません — 見出しと少なくとも1行が必要です';
+
+  @override
+  String get kindClassicCollector => 'フォルダ';
+
+  @override
+  String get kindDescCollector => '他のモジュールをまとめるフォルダ';
+
+  @override
+  String get kindClassicManager => 'プロジェクト';
+
+  @override
+  String get kindDescManager => '子モジュールをカード・リスト・表で閲覧';
+
+  @override
+  String get kindClassicInspector => '詳細';
+
+  @override
+  String get kindDescInspector => 'このアイテムの詳細を1つのノートで管理';
+
+  @override
+  String get kindClassicClassifier => 'カテゴリ';
+
+  @override
+  String get kindDescClassifier => 'カスタム項目でアイテムを分類';
+
+  @override
+  String get kindClassicLocator => 'マップ';
+
+  @override
+  String get kindDescLocator => 'ピンとエリアを配置する地図';
+
+  @override
+  String get kindClassicChronicler => 'タイムライン';
+
+  @override
+  String get kindDescChronicler => '日付付きイベントの年表';
+
+  @override
+  String get kindClassicWanderer => 'タイムマップ';
+
+  @override
+  String get kindDescWanderer => '地図のピンと年表イベントを連携';
+
+  @override
+  String get kindClassicNarrator => 'ストーリー';
+
+  @override
+  String get kindDescNarrator => '会話ノードを繋ぐルートボード';
+
+  @override
+  String get kindClassicAuthor => 'ブック';
+
+  @override
+  String get kindDescAuthor => '章立てと執筆エディタを持つ本';
+
+  @override
+  String get kindClassicScribe => 'チャット';
+
+  @override
+  String get kindDescScribe => 'チャット形式のセッションノート';
+
+  @override
+  String get kindClassicDrafter => 'ドキュメント';
+
+  @override
+  String get kindDescDrafter => '白紙のMarkdownページ';
+
+  @override
+  String get kindClassicExhibitor => '展示';
+
+  @override
+  String get kindDescExhibitor => 'リンクしたアイテムのシーン・グラフ・表 — 関係はここで描きます';
+
+  @override
+  String get kindClassicSketcher => 'ドローイング';
+
+  @override
+  String get kindDescSketcher => '自由に描けるお絵かきキャンバス';
+
+  @override
+  String get kindClassicDesigner => 'グラフ';
+
+  @override
+  String get kindDescDesigner => '図形と矢印で作る自由図解';
+
+  @override
+  String get kindClassicDiviner => 'ランダム表';
+
+  @override
+  String get kindDescDiviner => 'ランダム表とダイスロール';
+
+  @override
+  String get moduleNameMode => 'モジュール名';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = フォルダ/プロジェクト/…';
+
+  @override
+  String get moduleInside => '件';
+
+  @override
+  String get nameModeUnique => '固有';
+
+  @override
+  String get nameModeClassic => 'クラシック';
 }

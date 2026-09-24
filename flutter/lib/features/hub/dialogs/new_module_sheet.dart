@@ -98,7 +98,7 @@ Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId
   switch (picked) {
     case ModuleKind kind:
       if (!context.mounted) return;
-      final name = await askText(context, moduleKindInfo[kind]!.label, initial: moduleKindInfo[kind]!.label, label: l.labelName);
+      final name = await askText(context, kindName(l, kind), initial: kindName(l, kind), label: l.labelName);
       if (name == null) return;
       final id = await ModuleDao(db).createModule(nexusRef: nexusId, parentId: parentId, name: name, kind: kind);
       refreshTree(ref, nexusId);
@@ -140,7 +140,8 @@ class _KindSheetState extends State<_KindSheet> {
     final q = _q.trim().toLowerCase();
     bool hit(ModuleKind k) {
       final i = moduleKindInfo[k]!;
-      return q.isEmpty || i.label.toLowerCase().contains(q) || i.description.toLowerCase().contains(q) || k.id.contains(q);
+      return q.isEmpty ||
+          [i.label, i.description, kindName(l, k), kindDesc(l, k), k.id].any((s) => s.toLowerCase().contains(q));
     }
 
     String cat(ModuleCategory c) => switch (c) {
@@ -178,8 +179,8 @@ class _KindSheetState extends State<_KindSheet> {
         rows.add(ListTile(
           dense: true,
           leading: Icon(i.icon),
-          title: Text(i.label),
-          subtitle: Text(i.description, maxLines: 1, overflow: TextOverflow.ellipsis),
+          title: Text(kindName(l, k)),
+          subtitle: Text(kindDesc(l, k), maxLines: 1, overflow: TextOverflow.ellipsis),
           onTap: () => Navigator.pop(context, k),
         ));
       }

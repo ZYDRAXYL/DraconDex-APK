@@ -1627,4 +1627,109 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get csvEmpty => 'Nar rows — a head and one row are needed';
+
+  @override
+  String get kindClassicCollector => 'Foldre';
+
+  @override
+  String get kindDescCollector => 'Foldyr thate groupyth othyr modyuls';
+
+  @override
+  String get kindClassicManager => 'Projecte';
+
+  @override
+  String get kindDescManager => 'Browsyth chylde modyuls as cardys, lyst oure tabyl';
+
+  @override
+  String get kindClassicInspector => 'Detaile';
+
+  @override
+  String get kindDescInspector => 'Onye note payge fore thys ityme\'s detayls';
+
+  @override
+  String get kindClassicClassifier => 'Categorie';
+
+  @override
+  String get kindDescClassifier => 'Categoryze ityms wyth custym fyelds';
+
+  @override
+  String get kindClassicLocator => 'Mappe';
+
+  @override
+  String get kindDescLocator => 'Mape wyth pynnes and areyas';
+
+  @override
+  String get kindClassicChronicler => 'Tymelyne';
+
+  @override
+  String get kindDescChronicler => 'Tymelyne of dateyd eventys';
+
+  @override
+  String get kindClassicWanderer => 'TymeMappe';
+
+  @override
+  String get kindDescWanderer => 'Mape pynnes lynkyd to tymelyne eventys';
+
+  @override
+  String get kindClassicNarrator => 'Storie';
+
+  @override
+  String get kindDescNarrator => 'Dyalogue nodys connectyd on a routye boarde';
+
+  @override
+  String get kindClassicAuthor => 'Booke';
+
+  @override
+  String get kindDescAuthor => 'Booke wyth chaptyrs and a wrytyng edytore';
+
+  @override
+  String get kindClassicScribe => 'Chatte';
+
+  @override
+  String get kindDescScribe => 'Chatte-style sessyon notys';
+
+  @override
+  String get kindClassicDrafter => 'Docke';
+
+  @override
+  String get kindDescDrafter => 'Blanke markdowne payge';
+
+  @override
+  String get kindClassicExhibitor => 'Exhibite';
+
+  @override
+  String get kindDescExhibitor => 'Stage, weave and tables of bounden things — where bondes be drawn';
+
+  @override
+  String get kindClassicSketcher => 'Drawinge';
+
+  @override
+  String get kindDescSketcher => 'Freehande drawyng canvyss';
+
+  @override
+  String get kindClassicDesigner => 'Graphe';
+
+  @override
+  String get kindDescDesigner => 'Free-forme dyagrame wyth shapys and arrowys';
+
+  @override
+  String get kindClassicDiviner => 'Tabyl of Chaunce';
+
+  @override
+  String get kindDescDiviner => 'Tablys of chaunce and ythe castyng of bonys';
+
+  @override
+  String get moduleNameMode => 'Module names';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Foldre/Projecte/…';
+
+  @override
+  String get moduleInside => 'within';
+
+  @override
+  String get nameModeUnique => 'Unique';
+
+  @override
+  String get nameModeClassic => 'Elder';
 }

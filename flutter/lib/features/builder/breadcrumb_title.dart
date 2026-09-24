@@ -233,7 +233,7 @@ class _CrumbChildrenSheet extends ConsumerWidget {
                       ListTile(
                         leading: m.colorCode != null ? ColorDot(colorCode: m.colorCode, size: 20) : Icon(m.kindInfo.icon),
                         title: Text(m.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-                        subtitle: Text(m.kindInfo.label),
+                        subtitle: Text(kindName(AppLocalizations.of(context)!, m.kind)),
                         onTap: () => _goFromSheet(context, RecentView.locationFor(crumb.nexusId, m.id)),
                       ),
                     for (final it in elements)

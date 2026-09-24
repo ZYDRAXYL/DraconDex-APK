@@ -1627,4 +1627,109 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get csvEmpty => 'Нет строк — нужен заголовок и хотя бы одна строка';
+
+  @override
+  String get kindClassicCollector => 'Папка';
+
+  @override
+  String get kindDescCollector => 'Папка, объединяющая другие модули';
+
+  @override
+  String get kindClassicManager => 'Проект';
+
+  @override
+  String get kindDescManager => 'Просмотр дочерних модулей карточками, списком или таблицей';
+
+  @override
+  String get kindClassicInspector => 'Деталь';
+
+  @override
+  String get kindDescInspector => 'Одна страница заметки с деталями этого элемента';
+
+  @override
+  String get kindClassicClassifier => 'Категория';
+
+  @override
+  String get kindDescClassifier => 'Категоризация элементов с пользовательскими полями';
+
+  @override
+  String get kindClassicLocator => 'Карта';
+
+  @override
+  String get kindDescLocator => 'Карта с метками и зонами';
+
+  @override
+  String get kindClassicChronicler => 'Таймлайн';
+
+  @override
+  String get kindDescChronicler => 'Хронология событий с датами';
+
+  @override
+  String get kindClassicWanderer => 'ТаймМап';
+
+  @override
+  String get kindDescWanderer => 'Метки на карте, связанные с событиями хронологии';
+
+  @override
+  String get kindClassicNarrator => 'История';
+
+  @override
+  String get kindDescNarrator => 'Узлы диалогов, связанные на маршрутной доске';
+
+  @override
+  String get kindClassicAuthor => 'Книга';
+
+  @override
+  String get kindDescAuthor => 'Книга с главами и редактором текста';
+
+  @override
+  String get kindClassicScribe => 'Чат';
+
+  @override
+  String get kindDescScribe => 'Заметки сессий в виде чата';
+
+  @override
+  String get kindClassicDrafter => 'Документ';
+
+  @override
+  String get kindDescDrafter => 'Пустая markdown-страница';
+
+  @override
+  String get kindClassicExhibitor => 'Экспозиция';
+
+  @override
+  String get kindDescExhibitor => 'Сцена, граф и таблицы связанных элементов — здесь рисуются связи';
+
+  @override
+  String get kindClassicSketcher => 'Рисунок';
+
+  @override
+  String get kindDescSketcher => 'Холст для свободного рисования';
+
+  @override
+  String get kindClassicDesigner => 'Граф';
+
+  @override
+  String get kindDescDesigner => 'Свободная диаграмма с фигурами и стрелками';
+
+  @override
+  String get kindClassicDiviner => 'Случайная таблица';
+
+  @override
+  String get kindDescDiviner => 'Случайные таблицы и броски костей';
+
+  @override
+  String get moduleNameMode => 'Имена модулей';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Папка/Проект/…';
+
+  @override
+  String get moduleInside => 'внутри';
+
+  @override
+  String get nameModeUnique => 'Уникальные';
+
+  @override
+  String get nameModeClassic => 'Классические';
 }

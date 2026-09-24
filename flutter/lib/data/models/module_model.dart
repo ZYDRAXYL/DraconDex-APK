@@ -5,6 +5,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../core/i18n/app_localizations.dart';
+
 class NexusModel {
   final int id;
   final String name;
@@ -102,6 +104,55 @@ class ModuleKindInfo {
   });
 }
 
+/// The kind-name mode, mirrored here by SettingsNotifier so a name can be
+/// read without a ref — the app rebuilds under a new key when it changes.
+class KindNames {
+  static bool classic = true;
+}
+
+/// A kind's name on screen: the classic name in the UI language (the
+/// desktop's default), or the unique proper name.
+String kindName(AppLocalizations l, ModuleKind k) => !KindNames.classic
+    ? moduleKindInfo[k]!.label
+    : switch (k) {
+        ModuleKind.collector => l.kindClassicCollector,
+        ModuleKind.manager => l.kindClassicManager,
+        ModuleKind.inspector => l.kindClassicInspector,
+        ModuleKind.classifier => l.kindClassicClassifier,
+        ModuleKind.locator => l.kindClassicLocator,
+        ModuleKind.chronicler => l.kindClassicChronicler,
+        ModuleKind.wanderer => l.kindClassicWanderer,
+        ModuleKind.narrator => l.kindClassicNarrator,
+        ModuleKind.author => l.kindClassicAuthor,
+        ModuleKind.scribe => l.kindClassicScribe,
+        ModuleKind.drafter => l.kindClassicDrafter,
+        ModuleKind.exhibitor => l.kindClassicExhibitor,
+        ModuleKind.sketcher => l.kindClassicSketcher,
+        ModuleKind.designer => l.kindClassicDesigner,
+        ModuleKind.diviner => l.kindClassicDiviner,
+      };
+
+/// What a kind is for, in the UI language (EXE KIND_DESC_KEY).
+String kindDesc(AppLocalizations l, ModuleKind k) => switch (k) {
+      ModuleKind.collector => l.kindDescCollector,
+      ModuleKind.manager => l.kindDescManager,
+      ModuleKind.inspector => l.kindDescInspector,
+      ModuleKind.classifier => l.kindDescClassifier,
+      ModuleKind.locator => l.kindDescLocator,
+      ModuleKind.chronicler => l.kindDescChronicler,
+      ModuleKind.wanderer => l.kindDescWanderer,
+      ModuleKind.narrator => l.kindDescNarrator,
+      ModuleKind.author => l.kindDescAuthor,
+      ModuleKind.scribe => l.kindDescScribe,
+      ModuleKind.drafter => l.kindDescDrafter,
+      ModuleKind.exhibitor => l.kindDescExhibitor,
+      ModuleKind.sketcher => l.kindDescSketcher,
+      ModuleKind.designer => l.kindDescDesigner,
+      ModuleKind.diviner => l.kindDescDiviner,
+    };
+
+/// [label] and [description] are the unique English names, kept for logs
+/// and fallbacks; the screen goes through [kindName] / [kindDesc].
 const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ModuleKind.collector: ModuleKindInfo(
     kind: ModuleKind.collector,

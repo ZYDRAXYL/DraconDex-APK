@@ -1627,4 +1627,109 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get csvEmpty => 'ไม่มีแถวให้นำเข้า — ต้องมีหัวตารางและอย่างน้อยหนึ่งแถว';
+
+  @override
+  String get kindClassicCollector => 'โฟลเดอร์';
+
+  @override
+  String get kindDescCollector => 'โฟลเดอร์สำหรับจัดกลุ่มโมดูลอื่น';
+
+  @override
+  String get kindClassicManager => 'โปรเจกต์';
+
+  @override
+  String get kindDescManager => 'ดูโมดูลย่อยแบบการ์ด ลิสต์ หรือตาราง';
+
+  @override
+  String get kindClassicInspector => 'รายละเอียด';
+
+  @override
+  String get kindDescInspector => 'หน้าโน้ตเดียวสำหรับรายละเอียดของไอเทมนี้';
+
+  @override
+  String get kindClassicClassifier => 'หมวดหมู่';
+
+  @override
+  String get kindDescClassifier => 'จัดหมวดหมู่ไอเทมด้วยฟิลด์ที่กำหนดเอง';
+
+  @override
+  String get kindClassicLocator => 'แผนที่';
+
+  @override
+  String get kindDescLocator => 'แผนที่พร้อมหมุดและพื้นที่';
+
+  @override
+  String get kindClassicChronicler => 'ไทม์ไลน์';
+
+  @override
+  String get kindDescChronicler => 'ไทม์ไลน์ของเหตุการณ์ตามวันที่';
+
+  @override
+  String get kindClassicWanderer => 'ไทม์แมพ';
+
+  @override
+  String get kindDescWanderer => 'หมุดบนแผนที่เชื่อมกับเหตุการณ์ในไทม์ไลน์';
+
+  @override
+  String get kindClassicNarrator => 'เนื้อเรื่อง';
+
+  @override
+  String get kindDescNarrator => 'โหนดบทสนทนาบนบอร์ดเส้นทางที่เชื่อมกัน';
+
+  @override
+  String get kindClassicAuthor => 'หนังสือ';
+
+  @override
+  String get kindDescAuthor => 'หนังสือพร้อมบทและตัวแก้ไขงานเขียน';
+
+  @override
+  String get kindClassicScribe => 'แชต';
+
+  @override
+  String get kindDescScribe => 'โน้ตแบบแชทเป็นเซสชัน';
+
+  @override
+  String get kindClassicDrafter => 'เอกสาร';
+
+  @override
+  String get kindDescDrafter => 'หน้าเปล่าแบบ markdown';
+
+  @override
+  String get kindClassicExhibitor => 'ห้องจัดแสดง';
+
+  @override
+  String get kindDescExhibitor => 'ฉาก กราฟ และตารางของสิ่งที่เชื่อมกัน — ที่เดียวที่ใช้วาด relation';
+
+  @override
+  String get kindClassicSketcher => 'ภาพวาด';
+
+  @override
+  String get kindDescSketcher => 'แคนวาสวาดภาพด้วยมืออิสระ';
+
+  @override
+  String get kindClassicDesigner => 'กราฟ';
+
+  @override
+  String get kindDescDesigner => 'แผนภาพอิสระด้วยรูปทรงและลูกศร';
+
+  @override
+  String get kindClassicDiviner => 'ตารางสุ่ม';
+
+  @override
+  String get kindDescDiviner => 'ตารางสุ่มและทอยเต๋า';
+
+  @override
+  String get moduleNameMode => 'ชื่อโมดูล';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = โฟลเดอร์/โปรเจกต์/…';
+
+  @override
+  String get moduleInside => 'รายการข้างใน';
+
+  @override
+  String get nameModeUnique => 'เฉพาะ';
+
+  @override
+  String get nameModeClassic => 'คลาสสิก';
 }

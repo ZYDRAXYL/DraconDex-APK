@@ -1627,4 +1627,109 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get csvEmpty => 'Tidak ada baris — perlu judul dan minimal satu baris';
+
+  @override
+  String get kindClassicCollector => 'Folder';
+
+  @override
+  String get kindDescCollector => 'Folder untuk mengelompokkan module lain';
+
+  @override
+  String get kindClassicManager => 'Proyek';
+
+  @override
+  String get kindDescManager => 'Lihat module anak sebagai kartu, daftar, atau tabel';
+
+  @override
+  String get kindClassicInspector => 'Detail';
+
+  @override
+  String get kindDescInspector => 'Satu halaman catatan detail untuk item ini';
+
+  @override
+  String get kindClassicClassifier => 'Kategori';
+
+  @override
+  String get kindDescClassifier => 'Kategorikan item dengan field kustom';
+
+  @override
+  String get kindClassicLocator => 'Peta';
+
+  @override
+  String get kindDescLocator => 'Peta dengan pin dan area';
+
+  @override
+  String get kindClassicChronicler => 'Linimasa';
+
+  @override
+  String get kindDescChronicler => 'Linimasa peristiwa bertanggal';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Pin peta yang terhubung ke peristiwa linimasa';
+
+  @override
+  String get kindClassicNarrator => 'Cerita';
+
+  @override
+  String get kindDescNarrator => 'Node dialog yang terhubung di papan rute';
+
+  @override
+  String get kindClassicAuthor => 'Buku';
+
+  @override
+  String get kindDescAuthor => 'Buku dengan bab dan editor penulisan';
+
+  @override
+  String get kindClassicScribe => 'Obrolan';
+
+  @override
+  String get kindDescScribe => 'Catatan sesi bergaya chat';
+
+  @override
+  String get kindClassicDrafter => 'Dokumen';
+
+  @override
+  String get kindDescDrafter => 'Halaman markdown kosong';
+
+  @override
+  String get kindClassicExhibitor => 'Pameran';
+
+  @override
+  String get kindDescExhibitor => 'Adegan, graf, dan tabel item tertaut — tempat relasi digambar';
+
+  @override
+  String get kindClassicSketcher => 'Gambar';
+
+  @override
+  String get kindDescSketcher => 'Kanvas gambar bebas';
+
+  @override
+  String get kindClassicDesigner => 'Grafik';
+
+  @override
+  String get kindDescDesigner => 'Diagram bebas dengan bentuk dan panah';
+
+  @override
+  String get kindClassicDiviner => 'Tabel acak';
+
+  @override
+  String get kindDescDiviner => 'Tabel acak dan lempar dadu';
+
+  @override
+  String get moduleNameMode => 'Nama modul';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Folder/Proyek/…';
+
+  @override
+  String get moduleInside => 'di dalam';
+
+  @override
+  String get nameModeUnique => 'Unik';
+
+  @override
+  String get nameModeClassic => 'Klasik';
 }

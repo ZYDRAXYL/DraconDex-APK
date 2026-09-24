@@ -314,7 +314,7 @@ Future<ModuleModel?> _pickBorrowSource(BuildContext context, WidgetRef ref, Modu
               ListTile(
                 leading: Icon(m.kindInfo.icon),
                 title: Text(m.name),
-                subtitle: Text(m.kindInfo.label),
+                subtitle: Text(kindName(AppLocalizations.of(sheet)!, m.kind)),
                 onTap: () => Navigator.pop(sheet, m),
               ),
           ],
