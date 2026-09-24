@@ -279,7 +279,10 @@ class VaultSnapshotService {
         SELECT n.id, n.folder_ref AS folderId, n.title, n.content,
                c.color_code AS colorCode, n.pinned
         FROM note n LEFT JOIN use_color c ON n.color=c.id
-        WHERE n.nexus_ref=? ORDER BY n.id'''),
+        WHERE n.nexus_ref=? AND n.migrated_v3=0 ORDER BY n.id'''),
+      // ↑ A converted note is a module now (the desktop's autoMigrateNotes)
+      //   and travels as one. Sending the note too would have the receiver
+      //   convert it a second time, into a duplicate module.
     };
 
     // Every colour code referenced anywhere above, deduped. Colours cross the

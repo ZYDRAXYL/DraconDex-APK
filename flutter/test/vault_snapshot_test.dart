@@ -283,6 +283,17 @@ void main() {
     expect((snap['nexus']! as Map)['name'], 'My World');
   });
 
+  test('a note already converted to a module is not serialized', () async {
+    final db = await openVault();
+    final nexusId = await seedVault(db);
+    await db.insert('note', {'nexus_ref': nexusId, 'title': 'Kept', 'content': 'a'});
+    await db.insert('note', {'nexus_ref': nexusId, 'title': 'Converted', 'content': 'b', 'migrated_v3': 1});
+    final snap = (await VaultSnapshotService.serializeVault(db, nexusId))!;
+    final notes = ((snap['notes'] as Map)['notes'] as List).cast<Map>();
+    expect(notes.map((n) => n['title']), isNot(contains('Converted')));
+    expect(notes.map((n) => n['title']), contains('Kept'));
+  });
+
   test('a v1 snapshot still imports, its module attributes as property blocks', () async {
     final db = await openVault();
     final targetId = await db.insert('nexus', {'name': 'Old'});
