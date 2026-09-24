@@ -14,7 +14,8 @@ void main() {
     }
     expect(by[ModuleCategory.structure], ['collector']);
     expect((by[ModuleCategory.view]!..sort()), ['connector', 'manager', 'viewer']);
-    expect(by[ModuleCategory.data]!.length, 11);
+    // 12 since V5.md §11.5 added diviner (registered, not yet ported).
+    expect(by[ModuleCategory.data]!.length, 12);
     // Notes live in module.description, yet they are data (§9.1).
     expect(moduleKindInfo[ModuleKind.inspector]!.category, ModuleCategory.data);
     expect(moduleKindInfo[ModuleKind.drafter]!.category, ModuleCategory.data);
