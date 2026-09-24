@@ -336,6 +336,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get filterFieldChildOf => 'Trong mô-đun';
 
   @override
+  String get filterFieldHandle => 'Handle';
+
+  @override
   String get filterOpIs => 'là';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Xóa thẻ này?';
 
   @override
-  String get builderNavHome => 'Trang chủ';
-
-  @override
-  String get builderNavView => 'Xem';
-
-  @override
-  String get builderNavFolders => 'Xem thư mục';
-
-  @override
   String get viewModeTitle => 'Chế độ xem';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Gọn';
-
-  @override
-  String get recentViewsTitle => 'Xem gần đây';
-
-  @override
-  String get recentViewsEmpty => 'Chưa có mục nào gần đây';
-
-  @override
-  String get recentViewsClear => 'Xóa tất cả';
 
   @override
   String get builderNexusRootLabel => 'Gốc Nexus';
@@ -958,4 +943,829 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Liên kết mang sẵn khoá, nên vẫn dùng được kể cả khi người gửi chỉ cho phép mã QR.';
+
+  @override
+  String get navNest => 'Tổ';
+
+  @override
+  String get navSearch => 'Tìm kiếm';
+
+  @override
+  String get navOpenPages => 'Trang';
+
+  @override
+  String get navTools => 'Công cụ';
+
+  @override
+  String get navMore => 'Thêm';
+
+  @override
+  String get openPagesTitle => 'Trang đang mở';
+
+  @override
+  String get openPagesEmpty => 'Chưa có trang nào đang mở. Mỗi trang bạn mở sẽ ở đây cho đến khi bạn đóng nó.';
+
+  @override
+  String get openPagesCloseAll => 'Đóng tất cả';
+
+  @override
+  String get openPageClose => 'Đóng trang';
+
+  @override
+  String get rowOpen => 'Mở';
+
+  @override
+  String get rowMore => 'Thao tác khác';
+
+  @override
+  String get crumbEmpty => 'Không có gì bên trong';
+
+  @override
+  String get goToTitle => 'Đi tới';
+
+  @override
+  String get goToHint => 'Tên, đường dẫn hoặc @handle';
+
+  @override
+  String get searchHint => 'Tìm tên, nội dung và lệnh';
+
+  @override
+  String get searchThings => 'Mục';
+
+  @override
+  String get searchContent => 'Nội dung';
+
+  @override
+  String get searchCommands => 'Lệnh';
+
+  @override
+  String get searchEmpty => 'Không có kết quả';
+
+  @override
+  String get elementPageSoon => 'Phần tử này sẽ có trang riêng trong bản cập nhật tới. Hiện tại nó mở bên trong module của nó.';
+
+  @override
+  String get wikiUnresolved => 'Chưa có gì mang tên này. Tạo một trang Drafter cho nó?';
+
+  @override
+  String get wikiCreateDrafter => 'Tạo';
+
+  @override
+  String get btnUndo => 'Hoàn tác';
+
+  @override
+  String get pbAddBlock => 'Thêm khối';
+
+  @override
+  String get pbAddHere => 'Thêm vào đây';
+
+  @override
+  String get pbAddProperty => 'Thêm thuộc tính';
+
+  @override
+  String get pbArrange => 'Sắp xếp trang';
+
+  @override
+  String get pbArrangeDone => 'Xong';
+
+  @override
+  String get pbArrangeHint => 'Kéo để sắp xếp lại. Khối cột di chuyển nguyên khối.';
+
+  @override
+  String get pbArrangeShared => 'Đây là bố cục mà mọi phần tử của module này dùng chung. Hãy tách trang ra trước để chỉ đổi trang này.';
+
+  @override
+  String get pbBacklinks => 'Liên kết từ';
+
+  @override
+  String get pbBlockDeleted => 'Đã xoá khối';
+
+  @override
+  String get pbBorrow => 'Một góc nhìn từ module khác';
+
+  @override
+  String get pbColumn => 'Cột';
+
+  @override
+  String get pbColumns => 'Các cột';
+
+  @override
+  String get pbDivider => 'Đường phân cách';
+
+  @override
+  String get pbFullScreen => 'Toàn màn hình';
+
+  @override
+  String get pbHeading => 'Tiêu đề';
+
+  @override
+  String get pbImage => 'Hình ảnh';
+
+  @override
+  String get pbItemBody => 'Phần tử';
+
+  @override
+  String get pbItemEmpty => 'Chưa có gì được viết ở đây.';
+
+  @override
+  String get pbNoRelated => 'Chưa có liên kết';
+
+  @override
+  String get pbNotOnMobile => 'chưa có trong ứng dụng này';
+
+  @override
+  String get pbOnlyOnce => 'chỉ được có một lần trên một trang';
+
+  @override
+  String get pbOpenFullScreen => 'Mở';
+
+  @override
+  String get pbOutgoing => 'Liên kết đến';
+
+  @override
+  String get pbPropName => 'Tên';
+
+  @override
+  String get pbPropType => 'Loại';
+
+  @override
+  String get pbProperties => 'Thuộc tính';
+
+  @override
+  String get pbRelated => 'Liên quan';
+
+  @override
+  String get pbRelations => 'Quan hệ';
+
+  @override
+  String get pbRevert => 'Quay lại bố cục dùng chung';
+
+  @override
+  String get pbSharedLayout => 'Bố cục dùng chung cho mọi trang phần tử của module này.';
+
+  @override
+  String get pbSourceGone => 'nội dung được hiển thị đã không còn';
+
+  @override
+  String get pbSplit => 'Cho trang này bố cục riêng';
+
+  @override
+  String get pbTags => 'Thẻ';
+
+  @override
+  String get pbText => 'Văn bản';
+
+  @override
+  String get pbTextEmpty => 'Văn bản trống — chạm để viết';
+
+  @override
+  String get propTypeCheckbox => 'Hộp kiểm';
+
+  @override
+  String get propTypeDate => 'Ngày';
+
+  @override
+  String get propTypeNumber => 'Số';
+
+  @override
+  String get propTypeText => 'Văn bản';
+
+  @override
+  String get propTypeTextarea => 'Văn bản dài';
+
+  @override
+  String get propTypeUrl => 'Liên kết';
+
+  @override
+  String get viewTable => 'Bảng';
+
+  @override
+  String get viewListDetail => 'Danh sách · chi tiết';
+
+  @override
+  String get viewRelations => 'Quan hệ';
+
+  @override
+  String get viewGrid => 'Lưới';
+
+  @override
+  String get viewScene => 'Cảnh';
+
+  @override
+  String get viewGraph => 'Đồ thị';
+
+  @override
+  String get viewCards => 'Thẻ';
+
+  @override
+  String get viewBoard => 'Bảng ghim';
+
+  @override
+  String get viewEdges => 'Cạnh nối';
+
+  @override
+  String get viewArea => 'Khu vực';
+
+  @override
+  String get viewMap => 'Bản đồ';
+
+  @override
+  String get viewTimeline => 'Dòng thời gian';
+
+  @override
+  String get viewCanvas => 'Khung vẽ';
+
+  @override
+  String get viewPages => 'Trang';
+
+  @override
+  String get viewGallery => 'Bộ sưu tập';
+
+  @override
+  String get viewExport => 'Xuất';
+
+  @override
+  String get viewEditor => 'Trình soạn';
+
+  @override
+  String get viewOutline => 'Dàn ý';
+
+  @override
+  String get viewReading => 'Đọc';
+
+  @override
+  String get viewBook => 'Sách';
+
+  @override
+  String get viewRoutes => 'Lộ trình';
+
+  @override
+  String get viewReader => 'Trình đọc';
+
+  @override
+  String get viewDialogue => 'Hội thoại';
+
+  @override
+  String get viewOneline => 'Một dòng';
+
+  @override
+  String get viewDownline => 'Theo chiều dọc';
+
+  @override
+  String get viewCompare => 'So sánh';
+
+  @override
+  String get viewCalendar => 'Lịch';
+
+  @override
+  String get viewList => 'Danh sách';
+
+  @override
+  String get viewMatrix => 'Ma trận';
+
+  @override
+  String get viewChat => 'Trò chuyện';
+
+  @override
+  String get viewTranscript => 'Nhật ký';
+
+  @override
+  String get clsNoRelations => 'Chưa có liên kết giữa các phần tử này';
+
+  @override
+  String get clsTypeText => 'Văn bản';
+
+  @override
+  String get clsTypeTextarea => 'Văn bản dài';
+
+  @override
+  String get clsTypeNumber => 'Số';
+
+  @override
+  String get clsTypeDate => 'Ngày';
+
+  @override
+  String get clsTypeSelect => 'Lựa chọn';
+
+  @override
+  String get clsTypeMulti => 'Nhiều lựa chọn';
+
+  @override
+  String get clsTypeCheckbox => 'Hộp kiểm';
+
+  @override
+  String get clsTypeUrl => 'Liên kết (URL)';
+
+  @override
+  String get clsTypeRelation => 'Quan hệ';
+
+  @override
+  String get clsTypeFormula => 'Công thức';
+
+  @override
+  String get clsFieldType => 'Kiểu trường';
+
+  @override
+  String get clsChoices => 'Lựa chọn (mỗi dòng một)';
+
+  @override
+  String get clsFormulaHint => 'vd: {HP} * 2';
+
+  @override
+  String get clsEditField => 'Sửa trường';
+
+  @override
+  String get clsAddLink => 'Thêm liên kết';
+
+  @override
+  String get dateDay => 'Ngày';
+
+  @override
+  String get dateMonth => 'Tháng';
+
+  @override
+  String get dateYear => 'Năm';
+
+  @override
+  String get dateHour => 'Giờ';
+
+  @override
+  String get dateMinute => 'Phút';
+
+  @override
+  String get btnClear => 'Xóa';
+
+  @override
+  String get groupBy => 'Nhóm theo';
+
+  @override
+  String get groupModule => 'Mô-đun';
+
+  @override
+  String get relDirected => 'Một chiều (→)';
+
+  @override
+  String get exhGroup => 'Nhóm';
+
+  @override
+  String get exhNote => 'Ghi chú';
+
+  @override
+  String get exhAddElement => 'Đặt phần tử';
+
+  @override
+  String get exhAddNote => 'Thêm ghi chú';
+
+  @override
+  String get exhAddGroup => 'Thêm nhóm';
+
+  @override
+  String get exhRemoveFromScene => 'Gỡ khỏi cảnh';
+
+  @override
+  String get exhSceneEmpty => 'Chưa có gì — hãy đặt phần tử hoặc thêm ghi chú.';
+
+  @override
+  String get auStatusIdea => 'Ý tưởng';
+
+  @override
+  String get auStatusDraft => 'Bản nháp';
+
+  @override
+  String get auStatusRevised => 'Đã sửa';
+
+  @override
+  String get auStatusDone => 'Xong';
+
+  @override
+  String get auSynopsis => 'Tóm tắt';
+
+  @override
+  String get auPov => 'Góc nhìn';
+
+  @override
+  String get btnPrevious => 'Trước';
+
+  @override
+  String get btnNext => 'Tiếp';
+
+  @override
+  String get narAddRoute => 'Thêm tuyến';
+
+  @override
+  String get narScript => 'Kịch bản';
+
+  @override
+  String get narPlayTest => 'Chơi thử';
+
+  @override
+  String get narRestart => 'Bắt đầu lại';
+
+  @override
+  String get narShowHidden => 'Hiện lựa chọn ẩn';
+
+  @override
+  String get narVariables => 'Biến';
+
+  @override
+  String get narNoVariables => 'Nexus này chưa có biến cốt truyện';
+
+  @override
+  String get narPlayEnd => 'Hết — không còn tuyến nào.';
+
+  @override
+  String get narNoOptionOpen => 'Không có lựa chọn nào mở với các biến này.';
+
+  @override
+  String get narHiddenByCondition => 'bị ẩn bởi điều kiện';
+
+  @override
+  String get chrCompareWith => 'So sánh với';
+
+  @override
+  String get chrNoOtherLine => 'Nexus này không có Chronicler khác để so sánh';
+
+  @override
+  String get scribeNoMessages => 'Chưa có tin nhắn';
+
+  @override
+  String get wndLocator => 'Bản đồ (Locator)';
+
+  @override
+  String get wndNoLocator => 'Nexus này chưa có Locator — ghim nằm trong các vùng của nó.';
+
+  @override
+  String get wndPickLocator => 'Chọn Locator chứa các ghim này.';
+
+  @override
+  String get wndNoAreas => 'Locator đó chưa có vùng nào';
+
+  @override
+  String get wndAddPin => 'Đặt ghim vào đây';
+
+  @override
+  String get skExportPng => 'Chia sẻ dạng PNG';
+
+  @override
+  String get dgPanel => 'Khung (truyện tranh)';
+
+  @override
+  String get dgBalloon => 'Bong bóng thoại';
+
+  @override
+  String get dgLinkFrom => 'Nối tới…';
+
+  @override
+  String get dgPanelShows => 'Hiện một trang Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'Ai nói';
+
+  @override
+  String get dgNumberByPosition => 'Đánh số theo vị trí';
+
+  @override
+  String get dgShowOrder => 'Hiện thứ tự đọc';
+
+  @override
+  String get divNewTable => 'Bảng mới';
+
+  @override
+  String get divDice => 'Xúc xắc';
+
+  @override
+  String get divDiceHelp => 'Để trống = theo trọng số';
+
+  @override
+  String get divBadDice => 'Không phải biểu thức xúc xắc';
+
+  @override
+  String get divModePick => 'Chọn một';
+
+  @override
+  String get divModeJoin => 'Nối tất cả';
+
+  @override
+  String get divWeighted => 'Theo trọng số';
+
+  @override
+  String get divEntryText => 'Văn bản';
+
+  @override
+  String get divFrom => 'Từ';
+
+  @override
+  String get divTo => 'Đến';
+
+  @override
+  String get divWeight => 'Trọng số';
+
+  @override
+  String get divRollsTable => 'Tung bảng khác tại đây';
+
+  @override
+  String get divLinkEntity => 'Gọi tên một thứ';
+
+  @override
+  String get divUnlink => 'Gỡ liên kết';
+
+  @override
+  String get divNoTables => 'Chưa có bảng';
+
+  @override
+  String get divRoll => 'Tung';
+
+  @override
+  String get divEntries => 'Mục';
+
+  @override
+  String get divNoEntries => 'Chưa có mục';
+
+  @override
+  String get divHistory => 'Lịch sử';
+
+  @override
+  String get divQuickRoll => 'Tung nhanh: 3d6';
+
+  @override
+  String get trashTitle => 'Thùng rác';
+
+  @override
+  String get trashMoved => 'Đã chuyển vào thùng rác';
+
+  @override
+  String get trashEmptyAll => 'Dọn thùng rác';
+
+  @override
+  String get trashEmptyConfirm => 'Mọi thứ trong thùng rác sẽ bị xóa vĩnh viễn.';
+
+  @override
+  String get trashNothing => 'Thùng rác trống';
+
+  @override
+  String get trashNote => 'Mô-đun được khôi phục sẽ trở lại cùng mọi thứ bên trong và quan hệ — nhưng không có lịch sử phiên bản.';
+
+  @override
+  String get trashRestore => 'Khôi phục';
+
+  @override
+  String get trashModules => 'mô-đun';
+
+  @override
+  String get trashDeleteForever => 'Xóa vĩnh viễn? Sau đó không thể khôi phục.';
+
+  @override
+  String get problemsTitle => 'Vấn đề';
+
+  @override
+  String get problemsLinks => 'Liên kết chưa khớp';
+
+  @override
+  String get problemsEmpty => 'Mô-đun trống';
+
+  @override
+  String get problemsRelations => 'Quan hệ thiếu một đầu';
+
+  @override
+  String get problemsNone => 'Không có vấn đề';
+
+  @override
+  String get assetsTitle => 'Tài nguyên';
+
+  @override
+  String get assetsFromDevice => 'Thêm từ thiết bị này';
+
+  @override
+  String get assetsAddUrl => 'Thêm liên kết (URL)';
+
+  @override
+  String get assetsNotice => 'Tài nguyên ở lại thiết bị này: đồng bộ chỉ mang tên, không mang tệp.';
+
+  @override
+  String get assetsNone => 'Chưa có tài nguyên';
+
+  @override
+  String get assetsTooBig => 'Quá lớn để lưu trong trình duyệt';
+
+  @override
+  String get pbChooseImage => 'Chọn ảnh';
+
+  @override
+  String get csvImportTitle => 'Nhập CSV';
+
+  @override
+  String get fromTemplate => 'Từ mẫu';
+
+  @override
+  String get guideTitle => 'Hướng dẫn';
+
+  @override
+  String get guideDesc => 'Một thế giới nhỏ giới thiệu mọi loại';
+
+  @override
+  String get guideAdd => 'Thêm hướng dẫn';
+
+  @override
+  String get mddxImport => 'Nhập tệp mô-đun (.mddx)';
+
+  @override
+  String get mddxExport => 'Xuất thành .mddx';
+
+  @override
+  String get mddxNotModule => 'Tệp đó không phải mô-đun DraconDex';
+
+  @override
+  String get kindCatStructure => 'Cấu trúc';
+
+  @override
+  String get kindCatView => 'Góc nhìn';
+
+  @override
+  String get kindCatData => 'Dữ liệu';
+
+  @override
+  String get kindGroupNotes => 'Ghi chú & tài liệu';
+
+  @override
+  String get kindGroupData => 'Dữ liệu & danh mục';
+
+  @override
+  String get kindGroupMapTime => 'Bản đồ & thời gian';
+
+  @override
+  String get kindGroupStory => 'Cốt truyện';
+
+  @override
+  String get kindGroupDraw => 'Vẽ & thiết kế';
+
+  @override
+  String get nexusStartWith => 'Bắt đầu với';
+
+  @override
+  String get nexusStartEmpty => 'Trống — Nexus rỗng';
+
+  @override
+  String get csvPick => 'Chọn tệp CSV';
+
+  @override
+  String get csvHint => 'Hàng đầu là tên trường, cột đầu là tên phần tử.';
+
+  @override
+  String get csvCreate => 'Tạo Classifier';
+
+  @override
+  String get csvSkip => 'Bỏ qua';
+
+  @override
+  String get csvNameColumn => 'Tên';
+
+  @override
+  String get csvTruncated => 'chỉ 5.000 hàng đầu';
+
+  @override
+  String get csvTooLarge => 'Tệp lớn hơn 8 MB';
+
+  @override
+  String get csvEmpty => 'Không có hàng — cần tiêu đề và ít nhất một hàng';
+
+  @override
+  String get kindClassicCollector => 'Thư mục';
+
+  @override
+  String get kindDescCollector => 'Thư mục nhóm các module khác';
+
+  @override
+  String get kindClassicManager => 'Dự án';
+
+  @override
+  String get kindDescManager => 'Xem module con dạng thẻ, danh sách hoặc bảng';
+
+  @override
+  String get kindClassicInspector => 'Chi tiết';
+
+  @override
+  String get kindDescInspector => 'Một trang ghi chú chi tiết cho mục này';
+
+  @override
+  String get kindClassicClassifier => 'Danh mục';
+
+  @override
+  String get kindDescClassifier => 'Phân loại mục với các trường tùy chỉnh';
+
+  @override
+  String get kindClassicLocator => 'Bản đồ';
+
+  @override
+  String get kindDescLocator => 'Bản đồ có ghim và khu vực';
+
+  @override
+  String get kindClassicChronicler => 'Dòng thời gian';
+
+  @override
+  String get kindDescChronicler => 'Dòng thời gian các sự kiện theo ngày';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Liên kết ghim bản đồ với sự kiện dòng thời gian';
+
+  @override
+  String get kindClassicNarrator => 'Cốt truyện';
+
+  @override
+  String get kindDescNarrator => 'Các nút hội thoại nối trên bảng lộ trình';
+
+  @override
+  String get kindClassicAuthor => 'Sách';
+
+  @override
+  String get kindDescAuthor => 'Sách có chương và trình soạn thảo';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Ghi chú dạng phiên trò chuyện';
+
+  @override
+  String get kindClassicDrafter => 'Tài liệu';
+
+  @override
+  String get kindDescDrafter => 'Trang markdown trống';
+
+  @override
+  String get kindClassicExhibitor => 'Trưng bày';
+
+  @override
+  String get kindDescExhibitor => 'Cảnh, đồ thị và bảng của các mục liên kết — nơi vẽ quan hệ';
+
+  @override
+  String get kindClassicSketcher => 'Bản vẽ';
+
+  @override
+  String get kindDescSketcher => 'Canvas vẽ tay tự do';
+
+  @override
+  String get kindClassicDesigner => 'Đồ thị';
+
+  @override
+  String get kindDescDesigner => 'Sơ đồ tự do với hình khối và mũi tên';
+
+  @override
+  String get kindClassicDiviner => 'Bảng ngẫu nhiên';
+
+  @override
+  String get kindDescDiviner => 'Bảng ngẫu nhiên và gieo xúc xắc';
+
+  @override
+  String get moduleNameMode => 'Tên module';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Thư mục/Dự án/…';
+
+  @override
+  String get moduleInside => 'bên trong';
+
+  @override
+  String get nameModeUnique => 'Riêng';
+
+  @override
+  String get nameModeClassic => 'Cổ điển';
+
+  @override
+  String get kindRecent => 'Gần đây';
+
+  @override
+  String get clsLevelable => 'Có thể lên cấp';
+
+  @override
+  String get clsCondition => 'Điều kiện';
+
+  @override
+  String get levelColLevel => 'Cấp';
+
+  @override
+  String get levelColInfo => 'Thông tin';
+
+  @override
+  String get levelAddRow => 'Thêm hàng';
+
+  @override
+  String get levelNoRows => 'Chưa có hàng';
+
+  @override
+  String get confirmDeleteLevelRow => 'Xóa hàng này?';
+
+  @override
+  String get clsLevelAndCondition => 'Cấp & Điều kiện';
+
+  @override
+  String get clsLevelAndConditionHint => 'Biến trường thành bảng nhiều hàng (cấp), hoặc gắn giá trị với một điều kiện.';
+
+  @override
+  String get clsInsertAbove => 'Chèn hàng phía trên';
+
+  @override
+  String get clsInsertBelow => 'Chèn hàng phía dưới';
 }

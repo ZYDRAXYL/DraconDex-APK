@@ -336,6 +336,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get filterFieldChildOf => '位于模块内';
 
   @override
+  String get filterFieldHandle => '句柄';
+
+  @override
   String get filterOpIs => '等于';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get deleteHashtagConfirmTitle => '删除该标签？';
 
   @override
-  String get builderNavHome => '主页';
-
-  @override
-  String get builderNavView => '视图';
-
-  @override
-  String get builderNavFolders => '文件夹视图';
-
-  @override
   String get viewModeTitle => '视图模式';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get viewModeCompact => '紧凑';
-
-  @override
-  String get recentViewsTitle => '最近视图';
-
-  @override
-  String get recentViewsEmpty => '暂无最近视图';
-
-  @override
-  String get recentViewsClear => '全部清除';
 
   @override
   String get builderNexusRootLabel => 'Nexus 根目录';
@@ -958,4 +943,829 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => '链接本身带着密钥，所以即使发送方只允许二维码也能用。';
+
+  @override
+  String get navNest => '巢';
+
+  @override
+  String get navSearch => '搜索';
+
+  @override
+  String get navOpenPages => '页面';
+
+  @override
+  String get navTools => '工具';
+
+  @override
+  String get navMore => '更多';
+
+  @override
+  String get openPagesTitle => '已打开的页面';
+
+  @override
+  String get openPagesEmpty => '没有打开的页面。打开的每个页面都会留在这里，直到你关闭它。';
+
+  @override
+  String get openPagesCloseAll => '全部关闭';
+
+  @override
+  String get openPageClose => '关闭页面';
+
+  @override
+  String get rowOpen => '打开';
+
+  @override
+  String get rowMore => '更多操作';
+
+  @override
+  String get crumbEmpty => '里面没有内容';
+
+  @override
+  String get goToTitle => '转到';
+
+  @override
+  String get goToHint => '名称、路径或 @handle';
+
+  @override
+  String get searchHint => '搜索名称、文本和命令';
+
+  @override
+  String get searchThings => '事物';
+
+  @override
+  String get searchContent => '内容';
+
+  @override
+  String get searchCommands => '命令';
+
+  @override
+  String get searchEmpty => '没有匹配结果';
+
+  @override
+  String get elementPageSoon => '此元素将在后续更新中拥有自己的页面。目前它在所属模块内打开。';
+
+  @override
+  String get wikiUnresolved => '还没有叫这个名字的内容。要为它创建一个 Drafter 页面吗？';
+
+  @override
+  String get wikiCreateDrafter => '创建';
+
+  @override
+  String get btnUndo => '撤销';
+
+  @override
+  String get pbAddBlock => '添加区块';
+
+  @override
+  String get pbAddHere => '添加到这里';
+
+  @override
+  String get pbAddProperty => '添加属性';
+
+  @override
+  String get pbArrange => '编排页面';
+
+  @override
+  String get pbArrangeDone => '完成';
+
+  @override
+  String get pbArrangeHint => '拖动以重新排序。分栏区块整体移动。';
+
+  @override
+  String get pbArrangeShared => '这是本模块所有元素共享的布局。若只想改这一页，请先把它分离出来。';
+
+  @override
+  String get pbBacklinks => '被链接自';
+
+  @override
+  String get pbBlockDeleted => '已移除区块';
+
+  @override
+  String get pbBorrow => '来自其他模块的视图';
+
+  @override
+  String get pbColumn => '栏';
+
+  @override
+  String get pbColumns => '分栏';
+
+  @override
+  String get pbDivider => '分隔线';
+
+  @override
+  String get pbFullScreen => '全屏';
+
+  @override
+  String get pbHeading => '标题';
+
+  @override
+  String get pbImage => '图片';
+
+  @override
+  String get pbItemBody => '元素';
+
+  @override
+  String get pbItemEmpty => '这里还没有内容。';
+
+  @override
+  String get pbNoRelated => '还没有链接';
+
+  @override
+  String get pbNotOnMobile => '本应用暂不支持';
+
+  @override
+  String get pbOnlyOnce => '每页只能放一次';
+
+  @override
+  String get pbOpenFullScreen => '打开';
+
+  @override
+  String get pbOutgoing => '链接到';
+
+  @override
+  String get pbPropName => '名称';
+
+  @override
+  String get pbPropType => '类型';
+
+  @override
+  String get pbProperties => '属性';
+
+  @override
+  String get pbRelated => '相关';
+
+  @override
+  String get pbRelations => '关系';
+
+  @override
+  String get pbRevert => '恢复共享布局';
+
+  @override
+  String get pbSharedLayout => '本模块所有元素页共享的布局。';
+
+  @override
+  String get pbSourceGone => '显示的内容已不存在';
+
+  @override
+  String get pbSplit => '让此页使用自己的布局';
+
+  @override
+  String get pbTags => '标签';
+
+  @override
+  String get pbText => '文本';
+
+  @override
+  String get pbTextEmpty => '空文本 — 轻点以书写';
+
+  @override
+  String get propTypeCheckbox => '复选框';
+
+  @override
+  String get propTypeDate => '日期';
+
+  @override
+  String get propTypeNumber => '数字';
+
+  @override
+  String get propTypeText => '文本';
+
+  @override
+  String get propTypeTextarea => '长文本';
+
+  @override
+  String get propTypeUrl => '链接';
+
+  @override
+  String get viewTable => '表格';
+
+  @override
+  String get viewListDetail => '列表 · 详情';
+
+  @override
+  String get viewRelations => '关系';
+
+  @override
+  String get viewGrid => '网格';
+
+  @override
+  String get viewScene => '场景';
+
+  @override
+  String get viewGraph => '关系图';
+
+  @override
+  String get viewCards => '卡片';
+
+  @override
+  String get viewBoard => '看板';
+
+  @override
+  String get viewEdges => '连线';
+
+  @override
+  String get viewArea => '区域';
+
+  @override
+  String get viewMap => '地图';
+
+  @override
+  String get viewTimeline => '时间线';
+
+  @override
+  String get viewCanvas => '画布';
+
+  @override
+  String get viewPages => '页面';
+
+  @override
+  String get viewGallery => '画廊';
+
+  @override
+  String get viewExport => '导出';
+
+  @override
+  String get viewEditor => '编辑器';
+
+  @override
+  String get viewOutline => '大纲';
+
+  @override
+  String get viewReading => '阅读';
+
+  @override
+  String get viewBook => '书本';
+
+  @override
+  String get viewRoutes => '路线';
+
+  @override
+  String get viewReader => '阅读器';
+
+  @override
+  String get viewDialogue => '对话';
+
+  @override
+  String get viewOneline => '单线';
+
+  @override
+  String get viewDownline => '纵向';
+
+  @override
+  String get viewCompare => '对比';
+
+  @override
+  String get viewCalendar => '日历';
+
+  @override
+  String get viewList => '列表';
+
+  @override
+  String get viewMatrix => '矩阵';
+
+  @override
+  String get viewChat => '聊天';
+
+  @override
+  String get viewTranscript => '记录';
+
+  @override
+  String get clsNoRelations => '这些元素之间还没有链接';
+
+  @override
+  String get clsTypeText => '文本';
+
+  @override
+  String get clsTypeTextarea => '长文本';
+
+  @override
+  String get clsTypeNumber => '数字';
+
+  @override
+  String get clsTypeDate => '日期';
+
+  @override
+  String get clsTypeSelect => '单选';
+
+  @override
+  String get clsTypeMulti => '多选';
+
+  @override
+  String get clsTypeCheckbox => '复选框';
+
+  @override
+  String get clsTypeUrl => '链接 (URL)';
+
+  @override
+  String get clsTypeRelation => '关系';
+
+  @override
+  String get clsTypeFormula => '公式';
+
+  @override
+  String get clsFieldType => '字段类型';
+
+  @override
+  String get clsChoices => '选项（每行一个）';
+
+  @override
+  String get clsFormulaHint => '例如 {HP} * 2';
+
+  @override
+  String get clsEditField => '编辑字段';
+
+  @override
+  String get clsAddLink => '添加链接';
+
+  @override
+  String get dateDay => '日';
+
+  @override
+  String get dateMonth => '月';
+
+  @override
+  String get dateYear => '年';
+
+  @override
+  String get dateHour => '时';
+
+  @override
+  String get dateMinute => '分';
+
+  @override
+  String get btnClear => '清除';
+
+  @override
+  String get groupBy => '分组依据';
+
+  @override
+  String get groupModule => '模块';
+
+  @override
+  String get relDirected => '单向 (→)';
+
+  @override
+  String get exhGroup => '分组';
+
+  @override
+  String get exhNote => '便签';
+
+  @override
+  String get exhAddElement => '放置元素';
+
+  @override
+  String get exhAddNote => '添加便签';
+
+  @override
+  String get exhAddGroup => '添加分组';
+
+  @override
+  String get exhRemoveFromScene => '从场景移除';
+
+  @override
+  String get exhSceneEmpty => '尚未放置任何内容 — 放置元素或添加便签。';
+
+  @override
+  String get auStatusIdea => '构思';
+
+  @override
+  String get auStatusDraft => '草稿';
+
+  @override
+  String get auStatusRevised => '已修订';
+
+  @override
+  String get auStatusDone => '完成';
+
+  @override
+  String get auSynopsis => '梗概';
+
+  @override
+  String get auPov => '视角';
+
+  @override
+  String get btnPrevious => '上一个';
+
+  @override
+  String get btnNext => '下一个';
+
+  @override
+  String get narAddRoute => '添加路线';
+
+  @override
+  String get narScript => '剧本';
+
+  @override
+  String get narPlayTest => '试玩';
+
+  @override
+  String get narRestart => '重新开始';
+
+  @override
+  String get narShowHidden => '显示隐藏选项';
+
+  @override
+  String get narVariables => '变量';
+
+  @override
+  String get narNoVariables => '此 Nexus 中没有故事变量';
+
+  @override
+  String get narPlayEnd => '结束 — 没有后续路线。';
+
+  @override
+  String get narNoOptionOpen => '在这些变量下没有可选项。';
+
+  @override
+  String get narHiddenByCondition => '因条件隐藏';
+
+  @override
+  String get chrCompareWith => '对比';
+
+  @override
+  String get chrNoOtherLine => '此 Nexus 中没有可对比的其他 Chronicler';
+
+  @override
+  String get scribeNoMessages => '暂无消息';
+
+  @override
+  String get wndLocator => '地图 (Locator)';
+
+  @override
+  String get wndNoLocator => '此 Nexus 中还没有 Locator — 图钉位于其区域中。';
+
+  @override
+  String get wndPickLocator => '选择这些图钉所在区域的 Locator。';
+
+  @override
+  String get wndNoAreas => '该 Locator 还没有区域';
+
+  @override
+  String get wndAddPin => '在此放置图钉';
+
+  @override
+  String get skExportPng => '以 PNG 分享';
+
+  @override
+  String get dgPanel => '分格（漫画）';
+
+  @override
+  String get dgBalloon => '对话气泡';
+
+  @override
+  String get dgLinkFrom => '连接到…';
+
+  @override
+  String get dgPanelShows => '显示 Sketcher 页面';
+
+  @override
+  String get dgBalloonSpeaker => '说话者';
+
+  @override
+  String get dgNumberByPosition => '按位置编号';
+
+  @override
+  String get dgShowOrder => '显示阅读顺序';
+
+  @override
+  String get divNewTable => '新表';
+
+  @override
+  String get divDice => '骰子';
+
+  @override
+  String get divDiceHelp => '留空 = 按权重';
+
+  @override
+  String get divBadDice => '不是骰子表达式';
+
+  @override
+  String get divModePick => '抽一个';
+
+  @override
+  String get divModeJoin => '全部连接';
+
+  @override
+  String get divWeighted => '按权重';
+
+  @override
+  String get divEntryText => '文本';
+
+  @override
+  String get divFrom => '从';
+
+  @override
+  String get divTo => '到';
+
+  @override
+  String get divWeight => '权重';
+
+  @override
+  String get divRollsTable => '在此掷另一张表';
+
+  @override
+  String get divLinkEntity => '指向某物';
+
+  @override
+  String get divUnlink => '移除链接';
+
+  @override
+  String get divNoTables => '还没有表';
+
+  @override
+  String get divRoll => '掷骰';
+
+  @override
+  String get divEntries => '条目';
+
+  @override
+  String get divNoEntries => '还没有条目';
+
+  @override
+  String get divHistory => '历史';
+
+  @override
+  String get divQuickRoll => '直接掷: 3d6';
+
+  @override
+  String get trashTitle => '回收站';
+
+  @override
+  String get trashMoved => '已移到回收站';
+
+  @override
+  String get trashEmptyAll => '清空回收站';
+
+  @override
+  String get trashEmptyConfirm => '回收站中的所有内容将被永久删除。';
+
+  @override
+  String get trashNothing => '回收站是空的';
+
+  @override
+  String get trashNote => '恢复的模块会带回其全部内容和关系——但不包括版本历史。';
+
+  @override
+  String get trashRestore => '恢复';
+
+  @override
+  String get trashModules => '个模块';
+
+  @override
+  String get trashDeleteForever => '永久删除？之后将无法恢复。';
+
+  @override
+  String get problemsTitle => '问题';
+
+  @override
+  String get problemsLinks => '未解析的链接';
+
+  @override
+  String get problemsEmpty => '空模块';
+
+  @override
+  String get problemsRelations => '缺少一端的关系';
+
+  @override
+  String get problemsNone => '未发现问题';
+
+  @override
+  String get assetsTitle => '资源';
+
+  @override
+  String get assetsFromDevice => '从此设备添加';
+
+  @override
+  String get assetsAddUrl => '添加链接 (URL)';
+
+  @override
+  String get assetsNotice => '资源保留在此设备上：同步只带名称，不带文件。';
+
+  @override
+  String get assetsNone => '暂无资源';
+
+  @override
+  String get assetsTooBig => '太大，无法保存在浏览器中';
+
+  @override
+  String get pbChooseImage => '选择图片';
+
+  @override
+  String get csvImportTitle => '导入 CSV';
+
+  @override
+  String get fromTemplate => '从模板';
+
+  @override
+  String get guideTitle => '指南';
+
+  @override
+  String get guideDesc => '展示每种类型的小世界';
+
+  @override
+  String get guideAdd => '添加指南';
+
+  @override
+  String get mddxImport => '导入模块文件 (.mddx)';
+
+  @override
+  String get mddxExport => '导出为 .mddx';
+
+  @override
+  String get mddxNotModule => '该文件不是 DraconDex 模块';
+
+  @override
+  String get kindCatStructure => '结构';
+
+  @override
+  String get kindCatView => '视图';
+
+  @override
+  String get kindCatData => '数据';
+
+  @override
+  String get kindGroupNotes => '笔记与文档';
+
+  @override
+  String get kindGroupData => '数据与分类';
+
+  @override
+  String get kindGroupMapTime => '地图与时间';
+
+  @override
+  String get kindGroupStory => '故事';
+
+  @override
+  String get kindGroupDraw => '绘图与设计';
+
+  @override
+  String get nexusStartWith => '开始内容';
+
+  @override
+  String get nexusStartEmpty => '无 — 空的 Nexus';
+
+  @override
+  String get csvPick => '选择 CSV 文件';
+
+  @override
+  String get csvHint => '第一行为字段名，第一列为元素名。';
+
+  @override
+  String get csvCreate => '创建 Classifier';
+
+  @override
+  String get csvSkip => '跳过';
+
+  @override
+  String get csvNameColumn => '名称';
+
+  @override
+  String get csvTruncated => '仅前 5,000 行';
+
+  @override
+  String get csvTooLarge => '文件超过 8 MB';
+
+  @override
+  String get csvEmpty => '没有可导入的行 — 需要表头和至少一行';
+
+  @override
+  String get kindClassicCollector => '文件夹';
+
+  @override
+  String get kindDescCollector => '用于归类其他模块的文件夹';
+
+  @override
+  String get kindClassicManager => '项目';
+
+  @override
+  String get kindDescManager => '以卡片、列表或表格浏览子模块';
+
+  @override
+  String get kindClassicInspector => '详情';
+
+  @override
+  String get kindDescInspector => '该项目的单页详情笔记';
+
+  @override
+  String get kindClassicClassifier => '分类';
+
+  @override
+  String get kindDescClassifier => '用自定义字段对项目分类';
+
+  @override
+  String get kindClassicLocator => '地图';
+
+  @override
+  String get kindDescLocator => '带图钉和区域的地图';
+
+  @override
+  String get kindClassicChronicler => '时间线';
+
+  @override
+  String get kindDescChronicler => '带日期事件的时间线';
+
+  @override
+  String get kindClassicWanderer => '时间地图';
+
+  @override
+  String get kindDescWanderer => '把地图图钉与时间线事件关联';
+
+  @override
+  String get kindClassicNarrator => '故事';
+
+  @override
+  String get kindDescNarrator => '以路线板连接的对话节点';
+
+  @override
+  String get kindClassicAuthor => '书';
+
+  @override
+  String get kindDescAuthor => '带章节和写作编辑器的书';
+
+  @override
+  String get kindClassicScribe => '聊天';
+
+  @override
+  String get kindDescScribe => '聊天式会话笔记';
+
+  @override
+  String get kindClassicDrafter => '文档';
+
+  @override
+  String get kindDescDrafter => '空白 Markdown 页面';
+
+  @override
+  String get kindClassicExhibitor => '展台';
+
+  @override
+  String get kindDescExhibitor => '关联项目的场景、图和表格 — 在这里绘制关系';
+
+  @override
+  String get kindClassicSketcher => '绘图';
+
+  @override
+  String get kindDescSketcher => '自由绘画画布';
+
+  @override
+  String get kindClassicDesigner => '图表';
+
+  @override
+  String get kindDescDesigner => '用形状和箭头绘制的自由图表';
+
+  @override
+  String get kindClassicDiviner => '随机表';
+
+  @override
+  String get kindDescDiviner => '随机表与掷骰';
+
+  @override
+  String get moduleNameMode => '模块名称';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = 文件夹/项目/…';
+
+  @override
+  String get moduleInside => '项';
+
+  @override
+  String get nameModeUnique => '独有';
+
+  @override
+  String get nameModeClassic => '经典';
+
+  @override
+  String get kindRecent => '最近';
+
+  @override
+  String get clsLevelable => '可升级';
+
+  @override
+  String get clsCondition => '条件';
+
+  @override
+  String get levelColLevel => '等级';
+
+  @override
+  String get levelColInfo => '信息';
+
+  @override
+  String get levelAddRow => '添加行';
+
+  @override
+  String get levelNoRows => '暂无行';
+
+  @override
+  String get confirmDeleteLevelRow => '删除此行？';
+
+  @override
+  String get clsLevelAndCondition => '等级与条件';
+
+  @override
+  String get clsLevelAndConditionHint => '将字段变成多行表（等级），或将其值与条件关联。';
+
+  @override
+  String get clsInsertAbove => '在上方插入行';
+
+  @override
+  String get clsInsertBelow => '在下方插入行';
 }

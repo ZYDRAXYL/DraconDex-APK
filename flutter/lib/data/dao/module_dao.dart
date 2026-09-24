@@ -1,4 +1,8 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
+
+import '../../core/database/module_parents.dart';
 import '../models/module_model.dart';
 
 /// Data access for the v3 module system (Hub/Nexus nest): a Nexus is a
@@ -62,6 +66,16 @@ class ModuleDao {
     return rows.map(ModuleModel.fromMap).toList();
   }
 
+  /// Every pinned module of [nexusRef], at any depth.
+  Future<List<ModuleModel>> getPinnedModules(int nexusRef) async {
+    final rows = await db.rawQuery(
+      '$_selectModule WHERE m.nexus_ref=? AND m.pinned=1 '
+      'ORDER BY m.display_order, m.name COLLATE NOCASE',
+      [nexusRef],
+    );
+    return rows.map(ModuleModel.fromMap).toList();
+  }
+
   Future<ModuleModel?> getModule(int id) async {
     final rows = await db.rawQuery('$_selectModule WHERE m.id=?', [id]);
     if (rows.isEmpty) return null;
@@ -92,12 +106,14 @@ class ModuleDao {
     int? iconColorId,
     int? colorId,
   }) async {
+    // Only a Collector holds modules (v5, APP docs/V5.md §8.8).
+    await assertCollectorParent(db, parentId);
     final orderRows = await db.rawQuery(
       'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM module WHERE nexus_ref=? AND parent_id IS ?',
       [nexusRef, parentId],
     );
     final nextOrder = Sqflite.firstIntValue(orderRows) ?? 0;
-    return db.insert('module', {
+    final id = await db.insert('module', {
       'nexus_ref': nexusRef,
       'parent_id': parentId,
       'name': name,
@@ -107,13 +123,21 @@ class ModuleDao {
       'color': colorId,
       'display_order': nextOrder,
     });
+    // [[links]] typed before this module existed now find it.
+    await WikiService.resolveDangling(db, name, nexusRef);
+    return id;
   }
 
   Future<void> renameModule(int id, String name) async {
+    final old = await db.rawQuery('SELECT name, nexus_ref FROM module WHERE id=?', [id]);
     await db.rawUpdate(
       "UPDATE module SET name=?,update_at=datetime('now') WHERE id=?",
       [name, id],
     );
+    // Every [[Old name]] that linked here follows the rename.
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'module_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
   }
 
   Future<void> updateModuleDescription(int id, String? description) async {
@@ -121,6 +145,7 @@ class ModuleDao {
       "UPDATE module SET description=?,update_at=datetime('now') WHERE id=?",
       [description, id],
     );
+    await WikiService.reindexSource(db, 'module', id);
   }
 
   Future<void> updateModuleAppearance(int id, {String? icon, int? iconColorId, int? colorId}) async {
@@ -141,6 +166,7 @@ class ModuleDao {
   /// after existing siblings there. Caller must ensure newParentId isn't [id]
   /// or one of its own descendants — see [isDescendant].
   Future<void> moveModule(int id, {required int nexusRef, int? newParentId}) async {
+    await assertCollectorParent(db, newParentId);
     final orderRows = await db.rawQuery(
       'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM module WHERE nexus_ref=? AND parent_id IS ?',
       [nexusRef, newParentId],

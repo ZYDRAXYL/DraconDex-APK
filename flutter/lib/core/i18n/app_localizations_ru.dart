@@ -336,6 +336,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get filterFieldChildOf => 'Внутри модуля';
 
   @override
+  String get filterFieldHandle => 'Хэндл';
+
+  @override
   String get filterOpIs => 'равно';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Удалить тег?';
 
   @override
-  String get builderNavHome => 'Главная';
-
-  @override
-  String get builderNavView => 'Вид';
-
-  @override
-  String get builderNavFolders => 'Виды папок';
-
-  @override
   String get viewModeTitle => 'Режим просмотра';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Компактно';
-
-  @override
-  String get recentViewsTitle => 'Недавние виды';
-
-  @override
-  String get recentViewsEmpty => 'Пока нет недавних видов';
-
-  @override
-  String get recentViewsClear => 'Очистить всё';
 
   @override
   String get builderNexusRootLabel => 'Корень Nexus';
@@ -958,4 +943,829 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Ссылка несёт ключ в себе, поэтому работает даже если отправитель разрешил только QR-код.';
+
+  @override
+  String get navNest => 'Гнездо';
+
+  @override
+  String get navSearch => 'Поиск';
+
+  @override
+  String get navOpenPages => 'Страницы';
+
+  @override
+  String get navTools => 'Инструменты';
+
+  @override
+  String get navMore => 'Ещё';
+
+  @override
+  String get openPagesTitle => 'Открытые страницы';
+
+  @override
+  String get openPagesEmpty => 'Открытых страниц нет. Каждая открытая страница остаётся здесь, пока вы её не закроете.';
+
+  @override
+  String get openPagesCloseAll => 'Закрыть все';
+
+  @override
+  String get openPageClose => 'Закрыть страницу';
+
+  @override
+  String get rowOpen => 'Открыть';
+
+  @override
+  String get rowMore => 'Другие действия';
+
+  @override
+  String get crumbEmpty => 'Внутри ничего нет';
+
+  @override
+  String get goToTitle => 'Перейти';
+
+  @override
+  String get goToHint => 'Имя, путь или @handle';
+
+  @override
+  String get searchHint => 'Поиск по именам, тексту и командам';
+
+  @override
+  String get searchThings => 'Объекты';
+
+  @override
+  String get searchContent => 'Содержимое';
+
+  @override
+  String get searchCommands => 'Команды';
+
+  @override
+  String get searchEmpty => 'Ничего не найдено';
+
+  @override
+  String get elementPageSoon => 'У этого элемента появится своя страница в одном из следующих обновлений. Пока он открывается внутри своего модуля.';
+
+  @override
+  String get wikiUnresolved => 'Пока ничто не носит это имя. Создать для него страницу Drafter?';
+
+  @override
+  String get wikiCreateDrafter => 'Создать';
+
+  @override
+  String get btnUndo => 'Отменить';
+
+  @override
+  String get pbAddBlock => 'Добавить блок';
+
+  @override
+  String get pbAddHere => 'Добавить сюда';
+
+  @override
+  String get pbAddProperty => 'Добавить свойство';
+
+  @override
+  String get pbArrange => 'Упорядочить страницу';
+
+  @override
+  String get pbArrangeDone => 'Готово';
+
+  @override
+  String get pbArrangeHint => 'Перетащите, чтобы изменить порядок. Блок колонок перемещается целиком.';
+
+  @override
+  String get pbArrangeShared => 'Это общая раскладка всех элементов модуля. Чтобы изменить только эту страницу, сначала отделите её.';
+
+  @override
+  String get pbBacklinks => 'Ссылаются';
+
+  @override
+  String get pbBlockDeleted => 'Блок удалён';
+
+  @override
+  String get pbBorrow => 'Вид из другого модуля';
+
+  @override
+  String get pbColumn => 'Колонка';
+
+  @override
+  String get pbColumns => 'Колонки';
+
+  @override
+  String get pbDivider => 'Разделитель';
+
+  @override
+  String get pbFullScreen => 'Во весь экран';
+
+  @override
+  String get pbHeading => 'Заголовок';
+
+  @override
+  String get pbImage => 'Изображение';
+
+  @override
+  String get pbItemBody => 'Элемент';
+
+  @override
+  String get pbItemEmpty => 'Здесь пока ничего не написано.';
+
+  @override
+  String get pbNoRelated => 'Связей пока нет';
+
+  @override
+  String get pbNotOnMobile => 'пока нет в этом приложении';
+
+  @override
+  String get pbOnlyOnce => 'может быть на странице только один раз';
+
+  @override
+  String get pbOpenFullScreen => 'Открыть';
+
+  @override
+  String get pbOutgoing => 'Ссылается на';
+
+  @override
+  String get pbPropName => 'Имя';
+
+  @override
+  String get pbPropType => 'Тип';
+
+  @override
+  String get pbProperties => 'Свойства';
+
+  @override
+  String get pbRelated => 'Связанное';
+
+  @override
+  String get pbRelations => 'Связи';
+
+  @override
+  String get pbRevert => 'Вернуть общую раскладку';
+
+  @override
+  String get pbSharedLayout => 'Общая раскладка всех страниц элементов этого модуля.';
+
+  @override
+  String get pbSourceGone => 'то, что здесь показывалось, удалено';
+
+  @override
+  String get pbSplit => 'Дать странице свою раскладку';
+
+  @override
+  String get pbTags => 'Теги';
+
+  @override
+  String get pbText => 'Текст';
+
+  @override
+  String get pbTextEmpty => 'Пустой текст — нажмите, чтобы писать';
+
+  @override
+  String get propTypeCheckbox => 'Флажок';
+
+  @override
+  String get propTypeDate => 'Дата';
+
+  @override
+  String get propTypeNumber => 'Число';
+
+  @override
+  String get propTypeText => 'Текст';
+
+  @override
+  String get propTypeTextarea => 'Длинный текст';
+
+  @override
+  String get propTypeUrl => 'Ссылка';
+
+  @override
+  String get viewTable => 'Таблица';
+
+  @override
+  String get viewListDetail => 'Список · подробно';
+
+  @override
+  String get viewRelations => 'Связи';
+
+  @override
+  String get viewGrid => 'Сетка';
+
+  @override
+  String get viewScene => 'Сцена';
+
+  @override
+  String get viewGraph => 'Граф';
+
+  @override
+  String get viewCards => 'Карточки';
+
+  @override
+  String get viewBoard => 'Доска';
+
+  @override
+  String get viewEdges => 'Рёбра';
+
+  @override
+  String get viewArea => 'Область';
+
+  @override
+  String get viewMap => 'Карта';
+
+  @override
+  String get viewTimeline => 'Хронология';
+
+  @override
+  String get viewCanvas => 'Холст';
+
+  @override
+  String get viewPages => 'Страницы';
+
+  @override
+  String get viewGallery => 'Галерея';
+
+  @override
+  String get viewExport => 'Экспорт';
+
+  @override
+  String get viewEditor => 'Редактор';
+
+  @override
+  String get viewOutline => 'Структура';
+
+  @override
+  String get viewReading => 'Чтение';
+
+  @override
+  String get viewBook => 'Книга';
+
+  @override
+  String get viewRoutes => 'Маршруты';
+
+  @override
+  String get viewReader => 'Читатель';
+
+  @override
+  String get viewDialogue => 'Диалог';
+
+  @override
+  String get viewOneline => 'Одна линия';
+
+  @override
+  String get viewDownline => 'Вниз';
+
+  @override
+  String get viewCompare => 'Сравнить';
+
+  @override
+  String get viewCalendar => 'Календарь';
+
+  @override
+  String get viewList => 'Список';
+
+  @override
+  String get viewMatrix => 'Матрица';
+
+  @override
+  String get viewChat => 'Чат';
+
+  @override
+  String get viewTranscript => 'Журнал';
+
+  @override
+  String get clsNoRelations => 'Между этими элементами пока нет связей';
+
+  @override
+  String get clsTypeText => 'Текст';
+
+  @override
+  String get clsTypeTextarea => 'Длинный текст';
+
+  @override
+  String get clsTypeNumber => 'Число';
+
+  @override
+  String get clsTypeDate => 'Дата';
+
+  @override
+  String get clsTypeSelect => 'Выбор';
+
+  @override
+  String get clsTypeMulti => 'Множественный выбор';
+
+  @override
+  String get clsTypeCheckbox => 'Флажок';
+
+  @override
+  String get clsTypeUrl => 'Ссылка (URL)';
+
+  @override
+  String get clsTypeRelation => 'Связь';
+
+  @override
+  String get clsTypeFormula => 'Формула';
+
+  @override
+  String get clsFieldType => 'Тип поля';
+
+  @override
+  String get clsChoices => 'Варианты (по одному в строке)';
+
+  @override
+  String get clsFormulaHint => 'напр. {HP} * 2';
+
+  @override
+  String get clsEditField => 'Изменить поле';
+
+  @override
+  String get clsAddLink => 'Добавить связь';
+
+  @override
+  String get dateDay => 'День';
+
+  @override
+  String get dateMonth => 'Месяц';
+
+  @override
+  String get dateYear => 'Год';
+
+  @override
+  String get dateHour => 'Час';
+
+  @override
+  String get dateMinute => 'Мин';
+
+  @override
+  String get btnClear => 'Очистить';
+
+  @override
+  String get groupBy => 'Группировать по';
+
+  @override
+  String get groupModule => 'Модуль';
+
+  @override
+  String get relDirected => 'Одно направление (→)';
+
+  @override
+  String get exhGroup => 'Группа';
+
+  @override
+  String get exhNote => 'Заметка';
+
+  @override
+  String get exhAddElement => 'Разместить элемент';
+
+  @override
+  String get exhAddNote => 'Добавить заметку';
+
+  @override
+  String get exhAddGroup => 'Добавить группу';
+
+  @override
+  String get exhRemoveFromScene => 'Убрать со сцены';
+
+  @override
+  String get exhSceneEmpty => 'Пока ничего нет — разместите элемент или добавьте заметку.';
+
+  @override
+  String get auStatusIdea => 'Идея';
+
+  @override
+  String get auStatusDraft => 'Черновик';
+
+  @override
+  String get auStatusRevised => 'Исправлено';
+
+  @override
+  String get auStatusDone => 'Готово';
+
+  @override
+  String get auSynopsis => 'Синопсис';
+
+  @override
+  String get auPov => 'Точка зрения';
+
+  @override
+  String get btnPrevious => 'Назад';
+
+  @override
+  String get btnNext => 'Далее';
+
+  @override
+  String get narAddRoute => 'Добавить маршрут';
+
+  @override
+  String get narScript => 'Сценарий';
+
+  @override
+  String get narPlayTest => 'Проверить';
+
+  @override
+  String get narRestart => 'Заново';
+
+  @override
+  String get narShowHidden => 'Показать скрытые варианты';
+
+  @override
+  String get narVariables => 'Переменные';
+
+  @override
+  String get narNoVariables => 'В этом Nexus нет переменных сюжета';
+
+  @override
+  String get narPlayEnd => 'Конец — дальше маршрутов нет.';
+
+  @override
+  String get narNoOptionOpen => 'При этих переменных нет доступных вариантов.';
+
+  @override
+  String get narHiddenByCondition => 'скрыт условием';
+
+  @override
+  String get chrCompareWith => 'Сравнить с';
+
+  @override
+  String get chrNoOtherLine => 'В этом Nexus нет другого Chronicler для сравнения';
+
+  @override
+  String get scribeNoMessages => 'Сообщений пока нет';
+
+  @override
+  String get wndLocator => 'Карта (Locator)';
+
+  @override
+  String get wndNoLocator => 'В этом Nexus пока нет Locator — метки стоят в его областях.';
+
+  @override
+  String get wndPickLocator => 'Выберите Locator, в областях которого стоят эти метки.';
+
+  @override
+  String get wndNoAreas => 'У этого Locator пока нет областей';
+
+  @override
+  String get wndAddPin => 'Поставить метку сюда';
+
+  @override
+  String get skExportPng => 'Поделиться PNG';
+
+  @override
+  String get dgPanel => 'Панель (комикс)';
+
+  @override
+  String get dgBalloon => 'Речевой пузырь';
+
+  @override
+  String get dgLinkFrom => 'Соединить с…';
+
+  @override
+  String get dgPanelShows => 'Показать страницу Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'Кто говорит';
+
+  @override
+  String get dgNumberByPosition => 'Пронумеровать по положению';
+
+  @override
+  String get dgShowOrder => 'Показать порядок чтения';
+
+  @override
+  String get divNewTable => 'Новая таблица';
+
+  @override
+  String get divDice => 'Кости';
+
+  @override
+  String get divDiceHelp => 'Пусто = по весу';
+
+  @override
+  String get divBadDice => 'Это не выражение для костей';
+
+  @override
+  String get divModePick => 'Выбрать одно';
+
+  @override
+  String get divModeJoin => 'Соединить все';
+
+  @override
+  String get divWeighted => 'По весу';
+
+  @override
+  String get divEntryText => 'Текст';
+
+  @override
+  String get divFrom => 'От';
+
+  @override
+  String get divTo => 'До';
+
+  @override
+  String get divWeight => 'Вес';
+
+  @override
+  String get divRollsTable => 'Бросить здесь другую таблицу';
+
+  @override
+  String get divLinkEntity => 'Указать что-то';
+
+  @override
+  String get divUnlink => 'Убрать связь';
+
+  @override
+  String get divNoTables => 'Таблиц пока нет';
+
+  @override
+  String get divRoll => 'Бросить';
+
+  @override
+  String get divEntries => 'Записи';
+
+  @override
+  String get divNoEntries => 'Записей пока нет';
+
+  @override
+  String get divHistory => 'История';
+
+  @override
+  String get divQuickRoll => 'Просто бросить: 3d6';
+
+  @override
+  String get trashTitle => 'Корзина';
+
+  @override
+  String get trashMoved => 'Перемещено в корзину';
+
+  @override
+  String get trashEmptyAll => 'Очистить корзину';
+
+  @override
+  String get trashEmptyConfirm => 'Всё в корзине будет удалено навсегда.';
+
+  @override
+  String get trashNothing => 'Корзина пуста';
+
+  @override
+  String get trashNote => 'Восстановленный модуль вернётся со всем содержимым и связями — но без истории версий.';
+
+  @override
+  String get trashRestore => 'Восстановить';
+
+  @override
+  String get trashModules => 'модулей';
+
+  @override
+  String get trashDeleteForever => 'Удалить навсегда? Восстановить будет нельзя.';
+
+  @override
+  String get problemsTitle => 'Проблемы';
+
+  @override
+  String get problemsLinks => 'Неразрешённые ссылки';
+
+  @override
+  String get problemsEmpty => 'Пустые модули';
+
+  @override
+  String get problemsRelations => 'Связи без одного конца';
+
+  @override
+  String get problemsNone => 'Проблем не найдено';
+
+  @override
+  String get assetsTitle => 'Ресурсы';
+
+  @override
+  String get assetsFromDevice => 'Добавить с устройства';
+
+  @override
+  String get assetsAddUrl => 'Добавить ссылку (URL)';
+
+  @override
+  String get assetsNotice => 'Ресурсы остаются на этом устройстве: синхронизация переносит имена, а не файлы.';
+
+  @override
+  String get assetsNone => 'Ресурсов пока нет';
+
+  @override
+  String get assetsTooBig => 'Слишком большой для браузера';
+
+  @override
+  String get pbChooseImage => 'Выбрать изображение';
+
+  @override
+  String get csvImportTitle => 'Импорт CSV';
+
+  @override
+  String get fromTemplate => 'Из шаблона';
+
+  @override
+  String get guideTitle => 'Руководство';
+
+  @override
+  String get guideDesc => 'Небольшой мир, показывающий каждый тип';
+
+  @override
+  String get guideAdd => 'Добавить руководство';
+
+  @override
+  String get mddxImport => 'Импорт файла модуля (.mddx)';
+
+  @override
+  String get mddxExport => 'Экспорт в .mddx';
+
+  @override
+  String get mddxNotModule => 'Этот файл не является модулем DraconDex';
+
+  @override
+  String get kindCatStructure => 'Структура';
+
+  @override
+  String get kindCatView => 'Представление';
+
+  @override
+  String get kindCatData => 'Данные';
+
+  @override
+  String get kindGroupNotes => 'Заметки и документы';
+
+  @override
+  String get kindGroupData => 'Данные и категории';
+
+  @override
+  String get kindGroupMapTime => 'Карты и время';
+
+  @override
+  String get kindGroupStory => 'Сюжет';
+
+  @override
+  String get kindGroupDraw => 'Рисунок и дизайн';
+
+  @override
+  String get nexusStartWith => 'Начать с';
+
+  @override
+  String get nexusStartEmpty => 'Ничего — пустой Nexus';
+
+  @override
+  String get csvPick => 'Выбрать файл CSV';
+
+  @override
+  String get csvHint => 'Первая строка — имена полей, первый столбец — имена элементов.';
+
+  @override
+  String get csvCreate => 'Создать Classifier';
+
+  @override
+  String get csvSkip => 'Пропустить';
+
+  @override
+  String get csvNameColumn => 'Имена';
+
+  @override
+  String get csvTruncated => 'только первые 5000 строк';
+
+  @override
+  String get csvTooLarge => 'Файл больше 8 МБ';
+
+  @override
+  String get csvEmpty => 'Нет строк — нужен заголовок и хотя бы одна строка';
+
+  @override
+  String get kindClassicCollector => 'Папка';
+
+  @override
+  String get kindDescCollector => 'Папка, объединяющая другие модули';
+
+  @override
+  String get kindClassicManager => 'Проект';
+
+  @override
+  String get kindDescManager => 'Просмотр дочерних модулей карточками, списком или таблицей';
+
+  @override
+  String get kindClassicInspector => 'Деталь';
+
+  @override
+  String get kindDescInspector => 'Одна страница заметки с деталями этого элемента';
+
+  @override
+  String get kindClassicClassifier => 'Категория';
+
+  @override
+  String get kindDescClassifier => 'Категоризация элементов с пользовательскими полями';
+
+  @override
+  String get kindClassicLocator => 'Карта';
+
+  @override
+  String get kindDescLocator => 'Карта с метками и зонами';
+
+  @override
+  String get kindClassicChronicler => 'Таймлайн';
+
+  @override
+  String get kindDescChronicler => 'Хронология событий с датами';
+
+  @override
+  String get kindClassicWanderer => 'ТаймМап';
+
+  @override
+  String get kindDescWanderer => 'Метки на карте, связанные с событиями хронологии';
+
+  @override
+  String get kindClassicNarrator => 'История';
+
+  @override
+  String get kindDescNarrator => 'Узлы диалогов, связанные на маршрутной доске';
+
+  @override
+  String get kindClassicAuthor => 'Книга';
+
+  @override
+  String get kindDescAuthor => 'Книга с главами и редактором текста';
+
+  @override
+  String get kindClassicScribe => 'Чат';
+
+  @override
+  String get kindDescScribe => 'Заметки сессий в виде чата';
+
+  @override
+  String get kindClassicDrafter => 'Документ';
+
+  @override
+  String get kindDescDrafter => 'Пустая markdown-страница';
+
+  @override
+  String get kindClassicExhibitor => 'Экспозиция';
+
+  @override
+  String get kindDescExhibitor => 'Сцена, граф и таблицы связанных элементов — здесь рисуются связи';
+
+  @override
+  String get kindClassicSketcher => 'Рисунок';
+
+  @override
+  String get kindDescSketcher => 'Холст для свободного рисования';
+
+  @override
+  String get kindClassicDesigner => 'Граф';
+
+  @override
+  String get kindDescDesigner => 'Свободная диаграмма с фигурами и стрелками';
+
+  @override
+  String get kindClassicDiviner => 'Случайная таблица';
+
+  @override
+  String get kindDescDiviner => 'Случайные таблицы и броски костей';
+
+  @override
+  String get moduleNameMode => 'Имена модулей';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Папка/Проект/…';
+
+  @override
+  String get moduleInside => 'внутри';
+
+  @override
+  String get nameModeUnique => 'Уникальные';
+
+  @override
+  String get nameModeClassic => 'Классические';
+
+  @override
+  String get kindRecent => 'Недавние';
+
+  @override
+  String get clsLevelable => 'Прокачиваемый';
+
+  @override
+  String get clsCondition => 'Условие';
+
+  @override
+  String get levelColLevel => 'Уровень';
+
+  @override
+  String get levelColInfo => 'Информация';
+
+  @override
+  String get levelAddRow => 'Добавить строку';
+
+  @override
+  String get levelNoRows => 'Строк пока нет';
+
+  @override
+  String get confirmDeleteLevelRow => 'Удалить эту строку?';
+
+  @override
+  String get clsLevelAndCondition => 'Уровень и условие';
+
+  @override
+  String get clsLevelAndConditionHint => 'Превращает поле в таблицу строк (уровней) или привязывает значение к условию.';
+
+  @override
+  String get clsInsertAbove => 'Вставить строку выше';
+
+  @override
+  String get clsInsertBelow => 'Вставить строку ниже';
 }

@@ -1,5 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import '../models/wanderer_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Wanderer kind: pins on a map, each optionally tied to
 /// a timeline event.
@@ -72,7 +73,13 @@ class WandererDao {
     );
   }
 
+  /// A pin's own caption — its element page names it (mevt_, SDB 2.0.3).
+  Future<void> setLabel(int id, String label) async {
+    await db.rawUpdate("UPDATE map_event SET label=?, update_at=datetime('now') WHERE id=?", [label.isEmpty ? null : label, id]);
+  }
+
   Future<void> deletePin(int id) async {
+    await PageBlockDao(db).clearItem('mevt_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('map_event', where: 'id=?', whereArgs: [id]);
   }
 }

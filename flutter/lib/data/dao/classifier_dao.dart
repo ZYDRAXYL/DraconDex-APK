@@ -1,5 +1,8 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/classifier_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Classifier kind: the module's field definitions, the
 /// items under it, and the value each item holds for each field.
@@ -38,6 +41,73 @@ class ClassifierDao {
     });
   }
 
+  /// Name, type and per-type options at once — the field dialog's save.
+  Future<void> updateField(int id,
+      {required String description, required String type, String? options, bool? levelable, bool? hasCondition}) async {
+    await db.rawUpdate(
+      "UPDATE classifier_template SET description=?,attribute_type=?,options=?,"
+      "levelable=COALESCE(?,levelable),has_condition=COALESCE(?,has_condition),update_at=datetime('now') WHERE id=?",
+      [description, type, options, levelable == null ? null : (levelable ? 1 : 0), hasCondition == null ? null : (hasCondition ? 1 : 0), id],
+    );
+  }
+
+  /// Every value of every item of a module, {object: {template: value}} —
+  /// one query for a table instead of one per row.
+  Future<Map<int, Map<int, String?>>> getModuleValues(int moduleRef) async {
+    final rows = await db.rawQuery(
+      'SELECT a.object_ref, a.template_ref, a.attribute_value FROM classifier_attribute a '
+      'JOIN classifier_object o ON a.object_ref=o.id WHERE o.module_ref=?',
+      [moduleRef],
+    );
+    final out = <int, Map<int, String?>>{};
+    for (final r in rows) {
+      (out[r['object_ref'] as int] ??= {})[r['template_ref'] as int] = r['attribute_value'] as String?;
+    }
+    return out;
+  }
+
+  /// A relation field's rows (EXE cls-field-types.js): ordinary relations,
+  /// from `cobj_<object>`, typed `ctpl_<field>`.
+  Future<List<({int id, String from, String to, int field})>> getFieldRelations(int moduleRef) async {
+    final rows = await db.rawQuery(
+      "SELECT r.id, r.from_key, r.to_key, r.rel_type FROM entity_relation r "
+      "JOIN classifier_object o ON r.from_key='cobj_'||o.id "
+      "WHERE o.module_ref=? AND r.rel_type LIKE 'ctpl\\_%' ESCAPE '\\' ORDER BY r.id",
+      [moduleRef],
+    );
+    return [
+      for (final r in rows)
+        (
+          id: r['id'] as int,
+          from: r['from_key'] as String,
+          to: r['to_key'] as String,
+          field: int.tryParse((r['rel_type'] as String).substring(5)) ?? 0,
+        ),
+    ];
+  }
+
+  Future<void> addFieldRelation(int objectId, int fieldId, String toKey) async {
+    final m = await db.rawQuery(
+        'SELECT m.nexus_ref, m.id FROM classifier_object o JOIN module m ON o.module_ref=m.id WHERE o.id=?', [objectId]);
+    if (m.isEmpty) return;
+    await db.insert(
+      'entity_relation',
+      {
+        'nexus_ref': m.first['nexus_ref'],
+        'module_ref': m.first['id'],
+        'from_key': 'cobj_$objectId',
+        'to_key': toKey,
+        'rel_type': 'ctpl_$fieldId',
+        'directed': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
+  }
+
+  Future<void> deleteRelation(int id) async {
+    await db.delete('entity_relation', where: 'id=?', whereArgs: [id]);
+  }
+
   Future<void> renameField(int id, String description) async {
     await db.rawUpdate(
       "UPDATE classifier_template SET description=?,update_at=datetime('now') WHERE id=?",
@@ -67,23 +137,85 @@ class ClassifierDao {
       'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM classifier_object WHERE module_ref=?',
       [moduleRef],
     );
-    return db.insert('classifier_object', {
+    final id = await db.insert('classifier_object', {
       'module_ref': moduleRef,
       'name': name,
       'display_order': Sqflite.firstIntValue(orderRows) ?? 0,
     });
+    await WikiService.resolveDangling(db, name, await WikiService.nexusOfModule(db, moduleRef));
+    return id;
   }
 
   Future<void> updateItem(int id, {required String name, String? note}) async {
+    final old = await db.rawQuery(
+        'SELECT o.name, m.nexus_ref FROM classifier_object o JOIN module m ON o.module_ref=m.id WHERE o.id=?', [id]);
     await db.rawUpdate(
       "UPDATE classifier_object SET name=?,note=?,update_at=datetime('now') WHERE id=?",
       [name, note, id],
     );
+    await WikiService.reindexSource(db, 'cobj', id);
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'cobj_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
   }
 
   Future<void> deleteItem(int id) async {
+    await PageBlockDao(db).clearItem('cobj_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('classifier_object', where: 'id=?', whereArgs: [id]);
   }
+
+  // ---- level rows (classifier_level) --------------------------------------
+  // The port of EXE db/classifier.js getLevels…moveLevels. All three value
+  // columns are kept whatever the flags say, so a field that gains a flag
+  // later keeps what was typed.
+
+  /// {template_ref: rows in order} for one object.
+  Future<Map<int, List<ClassifierLevelModel>>> getLevels(int objectRef) async {
+    final out = <int, List<ClassifierLevelModel>>{};
+    for (final r in await db.rawQuery('SELECT * FROM classifier_level WHERE object_ref=? ORDER BY display_order, id', [objectRef])) {
+      final l = ClassifierLevelModel.fromMap(r);
+      (out[l.templateRef] ??= []).add(l);
+    }
+    return out;
+  }
+
+  /// {object_ref: {template_ref: rows}} for a whole module — the table's cells.
+  Future<Map<int, Map<int, List<ClassifierLevelModel>>>> getModuleLevels(int moduleRef) async {
+    final out = <int, Map<int, List<ClassifierLevelModel>>>{};
+    for (final r in await db.rawQuery(
+        'SELECT cl.* FROM classifier_level cl JOIN classifier_object o ON cl.object_ref=o.id '
+        'WHERE o.module_ref=? ORDER BY cl.display_order, cl.id',
+        [moduleRef])) {
+      final l = ClassifierLevelModel.fromMap(r);
+      ((out[l.objectRef] ??= {})[l.templateRef] ??= []).add(l);
+    }
+    return out;
+  }
+
+  Future<int> createLevel(int objectRef, int templateRef) async {
+    final m = await db.rawQuery(
+        'SELECT COALESCE(MAX(display_order),-1)+1 AS n FROM classifier_level WHERE object_ref=? AND template_ref=?', [objectRef, templateRef]);
+    return db.insert('classifier_level', {'object_ref': objectRef, 'template_ref': templateRef, 'display_order': Sqflite.firstIntValue(m) ?? 0});
+  }
+
+  static const levelColumns = ['level_label', 'condition_value', 'info_value'];
+
+  Future<void> updateLevelField(int id, String column, String value) async {
+    if (!levelColumns.contains(column)) throw ArgumentError.value(column, 'column');
+    await db.rawUpdate("UPDATE classifier_level SET $column=?, update_at=datetime('now') WHERE id=?", [value, id]);
+  }
+
+  Future<void> deleteLevel(int id) => db.delete('classifier_level', where: 'id=?', whereArgs: [id]);
+
+  /// The whole order at once; object AND template are both asserted so a
+  /// stale id from another row set cannot be renumbered into this one.
+  Future<void> moveLevels(int objectRef, int templateRef, List<int> orderedIds) => db.transaction((tx) async {
+        for (var i = 0; i < orderedIds.length; i++) {
+          await tx.rawUpdate(
+              "UPDATE classifier_level SET display_order=?, update_at=datetime('now') WHERE id=? AND object_ref=? AND template_ref=?",
+              [i, orderedIds[i], objectRef, templateRef]);
+        }
+      });
 
   // ---- values (classifier_attribute) --------------------------------------
 
@@ -113,5 +245,7 @@ class ClassifierDao {
       {'object_ref': objectRef, 'template_ref': templateRef, 'attribute_value': value},
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+    // A text field's value is part of the object's linkable text.
+    await WikiService.reindexSource(db, 'cobj', objectRef);
   }
 }

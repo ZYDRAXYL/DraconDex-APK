@@ -336,6 +336,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get filterFieldChildOf => 'モジュール内';
 
   @override
+  String get filterFieldHandle => 'ハンドル';
+
+  @override
   String get filterOpIs => 'が次と等しい';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'このタグを削除しますか?';
 
   @override
-  String get builderNavHome => 'ホーム';
-
-  @override
-  String get builderNavView => '表示';
-
-  @override
-  String get builderNavFolders => 'フォルダビュー';
-
-  @override
   String get viewModeTitle => '表示モード';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'コンパクト';
-
-  @override
-  String get recentViewsTitle => '最近のビュー';
-
-  @override
-  String get recentViewsEmpty => '最近のビューはまだありません';
-
-  @override
-  String get recentViewsClear => 'すべて消去';
 
   @override
   String get builderNexusRootLabel => 'Nexus のルート';
@@ -958,4 +943,829 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'リンクには鍵が含まれているため、送信側が QR のみを許可していても使えます。';
+
+  @override
+  String get navNest => '巣';
+
+  @override
+  String get navSearch => '検索';
+
+  @override
+  String get navOpenPages => 'ページ';
+
+  @override
+  String get navTools => 'ツール';
+
+  @override
+  String get navMore => 'その他';
+
+  @override
+  String get openPagesTitle => '開いているページ';
+
+  @override
+  String get openPagesEmpty => '開いているページはありません。開いたページは閉じるまでここに残ります。';
+
+  @override
+  String get openPagesCloseAll => 'すべて閉じる';
+
+  @override
+  String get openPageClose => 'ページを閉じる';
+
+  @override
+  String get rowOpen => '開く';
+
+  @override
+  String get rowMore => 'その他の操作';
+
+  @override
+  String get crumbEmpty => '中身はありません';
+
+  @override
+  String get goToTitle => '移動';
+
+  @override
+  String get goToHint => '名前、パス、または @handle';
+
+  @override
+  String get searchHint => '名前・本文・コマンドを検索';
+
+  @override
+  String get searchThings => 'もの';
+
+  @override
+  String get searchContent => '内容';
+
+  @override
+  String get searchCommands => 'コマンド';
+
+  @override
+  String get searchEmpty => '一致するものはありません';
+
+  @override
+  String get elementPageSoon => 'この要素は今後のアップデートで専用ページを持ちます。今はモジュールの中で開きます。';
+
+  @override
+  String get wikiUnresolved => 'この名前のものはまだありません。この名前で Drafter ページを作りますか？';
+
+  @override
+  String get wikiCreateDrafter => '作成';
+
+  @override
+  String get btnUndo => '元に戻す';
+
+  @override
+  String get pbAddBlock => 'ブロックを追加';
+
+  @override
+  String get pbAddHere => 'ここに追加';
+
+  @override
+  String get pbAddProperty => 'プロパティを追加';
+
+  @override
+  String get pbArrange => 'ページを配置';
+
+  @override
+  String get pbArrangeDone => '完了';
+
+  @override
+  String get pbArrangeHint => 'ドラッグで並べ替え。列ブロックはまとめて動きます。';
+
+  @override
+  String get pbArrangeShared => 'これはこのモジュールの全要素が共有するレイアウトです。このページだけ変えるには先に分離してください。';
+
+  @override
+  String get pbBacklinks => 'リンク元';
+
+  @override
+  String get pbBlockDeleted => 'ブロックを削除しました';
+
+  @override
+  String get pbBorrow => '別モジュールのビュー';
+
+  @override
+  String get pbColumn => '列';
+
+  @override
+  String get pbColumns => '列';
+
+  @override
+  String get pbDivider => '区切り線';
+
+  @override
+  String get pbFullScreen => '全画面';
+
+  @override
+  String get pbHeading => '見出し';
+
+  @override
+  String get pbImage => '画像';
+
+  @override
+  String get pbItemBody => '要素';
+
+  @override
+  String get pbItemEmpty => 'まだ何も書かれていません。';
+
+  @override
+  String get pbNoRelated => 'まだリンクはありません';
+
+  @override
+  String get pbNotOnMobile => 'このアプリではまだ使えません';
+
+  @override
+  String get pbOnlyOnce => '1ページに1つだけ置けます';
+
+  @override
+  String get pbOpenFullScreen => '開く';
+
+  @override
+  String get pbOutgoing => 'リンク先';
+
+  @override
+  String get pbPropName => '名前';
+
+  @override
+  String get pbPropType => '種類';
+
+  @override
+  String get pbProperties => 'プロパティ';
+
+  @override
+  String get pbRelated => '関連';
+
+  @override
+  String get pbRelations => '関係';
+
+  @override
+  String get pbRevert => '共有レイアウトに戻す';
+
+  @override
+  String get pbSharedLayout => 'このモジュールの全要素ページが共有するレイアウト。';
+
+  @override
+  String get pbSourceGone => '表示していたものはありません';
+
+  @override
+  String get pbSplit => 'このページに独自のレイアウトを持たせる';
+
+  @override
+  String get pbTags => 'タグ';
+
+  @override
+  String get pbText => 'テキスト';
+
+  @override
+  String get pbTextEmpty => '空のテキスト — タップして書く';
+
+  @override
+  String get propTypeCheckbox => 'チェックボックス';
+
+  @override
+  String get propTypeDate => '日付';
+
+  @override
+  String get propTypeNumber => '数値';
+
+  @override
+  String get propTypeText => 'テキスト';
+
+  @override
+  String get propTypeTextarea => '長いテキスト';
+
+  @override
+  String get propTypeUrl => 'リンク';
+
+  @override
+  String get viewTable => '表';
+
+  @override
+  String get viewListDetail => 'リスト・詳細';
+
+  @override
+  String get viewRelations => '関係';
+
+  @override
+  String get viewGrid => 'グリッド';
+
+  @override
+  String get viewScene => 'シーン';
+
+  @override
+  String get viewGraph => 'グラフ';
+
+  @override
+  String get viewCards => 'カード';
+
+  @override
+  String get viewBoard => 'ボード';
+
+  @override
+  String get viewEdges => 'エッジ';
+
+  @override
+  String get viewArea => 'エリア';
+
+  @override
+  String get viewMap => '地図';
+
+  @override
+  String get viewTimeline => 'タイムライン';
+
+  @override
+  String get viewCanvas => 'キャンバス';
+
+  @override
+  String get viewPages => 'ページ';
+
+  @override
+  String get viewGallery => 'ギャラリー';
+
+  @override
+  String get viewExport => '書き出し';
+
+  @override
+  String get viewEditor => 'エディタ';
+
+  @override
+  String get viewOutline => 'アウトライン';
+
+  @override
+  String get viewReading => '読む';
+
+  @override
+  String get viewBook => '本';
+
+  @override
+  String get viewRoutes => 'ルート';
+
+  @override
+  String get viewReader => 'リーダー';
+
+  @override
+  String get viewDialogue => '会話';
+
+  @override
+  String get viewOneline => '一本線';
+
+  @override
+  String get viewDownline => '縦';
+
+  @override
+  String get viewCompare => '比較';
+
+  @override
+  String get viewCalendar => 'カレンダー';
+
+  @override
+  String get viewList => 'リスト';
+
+  @override
+  String get viewMatrix => 'マトリクス';
+
+  @override
+  String get viewChat => 'チャット';
+
+  @override
+  String get viewTranscript => 'ログ';
+
+  @override
+  String get clsNoRelations => 'これらの要素間のリンクはまだありません';
+
+  @override
+  String get clsTypeText => 'テキスト';
+
+  @override
+  String get clsTypeTextarea => '長文';
+
+  @override
+  String get clsTypeNumber => '数値';
+
+  @override
+  String get clsTypeDate => '日付';
+
+  @override
+  String get clsTypeSelect => '選択';
+
+  @override
+  String get clsTypeMulti => '複数選択';
+
+  @override
+  String get clsTypeCheckbox => 'チェックボックス';
+
+  @override
+  String get clsTypeUrl => 'リンク (URL)';
+
+  @override
+  String get clsTypeRelation => '関係';
+
+  @override
+  String get clsTypeFormula => '数式';
+
+  @override
+  String get clsFieldType => 'フィールドの種類';
+
+  @override
+  String get clsChoices => '選択肢（1行に1つ）';
+
+  @override
+  String get clsFormulaHint => '例: {HP} * 2';
+
+  @override
+  String get clsEditField => 'フィールドを編集';
+
+  @override
+  String get clsAddLink => 'リンクを追加';
+
+  @override
+  String get dateDay => '日';
+
+  @override
+  String get dateMonth => '月';
+
+  @override
+  String get dateYear => '年';
+
+  @override
+  String get dateHour => '時';
+
+  @override
+  String get dateMinute => '分';
+
+  @override
+  String get btnClear => 'クリア';
+
+  @override
+  String get groupBy => 'グループ化';
+
+  @override
+  String get groupModule => 'モジュール';
+
+  @override
+  String get relDirected => '一方向 (→)';
+
+  @override
+  String get exhGroup => 'グループ';
+
+  @override
+  String get exhNote => 'メモ';
+
+  @override
+  String get exhAddElement => '要素を配置';
+
+  @override
+  String get exhAddNote => 'メモを追加';
+
+  @override
+  String get exhAddGroup => 'グループを追加';
+
+  @override
+  String get exhRemoveFromScene => 'シーンから外す';
+
+  @override
+  String get exhSceneEmpty => 'まだ何も配置されていません — 要素を配置するかメモを追加します。';
+
+  @override
+  String get auStatusIdea => 'アイデア';
+
+  @override
+  String get auStatusDraft => '下書き';
+
+  @override
+  String get auStatusRevised => '推敲済み';
+
+  @override
+  String get auStatusDone => '完成';
+
+  @override
+  String get auSynopsis => 'あらすじ';
+
+  @override
+  String get auPov => '視点';
+
+  @override
+  String get btnPrevious => '前へ';
+
+  @override
+  String get btnNext => '次へ';
+
+  @override
+  String get narAddRoute => 'ルートを追加';
+
+  @override
+  String get narScript => '台本';
+
+  @override
+  String get narPlayTest => 'テストプレイ';
+
+  @override
+  String get narRestart => '最初から';
+
+  @override
+  String get narShowHidden => '隠れた選択肢を表示';
+
+  @override
+  String get narVariables => '変数';
+
+  @override
+  String get narNoVariables => 'このNexusにはストーリー変数がありません';
+
+  @override
+  String get narPlayEnd => '終わり — 続くルートはありません。';
+
+  @override
+  String get narNoOptionOpen => 'この変数では選べる選択肢がありません。';
+
+  @override
+  String get narHiddenByCondition => '条件により非表示';
+
+  @override
+  String get chrCompareWith => '比較対象';
+
+  @override
+  String get chrNoOtherLine => 'このNexusに比較できる他のChroniclerはありません';
+
+  @override
+  String get scribeNoMessages => 'まだメッセージはありません';
+
+  @override
+  String get wndLocator => '地図 (Locator)';
+
+  @override
+  String get wndNoLocator => 'このNexusにはまだLocatorがありません — ピンはそのエリアに置かれます。';
+
+  @override
+  String get wndPickLocator => 'これらのピンが置かれるLocatorを選びます。';
+
+  @override
+  String get wndNoAreas => 'そのLocatorにはまだエリアがありません';
+
+  @override
+  String get wndAddPin => 'ここにピンを置く';
+
+  @override
+  String get skExportPng => 'PNGで共有';
+
+  @override
+  String get dgPanel => 'コマ';
+
+  @override
+  String get dgBalloon => '吹き出し';
+
+  @override
+  String get dgLinkFrom => '接続先…';
+
+  @override
+  String get dgPanelShows => 'Sketcherのページを表示';
+
+  @override
+  String get dgBalloonSpeaker => '話し手';
+
+  @override
+  String get dgNumberByPosition => '位置で番号付け';
+
+  @override
+  String get dgShowOrder => '読む順を表示';
+
+  @override
+  String get divNewTable => '新しい表';
+
+  @override
+  String get divDice => 'ダイス';
+
+  @override
+  String get divDiceHelp => '空欄 = 重み付き';
+
+  @override
+  String get divBadDice => 'ダイス式ではありません';
+
+  @override
+  String get divModePick => '1つ選ぶ';
+
+  @override
+  String get divModeJoin => 'すべて連結';
+
+  @override
+  String get divWeighted => '重み付き';
+
+  @override
+  String get divEntryText => 'テキスト';
+
+  @override
+  String get divFrom => 'から';
+
+  @override
+  String get divTo => 'まで';
+
+  @override
+  String get divWeight => '重み';
+
+  @override
+  String get divRollsTable => 'ここで別の表を振る';
+
+  @override
+  String get divLinkEntity => '何かを指す';
+
+  @override
+  String get divUnlink => 'リンクを外す';
+
+  @override
+  String get divNoTables => 'まだ表がありません';
+
+  @override
+  String get divRoll => '振る';
+
+  @override
+  String get divEntries => '項目';
+
+  @override
+  String get divNoEntries => 'まだ項目がありません';
+
+  @override
+  String get divHistory => '履歴';
+
+  @override
+  String get divQuickRoll => '振るだけ: 3d6';
+
+  @override
+  String get trashTitle => 'ゴミ箱';
+
+  @override
+  String get trashMoved => 'ゴミ箱に移動しました';
+
+  @override
+  String get trashEmptyAll => 'ゴミ箱を空にする';
+
+  @override
+  String get trashEmptyConfirm => 'ゴミ箱の中身はすべて完全に削除されます。';
+
+  @override
+  String get trashNothing => 'ゴミ箱は空です';
+
+  @override
+  String get trashNote => '復元したモジュールは中身と関係ごと戻りますが、バージョン履歴は戻りません。';
+
+  @override
+  String get trashRestore => '復元';
+
+  @override
+  String get trashModules => 'モジュール';
+
+  @override
+  String get trashDeleteForever => '完全に削除しますか？以後は復元できません。';
+
+  @override
+  String get problemsTitle => '問題';
+
+  @override
+  String get problemsLinks => '未解決のリンク';
+
+  @override
+  String get problemsEmpty => '空のモジュール';
+
+  @override
+  String get problemsRelations => '端が失われた関係';
+
+  @override
+  String get problemsNone => '問題は見つかりませんでした';
+
+  @override
+  String get assetsTitle => 'アセット';
+
+  @override
+  String get assetsFromDevice => 'この端末から追加';
+
+  @override
+  String get assetsAddUrl => 'リンク (URL) を追加';
+
+  @override
+  String get assetsNotice => 'アセットはこの端末に残ります。同期されるのは名前だけで、ファイルは送られません。';
+
+  @override
+  String get assetsNone => 'まだアセットはありません';
+
+  @override
+  String get assetsTooBig => 'ブラウザに保存するには大きすぎます';
+
+  @override
+  String get pbChooseImage => '画像を選ぶ';
+
+  @override
+  String get csvImportTitle => 'CSVを取り込む';
+
+  @override
+  String get fromTemplate => 'テンプレートから';
+
+  @override
+  String get guideTitle => 'ガイド';
+
+  @override
+  String get guideDesc => 'すべての種類を見せる小さな世界';
+
+  @override
+  String get guideAdd => 'ガイドを追加';
+
+  @override
+  String get mddxImport => 'モジュールファイルを取り込む (.mddx)';
+
+  @override
+  String get mddxExport => '.mddxで書き出す';
+
+  @override
+  String get mddxNotModule => 'そのファイルはDraconDexのモジュールではありません';
+
+  @override
+  String get kindCatStructure => '構造';
+
+  @override
+  String get kindCatView => 'ビュー';
+
+  @override
+  String get kindCatData => 'データ';
+
+  @override
+  String get kindGroupNotes => 'メモ・文書';
+
+  @override
+  String get kindGroupData => 'データ・カテゴリ';
+
+  @override
+  String get kindGroupMapTime => '地図と時間';
+
+  @override
+  String get kindGroupStory => '物語';
+
+  @override
+  String get kindGroupDraw => '描画とデザイン';
+
+  @override
+  String get nexusStartWith => '開始内容';
+
+  @override
+  String get nexusStartEmpty => 'なし — 空のNexus';
+
+  @override
+  String get csvPick => 'CSVファイルを選ぶ';
+
+  @override
+  String get csvHint => '1行目がフィールド名、1列目が要素名です。';
+
+  @override
+  String get csvCreate => 'Classifierを作成';
+
+  @override
+  String get csvSkip => '取り込まない';
+
+  @override
+  String get csvNameColumn => '名前';
+
+  @override
+  String get csvTruncated => '最初の5,000行のみ';
+
+  @override
+  String get csvTooLarge => 'ファイルが8MBを超えています';
+
+  @override
+  String get csvEmpty => '取り込む行がありません — 見出しと少なくとも1行が必要です';
+
+  @override
+  String get kindClassicCollector => 'フォルダ';
+
+  @override
+  String get kindDescCollector => '他のモジュールをまとめるフォルダ';
+
+  @override
+  String get kindClassicManager => 'プロジェクト';
+
+  @override
+  String get kindDescManager => '子モジュールをカード・リスト・表で閲覧';
+
+  @override
+  String get kindClassicInspector => '詳細';
+
+  @override
+  String get kindDescInspector => 'このアイテムの詳細を1つのノートで管理';
+
+  @override
+  String get kindClassicClassifier => 'カテゴリ';
+
+  @override
+  String get kindDescClassifier => 'カスタム項目でアイテムを分類';
+
+  @override
+  String get kindClassicLocator => 'マップ';
+
+  @override
+  String get kindDescLocator => 'ピンとエリアを配置する地図';
+
+  @override
+  String get kindClassicChronicler => 'タイムライン';
+
+  @override
+  String get kindDescChronicler => '日付付きイベントの年表';
+
+  @override
+  String get kindClassicWanderer => 'タイムマップ';
+
+  @override
+  String get kindDescWanderer => '地図のピンと年表イベントを連携';
+
+  @override
+  String get kindClassicNarrator => 'ストーリー';
+
+  @override
+  String get kindDescNarrator => '会話ノードを繋ぐルートボード';
+
+  @override
+  String get kindClassicAuthor => 'ブック';
+
+  @override
+  String get kindDescAuthor => '章立てと執筆エディタを持つ本';
+
+  @override
+  String get kindClassicScribe => 'チャット';
+
+  @override
+  String get kindDescScribe => 'チャット形式のセッションノート';
+
+  @override
+  String get kindClassicDrafter => 'ドキュメント';
+
+  @override
+  String get kindDescDrafter => '白紙のMarkdownページ';
+
+  @override
+  String get kindClassicExhibitor => '展示';
+
+  @override
+  String get kindDescExhibitor => 'リンクしたアイテムのシーン・グラフ・表 — 関係はここで描きます';
+
+  @override
+  String get kindClassicSketcher => 'ドローイング';
+
+  @override
+  String get kindDescSketcher => '自由に描けるお絵かきキャンバス';
+
+  @override
+  String get kindClassicDesigner => 'グラフ';
+
+  @override
+  String get kindDescDesigner => '図形と矢印で作る自由図解';
+
+  @override
+  String get kindClassicDiviner => 'ランダム表';
+
+  @override
+  String get kindDescDiviner => 'ランダム表とダイスロール';
+
+  @override
+  String get moduleNameMode => 'モジュール名';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = フォルダ/プロジェクト/…';
+
+  @override
+  String get moduleInside => '件';
+
+  @override
+  String get nameModeUnique => '固有';
+
+  @override
+  String get nameModeClassic => 'クラシック';
+
+  @override
+  String get kindRecent => '最近';
+
+  @override
+  String get clsLevelable => 'レベル可能';
+
+  @override
+  String get clsCondition => '条件';
+
+  @override
+  String get levelColLevel => 'レベル';
+
+  @override
+  String get levelColInfo => '情報';
+
+  @override
+  String get levelAddRow => '行を追加';
+
+  @override
+  String get levelNoRows => '行がありません';
+
+  @override
+  String get confirmDeleteLevelRow => 'この行を削除しますか？';
+
+  @override
+  String get clsLevelAndCondition => 'レベルと条件';
+
+  @override
+  String get clsLevelAndConditionHint => 'フィールドを行の表（レベル）にしたり、値を条件に結びつけたりします。';
+
+  @override
+  String get clsInsertAbove => '上に行を挿入';
+
+  @override
+  String get clsInsertBelow => '下に行を挿入';
 }

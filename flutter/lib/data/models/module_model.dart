@@ -5,6 +5,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../core/i18n/app_localizations.dart';
+
 class NexusModel {
   final int id;
   final String name;
@@ -32,9 +34,12 @@ class NexusModel {
       );
 }
 
-/// The 15 module kinds (electron `module.kind` CHECK constraint). Each kind
-/// picks the content area a module screen shows; every kind can still hold
-/// children regardless, so nesting works the same everywhere.
+/// The module kinds of the v5 `module.kind` CHECK (DraconDex-SDB vault.sql).
+/// Each kind picks the content its page shows.
+///
+/// v5 (APP docs/V5.md §3) folded `viewer` and `connector` into `exhibitor`;
+/// [fromId] still reads the old ids — from a snapshot an older build wrote —
+/// the way EXE's V5_KIND_MAP does, and VaultUpgrade rewrites them in place.
 enum ModuleKind {
   collector,
   manager,
@@ -47,21 +52,41 @@ enum ModuleKind {
   author,
   scribe,
   drafter,
-  viewer,
-  connector,
+  exhibitor,
   sketcher,
-  designer;
+  designer,
+  // V5.md §11.5 — random tables and dice.
+  diviner;
 
   String get id => name;
 
-  static ModuleKind fromId(String id) => ModuleKind.values.firstWhere(
+  /// Pre-v5 kinds a snapshot or an old row can still carry.
+  static const Map<String, ModuleKind> legacyIds = {
+    'viewer': ModuleKind.exhibitor,
+    'connector': ModuleKind.exhibitor,
+  };
+
+  static ModuleKind fromId(String id) =>
+      legacyIds[id] ??
+      ModuleKind.values.firstWhere(
         (k) => k.name == id,
         orElse: () => ModuleKind.collector,
       );
 }
 
+/// What a kind IS, by where its content comes from — the desktop's
+/// KIND_CATEGORY (DraconDex-EXE hub/kinds.js, DraconDex-APP docs/V5.md §9):
+///   structure  holds modules, not content (collector)
+///   view       shows other modules' content; deleting one loses only a
+///              layout or a selection (manager, exhibitor)
+///   data       owns content; deleting one deletes what was written in it
+/// `required` below is the parity check: a 16th kind without a category is
+/// a compile error, which the desktop gets from check.mjs instead.
+enum ModuleCategory { structure, view, data }
+
 class ModuleKindInfo {
   final ModuleKind kind;
+  final ModuleCategory category;
   final String label;
   final IconData icon;
   final String description;
@@ -71,6 +96,7 @@ class ModuleKindInfo {
 
   const ModuleKindInfo({
     required this.kind,
+    required this.category,
     required this.label,
     required this.icon,
     required this.description,
@@ -78,9 +104,59 @@ class ModuleKindInfo {
   });
 }
 
+/// The kind-name mode, mirrored here by SettingsNotifier so a name can be
+/// read without a ref — the app rebuilds under a new key when it changes.
+class KindNames {
+  static bool classic = true;
+}
+
+/// A kind's name on screen: the classic name in the UI language (the
+/// desktop's default), or the unique proper name.
+String kindName(AppLocalizations l, ModuleKind k) => !KindNames.classic
+    ? moduleKindInfo[k]!.label
+    : switch (k) {
+        ModuleKind.collector => l.kindClassicCollector,
+        ModuleKind.manager => l.kindClassicManager,
+        ModuleKind.inspector => l.kindClassicInspector,
+        ModuleKind.classifier => l.kindClassicClassifier,
+        ModuleKind.locator => l.kindClassicLocator,
+        ModuleKind.chronicler => l.kindClassicChronicler,
+        ModuleKind.wanderer => l.kindClassicWanderer,
+        ModuleKind.narrator => l.kindClassicNarrator,
+        ModuleKind.author => l.kindClassicAuthor,
+        ModuleKind.scribe => l.kindClassicScribe,
+        ModuleKind.drafter => l.kindClassicDrafter,
+        ModuleKind.exhibitor => l.kindClassicExhibitor,
+        ModuleKind.sketcher => l.kindClassicSketcher,
+        ModuleKind.designer => l.kindClassicDesigner,
+        ModuleKind.diviner => l.kindClassicDiviner,
+      };
+
+/// What a kind is for, in the UI language (EXE KIND_DESC_KEY).
+String kindDesc(AppLocalizations l, ModuleKind k) => switch (k) {
+      ModuleKind.collector => l.kindDescCollector,
+      ModuleKind.manager => l.kindDescManager,
+      ModuleKind.inspector => l.kindDescInspector,
+      ModuleKind.classifier => l.kindDescClassifier,
+      ModuleKind.locator => l.kindDescLocator,
+      ModuleKind.chronicler => l.kindDescChronicler,
+      ModuleKind.wanderer => l.kindDescWanderer,
+      ModuleKind.narrator => l.kindDescNarrator,
+      ModuleKind.author => l.kindDescAuthor,
+      ModuleKind.scribe => l.kindDescScribe,
+      ModuleKind.drafter => l.kindDescDrafter,
+      ModuleKind.exhibitor => l.kindDescExhibitor,
+      ModuleKind.sketcher => l.kindDescSketcher,
+      ModuleKind.designer => l.kindDescDesigner,
+      ModuleKind.diviner => l.kindDescDiviner,
+    };
+
+/// [label] and [description] are the unique English names, kept for logs
+/// and fallbacks; the screen goes through [kindName] / [kindDesc].
 const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ModuleKind.collector: ModuleKindInfo(
     kind: ModuleKind.collector,
+    category: ModuleCategory.structure,
     label: 'Collector',
     icon: Icons.folder,
     description: 'Plain folder — groups children only',
@@ -88,6 +164,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.manager: ModuleKindInfo(
     kind: ModuleKind.manager,
+    category: ModuleCategory.view,
     label: 'Manager',
     icon: Icons.dashboard_outlined,
     description: 'Container showing this module\'s children',
@@ -95,6 +172,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.inspector: ModuleKindInfo(
     kind: ModuleKind.inspector,
+    category: ModuleCategory.data,
     label: 'Inspector',
     icon: Icons.description_outlined,
     description: 'A single note document',
@@ -102,6 +180,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.classifier: ModuleKindInfo(
     kind: ModuleKind.classifier,
+    category: ModuleCategory.data,
     label: 'Classifier',
     icon: Icons.category_outlined,
     description: 'Category / object / field system',
@@ -109,6 +188,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.locator: ModuleKindInfo(
     kind: ModuleKind.locator,
+    category: ModuleCategory.data,
     label: 'Locator',
     icon: Icons.map_outlined,
     description: 'Map canvas with drawable areas',
@@ -116,6 +196,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.chronicler: ModuleKindInfo(
     kind: ModuleKind.chronicler,
+    category: ModuleCategory.data,
     label: 'Chronicler',
     icon: Icons.timeline_outlined,
     description: 'Timeline of dated events',
@@ -123,6 +204,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.wanderer: ModuleKindInfo(
     kind: ModuleKind.wanderer,
+    category: ModuleCategory.data,
     label: 'Wanderer',
     icon: Icons.explore_outlined,
     description: 'Timeline events pinned on a map',
@@ -130,6 +212,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.narrator: ModuleKindInfo(
     kind: ModuleKind.narrator,
+    category: ModuleCategory.data,
     label: 'Narrator',
     icon: Icons.forum_outlined,
     description: 'Dialogue graph / route board',
@@ -137,6 +220,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.author: ModuleKindInfo(
     kind: ModuleKind.author,
+    category: ModuleCategory.data,
     label: 'Author',
     icon: Icons.menu_book_outlined,
     description: 'Book with chapters',
@@ -144,6 +228,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.scribe: ModuleKindInfo(
     kind: ModuleKind.scribe,
+    category: ModuleCategory.data,
     label: 'Scribe',
     icon: Icons.chat_bubble_outline,
     description: 'Chat-style notes for this module',
@@ -151,27 +236,23 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.drafter: ModuleKindInfo(
     kind: ModuleKind.drafter,
+    category: ModuleCategory.data,
     label: 'Drafter',
     icon: Icons.edit_note_outlined,
     description: 'A blank markdown page',
     contentImplemented: true,
   ),
-  ModuleKind.viewer: ModuleKindInfo(
-    kind: ModuleKind.viewer,
-    label: 'Viewer',
-    icon: Icons.visibility_outlined,
-    description: 'Read-only saved-filter lens',
-    contentImplemented: true,
-  ),
-  ModuleKind.connector: ModuleKindInfo(
-    kind: ModuleKind.connector,
-    label: 'Connector',
+  ModuleKind.exhibitor: ModuleKindInfo(
+    kind: ModuleKind.exhibitor,
+    category: ModuleCategory.view,
+    label: 'Exhibitor',
     icon: Icons.hub_outlined,
-    description: 'Relationship graph over a saved filter',
+    description: 'A board of what a filter selects: scene, graph, table, cards',
     contentImplemented: true,
   ),
   ModuleKind.sketcher: ModuleKindInfo(
     kind: ModuleKind.sketcher,
+    category: ModuleCategory.data,
     label: 'Sketcher',
     icon: Icons.brush_outlined,
     description: 'Freehand drawing canvas',
@@ -179,10 +260,19 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ),
   ModuleKind.designer: ModuleKindInfo(
     kind: ModuleKind.designer,
+    category: ModuleCategory.data,
     label: 'Designer',
     icon: Icons.account_tree_outlined,
     description: 'Free-form diagram board',
     contentImplemented: true,
+  ),
+  ModuleKind.diviner: ModuleKindInfo(
+    kind: ModuleKind.diviner,
+    category: ModuleCategory.data,
+    label: 'Diviner',
+    icon: Icons.casino_outlined,
+    description: 'Random tables and dice rolls',
+    contentImplemented: false,
   ),
 };
 

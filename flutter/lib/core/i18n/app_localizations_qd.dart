@@ -336,6 +336,9 @@ class AppLocalizationsQd extends AppLocalizations {
   String get filterFieldChildOf => 'Innan Módule';
 
   @override
+  String get filterFieldHandle => 'Handyl';
+
+  @override
   String get filterOpIs => 'is';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsQd extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Vhoreth thys markiss?';
 
   @override
-  String get builderNavHome => 'Hearthra';
-
-  @override
-  String get builderNavView => 'Skryen';
-
-  @override
-  String get builderNavFolders => 'Hoardskryen';
-
-  @override
   String get viewModeTitle => 'Skryen Vharokk';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Kompaktha';
-
-  @override
-  String get recentViewsTitle => 'Skryen Latharii';
-
-  @override
-  String get recentViewsEmpty => 'Grynn... no skryen yet-thra.';
-
-  @override
-  String get recentViewsClear => 'Vhoreth all';
 
   @override
   String get builderNexusRootLabel => 'Nexus Rootha';
@@ -958,4 +943,829 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Ythe lynk beryth ythe kaye wythyn yt, so yt servyth even whanne ythe sendyr suffryd ythe QR sygil alone.';
+
+  @override
+  String get navNest => 'Nystra';
+
+  @override
+  String get navSearch => 'Zharra';
+
+  @override
+  String get navOpenPages => 'Vhaelen';
+
+  @override
+  String get navTools => 'Thuukar';
+
+  @override
+  String get navMore => 'Mhorr';
+
+  @override
+  String get openPagesTitle => 'Vhaelen Ossa';
+
+  @override
+  String get openPagesEmpty => 'No vhaelen ossa. Each vhaelen thou openest bideth here till thou klemuurest it.';
+
+  @override
+  String get openPagesCloseAll => 'Klemuur all';
+
+  @override
+  String get openPageClose => 'Klemuur vhaelen';
+
+  @override
+  String get rowOpen => 'Ossa';
+
+  @override
+  String get rowMore => 'Mhorr deedra';
+
+  @override
+  String get crumbEmpty => 'Naught within';
+
+  @override
+  String get goToTitle => 'Draa to';
+
+  @override
+  String get goToHint => 'A name, a path or @handle';
+
+  @override
+  String get searchHint => 'Zharra names, writ and commandra';
+
+  @override
+  String get searchThings => 'Thingra';
+
+  @override
+  String get searchContent => 'Writ';
+
+  @override
+  String get searchCommands => 'Commandra';
+
+  @override
+  String get searchEmpty => 'Naught answereth';
+
+  @override
+  String get elementPageSoon => 'This thing gaineth its own vhaelen in a coming update. For now it openeth within its module.';
+
+  @override
+  String get wikiUnresolved => 'Naught beareth this name yet. Shall a Drafter vhaelen be made for it?';
+
+  @override
+  String get wikiCreateDrafter => 'Forge';
+
+  @override
+  String get btnUndo => 'Unmake';
+
+  @override
+  String get pbAddBlock => 'Add a stone';
+
+  @override
+  String get pbAddHere => 'Add here';
+
+  @override
+  String get pbAddProperty => 'Add a trait';
+
+  @override
+  String get pbArrange => 'Order the vhaelen';
+
+  @override
+  String get pbArrangeDone => 'Done';
+
+  @override
+  String get pbArrangeHint => 'Drag to reorder. A block of columns moveth whole.';
+
+  @override
+  String get pbArrangeShared => 'This is the layout every thing of this module shareth. Sunder the vhaelen first to change but this one.';
+
+  @override
+  String get pbBacklinks => 'Bound from';
+
+  @override
+  String get pbBlockDeleted => 'Stone taken away';
+
+  @override
+  String get pbBorrow => 'A sight from another module';
+
+  @override
+  String get pbColumn => 'Pillar';
+
+  @override
+  String get pbColumns => 'Pillars';
+
+  @override
+  String get pbDivider => 'Sundering line';
+
+  @override
+  String get pbFullScreen => 'Whole sight';
+
+  @override
+  String get pbHeading => 'Heading';
+
+  @override
+  String get pbImage => 'Likeness';
+
+  @override
+  String get pbItemBody => 'Thing';
+
+  @override
+  String get pbItemEmpty => 'Naught writ here yet.';
+
+  @override
+  String get pbNoRelated => 'No bonds yet';
+
+  @override
+  String get pbNotOnMobile => 'not in this craft yet';
+
+  @override
+  String get pbOnlyOnce => 'may stand but once upon a vhaelen';
+
+  @override
+  String get pbOpenFullScreen => 'Ossa';
+
+  @override
+  String get pbOutgoing => 'Bindeth to';
+
+  @override
+  String get pbPropName => 'Name';
+
+  @override
+  String get pbPropType => 'Kind';
+
+  @override
+  String get pbProperties => 'Traits';
+
+  @override
+  String get pbRelated => 'Kindred';
+
+  @override
+  String get pbRelations => 'Bonds';
+
+  @override
+  String get pbRevert => 'Back to the shared layout';
+
+  @override
+  String get pbSharedLayout => 'The shared layout of every thing-vhaelen of this module.';
+
+  @override
+  String get pbSourceGone => 'what it showed is gone';
+
+  @override
+  String get pbSplit => 'Give this vhaelen its own layout';
+
+  @override
+  String get pbTags => 'Marks';
+
+  @override
+  String get pbText => 'Writ';
+
+  @override
+  String get pbTextEmpty => 'Empty writ — touch to write';
+
+  @override
+  String get propTypeCheckbox => 'Mark-box';
+
+  @override
+  String get propTypeDate => 'Day';
+
+  @override
+  String get propTypeNumber => 'Number';
+
+  @override
+  String get propTypeText => 'Writ';
+
+  @override
+  String get propTypeTextarea => 'Long writ';
+
+  @override
+  String get propTypeUrl => 'Way-link';
+
+  @override
+  String get viewTable => 'Table';
+
+  @override
+  String get viewListDetail => 'List · detail';
+
+  @override
+  String get viewRelations => 'Bonds';
+
+  @override
+  String get viewGrid => 'Lattice';
+
+  @override
+  String get viewScene => 'Scene';
+
+  @override
+  String get viewGraph => 'Web';
+
+  @override
+  String get viewCards => 'Cards';
+
+  @override
+  String get viewBoard => 'Board';
+
+  @override
+  String get viewEdges => 'Threads';
+
+  @override
+  String get viewArea => 'Reach';
+
+  @override
+  String get viewMap => 'Map';
+
+  @override
+  String get viewTimeline => 'Time-line';
+
+  @override
+  String get viewCanvas => 'Canvas';
+
+  @override
+  String get viewPages => 'Leaves';
+
+  @override
+  String get viewGallery => 'Gallery';
+
+  @override
+  String get viewExport => 'Send forth';
+
+  @override
+  String get viewEditor => 'Quill';
+
+  @override
+  String get viewOutline => 'Outline';
+
+  @override
+  String get viewReading => 'Reading';
+
+  @override
+  String get viewBook => 'Tome';
+
+  @override
+  String get viewRoutes => 'Paths';
+
+  @override
+  String get viewReader => 'Reader';
+
+  @override
+  String get viewDialogue => 'Parley';
+
+  @override
+  String get viewOneline => 'One line';
+
+  @override
+  String get viewDownline => 'Down the leaf';
+
+  @override
+  String get viewCompare => 'Weigh';
+
+  @override
+  String get viewCalendar => 'Reckoning';
+
+  @override
+  String get viewList => 'List';
+
+  @override
+  String get viewMatrix => 'Matrix';
+
+  @override
+  String get viewChat => 'Parley';
+
+  @override
+  String get viewTranscript => 'Chronicle';
+
+  @override
+  String get clsNoRelations => 'Vhaelen links nar';
+
+  @override
+  String get clsTypeText => 'Rhun';
+
+  @override
+  String get clsTypeTextarea => 'Rhun ossa';
+
+  @override
+  String get clsTypeNumber => 'Numen';
+
+  @override
+  String get clsTypeDate => 'Dael';
+
+  @override
+  String get clsTypeSelect => 'Kaer';
+
+  @override
+  String get clsTypeMulti => 'Kaer ossa';
+
+  @override
+  String get clsTypeCheckbox => 'Zharra-mark';
+
+  @override
+  String get clsTypeUrl => 'Vei (URL)';
+
+  @override
+  String get clsTypeRelation => 'Bindra';
+
+  @override
+  String get clsTypeFormula => 'Formael';
+
+  @override
+  String get clsFieldType => 'Kin of feld';
+
+  @override
+  String get clsChoices => 'Kaer (an per rhun)';
+
+  @override
+  String get clsFormulaHint => '{HP} * 2';
+
+  @override
+  String get clsEditField => 'Wrey feld';
+
+  @override
+  String get clsAddLink => 'Vhael bindra';
+
+  @override
+  String get dateDay => 'Dael';
+
+  @override
+  String get dateMonth => 'Mhon';
+
+  @override
+  String get dateYear => 'Yhar';
+
+  @override
+  String get dateHour => 'Hvor';
+
+  @override
+  String get dateMinute => 'Min';
+
+  @override
+  String get btnClear => 'Voidra';
+
+  @override
+  String get groupBy => 'Gathra by';
+
+  @override
+  String get groupModule => 'Modul';
+
+  @override
+  String get relDirected => 'An vei (→)';
+
+  @override
+  String get exhGroup => 'Gathra';
+
+  @override
+  String get exhNote => 'Rhun-mark';
+
+  @override
+  String get exhAddElement => 'Setha an ossa';
+
+  @override
+  String get exhAddNote => 'Vhael rhun-mark';
+
+  @override
+  String get exhAddGroup => 'Vhael gathra';
+
+  @override
+  String get exhRemoveFromScene => 'Voidra from scena';
+
+  @override
+  String get exhSceneEmpty => 'Nar setha — setha an ossa.';
+
+  @override
+  String get auStatusIdea => 'Ydhra';
+
+  @override
+  String get auStatusDraft => 'Rhun-first';
+
+  @override
+  String get auStatusRevised => 'Wreyth';
+
+  @override
+  String get auStatusDone => 'Zharra';
+
+  @override
+  String get auSynopsis => 'Ossa-rhun';
+
+  @override
+  String get auPov => 'Eye of';
+
+  @override
+  String get btnPrevious => 'Ere';
+
+  @override
+  String get btnNext => 'Hence';
+
+  @override
+  String get narAddRoute => 'Vhael vei';
+
+  @override
+  String get narScript => 'Rhun-weave';
+
+  @override
+  String get narPlayTest => 'Play-wrey';
+
+  @override
+  String get narRestart => 'Anew';
+
+  @override
+  String get narShowHidden => 'Show the veiled';
+
+  @override
+  String get narVariables => 'Shiftra';
+
+  @override
+  String get narNoVariables => 'Nar shiftra in this Nexus';
+
+  @override
+  String get narPlayEnd => 'The end — nar vei onward.';
+
+  @override
+  String get narNoOptionOpen => 'Nar kaer open with these shiftra.';
+
+  @override
+  String get narHiddenByCondition => 'veiled by its bind';
+
+  @override
+  String get chrCompareWith => 'Weigh with';
+
+  @override
+  String get chrNoOtherLine => 'Nar other Chronicler to weigh';
+
+  @override
+  String get scribeNoMessages => 'Nar rhun yet';
+
+  @override
+  String get wndLocator => 'Mhap (Locator)';
+
+  @override
+  String get wndNoLocator => 'Nar Locator yet — its lands hold the pins.';
+
+  @override
+  String get wndPickLocator => 'Kaer the Locator these pins stand in.';
+
+  @override
+  String get wndNoAreas => 'That Locator has nar lands';
+
+  @override
+  String get wndAddPin => 'Setha a pin here';
+
+  @override
+  String get skExportPng => 'Share as PNG';
+
+  @override
+  String get dgPanel => 'Frame (tale-art)';
+
+  @override
+  String get dgBalloon => 'Speech-orb';
+
+  @override
+  String get dgLinkFrom => 'Bind to…';
+
+  @override
+  String get dgPanelShows => 'Show a Sketcher leaf';
+
+  @override
+  String get dgBalloonSpeaker => 'Who speaks';
+
+  @override
+  String get dgNumberByPosition => 'Number by place';
+
+  @override
+  String get dgShowOrder => 'Show reading order';
+
+  @override
+  String get divNewTable => 'New lot-table';
+
+  @override
+  String get divDice => 'Bones';
+
+  @override
+  String get divDiceHelp => 'Void = weighed';
+
+  @override
+  String get divBadDice => 'Nar a bone-rune';
+
+  @override
+  String get divModePick => 'Kaer one';
+
+  @override
+  String get divModeJoin => 'Weave all';
+
+  @override
+  String get divWeighted => 'Weighed';
+
+  @override
+  String get divEntryText => 'Rhun';
+
+  @override
+  String get divFrom => 'From';
+
+  @override
+  String get divTo => 'To';
+
+  @override
+  String get divWeight => 'Weight';
+
+  @override
+  String get divRollsTable => 'Cast another lot here';
+
+  @override
+  String get divLinkEntity => 'Name a thing';
+
+  @override
+  String get divUnlink => 'Unbind';
+
+  @override
+  String get divNoTables => 'Nar lot-tables yet';
+
+  @override
+  String get divRoll => 'Cast';
+
+  @override
+  String get divEntries => 'Lots';
+
+  @override
+  String get divNoEntries => 'Nar lots yet';
+
+  @override
+  String get divHistory => 'Ere-casts';
+
+  @override
+  String get divQuickRoll => 'Just cast: 3d6';
+
+  @override
+  String get trashTitle => 'Voidhold';
+
+  @override
+  String get trashMoved => 'Cast to the Voidhold';
+
+  @override
+  String get trashEmptyAll => 'Void the Voidhold';
+
+  @override
+  String get trashEmptyConfirm => 'All within is voided for good.';
+
+  @override
+  String get trashNothing => 'The Voidhold is bare';
+
+  @override
+  String get trashNote => 'A restored module returns whole, save its ere-versions.';
+
+  @override
+  String get trashRestore => 'Restore';
+
+  @override
+  String get trashModules => 'modules';
+
+  @override
+  String get trashDeleteForever => 'Void for good? It returns nae more.';
+
+  @override
+  String get problemsTitle => 'Woes';
+
+  @override
+  String get problemsLinks => 'Unbound links';
+
+  @override
+  String get problemsEmpty => 'Bare modules';
+
+  @override
+  String get problemsRelations => 'Binds with a lost end';
+
+  @override
+  String get problemsNone => 'Nar woes found';
+
+  @override
+  String get assetsTitle => 'Hoard';
+
+  @override
+  String get assetsFromDevice => 'Add from this device';
+
+  @override
+  String get assetsAddUrl => 'Add a vei (URL)';
+
+  @override
+  String get assetsNotice => 'The hoard stays here: sync bears names, not files.';
+
+  @override
+  String get assetsNone => 'Nar hoard yet';
+
+  @override
+  String get assetsTooBig => 'Too great for the browser';
+
+  @override
+  String get pbChooseImage => 'Kaer an image';
+
+  @override
+  String get csvImportTitle => 'Bring in a CSV';
+
+  @override
+  String get fromTemplate => 'From a pattern';
+
+  @override
+  String get guideTitle => 'The lore-guide';
+
+  @override
+  String get guideDesc => 'A wee world of every kind';
+
+  @override
+  String get guideAdd => 'Add the lore-guide';
+
+  @override
+  String get mddxImport => 'Bring in a module file (.mddx)';
+
+  @override
+  String get mddxExport => 'Send forth as .mddx';
+
+  @override
+  String get mddxNotModule => 'That file is nae a module';
+
+  @override
+  String get kindCatStructure => 'Frame';
+
+  @override
+  String get kindCatView => 'Sight';
+
+  @override
+  String get kindCatData => 'Lore';
+
+  @override
+  String get kindGroupNotes => 'Rhun & scrolls';
+
+  @override
+  String get kindGroupData => 'Lore & kinds';
+
+  @override
+  String get kindGroupMapTime => 'Mhaps & time';
+
+  @override
+  String get kindGroupStory => 'Tale';
+
+  @override
+  String get kindGroupDraw => 'Drawing & craft';
+
+  @override
+  String get nexusStartWith => 'Begin with';
+
+  @override
+  String get nexusStartEmpty => 'Naught — a bare Nexus';
+
+  @override
+  String get csvPick => 'Kaer a CSV';
+
+  @override
+  String get csvHint => 'First row names the fields, first column the ossa.';
+
+  @override
+  String get csvCreate => 'Forge the Classifier';
+
+  @override
+  String get csvSkip => 'Leave out';
+
+  @override
+  String get csvNameColumn => 'Names';
+
+  @override
+  String get csvTruncated => 'only the first 5,000 rows';
+
+  @override
+  String get csvTooLarge => 'That file is over 8 MB';
+
+  @override
+  String get csvEmpty => 'Nar rows — a head and one row are needed';
+
+  @override
+  String get kindClassicCollector => 'Foldre';
+
+  @override
+  String get kindDescCollector => 'Foldyr thate groupyth othyr modyuls';
+
+  @override
+  String get kindClassicManager => 'Projecte';
+
+  @override
+  String get kindDescManager => 'Browsyth chylde modyuls as cardys, lyst oure tabyl';
+
+  @override
+  String get kindClassicInspector => 'Detaile';
+
+  @override
+  String get kindDescInspector => 'Onye note payge fore thys ityme\'s detayls';
+
+  @override
+  String get kindClassicClassifier => 'Categorie';
+
+  @override
+  String get kindDescClassifier => 'Categoryze ityms wyth custym fyelds';
+
+  @override
+  String get kindClassicLocator => 'Mappe';
+
+  @override
+  String get kindDescLocator => 'Mape wyth pynnes and areyas';
+
+  @override
+  String get kindClassicChronicler => 'Tymelyne';
+
+  @override
+  String get kindDescChronicler => 'Tymelyne of dateyd eventys';
+
+  @override
+  String get kindClassicWanderer => 'TymeMappe';
+
+  @override
+  String get kindDescWanderer => 'Mape pynnes lynkyd to tymelyne eventys';
+
+  @override
+  String get kindClassicNarrator => 'Storie';
+
+  @override
+  String get kindDescNarrator => 'Dyalogue nodys connectyd on a routye boarde';
+
+  @override
+  String get kindClassicAuthor => 'Booke';
+
+  @override
+  String get kindDescAuthor => 'Booke wyth chaptyrs and a wrytyng edytore';
+
+  @override
+  String get kindClassicScribe => 'Chatte';
+
+  @override
+  String get kindDescScribe => 'Chatte-style sessyon notys';
+
+  @override
+  String get kindClassicDrafter => 'Docke';
+
+  @override
+  String get kindDescDrafter => 'Blanke markdowne payge';
+
+  @override
+  String get kindClassicExhibitor => 'Exhibite';
+
+  @override
+  String get kindDescExhibitor => 'Stage, weave and tables of bounden things — where bondes be drawn';
+
+  @override
+  String get kindClassicSketcher => 'Drawinge';
+
+  @override
+  String get kindDescSketcher => 'Freehande drawyng canvyss';
+
+  @override
+  String get kindClassicDesigner => 'Graphe';
+
+  @override
+  String get kindDescDesigner => 'Free-forme dyagrame wyth shapys and arrowys';
+
+  @override
+  String get kindClassicDiviner => 'Tabyl of Chaunce';
+
+  @override
+  String get kindDescDiviner => 'Tablys of chaunce and ythe castyng of bonys';
+
+  @override
+  String get moduleNameMode => 'Module names';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Foldre/Projecte/…';
+
+  @override
+  String get moduleInside => 'within';
+
+  @override
+  String get nameModeUnique => 'Unique';
+
+  @override
+  String get nameModeClassic => 'Elder';
+
+  @override
+  String get kindRecent => 'Of late';
+
+  @override
+  String get clsLevelable => 'Levylabyl';
+
+  @override
+  String get clsCondition => 'Condytion';
+
+  @override
+  String get levelColLevel => 'Levyl';
+
+  @override
+  String get levelColInfo => 'Infa';
+
+  @override
+  String get levelAddRow => 'Ecan Rowe';
+
+  @override
+  String get levelNoRows => 'Na Rowes yet';
+
+  @override
+  String get confirmDeleteLevelRow => 'Strike this row?';
+
+  @override
+  String get clsLevelAndCondition => 'Level & Condition';
+
+  @override
+  String get clsLevelAndConditionHint => 'Turn a field into a table of rows (levels), or bind its value to a condition.';
+
+  @override
+  String get clsInsertAbove => 'Insert row above';
+
+  @override
+  String get clsInsertBelow => 'Insert row below';
 }

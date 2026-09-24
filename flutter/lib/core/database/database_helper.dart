@@ -1,10 +1,13 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show debugPrint, kIsWeb;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'db_factory.dart';
+import '../../data/services/legacy_notes.dart';
 import 'file_export.dart';
+import 'module_parents.dart';
 import 'vault_schema.g.dart';
+import 'vault_upgrade.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._();
@@ -50,7 +53,40 @@ class DatabaseHelper {
     for (final sql in vaultCreateStatements) {
       await db.execute(sql);
     }
+    // Each step below is idempotent and cheap once done. A failure is
+    // logged and the app still opens — the same trade EXE's migrations
+    // make: an old table left as it was still reads, a vault that will not
+    // open reads nothing.
+    Future<void> step(String name, Future<void> Function() body) async {
+      try {
+        await body();
+      } catch (e) {
+        debugPrint('vault open: $name failed: $e');
+      }
+    }
+
+    await step('schema upgrade', () => VaultUpgrade().run(db));
+    await _migrateModuleAttributes(db);
+    await step('legacy notes', () => LegacyNotes.migrateAll(db));
+    await step('module parents', () => db.transaction((txn) => normalizeModuleParents(txn)));
     await _ensureDefaultNexus(db);
+  }
+
+  // v5 Part 8 (APP docs/V5.md §12): module_attribute is gone from the shared
+  // schema; its rows are property blocks in page_block now. Same move as
+  // EXE's migratePageBlockV6 — copy, then drop, in one transaction, so a
+  // crash in between leaves the table for the next open to retry.
+  Future<void> _migrateModuleAttributes(Database db) async {
+    final t = await db.rawQuery(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='module_attribute'");
+    if (t.isEmpty) return;
+    await db.transaction((txn) async {
+      await txn.execute(
+          "INSERT INTO page_block (module_ref, block_type, prop_name, prop_type, content, block_order, update_at) "
+          "SELECT module_ref, 'property', attr_name, 'text', attr_value, display_order, update_at "
+          'FROM module_attribute ORDER BY module_ref, display_order, id');
+      await txn.execute('DROP TABLE module_attribute');
+    });
   }
 
   // vaultSchemaVersion only moves forward when src/schema/vault.sql changes

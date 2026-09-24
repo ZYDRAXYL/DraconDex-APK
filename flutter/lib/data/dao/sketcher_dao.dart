@@ -1,5 +1,8 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/sketcher_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Sketcher kind: a module's drawing pages and strokes.
 ///
@@ -22,14 +25,35 @@ class SketcherDao {
       'SELECT COALESCE(MAX(page_order),-1)+1 AS next FROM sketch_page WHERE module_ref=?',
       [moduleRef],
     );
-    return db.insert('sketch_page', {
+    final id = await db.insert('sketch_page', {
       'module_ref': moduleRef,
       'name': name,
       'page_order': Sqflite.firstIntValue(orderRows) ?? 0,
     });
+    await WikiService.resolveDangling(db, name, await WikiService.nexusOfModule(db, moduleRef));
+    return id;
+  }
+
+  Future<void> renamePage(int id, String name) async {
+    final old = await db.rawQuery(
+        'SELECT p.name, m.nexus_ref FROM sketch_page p JOIN module m ON p.module_ref=m.id WHERE p.id=?', [id]);
+    await db.rawUpdate("UPDATE sketch_page SET name=?,update_at=datetime('now') WHERE id=?", [name, id]);
+    if (old.isNotEmpty) {
+      await WikiService.renamed(db, 'skpg_$id', old.first['name'] as String?, name, old.first['nexus_ref'] as int?);
+    }
+  }
+
+  /// Rewrites page_order to [idsInOrder] in one transaction.
+  Future<void> reorderPages(List<int> idsInOrder) async {
+    await db.transaction((txn) async {
+      for (var i = 0; i < idsInOrder.length; i++) {
+        await txn.rawUpdate('UPDATE sketch_page SET page_order=? WHERE id=?', [i, idsInOrder[i]]);
+      }
+    });
   }
 
   Future<void> deletePage(int id) async {
+    await PageBlockDao(db).clearItem('skpg_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('sketch_page', where: 'id=?', whereArgs: [id]);
   }
 

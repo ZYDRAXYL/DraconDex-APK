@@ -25,6 +25,10 @@ class IndexedItem {
   final int? moduleParentId;
   final String? colorCode;
 
+  /// The module's @handle — module rows only (null everywhere else), which
+  /// is what the `handle` filter rule tests (desktop v5 Part 4, V5.md §8.9).
+  final String? handle;
+
   /// Tag names on this item. Only modules and timeline events carry tags:
   /// module_hashtag and event_hashtag exist, while object_hashtag references
   /// the legacy `object` table rather than classifier_object. Everything else
@@ -40,13 +44,16 @@ class IndexedItem {
     required this.moduleKind,
     this.moduleParentId,
     this.colorCode,
+    this.handle,
     this.tags = const [],
   });
 }
 
 /// One condition. `kind` carries [values] (a closed enum, no operator);
-/// `childOf` carries [moduleId] (structural, no operator); `hashtag` and
-/// `name` carry [op] and [value].
+/// `childOf` carries [moduleId] (structural, no operator); `hashtag`,
+/// `name` and `handle` carry [op] and [value]. The field list must match the
+/// desktop's FILTER_FIELDS (DraconDex-EXE mod/filter.js) — a field one side
+/// does not know is dropped when that side re-saves the filter.
 class FilterRule {
   final String field;
   final String op;
@@ -72,7 +79,7 @@ class FilterRule {
 
   Map<String, dynamic> toJson() => {
         'field': field,
-        if (field == 'hashtag' || field == 'name') ...{'op': op, 'value': value},
+        if (field == 'hashtag' || field == 'name' || field == 'handle') ...{'op': op, 'value': value},
         if (field == 'kind') 'values': values,
         if (field == 'childOf') 'moduleId': moduleId,
       };
@@ -142,6 +149,11 @@ bool _matchRule(IndexedItem it, FilterRule r) {
       return it.tags.any((t) => _matchString(t, r.op, r.value));
     case 'name':
       return _matchString(it.name, r.op, r.value);
+    case 'handle':
+      // Same rule as the desktop's mod/filter.js: only a module has a handle,
+      // and a leading '@' in the typed value is ignored.
+      final h = it.handle;
+      return h != null && h.isNotEmpty && _matchString(h, r.op, r.value.replaceFirst(RegExp(r'^@'), ''));
     default:
       return true;
   }

@@ -17,7 +17,10 @@ import '../../../widgets/confirm_dialog.dart';
 /// finger does, rather than guessing and getting it wrong half the time.
 class SketcherContent extends ConsumerStatefulWidget {
   final int moduleId;
-  const SketcherContent({super.key, required this.moduleId});
+  /// The board's height: 360 on a page, the screen's in full screen.
+  final double boardHeight;
+
+  const SketcherContent({super.key, required this.moduleId, this.boardHeight = 360});
 
   @override
   ConsumerState<SketcherContent> createState() => _SketcherContentState();
@@ -206,7 +209,7 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
       Padding(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
         child: SizedBox(
-          height: 360,
+          height: widget.boardHeight,
           child: ClipRect(
             child: InteractiveViewer(
               constrained: false,

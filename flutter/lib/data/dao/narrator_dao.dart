@@ -1,5 +1,8 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../services/wiki_service.dart';
 import '../models/narrator_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Narrator kind.
 class NarratorDao {
@@ -28,9 +31,11 @@ class NarratorDao {
       "UPDATE story_dialogue SET name=?,description=?,update_at=datetime('now') WHERE id=?",
       [name, description, id],
     );
+    await WikiService.reindexSource(db, 'sdlg', id);
   }
 
   Future<void> deleteDialogue(int id) async {
+    await PageBlockDao(db).clearItem('sdlg_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('story_dialogue', where: 'id=?', whereArgs: [id]);
   }
 

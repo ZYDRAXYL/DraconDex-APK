@@ -336,6 +336,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get filterFieldChildOf => 'Inside module';
 
   @override
+  String get filterFieldHandle => 'Handle';
+
+  @override
   String get filterOpIs => 'is';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Delete hashtag?';
 
   @override
-  String get builderNavHome => 'Home';
-
-  @override
-  String get builderNavView => 'View';
-
-  @override
-  String get builderNavFolders => 'Folder Views';
-
-  @override
   String get viewModeTitle => 'View mode';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Compact';
-
-  @override
-  String get recentViewsTitle => 'Recent Views';
-
-  @override
-  String get recentViewsEmpty => 'No recent views yet';
-
-  @override
-  String get recentViewsClear => 'Clear all';
 
   @override
   String get builderNexusRootLabel => 'Nexus root';
@@ -958,4 +943,829 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'A link carries the key in it, so it works even when the sender allowed the QR code only.';
+
+  @override
+  String get navNest => 'Nest';
+
+  @override
+  String get navSearch => 'Search';
+
+  @override
+  String get navOpenPages => 'Pages';
+
+  @override
+  String get navTools => 'Tools';
+
+  @override
+  String get navMore => 'More';
+
+  @override
+  String get openPagesTitle => 'Open pages';
+
+  @override
+  String get openPagesEmpty => 'No pages open. Every page you open stays here until you close it.';
+
+  @override
+  String get openPagesCloseAll => 'Close all';
+
+  @override
+  String get openPageClose => 'Close page';
+
+  @override
+  String get rowOpen => 'Open';
+
+  @override
+  String get rowMore => 'More actions';
+
+  @override
+  String get crumbEmpty => 'Nothing inside';
+
+  @override
+  String get goToTitle => 'Go to';
+
+  @override
+  String get goToHint => 'A name, a path or @handle';
+
+  @override
+  String get searchHint => 'Search names, text and commands';
+
+  @override
+  String get searchThings => 'Things';
+
+  @override
+  String get searchContent => 'Content';
+
+  @override
+  String get searchCommands => 'Commands';
+
+  @override
+  String get searchEmpty => 'Nothing matches';
+
+  @override
+  String get elementPageSoon => 'This element gets its own page in a coming update. For now it opens inside its module.';
+
+  @override
+  String get wikiUnresolved => 'Nothing has this name yet. Make a Drafter page for it?';
+
+  @override
+  String get wikiCreateDrafter => 'Create';
+
+  @override
+  String get btnUndo => 'Undo';
+
+  @override
+  String get pbAddBlock => 'Add block';
+
+  @override
+  String get pbAddHere => 'Add here';
+
+  @override
+  String get pbAddProperty => 'Add property';
+
+  @override
+  String get pbArrange => 'Arrange page';
+
+  @override
+  String get pbArrangeDone => 'Done';
+
+  @override
+  String get pbArrangeHint => 'Drag to reorder. A column block moves as one.';
+
+  @override
+  String get pbArrangeShared => 'This is the layout every element of this module shares. Split the page off first to change only this one.';
+
+  @override
+  String get pbBacklinks => 'Linked from';
+
+  @override
+  String get pbBlockDeleted => 'Block removed';
+
+  @override
+  String get pbBorrow => 'A view from another module';
+
+  @override
+  String get pbColumn => 'Column';
+
+  @override
+  String get pbColumns => 'Columns';
+
+  @override
+  String get pbDivider => 'Divider';
+
+  @override
+  String get pbFullScreen => 'Full screen';
+
+  @override
+  String get pbHeading => 'Heading';
+
+  @override
+  String get pbImage => 'Image';
+
+  @override
+  String get pbItemBody => 'Element';
+
+  @override
+  String get pbItemEmpty => 'Nothing written here yet.';
+
+  @override
+  String get pbNoRelated => 'No links yet';
+
+  @override
+  String get pbNotOnMobile => 'not in this app yet';
+
+  @override
+  String get pbOnlyOnce => 'can be on a page only once';
+
+  @override
+  String get pbOpenFullScreen => 'Open';
+
+  @override
+  String get pbOutgoing => 'Links to';
+
+  @override
+  String get pbPropName => 'Name';
+
+  @override
+  String get pbPropType => 'Type';
+
+  @override
+  String get pbProperties => 'Properties';
+
+  @override
+  String get pbRelated => 'Related';
+
+  @override
+  String get pbRelations => 'Relations';
+
+  @override
+  String get pbRevert => 'Back to the shared layout';
+
+  @override
+  String get pbSharedLayout => 'The shared layout of every element page of this module.';
+
+  @override
+  String get pbSourceGone => 'what this showed is gone';
+
+  @override
+  String get pbSplit => 'Give this page its own layout';
+
+  @override
+  String get pbTags => 'Tags';
+
+  @override
+  String get pbText => 'Text';
+
+  @override
+  String get pbTextEmpty => 'Empty text — tap to write';
+
+  @override
+  String get propTypeCheckbox => 'Checkbox';
+
+  @override
+  String get propTypeDate => 'Date';
+
+  @override
+  String get propTypeNumber => 'Number';
+
+  @override
+  String get propTypeText => 'Text';
+
+  @override
+  String get propTypeTextarea => 'Long text';
+
+  @override
+  String get propTypeUrl => 'Link';
+
+  @override
+  String get viewTable => 'Table';
+
+  @override
+  String get viewListDetail => 'List · detail';
+
+  @override
+  String get viewRelations => 'Relations';
+
+  @override
+  String get viewGrid => 'Grid';
+
+  @override
+  String get viewScene => 'Scene';
+
+  @override
+  String get viewGraph => 'Graph';
+
+  @override
+  String get viewCards => 'Cards';
+
+  @override
+  String get viewBoard => 'Board';
+
+  @override
+  String get viewEdges => 'Edges';
+
+  @override
+  String get viewArea => 'Area';
+
+  @override
+  String get viewMap => 'Map';
+
+  @override
+  String get viewTimeline => 'Timeline';
+
+  @override
+  String get viewCanvas => 'Canvas';
+
+  @override
+  String get viewPages => 'Pages';
+
+  @override
+  String get viewGallery => 'Gallery';
+
+  @override
+  String get viewExport => 'Export';
+
+  @override
+  String get viewEditor => 'Editor';
+
+  @override
+  String get viewOutline => 'Outline';
+
+  @override
+  String get viewReading => 'Reading';
+
+  @override
+  String get viewBook => 'Book';
+
+  @override
+  String get viewRoutes => 'Routes';
+
+  @override
+  String get viewReader => 'Reader';
+
+  @override
+  String get viewDialogue => 'Dialogue';
+
+  @override
+  String get viewOneline => 'One line';
+
+  @override
+  String get viewDownline => 'Down the page';
+
+  @override
+  String get viewCompare => 'Compare';
+
+  @override
+  String get viewCalendar => 'Calendar';
+
+  @override
+  String get viewList => 'List';
+
+  @override
+  String get viewMatrix => 'Matrix';
+
+  @override
+  String get viewChat => 'Chat';
+
+  @override
+  String get viewTranscript => 'Log';
+
+  @override
+  String get clsNoRelations => 'No links between these elements yet';
+
+  @override
+  String get clsTypeText => 'Text';
+
+  @override
+  String get clsTypeTextarea => 'Long text';
+
+  @override
+  String get clsTypeNumber => 'Number';
+
+  @override
+  String get clsTypeDate => 'Date';
+
+  @override
+  String get clsTypeSelect => 'Choice';
+
+  @override
+  String get clsTypeMulti => 'Multiple choice';
+
+  @override
+  String get clsTypeCheckbox => 'Checkbox';
+
+  @override
+  String get clsTypeUrl => 'Link (URL)';
+
+  @override
+  String get clsTypeRelation => 'Relation';
+
+  @override
+  String get clsTypeFormula => 'Formula';
+
+  @override
+  String get clsFieldType => 'Field type';
+
+  @override
+  String get clsChoices => 'Choices (one per line)';
+
+  @override
+  String get clsFormulaHint => 'e.g. {HP} * 2';
+
+  @override
+  String get clsEditField => 'Edit field';
+
+  @override
+  String get clsAddLink => 'Add a link';
+
+  @override
+  String get dateDay => 'Day';
+
+  @override
+  String get dateMonth => 'Month';
+
+  @override
+  String get dateYear => 'Year';
+
+  @override
+  String get dateHour => 'Hour';
+
+  @override
+  String get dateMinute => 'Min';
+
+  @override
+  String get btnClear => 'Clear';
+
+  @override
+  String get groupBy => 'Group by';
+
+  @override
+  String get groupModule => 'Module';
+
+  @override
+  String get relDirected => 'One direction (→)';
+
+  @override
+  String get exhGroup => 'Group';
+
+  @override
+  String get exhNote => 'Note';
+
+  @override
+  String get exhAddElement => 'Place an element';
+
+  @override
+  String get exhAddNote => 'Add a note';
+
+  @override
+  String get exhAddGroup => 'Add a group';
+
+  @override
+  String get exhRemoveFromScene => 'Remove from the scene';
+
+  @override
+  String get exhSceneEmpty => 'Nothing placed yet — place an element or add a note.';
+
+  @override
+  String get auStatusIdea => 'Idea';
+
+  @override
+  String get auStatusDraft => 'Draft';
+
+  @override
+  String get auStatusRevised => 'Revised';
+
+  @override
+  String get auStatusDone => 'Done';
+
+  @override
+  String get auSynopsis => 'Synopsis';
+
+  @override
+  String get auPov => 'Point of view';
+
+  @override
+  String get btnPrevious => 'Previous';
+
+  @override
+  String get btnNext => 'Next';
+
+  @override
+  String get narAddRoute => 'Add route';
+
+  @override
+  String get narScript => 'Script';
+
+  @override
+  String get narPlayTest => 'Play-test';
+
+  @override
+  String get narRestart => 'Restart';
+
+  @override
+  String get narShowHidden => 'Show hidden options';
+
+  @override
+  String get narVariables => 'Variables';
+
+  @override
+  String get narNoVariables => 'No story variables in this Nexus';
+
+  @override
+  String get narPlayEnd => 'The end — no route leads on.';
+
+  @override
+  String get narNoOptionOpen => 'No option is open with these variables.';
+
+  @override
+  String get narHiddenByCondition => 'hidden by its condition';
+
+  @override
+  String get chrCompareWith => 'Compare with';
+
+  @override
+  String get chrNoOtherLine => 'No other Chronicler in this Nexus to compare with';
+
+  @override
+  String get scribeNoMessages => 'No messages yet';
+
+  @override
+  String get wndLocator => 'Map (Locator)';
+
+  @override
+  String get wndNoLocator => 'No Locator in this Nexus yet — its areas are what pins stand in.';
+
+  @override
+  String get wndPickLocator => 'Pick the Locator whose areas these pins stand in.';
+
+  @override
+  String get wndNoAreas => 'That Locator has no areas yet';
+
+  @override
+  String get wndAddPin => 'Put a pin here';
+
+  @override
+  String get skExportPng => 'Share as PNG';
+
+  @override
+  String get dgPanel => 'Panel (comic)';
+
+  @override
+  String get dgBalloon => 'Speech balloon';
+
+  @override
+  String get dgLinkFrom => 'Connect to…';
+
+  @override
+  String get dgPanelShows => 'Show a Sketcher page';
+
+  @override
+  String get dgBalloonSpeaker => 'Who speaks';
+
+  @override
+  String get dgNumberByPosition => 'Number by position';
+
+  @override
+  String get dgShowOrder => 'Show reading order';
+
+  @override
+  String get divNewTable => 'New table';
+
+  @override
+  String get divDice => 'Dice';
+
+  @override
+  String get divDiceHelp => 'Empty = weighted';
+
+  @override
+  String get divBadDice => 'Not a dice expression';
+
+  @override
+  String get divModePick => 'Pick one';
+
+  @override
+  String get divModeJoin => 'Join all';
+
+  @override
+  String get divWeighted => 'Weighted';
+
+  @override
+  String get divEntryText => 'Text';
+
+  @override
+  String get divFrom => 'From';
+
+  @override
+  String get divTo => 'To';
+
+  @override
+  String get divWeight => 'Weight';
+
+  @override
+  String get divRollsTable => 'Roll another table here';
+
+  @override
+  String get divLinkEntity => 'Name something';
+
+  @override
+  String get divUnlink => 'Remove the link';
+
+  @override
+  String get divNoTables => 'No tables yet';
+
+  @override
+  String get divRoll => 'Roll';
+
+  @override
+  String get divEntries => 'Entries';
+
+  @override
+  String get divNoEntries => 'No entries yet';
+
+  @override
+  String get divHistory => 'History';
+
+  @override
+  String get divQuickRoll => 'Just roll: 3d6';
+
+  @override
+  String get trashTitle => 'Trash';
+
+  @override
+  String get trashMoved => 'Moved to the Trash';
+
+  @override
+  String get trashEmptyAll => 'Empty the Trash';
+
+  @override
+  String get trashEmptyConfirm => 'Everything in the Trash is deleted for good.';
+
+  @override
+  String get trashNothing => 'The Trash is empty';
+
+  @override
+  String get trashNote => 'A restored module comes back with everything that was in it and its relations — but not its version history.';
+
+  @override
+  String get trashRestore => 'Restore';
+
+  @override
+  String get trashModules => 'modules';
+
+  @override
+  String get trashDeleteForever => 'Delete this for good? It cannot be restored after this.';
+
+  @override
+  String get problemsTitle => 'Problems';
+
+  @override
+  String get problemsLinks => 'Unresolved links';
+
+  @override
+  String get problemsEmpty => 'Empty modules';
+
+  @override
+  String get problemsRelations => 'Relations with a missing end';
+
+  @override
+  String get problemsNone => 'No problems found';
+
+  @override
+  String get assetsTitle => 'Assets';
+
+  @override
+  String get assetsFromDevice => 'Add from this device';
+
+  @override
+  String get assetsAddUrl => 'Add a link (URL)';
+
+  @override
+  String get assetsNotice => 'Assets stay on this device: sync carries their names, not the files.';
+
+  @override
+  String get assetsNone => 'No assets yet';
+
+  @override
+  String get assetsTooBig => 'Too big to keep in the browser';
+
+  @override
+  String get pbChooseImage => 'Choose an image';
+
+  @override
+  String get csvImportTitle => 'Import a CSV';
+
+  @override
+  String get fromTemplate => 'From a template';
+
+  @override
+  String get guideTitle => 'The guide';
+
+  @override
+  String get guideDesc => 'A small working world that shows every kind';
+
+  @override
+  String get guideAdd => 'Add the guide';
+
+  @override
+  String get mddxImport => 'Import a module file (.mddx)';
+
+  @override
+  String get mddxExport => 'Export as .mddx';
+
+  @override
+  String get mddxNotModule => 'That file is not a DraconDex module';
+
+  @override
+  String get kindCatStructure => 'Structure';
+
+  @override
+  String get kindCatView => 'View';
+
+  @override
+  String get kindCatData => 'Data';
+
+  @override
+  String get kindGroupNotes => 'Notes & documents';
+
+  @override
+  String get kindGroupData => 'Data & categories';
+
+  @override
+  String get kindGroupMapTime => 'Maps & time';
+
+  @override
+  String get kindGroupStory => 'Story';
+
+  @override
+  String get kindGroupDraw => 'Drawing & design';
+
+  @override
+  String get nexusStartWith => 'Start with';
+
+  @override
+  String get nexusStartEmpty => 'Nothing — an empty Nexus';
+
+  @override
+  String get csvPick => 'Choose a CSV file';
+
+  @override
+  String get csvHint => 'The first row names the fields, the first column names the elements.';
+
+  @override
+  String get csvCreate => 'Create the Classifier';
+
+  @override
+  String get csvSkip => 'Leave out';
+
+  @override
+  String get csvNameColumn => 'Names';
+
+  @override
+  String get csvTruncated => 'only the first 5,000 rows';
+
+  @override
+  String get csvTooLarge => 'That file is over 8 MB';
+
+  @override
+  String get csvEmpty => 'No rows to import — a header and at least one row are needed';
+
+  @override
+  String get kindClassicCollector => 'Folder';
+
+  @override
+  String get kindDescCollector => 'Folder that groups other modules';
+
+  @override
+  String get kindClassicManager => 'Project';
+
+  @override
+  String get kindDescManager => 'Browse child modules as cards, list or table';
+
+  @override
+  String get kindClassicInspector => 'Detail';
+
+  @override
+  String get kindDescInspector => 'One note page for this item';
+
+  @override
+  String get kindClassicClassifier => 'Category';
+
+  @override
+  String get kindDescClassifier => 'Categorize items with custom fields';
+
+  @override
+  String get kindClassicLocator => 'Map';
+
+  @override
+  String get kindDescLocator => 'Map with pins and areas';
+
+  @override
+  String get kindClassicChronicler => 'Timeline';
+
+  @override
+  String get kindDescChronicler => 'Timeline of dated events';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Map pins linked to timeline events';
+
+  @override
+  String get kindClassicNarrator => 'Story';
+
+  @override
+  String get kindDescNarrator => 'Dialogue nodes on a connected route board';
+
+  @override
+  String get kindClassicAuthor => 'Book';
+
+  @override
+  String get kindDescAuthor => 'Book with chapters and a writing editor';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Chat-style session notes';
+
+  @override
+  String get kindClassicDrafter => 'Doc';
+
+  @override
+  String get kindDescDrafter => 'Blank markdown page';
+
+  @override
+  String get kindClassicExhibitor => 'Exhibit';
+
+  @override
+  String get kindDescExhibitor => 'Scene, graph and tables of linked items — where relations are drawn';
+
+  @override
+  String get kindClassicSketcher => 'Drawing';
+
+  @override
+  String get kindDescSketcher => 'Freehand drawing canvas';
+
+  @override
+  String get kindClassicDesigner => 'Graph';
+
+  @override
+  String get kindDescDesigner => 'Free-form diagram with shapes and arrows';
+
+  @override
+  String get kindClassicDiviner => 'Random table';
+
+  @override
+  String get kindDescDiviner => 'Random tables and dice rolls';
+
+  @override
+  String get moduleNameMode => 'Module names';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Folder/Project/…';
+
+  @override
+  String get moduleInside => 'inside';
+
+  @override
+  String get nameModeUnique => 'Unique';
+
+  @override
+  String get nameModeClassic => 'Classic';
+
+  @override
+  String get kindRecent => 'Recent';
+
+  @override
+  String get clsLevelable => 'Levelable';
+
+  @override
+  String get clsCondition => 'Condition';
+
+  @override
+  String get levelColLevel => 'Level';
+
+  @override
+  String get levelColInfo => 'Info';
+
+  @override
+  String get levelAddRow => 'Add row';
+
+  @override
+  String get levelNoRows => 'No rows yet';
+
+  @override
+  String get confirmDeleteLevelRow => 'Delete this row?';
+
+  @override
+  String get clsLevelAndCondition => 'Level & Condition';
+
+  @override
+  String get clsLevelAndConditionHint => 'Turn a field into a table of rows (levels), or tie its value to a condition.';
+
+  @override
+  String get clsInsertAbove => 'Insert row above';
+
+  @override
+  String get clsInsertBelow => 'Insert row below';
 }

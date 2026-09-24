@@ -336,6 +336,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get filterFieldChildOf => 'Dentro do módulo';
 
   @override
+  String get filterFieldHandle => 'Identificador';
+
+  @override
   String get filterOpIs => 'é';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Excluir tag?';
 
   @override
-  String get builderNavHome => 'Início';
-
-  @override
-  String get builderNavView => 'Visualização';
-
-  @override
-  String get builderNavFolders => 'Visualizações de pasta';
-
-  @override
   String get viewModeTitle => 'Modo de visualização';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Compacta';
-
-  @override
-  String get recentViewsTitle => 'Visualizações recentes';
-
-  @override
-  String get recentViewsEmpty => 'Ainda não há visualizações recentes';
-
-  @override
-  String get recentViewsClear => 'Limpar tudo';
 
   @override
   String get builderNexusRootLabel => 'Raiz do Nexus';
@@ -958,4 +943,829 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'O link leva a chave dentro dele, então funciona mesmo se quem enviou permitiu apenas o QR.';
+
+  @override
+  String get navNest => 'Ninho';
+
+  @override
+  String get navSearch => 'Buscar';
+
+  @override
+  String get navOpenPages => 'Páginas';
+
+  @override
+  String get navTools => 'Ferramentas';
+
+  @override
+  String get navMore => 'Mais';
+
+  @override
+  String get openPagesTitle => 'Páginas abertas';
+
+  @override
+  String get openPagesEmpty => 'Nenhuma página aberta. Cada página que você abre fica aqui até ser fechada.';
+
+  @override
+  String get openPagesCloseAll => 'Fechar todas';
+
+  @override
+  String get openPageClose => 'Fechar página';
+
+  @override
+  String get rowOpen => 'Abrir';
+
+  @override
+  String get rowMore => 'Mais ações';
+
+  @override
+  String get crumbEmpty => 'Nada aqui dentro';
+
+  @override
+  String get goToTitle => 'Ir para';
+
+  @override
+  String get goToHint => 'Um nome, um caminho ou @handle';
+
+  @override
+  String get searchHint => 'Buscar nomes, texto e comandos';
+
+  @override
+  String get searchThings => 'Coisas';
+
+  @override
+  String get searchContent => 'Conteúdo';
+
+  @override
+  String get searchCommands => 'Comandos';
+
+  @override
+  String get searchEmpty => 'Nenhum resultado';
+
+  @override
+  String get elementPageSoon => 'Este elemento terá sua própria página em uma próxima atualização. Por enquanto, ele abre dentro do seu módulo.';
+
+  @override
+  String get wikiUnresolved => 'Nada tem este nome ainda. Criar uma página Drafter para ele?';
+
+  @override
+  String get wikiCreateDrafter => 'Criar';
+
+  @override
+  String get btnUndo => 'Desfazer';
+
+  @override
+  String get pbAddBlock => 'Adicionar bloco';
+
+  @override
+  String get pbAddHere => 'Adicionar aqui';
+
+  @override
+  String get pbAddProperty => 'Adicionar propriedade';
+
+  @override
+  String get pbArrange => 'Organizar página';
+
+  @override
+  String get pbArrangeDone => 'Pronto';
+
+  @override
+  String get pbArrangeHint => 'Arraste para reordenar. Um bloco de colunas se move inteiro.';
+
+  @override
+  String get pbArrangeShared => 'Este é o layout que todos os elementos deste módulo compartilham. Separe a página primeiro para mudar só esta.';
+
+  @override
+  String get pbBacklinks => 'Vinculado de';
+
+  @override
+  String get pbBlockDeleted => 'Bloco removido';
+
+  @override
+  String get pbBorrow => 'Uma visão de outro módulo';
+
+  @override
+  String get pbColumn => 'Coluna';
+
+  @override
+  String get pbColumns => 'Colunas';
+
+  @override
+  String get pbDivider => 'Divisor';
+
+  @override
+  String get pbFullScreen => 'Tela cheia';
+
+  @override
+  String get pbHeading => 'Título';
+
+  @override
+  String get pbImage => 'Imagem';
+
+  @override
+  String get pbItemBody => 'Elemento';
+
+  @override
+  String get pbItemEmpty => 'Nada escrito aqui ainda.';
+
+  @override
+  String get pbNoRelated => 'Ainda sem vínculos';
+
+  @override
+  String get pbNotOnMobile => 'ainda não disponível neste app';
+
+  @override
+  String get pbOnlyOnce => 'só pode aparecer uma vez por página';
+
+  @override
+  String get pbOpenFullScreen => 'Abrir';
+
+  @override
+  String get pbOutgoing => 'Vincula a';
+
+  @override
+  String get pbPropName => 'Nome';
+
+  @override
+  String get pbPropType => 'Tipo';
+
+  @override
+  String get pbProperties => 'Propriedades';
+
+  @override
+  String get pbRelated => 'Relacionado';
+
+  @override
+  String get pbRelations => 'Relações';
+
+  @override
+  String get pbRevert => 'Voltar ao layout compartilhado';
+
+  @override
+  String get pbSharedLayout => 'O layout compartilhado de todas as páginas de elemento deste módulo.';
+
+  @override
+  String get pbSourceGone => 'o que mostrava não existe mais';
+
+  @override
+  String get pbSplit => 'Dar a esta página seu próprio layout';
+
+  @override
+  String get pbTags => 'Tags';
+
+  @override
+  String get pbText => 'Texto';
+
+  @override
+  String get pbTextEmpty => 'Texto vazio — toque para escrever';
+
+  @override
+  String get propTypeCheckbox => 'Caixa de seleção';
+
+  @override
+  String get propTypeDate => 'Data';
+
+  @override
+  String get propTypeNumber => 'Número';
+
+  @override
+  String get propTypeText => 'Texto';
+
+  @override
+  String get propTypeTextarea => 'Texto longo';
+
+  @override
+  String get propTypeUrl => 'Link';
+
+  @override
+  String get viewTable => 'Tabela';
+
+  @override
+  String get viewListDetail => 'Lista · detalhe';
+
+  @override
+  String get viewRelations => 'Relações';
+
+  @override
+  String get viewGrid => 'Grade';
+
+  @override
+  String get viewScene => 'Cena';
+
+  @override
+  String get viewGraph => 'Grafo';
+
+  @override
+  String get viewCards => 'Cartões';
+
+  @override
+  String get viewBoard => 'Quadro';
+
+  @override
+  String get viewEdges => 'Arestas';
+
+  @override
+  String get viewArea => 'Área';
+
+  @override
+  String get viewMap => 'Mapa';
+
+  @override
+  String get viewTimeline => 'Linha do tempo';
+
+  @override
+  String get viewCanvas => 'Tela';
+
+  @override
+  String get viewPages => 'Páginas';
+
+  @override
+  String get viewGallery => 'Galeria';
+
+  @override
+  String get viewExport => 'Exportar';
+
+  @override
+  String get viewEditor => 'Editor';
+
+  @override
+  String get viewOutline => 'Esboço';
+
+  @override
+  String get viewReading => 'Leitura';
+
+  @override
+  String get viewBook => 'Livro';
+
+  @override
+  String get viewRoutes => 'Rotas';
+
+  @override
+  String get viewReader => 'Leitor';
+
+  @override
+  String get viewDialogue => 'Diálogo';
+
+  @override
+  String get viewOneline => 'Uma linha';
+
+  @override
+  String get viewDownline => 'Para baixo';
+
+  @override
+  String get viewCompare => 'Comparar';
+
+  @override
+  String get viewCalendar => 'Calendário';
+
+  @override
+  String get viewList => 'Lista';
+
+  @override
+  String get viewMatrix => 'Matriz';
+
+  @override
+  String get viewChat => 'Chat';
+
+  @override
+  String get viewTranscript => 'Registro';
+
+  @override
+  String get clsNoRelations => 'Ainda não há ligações entre estes elementos';
+
+  @override
+  String get clsTypeText => 'Texto';
+
+  @override
+  String get clsTypeTextarea => 'Texto longo';
+
+  @override
+  String get clsTypeNumber => 'Número';
+
+  @override
+  String get clsTypeDate => 'Data';
+
+  @override
+  String get clsTypeSelect => 'Escolha';
+
+  @override
+  String get clsTypeMulti => 'Escolha múltipla';
+
+  @override
+  String get clsTypeCheckbox => 'Caixa de seleção';
+
+  @override
+  String get clsTypeUrl => 'Link (URL)';
+
+  @override
+  String get clsTypeRelation => 'Relação';
+
+  @override
+  String get clsTypeFormula => 'Fórmula';
+
+  @override
+  String get clsFieldType => 'Tipo de campo';
+
+  @override
+  String get clsChoices => 'Opções (uma por linha)';
+
+  @override
+  String get clsFormulaHint => 'ex.: {HP} * 2';
+
+  @override
+  String get clsEditField => 'Editar campo';
+
+  @override
+  String get clsAddLink => 'Adicionar ligação';
+
+  @override
+  String get dateDay => 'Dia';
+
+  @override
+  String get dateMonth => 'Mês';
+
+  @override
+  String get dateYear => 'Ano';
+
+  @override
+  String get dateHour => 'Hora';
+
+  @override
+  String get dateMinute => 'Min';
+
+  @override
+  String get btnClear => 'Limpar';
+
+  @override
+  String get groupBy => 'Agrupar por';
+
+  @override
+  String get groupModule => 'Módulo';
+
+  @override
+  String get relDirected => 'Um sentido (→)';
+
+  @override
+  String get exhGroup => 'Grupo';
+
+  @override
+  String get exhNote => 'Nota';
+
+  @override
+  String get exhAddElement => 'Colocar um elemento';
+
+  @override
+  String get exhAddNote => 'Adicionar nota';
+
+  @override
+  String get exhAddGroup => 'Adicionar grupo';
+
+  @override
+  String get exhRemoveFromScene => 'Remover da cena';
+
+  @override
+  String get exhSceneEmpty => 'Nada colocado ainda — coloque um elemento ou adicione uma nota.';
+
+  @override
+  String get auStatusIdea => 'Ideia';
+
+  @override
+  String get auStatusDraft => 'Rascunho';
+
+  @override
+  String get auStatusRevised => 'Revisto';
+
+  @override
+  String get auStatusDone => 'Concluído';
+
+  @override
+  String get auSynopsis => 'Sinopse';
+
+  @override
+  String get auPov => 'Ponto de vista';
+
+  @override
+  String get btnPrevious => 'Anterior';
+
+  @override
+  String get btnNext => 'Seguinte';
+
+  @override
+  String get narAddRoute => 'Adicionar rota';
+
+  @override
+  String get narScript => 'Guião';
+
+  @override
+  String get narPlayTest => 'Testar';
+
+  @override
+  String get narRestart => 'Recomeçar';
+
+  @override
+  String get narShowHidden => 'Mostrar opções ocultas';
+
+  @override
+  String get narVariables => 'Variáveis';
+
+  @override
+  String get narNoVariables => 'Não há variáveis de história neste Nexus';
+
+  @override
+  String get narPlayEnd => 'Fim — nenhuma rota continua.';
+
+  @override
+  String get narNoOptionOpen => 'Nenhuma opção está aberta com estas variáveis.';
+
+  @override
+  String get narHiddenByCondition => 'oculta pela condição';
+
+  @override
+  String get chrCompareWith => 'Comparar com';
+
+  @override
+  String get chrNoOtherLine => 'Não há outro Chronicler neste Nexus para comparar';
+
+  @override
+  String get scribeNoMessages => 'Ainda não há mensagens';
+
+  @override
+  String get wndLocator => 'Mapa (Locator)';
+
+  @override
+  String get wndNoLocator => 'Ainda não há Locator neste Nexus — as suas áreas são onde os pinos ficam.';
+
+  @override
+  String get wndPickLocator => 'Escolha o Locator em cujas áreas estes pinos ficam.';
+
+  @override
+  String get wndNoAreas => 'Esse Locator ainda não tem áreas';
+
+  @override
+  String get wndAddPin => 'Colocar um pino aqui';
+
+  @override
+  String get skExportPng => 'Partilhar como PNG';
+
+  @override
+  String get dgPanel => 'Vinheta';
+
+  @override
+  String get dgBalloon => 'Balão de fala';
+
+  @override
+  String get dgLinkFrom => 'Ligar a…';
+
+  @override
+  String get dgPanelShows => 'Mostrar uma página do Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'Quem fala';
+
+  @override
+  String get dgNumberByPosition => 'Numerar pela posição';
+
+  @override
+  String get dgShowOrder => 'Mostrar ordem de leitura';
+
+  @override
+  String get divNewTable => 'Nova tabela';
+
+  @override
+  String get divDice => 'Dados';
+
+  @override
+  String get divDiceHelp => 'Vazio = ponderado';
+
+  @override
+  String get divBadDice => 'Não é uma expressão de dados';
+
+  @override
+  String get divModePick => 'Escolher um';
+
+  @override
+  String get divModeJoin => 'Juntar todos';
+
+  @override
+  String get divWeighted => 'Ponderado';
+
+  @override
+  String get divEntryText => 'Texto';
+
+  @override
+  String get divFrom => 'De';
+
+  @override
+  String get divTo => 'Até';
+
+  @override
+  String get divWeight => 'Peso';
+
+  @override
+  String get divRollsTable => 'Lançar outra tabela aqui';
+
+  @override
+  String get divLinkEntity => 'Nomear algo';
+
+  @override
+  String get divUnlink => 'Remover a ligação';
+
+  @override
+  String get divNoTables => 'Ainda não há tabelas';
+
+  @override
+  String get divRoll => 'Lançar';
+
+  @override
+  String get divEntries => 'Entradas';
+
+  @override
+  String get divNoEntries => 'Ainda não há entradas';
+
+  @override
+  String get divHistory => 'Histórico';
+
+  @override
+  String get divQuickRoll => 'Só lançar: 3d6';
+
+  @override
+  String get trashTitle => 'Lixo';
+
+  @override
+  String get trashMoved => 'Movido para o Lixo';
+
+  @override
+  String get trashEmptyAll => 'Esvaziar o Lixo';
+
+  @override
+  String get trashEmptyConfirm => 'Tudo no Lixo é apagado para sempre.';
+
+  @override
+  String get trashNothing => 'O Lixo está vazio';
+
+  @override
+  String get trashNote => 'Um módulo restaurado volta com tudo o que tinha e as suas relações — mas sem o histórico de versões.';
+
+  @override
+  String get trashRestore => 'Restaurar';
+
+  @override
+  String get trashModules => 'módulos';
+
+  @override
+  String get trashDeleteForever => 'Apagar para sempre? Não poderá ser restaurado.';
+
+  @override
+  String get problemsTitle => 'Problemas';
+
+  @override
+  String get problemsLinks => 'Ligações por resolver';
+
+  @override
+  String get problemsEmpty => 'Módulos vazios';
+
+  @override
+  String get problemsRelations => 'Relações com uma ponta em falta';
+
+  @override
+  String get problemsNone => 'Nenhum problema encontrado';
+
+  @override
+  String get assetsTitle => 'Recursos';
+
+  @override
+  String get assetsFromDevice => 'Adicionar deste dispositivo';
+
+  @override
+  String get assetsAddUrl => 'Adicionar ligação (URL)';
+
+  @override
+  String get assetsNotice => 'Os recursos ficam neste dispositivo: a sincronização leva os nomes, não os ficheiros.';
+
+  @override
+  String get assetsNone => 'Ainda não há recursos';
+
+  @override
+  String get assetsTooBig => 'Demasiado grande para o navegador';
+
+  @override
+  String get pbChooseImage => 'Escolher imagem';
+
+  @override
+  String get csvImportTitle => 'Importar um CSV';
+
+  @override
+  String get fromTemplate => 'A partir de um modelo';
+
+  @override
+  String get guideTitle => 'O guia';
+
+  @override
+  String get guideDesc => 'Um pequeno mundo que mostra cada tipo';
+
+  @override
+  String get guideAdd => 'Adicionar o guia';
+
+  @override
+  String get mddxImport => 'Importar um ficheiro de módulo (.mddx)';
+
+  @override
+  String get mddxExport => 'Exportar como .mddx';
+
+  @override
+  String get mddxNotModule => 'Esse ficheiro não é um módulo DraconDex';
+
+  @override
+  String get kindCatStructure => 'Estrutura';
+
+  @override
+  String get kindCatView => 'Vista';
+
+  @override
+  String get kindCatData => 'Dados';
+
+  @override
+  String get kindGroupNotes => 'Notas e documentos';
+
+  @override
+  String get kindGroupData => 'Dados e categorias';
+
+  @override
+  String get kindGroupMapTime => 'Mapas e tempo';
+
+  @override
+  String get kindGroupStory => 'História';
+
+  @override
+  String get kindGroupDraw => 'Desenho e design';
+
+  @override
+  String get nexusStartWith => 'Começar com';
+
+  @override
+  String get nexusStartEmpty => 'Nada — um Nexus vazio';
+
+  @override
+  String get csvPick => 'Escolher um ficheiro CSV';
+
+  @override
+  String get csvHint => 'A primeira linha nomeia os campos; a primeira coluna, os elementos.';
+
+  @override
+  String get csvCreate => 'Criar o Classifier';
+
+  @override
+  String get csvSkip => 'Omitir';
+
+  @override
+  String get csvNameColumn => 'Nomes';
+
+  @override
+  String get csvTruncated => 'apenas as primeiras 5.000 linhas';
+
+  @override
+  String get csvTooLarge => 'O ficheiro tem mais de 8 MB';
+
+  @override
+  String get csvEmpty => 'Sem linhas — é preciso um cabeçalho e pelo menos uma linha';
+
+  @override
+  String get kindClassicCollector => 'Pasta';
+
+  @override
+  String get kindDescCollector => 'Pasta que agrupa outros módulos';
+
+  @override
+  String get kindClassicManager => 'Projeto';
+
+  @override
+  String get kindDescManager => 'Veja os módulos filhos em cartões, lista ou tabela';
+
+  @override
+  String get kindClassicInspector => 'Detalhe';
+
+  @override
+  String get kindDescInspector => 'Uma página de notas com os detalhes deste item';
+
+  @override
+  String get kindClassicClassifier => 'Categoria';
+
+  @override
+  String get kindDescClassifier => 'Categorize itens com campos personalizados';
+
+  @override
+  String get kindClassicLocator => 'Mapa';
+
+  @override
+  String get kindDescLocator => 'Mapa com pinos e áreas';
+
+  @override
+  String get kindClassicChronicler => 'Linha do tempo';
+
+  @override
+  String get kindDescChronicler => 'Linha do tempo de eventos com data';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Pinos do mapa ligados a eventos da linha do tempo';
+
+  @override
+  String get kindClassicNarrator => 'História';
+
+  @override
+  String get kindDescNarrator => 'Nós de diálogo conectados em um quadro de rotas';
+
+  @override
+  String get kindClassicAuthor => 'Livro';
+
+  @override
+  String get kindDescAuthor => 'Livro com capítulos e editor de escrita';
+
+  @override
+  String get kindClassicScribe => 'Chat';
+
+  @override
+  String get kindDescScribe => 'Notas de sessão estilo chat';
+
+  @override
+  String get kindClassicDrafter => 'Documento';
+
+  @override
+  String get kindDescDrafter => 'Página markdown em branco';
+
+  @override
+  String get kindClassicExhibitor => 'Exposição';
+
+  @override
+  String get kindDescExhibitor => 'Cena, grafo e tabelas de itens vinculados — onde as relações são desenhadas';
+
+  @override
+  String get kindClassicSketcher => 'Desenho';
+
+  @override
+  String get kindDescSketcher => 'Tela de desenho livre';
+
+  @override
+  String get kindClassicDesigner => 'Grafo';
+
+  @override
+  String get kindDescDesigner => 'Diagrama livre com formas e setas';
+
+  @override
+  String get kindClassicDiviner => 'Tabela aleatória';
+
+  @override
+  String get kindDescDiviner => 'Tabelas aleatórias e rolagens de dados';
+
+  @override
+  String get moduleNameMode => 'Nomes de módulo';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Pasta/Projeto/…';
+
+  @override
+  String get moduleInside => 'dentro';
+
+  @override
+  String get nameModeUnique => 'Único';
+
+  @override
+  String get nameModeClassic => 'Clássico';
+
+  @override
+  String get kindRecent => 'Recentes';
+
+  @override
+  String get clsLevelable => 'Nivelável';
+
+  @override
+  String get clsCondition => 'Condição';
+
+  @override
+  String get levelColLevel => 'Nível';
+
+  @override
+  String get levelColInfo => 'Informação';
+
+  @override
+  String get levelAddRow => 'Adicionar linha';
+
+  @override
+  String get levelNoRows => 'Ainda não há linhas';
+
+  @override
+  String get confirmDeleteLevelRow => 'Excluir esta linha?';
+
+  @override
+  String get clsLevelAndCondition => 'Nível e condição';
+
+  @override
+  String get clsLevelAndConditionHint => 'Transforma um campo numa tabela de linhas (níveis) ou liga o valor a uma condição.';
+
+  @override
+  String get clsInsertAbove => 'Inserir linha acima';
+
+  @override
+  String get clsInsertBelow => 'Inserir linha abaixo';
 }

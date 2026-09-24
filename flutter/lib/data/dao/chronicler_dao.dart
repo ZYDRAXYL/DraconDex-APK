@@ -1,11 +1,22 @@
 import 'package:sqflite/sqflite.dart';
+
+import '../../core/calendar/calendar_engine.dart';
+import '../services/wiki_service.dart';
 import '../models/chronicler_model.dart';
+import 'page_block_dao.dart';
 
 /// Data access for the Chronicler kind: one timeline per module, and the
 /// dated events on it.
 class ChroniclerDao {
   final Database db;
   ChroniclerDao(this.db);
+
+  /// The module's calendar (module_ui.calendarConfig, authored on the
+  /// desktop), or the international one when it has none.
+  Future<CalSpec> getCalendar(int moduleRef) async {
+    final r = await db.rawQuery("SELECT ui_value FROM module_ui WHERE module_ref=? AND ui_key='calendarConfig'", [moduleRef]);
+    return calSpecNormalize(r.isEmpty ? null : r.first['ui_value']);
+  }
 
   /// The module's timeline, created on first use. A module has at most one;
   /// `timeline.module_ref` is what ties it to the module, and the Electron
@@ -107,9 +118,11 @@ class ChroniclerDao {
       "update_at=datetime('now') WHERE id=?",
       [name, story, startDateId, endDateId, id],
     );
+    await WikiService.reindexSource(db, 'tlev', id);
   }
 
   Future<void> deleteEvent(int id) async {
+    await PageBlockDao(db).clearItem('tlev_$id'); // its page goes with it (EXE clearItemBlocks)
     await db.delete('timeline_event', where: 'id=?', whereArgs: [id]);
   }
 }

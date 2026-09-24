@@ -38,11 +38,50 @@ class DesignerDao {
     );
   }
 
+  /// A comic panel or balloon dragged by its corner grip (EXE resizeNode).
+  Future<void> resizeNode(int id, double w, double h) async {
+    await db.rawUpdate("UPDATE design_node SET w=?,h=?,update_at=datetime('now') WHERE id=?", [w, h, id]);
+  }
+
   Future<void> updateNode(int id, {String? text, String? shape}) async {
     await db.rawUpdate(
       "UPDATE design_node SET node_text=?,shape=?,update_at=datetime('now') WHERE id=?",
       [text, shape ?? 'box', id],
     );
+  }
+
+  Future<void> setLinker(int id, String? key) async {
+    await db.rawUpdate("UPDATE design_node SET linker_key=?,update_at=datetime('now') WHERE id=?", [key, id]);
+  }
+
+  /// "Number by position" (EXE renumberDesignReadOrder): panels and
+  /// balloons in rows — a node starting above the middle of the row's first
+  /// node joins that row — rows top to bottom, each left to right.
+  Future<void> renumberReadOrder(int moduleRef) async {
+    final rows = [
+      ...await db.rawQuery(
+          "SELECT id, x, y, COALESCE(h, 120) AS h FROM design_node WHERE module_ref=? AND shape IN ('panel','balloon')",
+          [moduleRef]),
+    ]..sort((a, b) => (a['y'] as num).compareTo(b['y'] as num));
+    final bands = <(num, num, List<Map<String, Object?>>)>[];
+    for (final r in rows) {
+      final y = r['y'] as num;
+      final band = bands.where((b) => y < b.$1 + b.$2 / 2).firstOrNull;
+      if (band != null) {
+        band.$3.add(r);
+      } else {
+        bands.add((y, r['h'] as num, [r]));
+      }
+    }
+    var n = 0;
+    await db.transaction((txn) async {
+      for (final b in bands) {
+        b.$3.sort((a, c) => (a['x'] as num).compareTo(c['x'] as num));
+        for (final r in b.$3) {
+          await txn.rawUpdate('UPDATE design_node SET read_order=? WHERE id=?', [++n, r['id']]);
+        }
+      }
+    });
   }
 
   /// design_edge references design_node ON DELETE CASCADE, so removing a node

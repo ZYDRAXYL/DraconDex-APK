@@ -336,6 +336,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get filterFieldChildOf => 'ในโมดูล';
 
   @override
+  String get filterFieldHandle => 'แฮนเดิล';
+
+  @override
   String get filterOpIs => 'เท่ากับ';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsTh extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'ลบแท็กนี้หรือไม่?';
 
   @override
-  String get builderNavHome => 'หน้าแรก';
-
-  @override
-  String get builderNavView => 'มุมมอง';
-
-  @override
-  String get builderNavFolders => 'โฟลเดอร์มุมมอง';
-
-  @override
   String get viewModeTitle => 'รูปแบบมุมมอง';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'กระชับ';
-
-  @override
-  String get recentViewsTitle => 'มุมมองล่าสุด';
-
-  @override
-  String get recentViewsEmpty => 'ยังไม่มีมุมมองล่าสุด';
-
-  @override
-  String get recentViewsClear => 'ล้างทั้งหมด';
 
   @override
   String get builderNexusRootLabel => 'รากของ Nexus';
@@ -958,4 +943,829 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'ลิงก์มีคีย์อยู่ในตัว จึงใช้ได้แม้ผู้ส่งจะอนุญาตเฉพาะการสแกน QR';
+
+  @override
+  String get navNest => 'รัง';
+
+  @override
+  String get navSearch => 'ค้นหา';
+
+  @override
+  String get navOpenPages => 'หน้า';
+
+  @override
+  String get navTools => 'เครื่องมือ';
+
+  @override
+  String get navMore => 'เพิ่มเติม';
+
+  @override
+  String get openPagesTitle => 'หน้าที่เปิด';
+
+  @override
+  String get openPagesEmpty => 'ยังไม่มีหน้าที่เปิด หน้าที่เปิดจะอยู่ตรงนี้จนกว่าจะปิด';
+
+  @override
+  String get openPagesCloseAll => 'ปิดทั้งหมด';
+
+  @override
+  String get openPageClose => 'ปิดหน้า';
+
+  @override
+  String get rowOpen => 'เปิด';
+
+  @override
+  String get rowMore => 'การกระทำเพิ่มเติม';
+
+  @override
+  String get crumbEmpty => 'ไม่มีอะไรข้างใน';
+
+  @override
+  String get goToTitle => 'ไปที่';
+
+  @override
+  String get goToHint => 'ชื่อ path หรือ @handle';
+
+  @override
+  String get searchHint => 'ค้นหาชื่อ ข้อความ และคำสั่ง';
+
+  @override
+  String get searchThings => 'สิ่งของ';
+
+  @override
+  String get searchContent => 'เนื้อหา';
+
+  @override
+  String get searchCommands => 'คำสั่ง';
+
+  @override
+  String get searchEmpty => 'ไม่พบผลลัพธ์';
+
+  @override
+  String get elementPageSoon => 'องค์ประกอบนี้จะมีหน้าของตัวเองในอัปเดตถัดไป ตอนนี้จะเปิดอยู่ใน module ของมัน';
+
+  @override
+  String get wikiUnresolved => 'ยังไม่มีอะไรชื่อนี้ สร้างหน้า Drafter ชื่อนี้ไหม?';
+
+  @override
+  String get wikiCreateDrafter => 'สร้าง';
+
+  @override
+  String get btnUndo => 'เลิกทำ';
+
+  @override
+  String get pbAddBlock => 'เพิ่มบล็อก';
+
+  @override
+  String get pbAddHere => 'เพิ่มตรงนี้';
+
+  @override
+  String get pbAddProperty => 'เพิ่มคุณสมบัติ';
+
+  @override
+  String get pbArrange => 'จัดหน้า';
+
+  @override
+  String get pbArrangeDone => 'เสร็จ';
+
+  @override
+  String get pbArrangeHint => 'ลากเพื่อเรียงใหม่ บล็อกคอลัมน์ย้ายไปทั้งก้อน';
+
+  @override
+  String get pbArrangeShared => 'นี่คือเลย์เอาต์ที่ทุกองค์ประกอบของ module นี้ใช้ร่วมกัน ถ้าจะเปลี่ยนเฉพาะหน้านี้ ให้แยกหน้าออกก่อน';
+
+  @override
+  String get pbBacklinks => 'ลิงก์มาจาก';
+
+  @override
+  String get pbBlockDeleted => 'ลบบล็อกแล้ว';
+
+  @override
+  String get pbBorrow => 'มุมมองจาก module อื่น';
+
+  @override
+  String get pbColumn => 'คอลัมน์';
+
+  @override
+  String get pbColumns => 'คอลัมน์';
+
+  @override
+  String get pbDivider => 'เส้นคั่น';
+
+  @override
+  String get pbFullScreen => 'เต็มจอ';
+
+  @override
+  String get pbHeading => 'หัวข้อ';
+
+  @override
+  String get pbImage => 'รูปภาพ';
+
+  @override
+  String get pbItemBody => 'องค์ประกอบ';
+
+  @override
+  String get pbItemEmpty => 'ยังไม่มีอะไรเขียนไว้';
+
+  @override
+  String get pbNoRelated => 'ยังไม่มีลิงก์';
+
+  @override
+  String get pbNotOnMobile => 'ยังไม่มีในแอปนี้';
+
+  @override
+  String get pbOnlyOnce => 'อยู่ในหน้าได้ครั้งเดียว';
+
+  @override
+  String get pbOpenFullScreen => 'เปิด';
+
+  @override
+  String get pbOutgoing => 'ลิงก์ไปยัง';
+
+  @override
+  String get pbPropName => 'ชื่อ';
+
+  @override
+  String get pbPropType => 'ชนิด';
+
+  @override
+  String get pbProperties => 'คุณสมบัติ';
+
+  @override
+  String get pbRelated => 'ที่เกี่ยวข้อง';
+
+  @override
+  String get pbRelations => 'ความสัมพันธ์';
+
+  @override
+  String get pbRevert => 'กลับไปใช้เลย์เอาต์ร่วม';
+
+  @override
+  String get pbSharedLayout => 'เลย์เอาต์ร่วมของหน้าทุกองค์ประกอบใน module นี้';
+
+  @override
+  String get pbSourceGone => 'สิ่งที่แสดงอยู่ถูกลบไปแล้ว';
+
+  @override
+  String get pbSplit => 'ให้หน้านี้มีเลย์เอาต์ของตัวเอง';
+
+  @override
+  String get pbTags => 'แท็ก';
+
+  @override
+  String get pbText => 'ข้อความ';
+
+  @override
+  String get pbTextEmpty => 'ข้อความว่าง — แตะเพื่อเขียน';
+
+  @override
+  String get propTypeCheckbox => 'ช่องติ๊ก';
+
+  @override
+  String get propTypeDate => 'วันที่';
+
+  @override
+  String get propTypeNumber => 'ตัวเลข';
+
+  @override
+  String get propTypeText => 'ข้อความ';
+
+  @override
+  String get propTypeTextarea => 'ข้อความยาว';
+
+  @override
+  String get propTypeUrl => 'ลิงก์';
+
+  @override
+  String get viewTable => 'ตาราง';
+
+  @override
+  String get viewListDetail => 'รายการ · รายละเอียด';
+
+  @override
+  String get viewRelations => 'ความสัมพันธ์';
+
+  @override
+  String get viewGrid => 'กริด';
+
+  @override
+  String get viewScene => 'ฉาก';
+
+  @override
+  String get viewGraph => 'กราฟ';
+
+  @override
+  String get viewCards => 'การ์ด';
+
+  @override
+  String get viewBoard => 'บอร์ด';
+
+  @override
+  String get viewEdges => 'เส้นเชื่อม';
+
+  @override
+  String get viewArea => 'พื้นที่';
+
+  @override
+  String get viewMap => 'แผนที่';
+
+  @override
+  String get viewTimeline => 'เส้นเวลา';
+
+  @override
+  String get viewCanvas => 'ผืนผ้าใบ';
+
+  @override
+  String get viewPages => 'หน้า';
+
+  @override
+  String get viewGallery => 'แกลเลอรี';
+
+  @override
+  String get viewExport => 'ส่งออก';
+
+  @override
+  String get viewEditor => 'ตัวแก้ไข';
+
+  @override
+  String get viewOutline => 'โครงร่าง';
+
+  @override
+  String get viewReading => 'อ่าน';
+
+  @override
+  String get viewBook => 'หนังสือ';
+
+  @override
+  String get viewRoutes => 'เส้นทาง';
+
+  @override
+  String get viewReader => 'ผู้อ่าน';
+
+  @override
+  String get viewDialogue => 'บทสนทนา';
+
+  @override
+  String get viewOneline => 'เส้นเดียว';
+
+  @override
+  String get viewDownline => 'ไล่ลงหน้า';
+
+  @override
+  String get viewCompare => 'เปรียบเทียบ';
+
+  @override
+  String get viewCalendar => 'ปฏิทิน';
+
+  @override
+  String get viewList => 'รายการ';
+
+  @override
+  String get viewMatrix => 'เมทริกซ์';
+
+  @override
+  String get viewChat => 'แชต';
+
+  @override
+  String get viewTranscript => 'บันทึก';
+
+  @override
+  String get clsNoRelations => 'ยังไม่มีความเชื่อมโยงระหว่างองค์ประกอบเหล่านี้';
+
+  @override
+  String get clsTypeText => 'ข้อความ';
+
+  @override
+  String get clsTypeTextarea => 'ข้อความยาว';
+
+  @override
+  String get clsTypeNumber => 'ตัวเลข';
+
+  @override
+  String get clsTypeDate => 'วันที่';
+
+  @override
+  String get clsTypeSelect => 'ตัวเลือก';
+
+  @override
+  String get clsTypeMulti => 'หลายตัวเลือก';
+
+  @override
+  String get clsTypeCheckbox => 'ช่องทำเครื่องหมาย';
+
+  @override
+  String get clsTypeUrl => 'ลิงก์ (URL)';
+
+  @override
+  String get clsTypeRelation => 'ความสัมพันธ์';
+
+  @override
+  String get clsTypeFormula => 'สูตร';
+
+  @override
+  String get clsFieldType => 'ชนิดฟิลด์';
+
+  @override
+  String get clsChoices => 'ตัวเลือก (บรรทัดละหนึ่ง)';
+
+  @override
+  String get clsFormulaHint => 'เช่น {HP} * 2';
+
+  @override
+  String get clsEditField => 'แก้ไขฟิลด์';
+
+  @override
+  String get clsAddLink => 'เพิ่มลิงก์';
+
+  @override
+  String get dateDay => 'วัน';
+
+  @override
+  String get dateMonth => 'เดือน';
+
+  @override
+  String get dateYear => 'ปี';
+
+  @override
+  String get dateHour => 'ชั่วโมง';
+
+  @override
+  String get dateMinute => 'นาที';
+
+  @override
+  String get btnClear => 'ล้าง';
+
+  @override
+  String get groupBy => 'จัดกลุ่มตาม';
+
+  @override
+  String get groupModule => 'โมดูล';
+
+  @override
+  String get relDirected => 'ทิศทางเดียว (→)';
+
+  @override
+  String get exhGroup => 'กลุ่ม';
+
+  @override
+  String get exhNote => 'โน้ต';
+
+  @override
+  String get exhAddElement => 'วางองค์ประกอบ';
+
+  @override
+  String get exhAddNote => 'เพิ่มโน้ต';
+
+  @override
+  String get exhAddGroup => 'เพิ่มกลุ่ม';
+
+  @override
+  String get exhRemoveFromScene => 'นำออกจากฉาก';
+
+  @override
+  String get exhSceneEmpty => 'ยังไม่มีอะไรในฉาก — วางองค์ประกอบหรือเพิ่มโน้ต';
+
+  @override
+  String get auStatusIdea => 'ไอเดีย';
+
+  @override
+  String get auStatusDraft => 'ร่าง';
+
+  @override
+  String get auStatusRevised => 'แก้แล้ว';
+
+  @override
+  String get auStatusDone => 'เสร็จ';
+
+  @override
+  String get auSynopsis => 'เรื่องย่อ';
+
+  @override
+  String get auPov => 'มุมมองของ';
+
+  @override
+  String get btnPrevious => 'ก่อนหน้า';
+
+  @override
+  String get btnNext => 'ถัดไป';
+
+  @override
+  String get narAddRoute => 'เพิ่มเส้นทาง';
+
+  @override
+  String get narScript => 'บท';
+
+  @override
+  String get narPlayTest => 'ทดลองเล่น';
+
+  @override
+  String get narRestart => 'เริ่มใหม่';
+
+  @override
+  String get narShowHidden => 'แสดงตัวเลือกที่ซ่อน';
+
+  @override
+  String get narVariables => 'ตัวแปร';
+
+  @override
+  String get narNoVariables => 'ยังไม่มีตัวแปรเรื่องใน Nexus นี้';
+
+  @override
+  String get narPlayEnd => 'จบ — ไม่มีเส้นทางต่อ';
+
+  @override
+  String get narNoOptionOpen => 'ไม่มีตัวเลือกที่เปิดด้วยค่าตัวแปรนี้';
+
+  @override
+  String get narHiddenByCondition => 'ซ่อนด้วยเงื่อนไข';
+
+  @override
+  String get chrCompareWith => 'เทียบกับ';
+
+  @override
+  String get chrNoOtherLine => 'ไม่มี Chronicler อื่นใน Nexus นี้ให้เทียบ';
+
+  @override
+  String get scribeNoMessages => 'ยังไม่มีข้อความ';
+
+  @override
+  String get wndLocator => 'แผนที่ (Locator)';
+
+  @override
+  String get wndNoLocator => 'ยังไม่มี Locator ใน Nexus นี้ — หมุดจะอยู่ในพื้นที่ของมัน';
+
+  @override
+  String get wndPickLocator => 'เลือก Locator ที่หมุดเหล่านี้อยู่ในพื้นที่ของมัน';
+
+  @override
+  String get wndNoAreas => 'Locator นั้นยังไม่มีพื้นที่';
+
+  @override
+  String get wndAddPin => 'ใส่หมุดในพื้นที่นี้';
+
+  @override
+  String get skExportPng => 'แชร์เป็น PNG';
+
+  @override
+  String get dgPanel => 'ช่องการ์ตูน';
+
+  @override
+  String get dgBalloon => 'บอลลูนคำพูด';
+
+  @override
+  String get dgLinkFrom => 'เชื่อมไปยัง…';
+
+  @override
+  String get dgPanelShows => 'แสดงหน้า Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'ผู้พูด';
+
+  @override
+  String get dgNumberByPosition => 'เรียงเลขตามตำแหน่ง';
+
+  @override
+  String get dgShowOrder => 'แสดงลำดับการอ่าน';
+
+  @override
+  String get divNewTable => 'ตารางใหม่';
+
+  @override
+  String get divDice => 'ลูกเต๋า';
+
+  @override
+  String get divDiceHelp => 'ว่าง = สุ่มตามน้ำหนัก';
+
+  @override
+  String get divBadDice => 'ไม่ใช่รูปแบบลูกเต๋า';
+
+  @override
+  String get divModePick => 'สุ่มหนึ่ง';
+
+  @override
+  String get divModeJoin => 'ต่อทั้งหมด';
+
+  @override
+  String get divWeighted => 'ตามน้ำหนัก';
+
+  @override
+  String get divEntryText => 'ข้อความ';
+
+  @override
+  String get divFrom => 'จาก';
+
+  @override
+  String get divTo => 'ถึง';
+
+  @override
+  String get divWeight => 'น้ำหนัก';
+
+  @override
+  String get divRollsTable => 'ทอยตารางอื่นแทน';
+
+  @override
+  String get divLinkEntity => 'อ้างถึงสิ่งหนึ่ง';
+
+  @override
+  String get divUnlink => 'นำลิงก์ออก';
+
+  @override
+  String get divNoTables => 'ยังไม่มีตาราง';
+
+  @override
+  String get divRoll => 'ทอย';
+
+  @override
+  String get divEntries => 'รายการ';
+
+  @override
+  String get divNoEntries => 'ยังไม่มีรายการ';
+
+  @override
+  String get divHistory => 'ประวัติ';
+
+  @override
+  String get divQuickRoll => 'ทอยเฉย ๆ: 3d6';
+
+  @override
+  String get trashTitle => 'ถังขยะ';
+
+  @override
+  String get trashMoved => 'ย้ายไปถังขยะแล้ว';
+
+  @override
+  String get trashEmptyAll => 'ล้างถังขยะ';
+
+  @override
+  String get trashEmptyConfirm => 'ทุกอย่างในถังขยะจะถูกลบถาวร';
+
+  @override
+  String get trashNothing => 'ถังขยะว่าง';
+
+  @override
+  String get trashNote => 'โมดูลที่กู้คืนจะกลับมาพร้อมทุกอย่างข้างในและความสัมพันธ์ — แต่ไม่รวมประวัติเวอร์ชัน';
+
+  @override
+  String get trashRestore => 'กู้คืน';
+
+  @override
+  String get trashModules => 'โมดูล';
+
+  @override
+  String get trashDeleteForever => 'ลบถาวรหรือไม่? จะกู้คืนไม่ได้อีก';
+
+  @override
+  String get problemsTitle => 'ปัญหา';
+
+  @override
+  String get problemsLinks => 'ลิงก์ที่หาไม่พบ';
+
+  @override
+  String get problemsEmpty => 'โมดูลว่าง';
+
+  @override
+  String get problemsRelations => 'ความสัมพันธ์ที่ปลายหายไป';
+
+  @override
+  String get problemsNone => 'ไม่พบปัญหา';
+
+  @override
+  String get assetsTitle => 'ไฟล์ประกอบ';
+
+  @override
+  String get assetsFromDevice => 'เพิ่มจากเครื่องนี้';
+
+  @override
+  String get assetsAddUrl => 'เพิ่มลิงก์ (URL)';
+
+  @override
+  String get assetsNotice => 'ไฟล์ประกอบอยู่บนเครื่องนี้เท่านั้น: การซิงก์ส่งแค่ชื่อ ไม่ส่งไฟล์';
+
+  @override
+  String get assetsNone => 'ยังไม่มีไฟล์ประกอบ';
+
+  @override
+  String get assetsTooBig => 'ใหญ่เกินกว่าจะเก็บในเบราว์เซอร์';
+
+  @override
+  String get pbChooseImage => 'เลือกรูป';
+
+  @override
+  String get csvImportTitle => 'นำเข้า CSV';
+
+  @override
+  String get fromTemplate => 'จากเทมเพลต';
+
+  @override
+  String get guideTitle => 'คู่มือ';
+
+  @override
+  String get guideDesc => 'โลกตัวอย่างเล็ก ๆ ที่พาดูทุกชนิด';
+
+  @override
+  String get guideAdd => 'เพิ่มคู่มือ';
+
+  @override
+  String get mddxImport => 'นำเข้าไฟล์โมดูล (.mddx)';
+
+  @override
+  String get mddxExport => 'ส่งออกเป็น .mddx';
+
+  @override
+  String get mddxNotModule => 'ไฟล์นี้ไม่ใช่โมดูล DraconDex';
+
+  @override
+  String get kindCatStructure => 'โครงสร้าง';
+
+  @override
+  String get kindCatView => 'มุมมอง';
+
+  @override
+  String get kindCatData => 'ข้อมูล';
+
+  @override
+  String get kindGroupNotes => 'บันทึก/เอกสาร';
+
+  @override
+  String get kindGroupData => 'ข้อมูล/หมวดหมู่';
+
+  @override
+  String get kindGroupMapTime => 'แผนที่และเวลา';
+
+  @override
+  String get kindGroupStory => 'เนื้อเรื่อง';
+
+  @override
+  String get kindGroupDraw => 'วาดและออกแบบ';
+
+  @override
+  String get nexusStartWith => 'เริ่มด้วย';
+
+  @override
+  String get nexusStartEmpty => 'ว่างเปล่า';
+
+  @override
+  String get csvPick => 'เลือกไฟล์ CSV';
+
+  @override
+  String get csvHint => 'แถวแรกคือชื่อฟิลด์ คอลัมน์แรกคือชื่อองค์ประกอบ';
+
+  @override
+  String get csvCreate => 'สร้าง Classifier';
+
+  @override
+  String get csvSkip => 'ไม่นำเข้า';
+
+  @override
+  String get csvNameColumn => 'ชื่อ';
+
+  @override
+  String get csvTruncated => 'เฉพาะ 5,000 แถวแรก';
+
+  @override
+  String get csvTooLarge => 'ไฟล์ใหญ่เกิน 8 MB';
+
+  @override
+  String get csvEmpty => 'ไม่มีแถวให้นำเข้า — ต้องมีหัวตารางและอย่างน้อยหนึ่งแถว';
+
+  @override
+  String get kindClassicCollector => 'โฟลเดอร์';
+
+  @override
+  String get kindDescCollector => 'โฟลเดอร์สำหรับจัดกลุ่มโมดูลอื่น';
+
+  @override
+  String get kindClassicManager => 'โปรเจกต์';
+
+  @override
+  String get kindDescManager => 'ดูโมดูลย่อยแบบการ์ด ลิสต์ หรือตาราง';
+
+  @override
+  String get kindClassicInspector => 'รายละเอียด';
+
+  @override
+  String get kindDescInspector => 'หน้าโน้ตเดียวสำหรับรายละเอียดของไอเทมนี้';
+
+  @override
+  String get kindClassicClassifier => 'หมวดหมู่';
+
+  @override
+  String get kindDescClassifier => 'จัดหมวดหมู่ไอเทมด้วยฟิลด์ที่กำหนดเอง';
+
+  @override
+  String get kindClassicLocator => 'แผนที่';
+
+  @override
+  String get kindDescLocator => 'แผนที่พร้อมหมุดและพื้นที่';
+
+  @override
+  String get kindClassicChronicler => 'ไทม์ไลน์';
+
+  @override
+  String get kindDescChronicler => 'ไทม์ไลน์ของเหตุการณ์ตามวันที่';
+
+  @override
+  String get kindClassicWanderer => 'ไทม์แมพ';
+
+  @override
+  String get kindDescWanderer => 'หมุดบนแผนที่เชื่อมกับเหตุการณ์ในไทม์ไลน์';
+
+  @override
+  String get kindClassicNarrator => 'เนื้อเรื่อง';
+
+  @override
+  String get kindDescNarrator => 'โหนดบทสนทนาบนบอร์ดเส้นทางที่เชื่อมกัน';
+
+  @override
+  String get kindClassicAuthor => 'หนังสือ';
+
+  @override
+  String get kindDescAuthor => 'หนังสือพร้อมบทและตัวแก้ไขงานเขียน';
+
+  @override
+  String get kindClassicScribe => 'แชต';
+
+  @override
+  String get kindDescScribe => 'โน้ตแบบแชทเป็นเซสชัน';
+
+  @override
+  String get kindClassicDrafter => 'เอกสาร';
+
+  @override
+  String get kindDescDrafter => 'หน้าเปล่าแบบ markdown';
+
+  @override
+  String get kindClassicExhibitor => 'ห้องจัดแสดง';
+
+  @override
+  String get kindDescExhibitor => 'ฉาก กราฟ และตารางของสิ่งที่เชื่อมกัน — ที่เดียวที่ใช้วาด relation';
+
+  @override
+  String get kindClassicSketcher => 'ภาพวาด';
+
+  @override
+  String get kindDescSketcher => 'แคนวาสวาดภาพด้วยมืออิสระ';
+
+  @override
+  String get kindClassicDesigner => 'กราฟ';
+
+  @override
+  String get kindDescDesigner => 'แผนภาพอิสระด้วยรูปทรงและลูกศร';
+
+  @override
+  String get kindClassicDiviner => 'ตารางสุ่ม';
+
+  @override
+  String get kindDescDiviner => 'ตารางสุ่มและทอยเต๋า';
+
+  @override
+  String get moduleNameMode => 'ชื่อโมดูล';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = โฟลเดอร์/โปรเจกต์/…';
+
+  @override
+  String get moduleInside => 'รายการข้างใน';
+
+  @override
+  String get nameModeUnique => 'เฉพาะ';
+
+  @override
+  String get nameModeClassic => 'คลาสสิก';
+
+  @override
+  String get kindRecent => 'ล่าสุด';
+
+  @override
+  String get clsLevelable => 'Levelable';
+
+  @override
+  String get clsCondition => 'Condition';
+
+  @override
+  String get levelColLevel => 'เลเวล';
+
+  @override
+  String get levelColInfo => 'ข้อมูล';
+
+  @override
+  String get levelAddRow => 'เพิ่มแถว';
+
+  @override
+  String get levelNoRows => 'ยังไม่มีแถว';
+
+  @override
+  String get confirmDeleteLevelRow => 'ลบแถวนี้?';
+
+  @override
+  String get clsLevelAndCondition => 'Level และ Condition';
+
+  @override
+  String get clsLevelAndConditionHint => 'ทำให้ฟิลด์เป็นตารางหลายแถว (level) หรือผูกค่ากับเงื่อนไข';
+
+  @override
+  String get clsInsertAbove => 'แทรกแถวด้านบน';
+
+  @override
+  String get clsInsertBelow => 'แทรกแถวด้านล่าง';
 }

@@ -143,6 +143,7 @@ class _RuleRow extends StatelessWidget {
           'kind' => l10n.filterFieldKind,
           'childOf' => l10n.filterFieldChildOf,
           'hashtag' => l10n.filterFieldHashtag,
+          'handle' => l10n.filterFieldHandle,
           _ => l10n.filterFieldName,
         };
     String opLabel(String o) => switch (o) {
@@ -168,7 +169,7 @@ class _RuleRow extends StatelessWidget {
                 value: rule.field,
                 isDense: true,
                 items: [
-                  for (final f in const ['name', 'hashtag', 'kind', 'childOf'])
+                  for (final f in const ['name', 'hashtag', 'kind', 'childOf', 'handle'])
                     DropdownMenuItem(value: f, child: Text(fieldLabel(f))),
                 ],
                 onChanged: (f) {
@@ -177,7 +178,7 @@ class _RuleRow extends StatelessWidget {
                 },
               ),
               const SizedBox(width: 6),
-              if (rule.field == 'name' || rule.field == 'hashtag')
+              if (rule.field == 'name' || rule.field == 'hashtag' || rule.field == 'handle')
                 DropdownButton<String>(
                   value: rule.op,
                   isDense: true,
@@ -198,7 +199,7 @@ class _RuleRow extends StatelessWidget {
               ),
             ],
           ),
-          if (rule.field == 'name' || rule.field == 'hashtag')
+          if (rule.field == 'name' || rule.field == 'hashtag' || rule.field == 'handle')
             TextFormField(
               initialValue: rule.value,
               decoration: const InputDecoration(isDense: true),
@@ -212,7 +213,7 @@ class _RuleRow extends StatelessWidget {
               children: [
                 for (final k in ModuleKind.values)
                   FilterChip(
-                    label: Text(moduleKindInfo[k]!.label,
+                    label: Text(kindName(AppLocalizations.of(context)!, k),
                         style: theme.textTheme.labelSmall),
                     selected: rule.values.contains(k.id),
                     onSelected: (on) {

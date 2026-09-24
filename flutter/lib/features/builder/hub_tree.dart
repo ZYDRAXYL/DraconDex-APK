@@ -9,6 +9,8 @@ import '../../data/models/module_model.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/shell_layout_provider.dart';
 import '../../widgets/color_dot.dart';
+import '../../widgets/row_menu.dart';
+import '../hub/module_actions.dart';
 import 'hub_location.dart';
 
 /// The nest itself: every Nexus, unfoldable into the module tree under it.
@@ -172,6 +174,7 @@ class _ModuleNode extends ConsumerWidget {
     final expanded = ref.watch(hubTreeExpansionProvider).contains(key);
     final selected = current.nexusId == nexusId && current.moduleId == module.id;
     final hasChildren = (module.childCount ?? 0) > 0;
+    List<RowAction> actions() => moduleRowActions(context, ref, module);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -185,7 +188,14 @@ class _ModuleNode extends ConsumerWidget {
               ? ColorDot(colorCode: module.colorCode, size: 16)
               : Icon(module.kindInfo.icon, size: 16),
           label: module.name,
-          trailing: module.pinned ? const Icon(Icons.push_pin, size: 13) : null,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (module.pinned) const Icon(Icons.push_pin, size: 13),
+              RowMenuButton(actions: actions, title: module.name, iconSize: 16, dense: true),
+            ],
+          ),
+          onLongPress: () => showRowMenu(context, actions(), title: module.name),
           onToggle: hasChildren
               ? () => ref.read(hubTreeExpansionProvider.notifier).toggle(key)
               : null,
@@ -213,6 +223,7 @@ class _TreeRow extends StatelessWidget {
   final Widget? trailing;
   final VoidCallback? onToggle;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
 
   const _TreeRow({
     required this.depth,
@@ -224,6 +235,7 @@ class _TreeRow extends StatelessWidget {
     required this.onTap,
     this.trailing,
     this.onToggle,
+    this.onLongPress,
   });
 
   @override
@@ -233,6 +245,7 @@ class _TreeRow extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
+      onLongPress: onLongPress,
       child: Container(
         decoration: selected
             ? BoxDecoration(

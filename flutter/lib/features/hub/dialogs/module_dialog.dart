@@ -4,8 +4,9 @@ import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/module_model.dart';
 import '../../../providers/db_providers.dart';
 
-/// Create a new module (name + kind picker) or rename an existing one
-/// (kind is fixed once created).
+/// Renames a module (kind is fixed once created). A new module starts in
+/// the grouped kind sheet (new_module_sheet.dart); the create path here is
+/// what that sheet does not need — a bare name for a given kind.
 class ModuleDialog extends ConsumerStatefulWidget {
   final int nexusId;
   final int? parentId;
@@ -38,7 +39,6 @@ class _ModuleDialogState extends ConsumerState<ModuleDialog> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isNew = widget.existing == null;
-    final theme = Theme.of(context);
     return AlertDialog(
       title: Text(isNew ? l10n.newModuleTitle : l10n.renameModuleTitle),
       content: SingleChildScrollView(
@@ -47,63 +47,6 @@ class _ModuleDialogState extends ConsumerState<ModuleDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(controller: _name, autofocus: true, decoration: InputDecoration(labelText: '${l10n.labelName} *')),
-            if (isNew) ...[
-              const SizedBox(height: 16),
-              Text(l10n.labelKind, style: theme.textTheme.labelLarge),
-              const SizedBox(height: 8),
-              SizedBox(
-                width: double.maxFinite,
-                height: 240,
-                child: GridView.count(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                  childAspectRatio: 1.1,
-                  children: ModuleKind.values.map((k) {
-                    final info = moduleKindInfo[k]!;
-                    final selected = _kind == k;
-                    return InkWell(
-                      onTap: () => setState(() => _kind = k),
-                      borderRadius: BorderRadius.circular(8),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: selected ? theme.colorScheme.primary : theme.dividerColor,
-                            width: selected ? 2 : 1,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                          color: selected ? theme.colorScheme.primaryContainer.withValues(alpha: 0.4) : null,
-                        ),
-                        padding: const EdgeInsets.all(4),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(info.icon, size: 20),
-                            const SizedBox(height: 4),
-                            Text(
-                              info.label,
-                              style: theme.textTheme.labelSmall,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(moduleKindInfo[_kind]!.description, style: theme.textTheme.bodySmall),
-              if (!moduleKindInfo[_kind]!.contentImplemented) ...[
-                const SizedBox(height: 4),
-                Text(
-                  l10n.kindContentUnavailable,
-                  style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.error),
-                ),
-              ],
-            ],
           ],
         ),
       ),

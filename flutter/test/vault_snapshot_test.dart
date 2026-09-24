@@ -58,7 +58,7 @@ void main() {
 
     final root = await db.insert('module', {
       'nexus_ref': nexusId, 'parent_id': null, 'name': 'Characters',
-      'kind': 'classifier', 'display_order': 0, 'color': blue,
+      'kind': 'collector', 'display_order': 0, 'color': blue,
     });
     final child = await db.insert('module', {
       'nexus_ref': nexusId, 'parent_id': root, 'name': 'Protagonists',
@@ -69,8 +69,9 @@ void main() {
       'kind': 'author', 'display_order': 2, 'handle': 'chapters',
     });
 
-    await db.insert('module_attribute', {
-      'module_ref': root, 'attr_name': 'era', 'attr_value': 'third age', 'display_order': 0,
+    await db.insert('page_block', {
+      'module_ref': root, 'block_type': 'property', 'prop_name': 'era',
+      'prop_type': 'text', 'content': 'third age', 'block_order': 0,
     });
 
     final tagId = await db.insert('hashtag', {'tag_name': 'main', 'tag_color': blue});
@@ -86,6 +87,40 @@ void main() {
     await db.insert('classifier_attribute', {
       'object_ref': obj, 'template_ref': tpl, 'attribute_value': '24',
     });
+
+    // v5 sections (APK V3 part 2): a relation field and a time-bound
+    // relation, a Diviner table rolling another, an Exhibitor scene, a
+    // chapter with a POV key, a choice whose condition names an entity, and a
+    // module preset — every one carries keys or ids that must remap.
+    final relField = await db.insert('classifier_template', {
+      'module_ref': child, 'description': 'Rival', 'attribute_type': 'relation',
+      'levelable': 0, 'has_condition': 0, 'display_order': 1, 'options': '{"targetKinds":["cobj"]}',
+    });
+    final rival = await db.insert('classifier_object', {'module_ref': child, 'name': 'Bram', 'display_order': 1});
+    final dateId = await db.insert('timeline_date', {'day': 1, 'month': 2, 'years': 300, 'hour': 0, 'minute': 0});
+    await db.insert('entity_relation', {
+      'nexus_ref': nexusId, 'from_key': 'cobj_$obj', 'to_key': 'cobj_$rival',
+      'rel_type': 'ctpl_$relField', 'directed': 1, 'module_ref': child, 'valid_from': dateId,
+    });
+    final dice = await db.insert('module', {
+      'nexus_ref': nexusId, 'parent_id': null, 'name': 'Dice', 'kind': 'diviner', 'display_order': 3,
+    });
+    final names = await db.insert('diviner_table', {'module_ref': dice, 'name': 'Names', 'mode': 'pick'});
+    final towns = await db.insert('diviner_table', {'module_ref': dice, 'name': 'Towns', 'dice': '1d6', 'mode': 'pick'});
+    final entry = await db.insert('diviner_entry', {
+      'table_ref': towns, 'weight': 1, 'range_lo': 1, 'range_hi': 6, 'entry_text': 'x', 'linker_key': 'divt_$names',
+    });
+    await db.insert('diviner_roll', {'table_ref': towns, 'dice_result': '4', 'entry_ref': entry, 'result_text': 'x'});
+    final board = await db.insert('module', {
+      'nexus_ref': nexusId, 'parent_id': null, 'name': 'Board', 'kind': 'exhibitor', 'display_order': 4,
+    });
+    final frame = await db.insert('exhibit_node', {'module_ref': board, 'node_type': 'frame', 'label': 'Cast'});
+    await db.insert('exhibit_node', {
+      'module_ref': board, 'parent_id': frame, 'node_type': 'entity', 'linker_key': 'cobj_$obj',
+      'x': 10, 'y': 20, 'props': '{"fields":[$tpl]}',
+    });
+    await db.insert('exhibit_view', {'module_ref': board, 'scale': 1.5, 'tx': 3, 'ty': 4});
+    await db.insert('module_preset', {'nexus_ref': nexusId, 'kind': 'classifier', 'name': 'Hero', 'spec': '{}'});
 
     final folder = await db.insert('note_folder', {
       'nexus_ref': nexusId, 'parent_ref': null, 'name': 'Lore', 'color': blue,
@@ -197,9 +232,37 @@ void main() {
     final nodeIx = index(nodes);
     final folIx = index(folders);
     final noteIx = index(notes);
+    final blocks = rows(s['pageBlocks']);
+    final blockIx = index(blocks);
+    final dvn = sect(s['diviner']);
+    final dtables = rows(dvn['tables']);
+    final dentries = rows(dvn['entries']);
+    final dtIx = index(dtables);
+    final deIx = index(dentries);
+    final exh = sect(s['exhibitor']);
+    final enodes = rows(exh['nodes']);
+    final enIx = index(enodes);
+    remap(dtables, 'moduleId', modIx);
+    remap(dentries, 'tableId', dtIx);
+    remap(rows(dvn['rolls']), 'tableId', dtIx);
+    remap(rows(dvn['rolls']), 'entryId', deIx);
+    remap(enodes, 'moduleId', modIx);
+    remap(enodes, 'parentId', enIx);
+    remap(rows(exh['views']), 'moduleId', modIx);
+    // An exhibit node's props hold template ids.
+    for (final n in enodes) {
+      final props = n['props'];
+      if (props is String && props.startsWith('{')) {
+        final p = (jsonDecode(props) as Map).cast<String, Object?>();
+        for (final k in ['fields', 'columns']) {
+          if (p[k] is List) p[k] = [for (final id in p[k] as List) tplIx[id]];
+        }
+        n['props'] = jsonEncode(p);
+      }
+    }
 
     remap(modules, 'parentId', modIx);
-    for (final key in <String>['moduleAttrs', 'moduleUi', 'moduleTags']) {
+    for (final key in <String>['pageBlocks', 'moduleUi', 'moduleTags']) {
       remap(rows(s[key]), 'moduleId', modIx);
     }
     remap(objects, 'moduleId', modIx);
@@ -240,6 +303,7 @@ void main() {
     // Relation endpoints and linker keys carry their id inside a string.
     final keyIx = <String, Map<int, int>>{
       'module': modIx, 'cobj': objIx, 'bchp': chpIx, 'chss': sesIx, 'note': noteIx,
+      'ctpl': tplIx, 'divt': dtIx,
     };
     String? canonKey(Object? v) {
       if (v is! String) return null;
@@ -252,12 +316,29 @@ void main() {
     for (final r in rows(s['relations'])) {
       r['fromKey'] = canonKey(r['fromKey']);
       r['toKey'] = canonKey(r['toKey']);
+      r['relType'] = canonKey(r['relType']);
+      final m = r['moduleId'];
+      r['moduleId'] = m is int ? modIx[m] : null;
+    }
+    for (final r in dentries) {
+      r['linkerKey'] = canonKey(r['linkerKey']);
+    }
+    for (final r in enodes) {
+      r['linkerKey'] = canonKey(r['linkerKey']);
+    }
+    for (final r in chapters) {
+      r['povKey'] = canonKey(r['povKey']);
     }
     for (final r in rows(skt['pins'])) {
       r['linkerKey'] = canonKey(r['linkerKey']);
     }
     for (final r in nodes) {
       r['linkerKey'] = canonKey(r['linkerKey']);
+    }
+    remap(blocks, 'parentId', blockIx);
+    for (final r in blocks) {
+      r['itemKey'] = canonKey(r['itemKey']);
+      r['sourceKey'] = canonKey(r['sourceKey']);
     }
 
     return s;
@@ -271,8 +352,42 @@ void main() {
     // These two strings ARE the compatibility check on both sides:
     // validateSnapshot in sync.js rejects anything else outright.
     expect(snap['format'], 'dracondex-vault-snapshot');
-    expect(snap['version'], 1);
+    expect(snap['version'], 2);
     expect((snap['nexus']! as Map)['name'], 'My World');
+  });
+
+  test('a note already converted to a module is not serialized', () async {
+    final db = await openVault();
+    final nexusId = await seedVault(db);
+    await db.insert('note', {'nexus_ref': nexusId, 'title': 'Kept', 'content': 'a'});
+    await db.insert('note', {'nexus_ref': nexusId, 'title': 'Converted', 'content': 'b', 'migrated_v3': 1});
+    final snap = (await VaultSnapshotService.serializeVault(db, nexusId))!;
+    final notes = ((snap['notes'] as Map)['notes'] as List).cast<Map>();
+    expect(notes.map((n) => n['title']), isNot(contains('Converted')));
+    expect(notes.map((n) => n['title']), contains('Kept'));
+  });
+
+  test('a v1 snapshot still imports, its module attributes as property blocks', () async {
+    final db = await openVault();
+    final targetId = await db.insert('nexus', {'name': 'Old'});
+    final r = await VaultSnapshotService.applySnapshot(db, targetId, <String, Object?>{
+      'format': 'dracondex-vault-snapshot',
+      'version': 1,
+      'nexus': <String, Object?>{'name': 'x'},
+      'modules': <Object?>[
+        <String, Object?>{'id': 7, 'parentId': null, 'name': 'People', 'kind': 'classifier'},
+      ],
+      'moduleAttrs': <Object?>[
+        <String, Object?>{'moduleId': 7, 'name': 'era', 'value': 'third age', 'displayOrder': 0},
+      ],
+    });
+    expect(r.ok, isTrue, reason: r.code);
+    final props = await db.rawQuery(
+        "SELECT b.prop_name, b.content FROM page_block b JOIN module m ON b.module_ref=m.id "
+        "WHERE m.nexus_ref=? AND b.block_type='property'", [targetId]);
+    expect(props, [
+      {'prop_name': 'era', 'content': 'third age'},
+    ]);
   });
 
   test('serialize -> apply -> serialize comes back identical', () async {
@@ -310,21 +425,50 @@ void main() {
     final targetId = await db.insert('nexus', {'name': 'Received'});
     final applied = await VaultSnapshotService.applySnapshot(db, targetId, snap);
 
-    expect(applied.modules, 3);
+    expect(applied.modules, 5);
     expect(applied.notes, 1);
-    // One real relation kept, one unmappable one dropped and counted rather
-    // than inserted with an endpoint pointing at nothing.
-    expect(applied.relations, 1);
+    // Two real relations kept (the note link, and the time-bound relation
+    // field), one unmappable one dropped and counted rather than inserted
+    // with an endpoint pointing at nothing.
+    expect(applied.relations, 2);
     expect(applied.droppedRelations, 1);
 
-    // The surviving relation must point at the NEW ids, not the old ones.
-    final rels = await db.rawQuery(
-        'SELECT from_key, to_key FROM entity_relation WHERE nexus_ref=?', [targetId]);
-    expect(rels.length, 1);
-    final newModules = await db.rawQuery(
-        "SELECT id FROM module WHERE nexus_ref=? AND name='Characters'", [targetId]);
-    expect(rels.first['from_key'], 'module_${newModules.first['id']}');
+    // The surviving relations point at the NEW ids, not the old ones — the
+    // relation field's rel_type included (a ctpl_ key, §11.3), and its span
+    // as a real date row here.
+    final newChars = (await db.rawQuery(
+        "SELECT id FROM module WHERE nexus_ref=? AND name='Characters'", [targetId])).first['id'];
+    final noteRel = await db.rawQuery(
+        "SELECT from_key FROM entity_relation WHERE nexus_ref=? AND label='mentions'", [targetId]);
+    expect(noteRel.single['from_key'], 'module_$newChars');
+    final field = await db.rawQuery('''
+      SELECT r.rel_type, r.valid_from, t.id AS tpl, d.years FROM entity_relation r
+      JOIN classifier_template t ON r.rel_type = 'ctpl_' || t.id
+      JOIN timeline_date d ON r.valid_from = d.id
+      JOIN module m ON t.module_ref = m.id WHERE r.nexus_ref=? AND m.nexus_ref=?''', [targetId, targetId]);
+    expect(field.single['years'], 300);
 
+    // A Diviner entry that rolls another table points at the NEW table.
+    final entry = await db.rawQuery('''
+      SELECT e.linker_key, t.id AS names FROM diviner_entry e
+      JOIN diviner_table tt ON e.table_ref = tt.id JOIN module m ON tt.module_ref = m.id
+      JOIN diviner_table t ON t.module_ref = m.id AND t.name = 'Names'
+      WHERE m.nexus_ref=?''', [targetId]);
+    expect(entry.single['linker_key'], 'divt_${entry.single['names']}');
+
+    // The Exhibitor node sits in its NEW frame, links the NEW object, and
+    // its card shows the NEW template.
+    final node = await db.rawQuery('''
+      SELECT n.linker_key, n.props, f.label AS frame, o.id AS obj, t.id AS tpl
+      FROM exhibit_node n JOIN exhibit_node f ON n.parent_id = f.id
+      JOIN module m ON n.module_ref = m.id
+      JOIN classifier_object o ON o.name = 'Aria'
+      JOIN classifier_template t ON t.description = 'Age' AND t.module_ref = o.module_ref
+      JOIN module om ON o.module_ref = om.id AND om.nexus_ref = m.nexus_ref
+      WHERE m.nexus_ref=?''', [targetId]);
+    expect(node.single['frame'], 'Cast');
+    expect(node.single['linker_key'], 'cobj_${node.single['obj']}');
+    expect(jsonDecode(node.single['props'] as String), {'fields': [node.single['tpl']]});
   });
 
   test('a module tree is rebuilt parents-first even when the payload is not ordered', () async {
@@ -340,21 +484,24 @@ void main() {
       'lookups': <String, Object?>{'colors': <Object?>[], 'hashtags': <Object?>[], 'dates': <Object?>[]},
       'modules': <Object?>[
         <String, Object?>{'id': 3, 'parentId': 2, 'name': 'Grandchild', 'kind': 'classifier'},
-        <String, Object?>{'id': 2, 'parentId': 1, 'name': 'Child', 'kind': 'classifier'},
-        <String, Object?>{'id': 1, 'parentId': null, 'name': 'Root', 'kind': 'classifier'},
-        // An orphan pointing at a module the snapshot does not contain: it has
-        // nowhere to attach and must be dropped, not crash the import.
+        <String, Object?>{'id': 2, 'parentId': 1, 'name': 'Child', 'kind': 'collector'},
+        <String, Object?>{'id': 1, 'parentId': null, 'name': 'Root', 'kind': 'collector'},
+        // A module whose parent is not in the snapshot is a ROOT of what is
+        // being imported (a .mddx of a nested module, a trashed subtree) and
+        // lands where the caller says — EXE applySnapshotCore's rule. It used
+        // to be dropped here, which silently lost such a subtree whole.
         <String, Object?>{'id': 9, 'parentId': 77, 'name': 'Orphan', 'kind': 'classifier'},
       ],
     };
 
     final applied = await VaultSnapshotService.applySnapshot(db, targetId, payload);
     expect(applied.ok, isTrue, reason: applied.code);
-    expect(applied.modules, 3);
+    expect(applied.modules, 4);
 
     final rows = await db.rawQuery(
         'SELECT id, parent_id, name FROM module WHERE nexus_ref=? ORDER BY name', [targetId]);
-    expect(rows.map((r) => r['name']).toList(), <String>['Child', 'Grandchild', 'Root']);
+    expect(rows.map((r) => r['name']).toList(), <String>['Child', 'Grandchild', 'Orphan', 'Root']);
+    expect(rows.firstWhere((r) => r['name'] == 'Orphan')['parent_id'], isNull);
     final byName = {for (final r in rows) r['name'] as String: r};
     expect(byName['Child']!['parent_id'], byName['Root']!['id']);
     expect(byName['Grandchild']!['parent_id'], byName['Child']!['id']);

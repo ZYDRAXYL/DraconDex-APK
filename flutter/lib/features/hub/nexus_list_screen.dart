@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import '../../core/i18n/app_localizations.dart';
-import '../../core/layout/breakpoints.dart';
 import '../../providers/builder_view_provider.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/update_provider.dart';
+import '../../widgets/hiding_app_bar.dart';
+import '../builder/view_mode_button.dart';
 import '../update/update_dialog.dart';
 import 'dialogs/nexus_dialog.dart';
 import 'widgets/nexus_collection_view.dart';
 
 /// The Builder's home screen: a drill-down explorer, like a phone's
 /// file-manager app. Each Nexus is a top-level "drive"; tapping one opens its
-/// module tree. The Navibar under it comes from [BuilderShell].
+/// module tree. The Navibar under it comes from [BuilderShell], which is
+/// also where Colours, Labels and Settings went (APP docs/APK-V3.md §10.1) —
+/// the app bar keeps the one choice that is about this page, its view mode.
 class NexusListScreen extends ConsumerStatefulWidget {
   const NexusListScreen({super.key});
 
@@ -45,34 +47,8 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
     final viewMode = ref.watch(builderViewModeProvider);
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
-    // On a tablet these three live on the shell's rail, permanently, and
-    // repeating them in the app bar would just be two ways to the same page.
-    final onRail = ddxLayoutOf(context).hasRail;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.appName),
-        actions: [
-          if (!onRail) ...[
-            IconButton(
-              icon: const Icon(Icons.palette),
-              tooltip: l10n.moduleColors,
-              onPressed: () => context.push('/colors'),
-            ),
-            IconButton(
-              icon: const Icon(Icons.sell),
-              tooltip: l10n.moduleGlobalTags,
-              onPressed: () => context.push('/tags'),
-            ),
-            IconButton(
-              icon: const Icon(Icons.settings),
-              tooltip: l10n.moduleSettings,
-              onPressed: () => context.push('/settings'),
-            ),
-          ],
-        ],
-      ),
-      body: nexusesAsync.when(
+    final list = nexusesAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, s) => Center(child: Text('Error: $e')),
         data: (nexuses) {
@@ -90,6 +66,20 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
           }
           return NexusCollectionView(nexuses: nexuses, mode: viewMode);
         },
+      );
+
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          HidingAppBar(
+            appBar: AppBar(
+              title: Text(l10n.appName),
+              actions: const [ViewModeButton()],
+            ),
+          ),
+          Expanded(child: list),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: l10n.newNexusTooltip,

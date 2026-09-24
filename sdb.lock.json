@@ -3,22 +3,25 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "be803f8b5a666d93f2080a245a8ebf971085bbf2",
-    "version": "1.0.0",
-    "_comment": "An immutable ref, deliberately: a commit SHA rather than a branch. sdb-check resolves this through raw.githubusercontent, and pinning 'main' would not be a pin \u2014 main moves, so the drift check would verify against whatever SDB happens to be rather than against the version this repo actually vendored. Moving the pin is a reviewable commit, which is the whole point. Same idea as DraconDex-PWA's app-source.json commit field."
+    "ref": "400dd41",
+    "version": "2.0.3"
   },
   "expect": {
-    "vaultSchemaVersion": 4,
+    "vaultSchemaVersion": 6,
     "supabaseSchemaVersion": 2
   },
   "vendored": {
     "flutter/lib/core/database/vault_schema.g.dart": {
       "artifact": "generated/flutter/vault_schema.g.dart",
-      "sha256": "a33fea1b30f442854738a079625f80a80b22b9bdd65a6fd5627baaa2d701478e"
+      "sha256": "51e4ca33897bd3f8907907ff46cc1f4793c68d8782db65b84eb8f208794f3d62"
     },
     "flutter/lib/data/services/supabase_schema.dart": {
       "artifact": "generated/flutter/supabase_schema.dart",
       "sha256": "539cad343515f2a819c6c2ef04fa113fbf053795bee369c0bba22e2a9d5b1155"
+    },
+    "flutter/lib/core/entity/entity_kinds.g.dart": {
+      "artifact": "generated/flutter/entity_kinds.g.dart",
+      "sha256": "ce30f7eee2552a5496ab33f8dda8e0662043c5356e4340537636b021ff47f9d5"
     },
     "flutter/assets/images/DraconDex-IconApp.png": {
       "artifact": "assets/flutter/DraconDex-IconApp.png",
@@ -47,6 +50,22 @@
     "flutter/assets/fonts/OFL.txt": {
       "artifact": "assets/fonts/OFL.txt",
       "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a"
+    },
+    "flutter/assets/templates/bundles.json": {
+      "artifact": "generated/templates/bundles.json",
+      "sha256": "7d10b0cfdd0217a00a610e75ce8315499778836b5802f0b35fa4027f234fad15"
+    },
+    "flutter/test/fixtures/snapshot-v2.json": {
+      "artifact": "fixtures/snapshot-v2.json",
+      "sha256": "468eee3ad95e58a56404b81d65d0eb7a0ff21292540ecb6ca534268103f0d9e2"
+    },
+    "flutter/assets/templates/guide/en.json": {
+      "artifact": "templates/guide/en.json",
+      "sha256": "5989449ffa2b21e4329da99cf75e5f0311d32cb529a08628b133ce4687518ad6"
+    },
+    "flutter/assets/templates/guide/th.json": {
+      "artifact": "templates/guide/th.json",
+      "sha256": "899eb328b6056bf28112d7fe6b839afe22f6aff90a7966fb163c4553bfbd1a1f"
     }
   }
 }

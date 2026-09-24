@@ -336,6 +336,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get filterFieldChildOf => 'Di dalam modul';
 
   @override
+  String get filterFieldHandle => 'Handle';
+
+  @override
   String get filterOpIs => 'adalah';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get deleteHashtagConfirmTitle => 'Hapus tag?';
 
   @override
-  String get builderNavHome => 'Beranda';
-
-  @override
-  String get builderNavView => 'Tampilan';
-
-  @override
-  String get builderNavFolders => 'Tampilan Folder';
-
-  @override
   String get viewModeTitle => 'Mode tampilan';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get viewModeCompact => 'Ringkas';
-
-  @override
-  String get recentViewsTitle => 'Tampilan Terakhir';
-
-  @override
-  String get recentViewsEmpty => 'Belum ada tampilan terakhir';
-
-  @override
-  String get recentViewsClear => 'Hapus semua';
 
   @override
   String get builderNexusRootLabel => 'Akar Nexus';
@@ -958,4 +943,829 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => 'Tautannya membawa kuncinya sendiri, jadi tetap bisa dipakai meski pengirim hanya mengizinkan kode QR.';
+
+  @override
+  String get navNest => 'Sarang';
+
+  @override
+  String get navSearch => 'Cari';
+
+  @override
+  String get navOpenPages => 'Halaman';
+
+  @override
+  String get navTools => 'Alat';
+
+  @override
+  String get navMore => 'Lainnya';
+
+  @override
+  String get openPagesTitle => 'Halaman terbuka';
+
+  @override
+  String get openPagesEmpty => 'Belum ada halaman terbuka. Setiap halaman yang dibuka tetap di sini sampai ditutup.';
+
+  @override
+  String get openPagesCloseAll => 'Tutup semua';
+
+  @override
+  String get openPageClose => 'Tutup halaman';
+
+  @override
+  String get rowOpen => 'Buka';
+
+  @override
+  String get rowMore => 'Tindakan lain';
+
+  @override
+  String get crumbEmpty => 'Tidak ada isinya';
+
+  @override
+  String get goToTitle => 'Pergi ke';
+
+  @override
+  String get goToHint => 'Nama, path, atau @handle';
+
+  @override
+  String get searchHint => 'Cari nama, teks, dan perintah';
+
+  @override
+  String get searchThings => 'Benda';
+
+  @override
+  String get searchContent => 'Konten';
+
+  @override
+  String get searchCommands => 'Perintah';
+
+  @override
+  String get searchEmpty => 'Tidak ada hasil';
+
+  @override
+  String get elementPageSoon => 'Elemen ini akan punya halaman sendiri di pembaruan berikutnya. Untuk sekarang ia terbuka di dalam modulnya.';
+
+  @override
+  String get wikiUnresolved => 'Belum ada yang bernama ini. Buat halaman Drafter untuknya?';
+
+  @override
+  String get wikiCreateDrafter => 'Buat';
+
+  @override
+  String get btnUndo => 'Urungkan';
+
+  @override
+  String get pbAddBlock => 'Tambah blok';
+
+  @override
+  String get pbAddHere => 'Tambah di sini';
+
+  @override
+  String get pbAddProperty => 'Tambah properti';
+
+  @override
+  String get pbArrange => 'Atur halaman';
+
+  @override
+  String get pbArrangeDone => 'Selesai';
+
+  @override
+  String get pbArrangeHint => 'Seret untuk mengurutkan ulang. Blok kolom berpindah utuh.';
+
+  @override
+  String get pbArrangeShared => 'Ini tata letak yang dipakai bersama semua elemen modul ini. Pisahkan halaman dulu untuk mengubah yang ini saja.';
+
+  @override
+  String get pbBacklinks => 'Ditautkan dari';
+
+  @override
+  String get pbBlockDeleted => 'Blok dihapus';
+
+  @override
+  String get pbBorrow => 'Tampilan dari modul lain';
+
+  @override
+  String get pbColumn => 'Kolom';
+
+  @override
+  String get pbColumns => 'Kolom';
+
+  @override
+  String get pbDivider => 'Pemisah';
+
+  @override
+  String get pbFullScreen => 'Layar penuh';
+
+  @override
+  String get pbHeading => 'Judul';
+
+  @override
+  String get pbImage => 'Gambar';
+
+  @override
+  String get pbItemBody => 'Elemen';
+
+  @override
+  String get pbItemEmpty => 'Belum ada tulisan di sini.';
+
+  @override
+  String get pbNoRelated => 'Belum ada tautan';
+
+  @override
+  String get pbNotOnMobile => 'belum ada di aplikasi ini';
+
+  @override
+  String get pbOnlyOnce => 'hanya boleh sekali dalam satu halaman';
+
+  @override
+  String get pbOpenFullScreen => 'Buka';
+
+  @override
+  String get pbOutgoing => 'Menautkan ke';
+
+  @override
+  String get pbPropName => 'Nama';
+
+  @override
+  String get pbPropType => 'Jenis';
+
+  @override
+  String get pbProperties => 'Properti';
+
+  @override
+  String get pbRelated => 'Terkait';
+
+  @override
+  String get pbRelations => 'Relasi';
+
+  @override
+  String get pbRevert => 'Kembali ke tata letak bersama';
+
+  @override
+  String get pbSharedLayout => 'Tata letak bersama untuk semua halaman elemen modul ini.';
+
+  @override
+  String get pbSourceGone => 'yang ditampilkan sudah tidak ada';
+
+  @override
+  String get pbSplit => 'Beri halaman ini tata letak sendiri';
+
+  @override
+  String get pbTags => 'Tag';
+
+  @override
+  String get pbText => 'Teks';
+
+  @override
+  String get pbTextEmpty => 'Teks kosong — ketuk untuk menulis';
+
+  @override
+  String get propTypeCheckbox => 'Kotak centang';
+
+  @override
+  String get propTypeDate => 'Tanggal';
+
+  @override
+  String get propTypeNumber => 'Angka';
+
+  @override
+  String get propTypeText => 'Teks';
+
+  @override
+  String get propTypeTextarea => 'Teks panjang';
+
+  @override
+  String get propTypeUrl => 'Tautan';
+
+  @override
+  String get viewTable => 'Tabel';
+
+  @override
+  String get viewListDetail => 'Daftar · rincian';
+
+  @override
+  String get viewRelations => 'Relasi';
+
+  @override
+  String get viewGrid => 'Kisi';
+
+  @override
+  String get viewScene => 'Adegan';
+
+  @override
+  String get viewGraph => 'Graf';
+
+  @override
+  String get viewCards => 'Kartu';
+
+  @override
+  String get viewBoard => 'Papan';
+
+  @override
+  String get viewEdges => 'Sisi';
+
+  @override
+  String get viewArea => 'Area';
+
+  @override
+  String get viewMap => 'Peta';
+
+  @override
+  String get viewTimeline => 'Linimasa';
+
+  @override
+  String get viewCanvas => 'Kanvas';
+
+  @override
+  String get viewPages => 'Halaman';
+
+  @override
+  String get viewGallery => 'Galeri';
+
+  @override
+  String get viewExport => 'Ekspor';
+
+  @override
+  String get viewEditor => 'Penyunting';
+
+  @override
+  String get viewOutline => 'Kerangka';
+
+  @override
+  String get viewReading => 'Membaca';
+
+  @override
+  String get viewBook => 'Buku';
+
+  @override
+  String get viewRoutes => 'Rute';
+
+  @override
+  String get viewReader => 'Pembaca';
+
+  @override
+  String get viewDialogue => 'Dialog';
+
+  @override
+  String get viewOneline => 'Satu garis';
+
+  @override
+  String get viewDownline => 'Menurun';
+
+  @override
+  String get viewCompare => 'Bandingkan';
+
+  @override
+  String get viewCalendar => 'Kalender';
+
+  @override
+  String get viewList => 'Daftar';
+
+  @override
+  String get viewMatrix => 'Matriks';
+
+  @override
+  String get viewChat => 'Obrolan';
+
+  @override
+  String get viewTranscript => 'Log';
+
+  @override
+  String get clsNoRelations => 'Belum ada tautan antar elemen ini';
+
+  @override
+  String get clsTypeText => 'Teks';
+
+  @override
+  String get clsTypeTextarea => 'Teks panjang';
+
+  @override
+  String get clsTypeNumber => 'Angka';
+
+  @override
+  String get clsTypeDate => 'Tanggal';
+
+  @override
+  String get clsTypeSelect => 'Pilihan';
+
+  @override
+  String get clsTypeMulti => 'Pilihan ganda';
+
+  @override
+  String get clsTypeCheckbox => 'Kotak centang';
+
+  @override
+  String get clsTypeUrl => 'Tautan (URL)';
+
+  @override
+  String get clsTypeRelation => 'Relasi';
+
+  @override
+  String get clsTypeFormula => 'Rumus';
+
+  @override
+  String get clsFieldType => 'Jenis bidang';
+
+  @override
+  String get clsChoices => 'Pilihan (satu per baris)';
+
+  @override
+  String get clsFormulaHint => 'mis. {HP} * 2';
+
+  @override
+  String get clsEditField => 'Ubah bidang';
+
+  @override
+  String get clsAddLink => 'Tambah tautan';
+
+  @override
+  String get dateDay => 'Hari';
+
+  @override
+  String get dateMonth => 'Bulan';
+
+  @override
+  String get dateYear => 'Tahun';
+
+  @override
+  String get dateHour => 'Jam';
+
+  @override
+  String get dateMinute => 'Mnt';
+
+  @override
+  String get btnClear => 'Hapus isi';
+
+  @override
+  String get groupBy => 'Kelompokkan menurut';
+
+  @override
+  String get groupModule => 'Modul';
+
+  @override
+  String get relDirected => 'Satu arah (→)';
+
+  @override
+  String get exhGroup => 'Grup';
+
+  @override
+  String get exhNote => 'Catatan';
+
+  @override
+  String get exhAddElement => 'Tempatkan elemen';
+
+  @override
+  String get exhAddNote => 'Tambah catatan';
+
+  @override
+  String get exhAddGroup => 'Tambah grup';
+
+  @override
+  String get exhRemoveFromScene => 'Hapus dari adegan';
+
+  @override
+  String get exhSceneEmpty => 'Belum ada yang ditempatkan — tempatkan elemen atau tambah catatan.';
+
+  @override
+  String get auStatusIdea => 'Ide';
+
+  @override
+  String get auStatusDraft => 'Draf';
+
+  @override
+  String get auStatusRevised => 'Direvisi';
+
+  @override
+  String get auStatusDone => 'Selesai';
+
+  @override
+  String get auSynopsis => 'Sinopsis';
+
+  @override
+  String get auPov => 'Sudut pandang';
+
+  @override
+  String get btnPrevious => 'Sebelumnya';
+
+  @override
+  String get btnNext => 'Berikutnya';
+
+  @override
+  String get narAddRoute => 'Tambah rute';
+
+  @override
+  String get narScript => 'Naskah';
+
+  @override
+  String get narPlayTest => 'Uji main';
+
+  @override
+  String get narRestart => 'Mulai ulang';
+
+  @override
+  String get narShowHidden => 'Tampilkan opsi tersembunyi';
+
+  @override
+  String get narVariables => 'Variabel';
+
+  @override
+  String get narNoVariables => 'Tidak ada variabel cerita di Nexus ini';
+
+  @override
+  String get narPlayEnd => 'Tamat — tidak ada rute lanjutan.';
+
+  @override
+  String get narNoOptionOpen => 'Tidak ada opsi yang terbuka dengan variabel ini.';
+
+  @override
+  String get narHiddenByCondition => 'disembunyikan oleh syaratnya';
+
+  @override
+  String get chrCompareWith => 'Bandingkan dengan';
+
+  @override
+  String get chrNoOtherLine => 'Tidak ada Chronicler lain di Nexus ini untuk dibandingkan';
+
+  @override
+  String get scribeNoMessages => 'Belum ada pesan';
+
+  @override
+  String get wndLocator => 'Peta (Locator)';
+
+  @override
+  String get wndNoLocator => 'Belum ada Locator di Nexus ini — area-nya tempat pin berada.';
+
+  @override
+  String get wndPickLocator => 'Pilih Locator tempat pin-pin ini berada.';
+
+  @override
+  String get wndNoAreas => 'Locator itu belum punya area';
+
+  @override
+  String get wndAddPin => 'Taruh pin di sini';
+
+  @override
+  String get skExportPng => 'Bagikan sebagai PNG';
+
+  @override
+  String get dgPanel => 'Panel (komik)';
+
+  @override
+  String get dgBalloon => 'Balon kata';
+
+  @override
+  String get dgLinkFrom => 'Hubungkan ke…';
+
+  @override
+  String get dgPanelShows => 'Tampilkan halaman Sketcher';
+
+  @override
+  String get dgBalloonSpeaker => 'Siapa yang bicara';
+
+  @override
+  String get dgNumberByPosition => 'Beri nomor menurut posisi';
+
+  @override
+  String get dgShowOrder => 'Tampilkan urutan baca';
+
+  @override
+  String get divNewTable => 'Tabel baru';
+
+  @override
+  String get divDice => 'Dadu';
+
+  @override
+  String get divDiceHelp => 'Kosong = berbobot';
+
+  @override
+  String get divBadDice => 'Bukan ekspresi dadu';
+
+  @override
+  String get divModePick => 'Pilih satu';
+
+  @override
+  String get divModeJoin => 'Gabung semua';
+
+  @override
+  String get divWeighted => 'Berbobot';
+
+  @override
+  String get divEntryText => 'Teks';
+
+  @override
+  String get divFrom => 'Dari';
+
+  @override
+  String get divTo => 'Sampai';
+
+  @override
+  String get divWeight => 'Bobot';
+
+  @override
+  String get divRollsTable => 'Lempar tabel lain di sini';
+
+  @override
+  String get divLinkEntity => 'Sebut sesuatu';
+
+  @override
+  String get divUnlink => 'Hapus tautan';
+
+  @override
+  String get divNoTables => 'Belum ada tabel';
+
+  @override
+  String get divRoll => 'Lempar';
+
+  @override
+  String get divEntries => 'Entri';
+
+  @override
+  String get divNoEntries => 'Belum ada entri';
+
+  @override
+  String get divHistory => 'Riwayat';
+
+  @override
+  String get divQuickRoll => 'Lempar saja: 3d6';
+
+  @override
+  String get trashTitle => 'Sampah';
+
+  @override
+  String get trashMoved => 'Dipindah ke Sampah';
+
+  @override
+  String get trashEmptyAll => 'Kosongkan Sampah';
+
+  @override
+  String get trashEmptyConfirm => 'Semua isi Sampah dihapus permanen.';
+
+  @override
+  String get trashNothing => 'Sampah kosong';
+
+  @override
+  String get trashNote => 'Modul yang dipulihkan kembali dengan semua isi dan relasinya — tetapi tanpa riwayat versi.';
+
+  @override
+  String get trashRestore => 'Pulihkan';
+
+  @override
+  String get trashModules => 'modul';
+
+  @override
+  String get trashDeleteForever => 'Hapus permanen? Tidak bisa dipulihkan lagi.';
+
+  @override
+  String get problemsTitle => 'Masalah';
+
+  @override
+  String get problemsLinks => 'Tautan tak terselesaikan';
+
+  @override
+  String get problemsEmpty => 'Modul kosong';
+
+  @override
+  String get problemsRelations => 'Relasi dengan ujung hilang';
+
+  @override
+  String get problemsNone => 'Tidak ada masalah';
+
+  @override
+  String get assetsTitle => 'Aset';
+
+  @override
+  String get assetsFromDevice => 'Tambah dari perangkat ini';
+
+  @override
+  String get assetsAddUrl => 'Tambah tautan (URL)';
+
+  @override
+  String get assetsNotice => 'Aset tetap di perangkat ini: sinkronisasi membawa namanya, bukan berkasnya.';
+
+  @override
+  String get assetsNone => 'Belum ada aset';
+
+  @override
+  String get assetsTooBig => 'Terlalu besar untuk peramban';
+
+  @override
+  String get pbChooseImage => 'Pilih gambar';
+
+  @override
+  String get csvImportTitle => 'Impor CSV';
+
+  @override
+  String get fromTemplate => 'Dari templat';
+
+  @override
+  String get guideTitle => 'Panduan';
+
+  @override
+  String get guideDesc => 'Dunia kecil yang menampilkan setiap jenis';
+
+  @override
+  String get guideAdd => 'Tambah panduan';
+
+  @override
+  String get mddxImport => 'Impor berkas modul (.mddx)';
+
+  @override
+  String get mddxExport => 'Ekspor sebagai .mddx';
+
+  @override
+  String get mddxNotModule => 'Berkas itu bukan modul DraconDex';
+
+  @override
+  String get kindCatStructure => 'Struktur';
+
+  @override
+  String get kindCatView => 'Tampilan';
+
+  @override
+  String get kindCatData => 'Data';
+
+  @override
+  String get kindGroupNotes => 'Catatan & dokumen';
+
+  @override
+  String get kindGroupData => 'Data & kategori';
+
+  @override
+  String get kindGroupMapTime => 'Peta & waktu';
+
+  @override
+  String get kindGroupStory => 'Cerita';
+
+  @override
+  String get kindGroupDraw => 'Gambar & desain';
+
+  @override
+  String get nexusStartWith => 'Mulai dengan';
+
+  @override
+  String get nexusStartEmpty => 'Kosong — Nexus kosong';
+
+  @override
+  String get csvPick => 'Pilih berkas CSV';
+
+  @override
+  String get csvHint => 'Baris pertama adalah nama bidang, kolom pertama nama elemen.';
+
+  @override
+  String get csvCreate => 'Buat Classifier';
+
+  @override
+  String get csvSkip => 'Lewati';
+
+  @override
+  String get csvNameColumn => 'Nama';
+
+  @override
+  String get csvTruncated => 'hanya 5.000 baris pertama';
+
+  @override
+  String get csvTooLarge => 'Berkas lebih dari 8 MB';
+
+  @override
+  String get csvEmpty => 'Tidak ada baris — perlu judul dan minimal satu baris';
+
+  @override
+  String get kindClassicCollector => 'Folder';
+
+  @override
+  String get kindDescCollector => 'Folder untuk mengelompokkan module lain';
+
+  @override
+  String get kindClassicManager => 'Proyek';
+
+  @override
+  String get kindDescManager => 'Lihat module anak sebagai kartu, daftar, atau tabel';
+
+  @override
+  String get kindClassicInspector => 'Detail';
+
+  @override
+  String get kindDescInspector => 'Satu halaman catatan detail untuk item ini';
+
+  @override
+  String get kindClassicClassifier => 'Kategori';
+
+  @override
+  String get kindDescClassifier => 'Kategorikan item dengan field kustom';
+
+  @override
+  String get kindClassicLocator => 'Peta';
+
+  @override
+  String get kindDescLocator => 'Peta dengan pin dan area';
+
+  @override
+  String get kindClassicChronicler => 'Linimasa';
+
+  @override
+  String get kindDescChronicler => 'Linimasa peristiwa bertanggal';
+
+  @override
+  String get kindClassicWanderer => 'TimeMap';
+
+  @override
+  String get kindDescWanderer => 'Pin peta yang terhubung ke peristiwa linimasa';
+
+  @override
+  String get kindClassicNarrator => 'Cerita';
+
+  @override
+  String get kindDescNarrator => 'Node dialog yang terhubung di papan rute';
+
+  @override
+  String get kindClassicAuthor => 'Buku';
+
+  @override
+  String get kindDescAuthor => 'Buku dengan bab dan editor penulisan';
+
+  @override
+  String get kindClassicScribe => 'Obrolan';
+
+  @override
+  String get kindDescScribe => 'Catatan sesi bergaya chat';
+
+  @override
+  String get kindClassicDrafter => 'Dokumen';
+
+  @override
+  String get kindDescDrafter => 'Halaman markdown kosong';
+
+  @override
+  String get kindClassicExhibitor => 'Pameran';
+
+  @override
+  String get kindDescExhibitor => 'Adegan, graf, dan tabel item tertaut — tempat relasi digambar';
+
+  @override
+  String get kindClassicSketcher => 'Gambar';
+
+  @override
+  String get kindDescSketcher => 'Kanvas gambar bebas';
+
+  @override
+  String get kindClassicDesigner => 'Grafik';
+
+  @override
+  String get kindDescDesigner => 'Diagram bebas dengan bentuk dan panah';
+
+  @override
+  String get kindClassicDiviner => 'Tabel acak';
+
+  @override
+  String get kindDescDiviner => 'Tabel acak dan lempar dadu';
+
+  @override
+  String get moduleNameMode => 'Nama modul';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = Folder/Proyek/…';
+
+  @override
+  String get moduleInside => 'di dalam';
+
+  @override
+  String get nameModeUnique => 'Unik';
+
+  @override
+  String get nameModeClassic => 'Klasik';
+
+  @override
+  String get kindRecent => 'Terbaru';
+
+  @override
+  String get clsLevelable => 'Bisa Naik Level';
+
+  @override
+  String get clsCondition => 'Kondisi';
+
+  @override
+  String get levelColLevel => 'Level';
+
+  @override
+  String get levelColInfo => 'Info';
+
+  @override
+  String get levelAddRow => 'Tambah baris';
+
+  @override
+  String get levelNoRows => 'Belum ada baris';
+
+  @override
+  String get confirmDeleteLevelRow => 'Hapus baris ini?';
+
+  @override
+  String get clsLevelAndCondition => 'Level & Kondisi';
+
+  @override
+  String get clsLevelAndConditionHint => 'Jadikan bidang tabel berbaris (level), atau kaitkan nilainya dengan kondisi.';
+
+  @override
+  String get clsInsertAbove => 'Sisipkan baris di atas';
+
+  @override
+  String get clsInsertBelow => 'Sisipkan baris di bawah';
 }

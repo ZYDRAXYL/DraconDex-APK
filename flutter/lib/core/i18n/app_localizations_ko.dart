@@ -336,6 +336,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get filterFieldChildOf => '모듈 안';
 
   @override
+  String get filterFieldHandle => '핸들';
+
+  @override
   String get filterOpIs => '다음과 같음';
 
   @override
@@ -579,15 +582,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get deleteHashtagConfirmTitle => '태그를 삭제할까요?';
 
   @override
-  String get builderNavHome => '홈';
-
-  @override
-  String get builderNavView => '보기';
-
-  @override
-  String get builderNavFolders => '폴더 보기';
-
-  @override
   String get viewModeTitle => '보기 모드';
 
   @override
@@ -598,15 +592,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get viewModeCompact => '간결';
-
-  @override
-  String get recentViewsTitle => '최근 본 항목';
-
-  @override
-  String get recentViewsEmpty => '최근 본 항목이 없습니다';
-
-  @override
-  String get recentViewsClear => '모두 지우기';
 
   @override
   String get builderNexusRootLabel => 'Nexus 루트';
@@ -958,4 +943,829 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get transferPasteLinkHint => '링크에는 키가 들어 있어서, 보낸 쪽이 QR만 허용했더라도 사용할 수 있습니다.';
+
+  @override
+  String get navNest => '둥지';
+
+  @override
+  String get navSearch => '검색';
+
+  @override
+  String get navOpenPages => '페이지';
+
+  @override
+  String get navTools => '도구';
+
+  @override
+  String get navMore => '더 보기';
+
+  @override
+  String get openPagesTitle => '열린 페이지';
+
+  @override
+  String get openPagesEmpty => '열린 페이지가 없습니다. 연 페이지는 닫을 때까지 여기에 남습니다.';
+
+  @override
+  String get openPagesCloseAll => '모두 닫기';
+
+  @override
+  String get openPageClose => '페이지 닫기';
+
+  @override
+  String get rowOpen => '열기';
+
+  @override
+  String get rowMore => '추가 작업';
+
+  @override
+  String get crumbEmpty => '안에 아무것도 없음';
+
+  @override
+  String get goToTitle => '이동';
+
+  @override
+  String get goToHint => '이름, 경로 또는 @handle';
+
+  @override
+  String get searchHint => '이름, 텍스트, 명령 검색';
+
+  @override
+  String get searchThings => '항목';
+
+  @override
+  String get searchContent => '내용';
+
+  @override
+  String get searchCommands => '명령';
+
+  @override
+  String get searchEmpty => '일치하는 결과 없음';
+
+  @override
+  String get elementPageSoon => '이 요소는 다음 업데이트에서 자체 페이지를 갖게 됩니다. 지금은 모듈 안에서 열립니다.';
+
+  @override
+  String get wikiUnresolved => '아직 이 이름을 가진 것이 없습니다. 이 이름으로 Drafter 페이지를 만들까요?';
+
+  @override
+  String get wikiCreateDrafter => '만들기';
+
+  @override
+  String get btnUndo => '실행 취소';
+
+  @override
+  String get pbAddBlock => '블록 추가';
+
+  @override
+  String get pbAddHere => '여기에 추가';
+
+  @override
+  String get pbAddProperty => '속성 추가';
+
+  @override
+  String get pbArrange => '페이지 정리';
+
+  @override
+  String get pbArrangeDone => '완료';
+
+  @override
+  String get pbArrangeHint => '드래그해서 순서를 바꿉니다. 열 블록은 통째로 움직입니다.';
+
+  @override
+  String get pbArrangeShared => '이것은 이 모듈의 모든 요소가 공유하는 레이아웃입니다. 이 페이지만 바꾸려면 먼저 분리하세요.';
+
+  @override
+  String get pbBacklinks => '링크된 곳';
+
+  @override
+  String get pbBlockDeleted => '블록을 삭제했습니다';
+
+  @override
+  String get pbBorrow => '다른 모듈의 보기';
+
+  @override
+  String get pbColumn => '열';
+
+  @override
+  String get pbColumns => '열';
+
+  @override
+  String get pbDivider => '구분선';
+
+  @override
+  String get pbFullScreen => '전체 화면';
+
+  @override
+  String get pbHeading => '제목';
+
+  @override
+  String get pbImage => '이미지';
+
+  @override
+  String get pbItemBody => '요소';
+
+  @override
+  String get pbItemEmpty => '아직 적힌 것이 없습니다.';
+
+  @override
+  String get pbNoRelated => '아직 링크가 없습니다';
+
+  @override
+  String get pbNotOnMobile => '이 앱에는 아직 없습니다';
+
+  @override
+  String get pbOnlyOnce => '한 페이지에 한 번만 둘 수 있습니다';
+
+  @override
+  String get pbOpenFullScreen => '열기';
+
+  @override
+  String get pbOutgoing => '링크 대상';
+
+  @override
+  String get pbPropName => '이름';
+
+  @override
+  String get pbPropType => '유형';
+
+  @override
+  String get pbProperties => '속성';
+
+  @override
+  String get pbRelated => '관련';
+
+  @override
+  String get pbRelations => '관계';
+
+  @override
+  String get pbRevert => '공유 레이아웃으로 되돌리기';
+
+  @override
+  String get pbSharedLayout => '이 모듈의 모든 요소 페이지가 공유하는 레이아웃.';
+
+  @override
+  String get pbSourceGone => '보여 주던 것이 사라졌습니다';
+
+  @override
+  String get pbSplit => '이 페이지에 고유 레이아웃 주기';
+
+  @override
+  String get pbTags => '태그';
+
+  @override
+  String get pbText => '텍스트';
+
+  @override
+  String get pbTextEmpty => '빈 텍스트 — 눌러서 쓰기';
+
+  @override
+  String get propTypeCheckbox => '체크박스';
+
+  @override
+  String get propTypeDate => '날짜';
+
+  @override
+  String get propTypeNumber => '숫자';
+
+  @override
+  String get propTypeText => '텍스트';
+
+  @override
+  String get propTypeTextarea => '긴 텍스트';
+
+  @override
+  String get propTypeUrl => '링크';
+
+  @override
+  String get viewTable => '표';
+
+  @override
+  String get viewListDetail => '목록 · 상세';
+
+  @override
+  String get viewRelations => '관계';
+
+  @override
+  String get viewGrid => '그리드';
+
+  @override
+  String get viewScene => '장면';
+
+  @override
+  String get viewGraph => '그래프';
+
+  @override
+  String get viewCards => '카드';
+
+  @override
+  String get viewBoard => '보드';
+
+  @override
+  String get viewEdges => '연결선';
+
+  @override
+  String get viewArea => '영역';
+
+  @override
+  String get viewMap => '지도';
+
+  @override
+  String get viewTimeline => '타임라인';
+
+  @override
+  String get viewCanvas => '캔버스';
+
+  @override
+  String get viewPages => '페이지';
+
+  @override
+  String get viewGallery => '갤러리';
+
+  @override
+  String get viewExport => '내보내기';
+
+  @override
+  String get viewEditor => '편집기';
+
+  @override
+  String get viewOutline => '개요';
+
+  @override
+  String get viewReading => '읽기';
+
+  @override
+  String get viewBook => '책';
+
+  @override
+  String get viewRoutes => '경로';
+
+  @override
+  String get viewReader => '리더';
+
+  @override
+  String get viewDialogue => '대화';
+
+  @override
+  String get viewOneline => '한 줄';
+
+  @override
+  String get viewDownline => '세로';
+
+  @override
+  String get viewCompare => '비교';
+
+  @override
+  String get viewCalendar => '달력';
+
+  @override
+  String get viewList => '목록';
+
+  @override
+  String get viewMatrix => '매트릭스';
+
+  @override
+  String get viewChat => '채팅';
+
+  @override
+  String get viewTranscript => '기록';
+
+  @override
+  String get clsNoRelations => '아직 이 요소들 사이에 링크가 없습니다';
+
+  @override
+  String get clsTypeText => '텍스트';
+
+  @override
+  String get clsTypeTextarea => '긴 텍스트';
+
+  @override
+  String get clsTypeNumber => '숫자';
+
+  @override
+  String get clsTypeDate => '날짜';
+
+  @override
+  String get clsTypeSelect => '선택';
+
+  @override
+  String get clsTypeMulti => '다중 선택';
+
+  @override
+  String get clsTypeCheckbox => '체크박스';
+
+  @override
+  String get clsTypeUrl => '링크 (URL)';
+
+  @override
+  String get clsTypeRelation => '관계';
+
+  @override
+  String get clsTypeFormula => '수식';
+
+  @override
+  String get clsFieldType => '필드 유형';
+
+  @override
+  String get clsChoices => '선택지 (줄마다 하나)';
+
+  @override
+  String get clsFormulaHint => '예: {HP} * 2';
+
+  @override
+  String get clsEditField => '필드 편집';
+
+  @override
+  String get clsAddLink => '링크 추가';
+
+  @override
+  String get dateDay => '일';
+
+  @override
+  String get dateMonth => '월';
+
+  @override
+  String get dateYear => '년';
+
+  @override
+  String get dateHour => '시';
+
+  @override
+  String get dateMinute => '분';
+
+  @override
+  String get btnClear => '지우기';
+
+  @override
+  String get groupBy => '그룹 기준';
+
+  @override
+  String get groupModule => '모듈';
+
+  @override
+  String get relDirected => '한 방향 (→)';
+
+  @override
+  String get exhGroup => '그룹';
+
+  @override
+  String get exhNote => '메모';
+
+  @override
+  String get exhAddElement => '요소 배치';
+
+  @override
+  String get exhAddNote => '메모 추가';
+
+  @override
+  String get exhAddGroup => '그룹 추가';
+
+  @override
+  String get exhRemoveFromScene => '장면에서 제거';
+
+  @override
+  String get exhSceneEmpty => '아직 배치된 것이 없습니다 — 요소를 배치하거나 메모를 추가하세요.';
+
+  @override
+  String get auStatusIdea => '아이디어';
+
+  @override
+  String get auStatusDraft => '초안';
+
+  @override
+  String get auStatusRevised => '수정됨';
+
+  @override
+  String get auStatusDone => '완료';
+
+  @override
+  String get auSynopsis => '시놉시스';
+
+  @override
+  String get auPov => '시점';
+
+  @override
+  String get btnPrevious => '이전';
+
+  @override
+  String get btnNext => '다음';
+
+  @override
+  String get narAddRoute => '경로 추가';
+
+  @override
+  String get narScript => '대본';
+
+  @override
+  String get narPlayTest => '플레이 테스트';
+
+  @override
+  String get narRestart => '다시 시작';
+
+  @override
+  String get narShowHidden => '숨긴 선택지 표시';
+
+  @override
+  String get narVariables => '변수';
+
+  @override
+  String get narNoVariables => '이 Nexus에는 스토리 변수가 없습니다';
+
+  @override
+  String get narPlayEnd => '끝 — 이어지는 경로가 없습니다.';
+
+  @override
+  String get narNoOptionOpen => '이 변수로는 열린 선택지가 없습니다.';
+
+  @override
+  String get narHiddenByCondition => '조건에 의해 숨김';
+
+  @override
+  String get chrCompareWith => '비교 대상';
+
+  @override
+  String get chrNoOtherLine => '이 Nexus에 비교할 다른 Chronicler가 없습니다';
+
+  @override
+  String get scribeNoMessages => '아직 메시지가 없습니다';
+
+  @override
+  String get wndLocator => '지도 (Locator)';
+
+  @override
+  String get wndNoLocator => '아직 이 Nexus에 Locator가 없습니다 — 핀은 그 영역에 놓입니다.';
+
+  @override
+  String get wndPickLocator => '이 핀들이 놓일 Locator를 고르세요.';
+
+  @override
+  String get wndNoAreas => '그 Locator에는 아직 영역이 없습니다';
+
+  @override
+  String get wndAddPin => '여기에 핀 두기';
+
+  @override
+  String get skExportPng => 'PNG로 공유';
+
+  @override
+  String get dgPanel => '칸 (만화)';
+
+  @override
+  String get dgBalloon => '말풍선';
+
+  @override
+  String get dgLinkFrom => '연결 대상…';
+
+  @override
+  String get dgPanelShows => 'Sketcher 페이지 표시';
+
+  @override
+  String get dgBalloonSpeaker => '말하는 이';
+
+  @override
+  String get dgNumberByPosition => '위치순으로 번호 매기기';
+
+  @override
+  String get dgShowOrder => '읽는 순서 표시';
+
+  @override
+  String get divNewTable => '새 표';
+
+  @override
+  String get divDice => '주사위';
+
+  @override
+  String get divDiceHelp => '비우면 = 가중치';
+
+  @override
+  String get divBadDice => '주사위 식이 아닙니다';
+
+  @override
+  String get divModePick => '하나 뽑기';
+
+  @override
+  String get divModeJoin => '모두 잇기';
+
+  @override
+  String get divWeighted => '가중치';
+
+  @override
+  String get divEntryText => '텍스트';
+
+  @override
+  String get divFrom => '부터';
+
+  @override
+  String get divTo => '까지';
+
+  @override
+  String get divWeight => '가중치';
+
+  @override
+  String get divRollsTable => '여기서 다른 표 굴리기';
+
+  @override
+  String get divLinkEntity => '무언가 지정';
+
+  @override
+  String get divUnlink => '링크 제거';
+
+  @override
+  String get divNoTables => '아직 표가 없습니다';
+
+  @override
+  String get divRoll => '굴리기';
+
+  @override
+  String get divEntries => '항목';
+
+  @override
+  String get divNoEntries => '아직 항목이 없습니다';
+
+  @override
+  String get divHistory => '기록';
+
+  @override
+  String get divQuickRoll => '그냥 굴리기: 3d6';
+
+  @override
+  String get trashTitle => '휴지통';
+
+  @override
+  String get trashMoved => '휴지통으로 이동함';
+
+  @override
+  String get trashEmptyAll => '휴지통 비우기';
+
+  @override
+  String get trashEmptyConfirm => '휴지통의 모든 항목이 영구 삭제됩니다.';
+
+  @override
+  String get trashNothing => '휴지통이 비어 있습니다';
+
+  @override
+  String get trashNote => '복원한 모듈은 안의 모든 것과 관계와 함께 돌아오지만 버전 기록은 돌아오지 않습니다.';
+
+  @override
+  String get trashRestore => '복원';
+
+  @override
+  String get trashModules => '모듈';
+
+  @override
+  String get trashDeleteForever => '영구 삭제할까요? 이후에는 복원할 수 없습니다.';
+
+  @override
+  String get problemsTitle => '문제';
+
+  @override
+  String get problemsLinks => '해결되지 않은 링크';
+
+  @override
+  String get problemsEmpty => '빈 모듈';
+
+  @override
+  String get problemsRelations => '한쪽 끝이 없는 관계';
+
+  @override
+  String get problemsNone => '문제가 없습니다';
+
+  @override
+  String get assetsTitle => '에셋';
+
+  @override
+  String get assetsFromDevice => '이 기기에서 추가';
+
+  @override
+  String get assetsAddUrl => '링크 (URL) 추가';
+
+  @override
+  String get assetsNotice => '에셋은 이 기기에 남습니다. 동기화는 이름만 옮기고 파일은 옮기지 않습니다.';
+
+  @override
+  String get assetsNone => '아직 에셋이 없습니다';
+
+  @override
+  String get assetsTooBig => '브라우저에 두기에는 너무 큽니다';
+
+  @override
+  String get pbChooseImage => '이미지 선택';
+
+  @override
+  String get csvImportTitle => 'CSV 가져오기';
+
+  @override
+  String get fromTemplate => '템플릿에서';
+
+  @override
+  String get guideTitle => '가이드';
+
+  @override
+  String get guideDesc => '모든 종류를 보여 주는 작은 세계';
+
+  @override
+  String get guideAdd => '가이드 추가';
+
+  @override
+  String get mddxImport => '모듈 파일 가져오기 (.mddx)';
+
+  @override
+  String get mddxExport => '.mddx로 내보내기';
+
+  @override
+  String get mddxNotModule => '그 파일은 DraconDex 모듈이 아닙니다';
+
+  @override
+  String get kindCatStructure => '구조';
+
+  @override
+  String get kindCatView => '보기';
+
+  @override
+  String get kindCatData => '데이터';
+
+  @override
+  String get kindGroupNotes => '메모·문서';
+
+  @override
+  String get kindGroupData => '데이터·범주';
+
+  @override
+  String get kindGroupMapTime => '지도와 시간';
+
+  @override
+  String get kindGroupStory => '이야기';
+
+  @override
+  String get kindGroupDraw => '그리기와 디자인';
+
+  @override
+  String get nexusStartWith => '시작 내용';
+
+  @override
+  String get nexusStartEmpty => '없음 — 빈 Nexus';
+
+  @override
+  String get csvPick => 'CSV 파일 선택';
+
+  @override
+  String get csvHint => '첫 행은 필드 이름, 첫 열은 요소 이름입니다.';
+
+  @override
+  String get csvCreate => 'Classifier 만들기';
+
+  @override
+  String get csvSkip => '제외';
+
+  @override
+  String get csvNameColumn => '이름';
+
+  @override
+  String get csvTruncated => '처음 5,000행만';
+
+  @override
+  String get csvTooLarge => '파일이 8MB를 넘습니다';
+
+  @override
+  String get csvEmpty => '가져올 행이 없습니다 — 머리글과 한 행 이상이 필요합니다';
+
+  @override
+  String get kindClassicCollector => '폴더';
+
+  @override
+  String get kindDescCollector => '다른 모듈을 묶는 폴더';
+
+  @override
+  String get kindClassicManager => '프로젝트';
+
+  @override
+  String get kindDescManager => '하위 모듈을 카드·목록·표로 보기';
+
+  @override
+  String get kindClassicInspector => '상세';
+
+  @override
+  String get kindDescInspector => '이 항목의 상세 내용을 담은 노트 한 장';
+
+  @override
+  String get kindClassicClassifier => '카테고리';
+
+  @override
+  String get kindDescClassifier => '커스텀 필드로 항목 분류';
+
+  @override
+  String get kindClassicLocator => '지도';
+
+  @override
+  String get kindDescLocator => '핀과 영역이 있는 지도';
+
+  @override
+  String get kindClassicChronicler => '타임라인';
+
+  @override
+  String get kindDescChronicler => '날짜별 이벤트 타임라인';
+
+  @override
+  String get kindClassicWanderer => '타임맵';
+
+  @override
+  String get kindDescWanderer => '지도 핀과 타임라인 이벤트를 연결';
+
+  @override
+  String get kindClassicNarrator => '스토리';
+
+  @override
+  String get kindDescNarrator => '대화 노드를 잇는 경로 보드';
+
+  @override
+  String get kindClassicAuthor => '북';
+
+  @override
+  String get kindDescAuthor => '챕터와 글쓰기 에디터가 있는 책';
+
+  @override
+  String get kindClassicScribe => '챗';
+
+  @override
+  String get kindDescScribe => '채팅형 세션 노트';
+
+  @override
+  String get kindClassicDrafter => '문서';
+
+  @override
+  String get kindDescDrafter => '빈 마크다운 페이지';
+
+  @override
+  String get kindClassicExhibitor => '전시';
+
+  @override
+  String get kindDescExhibitor => '연결된 항목의 장면·그래프·표 — 관계는 여기서 그립니다';
+
+  @override
+  String get kindClassicSketcher => '드로잉';
+
+  @override
+  String get kindDescSketcher => '자유롭게 그리는 캔버스';
+
+  @override
+  String get kindClassicDesigner => '그래프';
+
+  @override
+  String get kindDescDesigner => '도형과 화살표로 만드는 자유 다이어그램';
+
+  @override
+  String get kindClassicDiviner => '랜덤 표';
+
+  @override
+  String get kindDescDiviner => '랜덤 표와 주사위 굴림';
+
+  @override
+  String get moduleNameMode => '모듈 이름';
+
+  @override
+  String get moduleNameModeHint => 'Unique = Collector/Manager/… · Classic = 폴더/프로젝트/…';
+
+  @override
+  String get moduleInside => '개 포함';
+
+  @override
+  String get nameModeUnique => '고유';
+
+  @override
+  String get nameModeClassic => '클래식';
+
+  @override
+  String get kindRecent => '최근';
+
+  @override
+  String get clsLevelable => '레벨 가능';
+
+  @override
+  String get clsCondition => '조건';
+
+  @override
+  String get levelColLevel => '레벨';
+
+  @override
+  String get levelColInfo => '정보';
+
+  @override
+  String get levelAddRow => '행 추가';
+
+  @override
+  String get levelNoRows => '행이 없습니다';
+
+  @override
+  String get confirmDeleteLevelRow => '이 행을 삭제할까요?';
+
+  @override
+  String get clsLevelAndCondition => '레벨 및 조건';
+
+  @override
+  String get clsLevelAndConditionHint => '필드를 행 표(레벨)로 만들거나 값을 조건에 연결합니다.';
+
+  @override
+  String get clsInsertAbove => '위에 행 삽입';
+
+  @override
+  String get clsInsertBelow => '아래에 행 삽입';
 }

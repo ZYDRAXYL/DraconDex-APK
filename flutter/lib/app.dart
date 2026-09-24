@@ -38,7 +38,9 @@ class DraconDexApp extends ConsumerWidget {
         // padding. MediaQuery.of(context) here is always current.
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(settings.uiScale)),
-          child: child!,
+          // Kind names are read from a static, so a Classic/Unique switch
+          // has to rebuild everything under the router to show.
+          child: KeyedSubtree(key: ValueKey(settings.classicNames), child: child!),
         );
       },
     );
