@@ -3,18 +3,17 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "be803f8b5a666d93f2080a245a8ebf971085bbf2",
-    "version": "1.0.0",
-    "_comment": "An immutable ref, deliberately: a commit SHA rather than a branch. sdb-check resolves this through raw.githubusercontent, and pinning 'main' would not be a pin \u2014 main moves, so the drift check would verify against whatever SDB happens to be rather than against the version this repo actually vendored. Moving the pin is a reviewable commit, which is the whole point. Same idea as DraconDex-PWA's app-source.json commit field."
+    "ref": "7c2cf00e653d2abedf1889ffd43f97f270cf6cf4",
+    "version": "2.0.0"
   },
   "expect": {
-    "vaultSchemaVersion": 4,
+    "vaultSchemaVersion": 6,
     "supabaseSchemaVersion": 2
   },
   "vendored": {
     "flutter/lib/core/database/vault_schema.g.dart": {
       "artifact": "generated/flutter/vault_schema.g.dart",
-      "sha256": "a33fea1b30f442854738a079625f80a80b22b9bdd65a6fd5627baaa2d701478e"
+      "sha256": "c5b27bb7f3db4ace6c0e302560207008b1477e8cbeaddcec310c92dc242eddc4"
     },
     "flutter/lib/data/services/supabase_schema.dart": {
       "artifact": "generated/flutter/supabase_schema.dart",

@@ -69,8 +69,9 @@ void main() {
       'kind': 'author', 'display_order': 2, 'handle': 'chapters',
     });
 
-    await db.insert('module_attribute', {
-      'module_ref': root, 'attr_name': 'era', 'attr_value': 'third age', 'display_order': 0,
+    await db.insert('page_block', {
+      'module_ref': root, 'block_type': 'property', 'prop_name': 'era',
+      'prop_type': 'text', 'content': 'third age', 'block_order': 0,
     });
 
     final tagId = await db.insert('hashtag', {'tag_name': 'main', 'tag_color': blue});
@@ -197,9 +198,11 @@ void main() {
     final nodeIx = index(nodes);
     final folIx = index(folders);
     final noteIx = index(notes);
+    final blocks = rows(s['pageBlocks']);
+    final blockIx = index(blocks);
 
     remap(modules, 'parentId', modIx);
-    for (final key in <String>['moduleAttrs', 'moduleUi', 'moduleTags']) {
+    for (final key in <String>['pageBlocks', 'moduleUi', 'moduleTags']) {
       remap(rows(s[key]), 'moduleId', modIx);
     }
     remap(objects, 'moduleId', modIx);
@@ -259,6 +262,11 @@ void main() {
     for (final r in nodes) {
       r['linkerKey'] = canonKey(r['linkerKey']);
     }
+    remap(blocks, 'parentId', blockIx);
+    for (final r in blocks) {
+      r['itemKey'] = canonKey(r['itemKey']);
+      r['sourceKey'] = canonKey(r['sourceKey']);
+    }
 
     return s;
   }
@@ -271,8 +279,31 @@ void main() {
     // These two strings ARE the compatibility check on both sides:
     // validateSnapshot in sync.js rejects anything else outright.
     expect(snap['format'], 'dracondex-vault-snapshot');
-    expect(snap['version'], 1);
+    expect(snap['version'], 2);
     expect((snap['nexus']! as Map)['name'], 'My World');
+  });
+
+  test('a v1 snapshot still imports, its module attributes as property blocks', () async {
+    final db = await openVault();
+    final targetId = await db.insert('nexus', {'name': 'Old'});
+    final r = await VaultSnapshotService.applySnapshot(db, targetId, <String, Object?>{
+      'format': 'dracondex-vault-snapshot',
+      'version': 1,
+      'nexus': <String, Object?>{'name': 'x'},
+      'modules': <Object?>[
+        <String, Object?>{'id': 7, 'parentId': null, 'name': 'People', 'kind': 'classifier'},
+      ],
+      'moduleAttrs': <Object?>[
+        <String, Object?>{'moduleId': 7, 'name': 'era', 'value': 'third age', 'displayOrder': 0},
+      ],
+    });
+    expect(r.ok, isTrue, reason: r.code);
+    final props = await db.rawQuery(
+        "SELECT b.prop_name, b.content FROM page_block b JOIN module m ON b.module_ref=m.id "
+        "WHERE m.nexus_ref=? AND b.block_type='property'", [targetId]);
+    expect(props, [
+      {'prop_name': 'era', 'content': 'third age'},
+    ]);
   });
 
   test('serialize -> apply -> serialize comes back identical', () async {

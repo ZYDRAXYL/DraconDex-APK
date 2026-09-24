@@ -50,7 +50,25 @@ class DatabaseHelper {
     for (final sql in vaultCreateStatements) {
       await db.execute(sql);
     }
+    await _migrateModuleAttributes(db);
     await _ensureDefaultNexus(db);
+  }
+
+  // v5 Part 8 (APP docs/V5.md §12): module_attribute is gone from the shared
+  // schema; its rows are property blocks in page_block now. Same move as
+  // EXE's migratePageBlockV6 — copy, then drop, in one transaction, so a
+  // crash in between leaves the table for the next open to retry.
+  Future<void> _migrateModuleAttributes(Database db) async {
+    final t = await db.rawQuery(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='module_attribute'");
+    if (t.isEmpty) return;
+    await db.transaction((txn) async {
+      await txn.execute(
+          "INSERT INTO page_block (module_ref, block_type, prop_name, prop_type, content, block_order, update_at) "
+          "SELECT module_ref, 'property', attr_name, 'text', attr_value, display_order, update_at "
+          'FROM module_attribute ORDER BY module_ref, display_order, id');
+      await txn.execute('DROP TABLE module_attribute');
+    });
   }
 
   // vaultSchemaVersion only moves forward when src/schema/vault.sql changes

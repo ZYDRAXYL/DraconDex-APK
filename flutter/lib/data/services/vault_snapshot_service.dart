@@ -18,7 +18,10 @@ import 'package:sqflite/sqflite.dart';
 /// [applySnapshot] is a dependency order, not a stylistic one.
 class VaultSnapshotService {
   static const String format = 'dracondex-vault-snapshot';
-  static const int version = 1;
+  /// v2 (APP docs/V5.md §12): `pageBlocks` replaces `moduleAttrs`. A v1
+  /// snapshot still imports — its attributes become property blocks.
+  static const int version = 2;
+  static const Set<int> readableVersions = {1, 2};
 
   /// The natural key a `timeline_date` row is deduplicated by, matching
   /// `dateKey` in sync.js exactly — it ends up in the JSON, so the separator
@@ -28,7 +31,7 @@ class VaultSnapshotService {
 
   static bool validate(Object? payload) {
     if (payload is! Map) return false;
-    if (payload['format'] != format || payload['version'] != version) return false;
+    if (payload['format'] != format || !readableVersions.contains(payload['version'])) return false;
     return payload['modules'] is List && payload['nexus'] is Map;
   }
 
@@ -78,11 +81,14 @@ class VaultSnapshotService {
       LEFT JOIN use_color cc ON m.color = cc.id
       WHERE m.nexus_ref=? ORDER BY m.id''');
 
-    final moduleAttrs = await all('''
-      SELECT a.module_ref AS moduleId, a.attr_name AS name, a.attr_value AS value,
-             a.display_order AS displayOrder
-      FROM module_attribute a JOIN module m ON a.module_ref=m.id
-      WHERE m.nexus_ref=? ORDER BY a.id''');
+    // Same shape as serializeVault's pageBlocks in EXE's db/sync.js.
+    final pageBlocks = await all('''
+      SELECT b.id, b.module_ref AS moduleId, b.item_key AS itemKey, b.parent_id AS parentId,
+             b.block_type AS type, b.component, b.source_key AS sourceKey, b.config,
+             b.content, b.prop_name AS propName, b.prop_type AS propType,
+             b.block_order AS "order"
+      FROM page_block b JOIN module m ON b.module_ref=m.id
+      WHERE m.nexus_ref=? ORDER BY b.id''');
 
     final moduleUi = await all('''
       SELECT u.module_ref AS moduleId, u.ui_key AS key, u.ui_value AS value
@@ -326,7 +332,7 @@ class VaultSnapshotService {
       'nexus': {'name': nexus['name'], 'memo': nexus['memo'], 'colorCode': nexus['colorCode']},
       'lookups': {'colors': colors.toList(), 'hashtags': hashtags, 'dates': dates},
       'modules': modules,
-      'moduleAttrs': moduleAttrs,
+      'pageBlocks': pageBlocks,
       'moduleUi': moduleUi,
       'moduleTags': moduleTags,
       'classifier': classifier,
@@ -470,11 +476,13 @@ class VaultSnapshotService {
       int? mod(Object? oldId) => oldId is int ? modMap[oldId] : null;
 
       // --- per-kind children, in dependency order -----------------------
+      // A v1 snapshot's module attributes are property blocks now (§12).
       for (final a in arr(p['moduleAttrs'])) {
         final m = mod(a['moduleId']);
         if (m == null) continue;
         await txn.rawInsert(
-            'INSERT INTO module_attribute (module_ref, attr_name, attr_value, display_order) VALUES (?,?,?,?)',
+            "INSERT INTO page_block (module_ref, block_type, prop_name, prop_type, content, block_order) "
+            "VALUES (?,'property',?,'text',?,?)",
             <Object?>[m, a['name'], a['value'], a['displayOrder'] ?? 0]);
       }
       for (final tg in arr(p['moduleTags'])) {
@@ -689,7 +697,7 @@ class VaultSnapshotService {
       // one registry (db/entity-kinds.js); this side follows in APK V3.
       final keyMaps = <String, Map<int, int>>{
         'module': modMap, 'cobj': cobjMap, 'bchp': bchpMap, 'chss': chssMap,
-        'tlev': evtMap, 'sdlg': dlgMap,
+        'tlev': evtMap, 'sdlg': dlgMap, 'skpg': pageMap, 'ctpl': ctplMap,
       };
 
       var droppedPins = 0;
@@ -773,6 +781,42 @@ class VaultSnapshotService {
       // note_<id> relation endpoints resolve through this too, so it joins the
       // key maps only once the notes actually exist.
       keyMaps['note'] = noteMap;
+
+      // Page blocks: item_key / source_key are entity keys, so they wait for
+      // every map. '*' (the shared element layout) is not a key and stays.
+      // Parents first, the same BFS as modules.
+      final blockMap = <int, int>{};
+      var pendingBlocks = arr(p['pageBlocks']);
+      while (pendingBlocks.isNotEmpty) {
+        final next = <Map<String, Object?>>[];
+        var progressed = false;
+        for (final b in pendingBlocks) {
+          final m = mod(b['moduleId']);
+          if (m == null) continue;
+          final oldParent = b['parentId'];
+          if (oldParent is int && !blockMap.containsKey(oldParent)) {
+            next.add(b);
+            continue;
+          }
+          final item = b['itemKey'];
+          final itemKey = item == null || item == '*' ? item : remapEntityKey(item, keyMaps);
+          if (item != null && itemKey == null) continue; // its element did not come along
+          final id = await txn.rawInsert(
+            'INSERT INTO page_block (module_ref, item_key, parent_id, block_type, component, source_key, '
+            'config, content, prop_name, prop_type, block_order) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+            <Object?>[
+              m, itemKey, oldParent is int ? blockMap[oldParent] : null,
+              b['type'] ?? 'component', b['component'], remapEntityKey(b['sourceKey'], keyMaps),
+              b['config'], b['content'], b['propName'], b['propType'], b['order'] ?? 0,
+            ],
+          );
+          final oldId = b['id'];
+          if (oldId is int) blockMap[oldId] = id;
+          progressed = true;
+        }
+        if (!progressed) break;
+        pendingBlocks = next;
+      }
 
       var droppedRelations = 0;
       for (final rel in arr(p['relations'])) {
