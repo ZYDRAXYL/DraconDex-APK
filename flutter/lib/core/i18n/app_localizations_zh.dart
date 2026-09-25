@@ -105,6 +105,42 @@ class AppLocalizationsZh extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => '显示全部';
+
+  @override
+  String get themeShowLess => '收起';
+
+  @override
+  String get pageLayout => '标题布局';
+
+  @override
+  String get titleAlign => '标题对齐';
+
+  @override
+  String get alignLeft => '左';
+
+  @override
+  String get alignCenter => '居中';
+
+  @override
+  String get alignRight => '右';
+
+  @override
+  String get pageIcon => '标题上方的图标';
+
+  @override
+  String get pageCover => '封面图片';
+
+  @override
+  String get pageCoverNone => '无封面';
+
+  @override
+  String get pageCoverEmpty => '先将图片导入此 Nexus，才能用作封面';
+
+  @override
+  String get pageLayoutScope => '仅应用于此页面';
+
+  @override
   String get languageLabel => '语言';
 
   @override

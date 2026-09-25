@@ -105,6 +105,42 @@ class AppLocalizationsJa extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'すべて表示';
+
+  @override
+  String get themeShowLess => '折りたたむ';
+
+  @override
+  String get pageLayout => 'タイトルのレイアウト';
+
+  @override
+  String get titleAlign => 'タイトルの配置';
+
+  @override
+  String get alignLeft => '左';
+
+  @override
+  String get alignCenter => '中央';
+
+  @override
+  String get alignRight => '右';
+
+  @override
+  String get pageIcon => 'タイトル上のアイコン';
+
+  @override
+  String get pageCover => 'カバー画像';
+
+  @override
+  String get pageCoverNone => 'カバーなし';
+
+  @override
+  String get pageCoverEmpty => 'カバーにするには、このNexusに画像をインポートしてください';
+
+  @override
+  String get pageLayoutScope => 'このページだけに適用されます';
+
+  @override
   String get languageLabel => '言語';
 
   @override

@@ -1,57 +1,58 @@
+import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 
-enum AppThemeMode { midnight, moonlight, daylight }
+import 'ddx_theme.dart';
+import 'tokens.g.dart';
 
+/// The app's themes: every palette in DraconDex-SDB's design/tokens.json
+/// (tokens.g.dart, vendored), the same 32 the desktop has — APK had 3
+/// hand-copied ones before Procress 13 part 5. A theme is chosen by its key.
 class AppTheme {
-  static ThemeData get midnight => _build(
-        bg: const Color(0xFF0F0F13),
-        surface: const Color(0xFF18181F),
-        raised: const Color(0xFF22222D),
-        hover: const Color(0xFF2A2A38),
-        border: const Color(0xFF2E2E3F),
-        t1: const Color(0xFFE8E8F0),
-        t2: const Color(0xFF9090A8),
-        t3: const Color(0xFF5A5A72),
-        accent: const Color(0xFF6366F1),
-        accentH: const Color(0xFF818CF8),
-        danger: const Color(0xFFEF4444),
-        success: const Color(0xFF22C55E),
-        brightness: Brightness.dark,
-      );
+  static const String fallback = 'midnight';
 
-  static ThemeData get moonlight => _build(
-        bg: const Color(0xFF101620),
-        surface: const Color(0xFF182231),
-        raised: const Color(0xFF223044),
-        hover: const Color(0xFF2D3B52),
-        border: const Color(0xFF334258),
-        t1: const Color(0xFFEDF4FF),
-        t2: const Color(0xFFA6B3C7),
-        t3: const Color(0xFF66758C),
-        accent: const Color(0xFF7C9CFF),
-        accentH: const Color(0xFF9BB5FF),
-        danger: const Color(0xFFF87171),
-        success: const Color(0xFF34D399),
-        brightness: Brightness.dark,
-      );
+  /// The themes in the order the picker shows them: the three basics first,
+  /// the way the desktop's collapsed Appearance page does.
+  static List<String> get names {
+    const basics = ['daylight', 'moonlight', 'midnight'];
+    return [...basics, ...ddxPalettes.keys.where((k) => !basics.contains(k))];
+  }
 
-  static ThemeData get daylight => _build(
-        bg: const Color(0xFFF4F6FB),
-        surface: const Color(0xFFFFFFFF),
-        raised: const Color(0xFFEEF1F7),
-        hover: const Color(0xFFE2E7F0),
-        border: const Color(0xFFCCD3DF),
-        t1: const Color(0xFF172033),
-        t2: const Color(0xFF596274),
-        t3: const Color(0xFF8A94A6),
-        accent: const Color(0xFF2563EB),
-        accentH: const Color(0xFF3B82F6),
-        danger: const Color(0xFFDC2626),
-        success: const Color(0xFF16A34A),
-        brightness: Brightness.light,
-      );
+  static bool exists(String name) => ddxPalettes.containsKey(name);
+
+  /// "atDusk" → "AtDusk": theme names are proper nouns and the desktop shows
+  /// them the same in every language.
+  static String label(String name) => name.isEmpty ? name : name[0].toUpperCase() + name.substring(1);
+
+  static ThemeData forName(String name) {
+    final key = exists(name) ? name : fallback;
+    final p = ddxPalettes[key]!;
+    return _build(
+      name: key,
+      palette: p,
+      bg: p.bg,
+      surface: p.surface,
+      raised: p.raised,
+      hover: p.hover,
+      border: p.border,
+      t1: p.t1,
+      t2: p.t2,
+      muted: p.t3Aa,
+      accent: p.accent,
+      accentH: p.accentH,
+      danger: p.danger,
+      success: p.success,
+      onAccent: p.onButton ?? p.onAccent ?? Colors.white,
+      brightness: isLight(p.bg) ? Brightness.light : Brightness.dark,
+    );
+  }
+
+  /// WCAG relative luminance above 0.179 — where dark text starts to beat
+  /// white. The same rule EXE uses for a package theme's tone.
+  static bool isLight(Color c) => c.computeLuminance() > 0.179;
 
   static ThemeData _build({
+    required String name,
+    required DdxPalette palette,
     required Color bg,
     required Color surface,
     required Color raised,
@@ -59,17 +60,20 @@ class AppTheme {
     required Color border,
     required Color t1,
     required Color t2,
-    required Color t3,
+    required Color muted,
     required Color accent,
     required Color accentH,
     required Color danger,
     required Color success,
+    required Color onAccent,
     required Brightness brightness,
   }) {
+    // iOS body text is 17pt (REDESIGN.md C3); Android keeps Material's.
+    final ios = defaultTargetPlatform == TargetPlatform.iOS;
     final colorScheme = ColorScheme(
       brightness: brightness,
       primary: accent,
-      onPrimary: brightness == Brightness.dark ? Colors.white : Colors.white,
+      onPrimary: onAccent,
       secondary: accentH,
       onSecondary: Colors.white,
       error: danger,
@@ -78,11 +82,16 @@ class AppTheme {
       onSurface: t1,
       surfaceContainerHighest: raised,
       outline: border,
+      // Material's own secondary text (and every view here that asks for
+      // it) reads onSurfaceVariant — the AA-lifted muted colour, not t3.
+      onSurfaceVariant: muted,
+      outlineVariant: border,
       surfaceContainer: raised,
     );
 
     return ThemeData(
       colorScheme: colorScheme,
+      extensions: [DdxThemeExt(name: name, palette: palette)],
       scaffoldBackgroundColor: bg,
       cardColor: surface,
       dividerColor: border,
@@ -109,13 +118,14 @@ class AppTheme {
         unselectedItemColor: t2,
       ),
       textTheme: TextTheme(
-        bodyLarge: TextStyle(color: t1),
+        bodyLarge: TextStyle(color: t1, fontSize: ios ? 17 : null),
         bodyMedium: TextStyle(color: t1),
         bodySmall: TextStyle(color: t2),
         titleLarge: TextStyle(color: t1),
         titleMedium: TextStyle(color: t1),
         titleSmall: TextStyle(color: t2),
-        labelSmall: TextStyle(color: t3),
+        // Muted TEXT uses t3-aa (4.5:1), not t3 — REDESIGN.md C4.
+        labelSmall: TextStyle(color: muted),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -133,12 +143,12 @@ class AppTheme {
           borderSide: BorderSide(color: accent, width: 2),
         ),
         labelStyle: TextStyle(color: t2, fontFamily: 'NotoSans'),
-        hintStyle: TextStyle(color: t3, fontFamily: 'NotoSans'),
+        hintStyle: TextStyle(color: muted, fontFamily: 'NotoSans'),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: accent,
-          foregroundColor: Colors.white,
+          foregroundColor: onAccent,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
       ),
@@ -147,7 +157,7 @@ class AppTheme {
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: accent,
-        foregroundColor: Colors.white,
+        foregroundColor: onAccent,
       ),
       chipTheme: ChipThemeData(
         backgroundColor: raised,
@@ -176,16 +186,5 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
-  }
-
-  static ThemeData forMode(AppThemeMode mode) {
-    switch (mode) {
-      case AppThemeMode.midnight:
-        return midnight;
-      case AppThemeMode.moonlight:
-        return moonlight;
-      case AppThemeMode.daylight:
-        return daylight;
-    }
   }
 }

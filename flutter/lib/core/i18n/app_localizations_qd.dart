@@ -105,6 +105,42 @@ class AppLocalizationsQd extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Shewyth Alle';
+
+  @override
+  String get themeShowLess => 'Foldyth Inne';
+
+  @override
+  String get pageLayout => 'Tytl layuth';
+
+  @override
+  String get titleAlign => 'Alygn tytl';
+
+  @override
+  String get alignLeft => 'Lefth';
+
+  @override
+  String get alignCenter => 'Centyr';
+
+  @override
+  String get alignRight => 'Ryth';
+
+  @override
+  String get pageIcon => 'Iconyx abuv tytl';
+
+  @override
+  String get pageCover => 'Kovyr imaj';
+
+  @override
+  String get pageCoverNone => 'Nyn kovyr';
+
+  @override
+  String get pageCoverEmpty => 'Importyth imaj into Nexus fyr kovyr';
+
+  @override
+  String get pageLayoutScope => 'Onlyth thys pagyx';
+
+  @override
   String get languageLabel => 'Zhorvex';
 
   @override

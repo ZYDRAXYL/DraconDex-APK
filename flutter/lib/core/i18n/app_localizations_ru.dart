@@ -105,6 +105,42 @@ class AppLocalizationsRu extends AppLocalizations {
   String get themeDaylight => 'Дневной Свет';
 
   @override
+  String get themeShowAll => 'Показать все';
+
+  @override
+  String get themeShowLess => 'Свернуть';
+
+  @override
+  String get pageLayout => 'Макет заголовка';
+
+  @override
+  String get titleAlign => 'Выравнивание заголовка';
+
+  @override
+  String get alignLeft => 'Слева';
+
+  @override
+  String get alignCenter => 'По центру';
+
+  @override
+  String get alignRight => 'Справа';
+
+  @override
+  String get pageIcon => 'Значок над заголовком';
+
+  @override
+  String get pageCover => 'Обложка';
+
+  @override
+  String get pageCoverNone => 'Без обложки';
+
+  @override
+  String get pageCoverEmpty => 'Импортируйте изображение в этот Nexus, чтобы сделать его обложкой';
+
+  @override
+  String get pageLayoutScope => 'Только для этой страницы';
+
+  @override
   String get languageLabel => 'Язык';
 
   @override

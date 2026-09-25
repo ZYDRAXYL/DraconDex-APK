@@ -105,6 +105,42 @@ class AppLocalizationsFr extends AppLocalizations {
   String get themeDaylight => 'Lumière du Jour';
 
   @override
+  String get themeShowAll => 'Tout afficher';
+
+  @override
+  String get themeShowLess => 'Réduire';
+
+  @override
+  String get pageLayout => 'Mise en page du titre';
+
+  @override
+  String get titleAlign => 'Aligner le titre';
+
+  @override
+  String get alignLeft => 'Gauche';
+
+  @override
+  String get alignCenter => 'Centre';
+
+  @override
+  String get alignRight => 'Droite';
+
+  @override
+  String get pageIcon => 'Icône au-dessus du titre';
+
+  @override
+  String get pageCover => 'Image de couverture';
+
+  @override
+  String get pageCoverNone => 'Aucune couverture';
+
+  @override
+  String get pageCoverEmpty => 'Importez une image dans ce Nexus pour l\'utiliser comme couverture';
+
+  @override
+  String get pageLayoutScope => 'S\'applique à cette page uniquement';
+
+  @override
   String get languageLabel => 'Langue';
 
   @override

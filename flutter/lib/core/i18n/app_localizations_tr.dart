@@ -105,6 +105,42 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Tümünü göster';
+
+  @override
+  String get themeShowLess => 'Daralt';
+
+  @override
+  String get pageLayout => 'Başlık düzeni';
+
+  @override
+  String get titleAlign => 'Başlığı hizala';
+
+  @override
+  String get alignLeft => 'Sol';
+
+  @override
+  String get alignCenter => 'Orta';
+
+  @override
+  String get alignRight => 'Sağ';
+
+  @override
+  String get pageIcon => 'Başlığın üstündeki simge';
+
+  @override
+  String get pageCover => 'Kapak görseli';
+
+  @override
+  String get pageCoverNone => 'Kapak yok';
+
+  @override
+  String get pageCoverEmpty => 'Kapak olarak kullanmak için bu Nexus\'a bir görsel aktarın';
+
+  @override
+  String get pageLayoutScope => 'Yalnızca bu sayfa için geçerli';
+
+  @override
   String get languageLabel => 'Dil';
 
   @override

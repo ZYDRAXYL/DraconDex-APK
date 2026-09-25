@@ -14,6 +14,7 @@ import '../../widgets/row_menu.dart';
 import '../builder/breadcrumb_title.dart';
 import '../builder/view_mode_button.dart';
 import '../page/module_page.dart';
+import '../page/page_header.dart';
 import '../page/page_actions.dart';
 import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
@@ -152,8 +153,12 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
               padding: const EdgeInsets.only(bottom: 88),
               children: [
                 // The page: a stack of blocks (V5.md §12, APK-V3.md §10.4).
-                if (module != null && (itemKey != null || module.kind != ModuleKind.collector))
+                if (module != null && (itemKey != null || module.kind != ModuleKind.collector)) ...[
+                  // The title, laid out as the page says (C6); on iOS the
+                  // large title, under the breadcrumb bar (C3).
+                  PageHeader(module: module, itemKey: itemKey, title: itemKey != null ? (itemName ?? '') : module.name),
                   ModulePage(moduleId: module.id, itemKey: itemKey),
+                ],
                 // A Collector IS its children, and so is a Nexus root.
                 if (itemKey == null && showsChildren(module))
                   childrenAsync.when(

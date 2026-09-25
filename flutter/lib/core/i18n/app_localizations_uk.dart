@@ -105,6 +105,42 @@ class AppLocalizationsUk extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Показати все';
+
+  @override
+  String get themeShowLess => 'Згорнути';
+
+  @override
+  String get pageLayout => 'Макет заголовка';
+
+  @override
+  String get titleAlign => 'Вирівнювання заголовка';
+
+  @override
+  String get alignLeft => 'Ліворуч';
+
+  @override
+  String get alignCenter => 'По центру';
+
+  @override
+  String get alignRight => 'Праворуч';
+
+  @override
+  String get pageIcon => 'Значок над заголовком';
+
+  @override
+  String get pageCover => 'Обкладинка';
+
+  @override
+  String get pageCoverNone => 'Без обкладинки';
+
+  @override
+  String get pageCoverEmpty => 'Імпортуйте зображення до цього Nexus, щоб зробити його обкладинкою';
+
+  @override
+  String get pageLayoutScope => 'Лише для цієї сторінки';
+
+  @override
   String get languageLabel => 'Мова';
 
   @override

@@ -6,7 +6,9 @@ import '../../../core/i18n/app_localizations.dart';
 import '../../../core/layout/breakpoints.dart';
 import '../../../data/models/module_model.dart';
 import '../../../providers/builder_view_provider.dart';
+import '../../../core/theme/ddx_theme.dart';
 import '../../../widgets/color_dot.dart';
+import '../../../widgets/grouped_section.dart';
 import '../../../widgets/row_menu.dart';
 import '../module_actions.dart';
 
@@ -58,6 +60,16 @@ class ModuleCollectionView extends StatelessWidget {
           itemBuilder: (_, i) => ModuleTile(nexusId: nexusId, module: modules[i], dense: true),
         );
       case BuilderViewMode.list:
+        // iOS: one grouped inset card, separators past the icon square (C3).
+        if (context.isIosStyle) {
+          final card = DdxGroupedSection(
+            separatorIndent: 58,
+            children: [for (final m in modules) ModuleTile(nexusId: nexusId, module: m)],
+          );
+          return embedded
+              ? Padding(padding: const EdgeInsets.only(top: 8), child: card)
+              : ListView(padding: const EdgeInsets.only(top: 8), children: [card]);
+        }
         return ListView.separated(
           shrinkWrap: embedded,
           physics: embedded ? const NeverScrollableScrollPhysics() : null,
@@ -81,10 +93,13 @@ class ModuleTile extends ConsumerWidget {
     final info = module.kindInfo;
     final l10n = AppLocalizations.of(context)!;
     List<RowAction> actions() => moduleRowActions(context, ref, module);
-    return ListTile(
+    final ios = context.isIosStyle;
+    final tile = ListTile(
       dense: dense,
       visualDensity: dense ? VisualDensity.compact : null,
-      leading: module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: 20) : Icon(info.icon),
+      leading: ios
+          ? DdxIconSquare(icon: info.icon, color: _iconColor(context, module.colorCode))
+          : module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: 20) : Icon(info.icon),
       title: Text(module.name, maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: dense
           ? null
@@ -100,7 +115,37 @@ class ModuleTile extends ConsumerWidget {
       onTap: () => context.push('/hub/$nexusId/module/${module.id}'),
       onLongPress: () => showRowMenu(context, actions(), title: module.name),
     );
+    if (!ios) return tile;
+    // iOS: swipe left runs the row's destructive action — the same one its
+    // menu offers, with the same confirmation and undo. The row stays put
+    // until that action actually removes it.
+    return Dismissible(
+      key: ValueKey('swipe-${module.id}'),
+      direction: DismissDirection.endToStart,
+      background: Container(
+        color: Theme.of(context).colorScheme.error,
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.only(right: 20),
+        child: const Icon(Icons.delete_outline, color: Colors.white),
+      ),
+      confirmDismiss: (_) async {
+        for (final a in actions()) {
+          if (a.danger) {
+            a.onTap();
+            break;
+          }
+        }
+        return false;
+      },
+      child: tile,
+    );
   }
+}
+
+/// The module's own colour for its iOS icon square, or the accent.
+Color _iconColor(BuildContext context, String? code) {
+  if (code != null && RegExp(r'^#?[0-9a-fA-F]{6}$').hasMatch(code)) return hexToColor(code);
+  return Theme.of(context).colorScheme.primary;
 }
 
 class ModuleCard extends ConsumerWidget {

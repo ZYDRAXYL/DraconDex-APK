@@ -322,6 +322,78 @@ abstract class AppLocalizations {
   /// **'Daylight'**
   String get themeDaylight;
 
+  /// No description provided for @themeShowAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Show all'**
+  String get themeShowAll;
+
+  /// No description provided for @themeShowLess.
+  ///
+  /// In en, this message translates to:
+  /// **'Collapse'**
+  String get themeShowLess;
+
+  /// No description provided for @pageLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Title layout'**
+  String get pageLayout;
+
+  /// No description provided for @titleAlign.
+  ///
+  /// In en, this message translates to:
+  /// **'Align title'**
+  String get titleAlign;
+
+  /// No description provided for @alignLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get alignLeft;
+
+  /// No description provided for @alignCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Center'**
+  String get alignCenter;
+
+  /// No description provided for @alignRight.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get alignRight;
+
+  /// No description provided for @pageIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon above the title'**
+  String get pageIcon;
+
+  /// No description provided for @pageCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover image'**
+  String get pageCover;
+
+  /// No description provided for @pageCoverNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No cover'**
+  String get pageCoverNone;
+
+  /// No description provided for @pageCoverEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Import an image into this Nexus to use it as a cover'**
+  String get pageCoverEmpty;
+
+  /// No description provided for @pageLayoutScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies to this page only'**
+  String get pageLayoutScope;
+
   /// No description provided for @languageLabel.
   ///
   /// In en, this message translates to:

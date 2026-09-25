@@ -105,6 +105,42 @@ class AppLocalizationsVi extends AppLocalizations {
   String get themeDaylight => 'Ban Ngày';
 
   @override
+  String get themeShowAll => 'Hiện tất cả';
+
+  @override
+  String get themeShowLess => 'Thu gọn';
+
+  @override
+  String get pageLayout => 'Bố cục tiêu đề';
+
+  @override
+  String get titleAlign => 'Căn tiêu đề';
+
+  @override
+  String get alignLeft => 'Trái';
+
+  @override
+  String get alignCenter => 'Giữa';
+
+  @override
+  String get alignRight => 'Phải';
+
+  @override
+  String get pageIcon => 'Biểu tượng trên tiêu đề';
+
+  @override
+  String get pageCover => 'Ảnh bìa';
+
+  @override
+  String get pageCoverNone => 'Không có ảnh bìa';
+
+  @override
+  String get pageCoverEmpty => 'Hãy nhập ảnh vào Nexus này để dùng làm ảnh bìa';
+
+  @override
+  String get pageLayoutScope => 'Chỉ áp dụng cho trang này';
+
+  @override
   String get languageLabel => 'Ngôn Ngữ';
 
   @override

@@ -23,7 +23,10 @@ const double kTabletMinHeight = 500;
 
 /// From here on there is room for the rail *and* the hub panel at once, so
 /// the panel starts out open — an iPad in landscape, or a desktop browser.
-const double kWideMinWidth = 1000;
+/// 840 is Material's expanded window-size class (APP docs/REDESIGN.md G7;
+/// was 1000): rail 76 + panel 288 + the 340 the content keeps = 704, so the
+/// three columns still fit with room to spare.
+const double kWideMinWidth = 840;
 
 /// Widths of the shell's own chrome (see features/builder/).
 const double kRailWidth = 76;

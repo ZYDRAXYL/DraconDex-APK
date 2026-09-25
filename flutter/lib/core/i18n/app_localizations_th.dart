@@ -105,6 +105,42 @@ class AppLocalizationsTh extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'แสดงทั้งหมด';
+
+  @override
+  String get themeShowLess => 'ยุบ';
+
+  @override
+  String get pageLayout => 'จัดหน้า title';
+
+  @override
+  String get titleAlign => 'ตำแหน่ง title';
+
+  @override
+  String get alignLeft => 'ซ้าย';
+
+  @override
+  String get alignCenter => 'กลาง';
+
+  @override
+  String get alignRight => 'ขวา';
+
+  @override
+  String get pageIcon => 'ไอคอนเหนือ title';
+
+  @override
+  String get pageCover => 'ภาพปก';
+
+  @override
+  String get pageCoverNone => 'ไม่มีปก';
+
+  @override
+  String get pageCoverEmpty => 'นำเข้ารูปเข้า Nexus นี้ก่อน แล้วค่อยเลือกเป็นภาพปก';
+
+  @override
+  String get pageLayoutScope => 'มีผลกับหน้านี้หน้าเดียว';
+
+  @override
   String get languageLabel => 'ภาษา';
 
   @override

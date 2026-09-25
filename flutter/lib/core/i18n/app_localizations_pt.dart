@@ -105,6 +105,42 @@ class AppLocalizationsPt extends AppLocalizations {
   String get themeDaylight => 'Luz do Dia';
 
   @override
+  String get themeShowAll => 'Mostrar tudo';
+
+  @override
+  String get themeShowLess => 'Recolher';
+
+  @override
+  String get pageLayout => 'Layout do título';
+
+  @override
+  String get titleAlign => 'Alinhar título';
+
+  @override
+  String get alignLeft => 'Esquerda';
+
+  @override
+  String get alignCenter => 'Centro';
+
+  @override
+  String get alignRight => 'Direita';
+
+  @override
+  String get pageIcon => 'Ícone acima do título';
+
+  @override
+  String get pageCover => 'Imagem de capa';
+
+  @override
+  String get pageCoverNone => 'Sem capa';
+
+  @override
+  String get pageCoverEmpty => 'Importe uma imagem para este Nexus para usá-la como capa';
+
+  @override
+  String get pageLayoutScope => 'Aplica-se só a esta página';
+
+  @override
   String get languageLabel => 'Idioma';
 
   @override

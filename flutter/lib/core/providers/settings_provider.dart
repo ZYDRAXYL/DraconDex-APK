@@ -5,7 +5,8 @@ import '../../data/models/module_model.dart';
 import '../theme/app_theme.dart';
 
 class AppSettings {
-  final AppThemeMode theme;
+  /// A key of ddxPalettes (tokens.g.dart) — midnight, daylight, atDusk, …
+  final String theme;
   final Locale locale;
   final double uiScale;
 
@@ -15,13 +16,13 @@ class AppSettings {
   final bool classicNames;
 
   const AppSettings({
-    this.theme = AppThemeMode.midnight,
+    this.theme = AppTheme.fallback,
     this.locale = const Locale('en'),
     this.uiScale = 1.0,
     this.classicNames = true,
   });
 
-  AppSettings copyWith({AppThemeMode? theme, Locale? locale, double? uiScale, bool? classicNames}) {
+  AppSettings copyWith({String? theme, Locale? locale, double? uiScale, bool? classicNames}) {
     return AppSettings(
       theme: theme ?? this.theme,
       locale: locale ?? this.locale,
@@ -51,17 +52,10 @@ class SettingsNotifier extends Notifier<AppSettings> {
     final classic = prefs.getString(_keyNameMode) != 'unique';
     KindNames.classic = classic;
 
-    AppThemeMode theme;
-    switch (themeStr) {
-      case 'daylight':
-        theme = AppThemeMode.daylight;
-        break;
-      case 'moonlight':
-        theme = AppThemeMode.moonlight;
-        break;
-      default:
-        theme = AppThemeMode.midnight;
-    }
+    // The pref has always held the theme's name, so the three names saved
+    // before APK had 32 themes are keys here too. Anything unknown (a theme
+    // removed from tokens.json) falls back rather than rendering nothing.
+    final theme = AppTheme.exists(themeStr) ? themeStr : AppTheme.fallback;
 
     state = AppSettings(
       theme: theme,
@@ -71,10 +65,11 @@ class SettingsNotifier extends Notifier<AppSettings> {
     );
   }
 
-  Future<void> setTheme(AppThemeMode theme) async {
+  Future<void> setTheme(String theme) async {
+    if (!AppTheme.exists(theme)) return;
     state = state.copyWith(theme: theme);
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_keyTheme, theme.name);
+    await prefs.setString(_keyTheme, theme);
   }
 
   Future<void> setLocale(Locale locale) async {

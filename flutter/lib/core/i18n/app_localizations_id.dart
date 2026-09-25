@@ -105,6 +105,42 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeDaylight => 'Siang Hari';
 
   @override
+  String get themeShowAll => 'Tampilkan semua';
+
+  @override
+  String get themeShowLess => 'Ciutkan';
+
+  @override
+  String get pageLayout => 'Tata letak judul';
+
+  @override
+  String get titleAlign => 'Perataan judul';
+
+  @override
+  String get alignLeft => 'Kiri';
+
+  @override
+  String get alignCenter => 'Tengah';
+
+  @override
+  String get alignRight => 'Kanan';
+
+  @override
+  String get pageIcon => 'Ikon di atas judul';
+
+  @override
+  String get pageCover => 'Gambar sampul';
+
+  @override
+  String get pageCoverNone => 'Tanpa sampul';
+
+  @override
+  String get pageCoverEmpty => 'Impor gambar ke Nexus ini untuk dipakai sebagai sampul';
+
+  @override
+  String get pageLayoutScope => 'Hanya berlaku untuk halaman ini';
+
+  @override
   String get languageLabel => 'Bahasa';
 
   @override

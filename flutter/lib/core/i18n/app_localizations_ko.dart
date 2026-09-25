@@ -105,6 +105,42 @@ class AppLocalizationsKo extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => '모두 보기';
+
+  @override
+  String get themeShowLess => '접기';
+
+  @override
+  String get pageLayout => '제목 레이아웃';
+
+  @override
+  String get titleAlign => '제목 정렬';
+
+  @override
+  String get alignLeft => '왼쪽';
+
+  @override
+  String get alignCenter => '가운데';
+
+  @override
+  String get alignRight => '오른쪽';
+
+  @override
+  String get pageIcon => '제목 위 아이콘';
+
+  @override
+  String get pageCover => '커버 이미지';
+
+  @override
+  String get pageCoverNone => '커버 없음';
+
+  @override
+  String get pageCoverEmpty => '커버로 쓰려면 이 Nexus에 이미지를 가져오세요';
+
+  @override
+  String get pageLayoutScope => '이 페이지에만 적용됩니다';
+
+  @override
   String get languageLabel => '언어';
 
   @override

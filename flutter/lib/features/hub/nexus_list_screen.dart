@@ -4,7 +4,7 @@ import '../../core/i18n/app_localizations.dart';
 import '../../providers/builder_view_provider.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/update_provider.dart';
-import '../../widgets/hiding_app_bar.dart';
+import '../../widgets/large_title_layout.dart';
 import '../builder/view_mode_button.dart';
 import '../update/update_dialog.dart';
 import 'dialogs/nexus_dialog.dart';
@@ -69,17 +69,13 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
       );
 
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          HidingAppBar(
-            appBar: AppBar(
-              title: Text(l10n.appName),
-              actions: const [ViewModeButton()],
-            ),
-          ),
-          Expanded(child: list),
-        ],
+      body: LargeTitleLayout(
+        title: l10n.appName,
+        appBar: (showTitle) => AppBar(
+          title: showTitle ? Text(l10n.appName) : null,
+          actions: const [ViewModeButton()],
+        ),
+        body: list,
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: l10n.newNexusTooltip,
