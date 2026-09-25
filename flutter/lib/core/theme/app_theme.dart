@@ -142,8 +142,21 @@ class AppTheme {
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: accent, width: 2),
         ),
+        // The component contract's form states (APP docs/redesign/COMPONENTS.md):
+        // help under a field in muted text, the same line red on error, and
+        // the border red with it — the desktop's .help / .help.err / aria-invalid.
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: danger),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: danger, width: 2),
+        ),
         labelStyle: TextStyle(color: t2, fontFamily: 'NotoSans'),
         hintStyle: TextStyle(color: muted, fontFamily: 'NotoSans'),
+        helperStyle: TextStyle(color: muted, fontFamily: 'NotoSans'),
+        errorStyle: TextStyle(color: danger, fontFamily: 'NotoSans'),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -152,8 +165,47 @@ class AppTheme {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
       ),
+      // The contract's four buttons: primary (Filled / Elevated), secondary
+      // (Outlined), ghost (Text) and danger (DdxDangerButton, on error).
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: accent,
+          foregroundColor: onAccent,
+          textStyle: const TextStyle(fontFamily: 'NotoSans', fontWeight: FontWeight.w600),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: t1,
+          backgroundColor: raised,
+          side: BorderSide(color: border),
+          textStyle: const TextStyle(fontFamily: 'NotoSans'),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(foregroundColor: accent),
+      ),
+      segmentedButtonTheme: SegmentedButtonThemeData(
+        style: ButtonStyle(
+          side: WidgetStatePropertyAll(BorderSide(color: border)),
+          backgroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? accent : raised),
+          foregroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? onAccent : t2),
+          textStyle: const WidgetStatePropertyAll(TextStyle(fontFamily: 'NotoSans')),
+        ),
+      ),
+      // Toasts: the raised surface, not Material's inverted one, so a toast
+      // reads as part of the theme; its action (Undo, Retry) in the accent.
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: raised,
+        contentTextStyle: TextStyle(color: t1, fontFamily: 'NotoSans'),
+        actionTextColor: accentH,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(color: border),
+        ),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: accent,
@@ -170,6 +222,8 @@ class AppTheme {
         textColor: t1,
         iconColor: t2,
         tileColor: Colors.transparent,
+        selectedColor: t1,
+        selectedTileColor: accent.withValues(alpha: 0.14),
       ),
       popupMenuTheme: PopupMenuThemeData(
         color: raised,

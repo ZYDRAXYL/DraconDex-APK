@@ -128,9 +128,21 @@ class NarratorView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context)!;
     final id = ctx.source.id;
-    if (ctx.preset == 'dialogue') return NarratorContent(moduleId: id);
+    if (ctx.preset == 'dialogue') return NarratorContent(moduleId: id, module: ctx.source);
     final data = ref.watch(storyDataProvider(id)).valueOrNull;
     if (data == null) return const SizedBox(height: 48);
+    Future<void> add() async {
+      final name = await askText(context, l.narratorNewScene, label: l.labelName);
+      if (name == null) return;
+      final db = await ref.read(databaseProvider.future);
+      final nid = await NarratorDao(db).createDialogue(moduleRef: id, name: name);
+      // Beside the rightmost scene, so a new one never lands on another.
+      final right = data.dialogues.fold<double>(-220, (m, d) => math.max(m, d.posX));
+      await db.rawUpdate('UPDATE story_dialogue SET pos_x=?, pos_y=? WHERE id=?', [right + 220, 0, nid]);
+      _refresh(ref, id);
+      ref.invalidate(nexusIndexProvider(ctx.nexusId));
+    }
+
     final bar = ViewBar(actions: [
       if (ctx.preset == 'routes' || ctx.preset == 'board')
         IconButton(
@@ -138,24 +150,10 @@ class NarratorView extends ConsumerWidget {
           icon: const Icon(Icons.alt_route),
           onPressed: data.dialogues.length < 2 ? null : () => _addRoute(context, ref, id, data),
         ),
-      IconButton(
-        tooltip: l.narratorNewScene,
-        icon: const Icon(Icons.add),
-        onPressed: () async {
-          final name = await askText(context, l.narratorNewScene, label: l.labelName);
-          if (name == null) return;
-          final db = await ref.read(databaseProvider.future);
-          final nid = await NarratorDao(db).createDialogue(moduleRef: id, name: name);
-          // Beside the rightmost scene, so a new one never lands on another.
-          final right = data.dialogues.fold<double>(-220, (m, d) => math.max(m, d.posX));
-          await db.rawUpdate('UPDATE story_dialogue SET pos_x=?, pos_y=? WHERE id=?', [right + 220, 0, nid]);
-          _refresh(ref, id);
-          ref.invalidate(nexusIndexProvider(ctx.nexusId));
-        },
-      ),
+      IconButton(tooltip: l.narratorNewScene, icon: const Icon(Icons.add), onPressed: add),
     ]);
     if (data.dialogues.isEmpty) {
-      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, EmptyHint(l.narratorNoScenes)]);
+      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.narratorNoScenes, startLabel: l.narratorNewScene, onStart: add)]);
     }
     final body = switch (ctx.preset) {
       'routes' => _Routes(ctx: ctx, data: data),

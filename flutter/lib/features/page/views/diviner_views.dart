@@ -278,7 +278,7 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
       ]),
     );
     if (t == null) {
-      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [tables, EmptyHint(l.divNoTables), quick]);
+      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [tables, KindEmptyState(module: widget.ctx.source, note: l.divNoTables, startLabel: l.divNewTable, onStart: () => _tableDialog()), quick]);
     }
     final dice = t['dice'] != null;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [

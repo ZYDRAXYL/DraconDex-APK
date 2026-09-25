@@ -166,7 +166,7 @@ class _DesignerViewState extends ConsumerState<DesignerView> {
     ]);
     final Widget body;
     if (nodes.isEmpty) {
-      body = EmptyHint(l.designerEmpty);
+      body = KindEmptyState(module: widget.ctx.source, note: l.designerEmpty, startLabel: l.designerNewNode, onStart: () => _add(nodes));
     } else {
       body = switch (widget.ctx.preset) {
         'outline' => _outline(nodes, edges),

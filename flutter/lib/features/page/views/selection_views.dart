@@ -100,6 +100,18 @@ class SelectionView extends ConsumerWidget {
     final data = ref.watch(selectionProvider((ctx.source.id, ctx.nexusId))).valueOrNull;
     if (data == null) return const SizedBox(height: 48);
     final exhibitor = ctx.source.kind == ModuleKind.exhibitor;
+    Future<void> editFilter() async {
+      final edited = await showFilterEditor(
+        context,
+        initial: data.def,
+        modules: data.index.where((i) => i.itemKind == 'module').toList(),
+      );
+      if (edited == null) return;
+      final db = await ref.read(databaseProvider.future);
+      await ViewerDao(db).setFilterDef(ctx.source.id, edited);
+      refreshSelection(ref, ctx);
+    }
+
     final bar = ctx.fullScreen
         ? const SizedBox.shrink()
         : ViewBar(
@@ -131,17 +143,7 @@ class SelectionView extends ConsumerWidget {
               IconButton(
                 tooltip: l.filterTitle,
                 icon: Icon(data.def.isEmpty ? Icons.filter_alt_off_outlined : Icons.filter_alt_outlined),
-                onPressed: () async {
-                  final edited = await showFilterEditor(
-                    context,
-                    initial: data.def,
-                    modules: data.index.where((i) => i.itemKind == 'module').toList(),
-                  );
-                  if (edited == null) return;
-                  final db = await ref.read(databaseProvider.future);
-                  await ViewerDao(db).setFilterDef(ctx.source.id, edited);
-                  refreshSelection(ref, ctx);
-                },
+                onPressed: editFilter,
               ),
             ],
           );
@@ -153,7 +155,7 @@ class SelectionView extends ConsumerWidget {
     }
     final Widget body;
     if (data.def.isEmpty) {
-      body = EmptyHint(l.viewerNoFilter);
+      body = KindEmptyState(module: ctx.source, note: l.viewerNoFilter, startLabel: l.filterTitle, onStart: editFilter);
     } else if (data.items.isEmpty) {
       body = EmptyHint(l.viewerNoResults);
     } else {

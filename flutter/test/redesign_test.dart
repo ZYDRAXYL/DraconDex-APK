@@ -10,7 +10,10 @@ import 'package:dracondex/core/providers/settings_provider.dart';
 import 'package:dracondex/core/theme/app_theme.dart';
 import 'package:dracondex/core/theme/ddx_theme.dart';
 import 'package:dracondex/core/theme/tokens.g.dart';
+import 'package:dracondex/data/models/module_model.dart';
+import 'package:dracondex/features/page/views/view_common.dart';
 import 'package:dracondex/features/page/page_header.dart';
+import 'package:dracondex/widgets/danger_button.dart';
 import 'package:dracondex/widgets/row_menu.dart';
 
 /// Procress 13 part 5 (APP docs/REDESIGN.md C3–C6, G7): the SDB design
@@ -104,5 +107,55 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(CupertinoActionSheet), findsOneWidget);
     expect(find.byType(BottomSheet), findsNothing);
+  });
+
+  group('component contract (part 6)', () {
+    test('every palette themes the contract\'s buttons, segmented, toast and form states', () {
+      for (final name in AppTheme.names) {
+        final t = AppTheme.forName(name);
+        expect(t.filledButtonTheme.style, isNotNull, reason: name);
+        expect(t.outlinedButtonTheme.style, isNotNull, reason: name);
+        expect(t.segmentedButtonTheme.style, isNotNull, reason: name);
+        expect(t.snackBarTheme.backgroundColor, ddxPalettes[name]!.raised, reason: name);
+        expect(t.inputDecorationTheme.errorBorder, isNotNull, reason: name);
+        expect(t.inputDecorationTheme.helperStyle?.color, ddxPalettes[name]!.t3Aa, reason: name);
+        expect(t.listTileTheme.selectedTileColor, isNotNull, reason: name);
+      }
+    });
+
+    Widget host(Widget child) => MaterialApp(
+          theme: AppTheme.forName('midnight'),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale('en'),
+          home: Scaffold(body: SingleChildScrollView(child: child)),
+        );
+
+    testWidgets('a kind\'s empty page says what the kind is for and offers one action', (tester) async {
+      for (final kind in ModuleKind.values) {
+        var started = 0;
+        final m = ModuleModel(id: 1, nexusRef: 1, name: 'My ${kind.name}', kind: kind, createdAt: '', updatedAt: '');
+        await tester.pumpWidget(host(KindEmptyState(module: m, note: 'nothing yet', startLabel: 'Start', onStart: () => started++)));
+        final l = AppLocalizations.of(tester.element(find.byType(KindEmptyState)))!;
+        expect(find.text('My ${kind.name}'), findsOneWidget, reason: kind.name);
+        expect(find.text(kindDesc(l, kind)), findsOneWidget, reason: kind.name);
+        expect(find.text('nothing yet'), findsOneWidget, reason: kind.name);
+        await tester.tap(find.widgetWithText(FilledButton, 'Start'));
+        expect(started, 1, reason: kind.name);
+      }
+    });
+
+    testWidgets('no action given, no button', (tester) async {
+      final m = ModuleModel(id: 1, nexusRef: 1, name: 'W', kind: ModuleKind.wanderer, createdAt: '', updatedAt: '');
+      await tester.pumpWidget(host(KindEmptyState(module: m)));
+      expect(find.byType(FilledButton), findsNothing);
+    });
+
+    testWidgets('the danger button is filled in the error colour', (tester) async {
+      await tester.pumpWidget(host(DdxDangerButton(onPressed: () {}, child: const Text('Delete'))));
+      final ctx = tester.element(find.text('Delete'));
+      final style = tester.widget<FilledButton>(find.byType(FilledButton)).style!;
+      expect(style.backgroundColor!.resolve({}), Theme.of(ctx).colorScheme.error);
+    });
   });
 }

@@ -62,7 +62,7 @@ class ChroniclerView extends ConsumerWidget {
     };
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       if (evs.isNotEmpty || ctx.preset == 'compare') graph,
-      if (ctx.preset != 'calendar') ChroniclerContent(moduleId: id),
+      if (ctx.preset != 'calendar') ChroniclerContent(moduleId: id, module: ctx.source),
     ]);
   }
 }

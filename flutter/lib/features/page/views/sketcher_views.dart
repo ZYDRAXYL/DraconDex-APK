@@ -102,24 +102,22 @@ class SketcherView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context)!;
     final id = ctx.source.id;
-    if (ctx.preset == 'canvas' || ctx.preset.isEmpty) return SketcherContent(moduleId: id, boardHeight: fullBoard(context, ctx));
+    if (ctx.preset == 'canvas' || ctx.preset.isEmpty) return SketcherContent(moduleId: id, boardHeight: fullBoard(context, ctx), module: ctx.source);
     final pages = ref.watch(sketchPagesProvider(id)).valueOrNull;
     if (pages == null) return const SizedBox(height: 48);
+    Future<void> add() async {
+      final name = await askText(context, l.sketcherNewPage, label: l.labelName);
+      if (name == null) return;
+      final db = await ref.read(databaseProvider.future);
+      await SketcherDao(db).createPage(moduleRef: id, name: name);
+      ref.invalidate(sketchPagesProvider(id));
+      ref.invalidate(nexusIndexProvider(ctx.nexusId));
+    }
+
     final bar = ViewBar(actions: [
-      IconButton(
-        tooltip: l.sketcherNewPage,
-        icon: const Icon(Icons.add),
-        onPressed: () async {
-          final name = await askText(context, l.sketcherNewPage, label: l.labelName);
-          if (name == null) return;
-          final db = await ref.read(databaseProvider.future);
-          await SketcherDao(db).createPage(moduleRef: id, name: name);
-          ref.invalidate(sketchPagesProvider(id));
-          ref.invalidate(nexusIndexProvider(ctx.nexusId));
-        },
-      ),
+      IconButton(tooltip: l.sketcherNewPage, icon: const Icon(Icons.add), onPressed: add),
     ]);
-    if (pages.isEmpty) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, EmptyHint(l.sketcherNoPages)]);
+    if (pages.isEmpty) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.sketcherNoPages, startLabel: l.sketcherNewPage, onStart: add)]);
     final body = switch (ctx.preset) {
       'gallery' => _Gallery(ctx: ctx, pages: pages),
       'export' => _Export(ctx: ctx, pages: pages),

@@ -1,6 +1,6 @@
 {
   "name": "@zydraxyl/dracondex-apk",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "private": true,
   "description": "DraconDex for Android and iOS — Flutter front-end over the shared SQLite vault schema",
   "license": "MIT",
