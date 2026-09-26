@@ -1972,4 +1972,352 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'Не вдалося відкрити цей файл';
+
+  @override
+  String get pbBlockSettings => 'Налаштування блока';
+
+  @override
+  String get pbStyle => 'Стиль';
+
+  @override
+  String get pbOptions => 'Параметри';
+
+  @override
+  String get pbStyleVariant => 'Вигляд';
+
+  @override
+  String get pbStyleAccent => 'Акцентний колір';
+
+  @override
+  String get pbStyleWidth => 'Ширина';
+
+  @override
+  String get pbStyleAlign => 'Вирівнювання';
+
+  @override
+  String get pbStyleDensity => 'Відступи';
+
+  @override
+  String get pbStyleHeader => 'Заголовок';
+
+  @override
+  String get pbHeaderShow => 'Показувати заголовок';
+
+  @override
+  String get pbHeaderTitle => 'Текст заголовка';
+
+  @override
+  String get pbStyleCollapsible => 'Згортання';
+
+  @override
+  String get pbStyleAnchor => 'Якір (#)';
+
+  @override
+  String get pbStyleHideOn => 'Приховати на';
+
+  @override
+  String get pbStyleReset => 'Скинути';
+
+  @override
+  String get pbStyleApplyAll => 'Застосувати до всіх блоків цього виду';
+
+  @override
+  String get pbStyleApplied => 'Стиль застосовано ще до {n} блоків';
+
+  @override
+  String get pbStyleCopy => 'Копіювати стиль';
+
+  @override
+  String get pbStylePaste => 'Вставити стиль';
+
+  @override
+  String get pbNoOptions => 'Цей блок не має власних параметрів — вигляд задається на вкладці «Стиль».';
+
+  @override
+  String get pbVariantPlain => 'Простий';
+
+  @override
+  String get pbVariantCard => 'Картка';
+
+  @override
+  String get pbVariantOutline => 'Контур';
+
+  @override
+  String get pbVariantTinted => 'Тонований';
+
+  @override
+  String get pbVariantHero => 'Акцент';
+
+  @override
+  String get pbAccKind => 'Тип модуля';
+
+  @override
+  String get pbAccAccent => 'Акцент теми';
+
+  @override
+  String get pbAccBlue => 'Синій';
+
+  @override
+  String get pbAccGreen => 'Зелений';
+
+  @override
+  String get pbAccAmber => 'Бурштиновий';
+
+  @override
+  String get pbAccRose => 'Рожевий';
+
+  @override
+  String get pbAccViolet => 'Фіолетовий';
+
+  @override
+  String get pbAccSlate => 'Сланцевий';
+
+  @override
+  String get pbWidthNarrow => 'Вузький';
+
+  @override
+  String get pbWidthNormal => 'Звичайний';
+
+  @override
+  String get pbWidthWide => 'Широкий';
+
+  @override
+  String get pbWidthFull => 'На всю ширину';
+
+  @override
+  String get pbDensityComfy => 'Вільно';
+
+  @override
+  String get pbDensityCompact => 'Компактно';
+
+  @override
+  String get pbCollOff => 'Ні';
+
+  @override
+  String get pbCollOpen => 'Розгорнуто';
+
+  @override
+  String get pbCollClosed => 'Згорнуто';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Телефон';
+
+  @override
+  String get pbHideDesktop => 'Комп’ютер';
+
+  @override
+  String get pbLinks => 'Посилання';
+
+  @override
+  String get pbLinkAdd => 'Додати посилання';
+
+  @override
+  String get pbLinkAddPh => '+ [[Назва]] · #якір · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Це не посилання: використайте [[Назва]], #якір або адресу http(s)';
+
+  @override
+  String get pbLinkLabel => 'Підпис';
+
+  @override
+  String get pbLinkTo => 'Куди';
+
+  @override
+  String get pbLinkGroup => 'Група';
+
+  @override
+  String get pbLinkHint => 'Веб-посилання відкриваються в браузері, лише http і https — застосунок відкриває лише збережену адресу.';
+
+  @override
+  String get pbLinkMissing => 'Ще немає сторінки з такою назвою — натисніть, щоб створити';
+
+  @override
+  String get pbLinkUp => 'Вище';
+
+  @override
+  String get pbLinkDown => 'Нижче';
+
+  @override
+  String get pbLinksEmpty => 'Посилань поки немає.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Посилань немає — додайте їх через ⚙ → Параметри.';
+
+  @override
+  String get pbListAdd => 'Додати';
+
+  @override
+  String get pcLinkbar => 'Панель посилань';
+
+  @override
+  String get pcLinkcard => 'Картки посилань';
+
+  @override
+  String get pcHatnote => 'Примітка-шапка';
+
+  @override
+  String get pcSeeAlso => 'Див. також';
+
+  @override
+  String get pcReferences => 'Примітки';
+
+  @override
+  String get pcTabs => 'Вкладки';
+
+  @override
+  String get pcToggle => 'Згортуваний блок';
+
+  @override
+  String get pcNavbox => 'Навігаційний шаблон';
+
+  @override
+  String get pcChildren => 'Дочірні сторінки';
+
+  @override
+  String get pcHatAnd => 'і';
+
+  @override
+  String get pcHatnotePh => 'Основна стаття: …';
+
+  @override
+  String get pcReferencesEmpty => 'Виносок поки немає — напишіть [^1] у текстовому блоці й «[^1]: …» окремим рядком.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'На цій сторінці поки немає посилань';
+
+  @override
+  String get pcSuggested => 'Пропозиції:';
+
+  @override
+  String get pcTab => 'Вкладка';
+
+  @override
+  String get pcChildrenNone => 'Під цією сторінкою нічого немає.';
+
+  @override
+  String get pbFootnoteMissing => 'Ця виноска ще не має тексту — додайте рядок «[^n]: …»';
+
+  @override
+  String get pcOptBar => 'Стиль панелі';
+
+  @override
+  String get pcOptCaption => 'Підпис';
+
+  @override
+  String get pcOptCount => 'Скільки';
+
+  @override
+  String get pcOptCover => 'Обкладинка';
+
+  @override
+  String get pcOptDepth => 'Глибина';
+
+  @override
+  String get pcOptHatKind => 'Тип примітки';
+
+  @override
+  String get pcOptLayout => 'Розкладка';
+
+  @override
+  String get pcOptLook => 'Вигляд';
+
+  @override
+  String get pcOptLoop => 'Повтор';
+
+  @override
+  String get pcOptPoster => 'Обкладинка';
+
+  @override
+  String get pcOptSort => 'Порядок';
+
+  @override
+  String get pcOptSource => 'Заповнювати з модуля';
+
+  @override
+  String get pcOptStart => 'Спочатку';
+
+  @override
+  String get pcOptStartPage => 'Перша сторінка';
+
+  @override
+  String get pcOptStartTab => 'Вкладка за замовчуванням';
+
+  @override
+  String get pcOptSticky => 'Закріплювати вгорі під час прокручування';
+
+  @override
+  String get pcOptSuggest => 'Пропонувати сторінки, що посилаються сюди або звідси';
+
+  @override
+  String get pcOptTabs => 'Назви вкладок';
+
+  @override
+  String get pcBarPills => 'Пігулки';
+
+  @override
+  String get pcBarTabs => 'Вкладки';
+
+  @override
+  String get pcBarUnderline => 'Підкреслення';
+
+  @override
+  String get pcBarButtons => 'Кнопки';
+
+  @override
+  String get pcCardCard => 'Картка';
+
+  @override
+  String get pcCardCompact => 'Компактно';
+
+  @override
+  String get pcCardButton => 'Кнопка';
+
+  @override
+  String get pcHatMain => 'Основна стаття:';
+
+  @override
+  String get pcHatAbout => 'Докладніше див.';
+
+  @override
+  String get pcHatDistinguish => 'Не плутати з';
+
+  @override
+  String get pcTabsLine => 'Лінія';
+
+  @override
+  String get pcTabsBoxed => 'У рамці';
+
+  @override
+  String get pcTabsPills => 'Пігулки';
+
+  @override
+  String get pcKidsList => 'Список';
+
+  @override
+  String get pcKidsTree => 'Дерево';
+
+  @override
+  String get pcKidsCards => 'Картки';
+
+  @override
+  String get pcSortOrder => 'Як у Nest';
+
+  @override
+  String get pcSortName => 'За назвою';
+
+  @override
+  String get pcGalGrid => 'Сітка';
+
+  @override
+  String get pcGalStrip => 'Стрічка';
+
+  @override
+  String get pcPdfSingle => 'По одній сторінці';
+
+  @override
+  String get pcPdfStrip => 'Стрічка сторінок';
 }

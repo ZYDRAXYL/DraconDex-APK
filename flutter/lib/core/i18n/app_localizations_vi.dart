@@ -1975,4 +1975,352 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'Không thể mở tệp này';
+
+  @override
+  String get pbBlockSettings => 'Cài đặt khối';
+
+  @override
+  String get pbStyle => 'Kiểu';
+
+  @override
+  String get pbOptions => 'Tùy chọn';
+
+  @override
+  String get pbStyleVariant => 'Giao diện';
+
+  @override
+  String get pbStyleAccent => 'Màu nhấn';
+
+  @override
+  String get pbStyleWidth => 'Độ rộng';
+
+  @override
+  String get pbStyleAlign => 'Căn chỉnh';
+
+  @override
+  String get pbStyleDensity => 'Khoảng cách';
+
+  @override
+  String get pbStyleHeader => 'Tiêu đề';
+
+  @override
+  String get pbHeaderShow => 'Hiện tiêu đề';
+
+  @override
+  String get pbHeaderTitle => 'Tên tiêu đề';
+
+  @override
+  String get pbStyleCollapsible => 'Thu gọn';
+
+  @override
+  String get pbStyleAnchor => 'Neo (#)';
+
+  @override
+  String get pbStyleHideOn => 'Ẩn trên';
+
+  @override
+  String get pbStyleReset => 'Đặt lại';
+
+  @override
+  String get pbStyleApplyAll => 'Dùng cho mọi khối cùng loại';
+
+  @override
+  String get pbStyleApplied => 'Đã dùng cho {n} khối khác';
+
+  @override
+  String get pbStyleCopy => 'Chép kiểu';
+
+  @override
+  String get pbStylePaste => 'Dán kiểu';
+
+  @override
+  String get pbNoOptions => 'Khối này không có tùy chọn riêng — giao diện nằm ở thẻ Kiểu.';
+
+  @override
+  String get pbVariantPlain => 'Trơn';
+
+  @override
+  String get pbVariantCard => 'Thẻ';
+
+  @override
+  String get pbVariantOutline => 'Viền';
+
+  @override
+  String get pbVariantTinted => 'Nhuộm màu';
+
+  @override
+  String get pbVariantHero => 'Nổi bật';
+
+  @override
+  String get pbAccKind => 'Loại mô-đun';
+
+  @override
+  String get pbAccAccent => 'Màu nhấn của chủ đề';
+
+  @override
+  String get pbAccBlue => 'Xanh dương';
+
+  @override
+  String get pbAccGreen => 'Xanh lá';
+
+  @override
+  String get pbAccAmber => 'Hổ phách';
+
+  @override
+  String get pbAccRose => 'Hồng';
+
+  @override
+  String get pbAccViolet => 'Tím';
+
+  @override
+  String get pbAccSlate => 'Xám đá';
+
+  @override
+  String get pbWidthNarrow => 'Hẹp';
+
+  @override
+  String get pbWidthNormal => 'Bình thường';
+
+  @override
+  String get pbWidthWide => 'Rộng';
+
+  @override
+  String get pbWidthFull => 'Toàn bộ';
+
+  @override
+  String get pbDensityComfy => 'Thoáng';
+
+  @override
+  String get pbDensityCompact => 'Gọn';
+
+  @override
+  String get pbCollOff => 'Không';
+
+  @override
+  String get pbCollOpen => 'Mở sẵn';
+
+  @override
+  String get pbCollClosed => 'Thu sẵn';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Điện thoại';
+
+  @override
+  String get pbHideDesktop => 'Máy tính';
+
+  @override
+  String get pbLinks => 'Liên kết';
+
+  @override
+  String get pbLinkAdd => 'Thêm liên kết';
+
+  @override
+  String get pbLinkAddPh => '+ [[Tên]] · #neo · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Đây không phải liên kết: dùng [[Tên]], #neo hoặc địa chỉ http(s)';
+
+  @override
+  String get pbLinkLabel => 'Nhãn';
+
+  @override
+  String get pbLinkTo => 'Đi tới';
+
+  @override
+  String get pbLinkGroup => 'Nhóm';
+
+  @override
+  String get pbLinkHint => 'Liên kết web mở trong trình duyệt, chỉ http và https — ứng dụng chỉ mở địa chỉ đã lưu.';
+
+  @override
+  String get pbLinkMissing => 'Chưa có trang tên này — bấm để tạo';
+
+  @override
+  String get pbLinkUp => 'Lên';
+
+  @override
+  String get pbLinkDown => 'Xuống';
+
+  @override
+  String get pbLinksEmpty => 'Chưa có liên kết.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Chưa có liên kết — thêm ở ⚙ → Tùy chọn.';
+
+  @override
+  String get pbListAdd => 'Thêm';
+
+  @override
+  String get pcLinkbar => 'Thanh liên kết';
+
+  @override
+  String get pcLinkcard => 'Thẻ liên kết';
+
+  @override
+  String get pcHatnote => 'Chú thích đầu trang';
+
+  @override
+  String get pcSeeAlso => 'Xem thêm';
+
+  @override
+  String get pcReferences => 'Tham khảo';
+
+  @override
+  String get pcTabs => 'Thẻ';
+
+  @override
+  String get pcToggle => 'Khối thu gọn';
+
+  @override
+  String get pcNavbox => 'Hộp điều hướng';
+
+  @override
+  String get pcChildren => 'Trang con';
+
+  @override
+  String get pcHatAnd => 'và';
+
+  @override
+  String get pcHatnotePh => 'Bài chính: …';
+
+  @override
+  String get pcReferencesEmpty => 'Trang này chưa có chú thích — viết [^1] trong khối văn bản và "[^1]: …" trên dòng riêng.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Trang này chưa có liên kết nào';
+
+  @override
+  String get pcSuggested => 'Gợi ý:';
+
+  @override
+  String get pcTab => 'Thẻ';
+
+  @override
+  String get pcChildrenNone => 'Không có gì bên dưới trang này.';
+
+  @override
+  String get pbFootnoteMissing => 'Chú thích này chưa có nội dung — thêm dòng "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'Kiểu thanh';
+
+  @override
+  String get pcOptCaption => 'Chú thích';
+
+  @override
+  String get pcOptCount => 'Số lượng';
+
+  @override
+  String get pcOptCover => 'Ảnh bìa';
+
+  @override
+  String get pcOptDepth => 'Độ sâu';
+
+  @override
+  String get pcOptHatKind => 'Loại ghi chú';
+
+  @override
+  String get pcOptLayout => 'Bố cục';
+
+  @override
+  String get pcOptLook => 'Giao diện';
+
+  @override
+  String get pcOptLoop => 'Lặp lại';
+
+  @override
+  String get pcOptPoster => 'Ảnh bìa';
+
+  @override
+  String get pcOptSort => 'Thứ tự';
+
+  @override
+  String get pcOptSource => 'Lấy từ mô-đun';
+
+  @override
+  String get pcOptStart => 'Ban đầu';
+
+  @override
+  String get pcOptStartPage => 'Trang đầu hiển thị';
+
+  @override
+  String get pcOptStartTab => 'Thẻ hiện đầu tiên';
+
+  @override
+  String get pcOptSticky => 'Giữ ở trên khi cuộn';
+
+  @override
+  String get pcOptSuggest => 'Gợi ý trang liên kết tới hoặc từ đây';
+
+  @override
+  String get pcOptTabs => 'Tên thẻ';
+
+  @override
+  String get pcBarPills => 'Viên';
+
+  @override
+  String get pcBarTabs => 'Thẻ';
+
+  @override
+  String get pcBarUnderline => 'Gạch chân';
+
+  @override
+  String get pcBarButtons => 'Nút';
+
+  @override
+  String get pcCardCard => 'Thẻ';
+
+  @override
+  String get pcCardCompact => 'Gọn';
+
+  @override
+  String get pcCardButton => 'Nút';
+
+  @override
+  String get pcHatMain => 'Bài chính:';
+
+  @override
+  String get pcHatAbout => 'Xem thêm';
+
+  @override
+  String get pcHatDistinguish => 'Đừng nhầm với';
+
+  @override
+  String get pcTabsLine => 'Đường';
+
+  @override
+  String get pcTabsBoxed => 'Hộp';
+
+  @override
+  String get pcTabsPills => 'Viên';
+
+  @override
+  String get pcKidsList => 'Danh sách';
+
+  @override
+  String get pcKidsTree => 'Cây';
+
+  @override
+  String get pcKidsCards => 'Thẻ';
+
+  @override
+  String get pcSortOrder => 'Theo Nest';
+
+  @override
+  String get pcSortName => 'Theo tên';
+
+  @override
+  String get pcGalGrid => 'Lưới';
+
+  @override
+  String get pcGalStrip => 'Dải cuộn';
+
+  @override
+  String get pcPdfSingle => 'Từng trang';
+
+  @override
+  String get pcPdfStrip => 'Dải trang';
 }

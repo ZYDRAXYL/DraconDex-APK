@@ -1975,4 +1975,352 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => '无法打开此文件';
+
+  @override
+  String get pbBlockSettings => '区块设置';
+
+  @override
+  String get pbStyle => '样式';
+
+  @override
+  String get pbOptions => '选项';
+
+  @override
+  String get pbStyleVariant => '外观';
+
+  @override
+  String get pbStyleAccent => '强调色';
+
+  @override
+  String get pbStyleWidth => '宽度';
+
+  @override
+  String get pbStyleAlign => '对齐';
+
+  @override
+  String get pbStyleDensity => '间距';
+
+  @override
+  String get pbStyleHeader => '标题栏';
+
+  @override
+  String get pbHeaderShow => '显示标题栏';
+
+  @override
+  String get pbHeaderTitle => '标题文字';
+
+  @override
+  String get pbStyleCollapsible => '可折叠';
+
+  @override
+  String get pbStyleAnchor => '锚点（#）';
+
+  @override
+  String get pbStyleHideOn => '隐藏于';
+
+  @override
+  String get pbStyleReset => '重置';
+
+  @override
+  String get pbStyleApplyAll => '应用到此页同类区块';
+
+  @override
+  String get pbStyleApplied => '已应用到另外 {n} 个区块';
+
+  @override
+  String get pbStyleCopy => '复制样式';
+
+  @override
+  String get pbStylePaste => '粘贴样式';
+
+  @override
+  String get pbNoOptions => '此区块没有自己的选项——外观在“样式”标签中设置。';
+
+  @override
+  String get pbVariantPlain => '朴素';
+
+  @override
+  String get pbVariantCard => '卡片';
+
+  @override
+  String get pbVariantOutline => '描边';
+
+  @override
+  String get pbVariantTinted => '着色';
+
+  @override
+  String get pbVariantHero => '主视觉';
+
+  @override
+  String get pbAccKind => '模块类型';
+
+  @override
+  String get pbAccAccent => '主题强调色';
+
+  @override
+  String get pbAccBlue => '蓝';
+
+  @override
+  String get pbAccGreen => '绿';
+
+  @override
+  String get pbAccAmber => '琥珀';
+
+  @override
+  String get pbAccRose => '玫瑰';
+
+  @override
+  String get pbAccViolet => '紫';
+
+  @override
+  String get pbAccSlate => '石板灰';
+
+  @override
+  String get pbWidthNarrow => '窄';
+
+  @override
+  String get pbWidthNormal => '标准';
+
+  @override
+  String get pbWidthWide => '宽';
+
+  @override
+  String get pbWidthFull => '全宽';
+
+  @override
+  String get pbDensityComfy => '宽松';
+
+  @override
+  String get pbDensityCompact => '紧凑';
+
+  @override
+  String get pbCollOff => '否';
+
+  @override
+  String get pbCollOpen => '默认展开';
+
+  @override
+  String get pbCollClosed => '默认折叠';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => '手机';
+
+  @override
+  String get pbHideDesktop => '桌面';
+
+  @override
+  String get pbLinks => '链接';
+
+  @override
+  String get pbLinkAdd => '添加链接';
+
+  @override
+  String get pbLinkAddPh => '+ [[名称]] · #锚点 · https://…';
+
+  @override
+  String get pbLinkBadUrl => '这不是链接：请用 [[名称]]、#锚点 或 http(s) 地址';
+
+  @override
+  String get pbLinkLabel => '显示文字';
+
+  @override
+  String get pbLinkTo => '目标';
+
+  @override
+  String get pbLinkGroup => '分组';
+
+  @override
+  String get pbLinkHint => '网页链接在浏览器中打开，仅限 http 和 https——应用只打开已保存的地址。';
+
+  @override
+  String get pbLinkMissing => '尚无此名称的页面——点击创建';
+
+  @override
+  String get pbLinkUp => '上移';
+
+  @override
+  String get pbLinkDown => '下移';
+
+  @override
+  String get pbLinksEmpty => '暂无链接。';
+
+  @override
+  String get pbLinksEmptyArrange => '暂无链接——在 ⚙ → 选项 中添加。';
+
+  @override
+  String get pbListAdd => '添加';
+
+  @override
+  String get pcLinkbar => '链接栏';
+
+  @override
+  String get pcLinkcard => '链接卡片';
+
+  @override
+  String get pcHatnote => '顶注';
+
+  @override
+  String get pcSeeAlso => '另请参阅';
+
+  @override
+  String get pcReferences => '参考';
+
+  @override
+  String get pcTabs => '标签页';
+
+  @override
+  String get pcToggle => '折叠块';
+
+  @override
+  String get pcNavbox => '导航框';
+
+  @override
+  String get pcChildren => '子页面';
+
+  @override
+  String get pcHatAnd => '和';
+
+  @override
+  String get pcHatnotePh => '主条目：…';
+
+  @override
+  String get pcReferencesEmpty => '此页尚无脚注——在文本块中写 [^1]，另起一行写 “[^1]: …”。';
+
+  @override
+  String get pcSeeAlsoEmpty => '此页面还没有链接';
+
+  @override
+  String get pcSuggested => '建议：';
+
+  @override
+  String get pcTab => '标签';
+
+  @override
+  String get pcChildrenNone => '此页面下没有内容。';
+
+  @override
+  String get pbFootnoteMissing => '此脚注尚无内容——请添加一行 “[^n]: …”';
+
+  @override
+  String get pcOptBar => '栏样式';
+
+  @override
+  String get pcOptCaption => '说明';
+
+  @override
+  String get pcOptCount => '数量';
+
+  @override
+  String get pcOptCover => '封面图';
+
+  @override
+  String get pcOptDepth => '层级';
+
+  @override
+  String get pcOptHatKind => '注记类型';
+
+  @override
+  String get pcOptLayout => '布局';
+
+  @override
+  String get pcOptLook => '外观';
+
+  @override
+  String get pcOptLoop => '循环';
+
+  @override
+  String get pcOptPoster => '封面图';
+
+  @override
+  String get pcOptSort => '排序';
+
+  @override
+  String get pcOptSource => '从模块填充';
+
+  @override
+  String get pcOptStart => '初始状态';
+
+  @override
+  String get pcOptStartPage => '起始页';
+
+  @override
+  String get pcOptStartTab => '默认标签';
+
+  @override
+  String get pcOptSticky => '滚动时固定在顶部';
+
+  @override
+  String get pcOptSuggest => '推荐链接到此处或由此链接的页面';
+
+  @override
+  String get pcOptTabs => '标签名称';
+
+  @override
+  String get pcBarPills => '胶囊';
+
+  @override
+  String get pcBarTabs => '标签';
+
+  @override
+  String get pcBarUnderline => '下划线';
+
+  @override
+  String get pcBarButtons => '按钮';
+
+  @override
+  String get pcCardCard => '卡片';
+
+  @override
+  String get pcCardCompact => '紧凑';
+
+  @override
+  String get pcCardButton => '按钮';
+
+  @override
+  String get pcHatMain => '主条目：';
+
+  @override
+  String get pcHatAbout => '更多内容见';
+
+  @override
+  String get pcHatDistinguish => '不要与以下混淆：';
+
+  @override
+  String get pcTabsLine => '线条';
+
+  @override
+  String get pcTabsBoxed => '方框';
+
+  @override
+  String get pcTabsPills => '胶囊';
+
+  @override
+  String get pcKidsList => '列表';
+
+  @override
+  String get pcKidsTree => '树形';
+
+  @override
+  String get pcKidsCards => '卡片';
+
+  @override
+  String get pcSortOrder => '按 Nest 顺序';
+
+  @override
+  String get pcSortName => '按名称';
+
+  @override
+  String get pcGalGrid => '网格';
+
+  @override
+  String get pcGalStrip => '横条';
+
+  @override
+  String get pcPdfSingle => '单页';
+
+  @override
+  String get pcPdfStrip => '缩略条';
 }

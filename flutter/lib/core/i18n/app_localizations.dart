@@ -4062,6 +4062,702 @@ abstract class AppLocalizations {
   /// **This file could not be opened**
   String get mediaOpenFailed;
 
+  /// No description provided for @pbBlockSettings.
+  ///
+  /// In en, this message translates to:
+  /// **Block settings**
+  String get pbBlockSettings;
+
+  /// No description provided for @pbStyle.
+  ///
+  /// In en, this message translates to:
+  /// **Style**
+  String get pbStyle;
+
+  /// No description provided for @pbOptions.
+  ///
+  /// In en, this message translates to:
+  /// **Options**
+  String get pbOptions;
+
+  /// No description provided for @pbStyleVariant.
+  ///
+  /// In en, this message translates to:
+  /// **Look**
+  String get pbStyleVariant;
+
+  /// No description provided for @pbStyleAccent.
+  ///
+  /// In en, this message translates to:
+  /// **Accent colour**
+  String get pbStyleAccent;
+
+  /// No description provided for @pbStyleWidth.
+  ///
+  /// In en, this message translates to:
+  /// **Width**
+  String get pbStyleWidth;
+
+  /// No description provided for @pbStyleAlign.
+  ///
+  /// In en, this message translates to:
+  /// **Align**
+  String get pbStyleAlign;
+
+  /// No description provided for @pbStyleDensity.
+  ///
+  /// In en, this message translates to:
+  /// **Spacing**
+  String get pbStyleDensity;
+
+  /// No description provided for @pbStyleHeader.
+  ///
+  /// In en, this message translates to:
+  /// **Header**
+  String get pbStyleHeader;
+
+  /// No description provided for @pbHeaderShow.
+  ///
+  /// In en, this message translates to:
+  /// **Show a header**
+  String get pbHeaderShow;
+
+  /// No description provided for @pbHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **Header title**
+  String get pbHeaderTitle;
+
+  /// No description provided for @pbStyleCollapsible.
+  ///
+  /// In en, this message translates to:
+  /// **Folds away**
+  String get pbStyleCollapsible;
+
+  /// No description provided for @pbStyleAnchor.
+  ///
+  /// In en, this message translates to:
+  /// **Anchor (#)**
+  String get pbStyleAnchor;
+
+  /// No description provided for @pbStyleHideOn.
+  ///
+  /// In en, this message translates to:
+  /// **Hide on**
+  String get pbStyleHideOn;
+
+  /// No description provided for @pbStyleReset.
+  ///
+  /// In en, this message translates to:
+  /// **Reset**
+  String get pbStyleReset;
+
+  /// No description provided for @pbStyleApplyAll.
+  ///
+  /// In en, this message translates to:
+  /// **Use on every block of this kind**
+  String get pbStyleApplyAll;
+
+  /// No description provided for @pbStyleApplied.
+  ///
+  /// In en, this message translates to:
+  /// **Style used on {n} more blocks**
+  String get pbStyleApplied;
+
+  /// No description provided for @pbStyleCopy.
+  ///
+  /// In en, this message translates to:
+  /// **Copy style**
+  String get pbStyleCopy;
+
+  /// No description provided for @pbStylePaste.
+  ///
+  /// In en, this message translates to:
+  /// **Paste style**
+  String get pbStylePaste;
+
+  /// No description provided for @pbNoOptions.
+  ///
+  /// In en, this message translates to:
+  /// **This block has no options of its own — its look is on the Style tab.**
+  String get pbNoOptions;
+
+  /// No description provided for @pbVariantPlain.
+  ///
+  /// In en, this message translates to:
+  /// **Plain**
+  String get pbVariantPlain;
+
+  /// No description provided for @pbVariantCard.
+  ///
+  /// In en, this message translates to:
+  /// **Card**
+  String get pbVariantCard;
+
+  /// No description provided for @pbVariantOutline.
+  ///
+  /// In en, this message translates to:
+  /// **Outline**
+  String get pbVariantOutline;
+
+  /// No description provided for @pbVariantTinted.
+  ///
+  /// In en, this message translates to:
+  /// **Tinted**
+  String get pbVariantTinted;
+
+  /// No description provided for @pbVariantHero.
+  ///
+  /// In en, this message translates to:
+  /// **Hero**
+  String get pbVariantHero;
+
+  /// No description provided for @pbAccKind.
+  ///
+  /// In en, this message translates to:
+  /// **Module kind**
+  String get pbAccKind;
+
+  /// No description provided for @pbAccAccent.
+  ///
+  /// In en, this message translates to:
+  /// **Theme accent**
+  String get pbAccAccent;
+
+  /// No description provided for @pbAccBlue.
+  ///
+  /// In en, this message translates to:
+  /// **Blue**
+  String get pbAccBlue;
+
+  /// No description provided for @pbAccGreen.
+  ///
+  /// In en, this message translates to:
+  /// **Green**
+  String get pbAccGreen;
+
+  /// No description provided for @pbAccAmber.
+  ///
+  /// In en, this message translates to:
+  /// **Amber**
+  String get pbAccAmber;
+
+  /// No description provided for @pbAccRose.
+  ///
+  /// In en, this message translates to:
+  /// **Rose**
+  String get pbAccRose;
+
+  /// No description provided for @pbAccViolet.
+  ///
+  /// In en, this message translates to:
+  /// **Violet**
+  String get pbAccViolet;
+
+  /// No description provided for @pbAccSlate.
+  ///
+  /// In en, this message translates to:
+  /// **Slate**
+  String get pbAccSlate;
+
+  /// No description provided for @pbWidthNarrow.
+  ///
+  /// In en, this message translates to:
+  /// **Narrow**
+  String get pbWidthNarrow;
+
+  /// No description provided for @pbWidthNormal.
+  ///
+  /// In en, this message translates to:
+  /// **Normal**
+  String get pbWidthNormal;
+
+  /// No description provided for @pbWidthWide.
+  ///
+  /// In en, this message translates to:
+  /// **Wide**
+  String get pbWidthWide;
+
+  /// No description provided for @pbWidthFull.
+  ///
+  /// In en, this message translates to:
+  /// **Full**
+  String get pbWidthFull;
+
+  /// No description provided for @pbDensityComfy.
+  ///
+  /// In en, this message translates to:
+  /// **Roomy**
+  String get pbDensityComfy;
+
+  /// No description provided for @pbDensityCompact.
+  ///
+  /// In en, this message translates to:
+  /// **Compact**
+  String get pbDensityCompact;
+
+  /// No description provided for @pbCollOff.
+  ///
+  /// In en, this message translates to:
+  /// **No**
+  String get pbCollOff;
+
+  /// No description provided for @pbCollOpen.
+  ///
+  /// In en, this message translates to:
+  /// **Starts open**
+  String get pbCollOpen;
+
+  /// No description provided for @pbCollClosed.
+  ///
+  /// In en, this message translates to:
+  /// **Starts folded**
+  String get pbCollClosed;
+
+  /// No description provided for @pbHideNone.
+  ///
+  /// In en, this message translates to:
+  /// **—**
+  String get pbHideNone;
+
+  /// No description provided for @pbHidePhone.
+  ///
+  /// In en, this message translates to:
+  /// **Phone**
+  String get pbHidePhone;
+
+  /// No description provided for @pbHideDesktop.
+  ///
+  /// In en, this message translates to:
+  /// **Desktop**
+  String get pbHideDesktop;
+
+  /// No description provided for @pbLinks.
+  ///
+  /// In en, this message translates to:
+  /// **Links**
+  String get pbLinks;
+
+  /// No description provided for @pbLinkAdd.
+  ///
+  /// In en, this message translates to:
+  /// **Add a link**
+  String get pbLinkAdd;
+
+  /// No description provided for @pbLinkAddPh.
+  ///
+  /// In en, this message translates to:
+  /// **+ [[Name]] · #anchor · https://…**
+  String get pbLinkAddPh;
+
+  /// No description provided for @pbLinkBadUrl.
+  ///
+  /// In en, this message translates to:
+  /// **That is not a link: use [[Name]], #anchor, or an http(s) address**
+  String get pbLinkBadUrl;
+
+  /// No description provided for @pbLinkLabel.
+  ///
+  /// In en, this message translates to:
+  /// **Label**
+  String get pbLinkLabel;
+
+  /// No description provided for @pbLinkTo.
+  ///
+  /// In en, this message translates to:
+  /// **Goes to**
+  String get pbLinkTo;
+
+  /// No description provided for @pbLinkGroup.
+  ///
+  /// In en, this message translates to:
+  /// **Group**
+  String get pbLinkGroup;
+
+  /// No description provided for @pbLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **Web links open in your browser, http and https only — the app opens the saved address, never one typed elsewhere.**
+  String get pbLinkHint;
+
+  /// No description provided for @pbLinkMissing.
+  ///
+  /// In en, this message translates to:
+  /// **Nothing by that name yet — click to create it**
+  String get pbLinkMissing;
+
+  /// No description provided for @pbLinkUp.
+  ///
+  /// In en, this message translates to:
+  /// **Move up**
+  String get pbLinkUp;
+
+  /// No description provided for @pbLinkDown.
+  ///
+  /// In en, this message translates to:
+  /// **Move down**
+  String get pbLinkDown;
+
+  /// No description provided for @pbLinksEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No links yet.**
+  String get pbLinksEmpty;
+
+  /// No description provided for @pbLinksEmptyArrange.
+  ///
+  /// In en, this message translates to:
+  /// **No links yet — add them with ⚙ → Options.**
+  String get pbLinksEmptyArrange;
+
+  /// No description provided for @pbListAdd.
+  ///
+  /// In en, this message translates to:
+  /// **Add**
+  String get pbListAdd;
+
+  /// No description provided for @pcLinkbar.
+  ///
+  /// In en, this message translates to:
+  /// **Link bar**
+  String get pcLinkbar;
+
+  /// No description provided for @pcLinkcard.
+  ///
+  /// In en, this message translates to:
+  /// **Link cards**
+  String get pcLinkcard;
+
+  /// No description provided for @pcHatnote.
+  ///
+  /// In en, this message translates to:
+  /// **Hatnote**
+  String get pcHatnote;
+
+  /// No description provided for @pcSeeAlso.
+  ///
+  /// In en, this message translates to:
+  /// **See also**
+  String get pcSeeAlso;
+
+  /// No description provided for @pcReferences.
+  ///
+  /// In en, this message translates to:
+  /// **References**
+  String get pcReferences;
+
+  /// No description provided for @pcTabs.
+  ///
+  /// In en, this message translates to:
+  /// **Tabs**
+  String get pcTabs;
+
+  /// No description provided for @pcToggle.
+  ///
+  /// In en, this message translates to:
+  /// **Toggle**
+  String get pcToggle;
+
+  /// No description provided for @pcNavbox.
+  ///
+  /// In en, this message translates to:
+  /// **Navigation box**
+  String get pcNavbox;
+
+  /// No description provided for @pcChildren.
+  ///
+  /// In en, this message translates to:
+  /// **Child pages**
+  String get pcChildren;
+
+  /// No description provided for @pcHatAnd.
+  ///
+  /// In en, this message translates to:
+  /// **and**
+  String get pcHatAnd;
+
+  /// No description provided for @pcHatnotePh.
+  ///
+  /// In en, this message translates to:
+  /// **Main article: …**
+  String get pcHatnotePh;
+
+  /// No description provided for @pcReferencesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No footnotes on this page yet — write [^1] in a text block and \"[^1]: …\" on its own line.**
+  String get pcReferencesEmpty;
+
+  /// No description provided for @pcSeeAlsoEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No links from this page yet**
+  String get pcSeeAlsoEmpty;
+
+  /// No description provided for @pcSuggested.
+  ///
+  /// In en, this message translates to:
+  /// **Suggested:**
+  String get pcSuggested;
+
+  /// No description provided for @pcTab.
+  ///
+  /// In en, this message translates to:
+  /// **Tab**
+  String get pcTab;
+
+  /// No description provided for @pcChildrenNone.
+  ///
+  /// In en, this message translates to:
+  /// **Nothing sits under this page.**
+  String get pcChildrenNone;
+
+  /// No description provided for @pbFootnoteMissing.
+  ///
+  /// In en, this message translates to:
+  /// **This footnote has no text yet — add a line \"[^n]: …\"**
+  String get pbFootnoteMissing;
+
+  /// No description provided for @pcOptBar.
+  ///
+  /// In en, this message translates to:
+  /// **Bar style**
+  String get pcOptBar;
+
+  /// No description provided for @pcOptCaption.
+  ///
+  /// In en, this message translates to:
+  /// **Caption**
+  String get pcOptCaption;
+
+  /// No description provided for @pcOptCount.
+  ///
+  /// In en, this message translates to:
+  /// **How many**
+  String get pcOptCount;
+
+  /// No description provided for @pcOptCover.
+  ///
+  /// In en, this message translates to:
+  /// **Cover picture**
+  String get pcOptCover;
+
+  /// No description provided for @pcOptDepth.
+  ///
+  /// In en, this message translates to:
+  /// **Depth**
+  String get pcOptDepth;
+
+  /// No description provided for @pcOptHatKind.
+  ///
+  /// In en, this message translates to:
+  /// **Kind of note**
+  String get pcOptHatKind;
+
+  /// No description provided for @pcOptLayout.
+  ///
+  /// In en, this message translates to:
+  /// **Layout**
+  String get pcOptLayout;
+
+  /// No description provided for @pcOptLook.
+  ///
+  /// In en, this message translates to:
+  /// **Look**
+  String get pcOptLook;
+
+  /// No description provided for @pcOptLoop.
+  ///
+  /// In en, this message translates to:
+  /// **Loop**
+  String get pcOptLoop;
+
+  /// No description provided for @pcOptPoster.
+  ///
+  /// In en, this message translates to:
+  /// **Poster picture**
+  String get pcOptPoster;
+
+  /// No description provided for @pcOptSort.
+  ///
+  /// In en, this message translates to:
+  /// **Order**
+  String get pcOptSort;
+
+  /// No description provided for @pcOptSource.
+  ///
+  /// In en, this message translates to:
+  /// **Fill from module**
+  String get pcOptSource;
+
+  /// No description provided for @pcOptStart.
+  ///
+  /// In en, this message translates to:
+  /// **Starts**
+  String get pcOptStart;
+
+  /// No description provided for @pcOptStartPage.
+  ///
+  /// In en, this message translates to:
+  /// **First page shown**
+  String get pcOptStartPage;
+
+  /// No description provided for @pcOptStartTab.
+  ///
+  /// In en, this message translates to:
+  /// **Tab shown first**
+  String get pcOptStartTab;
+
+  /// No description provided for @pcOptSticky.
+  ///
+  /// In en, this message translates to:
+  /// **Stay at the top while scrolling**
+  String get pcOptSticky;
+
+  /// No description provided for @pcOptSuggest.
+  ///
+  /// In en, this message translates to:
+  /// **Suggest pages that link here or are linked from here**
+  String get pcOptSuggest;
+
+  /// No description provided for @pcOptTabs.
+  ///
+  /// In en, this message translates to:
+  /// **Tab names**
+  String get pcOptTabs;
+
+  /// No description provided for @pcBarPills.
+  ///
+  /// In en, this message translates to:
+  /// **Pills**
+  String get pcBarPills;
+
+  /// No description provided for @pcBarTabs.
+  ///
+  /// In en, this message translates to:
+  /// **Tabs**
+  String get pcBarTabs;
+
+  /// No description provided for @pcBarUnderline.
+  ///
+  /// In en, this message translates to:
+  /// **Underline**
+  String get pcBarUnderline;
+
+  /// No description provided for @pcBarButtons.
+  ///
+  /// In en, this message translates to:
+  /// **Buttons**
+  String get pcBarButtons;
+
+  /// No description provided for @pcCardCard.
+  ///
+  /// In en, this message translates to:
+  /// **Card**
+  String get pcCardCard;
+
+  /// No description provided for @pcCardCompact.
+  ///
+  /// In en, this message translates to:
+  /// **Compact**
+  String get pcCardCompact;
+
+  /// No description provided for @pcCardButton.
+  ///
+  /// In en, this message translates to:
+  /// **Button**
+  String get pcCardButton;
+
+  /// No description provided for @pcHatMain.
+  ///
+  /// In en, this message translates to:
+  /// **Main article:**
+  String get pcHatMain;
+
+  /// No description provided for @pcHatAbout.
+  ///
+  /// In en, this message translates to:
+  /// **For more, see**
+  String get pcHatAbout;
+
+  /// No description provided for @pcHatDistinguish.
+  ///
+  /// In en, this message translates to:
+  /// **Not to be confused with**
+  String get pcHatDistinguish;
+
+  /// No description provided for @pcTabsLine.
+  ///
+  /// In en, this message translates to:
+  /// **Line**
+  String get pcTabsLine;
+
+  /// No description provided for @pcTabsBoxed.
+  ///
+  /// In en, this message translates to:
+  /// **Boxed**
+  String get pcTabsBoxed;
+
+  /// No description provided for @pcTabsPills.
+  ///
+  /// In en, this message translates to:
+  /// **Pills**
+  String get pcTabsPills;
+
+  /// No description provided for @pcKidsList.
+  ///
+  /// In en, this message translates to:
+  /// **List**
+  String get pcKidsList;
+
+  /// No description provided for @pcKidsTree.
+  ///
+  /// In en, this message translates to:
+  /// **Tree**
+  String get pcKidsTree;
+
+  /// No description provided for @pcKidsCards.
+  ///
+  /// In en, this message translates to:
+  /// **Cards**
+  String get pcKidsCards;
+
+  /// No description provided for @pcSortOrder.
+  ///
+  /// In en, this message translates to:
+  /// **As in the Nest**
+  String get pcSortOrder;
+
+  /// No description provided for @pcSortName.
+  ///
+  /// In en, this message translates to:
+  /// **By name**
+  String get pcSortName;
+
+  /// No description provided for @pcGalGrid.
+  ///
+  /// In en, this message translates to:
+  /// **Grid**
+  String get pcGalGrid;
+
+  /// No description provided for @pcGalStrip.
+  ///
+  /// In en, this message translates to:
+  /// **Strip**
+  String get pcGalStrip;
+
+  /// No description provided for @pcPdfSingle.
+  ///
+  /// In en, this message translates to:
+  /// **One page**
+  String get pcPdfSingle;
+
+  /// No description provided for @pcPdfStrip.
+  ///
+  /// In en, this message translates to:
+  /// **Page strip**
+  String get pcPdfStrip;
+
 }
 
 class _AppLocalizationsDelegate

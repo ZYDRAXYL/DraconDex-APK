@@ -8,10 +8,14 @@ import '../../data/models/module_model.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../tools/assets_screen.dart';
+import '../../widgets/markdown_view.dart';
 import 'arrange_mode.dart';
+import 'block_style.dart';
 import 'component_registry.dart';
 import 'core_components.dart';
+import 'links.dart';
 import 'page_providers.dart';
+import 'wiki_components.dart';
 
 /// Below this width a `columns` block stacks its columns into one (APK-V3.md
 /// §10.4, §13 item 8): one layout for every screen, flowing with the width,
@@ -35,12 +39,15 @@ class ModulePage extends ConsumerWidget {
     if (ref.watch(arrangeModeProvider(key))) return ArrangeList(page: page, pageKey: key);
     final wide = ddxLayoutOf(context).hasRail;
     final top = page.top;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        for (var i = 0; i < top.length; i++)
-          BlockView(page: page, block: top[i], itemKey: itemKey, wide: wide, isDuplicateOnce: _dupOnce(top, i)),
-      ],
+    return FootnoteScope(
+      footnotes: pageFootnotes(page),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (var i = 0; i < top.length; i++)
+            BlockView(page: page, block: top[i], itemKey: itemKey, wide: wide, isDuplicateOnce: _dupOnce(top, i)),
+        ],
+      ),
     );
   }
 
@@ -62,6 +69,10 @@ class BlockView extends ConsumerWidget {
   final bool wide;
   final bool isDuplicateOnce;
 
+  /// How far the block sits in from the page's edge — 0 inside a container
+  /// that already sits at the page's inset.
+  final double inset;
+
   const BlockView({
     super.key,
     required this.page,
@@ -69,15 +80,40 @@ class BlockView extends ConsumerWidget {
     required this.itemKey,
     required this.wide,
     this.isDuplicateOnce = false,
+    this.inset = 16,
   });
 
   PageKey get _key => PageKey(page.module.id, itemKey);
 
+  /// The block's name — a header's default title (EXE pbBlockName).
+  static String nameOf(AppLocalizations l10n, PageBlock b) => switch (b.type) {
+        'component' => components[b.component]?.label(l10n) ?? b.component ?? '',
+        'heading' => l10n.pbHeading,
+        'divider' => l10n.pbDivider,
+        'image' => l10n.pbImage,
+        'columns' => l10n.pbColumns,
+        _ => l10n.pbText,
+      };
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    // every block in its §6 style, and findable by its anchor
+    return AnchorMark(
+      anchor: BlockStyle.of(block.config).anchor.isNotEmpty ? BlockStyle.of(block.config).anchor : 'b${block.id}',
+      child: StyledBlock(
+        config: block.config,
+        name: nameOf(l10n, block),
+        isBody: block.component == 'item.body',
+        child: _body(context, ref),
+      ),
+    );
+  }
+
+  Widget _body(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
-    Widget pad(Widget child) => Padding(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6), child: child);
+    Widget pad(Widget child) => Padding(padding: EdgeInsets.symmetric(horizontal: inset, vertical: 6), child: child);
 
     Future<void> saveContent(String v) async {
       final dao = await ref.read(pageBlockDaoProvider.future);
@@ -109,7 +145,7 @@ class BlockView extends ConsumerWidget {
           ),
         ));
       case 'divider':
-        return const Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Divider());
+        return Padding(padding: EdgeInsets.symmetric(horizontal: inset), child: const Divider());
       case 'image':
         return pad(ImageBlock(block: block, nexusId: page.module.nexusRef));
       case 'columns':
@@ -128,7 +164,7 @@ class BlockView extends ConsumerWidget {
           return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [for (final k in kids) Expanded(child: k)]);
         });
       case 'component':
-        return ComponentBlockView(page: page, block: block, itemKey: itemKey, wide: wide, isDuplicateOnce: isDuplicateOnce);
+        return ComponentBlockView(page: page, block: block, itemKey: itemKey, wide: wide, isDuplicateOnce: isDuplicateOnce, inset: inset);
       default:
         return const SizedBox.shrink();
     }
@@ -143,6 +179,7 @@ class ComponentBlockView extends ConsumerWidget {
   final String? itemKey;
   final bool wide;
   final bool isDuplicateOnce;
+  final double inset;
 
   const ComponentBlockView({
     super.key,
@@ -151,6 +188,7 @@ class ComponentBlockView extends ConsumerWidget {
     required this.itemKey,
     required this.wide,
     this.isDuplicateOnce = false,
+    this.inset = 16,
   });
 
   @override
@@ -223,7 +261,7 @@ class ComponentBlockView extends ConsumerWidget {
             ),
           ),
         if (block.component!.startsWith('core.') || block.component == 'item.body')
-          Padding(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4), child: body)
+          Padding(padding: EdgeInsets.symmetric(horizontal: inset, vertical: 4), child: body)
         else
           body,
       ],

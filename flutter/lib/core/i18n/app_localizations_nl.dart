@@ -1972,4 +1972,352 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'Dit bestand kon niet worden geopend';
+
+  @override
+  String get pbBlockSettings => 'Blokinstellingen';
+
+  @override
+  String get pbStyle => 'Stijl';
+
+  @override
+  String get pbOptions => 'Opties';
+
+  @override
+  String get pbStyleVariant => 'Uiterlijk';
+
+  @override
+  String get pbStyleAccent => 'Accentkleur';
+
+  @override
+  String get pbStyleWidth => 'Breedte';
+
+  @override
+  String get pbStyleAlign => 'Uitlijnen';
+
+  @override
+  String get pbStyleDensity => 'Ruimte';
+
+  @override
+  String get pbStyleHeader => 'Kop';
+
+  @override
+  String get pbHeaderShow => 'Kop tonen';
+
+  @override
+  String get pbHeaderTitle => 'Koptitel';
+
+  @override
+  String get pbStyleCollapsible => 'Inklapbaar';
+
+  @override
+  String get pbStyleAnchor => 'Anker (#)';
+
+  @override
+  String get pbStyleHideOn => 'Verbergen op';
+
+  @override
+  String get pbStyleReset => 'Herstellen';
+
+  @override
+  String get pbStyleApplyAll => 'Op alle blokken van deze soort toepassen';
+
+  @override
+  String get pbStyleApplied => 'Stijl toegepast op {n} andere blokken';
+
+  @override
+  String get pbStyleCopy => 'Stijl kopiëren';
+
+  @override
+  String get pbStylePaste => 'Stijl plakken';
+
+  @override
+  String get pbNoOptions => 'Dit blok heeft geen eigen opties — het uiterlijk staat op het tabblad Stijl.';
+
+  @override
+  String get pbVariantPlain => 'Eenvoudig';
+
+  @override
+  String get pbVariantCard => 'Kaart';
+
+  @override
+  String get pbVariantOutline => 'Omlijning';
+
+  @override
+  String get pbVariantTinted => 'Getint';
+
+  @override
+  String get pbVariantHero => 'Uitgelicht';
+
+  @override
+  String get pbAccKind => 'Moduletype';
+
+  @override
+  String get pbAccAccent => 'Thema-accent';
+
+  @override
+  String get pbAccBlue => 'Blauw';
+
+  @override
+  String get pbAccGreen => 'Groen';
+
+  @override
+  String get pbAccAmber => 'Amber';
+
+  @override
+  String get pbAccRose => 'Roze';
+
+  @override
+  String get pbAccViolet => 'Violet';
+
+  @override
+  String get pbAccSlate => 'Leisteen';
+
+  @override
+  String get pbWidthNarrow => 'Smal';
+
+  @override
+  String get pbWidthNormal => 'Normaal';
+
+  @override
+  String get pbWidthWide => 'Breed';
+
+  @override
+  String get pbWidthFull => 'Volledig';
+
+  @override
+  String get pbDensityComfy => 'Ruim';
+
+  @override
+  String get pbDensityCompact => 'Compact';
+
+  @override
+  String get pbCollOff => 'Nee';
+
+  @override
+  String get pbCollOpen => 'Open';
+
+  @override
+  String get pbCollClosed => 'Ingeklapt';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Telefoon';
+
+  @override
+  String get pbHideDesktop => 'Desktop';
+
+  @override
+  String get pbLinks => 'Links';
+
+  @override
+  String get pbLinkAdd => 'Link toevoegen';
+
+  @override
+  String get pbLinkAddPh => '+ [[Naam]] · #anker · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Dat is geen link: gebruik [[Naam]], #anker of een http(s)-adres';
+
+  @override
+  String get pbLinkLabel => 'Label';
+
+  @override
+  String get pbLinkTo => 'Gaat naar';
+
+  @override
+  String get pbLinkGroup => 'Groep';
+
+  @override
+  String get pbLinkHint => 'Weblinks openen in je browser, alleen http en https — de app opent het opgeslagen adres, nooit een ander.';
+
+  @override
+  String get pbLinkMissing => 'Nog niets met die naam — klik om het te maken';
+
+  @override
+  String get pbLinkUp => 'Omhoog';
+
+  @override
+  String get pbLinkDown => 'Omlaag';
+
+  @override
+  String get pbLinksEmpty => 'Nog geen links.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Nog geen links — voeg ze toe via ⚙ → Opties.';
+
+  @override
+  String get pbListAdd => 'Toevoegen';
+
+  @override
+  String get pcLinkbar => 'Linkbalk';
+
+  @override
+  String get pcLinkcard => 'Linkkaarten';
+
+  @override
+  String get pcHatnote => 'Kopnoot';
+
+  @override
+  String get pcSeeAlso => 'Zie ook';
+
+  @override
+  String get pcReferences => 'Referenties';
+
+  @override
+  String get pcTabs => 'Tabbladen';
+
+  @override
+  String get pcToggle => 'Uitklapblok';
+
+  @override
+  String get pcNavbox => 'Navigatiebox';
+
+  @override
+  String get pcChildren => 'Onderliggende pagina’s';
+
+  @override
+  String get pcHatAnd => 'en';
+
+  @override
+  String get pcHatnotePh => 'Hoofdartikel: …';
+
+  @override
+  String get pcReferencesEmpty => 'Nog geen voetnoten — schrijf [^1] in een tekstblok en "[^1]: …" op een eigen regel.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Nog geen links vanaf deze pagina';
+
+  @override
+  String get pcSuggested => 'Suggesties:';
+
+  @override
+  String get pcTab => 'Tabblad';
+
+  @override
+  String get pcChildrenNone => 'Er staat niets onder deze pagina.';
+
+  @override
+  String get pbFootnoteMissing => 'Deze voetnoot heeft nog geen tekst — voeg een regel "[^n]: …" toe';
+
+  @override
+  String get pcOptBar => 'Balkstijl';
+
+  @override
+  String get pcOptCaption => 'Onderschrift';
+
+  @override
+  String get pcOptCount => 'Hoeveel';
+
+  @override
+  String get pcOptCover => 'Omslagafbeelding';
+
+  @override
+  String get pcOptDepth => 'Diepte';
+
+  @override
+  String get pcOptHatKind => 'Soort notitie';
+
+  @override
+  String get pcOptLayout => 'Indeling';
+
+  @override
+  String get pcOptLook => 'Uiterlijk';
+
+  @override
+  String get pcOptLoop => 'Herhalen';
+
+  @override
+  String get pcOptPoster => 'Posterafbeelding';
+
+  @override
+  String get pcOptSort => 'Volgorde';
+
+  @override
+  String get pcOptSource => 'Vullen vanuit module';
+
+  @override
+  String get pcOptStart => 'Begint';
+
+  @override
+  String get pcOptStartPage => 'Eerste pagina';
+
+  @override
+  String get pcOptStartTab => 'Eerst getoond tabblad';
+
+  @override
+  String get pcOptSticky => 'Bovenaan blijven bij scrollen';
+
+  @override
+  String get pcOptSuggest => 'Pagina’s voorstellen die hierheen of hiervandaan linken';
+
+  @override
+  String get pcOptTabs => 'Tabnamen';
+
+  @override
+  String get pcBarPills => 'Pillen';
+
+  @override
+  String get pcBarTabs => 'Tabbladen';
+
+  @override
+  String get pcBarUnderline => 'Onderstreept';
+
+  @override
+  String get pcBarButtons => 'Knoppen';
+
+  @override
+  String get pcCardCard => 'Kaart';
+
+  @override
+  String get pcCardCompact => 'Compact';
+
+  @override
+  String get pcCardButton => 'Knop';
+
+  @override
+  String get pcHatMain => 'Hoofdartikel:';
+
+  @override
+  String get pcHatAbout => 'Zie voor meer';
+
+  @override
+  String get pcHatDistinguish => 'Niet te verwarren met';
+
+  @override
+  String get pcTabsLine => 'Lijn';
+
+  @override
+  String get pcTabsBoxed => 'Omkaderd';
+
+  @override
+  String get pcTabsPills => 'Pillen';
+
+  @override
+  String get pcKidsList => 'Lijst';
+
+  @override
+  String get pcKidsTree => 'Boom';
+
+  @override
+  String get pcKidsCards => 'Kaarten';
+
+  @override
+  String get pcSortOrder => 'Zoals in de Nest';
+
+  @override
+  String get pcSortName => 'Op naam';
+
+  @override
+  String get pcGalGrid => 'Raster';
+
+  @override
+  String get pcGalStrip => 'Strook';
+
+  @override
+  String get pcPdfSingle => 'Eén pagina';
+
+  @override
+  String get pcPdfStrip => 'Paginastrook';
 }

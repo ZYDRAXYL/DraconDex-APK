@@ -1975,4 +1975,352 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'เปิดไฟล์นี้ไม่ได้';
+
+  @override
+  String get pbBlockSettings => 'ตั้งค่า block';
+
+  @override
+  String get pbStyle => 'รูปแบบ';
+
+  @override
+  String get pbOptions => 'ตัวเลือก';
+
+  @override
+  String get pbStyleVariant => 'หน้าตา';
+
+  @override
+  String get pbStyleAccent => 'สีเน้น';
+
+  @override
+  String get pbStyleWidth => 'ความกว้าง';
+
+  @override
+  String get pbStyleAlign => 'จัดวาง';
+
+  @override
+  String get pbStyleDensity => 'ระยะ';
+
+  @override
+  String get pbStyleHeader => 'หัวของ block';
+
+  @override
+  String get pbHeaderShow => 'แสดงหัว';
+
+  @override
+  String get pbHeaderTitle => 'ชื่อที่หัว';
+
+  @override
+  String get pbStyleCollapsible => 'พับได้';
+
+  @override
+  String get pbStyleAnchor => 'anchor (#)';
+
+  @override
+  String get pbStyleHideOn => 'ซ่อนบน';
+
+  @override
+  String get pbStyleReset => 'คืนค่า';
+
+  @override
+  String get pbStyleApplyAll => 'ใช้กับ block ชนิดนี้ทั้งหน้า';
+
+  @override
+  String get pbStyleApplied => 'ใช้กับอีก {n} block แล้ว';
+
+  @override
+  String get pbStyleCopy => 'คัดลอกสไตล์';
+
+  @override
+  String get pbStylePaste => 'วางสไตล์';
+
+  @override
+  String get pbNoOptions => 'block นี้ไม่มีตัวเลือกเฉพาะ — ปรับหน้าตาได้ที่แท็บรูปแบบ';
+
+  @override
+  String get pbVariantPlain => 'เรียบ';
+
+  @override
+  String get pbVariantCard => 'การ์ด';
+
+  @override
+  String get pbVariantOutline => 'เส้นขอบ';
+
+  @override
+  String get pbVariantTinted => 'แต้มสี';
+
+  @override
+  String get pbVariantHero => 'เด่น';
+
+  @override
+  String get pbAccKind => 'ชนิดของ module';
+
+  @override
+  String get pbAccAccent => 'สีเน้นของธีม';
+
+  @override
+  String get pbAccBlue => 'น้ำเงิน';
+
+  @override
+  String get pbAccGreen => 'เขียว';
+
+  @override
+  String get pbAccAmber => 'อำพัน';
+
+  @override
+  String get pbAccRose => 'ชมพูกุหลาบ';
+
+  @override
+  String get pbAccViolet => 'ม่วง';
+
+  @override
+  String get pbAccSlate => 'เทาหิน';
+
+  @override
+  String get pbWidthNarrow => 'แคบ';
+
+  @override
+  String get pbWidthNormal => 'ปกติ';
+
+  @override
+  String get pbWidthWide => 'กว้าง';
+
+  @override
+  String get pbWidthFull => 'เต็ม';
+
+  @override
+  String get pbDensityComfy => 'โปร่ง';
+
+  @override
+  String get pbDensityCompact => 'แน่น';
+
+  @override
+  String get pbCollOff => 'ไม่';
+
+  @override
+  String get pbCollOpen => 'เปิดอยู่';
+
+  @override
+  String get pbCollClosed => 'พับอยู่';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'มือถือ';
+
+  @override
+  String get pbHideDesktop => 'เดสก์ท็อป';
+
+  @override
+  String get pbLinks => 'ลิงก์';
+
+  @override
+  String get pbLinkAdd => 'เพิ่มลิงก์';
+
+  @override
+  String get pbLinkAddPh => '+ [[ชื่อ]] · #anchor · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'นี่ไม่ใช่ลิงก์ — ใช้ [[ชื่อ]] · #anchor หรือที่อยู่ http(s)';
+
+  @override
+  String get pbLinkLabel => 'ข้อความ';
+
+  @override
+  String get pbLinkTo => 'ไปที่';
+
+  @override
+  String get pbLinkGroup => 'กลุ่ม';
+
+  @override
+  String get pbLinkHint => 'ลิงก์เว็บเปิดในเบราว์เซอร์ รับเฉพาะ http/https — แอปเปิดจากค่าที่บันทึกไว้เท่านั้น';
+
+  @override
+  String get pbLinkMissing => 'ยังไม่มีหน้าชื่อนี้ — คลิกเพื่อสร้าง';
+
+  @override
+  String get pbLinkUp => 'เลื่อนขึ้น';
+
+  @override
+  String get pbLinkDown => 'เลื่อนลง';
+
+  @override
+  String get pbLinksEmpty => 'ยังไม่มีลิงก์';
+
+  @override
+  String get pbLinksEmptyArrange => 'ยังไม่มีลิงก์ — เพิ่มได้ที่ ⚙ → ตัวเลือก';
+
+  @override
+  String get pbListAdd => 'เพิ่ม';
+
+  @override
+  String get pcLinkbar => 'แถบลิงก์';
+
+  @override
+  String get pcLinkcard => 'การ์ดลิงก์';
+
+  @override
+  String get pcHatnote => 'หมายเหตุหัวบทความ';
+
+  @override
+  String get pcSeeAlso => 'ดูเพิ่ม';
+
+  @override
+  String get pcReferences => 'อ้างอิง';
+
+  @override
+  String get pcTabs => 'แท็บ';
+
+  @override
+  String get pcToggle => 'หัวข้อพับได้';
+
+  @override
+  String get pcNavbox => 'กล่องนำทาง';
+
+  @override
+  String get pcChildren => 'หน้าลูก';
+
+  @override
+  String get pcHatAnd => 'และ';
+
+  @override
+  String get pcHatnotePh => 'บทความหลัก: …';
+
+  @override
+  String get pcReferencesEmpty => 'ยังไม่มีเชิงอรรถ — เขียน [^1] ใน text block และ "[^1]: …" แยกบรรทัด';
+
+  @override
+  String get pcSeeAlsoEmpty => 'หน้านี้ยังไม่มีลิงก์ออก';
+
+  @override
+  String get pcSuggested => 'แนะนำ:';
+
+  @override
+  String get pcTab => 'แท็บ';
+
+  @override
+  String get pcChildrenNone => 'ไม่มีอะไรอยู่ใต้หน้านี้';
+
+  @override
+  String get pbFootnoteMissing => 'เชิงอรรถนี้ยังไม่มีข้อความ — เพิ่มบรรทัด "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'สไตล์แถบ';
+
+  @override
+  String get pcOptCaption => 'คำบรรยาย';
+
+  @override
+  String get pcOptCount => 'จำนวน';
+
+  @override
+  String get pcOptCover => 'ภาพปก';
+
+  @override
+  String get pcOptDepth => 'ความลึก';
+
+  @override
+  String get pcOptHatKind => 'ชนิดของหมายเหตุ';
+
+  @override
+  String get pcOptLayout => 'การจัดวาง';
+
+  @override
+  String get pcOptLook => 'หน้าตา';
+
+  @override
+  String get pcOptLoop => 'วนซ้ำ';
+
+  @override
+  String get pcOptPoster => 'ภาพปก';
+
+  @override
+  String get pcOptSort => 'เรียงตาม';
+
+  @override
+  String get pcOptSource => 'เติมจาก module';
+
+  @override
+  String get pcOptStart => 'สถานะเริ่มต้น';
+
+  @override
+  String get pcOptStartPage => 'หน้าเริ่มต้น';
+
+  @override
+  String get pcOptStartTab => 'แท็บเริ่มต้น';
+
+  @override
+  String get pcOptSticky => 'ติดด้านบนเมื่อเลื่อน';
+
+  @override
+  String get pcOptSuggest => 'แนะนำหน้าที่ลิงก์มาหรือลิงก์ไป';
+
+  @override
+  String get pcOptTabs => 'ชื่อแท็บ';
+
+  @override
+  String get pcBarPills => 'เม็ดยา';
+
+  @override
+  String get pcBarTabs => 'แท็บ';
+
+  @override
+  String get pcBarUnderline => 'ขีดเส้นใต้';
+
+  @override
+  String get pcBarButtons => 'ปุ่ม';
+
+  @override
+  String get pcCardCard => 'การ์ด';
+
+  @override
+  String get pcCardCompact => 'กะทัดรัด';
+
+  @override
+  String get pcCardButton => 'ปุ่ม';
+
+  @override
+  String get pcHatMain => 'บทความหลัก:';
+
+  @override
+  String get pcHatAbout => 'ดูเพิ่มที่';
+
+  @override
+  String get pcHatDistinguish => 'อย่าสับสนกับ';
+
+  @override
+  String get pcTabsLine => 'เส้น';
+
+  @override
+  String get pcTabsBoxed => 'กล่อง';
+
+  @override
+  String get pcTabsPills => 'เม็ดยา';
+
+  @override
+  String get pcKidsList => 'รายการ';
+
+  @override
+  String get pcKidsTree => 'ต้นไม้';
+
+  @override
+  String get pcKidsCards => 'การ์ด';
+
+  @override
+  String get pcSortOrder => 'ตามลำดับใน Nest';
+
+  @override
+  String get pcSortName => 'ตามชื่อ';
+
+  @override
+  String get pcGalGrid => 'ตาราง';
+
+  @override
+  String get pcGalStrip => 'แถบเลื่อน';
+
+  @override
+  String get pcPdfSingle => 'ทีละหน้า';
+
+  @override
+  String get pcPdfStrip => 'แถบภาพย่อ';
 }

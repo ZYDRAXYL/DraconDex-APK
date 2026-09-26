@@ -1975,4 +1975,352 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'No se pudo abrir este archivo';
+
+  @override
+  String get pbBlockSettings => 'Ajustes del bloque';
+
+  @override
+  String get pbStyle => 'Estilo';
+
+  @override
+  String get pbOptions => 'Opciones';
+
+  @override
+  String get pbStyleVariant => 'Aspecto';
+
+  @override
+  String get pbStyleAccent => 'Color de acento';
+
+  @override
+  String get pbStyleWidth => 'Ancho';
+
+  @override
+  String get pbStyleAlign => 'Alinear';
+
+  @override
+  String get pbStyleDensity => 'Espaciado';
+
+  @override
+  String get pbStyleHeader => 'Cabecera';
+
+  @override
+  String get pbHeaderShow => 'Mostrar cabecera';
+
+  @override
+  String get pbHeaderTitle => 'Título de la cabecera';
+
+  @override
+  String get pbStyleCollapsible => 'Plegable';
+
+  @override
+  String get pbStyleAnchor => 'Ancla (#)';
+
+  @override
+  String get pbStyleHideOn => 'Ocultar en';
+
+  @override
+  String get pbStyleReset => 'Restablecer';
+
+  @override
+  String get pbStyleApplyAll => 'Usar en todos los bloques de este tipo';
+
+  @override
+  String get pbStyleApplied => 'Estilo aplicado a {n} bloques más';
+
+  @override
+  String get pbStyleCopy => 'Copiar estilo';
+
+  @override
+  String get pbStylePaste => 'Pegar estilo';
+
+  @override
+  String get pbNoOptions => 'Este bloque no tiene opciones propias; su aspecto está en la pestaña Estilo.';
+
+  @override
+  String get pbVariantPlain => 'Simple';
+
+  @override
+  String get pbVariantCard => 'Tarjeta';
+
+  @override
+  String get pbVariantOutline => 'Contorno';
+
+  @override
+  String get pbVariantTinted => 'Tintado';
+
+  @override
+  String get pbVariantHero => 'Destacado';
+
+  @override
+  String get pbAccKind => 'Tipo de módulo';
+
+  @override
+  String get pbAccAccent => 'Acento del tema';
+
+  @override
+  String get pbAccBlue => 'Azul';
+
+  @override
+  String get pbAccGreen => 'Verde';
+
+  @override
+  String get pbAccAmber => 'Ámbar';
+
+  @override
+  String get pbAccRose => 'Rosa';
+
+  @override
+  String get pbAccViolet => 'Violeta';
+
+  @override
+  String get pbAccSlate => 'Pizarra';
+
+  @override
+  String get pbWidthNarrow => 'Estrecho';
+
+  @override
+  String get pbWidthNormal => 'Normal';
+
+  @override
+  String get pbWidthWide => 'Ancho';
+
+  @override
+  String get pbWidthFull => 'Completo';
+
+  @override
+  String get pbDensityComfy => 'Amplio';
+
+  @override
+  String get pbDensityCompact => 'Compacto';
+
+  @override
+  String get pbCollOff => 'No';
+
+  @override
+  String get pbCollOpen => 'Abierto';
+
+  @override
+  String get pbCollClosed => 'Plegado';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Móvil';
+
+  @override
+  String get pbHideDesktop => 'Escritorio';
+
+  @override
+  String get pbLinks => 'Enlaces';
+
+  @override
+  String get pbLinkAdd => 'Añadir enlace';
+
+  @override
+  String get pbLinkAddPh => '+ [[Nombre]] · #ancla · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Eso no es un enlace: usa [[Nombre]], #ancla o una dirección http(s)';
+
+  @override
+  String get pbLinkLabel => 'Texto';
+
+  @override
+  String get pbLinkTo => 'Destino';
+
+  @override
+  String get pbLinkGroup => 'Grupo';
+
+  @override
+  String get pbLinkHint => 'Los enlaces web se abren en el navegador, solo http y https: la app abre la dirección guardada, nunca otra.';
+
+  @override
+  String get pbLinkMissing => 'Aún no hay nada con ese nombre: haz clic para crearlo';
+
+  @override
+  String get pbLinkUp => 'Subir';
+
+  @override
+  String get pbLinkDown => 'Bajar';
+
+  @override
+  String get pbLinksEmpty => 'Aún no hay enlaces.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Aún no hay enlaces: añádelos en ⚙ → Opciones.';
+
+  @override
+  String get pbListAdd => 'Añadir';
+
+  @override
+  String get pcLinkbar => 'Barra de enlaces';
+
+  @override
+  String get pcLinkcard => 'Tarjetas de enlace';
+
+  @override
+  String get pcHatnote => 'Nota de cabecera';
+
+  @override
+  String get pcSeeAlso => 'Véase también';
+
+  @override
+  String get pcReferences => 'Referencias';
+
+  @override
+  String get pcTabs => 'Pestañas';
+
+  @override
+  String get pcToggle => 'Desplegable';
+
+  @override
+  String get pcNavbox => 'Caja de navegación';
+
+  @override
+  String get pcChildren => 'Páginas hijas';
+
+  @override
+  String get pcHatAnd => 'y';
+
+  @override
+  String get pcHatnotePh => 'Artículo principal: …';
+
+  @override
+  String get pcReferencesEmpty => 'Aún no hay notas: escribe [^1] en un bloque de texto y "[^1]: …" en su propia línea.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Esta página aún no enlaza a nada';
+
+  @override
+  String get pcSuggested => 'Sugerencias:';
+
+  @override
+  String get pcTab => 'Pestaña';
+
+  @override
+  String get pcChildrenNone => 'No hay nada bajo esta página.';
+
+  @override
+  String get pbFootnoteMissing => 'Esta nota aún no tiene texto: añade una línea "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'Estilo de barra';
+
+  @override
+  String get pcOptCaption => 'Pie de foto';
+
+  @override
+  String get pcOptCount => 'Cuántos';
+
+  @override
+  String get pcOptCover => 'Imagen de portada';
+
+  @override
+  String get pcOptDepth => 'Profundidad';
+
+  @override
+  String get pcOptHatKind => 'Tipo de nota';
+
+  @override
+  String get pcOptLayout => 'Diseño';
+
+  @override
+  String get pcOptLook => 'Aspecto';
+
+  @override
+  String get pcOptLoop => 'Repetir';
+
+  @override
+  String get pcOptPoster => 'Imagen de portada';
+
+  @override
+  String get pcOptSort => 'Orden';
+
+  @override
+  String get pcOptSource => 'Llenar desde módulo';
+
+  @override
+  String get pcOptStart => 'Empieza';
+
+  @override
+  String get pcOptStartPage => 'Página inicial';
+
+  @override
+  String get pcOptStartTab => 'Pestaña inicial';
+
+  @override
+  String get pcOptSticky => 'Fija arriba al desplazarse';
+
+  @override
+  String get pcOptSuggest => 'Sugerir páginas que enlazan aquí o desde aquí';
+
+  @override
+  String get pcOptTabs => 'Nombres de pestañas';
+
+  @override
+  String get pcBarPills => 'Píldoras';
+
+  @override
+  String get pcBarTabs => 'Pestañas';
+
+  @override
+  String get pcBarUnderline => 'Subrayado';
+
+  @override
+  String get pcBarButtons => 'Botones';
+
+  @override
+  String get pcCardCard => 'Tarjeta';
+
+  @override
+  String get pcCardCompact => 'Compacto';
+
+  @override
+  String get pcCardButton => 'Botón';
+
+  @override
+  String get pcHatMain => 'Artículo principal:';
+
+  @override
+  String get pcHatAbout => 'Para más, véase';
+
+  @override
+  String get pcHatDistinguish => 'No confundir con';
+
+  @override
+  String get pcTabsLine => 'Línea';
+
+  @override
+  String get pcTabsBoxed => 'En caja';
+
+  @override
+  String get pcTabsPills => 'Píldoras';
+
+  @override
+  String get pcKidsList => 'Lista';
+
+  @override
+  String get pcKidsTree => 'Árbol';
+
+  @override
+  String get pcKidsCards => 'Tarjetas';
+
+  @override
+  String get pcSortOrder => 'Como en el Nest';
+
+  @override
+  String get pcSortName => 'Por nombre';
+
+  @override
+  String get pcGalGrid => 'Cuadrícula';
+
+  @override
+  String get pcGalStrip => 'Tira';
+
+  @override
+  String get pcPdfSingle => 'Una página';
+
+  @override
+  String get pcPdfStrip => 'Tira de páginas';
 }

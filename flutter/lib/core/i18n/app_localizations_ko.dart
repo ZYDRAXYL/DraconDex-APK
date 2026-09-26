@@ -1975,4 +1975,352 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => '이 파일을 열 수 없습니다';
+
+  @override
+  String get pbBlockSettings => '블록 설정';
+
+  @override
+  String get pbStyle => '스타일';
+
+  @override
+  String get pbOptions => '옵션';
+
+  @override
+  String get pbStyleVariant => '모양';
+
+  @override
+  String get pbStyleAccent => '강조 색';
+
+  @override
+  String get pbStyleWidth => '너비';
+
+  @override
+  String get pbStyleAlign => '정렬';
+
+  @override
+  String get pbStyleDensity => '간격';
+
+  @override
+  String get pbStyleHeader => '머리글';
+
+  @override
+  String get pbHeaderShow => '머리글 표시';
+
+  @override
+  String get pbHeaderTitle => '머리글 제목';
+
+  @override
+  String get pbStyleCollapsible => '접기';
+
+  @override
+  String get pbStyleAnchor => '앵커(#)';
+
+  @override
+  String get pbStyleHideOn => '숨길 화면';
+
+  @override
+  String get pbStyleReset => '초기화';
+
+  @override
+  String get pbStyleApplyAll => '이 종류의 모든 블록에 적용';
+
+  @override
+  String get pbStyleApplied => '블록 {n}개에 적용함';
+
+  @override
+  String get pbStyleCopy => '스타일 복사';
+
+  @override
+  String get pbStylePaste => '스타일 붙여넣기';
+
+  @override
+  String get pbNoOptions => '이 블록에는 자체 옵션이 없습니다. 모양은 스타일 탭에서 바꿉니다.';
+
+  @override
+  String get pbVariantPlain => '기본';
+
+  @override
+  String get pbVariantCard => '카드';
+
+  @override
+  String get pbVariantOutline => '윤곽선';
+
+  @override
+  String get pbVariantTinted => '색조';
+
+  @override
+  String get pbVariantHero => '히어로';
+
+  @override
+  String get pbAccKind => '모듈 종류';
+
+  @override
+  String get pbAccAccent => '테마 강조색';
+
+  @override
+  String get pbAccBlue => '파랑';
+
+  @override
+  String get pbAccGreen => '초록';
+
+  @override
+  String get pbAccAmber => '호박색';
+
+  @override
+  String get pbAccRose => '장미';
+
+  @override
+  String get pbAccViolet => '보라';
+
+  @override
+  String get pbAccSlate => '슬레이트';
+
+  @override
+  String get pbWidthNarrow => '좁게';
+
+  @override
+  String get pbWidthNormal => '보통';
+
+  @override
+  String get pbWidthWide => '넓게';
+
+  @override
+  String get pbWidthFull => '전체';
+
+  @override
+  String get pbDensityComfy => '넉넉하게';
+
+  @override
+  String get pbDensityCompact => '촘촘하게';
+
+  @override
+  String get pbCollOff => '안 함';
+
+  @override
+  String get pbCollOpen => '펼친 상태';
+
+  @override
+  String get pbCollClosed => '접힌 상태';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => '휴대폰';
+
+  @override
+  String get pbHideDesktop => '데스크톱';
+
+  @override
+  String get pbLinks => '링크';
+
+  @override
+  String get pbLinkAdd => '링크 추가';
+
+  @override
+  String get pbLinkAddPh => '+ [[이름]] · #앵커 · https://…';
+
+  @override
+  String get pbLinkBadUrl => '링크가 아닙니다. [[이름]], #앵커 또는 http(s) 주소를 쓰세요';
+
+  @override
+  String get pbLinkLabel => '표시 이름';
+
+  @override
+  String get pbLinkTo => '연결 대상';
+
+  @override
+  String get pbLinkGroup => '그룹';
+
+  @override
+  String get pbLinkHint => '웹 링크는 브라우저에서 열립니다(http·https만). 앱은 저장된 주소만 엽니다.';
+
+  @override
+  String get pbLinkMissing => '아직 그 이름의 페이지가 없습니다. 눌러서 만들기';
+
+  @override
+  String get pbLinkUp => '위로';
+
+  @override
+  String get pbLinkDown => '아래로';
+
+  @override
+  String get pbLinksEmpty => '아직 링크가 없습니다.';
+
+  @override
+  String get pbLinksEmptyArrange => '아직 링크가 없습니다. ⚙ → 옵션에서 추가하세요.';
+
+  @override
+  String get pbListAdd => '추가';
+
+  @override
+  String get pcLinkbar => '링크 막대';
+
+  @override
+  String get pcLinkcard => '링크 카드';
+
+  @override
+  String get pcHatnote => '머리말 주석';
+
+  @override
+  String get pcSeeAlso => '함께 보기';
+
+  @override
+  String get pcReferences => '각주';
+
+  @override
+  String get pcTabs => '탭';
+
+  @override
+  String get pcToggle => '토글';
+
+  @override
+  String get pcNavbox => '탐색 상자';
+
+  @override
+  String get pcChildren => '하위 페이지';
+
+  @override
+  String get pcHatAnd => '및';
+
+  @override
+  String get pcHatnotePh => '주요 문서: …';
+
+  @override
+  String get pcReferencesEmpty => '이 페이지에는 아직 각주가 없습니다. 텍스트에 [^1]을 쓰고 별도 줄에 "[^1]: …"를 쓰세요.';
+
+  @override
+  String get pcSeeAlsoEmpty => '이 페이지의 링크가 아직 없습니다';
+
+  @override
+  String get pcSuggested => '추천:';
+
+  @override
+  String get pcTab => '탭';
+
+  @override
+  String get pcChildrenNone => '이 페이지 아래에는 아무것도 없습니다.';
+
+  @override
+  String get pbFootnoteMissing => '이 각주에는 아직 내용이 없습니다. "[^n]: …" 줄을 추가하세요';
+
+  @override
+  String get pcOptBar => '막대 스타일';
+
+  @override
+  String get pcOptCaption => '캡션';
+
+  @override
+  String get pcOptCount => '개수';
+
+  @override
+  String get pcOptCover => '표지 그림';
+
+  @override
+  String get pcOptDepth => '깊이';
+
+  @override
+  String get pcOptHatKind => '주석 종류';
+
+  @override
+  String get pcOptLayout => '레이아웃';
+
+  @override
+  String get pcOptLook => '모양';
+
+  @override
+  String get pcOptLoop => '반복';
+
+  @override
+  String get pcOptPoster => '포스터 그림';
+
+  @override
+  String get pcOptSort => '정렬';
+
+  @override
+  String get pcOptSource => '모듈에서 채우기';
+
+  @override
+  String get pcOptStart => '시작 상태';
+
+  @override
+  String get pcOptStartPage => '처음 보일 페이지';
+
+  @override
+  String get pcOptStartTab => '처음 표시할 탭';
+
+  @override
+  String get pcOptSticky => '스크롤할 때 위에 고정';
+
+  @override
+  String get pcOptSuggest => '여기로 연결되거나 여기서 연결되는 페이지 추천';
+
+  @override
+  String get pcOptTabs => '탭 이름';
+
+  @override
+  String get pcBarPills => '알약';
+
+  @override
+  String get pcBarTabs => '탭';
+
+  @override
+  String get pcBarUnderline => '밑줄';
+
+  @override
+  String get pcBarButtons => '버튼';
+
+  @override
+  String get pcCardCard => '카드';
+
+  @override
+  String get pcCardCompact => '간단히';
+
+  @override
+  String get pcCardButton => '버튼';
+
+  @override
+  String get pcHatMain => '주요 문서:';
+
+  @override
+  String get pcHatAbout => '자세한 내용은';
+
+  @override
+  String get pcHatDistinguish => '다음과 혼동하지 마세요:';
+
+  @override
+  String get pcTabsLine => '선';
+
+  @override
+  String get pcTabsBoxed => '상자';
+
+  @override
+  String get pcTabsPills => '알약';
+
+  @override
+  String get pcKidsList => '목록';
+
+  @override
+  String get pcKidsTree => '트리';
+
+  @override
+  String get pcKidsCards => '카드';
+
+  @override
+  String get pcSortOrder => 'Nest 순서';
+
+  @override
+  String get pcSortName => '이름순';
+
+  @override
+  String get pcGalGrid => '격자';
+
+  @override
+  String get pcGalStrip => '가로 띠';
+
+  @override
+  String get pcPdfSingle => '한 페이지씩';
+
+  @override
+  String get pcPdfStrip => '페이지 띠';
 }

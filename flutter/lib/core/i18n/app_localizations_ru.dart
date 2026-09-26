@@ -1975,4 +1975,352 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'Не удалось открыть этот файл';
+
+  @override
+  String get pbBlockSettings => 'Настройки блока';
+
+  @override
+  String get pbStyle => 'Стиль';
+
+  @override
+  String get pbOptions => 'Параметры';
+
+  @override
+  String get pbStyleVariant => 'Вид';
+
+  @override
+  String get pbStyleAccent => 'Акцентный цвет';
+
+  @override
+  String get pbStyleWidth => 'Ширина';
+
+  @override
+  String get pbStyleAlign => 'Выравнивание';
+
+  @override
+  String get pbStyleDensity => 'Отступы';
+
+  @override
+  String get pbStyleHeader => 'Заголовок';
+
+  @override
+  String get pbHeaderShow => 'Показывать заголовок';
+
+  @override
+  String get pbHeaderTitle => 'Текст заголовка';
+
+  @override
+  String get pbStyleCollapsible => 'Сворачивание';
+
+  @override
+  String get pbStyleAnchor => 'Якорь (#)';
+
+  @override
+  String get pbStyleHideOn => 'Скрыть на';
+
+  @override
+  String get pbStyleReset => 'Сбросить';
+
+  @override
+  String get pbStyleApplyAll => 'Применить ко всем блокам этого вида';
+
+  @override
+  String get pbStyleApplied => 'Стиль применён ещё к {n} блокам';
+
+  @override
+  String get pbStyleCopy => 'Копировать стиль';
+
+  @override
+  String get pbStylePaste => 'Вставить стиль';
+
+  @override
+  String get pbNoOptions => 'У этого блока нет своих параметров — вид задаётся на вкладке «Стиль».';
+
+  @override
+  String get pbVariantPlain => 'Простой';
+
+  @override
+  String get pbVariantCard => 'Карточка';
+
+  @override
+  String get pbVariantOutline => 'Контур';
+
+  @override
+  String get pbVariantTinted => 'Тонированный';
+
+  @override
+  String get pbVariantHero => 'Акцент';
+
+  @override
+  String get pbAccKind => 'Тип модуля';
+
+  @override
+  String get pbAccAccent => 'Акцент темы';
+
+  @override
+  String get pbAccBlue => 'Синий';
+
+  @override
+  String get pbAccGreen => 'Зелёный';
+
+  @override
+  String get pbAccAmber => 'Янтарный';
+
+  @override
+  String get pbAccRose => 'Розовый';
+
+  @override
+  String get pbAccViolet => 'Фиолетовый';
+
+  @override
+  String get pbAccSlate => 'Сланцевый';
+
+  @override
+  String get pbWidthNarrow => 'Узкий';
+
+  @override
+  String get pbWidthNormal => 'Обычный';
+
+  @override
+  String get pbWidthWide => 'Широкий';
+
+  @override
+  String get pbWidthFull => 'Во всю ширину';
+
+  @override
+  String get pbDensityComfy => 'Свободно';
+
+  @override
+  String get pbDensityCompact => 'Компактно';
+
+  @override
+  String get pbCollOff => 'Нет';
+
+  @override
+  String get pbCollOpen => 'Открыт';
+
+  @override
+  String get pbCollClosed => 'Свёрнут';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Телефон';
+
+  @override
+  String get pbHideDesktop => 'Компьютер';
+
+  @override
+  String get pbLinks => 'Ссылки';
+
+  @override
+  String get pbLinkAdd => 'Добавить ссылку';
+
+  @override
+  String get pbLinkAddPh => '+ [[Имя]] · #якорь · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Это не ссылка: используйте [[Имя]], #якорь или адрес http(s)';
+
+  @override
+  String get pbLinkLabel => 'Подпись';
+
+  @override
+  String get pbLinkTo => 'Куда';
+
+  @override
+  String get pbLinkGroup => 'Группа';
+
+  @override
+  String get pbLinkHint => 'Веб-ссылки открываются в браузере, только http и https — приложение открывает только сохранённый адрес.';
+
+  @override
+  String get pbLinkMissing => 'Пока нет страницы с таким именем — нажмите, чтобы создать';
+
+  @override
+  String get pbLinkUp => 'Выше';
+
+  @override
+  String get pbLinkDown => 'Ниже';
+
+  @override
+  String get pbLinksEmpty => 'Ссылок пока нет.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Ссылок пока нет — добавьте их через ⚙ → Параметры.';
+
+  @override
+  String get pbListAdd => 'Добавить';
+
+  @override
+  String get pcLinkbar => 'Панель ссылок';
+
+  @override
+  String get pcLinkcard => 'Карточки ссылок';
+
+  @override
+  String get pcHatnote => 'Шапка-пояснение';
+
+  @override
+  String get pcSeeAlso => 'См. также';
+
+  @override
+  String get pcReferences => 'Примечания';
+
+  @override
+  String get pcTabs => 'Вкладки';
+
+  @override
+  String get pcToggle => 'Сворачиваемый блок';
+
+  @override
+  String get pcNavbox => 'Навигационный шаблон';
+
+  @override
+  String get pcChildren => 'Дочерние страницы';
+
+  @override
+  String get pcHatAnd => 'и';
+
+  @override
+  String get pcHatnotePh => 'Основная статья: …';
+
+  @override
+  String get pcReferencesEmpty => 'Сносок пока нет — напишите [^1] в текстовом блоке и «[^1]: …» отдельной строкой.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'На этой странице пока нет ссылок';
+
+  @override
+  String get pcSuggested => 'Предложения:';
+
+  @override
+  String get pcTab => 'Вкладка';
+
+  @override
+  String get pcChildrenNone => 'Под этой страницей ничего нет.';
+
+  @override
+  String get pbFootnoteMissing => 'У этой сноски пока нет текста — добавьте строку «[^n]: …»';
+
+  @override
+  String get pcOptBar => 'Стиль панели';
+
+  @override
+  String get pcOptCaption => 'Подпись';
+
+  @override
+  String get pcOptCount => 'Сколько';
+
+  @override
+  String get pcOptCover => 'Обложка';
+
+  @override
+  String get pcOptDepth => 'Глубина';
+
+  @override
+  String get pcOptHatKind => 'Тип пояснения';
+
+  @override
+  String get pcOptLayout => 'Раскладка';
+
+  @override
+  String get pcOptLook => 'Вид';
+
+  @override
+  String get pcOptLoop => 'Повтор';
+
+  @override
+  String get pcOptPoster => 'Обложка';
+
+  @override
+  String get pcOptSort => 'Порядок';
+
+  @override
+  String get pcOptSource => 'Заполнять из модуля';
+
+  @override
+  String get pcOptStart => 'Сначала';
+
+  @override
+  String get pcOptStartPage => 'Первая страница';
+
+  @override
+  String get pcOptStartTab => 'Вкладка по умолчанию';
+
+  @override
+  String get pcOptSticky => 'Закреплять сверху при прокрутке';
+
+  @override
+  String get pcOptSuggest => 'Предлагать страницы, ссылающиеся сюда или отсюда';
+
+  @override
+  String get pcOptTabs => 'Названия вкладок';
+
+  @override
+  String get pcBarPills => 'Таблетки';
+
+  @override
+  String get pcBarTabs => 'Вкладки';
+
+  @override
+  String get pcBarUnderline => 'Подчёркивание';
+
+  @override
+  String get pcBarButtons => 'Кнопки';
+
+  @override
+  String get pcCardCard => 'Карточка';
+
+  @override
+  String get pcCardCompact => 'Компактно';
+
+  @override
+  String get pcCardButton => 'Кнопка';
+
+  @override
+  String get pcHatMain => 'Основная статья:';
+
+  @override
+  String get pcHatAbout => 'Подробнее см.';
+
+  @override
+  String get pcHatDistinguish => 'Не путать с';
+
+  @override
+  String get pcTabsLine => 'Линия';
+
+  @override
+  String get pcTabsBoxed => 'В рамке';
+
+  @override
+  String get pcTabsPills => 'Таблетки';
+
+  @override
+  String get pcKidsList => 'Список';
+
+  @override
+  String get pcKidsTree => 'Дерево';
+
+  @override
+  String get pcKidsCards => 'Карточки';
+
+  @override
+  String get pcSortOrder => 'Как в Nest';
+
+  @override
+  String get pcSortName => 'По имени';
+
+  @override
+  String get pcGalGrid => 'Сетка';
+
+  @override
+  String get pcGalStrip => 'Лента';
+
+  @override
+  String get pcPdfSingle => 'По одной странице';
+
+  @override
+  String get pcPdfStrip => 'Лента страниц';
 }

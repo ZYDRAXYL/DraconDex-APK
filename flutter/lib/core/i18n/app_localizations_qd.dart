@@ -1975,4 +1975,352 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'Thys Scrollyx wouldst not unseal';
+
+  @override
+  String get pbBlockSettings => 'Settinges of the Blokke';
+
+  @override
+  String get pbStyle => 'Fasoun';
+
+  @override
+  String get pbOptions => 'Choises';
+
+  @override
+  String get pbStyleVariant => 'Semblaunce';
+
+  @override
+  String get pbStyleAccent => 'Hewe of Note';
+
+  @override
+  String get pbStyleWidth => 'Brede';
+
+  @override
+  String get pbStyleAlign => 'Ordeyne';
+
+  @override
+  String get pbStyleDensity => 'Spaces';
+
+  @override
+  String get pbStyleHeader => 'Heed';
+
+  @override
+  String get pbHeaderShow => 'Shewe an Heed';
+
+  @override
+  String get pbHeaderTitle => 'Title of the Heed';
+
+  @override
+  String get pbStyleCollapsible => 'Foldeth';
+
+  @override
+  String get pbStyleAnchor => 'Ancre (#)';
+
+  @override
+  String get pbStyleHideOn => 'Hide upon';
+
+  @override
+  String get pbStyleReset => 'Unmake';
+
+  @override
+  String get pbStyleApplyAll => 'Yeve it to Every Blokke of this Kynde';
+
+  @override
+  String get pbStyleApplied => 'Fasoun yeven to {n} Blokkes moore';
+
+  @override
+  String get pbStyleCopy => 'Copye the Fasoun';
+
+  @override
+  String get pbStylePaste => 'Sette the Fasoun';
+
+  @override
+  String get pbNoOptions => 'This Blokke hath no Choises of its owne — its Fasoun lyeth in the Style tabbe.';
+
+  @override
+  String get pbVariantPlain => 'Pleyn';
+
+  @override
+  String get pbVariantCard => 'Carde';
+
+  @override
+  String get pbVariantOutline => 'Bordure';
+
+  @override
+  String get pbVariantTinted => 'Steyned';
+
+  @override
+  String get pbVariantHero => 'Heroic';
+
+  @override
+  String get pbAccKind => 'Kynde of Module';
+
+  @override
+  String get pbAccAccent => 'Hewe of the Theme';
+
+  @override
+  String get pbAccBlue => 'Blewe';
+
+  @override
+  String get pbAccGreen => 'Grene';
+
+  @override
+  String get pbAccAmber => 'Ambre';
+
+  @override
+  String get pbAccRose => 'Rose';
+
+  @override
+  String get pbAccViolet => 'Violette';
+
+  @override
+  String get pbAccSlate => 'Sclate';
+
+  @override
+  String get pbWidthNarrow => 'Narwe';
+
+  @override
+  String get pbWidthNormal => 'Commune';
+
+  @override
+  String get pbWidthWide => 'Wyde';
+
+  @override
+  String get pbWidthFull => 'Fulle';
+
+  @override
+  String get pbDensityComfy => 'Roomy';
+
+  @override
+  String get pbDensityCompact => 'Streite';
+
+  @override
+  String get pbCollOff => 'Nay';
+
+  @override
+  String get pbCollOpen => 'Open';
+
+  @override
+  String get pbCollClosed => 'Folded';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Pocket Glasse';
+
+  @override
+  String get pbHideDesktop => 'Writing Borde';
+
+  @override
+  String get pbLinks => 'Linkes';
+
+  @override
+  String get pbLinkAdd => 'Adde a Linke';
+
+  @override
+  String get pbLinkAddPh => '+ [[Name]] · #ancre · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'That is no Linke: use [[Name]], #ancre, or an http(s) Address';
+
+  @override
+  String get pbLinkLabel => 'Label';
+
+  @override
+  String get pbLinkTo => 'Goeth to';
+
+  @override
+  String get pbLinkGroup => 'Companie';
+
+  @override
+  String get pbLinkHint => 'Web Linkes open in thy Browser, http and https onlie — the app openeth the saved Address, none other.';
+
+  @override
+  String get pbLinkMissing => 'Naught of that Name as yet — clicke to make it';
+
+  @override
+  String get pbLinkUp => 'Uppe';
+
+  @override
+  String get pbLinkDown => 'Doune';
+
+  @override
+  String get pbLinksEmpty => 'No Linkes as yet.';
+
+  @override
+  String get pbLinksEmptyArrange => 'No Linkes as yet — adde them by ⚙ → Choises.';
+
+  @override
+  String get pbListAdd => 'Adde';
+
+  @override
+  String get pcLinkbar => 'Barre of Linkes';
+
+  @override
+  String get pcLinkcard => 'Cardes of Linkes';
+
+  @override
+  String get pcHatnote => 'Hatte Note';
+
+  @override
+  String get pcSeeAlso => 'Looke also';
+
+  @override
+  String get pcReferences => 'Notes';
+
+  @override
+  String get pcTabs => 'Tabbes';
+
+  @override
+  String get pcToggle => 'Folde';
+
+  @override
+  String get pcNavbox => 'Boxe of Wayes';
+
+  @override
+  String get pcChildren => 'Pages Beneath';
+
+  @override
+  String get pcHatAnd => 'and';
+
+  @override
+  String get pcHatnotePh => 'Chiefe tale: …';
+
+  @override
+  String get pcReferencesEmpty => 'No Foote-notes as yet — write [^1] in a Text Blokke and "[^1]: …" upon a line of its owne.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'No tethers from this page yette';
+
+  @override
+  String get pcSuggested => 'Counselled:';
+
+  @override
+  String get pcTab => 'Tabbe';
+
+  @override
+  String get pcChildrenNone => 'Naught sitteth beneath this Page.';
+
+  @override
+  String get pbFootnoteMissing => 'This Foote-note hath no Wordes yet — adde a line "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'Fasoun of the Barre';
+
+  @override
+  String get pcOptCaption => 'Legende';
+
+  @override
+  String get pcOptCount => 'How Manie';
+
+  @override
+  String get pcOptCover => 'Cover Picture';
+
+  @override
+  String get pcOptDepth => 'Depthe';
+
+  @override
+  String get pcOptHatKind => 'Kynde of Note';
+
+  @override
+  String get pcOptLayout => 'Ordinaunce';
+
+  @override
+  String get pcOptLook => 'Semblaunce';
+
+  @override
+  String get pcOptLoop => 'Againe and againe';
+
+  @override
+  String get pcOptPoster => 'Poster Picture';
+
+  @override
+  String get pcOptSort => 'Ordre';
+
+  @override
+  String get pcOptSource => 'Fille from Module';
+
+  @override
+  String get pcOptStart => 'Beginneth';
+
+  @override
+  String get pcOptStartPage => 'First Leafe shewn';
+
+  @override
+  String get pcOptStartTab => 'Tabbe shewn first';
+
+  @override
+  String get pcOptSticky => 'Abide atop whilst scrolling';
+
+  @override
+  String get pcOptSuggest => 'Counsel Pages linked hither or thence';
+
+  @override
+  String get pcOptTabs => 'Names of Tabbes';
+
+  @override
+  String get pcBarPills => 'Pilles';
+
+  @override
+  String get pcBarTabs => 'Tabbes';
+
+  @override
+  String get pcBarUnderline => 'Under-lyned';
+
+  @override
+  String get pcBarButtons => 'Buttons';
+
+  @override
+  String get pcCardCard => 'Carde';
+
+  @override
+  String get pcCardCompact => 'Streite';
+
+  @override
+  String get pcCardButton => 'Button';
+
+  @override
+  String get pcHatMain => 'Chiefe tale:';
+
+  @override
+  String get pcHatAbout => 'For moore, see';
+
+  @override
+  String get pcHatDistinguish => 'Not to be mistaken for';
+
+  @override
+  String get pcTabsLine => 'Lyne';
+
+  @override
+  String get pcTabsBoxed => 'Boxed';
+
+  @override
+  String get pcTabsPills => 'Pilles';
+
+  @override
+  String get pcKidsList => 'Roll';
+
+  @override
+  String get pcKidsTree => 'Tree';
+
+  @override
+  String get pcKidsCards => 'Cardes';
+
+  @override
+  String get pcSortOrder => 'As in the Nest';
+
+  @override
+  String get pcSortName => 'By Name';
+
+  @override
+  String get pcGalGrid => 'Grate';
+
+  @override
+  String get pcGalStrip => 'Strippe';
+
+  @override
+  String get pcPdfSingle => 'One Leafe';
+
+  @override
+  String get pcPdfStrip => 'Strippe of Leaves';
 }

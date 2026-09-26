@@ -1975,4 +1975,352 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'このファイルを開けませんでした';
+
+  @override
+  String get pbBlockSettings => 'ブロックの設定';
+
+  @override
+  String get pbStyle => 'スタイル';
+
+  @override
+  String get pbOptions => 'オプション';
+
+  @override
+  String get pbStyleVariant => '見た目';
+
+  @override
+  String get pbStyleAccent => 'アクセントカラー';
+
+  @override
+  String get pbStyleWidth => '幅';
+
+  @override
+  String get pbStyleAlign => '配置';
+
+  @override
+  String get pbStyleDensity => '余白';
+
+  @override
+  String get pbStyleHeader => '見出し';
+
+  @override
+  String get pbHeaderShow => '見出しを表示';
+
+  @override
+  String get pbHeaderTitle => '見出しのタイトル';
+
+  @override
+  String get pbStyleCollapsible => '折りたたみ';
+
+  @override
+  String get pbStyleAnchor => 'アンカー（#）';
+
+  @override
+  String get pbStyleHideOn => '非表示にする画面';
+
+  @override
+  String get pbStyleReset => 'リセット';
+
+  @override
+  String get pbStyleApplyAll => '同じ種類のブロックすべてに適用';
+
+  @override
+  String get pbStyleApplied => '{n} 個のブロックに適用しました';
+
+  @override
+  String get pbStyleCopy => 'スタイルをコピー';
+
+  @override
+  String get pbStylePaste => 'スタイルを貼り付け';
+
+  @override
+  String get pbNoOptions => 'このブロック固有のオプションはありません。見た目は「スタイル」タブで変えられます。';
+
+  @override
+  String get pbVariantPlain => 'なし';
+
+  @override
+  String get pbVariantCard => 'カード';
+
+  @override
+  String get pbVariantOutline => '枠線';
+
+  @override
+  String get pbVariantTinted => '色付き';
+
+  @override
+  String get pbVariantHero => 'ヒーロー';
+
+  @override
+  String get pbAccKind => 'モジュールの種類';
+
+  @override
+  String get pbAccAccent => 'テーマのアクセント';
+
+  @override
+  String get pbAccBlue => '青';
+
+  @override
+  String get pbAccGreen => '緑';
+
+  @override
+  String get pbAccAmber => '琥珀';
+
+  @override
+  String get pbAccRose => 'ローズ';
+
+  @override
+  String get pbAccViolet => '紫';
+
+  @override
+  String get pbAccSlate => 'スレート';
+
+  @override
+  String get pbWidthNarrow => '狭い';
+
+  @override
+  String get pbWidthNormal => '標準';
+
+  @override
+  String get pbWidthWide => '広い';
+
+  @override
+  String get pbWidthFull => '全幅';
+
+  @override
+  String get pbDensityComfy => 'ゆったり';
+
+  @override
+  String get pbDensityCompact => '詰める';
+
+  @override
+  String get pbCollOff => 'しない';
+
+  @override
+  String get pbCollOpen => '開いた状態';
+
+  @override
+  String get pbCollClosed => '閉じた状態';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'スマホ';
+
+  @override
+  String get pbHideDesktop => 'デスクトップ';
+
+  @override
+  String get pbLinks => 'リンク';
+
+  @override
+  String get pbLinkAdd => 'リンクを追加';
+
+  @override
+  String get pbLinkAddPh => '+ [[名前]] · #アンカー · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'リンクではありません。[[名前]]、#アンカー、http(s) アドレスを使ってください';
+
+  @override
+  String get pbLinkLabel => '表示名';
+
+  @override
+  String get pbLinkTo => 'リンク先';
+
+  @override
+  String get pbLinkGroup => 'グループ';
+
+  @override
+  String get pbLinkHint => 'Webリンクはブラウザーで開きます（http・httpsのみ）。開くのは保存済みのアドレスだけです。';
+
+  @override
+  String get pbLinkMissing => 'その名前のページはまだありません。クリックで作成';
+
+  @override
+  String get pbLinkUp => '上へ';
+
+  @override
+  String get pbLinkDown => '下へ';
+
+  @override
+  String get pbLinksEmpty => 'リンクはまだありません。';
+
+  @override
+  String get pbLinksEmptyArrange => 'リンクはまだありません。⚙ → オプションで追加します。';
+
+  @override
+  String get pbListAdd => '追加';
+
+  @override
+  String get pcLinkbar => 'リンクバー';
+
+  @override
+  String get pcLinkcard => 'リンクカード';
+
+  @override
+  String get pcHatnote => '冒頭注記';
+
+  @override
+  String get pcSeeAlso => '関連項目';
+
+  @override
+  String get pcReferences => '脚注';
+
+  @override
+  String get pcTabs => 'タブ';
+
+  @override
+  String get pcToggle => '折りたたみ';
+
+  @override
+  String get pcNavbox => 'ナビゲーションボックス';
+
+  @override
+  String get pcChildren => '子ページ';
+
+  @override
+  String get pcHatAnd => '、';
+
+  @override
+  String get pcHatnotePh => 'メイン記事: …';
+
+  @override
+  String get pcReferencesEmpty => 'このページにはまだ脚注がありません。テキストに [^1] と書き、別の行に「[^1]: …」を書きます。';
+
+  @override
+  String get pcSeeAlsoEmpty => 'このページからのリンクはまだありません';
+
+  @override
+  String get pcSuggested => 'おすすめ:';
+
+  @override
+  String get pcTab => 'タブ';
+
+  @override
+  String get pcChildrenNone => 'このページの下には何もありません。';
+
+  @override
+  String get pbFootnoteMissing => 'この脚注にはまだ本文がありません。「[^n]: …」の行を追加してください';
+
+  @override
+  String get pcOptBar => 'バーのスタイル';
+
+  @override
+  String get pcOptCaption => 'キャプション';
+
+  @override
+  String get pcOptCount => '件数';
+
+  @override
+  String get pcOptCover => 'カバー画像';
+
+  @override
+  String get pcOptDepth => '深さ';
+
+  @override
+  String get pcOptHatKind => '注記の種類';
+
+  @override
+  String get pcOptLayout => 'レイアウト';
+
+  @override
+  String get pcOptLook => '見た目';
+
+  @override
+  String get pcOptLoop => '繰り返し';
+
+  @override
+  String get pcOptPoster => 'ポスター画像';
+
+  @override
+  String get pcOptSort => '並び順';
+
+  @override
+  String get pcOptSource => 'モジュールから埋める';
+
+  @override
+  String get pcOptStart => '初期状態';
+
+  @override
+  String get pcOptStartPage => '最初に表示するページ';
+
+  @override
+  String get pcOptStartTab => '最初に表示するタブ';
+
+  @override
+  String get pcOptSticky => 'スクロール中も上部に固定';
+
+  @override
+  String get pcOptSuggest => 'ここにリンクしているページ・ここからのリンク先を提案';
+
+  @override
+  String get pcOptTabs => 'タブ名';
+
+  @override
+  String get pcBarPills => 'ピル';
+
+  @override
+  String get pcBarTabs => 'タブ';
+
+  @override
+  String get pcBarUnderline => '下線';
+
+  @override
+  String get pcBarButtons => 'ボタン';
+
+  @override
+  String get pcCardCard => 'カード';
+
+  @override
+  String get pcCardCompact => 'コンパクト';
+
+  @override
+  String get pcCardButton => 'ボタン';
+
+  @override
+  String get pcHatMain => 'メイン記事:';
+
+  @override
+  String get pcHatAbout => '詳しくは';
+
+  @override
+  String get pcHatDistinguish => '次と混同しないこと:';
+
+  @override
+  String get pcTabsLine => 'ライン';
+
+  @override
+  String get pcTabsBoxed => 'ボックス';
+
+  @override
+  String get pcTabsPills => 'ピル';
+
+  @override
+  String get pcKidsList => 'リスト';
+
+  @override
+  String get pcKidsTree => 'ツリー';
+
+  @override
+  String get pcKidsCards => 'カード';
+
+  @override
+  String get pcSortOrder => 'Nest の順';
+
+  @override
+  String get pcSortName => '名前順';
+
+  @override
+  String get pcGalGrid => 'グリッド';
+
+  @override
+  String get pcGalStrip => '横スクロール';
+
+  @override
+  String get pcPdfSingle => '1ページずつ';
+
+  @override
+  String get pcPdfStrip => 'ページ一覧';
 }

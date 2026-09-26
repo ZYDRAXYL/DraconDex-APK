@@ -1972,4 +1972,352 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get mediaOpenFailed => 'Bu dosya açılamadı';
+
+  @override
+  String get pbBlockSettings => 'Blok ayarları';
+
+  @override
+  String get pbStyle => 'Stil';
+
+  @override
+  String get pbOptions => 'Seçenekler';
+
+  @override
+  String get pbStyleVariant => 'Görünüm';
+
+  @override
+  String get pbStyleAccent => 'Vurgu rengi';
+
+  @override
+  String get pbStyleWidth => 'Genişlik';
+
+  @override
+  String get pbStyleAlign => 'Hizala';
+
+  @override
+  String get pbStyleDensity => 'Boşluk';
+
+  @override
+  String get pbStyleHeader => 'Başlık';
+
+  @override
+  String get pbHeaderShow => 'Başlığı göster';
+
+  @override
+  String get pbHeaderTitle => 'Başlık metni';
+
+  @override
+  String get pbStyleCollapsible => 'Katlanır';
+
+  @override
+  String get pbStyleAnchor => 'Çapa (#)';
+
+  @override
+  String get pbStyleHideOn => 'Şurada gizle';
+
+  @override
+  String get pbStyleReset => 'Sıfırla';
+
+  @override
+  String get pbStyleApplyAll => 'Bu türdeki tüm bloklara uygula';
+
+  @override
+  String get pbStyleApplied => 'Stil {n} bloğa daha uygulandı';
+
+  @override
+  String get pbStyleCopy => 'Stili kopyala';
+
+  @override
+  String get pbStylePaste => 'Stili yapıştır';
+
+  @override
+  String get pbNoOptions => 'Bu bloğun kendi seçeneği yok — görünümü Stil sekmesinde.';
+
+  @override
+  String get pbVariantPlain => 'Sade';
+
+  @override
+  String get pbVariantCard => 'Kart';
+
+  @override
+  String get pbVariantOutline => 'Çerçeve';
+
+  @override
+  String get pbVariantTinted => 'Renkli';
+
+  @override
+  String get pbVariantHero => 'Öne çıkan';
+
+  @override
+  String get pbAccKind => 'Modül türü';
+
+  @override
+  String get pbAccAccent => 'Tema vurgusu';
+
+  @override
+  String get pbAccBlue => 'Mavi';
+
+  @override
+  String get pbAccGreen => 'Yeşil';
+
+  @override
+  String get pbAccAmber => 'Kehribar';
+
+  @override
+  String get pbAccRose => 'Gül';
+
+  @override
+  String get pbAccViolet => 'Mor';
+
+  @override
+  String get pbAccSlate => 'Arduvaz';
+
+  @override
+  String get pbWidthNarrow => 'Dar';
+
+  @override
+  String get pbWidthNormal => 'Normal';
+
+  @override
+  String get pbWidthWide => 'Geniş';
+
+  @override
+  String get pbWidthFull => 'Tam';
+
+  @override
+  String get pbDensityComfy => 'Ferah';
+
+  @override
+  String get pbDensityCompact => 'Sıkı';
+
+  @override
+  String get pbCollOff => 'Hayır';
+
+  @override
+  String get pbCollOpen => 'Açık';
+
+  @override
+  String get pbCollClosed => 'Kapalı';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Telefon';
+
+  @override
+  String get pbHideDesktop => 'Masaüstü';
+
+  @override
+  String get pbLinks => 'Bağlantılar';
+
+  @override
+  String get pbLinkAdd => 'Bağlantı ekle';
+
+  @override
+  String get pbLinkAddPh => '+ [[Ad]] · #çapa · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Bu bir bağlantı değil: [[Ad]], #çapa veya http(s) adresi kullanın';
+
+  @override
+  String get pbLinkLabel => 'Etiket';
+
+  @override
+  String get pbLinkTo => 'Hedef';
+
+  @override
+  String get pbLinkGroup => 'Grup';
+
+  @override
+  String get pbLinkHint => 'Web bağlantıları tarayıcıda açılır, yalnızca http ve https — uygulama yalnızca kayıtlı adresi açar.';
+
+  @override
+  String get pbLinkMissing => 'Bu adda bir şey yok — oluşturmak için tıklayın';
+
+  @override
+  String get pbLinkUp => 'Yukarı';
+
+  @override
+  String get pbLinkDown => 'Aşağı';
+
+  @override
+  String get pbLinksEmpty => 'Henüz bağlantı yok.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Henüz bağlantı yok — ⚙ → Seçenekler ile ekleyin.';
+
+  @override
+  String get pbListAdd => 'Ekle';
+
+  @override
+  String get pcLinkbar => 'Bağlantı çubuğu';
+
+  @override
+  String get pcLinkcard => 'Bağlantı kartları';
+
+  @override
+  String get pcHatnote => 'Üst not';
+
+  @override
+  String get pcSeeAlso => 'Ayrıca bakın';
+
+  @override
+  String get pcReferences => 'Kaynakça';
+
+  @override
+  String get pcTabs => 'Sekmeler';
+
+  @override
+  String get pcToggle => 'Açılır blok';
+
+  @override
+  String get pcNavbox => 'Gezinti kutusu';
+
+  @override
+  String get pcChildren => 'Alt sayfalar';
+
+  @override
+  String get pcHatAnd => 've';
+
+  @override
+  String get pcHatnotePh => 'Ana madde: …';
+
+  @override
+  String get pcReferencesEmpty => 'Henüz dipnot yok — metin bloğuna [^1], ayrı satıra "[^1]: …" yazın.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Bu sayfadan henüz bağlantı yok';
+
+  @override
+  String get pcSuggested => 'Öneriler:';
+
+  @override
+  String get pcTab => 'Sekme';
+
+  @override
+  String get pcChildrenNone => 'Bu sayfanın altında bir şey yok.';
+
+  @override
+  String get pbFootnoteMissing => 'Bu dipnotun henüz metni yok — "[^n]: …" satırı ekleyin';
+
+  @override
+  String get pcOptBar => 'Çubuk stili';
+
+  @override
+  String get pcOptCaption => 'Açıklama';
+
+  @override
+  String get pcOptCount => 'Kaç tane';
+
+  @override
+  String get pcOptCover => 'Kapak resmi';
+
+  @override
+  String get pcOptDepth => 'Derinlik';
+
+  @override
+  String get pcOptHatKind => 'Not türü';
+
+  @override
+  String get pcOptLayout => 'Düzen';
+
+  @override
+  String get pcOptLook => 'Görünüm';
+
+  @override
+  String get pcOptLoop => 'Döngü';
+
+  @override
+  String get pcOptPoster => 'Poster resmi';
+
+  @override
+  String get pcOptSort => 'Sıra';
+
+  @override
+  String get pcOptSource => 'Modülden doldur';
+
+  @override
+  String get pcOptStart => 'Başlangıç';
+
+  @override
+  String get pcOptStartPage => 'İlk gösterilen sayfa';
+
+  @override
+  String get pcOptStartTab => 'İlk gösterilen sekme';
+
+  @override
+  String get pcOptSticky => 'Kaydırırken üstte kalsın';
+
+  @override
+  String get pcOptSuggest => 'Buraya veya buradan bağlantı veren sayfaları öner';
+
+  @override
+  String get pcOptTabs => 'Sekme adları';
+
+  @override
+  String get pcBarPills => 'Hap';
+
+  @override
+  String get pcBarTabs => 'Sekmeler';
+
+  @override
+  String get pcBarUnderline => 'Altı çizili';
+
+  @override
+  String get pcBarButtons => 'Düğmeler';
+
+  @override
+  String get pcCardCard => 'Kart';
+
+  @override
+  String get pcCardCompact => 'Kompakt';
+
+  @override
+  String get pcCardButton => 'Düğme';
+
+  @override
+  String get pcHatMain => 'Ana madde:';
+
+  @override
+  String get pcHatAbout => 'Daha fazlası için bkz.';
+
+  @override
+  String get pcHatDistinguish => 'Şununla karıştırılmamalı:';
+
+  @override
+  String get pcTabsLine => 'Çizgi';
+
+  @override
+  String get pcTabsBoxed => 'Kutulu';
+
+  @override
+  String get pcTabsPills => 'Hap';
+
+  @override
+  String get pcKidsList => 'Liste';
+
+  @override
+  String get pcKidsTree => 'Ağaç';
+
+  @override
+  String get pcKidsCards => 'Kartlar';
+
+  @override
+  String get pcSortOrder => 'Nest’teki gibi';
+
+  @override
+  String get pcSortName => 'Ada göre';
+
+  @override
+  String get pcGalGrid => 'Izgara';
+
+  @override
+  String get pcGalStrip => 'Şerit';
+
+  @override
+  String get pcPdfSingle => 'Tek sayfa';
+
+  @override
+  String get pcPdfStrip => 'Sayfa şeridi';
 }
