@@ -1942,4 +1942,34 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get exportPrint => 'Yazdır…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Ses';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3B model';
+
+  @override
+  String get pcMedia => 'Karma medya';
+
+  @override
+  String get pcMediaEmpty => 'Henüz dosya yok.';
+
+  @override
+  String get pbChooseFile => 'Dosya seç';
+
+  @override
+  String get pcAddFile => 'Dosya ekle';
+
+  @override
+  String get pcOpenIn => 'Başka bir uygulamada aç';
+
+  @override
+  String get mediaOpenFailed => 'Bu dosya açılamadı';
 }

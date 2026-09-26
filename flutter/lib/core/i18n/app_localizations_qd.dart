@@ -1945,4 +1945,34 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get exportPrint => 'Inkscrybe…';
+
+  @override
+  String get pcVideo => 'Moving Picture';
+
+  @override
+  String get pcAudio => 'Soundes';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Carven Figure';
+
+  @override
+  String get pcMedia => 'Sundrie Things';
+
+  @override
+  String get pcMediaEmpty => 'No Scrowle as yet.';
+
+  @override
+  String get pbChooseFile => 'Chese a Scrowle';
+
+  @override
+  String get pcAddFile => 'Grothul a Scrollyx';
+
+  @override
+  String get pcOpenIn => 'Unseal in anothyr Enginyx';
+
+  @override
+  String get mediaOpenFailed => 'Thys Scrollyx wouldst not unseal';
 }

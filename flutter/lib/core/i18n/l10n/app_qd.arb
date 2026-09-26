@@ -644,5 +644,15 @@
   "exportRows": "rowes",
   "exportHtmlPageD": "Thys Pagyx as a Webbrath, its Imagyx besyde",
   "exportHtmlPageHint": "A .zip bearing index.html and its Imagyx in media/ — unbynd it and open index.html in any Browsyr.",
-  "exportPrint": "Inkscrybe…"
+  "exportPrint": "Inkscrybe…",
+  "pcVideo": "Moving Picture",
+  "pcAudio": "Soundes",
+  "pcPdf": "PDF",
+  "pcModel3d": "Carven Figure",
+  "pcMedia": "Sundrie Things",
+  "pcMediaEmpty": "No Scrowle as yet.",
+  "pbChooseFile": "Chese a Scrowle",
+  "pcAddFile": "Grothul a Scrollyx",
+  "pcOpenIn": "Unseal in anothyr Enginyx",
+  "mediaOpenFailed": "Thys Scrollyx wouldst not unseal"
 }

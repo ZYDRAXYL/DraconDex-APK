@@ -1945,4 +1945,34 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get exportPrint => '인쇄…';
+
+  @override
+  String get pcVideo => '동영상';
+
+  @override
+  String get pcAudio => '오디오';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D 모델';
+
+  @override
+  String get pcMedia => '미디어 모음';
+
+  @override
+  String get pcMediaEmpty => '아직 파일이 없습니다.';
+
+  @override
+  String get pbChooseFile => '파일 선택';
+
+  @override
+  String get pcAddFile => '파일 추가';
+
+  @override
+  String get pcOpenIn => '다른 앱에서 열기';
+
+  @override
+  String get mediaOpenFailed => '이 파일을 열 수 없습니다';
 }

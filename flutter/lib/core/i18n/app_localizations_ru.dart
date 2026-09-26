@@ -1945,4 +1945,34 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get exportPrint => 'Печать…';
+
+  @override
+  String get pcVideo => 'Видео';
+
+  @override
+  String get pcAudio => 'Аудио';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D-модель';
+
+  @override
+  String get pcMedia => 'Медиа';
+
+  @override
+  String get pcMediaEmpty => 'Файла пока нет.';
+
+  @override
+  String get pbChooseFile => 'Выбрать файл';
+
+  @override
+  String get pcAddFile => 'Добавить файл';
+
+  @override
+  String get pcOpenIn => 'Открыть в другом приложении';
+
+  @override
+  String get mediaOpenFailed => 'Не удалось открыть этот файл';
 }

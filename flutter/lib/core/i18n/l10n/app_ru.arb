@@ -644,5 +644,15 @@
   "exportRows": "строк",
   "exportHtmlPageD": "Эта страница как веб-страница, с картинками",
   "exportHtmlPageHint": "Архив .zip с index.html и картинками в media/ — распакуйте и откройте index.html в любом браузере.",
-  "exportPrint": "Печать…"
+  "exportPrint": "Печать…",
+  "pcVideo": "Видео",
+  "pcAudio": "Аудио",
+  "pcPdf": "PDF",
+  "pcModel3d": "3D-модель",
+  "pcMedia": "Медиа",
+  "pcMediaEmpty": "Файла пока нет.",
+  "pbChooseFile": "Выбрать файл",
+  "pcAddFile": "Добавить файл",
+  "pcOpenIn": "Открыть в другом приложении",
+  "mediaOpenFailed": "Не удалось открыть этот файл"
 }

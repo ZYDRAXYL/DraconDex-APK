@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/classifier/formula.dart';
+import '../../../core/links/safe_launch.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/dao/classifier_dao.dart';
 import '../../../data/models/classifier_model.dart';
@@ -379,8 +379,11 @@ class ClsItemFields extends ConsumerWidget {
     if (f.type == 'url') {
       final v = data.valuesOf(item.id)[f.id] ?? '';
       if (v.isEmpty) return const Text('—');
+      // "example.com" means the web; anything but http(s) stays plain text
+      final url = v.contains(':') ? v : 'https://$v';
+      if (!isSafeWebUrl(url)) return Text(v, maxLines: 2, overflow: TextOverflow.ellipsis);
       return InkWell(
-        onTap: () => launchUrl(Uri.parse(v), mode: LaunchMode.externalApplication),
+        onTap: () => safeLaunch(url),
         child: Text(v, style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
       );
     }

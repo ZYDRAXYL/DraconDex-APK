@@ -1945,4 +1945,34 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get exportPrint => '印刷…';
+
+  @override
+  String get pcVideo => '動画';
+
+  @override
+  String get pcAudio => '音声';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3Dモデル';
+
+  @override
+  String get pcMedia => 'メディア';
+
+  @override
+  String get pcMediaEmpty => 'ファイルはまだありません。';
+
+  @override
+  String get pbChooseFile => 'ファイルを選ぶ';
+
+  @override
+  String get pcAddFile => 'ファイルを追加';
+
+  @override
+  String get pcOpenIn => '別のアプリで開く';
+
+  @override
+  String get mediaOpenFailed => 'このファイルを開けませんでした';
 }

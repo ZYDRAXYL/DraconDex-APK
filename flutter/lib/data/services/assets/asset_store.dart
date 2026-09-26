@@ -7,14 +7,38 @@ import 'package:sqflite/sqflite.dart';
 import '../wiki_service.dart';
 import 'asset_files.dart';
 
-/// Extension → asset class: the four classes the desktop switches on (EXE
-/// db/asset-media.js ASSET_CLASS).
+/// Extension → asset class: the classes the desktop switches on (EXE
+/// db/asset-media.js ASSET_CLASS — test/media_test.dart holds the two equal).
+/// Procress 14 (APP docs/MEDIA-EMBED.md M1/M5) added subtitles a video block
+/// plays and the 3D models a model block draws.
 const assetClass = {
   'png': 'image', 'jpg': 'image', 'jpeg': 'image', 'gif': 'image', 'webp': 'image', 'svg': 'image', //
   'mp3': 'audio', 'wav': 'audio', 'ogg': 'audio', 'm4a': 'audio', 'flac': 'audio', //
   'mp4': 'video', 'webm': 'video', 'mov': 'video', 'mkv': 'video', //
-  'md': 'doc', 'txt': 'doc', 'docx': 'doc', 'pdf': 'doc',
+  'md': 'doc', 'txt': 'doc', 'docx': 'doc', 'pdf': 'doc', //
+  'vtt': 'track', //
+  'glb': 'model', 'gltf': 'model', 'stl': 'model', 'obj': 'model',
 };
+
+/// Extension → MIME type (EXE asset-media.js MIME): what another app is told
+/// it is being handed.
+const assetMime = {
+  'png': 'image/png', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'gif': 'image/gif', //
+  'webp': 'image/webp', 'svg': 'image/svg+xml', //
+  'mp3': 'audio/mpeg', 'wav': 'audio/wav', 'ogg': 'audio/ogg', 'm4a': 'audio/mp4', 'flac': 'audio/flac', //
+  'mp4': 'video/mp4', 'webm': 'video/webm', 'mov': 'video/quicktime', 'mkv': 'video/x-matroska', //
+  'pdf': 'application/pdf', 'md': 'text/markdown', 'txt': 'text/plain', //
+  'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', //
+  'vtt': 'text/vtt', //
+  'glb': 'model/gltf-binary', 'gltf': 'model/gltf+json', 'stl': 'model/stl', 'obj': 'model/obj',
+};
+
+/// The extensions of the classes a picker asks for. A page's PDF block asks
+/// for 'pdf', which is one extension of the 'doc' class.
+List<String> extensionsOf(Set<String> classes) => [
+      for (final e in assetClass.entries)
+        if (classes.contains(e.value) || (classes.contains('pdf') && e.key == 'pdf')) e.key,
+    ];
 
 class Asset {
   final int id;
@@ -29,6 +53,10 @@ class Asset {
 
   String? get cls => isUrl ? 'url' : assetClass[type];
   bool get isImage => cls == 'image';
+  String get mime => assetMime[type] ?? 'application/octet-stream';
+
+  /// Whether this file answers a picker asking for [classes].
+  bool isOf(Set<String> classes) => classes.contains(cls) || (classes.contains('pdf') && type == 'pdf');
 
   factory Asset.fromRow(Map<String, Object?> r) => Asset(
         r['id'] as int,

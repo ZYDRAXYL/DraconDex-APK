@@ -644,5 +644,15 @@
   "exportRows": "dòng",
   "exportHtmlPageD": "Trang này dưới dạng trang web, kèm hình ảnh",
   "exportHtmlPageHint": "Tệp .zip gồm index.html và hình trong media/ — giải nén rồi mở index.html bằng trình duyệt bất kỳ.",
-  "exportPrint": "In…"
+  "exportPrint": "In…",
+  "pcVideo": "Video",
+  "pcAudio": "Âm thanh",
+  "pcPdf": "PDF",
+  "pcModel3d": "Mô hình 3D",
+  "pcMedia": "Đa phương tiện",
+  "pcMediaEmpty": "Chưa có tệp.",
+  "pbChooseFile": "Chọn tệp",
+  "pcAddFile": "Thêm tệp",
+  "pcOpenIn": "Mở bằng ứng dụng khác",
+  "mediaOpenFailed": "Không thể mở tệp này"
 }

@@ -644,5 +644,15 @@
   "exportRows": "แถว",
   "exportHtmlPageD": "หน้านี้เป็นหน้าเว็บ พร้อมรูปภาพ",
   "exportHtmlPageHint": "ไฟล์ .zip ที่มี index.html และรูปใน media/ — แตกไฟล์แล้วเปิด index.html ในเบราว์เซอร์ใดก็ได้",
-  "exportPrint": "พิมพ์…"
+  "exportPrint": "พิมพ์…",
+  "pcVideo": "วิดีโอ",
+  "pcAudio": "เสียง",
+  "pcPdf": "PDF",
+  "pcModel3d": "โมเดล 3D",
+  "pcMedia": "สื่อผสม",
+  "pcMediaEmpty": "ยังไม่มีไฟล์",
+  "pbChooseFile": "เลือกไฟล์",
+  "pcAddFile": "เพิ่มไฟล์",
+  "pcOpenIn": "เปิดด้วยแอปอื่น",
+  "mediaOpenFailed": "เปิดไฟล์นี้ไม่ได้"
 }

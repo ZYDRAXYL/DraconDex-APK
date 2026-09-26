@@ -1945,4 +1945,34 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get exportPrint => 'พิมพ์…';
+
+  @override
+  String get pcVideo => 'วิดีโอ';
+
+  @override
+  String get pcAudio => 'เสียง';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'โมเดล 3D';
+
+  @override
+  String get pcMedia => 'สื่อผสม';
+
+  @override
+  String get pcMediaEmpty => 'ยังไม่มีไฟล์';
+
+  @override
+  String get pbChooseFile => 'เลือกไฟล์';
+
+  @override
+  String get pcAddFile => 'เพิ่มไฟล์';
+
+  @override
+  String get pcOpenIn => 'เปิดด้วยแอปอื่น';
+
+  @override
+  String get mediaOpenFailed => 'เปิดไฟล์นี้ไม่ได้';
 }

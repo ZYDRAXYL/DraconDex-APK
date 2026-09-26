@@ -1942,4 +1942,34 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get exportPrint => 'Друк…';
+
+  @override
+  String get pcVideo => 'Відео';
+
+  @override
+  String get pcAudio => 'Аудіо';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D-модель';
+
+  @override
+  String get pcMedia => 'Медіа';
+
+  @override
+  String get pcMediaEmpty => 'Файлу поки немає.';
+
+  @override
+  String get pbChooseFile => 'Вибрати файл';
+
+  @override
+  String get pcAddFile => 'Додати файл';
+
+  @override
+  String get pcOpenIn => 'Відкрити в іншій програмі';
+
+  @override
+  String get mediaOpenFailed => 'Не вдалося відкрити цей файл';
 }

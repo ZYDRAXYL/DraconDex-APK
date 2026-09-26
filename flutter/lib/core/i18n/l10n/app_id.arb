@@ -644,5 +644,15 @@
   "exportRows": "baris",
   "exportHtmlPageD": "Halaman ini sebagai halaman web, beserta gambarnya",
   "exportHtmlPageHint": "File .zip berisi index.html dan gambarnya di media/ — ekstrak lalu buka index.html di browser apa pun.",
-  "exportPrint": "Cetak…"
+  "exportPrint": "Cetak…",
+  "pcVideo": "Video",
+  "pcAudio": "Audio",
+  "pcPdf": "PDF",
+  "pcModel3d": "Model 3D",
+  "pcMedia": "Media campuran",
+  "pcMediaEmpty": "Belum ada berkas.",
+  "pbChooseFile": "Pilih berkas",
+  "pcAddFile": "Tambah file",
+  "pcOpenIn": "Buka di aplikasi lain",
+  "mediaOpenFailed": "File ini tidak dapat dibuka"
 }

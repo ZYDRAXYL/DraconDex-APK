@@ -644,5 +644,15 @@
   "exportRows": "rows",
   "exportHtmlPageD": "This page as a web page, pictures beside it",
   "exportHtmlPageHint": "A .zip with index.html and its pictures in media/ — unzip it and open index.html in any browser.",
-  "exportPrint": "Print…"
+  "exportPrint": "Print…",
+  "pcVideo": "Video",
+  "pcAudio": "Audio",
+  "pcPdf": "PDF",
+  "pcModel3d": "3D model",
+  "pcMedia": "Mixed media",
+  "pcMediaEmpty": "No file yet.",
+  "pbChooseFile": "Choose a file",
+  "pcAddFile": "Add a file",
+  "pcOpenIn": "Open in another app",
+  "mediaOpenFailed": "This file could not be opened"
 }

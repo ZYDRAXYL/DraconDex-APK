@@ -1945,4 +1945,34 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get exportPrint => '打印…';
+
+  @override
+  String get pcVideo => '视频';
+
+  @override
+  String get pcAudio => '音频';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D 模型';
+
+  @override
+  String get pcMedia => '混合媒体';
+
+  @override
+  String get pcMediaEmpty => '暂无文件。';
+
+  @override
+  String get pbChooseFile => '选择文件';
+
+  @override
+  String get pcAddFile => '添加文件';
+
+  @override
+  String get pcOpenIn => '用其他应用打开';
+
+  @override
+  String get mediaOpenFailed => '无法打开此文件';
 }

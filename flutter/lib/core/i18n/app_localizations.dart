@@ -4002,6 +4002,66 @@ abstract class AppLocalizations {
   /// **Print…**
   String get exportPrint;
 
+  /// No description provided for @pcVideo.
+  ///
+  /// In en, this message translates to:
+  /// **Video**
+  String get pcVideo;
+
+  /// No description provided for @pcAudio.
+  ///
+  /// In en, this message translates to:
+  /// **Audio**
+  String get pcAudio;
+
+  /// No description provided for @pcPdf.
+  ///
+  /// In en, this message translates to:
+  /// **PDF**
+  String get pcPdf;
+
+  /// No description provided for @pcModel3d.
+  ///
+  /// In en, this message translates to:
+  /// **3D model**
+  String get pcModel3d;
+
+  /// No description provided for @pcMedia.
+  ///
+  /// In en, this message translates to:
+  /// **Mixed media**
+  String get pcMedia;
+
+  /// No description provided for @pcMediaEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No file yet.**
+  String get pcMediaEmpty;
+
+  /// No description provided for @pbChooseFile.
+  ///
+  /// In en, this message translates to:
+  /// **Choose a file**
+  String get pbChooseFile;
+
+  /// No description provided for @pcAddFile.
+  ///
+  /// In en, this message translates to:
+  /// **Add a file**
+  String get pcAddFile;
+
+  /// No description provided for @pcOpenIn.
+  ///
+  /// In en, this message translates to:
+  /// **Open in another app**
+  String get pcOpenIn;
+
+  /// No description provided for @mediaOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **This file could not be opened**
+  String get mediaOpenFailed;
+
 }
 
 class _AppLocalizationsDelegate

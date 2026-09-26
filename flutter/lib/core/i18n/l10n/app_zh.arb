@@ -644,5 +644,15 @@
   "exportRows": "行",
   "exportHtmlPageD": "将此页导出为网页，图片一并附带",
   "exportHtmlPageHint": "包含 index.html 及 media/ 中图片的 .zip — 解压后用任意浏览器打开 index.html。",
-  "exportPrint": "打印…"
+  "exportPrint": "打印…",
+  "pcVideo": "视频",
+  "pcAudio": "音频",
+  "pcPdf": "PDF",
+  "pcModel3d": "3D 模型",
+  "pcMedia": "混合媒体",
+  "pcMediaEmpty": "暂无文件。",
+  "pbChooseFile": "选择文件",
+  "pcAddFile": "添加文件",
+  "pcOpenIn": "用其他应用打开",
+  "mediaOpenFailed": "无法打开此文件"
 }

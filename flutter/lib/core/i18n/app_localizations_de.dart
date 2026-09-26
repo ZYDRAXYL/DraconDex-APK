@@ -1945,4 +1945,34 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get exportPrint => 'Drucken…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Audio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D-Modell';
+
+  @override
+  String get pcMedia => 'Gemischte Medien';
+
+  @override
+  String get pcMediaEmpty => 'Noch keine Datei.';
+
+  @override
+  String get pbChooseFile => 'Datei wählen';
+
+  @override
+  String get pcAddFile => 'Datei hinzufügen';
+
+  @override
+  String get pcOpenIn => 'In anderer App öffnen';
+
+  @override
+  String get mediaOpenFailed => 'Diese Datei konnte nicht geöffnet werden';
 }

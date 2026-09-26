@@ -644,5 +644,15 @@
   "exportRows": "行",
   "exportHtmlPageD": "このページをWebページとして — 画像も同梱",
   "exportHtmlPageHint": "index.html と media/ 内の画像を含む .zip — 展開して任意のブラウザで index.html を開きます。",
-  "exportPrint": "印刷…"
+  "exportPrint": "印刷…",
+  "pcVideo": "動画",
+  "pcAudio": "音声",
+  "pcPdf": "PDF",
+  "pcModel3d": "3Dモデル",
+  "pcMedia": "メディア",
+  "pcMediaEmpty": "ファイルはまだありません。",
+  "pbChooseFile": "ファイルを選ぶ",
+  "pcAddFile": "ファイルを追加",
+  "pcOpenIn": "別のアプリで開く",
+  "mediaOpenFailed": "このファイルを開けませんでした"
 }

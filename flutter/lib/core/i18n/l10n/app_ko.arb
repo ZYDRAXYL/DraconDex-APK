@@ -644,5 +644,15 @@
   "exportRows": "행",
   "exportHtmlPageD": "이 페이지를 웹 페이지로 — 그림도 함께",
   "exportHtmlPageHint": "index.html과 media/의 그림이 든 .zip — 압축을 풀고 아무 브라우저에서 index.html을 여세요.",
-  "exportPrint": "인쇄…"
+  "exportPrint": "인쇄…",
+  "pcVideo": "동영상",
+  "pcAudio": "오디오",
+  "pcPdf": "PDF",
+  "pcModel3d": "3D 모델",
+  "pcMedia": "미디어 모음",
+  "pcMediaEmpty": "아직 파일이 없습니다.",
+  "pbChooseFile": "파일 선택",
+  "pcAddFile": "파일 추가",
+  "pcOpenIn": "다른 앱에서 열기",
+  "mediaOpenFailed": "이 파일을 열 수 없습니다"
 }

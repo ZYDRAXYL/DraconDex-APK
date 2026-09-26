@@ -644,5 +644,15 @@
   "exportRows": "lignes",
   "exportHtmlPageD": "Cette page en page web, avec ses images",
   "exportHtmlPageHint": "Un .zip avec index.html et ses images dans media/ — décompressez-le et ouvrez index.html dans n’importe quel navigateur.",
-  "exportPrint": "Imprimer…"
+  "exportPrint": "Imprimer…",
+  "pcVideo": "Vidéo",
+  "pcAudio": "Audio",
+  "pcPdf": "PDF",
+  "pcModel3d": "Modèle 3D",
+  "pcMedia": "Médias mixtes",
+  "pcMediaEmpty": "Pas encore de fichier.",
+  "pbChooseFile": "Choisir un fichier",
+  "pcAddFile": "Ajouter un fichier",
+  "pcOpenIn": "Ouvrir dans une autre app",
+  "mediaOpenFailed": "Impossible d’ouvrir ce fichier"
 }

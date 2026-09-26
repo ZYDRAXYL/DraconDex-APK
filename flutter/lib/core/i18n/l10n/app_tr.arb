@@ -644,5 +644,15 @@
   "exportRows": "satır",
   "exportHtmlPageD": "Bu sayfa, resimleriyle birlikte bir web sayfası olarak",
   "exportHtmlPageHint": "index.html ve media/ içindeki resimleri içeren bir .zip — açın ve index.html dosyasını herhangi bir tarayıcıda açın.",
-  "exportPrint": "Yazdır…"
+  "exportPrint": "Yazdır…",
+  "pcVideo": "Video",
+  "pcAudio": "Ses",
+  "pcPdf": "PDF",
+  "pcModel3d": "3B model",
+  "pcMedia": "Karma medya",
+  "pcMediaEmpty": "Henüz dosya yok.",
+  "pbChooseFile": "Dosya seç",
+  "pcAddFile": "Dosya ekle",
+  "pcOpenIn": "Başka bir uygulamada aç",
+  "mediaOpenFailed": "Bu dosya açılamadı"
 }

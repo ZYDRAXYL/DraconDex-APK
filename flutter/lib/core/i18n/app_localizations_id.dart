@@ -1945,4 +1945,34 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get exportPrint => 'Cetak…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Audio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Model 3D';
+
+  @override
+  String get pcMedia => 'Media campuran';
+
+  @override
+  String get pcMediaEmpty => 'Belum ada berkas.';
+
+  @override
+  String get pbChooseFile => 'Pilih berkas';
+
+  @override
+  String get pcAddFile => 'Tambah file';
+
+  @override
+  String get pcOpenIn => 'Buka di aplikasi lain';
+
+  @override
+  String get mediaOpenFailed => 'File ini tidak dapat dibuka';
 }

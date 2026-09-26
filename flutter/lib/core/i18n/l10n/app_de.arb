@@ -644,5 +644,15 @@
   "exportRows": "Zeilen",
   "exportHtmlPageD": "Diese Seite als Webseite, mit ihren Bildern",
   "exportHtmlPageHint": "Ein .zip mit index.html und den Bildern in media/ — entpacken und index.html in einem beliebigen Browser öffnen.",
-  "exportPrint": "Drucken…"
+  "exportPrint": "Drucken…",
+  "pcVideo": "Video",
+  "pcAudio": "Audio",
+  "pcPdf": "PDF",
+  "pcModel3d": "3D-Modell",
+  "pcMedia": "Gemischte Medien",
+  "pcMediaEmpty": "Noch keine Datei.",
+  "pbChooseFile": "Datei wählen",
+  "pcAddFile": "Datei hinzufügen",
+  "pcOpenIn": "In anderer App öffnen",
+  "mediaOpenFailed": "Diese Datei konnte nicht geöffnet werden"
 }

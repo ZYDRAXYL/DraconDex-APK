@@ -644,5 +644,15 @@
   "exportRows": "rijen",
   "exportHtmlPageD": "Deze pagina als webpagina, met de afbeeldingen",
   "exportHtmlPageHint": "Een .zip met index.html en de afbeeldingen in media/ — pak uit en open index.html in een willekeurige browser.",
-  "exportPrint": "Afdrukken…"
+  "exportPrint": "Afdrukken…",
+  "pcVideo": "Video",
+  "pcAudio": "Audio",
+  "pcPdf": "PDF",
+  "pcModel3d": "3D-model",
+  "pcMedia": "Gemengde media",
+  "pcMediaEmpty": "Nog geen bestand.",
+  "pbChooseFile": "Bestand kiezen",
+  "pcAddFile": "Bestand toevoegen",
+  "pcOpenIn": "Openen in andere app",
+  "mediaOpenFailed": "Dit bestand kon niet worden geopend"
 }

@@ -1942,4 +1942,34 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get exportPrint => 'Afdrukken…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Audio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D-model';
+
+  @override
+  String get pcMedia => 'Gemengde media';
+
+  @override
+  String get pcMediaEmpty => 'Nog geen bestand.';
+
+  @override
+  String get pbChooseFile => 'Bestand kiezen';
+
+  @override
+  String get pcAddFile => 'Bestand toevoegen';
+
+  @override
+  String get pcOpenIn => 'Openen in andere app';
+
+  @override
+  String get mediaOpenFailed => 'Dit bestand kon niet worden geopend';
 }

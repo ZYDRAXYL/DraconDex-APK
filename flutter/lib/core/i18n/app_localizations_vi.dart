@@ -1945,4 +1945,34 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get exportPrint => 'In…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Âm thanh';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Mô hình 3D';
+
+  @override
+  String get pcMedia => 'Đa phương tiện';
+
+  @override
+  String get pcMediaEmpty => 'Chưa có tệp.';
+
+  @override
+  String get pbChooseFile => 'Chọn tệp';
+
+  @override
+  String get pcAddFile => 'Thêm tệp';
+
+  @override
+  String get pcOpenIn => 'Mở bằng ứng dụng khác';
+
+  @override
+  String get mediaOpenFailed => 'Không thể mở tệp này';
 }

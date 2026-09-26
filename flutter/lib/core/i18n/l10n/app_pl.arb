@@ -644,5 +644,15 @@
   "exportRows": "wierszy",
   "exportHtmlPageD": "Ta strona jako strona WWW, z obrazami",
   "exportHtmlPageHint": "Plik .zip z index.html i obrazami w media/ — rozpakuj i otwórz index.html w dowolnej przeglądarce.",
-  "exportPrint": "Drukuj…"
+  "exportPrint": "Drukuj…",
+  "pcVideo": "Wideo",
+  "pcAudio": "Dźwięk",
+  "pcPdf": "PDF",
+  "pcModel3d": "Model 3D",
+  "pcMedia": "Media mieszane",
+  "pcMediaEmpty": "Brak pliku.",
+  "pbChooseFile": "Wybierz plik",
+  "pcAddFile": "Dodaj plik",
+  "pcOpenIn": "Otwórz w innej aplikacji",
+  "mediaOpenFailed": "Nie udało się otworzyć tego pliku"
 }
