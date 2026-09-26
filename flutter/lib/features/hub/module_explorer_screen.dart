@@ -142,7 +142,7 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                     title: module.name,
                     actions: () => [
                       ...pageActions(context, ref, module, itemKey),
-                      ...moduleRowActions(context, ref, module, onOwnPage: true),
+                      ...moduleRowActions(context, ref, module, onOwnPage: true, itemKey: itemKey, itemName: itemName),
                     ],
                   ),
               ],

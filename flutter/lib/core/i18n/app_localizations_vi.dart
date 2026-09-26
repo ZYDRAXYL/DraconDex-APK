@@ -1804,4 +1804,145 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Chèn hàng phía dưới';
+
+  @override
+  String get exportTitle => 'Xuất…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Để in, chia sẻ hoặc gửi nhà in';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Để sửa tiếp trong Word, Google Docs hoặc Pages';
+
+  @override
+  String get exportEpub => 'EPUB (sách điện tử)';
+
+  @override
+  String get exportEpubD => 'Cho Apple Books, Kindle, Kobo hoặc Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Mỗi bảng một trang tính, cho Excel, Sheets hoặc Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Bảng thuần — nhập lại được bằng Nhập CSV';
+
+  @override
+  String get htmlExport => 'Xuất thành trang web (HTML)';
+
+  @override
+  String get exportMarkdown => 'Xuất dạng Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Ghi chú kèm ảnh — mở được trong Obsidian';
+
+  @override
+  String get exportMddxD => 'Module này, để chuyển sang vault khác';
+
+  @override
+  String get exportNoPage => 'Thư mục không có trang riêng';
+
+  @override
+  String get exportOnlyDocs => 'Chỉ Author, Classifier, Chronicler, Drafter và Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Chỉ sách của Author';
+
+  @override
+  String get exportOnlyTables => 'Chỉ Classifier và Chronicler';
+
+  @override
+  String get exportGo => 'Xuất';
+
+  @override
+  String get exportScope => 'Phạm vi';
+
+  @override
+  String get exportScopePage => 'Trang này';
+
+  @override
+  String get exportScopeModule => 'Module này và mọi phần tử';
+
+  @override
+  String get exportScopeInside => 'Module này và mọi thứ bên trong';
+
+  @override
+  String get exportScopeNexus => 'Toàn bộ Nexus';
+
+  @override
+  String get exportPaper => 'Khổ giấy';
+
+  @override
+  String get exportOrientation => 'Hướng';
+
+  @override
+  String get exportPortrait => 'Dọc';
+
+  @override
+  String get exportLandscape => 'Ngang';
+
+  @override
+  String get exportHeaderFooter => 'Tiêu đề và số trang';
+
+  @override
+  String get exportToc => 'Trang mục lục';
+
+  @override
+  String get exportCsvHint => 'Một bảng: phần tử của Classifier, hoặc dòng thời gian đầu của Chronicler. Không gồm trường công thức. Nhập CSV đọc lại được.';
+
+  @override
+  String get exportXlsxHint => 'Mỗi bảng một trang tính (mọi dòng thời gian của Chronicler), hàng tiêu đề đậm và cố định. Không gồm trường công thức.';
+
+  @override
+  String get exportMdAnyHint => 'Mỗi phần tử một tệp .md (trường thành thuộc tính); ảnh của trang nằm trong assets/. Mở thư mục như một vault trong Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Mỗi chương, phần tử hoặc sự kiện một tiêu đề (hiện trong ngăn điều hướng của Word), trường thành bảng, ảnh của trang, ngắt trang giữa các chương.';
+
+  @override
+  String get exportEpubHint => 'Mỗi chương một tệp kèm mục lục; ảnh bìa tiêu đề của trang sách thành bìa.';
+
+  @override
+  String get exportMddxHint => 'Tệp .mddx mà vault DraconDex khác nhập được.';
+
+  @override
+  String get exportFormulaSkipped => 'Bỏ qua trường công thức: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV chỉ chứa một dòng thời gian — {n} dòng còn lại có trong bản xuất Excel';
+
+  @override
+  String get exportMediaMissing => 'Không tìm thấy {n} ảnh nên đã bỏ qua';
+
+  @override
+  String get exportMarkdownEmpty => 'Chưa có gì để xuất';
+
+  @override
+  String get exportWorking => 'Đang vẽ các trang…';
+
+  @override
+  String get exportPictures => 'ảnh';
+
+  @override
+  String get exportRows => 'dòng';
+
+  @override
+  String get exportHtmlPageD => 'Trang này dưới dạng trang web, kèm hình ảnh';
+
+  @override
+  String get exportHtmlPageHint => 'Tệp .zip gồm index.html và hình trong media/ — giải nén rồi mở index.html bằng trình duyệt bất kỳ.';
+
+  @override
+  String get exportPrint => 'In…';
 }

@@ -1804,4 +1804,145 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'แทรกแถวด้านล่าง';
+
+  @override
+  String get exportTitle => 'ส่งออก…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'สำหรับพิมพ์ แชร์ หรือส่งโรงพิมพ์';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'แก้ต่อใน Word, Google Docs หรือ Pages';
+
+  @override
+  String get exportEpub => 'EPUB (อีบุ๊ก)';
+
+  @override
+  String get exportEpubD => 'สำหรับ Apple Books, Kindle, Kobo หรือ Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'หนึ่งชีตต่อตาราง เปิดใน Excel, Sheets หรือ Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'ตารางล้วน — นำกลับเข้าด้วย "นำเข้า CSV" ได้';
+
+  @override
+  String get htmlExport => 'ส่งออกเป็นเว็บไซต์ (HTML)';
+
+  @override
+  String get exportMarkdown => 'ส่งออกเป็น Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'โน้ตพร้อมรูป — เปิดใน Obsidian ได้';
+
+  @override
+  String get exportMddxD => 'โมดูลนี้ สำหรับย้ายไป vault อื่น';
+
+  @override
+  String get exportNoPage => 'โฟลเดอร์ไม่มีหน้าของตัวเอง';
+
+  @override
+  String get exportOnlyDocs => 'เฉพาะ Author, Classifier, Chronicler, Drafter และ Inspector';
+
+  @override
+  String get exportOnlyBooks => 'เฉพาะหนังสือของ Author';
+
+  @override
+  String get exportOnlyTables => 'เฉพาะ Classifier และ Chronicler';
+
+  @override
+  String get exportGo => 'ส่งออก';
+
+  @override
+  String get exportScope => 'ขอบเขต';
+
+  @override
+  String get exportScopePage => 'หน้านี้';
+
+  @override
+  String get exportScopeModule => 'โมดูลนี้และ Element ทั้งหมด';
+
+  @override
+  String get exportScopeInside => 'โมดูลนี้และทุกอย่างข้างใน';
+
+  @override
+  String get exportScopeNexus => 'ทั้ง Nexus';
+
+  @override
+  String get exportPaper => 'กระดาษ';
+
+  @override
+  String get exportOrientation => 'แนว';
+
+  @override
+  String get exportPortrait => 'แนวตั้ง';
+
+  @override
+  String get exportLandscape => 'แนวนอน';
+
+  @override
+  String get exportHeaderFooter => 'ชื่อเรื่องและเลขหน้า';
+
+  @override
+  String get exportToc => 'หน้าสารบัญ';
+
+  @override
+  String get exportCsvHint => 'ตารางเดียว : Element ของ Classifier หรือไทม์ไลน์แรกของ Chronicler · ไม่รวมฟิลด์สูตร · นำกลับเข้าด้วย "นำเข้า CSV" ได้';
+
+  @override
+  String get exportXlsxHint => 'หนึ่งชีตต่อตาราง (ทุกไทม์ไลน์ของ Chronicler) หัวตารางตัวหนาและตรึงไว้ · ไม่รวมฟิลด์สูตร';
+
+  @override
+  String get exportMdAnyHint => 'Element ละไฟล์ .md (ฟิลด์เป็น property) · รูปที่หน้าแสดงอยู่ใน assets/ · เปิดโฟลเดอร์เป็น vault ใน Obsidian ได้เลย';
+
+  @override
+  String get exportDocxHint => 'หัวข้อต่อบท Element หรือเหตุการณ์ (ขึ้นในแถบนำทางของ Word) · ฟิลด์เป็นตาราง · รูปของหน้า · ขึ้นหน้าใหม่ระหว่างบท';
+
+  @override
+  String get exportEpubHint => 'บทละไฟล์พร้อมสารบัญ · ปกหัวเรื่องของหน้าหนังสือกลายเป็นปก';
+
+  @override
+  String get exportMddxHint => 'ไฟล์ .mddx ที่ vault อื่นของ DraconDex นำเข้าได้';
+
+  @override
+  String get exportFormulaSkipped => 'ไม่รวมฟิลด์สูตร : {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV เก็บได้ไทม์ไลน์เดียว — อีก {n} เส้นอยู่ในการส่งออก Excel';
+
+  @override
+  String get exportMediaMissing => 'หารูปไม่เจอ {n} รูป จึงไม่ได้ใส่ไว้';
+
+  @override
+  String get exportMarkdownEmpty => 'ยังไม่มีอะไรให้ส่งออก';
+
+  @override
+  String get exportWorking => 'กำลังวาดหน้า…';
+
+  @override
+  String get exportPictures => 'รูป';
+
+  @override
+  String get exportRows => 'แถว';
+
+  @override
+  String get exportHtmlPageD => 'หน้านี้เป็นหน้าเว็บ พร้อมรูปภาพ';
+
+  @override
+  String get exportHtmlPageHint => 'ไฟล์ .zip ที่มี index.html และรูปใน media/ — แตกไฟล์แล้วเปิด index.html ในเบราว์เซอร์ใดก็ได้';
+
+  @override
+  String get exportPrint => 'พิมพ์…';
 }

@@ -1801,4 +1801,145 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Вставити рядок нижче';
+
+  @override
+  String get exportTitle => 'Експорт…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Для друку, поширення чи друкарні';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Щоб редагувати далі у Word, Google Docs чи Pages';
+
+  @override
+  String get exportEpub => 'EPUB (електронна книга)';
+
+  @override
+  String get exportEpubD => 'Для Apple Books, Kindle, Kobo чи Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Аркуш на таблицю — для Excel, Sheets чи Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Проста таблиця — повертається через імпорт CSV';
+
+  @override
+  String get htmlExport => 'Експорт як вебсайт (HTML)';
+
+  @override
+  String get exportMarkdown => 'Експорт у Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Нотатки із зображеннями — відкриваються в Obsidian';
+
+  @override
+  String get exportMddxD => 'Цей модуль — для перенесення в інше сховище';
+
+  @override
+  String get exportNoPage => 'Папка не має власної сторінки';
+
+  @override
+  String get exportOnlyDocs => 'Лише Author, Classifier, Chronicler, Drafter та Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Лише книги Author';
+
+  @override
+  String get exportOnlyTables => 'Лише Classifier і Chronicler';
+
+  @override
+  String get exportGo => 'Експортувати';
+
+  @override
+  String get exportScope => 'Що включити';
+
+  @override
+  String get exportScopePage => 'Ця сторінка';
+
+  @override
+  String get exportScopeModule => 'Цей модуль і всі елементи';
+
+  @override
+  String get exportScopeInside => 'Цей модуль і все всередині';
+
+  @override
+  String get exportScopeNexus => 'Увесь Nexus';
+
+  @override
+  String get exportPaper => 'Папір';
+
+  @override
+  String get exportOrientation => 'Орієнтація';
+
+  @override
+  String get exportPortrait => 'Книжкова';
+
+  @override
+  String get exportLandscape => 'Альбомна';
+
+  @override
+  String get exportHeaderFooter => 'Заголовок і номери сторінок';
+
+  @override
+  String get exportToc => 'Сторінка змісту';
+
+  @override
+  String get exportCsvHint => 'Одна таблиця: елементи Classifier або перша шкала Chronicler. Поля-формули не включаються. Імпорт CSV прочитає її назад.';
+
+  @override
+  String get exportXlsxHint => 'Аркуш на таблицю (кожна шкала Chronicler), жирний закріплений заголовок. Поля-формули не включаються.';
+
+  @override
+  String get exportMdAnyHint => 'По .md на елемент, поля — властивості; зображення сторінки — в assets/. Відкрийте теку як сховище в Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Заголовок на розділ, елемент чи подію (видно в області навігації Word), поля таблицею, зображення сторінки, розрив сторінки між розділами.';
+
+  @override
+  String get exportEpubHint => 'По файлу на розділ і зміст; обкладинка заголовка сторінки книги стане обкладинкою.';
+
+  @override
+  String get exportMddxHint => 'Файл .mddx, який імпортує інше сховище DraconDex.';
+
+  @override
+  String get exportFormulaSkipped => 'Пропущено поля-формули: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV вміщує одну шкалу — ще {n} в експорті Excel';
+
+  @override
+  String get exportMediaMissing => 'Не знайдено зображень: {n} — їх пропущено';
+
+  @override
+  String get exportMarkdownEmpty => 'Поки що нічого експортувати';
+
+  @override
+  String get exportWorking => 'Малювання сторінок…';
+
+  @override
+  String get exportPictures => 'зображень';
+
+  @override
+  String get exportRows => 'рядків';
+
+  @override
+  String get exportHtmlPageD => 'Ця сторінка як вебсторінка, з зображеннями';
+
+  @override
+  String get exportHtmlPageHint => 'Архів .zip з index.html і зображеннями в media/ — розпакуйте й відкрийте index.html у будь-якому браузері.';
+
+  @override
+  String get exportPrint => 'Друк…';
 }

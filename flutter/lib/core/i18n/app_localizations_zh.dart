@@ -1804,4 +1804,145 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get clsInsertBelow => '在下方插入行';
+
+  @override
+  String get exportTitle => '导出…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => '用于打印、分享或交付印刷';
+
+  @override
+  String get exportDocx => 'Word（DOCX）';
+
+  @override
+  String get exportDocxD => '在 Word、Google 文档或 Pages 中继续编辑';
+
+  @override
+  String get exportEpub => 'EPUB（电子书）';
+
+  @override
+  String get exportEpubD => '用于 Apple Books、Kindle、Kobo 或 Calibre';
+
+  @override
+  String get exportXlsx => 'Excel（XLSX）';
+
+  @override
+  String get exportXlsxD => '每个表一张工作表，可用 Excel、Sheets 或 Numbers 打开';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => '纯表格 — 可通过“导入 CSV”再导回';
+
+  @override
+  String get htmlExport => '导出为网站 (HTML)';
+
+  @override
+  String get exportMarkdown => '导出为 Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => '带图片的笔记 — 可在 Obsidian 打开';
+
+  @override
+  String get exportMddxD => '此模块，用于移到另一个库';
+
+  @override
+  String get exportNoPage => '文件夹没有自己的页面';
+
+  @override
+  String get exportOnlyDocs => '仅限 Author、Classifier、Chronicler、Drafter 和 Inspector';
+
+  @override
+  String get exportOnlyBooks => '仅限 Author 的书';
+
+  @override
+  String get exportOnlyTables => '仅限 Classifier 和 Chronicler';
+
+  @override
+  String get exportGo => '导出';
+
+  @override
+  String get exportScope => '包含范围';
+
+  @override
+  String get exportScopePage => '此页';
+
+  @override
+  String get exportScopeModule => '此模块及所有元素';
+
+  @override
+  String get exportScopeInside => '此模块及其中所有内容';
+
+  @override
+  String get exportScopeNexus => '整个 Nexus';
+
+  @override
+  String get exportPaper => '纸张';
+
+  @override
+  String get exportOrientation => '方向';
+
+  @override
+  String get exportPortrait => '纵向';
+
+  @override
+  String get exportLandscape => '横向';
+
+  @override
+  String get exportHeaderFooter => '标题和页码';
+
+  @override
+  String get exportToc => '目录页';
+
+  @override
+  String get exportCsvHint => '单个表格：Classifier 的元素，或 Chronicler 的第一条时间线。不含公式字段。可通过“导入 CSV”读回。';
+
+  @override
+  String get exportXlsxHint => '每个表一张工作表（Chronicler 的每条时间线），表头加粗并冻结。不含公式字段。';
+
+  @override
+  String get exportMdAnyHint => '每个元素一个 .md（字段为属性），页面图片放在 assets/。可在 Obsidian 中将文件夹作为库打开。';
+
+  @override
+  String get exportDocxHint => '每章、每个元素或事件一个标题（显示在 Word 导航窗格），字段为表格，含页面图片，章与章之间分页。';
+
+  @override
+  String get exportEpubHint => '每章一个文件并附目录；书页标题封面即为封面。';
+
+  @override
+  String get exportMddxHint => '另一个 DraconDex 库可导入的 .mddx 文件。';
+
+  @override
+  String get exportFormulaSkipped => '未包含的公式字段：{names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV 只含一条时间线 — 其余 {n} 条请用 Excel 导出';
+
+  @override
+  String get exportMediaMissing => '有 {n} 张图片找不到，已略过';
+
+  @override
+  String get exportMarkdownEmpty => '还没有可导出的内容';
+
+  @override
+  String get exportWorking => '正在绘制页面…';
+
+  @override
+  String get exportPictures => '图片';
+
+  @override
+  String get exportRows => '行';
+
+  @override
+  String get exportHtmlPageD => '将此页导出为网页，图片一并附带';
+
+  @override
+  String get exportHtmlPageHint => '包含 index.html 及 media/ 中图片的 .zip — 解压后用任意浏览器打开 index.html。';
+
+  @override
+  String get exportPrint => '打印…';
 }

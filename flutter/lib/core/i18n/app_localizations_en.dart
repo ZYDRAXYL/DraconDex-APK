@@ -1804,4 +1804,145 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Insert row below';
+
+  @override
+  String get exportTitle => 'Export…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'To print, share or send to a printer';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'To keep editing in Word, Google Docs or Pages';
+
+  @override
+  String get exportEpub => 'EPUB (e-book)';
+
+  @override
+  String get exportEpubD => 'For Apple Books, Kindle, Kobo or Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'A sheet per table, for Excel, Sheets or Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Plain table — comes back in through Import CSV';
+
+  @override
+  String get htmlExport => 'Export as website (HTML)';
+
+  @override
+  String get exportMarkdown => 'Export as Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Notes with pictures — opens in Obsidian';
+
+  @override
+  String get exportMddxD => 'This module, to move into another vault';
+
+  @override
+  String get exportNoPage => 'A folder has no page of its own';
+
+  @override
+  String get exportOnlyDocs => 'Author, Classifier, Chronicler, Drafter and Inspector only';
+
+  @override
+  String get exportOnlyBooks => 'Author books only';
+
+  @override
+  String get exportOnlyTables => 'Classifier and Chronicler only';
+
+  @override
+  String get exportGo => 'Export';
+
+  @override
+  String get exportScope => 'What to include';
+
+  @override
+  String get exportScopePage => 'This page';
+
+  @override
+  String get exportScopeModule => 'This module and every element';
+
+  @override
+  String get exportScopeInside => 'This module and everything in it';
+
+  @override
+  String get exportScopeNexus => 'The whole Nexus';
+
+  @override
+  String get exportPaper => 'Paper';
+
+  @override
+  String get exportOrientation => 'Orientation';
+
+  @override
+  String get exportPortrait => 'Portrait';
+
+  @override
+  String get exportLandscape => 'Landscape';
+
+  @override
+  String get exportHeaderFooter => 'Title and page numbers';
+
+  @override
+  String get exportToc => 'Contents page';
+
+  @override
+  String get exportCsvHint => 'One table: a Classifier’s elements, or a Chronicler’s first timeline. Formula fields are left out. Import CSV reads it back.';
+
+  @override
+  String get exportXlsxHint => 'A sheet per table (every timeline of a Chronicler), bold frozen header. Formula fields are left out.';
+
+  @override
+  String get exportMdAnyHint => 'One .md file per element with its fields as properties; the pictures its page shows go in assets/. Open the folder as a vault in Obsidian.';
+
+  @override
+  String get exportDocxHint => 'A heading per chapter, element or event (Word’s navigation pane lists them), fields as a table, the page’s pictures, a page break between chapters.';
+
+  @override
+  String get exportEpubHint => 'One file per chapter with a contents list; the book page’s title cover becomes the cover.';
+
+  @override
+  String get exportMddxHint => 'A .mddx file another DraconDex vault can import.';
+
+  @override
+  String get exportFormulaSkipped => 'Formula fields left out: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV holds one timeline — {n} more are in the Excel export';
+
+  @override
+  String get exportMediaMissing => '{n} picture(s) could not be found and were left out';
+
+  @override
+  String get exportMarkdownEmpty => 'Nothing to export yet';
+
+  @override
+  String get exportWorking => 'Drawing the pages…';
+
+  @override
+  String get exportPictures => 'pictures';
+
+  @override
+  String get exportRows => 'rows';
+
+  @override
+  String get exportHtmlPageD => 'This page as a web page, pictures beside it';
+
+  @override
+  String get exportHtmlPageHint => 'A .zip with index.html and its pictures in media/ — unzip it and open index.html in any browser.';
+
+  @override
+  String get exportPrint => 'Print…';
 }

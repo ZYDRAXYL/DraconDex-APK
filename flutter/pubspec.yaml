@@ -1,7 +1,7 @@
 name: dracondex
 description: "DraconDex - Novel data management app"
 publish_to: 'none'
-version: 3.1.1+18
+version: 3.2.0-1+19
 
 environment:
   sdk: ^3.12.2
@@ -77,6 +77,8 @@ dependencies:
   # In-app update install: hands the downloaded release APK to Android's own
   # package installer (see UpdateService.installApk in update_service.dart).
   open_filex: ^4.7.0
+  pdf: ^3.12.0
+  printing: ^5.14.3
 
 dev_dependencies:
   flutter_test:
@@ -107,4 +109,11 @@ flutter:
       fonts:
         - asset: assets/fonts/NotoSans-Regular.ttf
         - asset: assets/fonts/NotoSans-Bold.ttf
+          weight: 700
+    # Thai glyphs, which NotoSans lacks — the PDF export's fallback font
+    # (lib/data/services/export/pdf_export.dart). Vendored from DraconDex-SDB.
+    - family: NotoSansThai
+      fonts:
+        - asset: assets/fonts/NotoSansThai-Regular.ttf
+        - asset: assets/fonts/NotoSansThai-Bold.ttf
           weight: 700
