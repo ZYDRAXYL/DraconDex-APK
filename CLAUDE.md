@@ -74,8 +74,8 @@ flutter build apk --release                   # universal
 ```
 
 `flutter/l10n.yaml.disabled` — l10n codegen is deliberately off and
-`app_localizations*.dart` are committed by hand. 13 ARB locales here against the
-desktop app's 18.
+`app_localizations*.dart` are committed by hand. 18 ARB locales, the same set
+as the desktop app; `l10n_parity_test` fails if a key is missing from any of them.
 
 ## Versions and releases
 

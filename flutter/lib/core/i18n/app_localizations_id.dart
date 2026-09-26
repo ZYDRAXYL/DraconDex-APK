@@ -105,6 +105,42 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeDaylight => 'Siang Hari';
 
   @override
+  String get themeShowAll => 'Tampilkan semua';
+
+  @override
+  String get themeShowLess => 'Ciutkan';
+
+  @override
+  String get pageLayout => 'Tata letak judul';
+
+  @override
+  String get titleAlign => 'Perataan judul';
+
+  @override
+  String get alignLeft => 'Kiri';
+
+  @override
+  String get alignCenter => 'Tengah';
+
+  @override
+  String get alignRight => 'Kanan';
+
+  @override
+  String get pageIcon => 'Ikon di atas judul';
+
+  @override
+  String get pageCover => 'Gambar sampul';
+
+  @override
+  String get pageCoverNone => 'Tanpa sampul';
+
+  @override
+  String get pageCoverEmpty => 'Impor gambar ke Nexus ini untuk dipakai sebagai sampul';
+
+  @override
+  String get pageLayoutScope => 'Hanya berlaku untuk halaman ini';
+
+  @override
   String get languageLabel => 'Bahasa';
 
   @override
@@ -1768,4 +1804,175 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Sisipkan baris di bawah';
+
+  @override
+  String get exportTitle => 'Ekspor…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Untuk dicetak, dibagikan, atau dikirim ke percetakan';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Untuk diedit lagi di Word, Google Docs, atau Pages';
+
+  @override
+  String get exportEpub => 'EPUB (e-book)';
+
+  @override
+  String get exportEpubD => 'Untuk Apple Books, Kindle, Kobo, atau Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Satu sheet per tabel, untuk Excel, Sheets, atau Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Tabel polos — bisa diimpor lagi lewat Impor CSV';
+
+  @override
+  String get htmlExport => 'Ekspor sebagai situs web (HTML)';
+
+  @override
+  String get exportMarkdown => 'Ekspor sebagai Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Catatan dengan gambar — bisa dibuka di Obsidian';
+
+  @override
+  String get exportMddxD => 'Modul ini, untuk dipindah ke vault lain';
+
+  @override
+  String get exportNoPage => 'Folder tidak punya halaman sendiri';
+
+  @override
+  String get exportOnlyDocs => 'Hanya Author, Classifier, Chronicler, Drafter, dan Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Hanya buku Author';
+
+  @override
+  String get exportOnlyTables => 'Hanya Classifier dan Chronicler';
+
+  @override
+  String get exportGo => 'Ekspor';
+
+  @override
+  String get exportScope => 'Cakupan';
+
+  @override
+  String get exportScopePage => 'Halaman ini';
+
+  @override
+  String get exportScopeModule => 'Modul ini dan semua elemen';
+
+  @override
+  String get exportScopeInside => 'Modul ini dan semua isinya';
+
+  @override
+  String get exportScopeNexus => 'Seluruh Nexus';
+
+  @override
+  String get exportPaper => 'Kertas';
+
+  @override
+  String get exportOrientation => 'Orientasi';
+
+  @override
+  String get exportPortrait => 'Tegak';
+
+  @override
+  String get exportLandscape => 'Mendatar';
+
+  @override
+  String get exportHeaderFooter => 'Judul dan nomor halaman';
+
+  @override
+  String get exportToc => 'Halaman daftar isi';
+
+  @override
+  String get exportCsvHint => 'Satu tabel: elemen Classifier, atau timeline pertama Chronicler. Field rumus tidak disertakan. Bisa dibaca lagi lewat Impor CSV.';
+
+  @override
+  String get exportXlsxHint => 'Satu sheet per tabel (setiap timeline Chronicler), header tebal dan dibekukan. Field rumus tidak disertakan.';
+
+  @override
+  String get exportMdAnyHint => 'Satu .md per elemen dengan field sebagai properti; gambar halaman masuk ke assets/. Buka foldernya sebagai vault di Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Satu judul per bab, elemen, atau peristiwa (muncul di panel navigasi Word), field sebagai tabel, gambar halaman, pemisah halaman antarbab.';
+
+  @override
+  String get exportEpubHint => 'Satu file per bab dengan daftar isi; sampul judul halaman buku menjadi sampulnya.';
+
+  @override
+  String get exportMddxHint => 'File .mddx yang bisa diimpor vault DraconDex lain.';
+
+  @override
+  String get exportFormulaSkipped => 'Field rumus tidak disertakan: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV hanya memuat satu timeline — {n} lainnya ada di ekspor Excel';
+
+  @override
+  String get exportMediaMissing => '{n} gambar tidak ditemukan dan dilewati';
+
+  @override
+  String get exportMarkdownEmpty => 'Belum ada yang bisa diekspor';
+
+  @override
+  String get exportWorking => 'Menggambar halaman…';
+
+  @override
+  String get exportPictures => 'gambar';
+
+  @override
+  String get exportRows => 'baris';
+
+  @override
+  String get exportHtmlPageD => 'Halaman ini sebagai halaman web, beserta gambarnya';
+
+  @override
+  String get exportHtmlPageHint => 'File .zip berisi index.html dan gambarnya di media/ — ekstrak lalu buka index.html di browser apa pun.';
+
+  @override
+  String get exportPrint => 'Cetak…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Audio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Model 3D';
+
+  @override
+  String get pcMedia => 'Media campuran';
+
+  @override
+  String get pcMediaEmpty => 'Belum ada berkas.';
+
+  @override
+  String get pbChooseFile => 'Pilih berkas';
+
+  @override
+  String get pcAddFile => 'Tambah file';
+
+  @override
+  String get pcOpenIn => 'Buka di aplikasi lain';
+
+  @override
+  String get mediaOpenFailed => 'File ini tidak dapat dibuka';
 }

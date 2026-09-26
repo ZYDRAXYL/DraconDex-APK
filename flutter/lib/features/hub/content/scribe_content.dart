@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
+import '../../../data/models/module_model.dart';
 import '../../../data/models/scribe_model.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../page/views/view_common.dart';
 
 /// Scribe kind: chat-style notes. Sessions across the top, the selected
 /// session's transcript below, and a composer that appends to it.
@@ -14,7 +16,10 @@ import '../../../widgets/confirm_dialog.dart';
 /// they send it.
 class ScribeContent extends ConsumerStatefulWidget {
   final int moduleId;
-  const ScribeContent({super.key, required this.moduleId});
+  /// The module, when the page has it: with no sessions yet the kind's empty
+  /// state (KindEmptyState) stands in for the session list.
+  final ModuleModel? module;
+  const ScribeContent({super.key, required this.moduleId, this.module});
 
   @override
   ConsumerState<ScribeContent> createState() => _ScribeContentState();
@@ -83,7 +88,9 @@ class _ScribeContentState extends ConsumerState<ScribeContent> {
                 ],
               ),
             ),
-            if (sessions.isEmpty)
+            if (sessions.isEmpty && widget.module != null)
+              KindEmptyState(module: widget.module!, note: l10n.scribeNoSessions, startLabel: l10n.scribeNewSession, onStart: _addSession)
+            else if (sessions.isEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
                 child: Text(l10n.scribeNoSessions, style: theme.textTheme.bodySmall),

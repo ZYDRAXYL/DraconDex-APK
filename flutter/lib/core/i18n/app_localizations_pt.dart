@@ -105,6 +105,42 @@ class AppLocalizationsPt extends AppLocalizations {
   String get themeDaylight => 'Luz do Dia';
 
   @override
+  String get themeShowAll => 'Mostrar tudo';
+
+  @override
+  String get themeShowLess => 'Recolher';
+
+  @override
+  String get pageLayout => 'Layout do título';
+
+  @override
+  String get titleAlign => 'Alinhar título';
+
+  @override
+  String get alignLeft => 'Esquerda';
+
+  @override
+  String get alignCenter => 'Centro';
+
+  @override
+  String get alignRight => 'Direita';
+
+  @override
+  String get pageIcon => 'Ícone acima do título';
+
+  @override
+  String get pageCover => 'Imagem de capa';
+
+  @override
+  String get pageCoverNone => 'Sem capa';
+
+  @override
+  String get pageCoverEmpty => 'Importe uma imagem para este Nexus para usá-la como capa';
+
+  @override
+  String get pageLayoutScope => 'Aplica-se só a esta página';
+
+  @override
   String get languageLabel => 'Idioma';
 
   @override
@@ -1768,4 +1804,175 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Inserir linha abaixo';
+
+  @override
+  String get exportTitle => 'Exportar…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Para imprimir, compartilhar ou mandar à gráfica';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Para continuar editando no Word, Google Docs ou Pages';
+
+  @override
+  String get exportEpub => 'EPUB (e-book)';
+
+  @override
+  String get exportEpubD => 'Para Apple Books, Kindle, Kobo ou Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Uma planilha por tabela, para Excel, Sheets ou Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Tabela simples — volta pelo Importar CSV';
+
+  @override
+  String get htmlExport => 'Exportar como site (HTML)';
+
+  @override
+  String get exportMarkdown => 'Exportar como Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Notas com imagens — abre no Obsidian';
+
+  @override
+  String get exportMddxD => 'Este módulo, para levar a outro cofre';
+
+  @override
+  String get exportNoPage => 'Uma pasta não tem página própria';
+
+  @override
+  String get exportOnlyDocs => 'Só Author, Classifier, Chronicler, Drafter e Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Só livros do Author';
+
+  @override
+  String get exportOnlyTables => 'Só Classifier e Chronicler';
+
+  @override
+  String get exportGo => 'Exportar';
+
+  @override
+  String get exportScope => 'O que incluir';
+
+  @override
+  String get exportScopePage => 'Esta página';
+
+  @override
+  String get exportScopeModule => 'Este módulo e todos os elementos';
+
+  @override
+  String get exportScopeInside => 'Este módulo e tudo dentro dele';
+
+  @override
+  String get exportScopeNexus => 'O Nexus inteiro';
+
+  @override
+  String get exportPaper => 'Papel';
+
+  @override
+  String get exportOrientation => 'Orientação';
+
+  @override
+  String get exportPortrait => 'Retrato';
+
+  @override
+  String get exportLandscape => 'Paisagem';
+
+  @override
+  String get exportHeaderFooter => 'Título e números de página';
+
+  @override
+  String get exportToc => 'Página de sumário';
+
+  @override
+  String get exportCsvHint => 'Uma tabela: os elementos de um Classifier ou a primeira linha do tempo de um Chronicler. Campos de fórmula ficam de fora. O Importar CSV lê de volta.';
+
+  @override
+  String get exportXlsxHint => 'Uma planilha por tabela (cada linha do tempo de um Chronicler), cabeçalho em negrito e congelado. Campos de fórmula ficam de fora.';
+
+  @override
+  String get exportMdAnyHint => 'Um .md por elemento, com os campos como propriedades; as imagens da página vão em assets/. Abra a pasta como cofre no Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Um título por capítulo, elemento ou evento (no painel de navegação do Word), campos em tabela, as imagens da página e quebra de página entre capítulos.';
+
+  @override
+  String get exportEpubHint => 'Um arquivo por capítulo com sumário; a capa do título da página do livro vira a capa.';
+
+  @override
+  String get exportMddxHint => 'Um arquivo .mddx que outro cofre do DraconDex importa.';
+
+  @override
+  String get exportFormulaSkipped => 'Campos de fórmula fora: {names}';
+
+  @override
+  String get exportMoreTimelines => 'O CSV leva uma linha do tempo — as outras {n} estão na exportação para Excel';
+
+  @override
+  String get exportMediaMissing => '{n} imagem(ns) não encontrada(s) ficaram de fora';
+
+  @override
+  String get exportMarkdownEmpty => 'Ainda não há nada para exportar';
+
+  @override
+  String get exportWorking => 'Desenhando as páginas…';
+
+  @override
+  String get exportPictures => 'imagens';
+
+  @override
+  String get exportRows => 'linhas';
+
+  @override
+  String get exportHtmlPageD => 'Esta página como página web, com as imagens';
+
+  @override
+  String get exportHtmlPageHint => 'Um .zip com index.html e as imagens em media/ — descompacte e abra o index.html em qualquer navegador.';
+
+  @override
+  String get exportPrint => 'Imprimir…';
+
+  @override
+  String get pcVideo => 'Vídeo';
+
+  @override
+  String get pcAudio => 'Áudio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Modelo 3D';
+
+  @override
+  String get pcMedia => 'Multimédia';
+
+  @override
+  String get pcMediaEmpty => 'Ainda sem ficheiro.';
+
+  @override
+  String get pbChooseFile => 'Escolher um ficheiro';
+
+  @override
+  String get pcAddFile => 'Adicionar um arquivo';
+
+  @override
+  String get pcOpenIn => 'Abrir em outro app';
+
+  @override
+  String get mediaOpenFailed => 'Não foi possível abrir este arquivo';
 }

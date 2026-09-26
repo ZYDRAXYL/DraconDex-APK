@@ -272,7 +272,7 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Diviner',
     icon: Icons.casino_outlined,
     description: 'Random tables and dice rolls',
-    contentImplemented: false,
+    contentImplemented: true,
   ),
 };
 

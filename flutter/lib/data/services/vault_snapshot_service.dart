@@ -1104,8 +1104,18 @@ class VaultSnapshotService {
           if (target == null) continue;
           value = '$target';
         }
+        // An element page's title layout is keyed by the element
+        // ("pageHead:cobj_12", APP docs/REDESIGN.md C6) — the key itself goes
+        // through the entity maps, the same as page_block.item. Unmappable
+        // = the element is not in this snapshot, so the row is dropped.
+        var key = '${u['key']}';
+        if (key.startsWith('pageHead:')) {
+          final k = remapEntityKey(key.substring(9), keyMaps);
+          if (k == null) continue;
+          key = 'pageHead:$k';
+        }
         await txn.rawInsert('INSERT OR IGNORE INTO module_ui (module_ref, ui_key, ui_value) VALUES (?,?,?)',
-            <Object?>[m, u['key'], value]);
+            <Object?>[m, key, value]);
       }
       for (final e in legacyKind.entries) {
         if (e.value != 'connector') continue;

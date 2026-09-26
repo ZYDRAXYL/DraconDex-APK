@@ -105,6 +105,42 @@ class AppLocalizationsJa extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'すべて表示';
+
+  @override
+  String get themeShowLess => '折りたたむ';
+
+  @override
+  String get pageLayout => 'タイトルのレイアウト';
+
+  @override
+  String get titleAlign => 'タイトルの配置';
+
+  @override
+  String get alignLeft => '左';
+
+  @override
+  String get alignCenter => '中央';
+
+  @override
+  String get alignRight => '右';
+
+  @override
+  String get pageIcon => 'タイトル上のアイコン';
+
+  @override
+  String get pageCover => 'カバー画像';
+
+  @override
+  String get pageCoverNone => 'カバーなし';
+
+  @override
+  String get pageCoverEmpty => 'カバーにするには、このNexusに画像をインポートしてください';
+
+  @override
+  String get pageLayoutScope => 'このページだけに適用されます';
+
+  @override
   String get languageLabel => '言語';
 
   @override
@@ -1768,4 +1804,175 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get clsInsertBelow => '下に行を挿入';
+
+  @override
+  String get exportTitle => 'エクスポート…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => '印刷・共有・入稿用';
+
+  @override
+  String get exportDocx => 'Word（DOCX）';
+
+  @override
+  String get exportDocxD => 'Word・Googleドキュメント・Pagesで編集を続けるため';
+
+  @override
+  String get exportEpub => 'EPUB（電子書籍）';
+
+  @override
+  String get exportEpubD => 'Apple Books・Kindle・Kobo・Calibre用';
+
+  @override
+  String get exportXlsx => 'Excel（XLSX）';
+
+  @override
+  String get exportXlsxD => '表ごとに1シート — Excel・Sheets・Numbers 用';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'シンプルな表 — CSV取り込みで戻せます';
+
+  @override
+  String get htmlExport => 'Webサイトとして書き出す (HTML)';
+
+  @override
+  String get exportMarkdown => 'Markdown としてエクスポート (.zip)';
+
+  @override
+  String get exportMdAnyD => '画像付きノート — Obsidianで開けます';
+
+  @override
+  String get exportMddxD => 'このモジュールを別のボールトへ移すため';
+
+  @override
+  String get exportNoPage => 'フォルダーには独自のページがありません';
+
+  @override
+  String get exportOnlyDocs => 'Author・Classifier・Chronicler・Drafter・Inspectorのみ';
+
+  @override
+  String get exportOnlyBooks => 'Authorの本のみ';
+
+  @override
+  String get exportOnlyTables => 'ClassifierとChroniclerのみ';
+
+  @override
+  String get exportGo => 'エクスポート';
+
+  @override
+  String get exportScope => '含める範囲';
+
+  @override
+  String get exportScopePage => 'このページ';
+
+  @override
+  String get exportScopeModule => 'このモジュールと全要素';
+
+  @override
+  String get exportScopeInside => 'このモジュールと中身すべて';
+
+  @override
+  String get exportScopeNexus => 'Nexus全体';
+
+  @override
+  String get exportPaper => '用紙';
+
+  @override
+  String get exportOrientation => '向き';
+
+  @override
+  String get exportPortrait => '縦';
+
+  @override
+  String get exportLandscape => '横';
+
+  @override
+  String get exportHeaderFooter => 'タイトルとページ番号';
+
+  @override
+  String get exportToc => '目次ページ';
+
+  @override
+  String get exportCsvHint => '1つの表：Classifierの要素、またはChroniclerの最初のタイムライン。数式フィールドは含みません。CSV取り込みで読み戻せます。';
+
+  @override
+  String get exportXlsxHint => '表ごとに1シート（Chroniclerは全タイムライン）、太字で固定された見出し行。数式フィールドは含みません。';
+
+  @override
+  String get exportMdAnyHint => '要素ごとに1つの .md（フィールドはプロパティ）。ページの画像は assets/ に入ります。フォルダーをObsidianのボールトとして開けます。';
+
+  @override
+  String get exportDocxHint => '章・要素・出来事ごとに見出し（Wordのナビゲーションに表示）、フィールドは表、ページの画像、章の間に改ページ。';
+
+  @override
+  String get exportEpubHint => '章ごとに1ファイル、目次付き。本のページのタイトルカバーが表紙になります。';
+
+  @override
+  String get exportMddxHint => '別のDraconDexボールトで取り込める .mddx ファイル。';
+
+  @override
+  String get exportFormulaSkipped => '除外した数式フィールド：{names}';
+
+  @override
+  String get exportMoreTimelines => 'CSVは1本のタイムラインのみ — 残り{n}本はExcelで';
+
+  @override
+  String get exportMediaMissing => '{n} 枚の画像が見つからず、除外しました';
+
+  @override
+  String get exportMarkdownEmpty => 'エクスポートする内容がまだありません';
+
+  @override
+  String get exportWorking => 'ページを描画中…';
+
+  @override
+  String get exportPictures => '画像';
+
+  @override
+  String get exportRows => '行';
+
+  @override
+  String get exportHtmlPageD => 'このページをWebページとして — 画像も同梱';
+
+  @override
+  String get exportHtmlPageHint => 'index.html と media/ 内の画像を含む .zip — 展開して任意のブラウザで index.html を開きます。';
+
+  @override
+  String get exportPrint => '印刷…';
+
+  @override
+  String get pcVideo => '動画';
+
+  @override
+  String get pcAudio => '音声';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3Dモデル';
+
+  @override
+  String get pcMedia => 'メディア';
+
+  @override
+  String get pcMediaEmpty => 'ファイルはまだありません。';
+
+  @override
+  String get pbChooseFile => 'ファイルを選ぶ';
+
+  @override
+  String get pcAddFile => 'ファイルを追加';
+
+  @override
+  String get pcOpenIn => '別のアプリで開く';
+
+  @override
+  String get mediaOpenFailed => 'このファイルを開けませんでした';
 }

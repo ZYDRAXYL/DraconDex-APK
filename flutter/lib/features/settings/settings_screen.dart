@@ -5,7 +5,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../core/providers/settings_provider.dart';
-import '../../core/theme/app_theme.dart';
 import '../../data/services/drive_backup_service.dart';
 import '../../data/services/google_auth_service.dart';
 import '../../data/services/import_export_service.dart';
@@ -15,6 +14,9 @@ import '../../providers/update_provider.dart';
 import '../update/update_dialog.dart';
 import 'google_account_screen.dart';
 import 'supabase_setup_screen.dart';
+import '../../core/theme/ddx_theme.dart';
+import '../../widgets/grouped_section.dart';
+import 'theme_picker.dart';
 import 'transfer_screen.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -29,20 +31,9 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.moduleSettings)),
       body: ListView(
-        children: [
+        children: _iosGrouped(context, [
           _SectionHeader(l10n.settingsAppearance),
-          ListTile(
-            title: Text(l10n.themeLabel),
-            subtitle: Text(_themeName(l10n, settings.theme)),
-            trailing: DropdownButton<AppThemeMode>(
-              value: settings.theme,
-              underline: const SizedBox(),
-              items: AppThemeMode.values
-                  .map((t) => DropdownMenuItem(value: t, child: Text(_themeName(l10n, t))))
-                  .toList(),
-              onChanged: (t) { if (t != null) notifier.setTheme(t); },
-            ),
-          ),
+          const ThemePickerSection(),
           ListTile(
             title: Text(l10n.uiScaleLabel),
             subtitle: Slider(
@@ -125,7 +116,7 @@ class SettingsScreen extends ConsumerWidget {
             subtitle: Text(l10n.checkUpdatesSubtitle),
             onTap: () => _checkForUpdates(context, ref, l10n),
           ),
-        ],
+        ]),
       ),
     );
   }
@@ -142,12 +133,6 @@ class SettingsScreen extends ConsumerWidget {
       );
     }
   }
-
-  String _themeName(AppLocalizations l10n, AppThemeMode t) => switch (t) {
-    AppThemeMode.midnight => l10n.themeMidnight,
-    AppThemeMode.moonlight => l10n.themeMoonlight,
-    AppThemeMode.daylight => l10n.themeDaylight,
-  };
 
   Future<void> _export(BuildContext context, AppLocalizations l10n) async {
     if (kIsWeb) {
@@ -342,6 +327,31 @@ class SettingsScreen extends ConsumerWidget {
     'tr': 'Türkçe',
     'qd': '🐉 Draconic',
   };
+}
+
+/// On iPhone/iPad the sections become grouped inset lists (APP
+/// docs/REDESIGN.md C3): each header starts a card, the dividers between
+/// sections go (the gap between cards says the same). Elsewhere, unchanged.
+List<Widget> _iosGrouped(BuildContext context, List<Widget> children) {
+  if (!context.isIosStyle) return children;
+  final out = <Widget>[];
+  String? header;
+  var rows = <Widget>[];
+  void flush() {
+    if (rows.isNotEmpty || header != null) out.add(DdxGroupedSection(header: header, children: rows));
+    rows = <Widget>[];
+  }
+  for (final w in children) {
+    if (w is Divider) continue;
+    if (w is _SectionHeader) {
+      flush();
+      header = w.title;
+      continue;
+    }
+    rows.add(w);
+  }
+  flush();
+  return [const SizedBox(height: 8), ...out];
 }
 
 class _SectionHeader extends StatelessWidget {

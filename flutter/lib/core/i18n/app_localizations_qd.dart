@@ -105,6 +105,42 @@ class AppLocalizationsQd extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Shewyth Alle';
+
+  @override
+  String get themeShowLess => 'Foldyth Inne';
+
+  @override
+  String get pageLayout => 'Tytl layuth';
+
+  @override
+  String get titleAlign => 'Alygn tytl';
+
+  @override
+  String get alignLeft => 'Lefth';
+
+  @override
+  String get alignCenter => 'Centyr';
+
+  @override
+  String get alignRight => 'Ryth';
+
+  @override
+  String get pageIcon => 'Iconyx abuv tytl';
+
+  @override
+  String get pageCover => 'Kovyr imaj';
+
+  @override
+  String get pageCoverNone => 'Nyn kovyr';
+
+  @override
+  String get pageCoverEmpty => 'Importyth imaj into Nexus fyr kovyr';
+
+  @override
+  String get pageLayoutScope => 'Onlyth thys pagyx';
+
+  @override
   String get languageLabel => 'Zhorvex';
 
   @override
@@ -1768,4 +1804,175 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Insert row below';
+
+  @override
+  String get exportTitle => 'Sende Forth…';
+
+  @override
+  String get exportPdf => 'PDF Scrolle';
+
+  @override
+  String get exportPdfD => 'For the presse, or to share abroade';
+
+  @override
+  String get exportDocx => 'Word Scrolle (DOCX)';
+
+  @override
+  String get exportDocxD => 'To scribe on in other hands';
+
+  @override
+  String get exportEpub => 'EPUB (bound tome)';
+
+  @override
+  String get exportEpubD => 'For readers of every realm';
+
+  @override
+  String get exportXlsx => 'Ledger (XLSX)';
+
+  @override
+  String get exportXlsxD => 'A leafe for every table';
+
+  @override
+  String get exportCsv => 'CSV Roll';
+
+  @override
+  String get exportCsvD => 'A plaine roll, that may come home againe';
+
+  @override
+  String get htmlExport => 'Sende forthe as a Webbe (HTML)';
+
+  @override
+  String get exportMarkdown => 'Sendyth forth as Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Notes with limnings';
+
+  @override
+  String get exportMddxD => 'This module, to carrie to another hoard';
+
+  @override
+  String get exportNoPage => 'A folder hath no page of its owne';
+
+  @override
+  String get exportOnlyDocs => 'Author, Classifier, Chronicler, Drafter and Inspector onlie';
+
+  @override
+  String get exportOnlyBooks => 'Author’s tomes onlie';
+
+  @override
+  String get exportOnlyTables => 'Classifier and Chronicler onlie';
+
+  @override
+  String get exportGo => 'Sende Forth';
+
+  @override
+  String get exportScope => 'What to bringe';
+
+  @override
+  String get exportScopePage => 'This page';
+
+  @override
+  String get exportScopeModule => 'This module and all its thinges';
+
+  @override
+  String get exportScopeInside => 'This module and all within';
+
+  @override
+  String get exportScopeNexus => 'The whole Nexus';
+
+  @override
+  String get exportPaper => 'Parchment';
+
+  @override
+  String get exportOrientation => 'Turning';
+
+  @override
+  String get exportPortrait => 'Upright';
+
+  @override
+  String get exportLandscape => 'Broadwise';
+
+  @override
+  String get exportHeaderFooter => 'Title and page nombres';
+
+  @override
+  String get exportToc => 'Page of contentes';
+
+  @override
+  String get exportCsvHint => 'One roll: a Classifier’s thinges, or a Chronicler’s first line of time. Formulae are left behinde.';
+
+  @override
+  String get exportXlsxHint => 'A leafe for every table, the head made bolde and fixt. Formulae are left behinde.';
+
+  @override
+  String get exportMdAnyHint => 'A scrolle for every thing; its limnings bide in assets/.';
+
+  @override
+  String get exportDocxHint => 'A heading for each chapter, fields in a table, and a fresh leafe between chapters.';
+
+  @override
+  String get exportEpubHint => 'A leafe for each chapter, and the tome’s face upon its front.';
+
+  @override
+  String get exportMddxHint => 'A .mddx scrolle another hoard may take in.';
+
+  @override
+  String get exportFormulaSkipped => 'Formulae left behinde: {names}';
+
+  @override
+  String get exportMoreTimelines => 'A CSV holdeth but one line — {n} more bide in the Ledger';
+
+  @override
+  String get exportMediaMissing => '{n} limning(s) could not be founde, and were left behinde';
+
+  @override
+  String get exportMarkdownEmpty => 'Noght yet to sendyth forth';
+
+  @override
+  String get exportWorking => 'Limning the pages…';
+
+  @override
+  String get exportPictures => 'limnings';
+
+  @override
+  String get exportRows => 'rowes';
+
+  @override
+  String get exportHtmlPageD => 'Thys Pagyx as a Webbrath, its Imagyx besyde';
+
+  @override
+  String get exportHtmlPageHint => 'A .zip bearing index.html and its Imagyx in media/ — unbynd it and open index.html in any Browsyr.';
+
+  @override
+  String get exportPrint => 'Inkscrybe…';
+
+  @override
+  String get pcVideo => 'Moving Picture';
+
+  @override
+  String get pcAudio => 'Soundes';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Carven Figure';
+
+  @override
+  String get pcMedia => 'Sundrie Things';
+
+  @override
+  String get pcMediaEmpty => 'No Scrowle as yet.';
+
+  @override
+  String get pbChooseFile => 'Chese a Scrowle';
+
+  @override
+  String get pcAddFile => 'Grothul a Scrollyx';
+
+  @override
+  String get pcOpenIn => 'Unseal in anothyr Enginyx';
+
+  @override
+  String get mediaOpenFailed => 'Thys Scrollyx wouldst not unseal';
 }

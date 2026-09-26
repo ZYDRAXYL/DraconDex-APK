@@ -322,6 +322,78 @@ abstract class AppLocalizations {
   /// **'Daylight'**
   String get themeDaylight;
 
+  /// No description provided for @themeShowAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Show all'**
+  String get themeShowAll;
+
+  /// No description provided for @themeShowLess.
+  ///
+  /// In en, this message translates to:
+  /// **'Collapse'**
+  String get themeShowLess;
+
+  /// No description provided for @pageLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Title layout'**
+  String get pageLayout;
+
+  /// No description provided for @titleAlign.
+  ///
+  /// In en, this message translates to:
+  /// **'Align title'**
+  String get titleAlign;
+
+  /// No description provided for @alignLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get alignLeft;
+
+  /// No description provided for @alignCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Center'**
+  String get alignCenter;
+
+  /// No description provided for @alignRight.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get alignRight;
+
+  /// No description provided for @pageIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon above the title'**
+  String get pageIcon;
+
+  /// No description provided for @pageCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover image'**
+  String get pageCover;
+
+  /// No description provided for @pageCoverNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No cover'**
+  String get pageCoverNone;
+
+  /// No description provided for @pageCoverEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Import an image into this Nexus to use it as a cover'**
+  String get pageCoverEmpty;
+
+  /// No description provided for @pageLayoutScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies to this page only'**
+  String get pageLayoutScope;
+
   /// No description provided for @languageLabel.
   ///
   /// In en, this message translates to:
@@ -3647,6 +3719,348 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Insert row below'**
   String get clsInsertBelow;
+
+  /// No description provided for @exportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **Export…**
+  String get exportTitle;
+
+  /// No description provided for @exportPdf.
+  ///
+  /// In en, this message translates to:
+  /// **PDF**
+  String get exportPdf;
+
+  /// No description provided for @exportPdfD.
+  ///
+  /// In en, this message translates to:
+  /// **To print, share or send to a printer**
+  String get exportPdfD;
+
+  /// No description provided for @exportDocx.
+  ///
+  /// In en, this message translates to:
+  /// **Word (DOCX)**
+  String get exportDocx;
+
+  /// No description provided for @exportDocxD.
+  ///
+  /// In en, this message translates to:
+  /// **To keep editing in Word, Google Docs or Pages**
+  String get exportDocxD;
+
+  /// No description provided for @exportEpub.
+  ///
+  /// In en, this message translates to:
+  /// **EPUB (e-book)**
+  String get exportEpub;
+
+  /// No description provided for @exportEpubD.
+  ///
+  /// In en, this message translates to:
+  /// **For Apple Books, Kindle, Kobo or Calibre**
+  String get exportEpubD;
+
+  /// No description provided for @exportXlsx.
+  ///
+  /// In en, this message translates to:
+  /// **Excel (XLSX)**
+  String get exportXlsx;
+
+  /// No description provided for @exportXlsxD.
+  ///
+  /// In en, this message translates to:
+  /// **A sheet per table, for Excel, Sheets or Numbers**
+  String get exportXlsxD;
+
+  /// No description provided for @exportCsv.
+  ///
+  /// In en, this message translates to:
+  /// **CSV**
+  String get exportCsv;
+
+  /// No description provided for @exportCsvD.
+  ///
+  /// In en, this message translates to:
+  /// **Plain table — comes back in through Import CSV**
+  String get exportCsvD;
+
+  /// No description provided for @htmlExport.
+  ///
+  /// In en, this message translates to:
+  /// **Export as website (HTML)**
+  String get htmlExport;
+
+  /// No description provided for @exportMarkdown.
+  ///
+  /// In en, this message translates to:
+  /// **Export as Markdown (.zip)**
+  String get exportMarkdown;
+
+  /// No description provided for @exportMdAnyD.
+  ///
+  /// In en, this message translates to:
+  /// **Notes with pictures — opens in Obsidian**
+  String get exportMdAnyD;
+
+  /// No description provided for @exportMddxD.
+  ///
+  /// In en, this message translates to:
+  /// **This module, to move into another vault**
+  String get exportMddxD;
+
+  /// No description provided for @exportNoPage.
+  ///
+  /// In en, this message translates to:
+  /// **A folder has no page of its own**
+  String get exportNoPage;
+
+  /// No description provided for @exportOnlyDocs.
+  ///
+  /// In en, this message translates to:
+  /// **Author, Classifier, Chronicler, Drafter and Inspector only**
+  String get exportOnlyDocs;
+
+  /// No description provided for @exportOnlyBooks.
+  ///
+  /// In en, this message translates to:
+  /// **Author books only**
+  String get exportOnlyBooks;
+
+  /// No description provided for @exportOnlyTables.
+  ///
+  /// In en, this message translates to:
+  /// **Classifier and Chronicler only**
+  String get exportOnlyTables;
+
+  /// No description provided for @exportGo.
+  ///
+  /// In en, this message translates to:
+  /// **Export**
+  String get exportGo;
+
+  /// No description provided for @exportScope.
+  ///
+  /// In en, this message translates to:
+  /// **What to include**
+  String get exportScope;
+
+  /// No description provided for @exportScopePage.
+  ///
+  /// In en, this message translates to:
+  /// **This page**
+  String get exportScopePage;
+
+  /// No description provided for @exportScopeModule.
+  ///
+  /// In en, this message translates to:
+  /// **This module and every element**
+  String get exportScopeModule;
+
+  /// No description provided for @exportScopeInside.
+  ///
+  /// In en, this message translates to:
+  /// **This module and everything in it**
+  String get exportScopeInside;
+
+  /// No description provided for @exportScopeNexus.
+  ///
+  /// In en, this message translates to:
+  /// **The whole Nexus**
+  String get exportScopeNexus;
+
+  /// No description provided for @exportPaper.
+  ///
+  /// In en, this message translates to:
+  /// **Paper**
+  String get exportPaper;
+
+  /// No description provided for @exportOrientation.
+  ///
+  /// In en, this message translates to:
+  /// **Orientation**
+  String get exportOrientation;
+
+  /// No description provided for @exportPortrait.
+  ///
+  /// In en, this message translates to:
+  /// **Portrait**
+  String get exportPortrait;
+
+  /// No description provided for @exportLandscape.
+  ///
+  /// In en, this message translates to:
+  /// **Landscape**
+  String get exportLandscape;
+
+  /// No description provided for @exportHeaderFooter.
+  ///
+  /// In en, this message translates to:
+  /// **Title and page numbers**
+  String get exportHeaderFooter;
+
+  /// No description provided for @exportToc.
+  ///
+  /// In en, this message translates to:
+  /// **Contents page**
+  String get exportToc;
+
+  /// No description provided for @exportCsvHint.
+  ///
+  /// In en, this message translates to:
+  /// **One table: a Classifier’s elements, or a Chronicler’s first timeline. Formula fields are left out. Import CSV reads it back.**
+  String get exportCsvHint;
+
+  /// No description provided for @exportXlsxHint.
+  ///
+  /// In en, this message translates to:
+  /// **A sheet per table (every timeline of a Chronicler), bold frozen header. Formula fields are left out.**
+  String get exportXlsxHint;
+
+  /// No description provided for @exportMdAnyHint.
+  ///
+  /// In en, this message translates to:
+  /// **One .md file per element with its fields as properties; the pictures its page shows go in assets/. Open the folder as a vault in Obsidian.**
+  String get exportMdAnyHint;
+
+  /// No description provided for @exportDocxHint.
+  ///
+  /// In en, this message translates to:
+  /// **A heading per chapter, element or event (Word’s navigation pane lists them), fields as a table, the page’s pictures, a page break between chapters.**
+  String get exportDocxHint;
+
+  /// No description provided for @exportEpubHint.
+  ///
+  /// In en, this message translates to:
+  /// **One file per chapter with a contents list; the book page’s title cover becomes the cover.**
+  String get exportEpubHint;
+
+  /// No description provided for @exportMddxHint.
+  ///
+  /// In en, this message translates to:
+  /// **A .mddx file another DraconDex vault can import.**
+  String get exportMddxHint;
+
+  /// No description provided for @exportFormulaSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **Formula fields left out: {names}**
+  String get exportFormulaSkipped;
+
+  /// No description provided for @exportMoreTimelines.
+  ///
+  /// In en, this message translates to:
+  /// **CSV holds one timeline — {n} more are in the Excel export**
+  String get exportMoreTimelines;
+
+  /// No description provided for @exportMediaMissing.
+  ///
+  /// In en, this message translates to:
+  /// **{n} picture(s) could not be found and were left out**
+  String get exportMediaMissing;
+
+  /// No description provided for @exportMarkdownEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **Nothing to export yet**
+  String get exportMarkdownEmpty;
+
+  /// No description provided for @exportWorking.
+  ///
+  /// In en, this message translates to:
+  /// **Drawing the pages…**
+  String get exportWorking;
+
+  /// No description provided for @exportPictures.
+  ///
+  /// In en, this message translates to:
+  /// **pictures**
+  String get exportPictures;
+
+  /// No description provided for @exportRows.
+  ///
+  /// In en, this message translates to:
+  /// **rows**
+  String get exportRows;
+
+  /// No description provided for @exportHtmlPageD.
+  ///
+  /// In en, this message translates to:
+  /// **This page as a web page, pictures beside it**
+  String get exportHtmlPageD;
+
+  /// No description provided for @exportHtmlPageHint.
+  ///
+  /// In en, this message translates to:
+  /// **A .zip with index.html and its pictures in media/ — unzip it and open index.html in any browser.**
+  String get exportHtmlPageHint;
+
+  /// No description provided for @exportPrint.
+  ///
+  /// In en, this message translates to:
+  /// **Print…**
+  String get exportPrint;
+
+  /// No description provided for @pcVideo.
+  ///
+  /// In en, this message translates to:
+  /// **Video**
+  String get pcVideo;
+
+  /// No description provided for @pcAudio.
+  ///
+  /// In en, this message translates to:
+  /// **Audio**
+  String get pcAudio;
+
+  /// No description provided for @pcPdf.
+  ///
+  /// In en, this message translates to:
+  /// **PDF**
+  String get pcPdf;
+
+  /// No description provided for @pcModel3d.
+  ///
+  /// In en, this message translates to:
+  /// **3D model**
+  String get pcModel3d;
+
+  /// No description provided for @pcMedia.
+  ///
+  /// In en, this message translates to:
+  /// **Mixed media**
+  String get pcMedia;
+
+  /// No description provided for @pcMediaEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No file yet.**
+  String get pcMediaEmpty;
+
+  /// No description provided for @pbChooseFile.
+  ///
+  /// In en, this message translates to:
+  /// **Choose a file**
+  String get pbChooseFile;
+
+  /// No description provided for @pcAddFile.
+  ///
+  /// In en, this message translates to:
+  /// **Add a file**
+  String get pcAddFile;
+
+  /// No description provided for @pcOpenIn.
+  ///
+  /// In en, this message translates to:
+  /// **Open in another app**
+  String get pcOpenIn;
+
+  /// No description provided for @mediaOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **This file could not be opened**
+  String get mediaOpenFailed;
 
 }
 

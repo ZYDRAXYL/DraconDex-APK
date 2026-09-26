@@ -3,8 +3,8 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "400dd41",
-    "version": "2.0.3"
+    "ref": "8248733",
+    "version": "2.0.9"
   },
   "expect": {
     "vaultSchemaVersion": 6,
@@ -22,6 +22,10 @@
     "flutter/lib/core/entity/entity_kinds.g.dart": {
       "artifact": "generated/flutter/entity_kinds.g.dart",
       "sha256": "ce30f7eee2552a5496ab33f8dda8e0662043c5356e4340537636b021ff47f9d5"
+    },
+    "flutter/lib/core/theme/tokens.g.dart": {
+      "artifact": "generated/flutter/tokens.g.dart",
+      "sha256": "1e075cb1e9df962cfa25091171ef1cf3d06d290d1a089c954c7f1aad029c0545"
     },
     "flutter/assets/images/DraconDex-IconApp.png": {
       "artifact": "assets/flutter/DraconDex-IconApp.png",
@@ -47,13 +51,29 @@
       "artifact": "assets/fonts/NotoSans-Regular.ttf",
       "sha256": "478c558ea716033cd60c03438f628dfa75694dcf6b5f6d505a2f05fd2b4f3823"
     },
+    "flutter/assets/fonts/NotoSansThai-Bold.ttf": {
+      "artifact": "assets/fonts/NotoSansThai-Bold.ttf",
+      "sha256": "2ac6c6e8a478e23b15f76e4894af1fa2210f8f350e4e6e54aad530bec03efbfb"
+    },
+    "flutter/assets/fonts/NotoSansThai-Regular.ttf": {
+      "artifact": "assets/fonts/NotoSansThai-Regular.ttf",
+      "sha256": "61cf814eec46b294d6ea4401ac295d0cecd5207bd2331dcc5a15e7301d30ee44"
+    },
+    "flutter/assets/fonts/OFL-NotoSansThai.txt": {
+      "artifact": "assets/fonts/OFL-NotoSansThai.txt",
+      "sha256": "dad6e6abc2bf3fc37cc698af7607c3f4d4235039695713b222e5a034fb5b9b1c"
+    },
     "flutter/assets/fonts/OFL.txt": {
       "artifact": "assets/fonts/OFL.txt",
       "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a"
     },
     "flutter/assets/templates/bundles.json": {
       "artifact": "generated/templates/bundles.json",
-      "sha256": "7d10b0cfdd0217a00a610e75ce8315499778836b5802f0b35fa4027f234fad15"
+      "sha256": "e80d8b6f2928696a4418850366febb5fc03a5afe60bea5f6b34e78186cbbe0b7"
+    },
+    "flutter/assets/templates/pages.json": {
+      "artifact": "generated/templates/pages.json",
+      "sha256": "1a11125e09559cb385709bebe8e144bba24a7e1e402a1992c62cdaa7d347c431"
     },
     "flutter/test/fixtures/snapshot-v2.json": {
       "artifact": "fixtures/snapshot-v2.json",

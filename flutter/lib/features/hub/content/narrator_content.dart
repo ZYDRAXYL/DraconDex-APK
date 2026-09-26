@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
+import '../../../data/models/module_model.dart';
 import '../../../data/models/narrator_model.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../page/views/view_common.dart';
 
 /// Narrator kind: dialogue scenes, the script inside the selected one, and
 /// the routes leading out of it.
@@ -15,7 +17,10 @@ import '../../../widgets/confirm_dialog.dart';
 /// are left untouched so the desktop's layout survives editing from here.
 class NarratorContent extends ConsumerStatefulWidget {
   final int moduleId;
-  const NarratorContent({super.key, required this.moduleId});
+  /// The module, when the page has it: empty, the kind's empty state
+  /// (KindEmptyState) stands in for the list.
+  final ModuleModel? module;
+  const NarratorContent({super.key, required this.moduleId, this.module});
 
   @override
   ConsumerState<NarratorContent> createState() => _NarratorContentState();
@@ -48,6 +53,18 @@ class _NarratorContentState extends ConsumerState<NarratorContent> {
     );
   }
 
+  Future<void> _addScene() async {
+    final l10n = AppLocalizations.of(context)!;
+    final name = await _askText(l10n.narratorNewScene);
+    if (name == null || name.isEmpty) return;
+    final dao = ref.read(narratorDaoProvider).valueOrNull;
+    if (dao == null) return;
+    final id = await dao.createDialogue(moduleRef: widget.moduleId, name: name);
+    if (!mounted) return;
+    setState(() => _selectedId = id);
+    ref.invalidate(dialoguesProvider(widget.moduleId));
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -76,24 +93,16 @@ class _NarratorContentState extends ConsumerState<NarratorContent> {
                   Text(l10n.narratorScenes, style: theme.textTheme.titleSmall),
                   const Spacer(),
                   TextButton.icon(
-                    onPressed: () async {
-                      final name = await _askText(l10n.narratorNewScene);
-                      if (name == null || name.isEmpty) return;
-                      final dao = ref.read(narratorDaoProvider).valueOrNull;
-                      if (dao == null) return;
-                      final id = await dao.createDialogue(
-                          moduleRef: widget.moduleId, name: name);
-                      if (!mounted) return;
-                      setState(() => _selectedId = id);
-                      ref.invalidate(dialoguesProvider(widget.moduleId));
-                    },
+                    onPressed: _addScene,
                     icon: const Icon(Icons.add, size: 18),
                     label: Text(l10n.narratorNewScene),
                   ),
                 ],
               ),
             ),
-            if (scenes.isEmpty)
+            if (scenes.isEmpty && widget.module != null)
+              KindEmptyState(module: widget.module!, note: l10n.narratorNoScenes, startLabel: l10n.narratorNewScene, onStart: _addScene)
+            else if (scenes.isEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
                 child: Text(l10n.narratorNoScenes, style: theme.textTheme.bodySmall),

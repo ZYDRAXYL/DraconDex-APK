@@ -105,6 +105,42 @@ class AppLocalizationsRu extends AppLocalizations {
   String get themeDaylight => 'Дневной Свет';
 
   @override
+  String get themeShowAll => 'Показать все';
+
+  @override
+  String get themeShowLess => 'Свернуть';
+
+  @override
+  String get pageLayout => 'Макет заголовка';
+
+  @override
+  String get titleAlign => 'Выравнивание заголовка';
+
+  @override
+  String get alignLeft => 'Слева';
+
+  @override
+  String get alignCenter => 'По центру';
+
+  @override
+  String get alignRight => 'Справа';
+
+  @override
+  String get pageIcon => 'Значок над заголовком';
+
+  @override
+  String get pageCover => 'Обложка';
+
+  @override
+  String get pageCoverNone => 'Без обложки';
+
+  @override
+  String get pageCoverEmpty => 'Импортируйте изображение в этот Nexus, чтобы сделать его обложкой';
+
+  @override
+  String get pageLayoutScope => 'Только для этой страницы';
+
+  @override
   String get languageLabel => 'Язык';
 
   @override
@@ -1768,4 +1804,175 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Вставить строку ниже';
+
+  @override
+  String get exportTitle => 'Экспорт…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Для печати, отправки или типографии';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Чтобы править дальше в Word, Google Docs или Pages';
+
+  @override
+  String get exportEpub => 'EPUB (электронная книга)';
+
+  @override
+  String get exportEpubD => 'Для Apple Books, Kindle, Kobo или Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Лист на таблицу — для Excel, Sheets или Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Простая таблица — вернётся через импорт CSV';
+
+  @override
+  String get htmlExport => 'Экспорт как веб-сайт (HTML)';
+
+  @override
+  String get exportMarkdown => 'Экспорт в Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Заметки с картинками — открываются в Obsidian';
+
+  @override
+  String get exportMddxD => 'Этот модуль — для переноса в другое хранилище';
+
+  @override
+  String get exportNoPage => 'У папки нет своей страницы';
+
+  @override
+  String get exportOnlyDocs => 'Только Author, Classifier, Chronicler, Drafter и Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Только книги Author';
+
+  @override
+  String get exportOnlyTables => 'Только Classifier и Chronicler';
+
+  @override
+  String get exportGo => 'Экспортировать';
+
+  @override
+  String get exportScope => 'Что включить';
+
+  @override
+  String get exportScopePage => 'Эта страница';
+
+  @override
+  String get exportScopeModule => 'Этот модуль и все элементы';
+
+  @override
+  String get exportScopeInside => 'Этот модуль и всё внутри';
+
+  @override
+  String get exportScopeNexus => 'Весь Nexus';
+
+  @override
+  String get exportPaper => 'Бумага';
+
+  @override
+  String get exportOrientation => 'Ориентация';
+
+  @override
+  String get exportPortrait => 'Книжная';
+
+  @override
+  String get exportLandscape => 'Альбомная';
+
+  @override
+  String get exportHeaderFooter => 'Заголовок и номера страниц';
+
+  @override
+  String get exportToc => 'Страница содержания';
+
+  @override
+  String get exportCsvHint => 'Одна таблица: элементы Classifier или первая шкала Chronicler. Поля-формулы не включаются. Импорт CSV прочитает её обратно.';
+
+  @override
+  String get exportXlsxHint => 'Лист на таблицу (каждая шкала Chronicler), жирный закреплённый заголовок. Поля-формулы не включаются.';
+
+  @override
+  String get exportMdAnyHint => 'По .md на элемент, поля — свойства; картинки страницы — в assets/. Откройте папку как хранилище в Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Заголовок на главу, элемент или событие (видны в области навигации Word), поля таблицей, картинки страницы, разрыв страницы между главами.';
+
+  @override
+  String get exportEpubHint => 'По файлу на главу и оглавление; обложка заголовка страницы книги станет обложкой.';
+
+  @override
+  String get exportMddxHint => 'Файл .mddx, который импортирует другое хранилище DraconDex.';
+
+  @override
+  String get exportFormulaSkipped => 'Пропущены поля-формулы: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV вмещает одну шкалу — ещё {n} в экспорте Excel';
+
+  @override
+  String get exportMediaMissing => 'Не найдено изображений: {n} — они пропущены';
+
+  @override
+  String get exportMarkdownEmpty => 'Пока нечего экспортировать';
+
+  @override
+  String get exportWorking => 'Отрисовка страниц…';
+
+  @override
+  String get exportPictures => 'изображений';
+
+  @override
+  String get exportRows => 'строк';
+
+  @override
+  String get exportHtmlPageD => 'Эта страница как веб-страница, с картинками';
+
+  @override
+  String get exportHtmlPageHint => 'Архив .zip с index.html и картинками в media/ — распакуйте и откройте index.html в любом браузере.';
+
+  @override
+  String get exportPrint => 'Печать…';
+
+  @override
+  String get pcVideo => 'Видео';
+
+  @override
+  String get pcAudio => 'Аудио';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D-модель';
+
+  @override
+  String get pcMedia => 'Медиа';
+
+  @override
+  String get pcMediaEmpty => 'Файла пока нет.';
+
+  @override
+  String get pbChooseFile => 'Выбрать файл';
+
+  @override
+  String get pcAddFile => 'Добавить файл';
+
+  @override
+  String get pcOpenIn => 'Открыть в другом приложении';
+
+  @override
+  String get mediaOpenFailed => 'Не удалось открыть этот файл';
 }

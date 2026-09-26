@@ -7,6 +7,7 @@ import '../../data/models/module_model.dart';
 import '../../providers/db_providers.dart';
 import 'component_registry.dart';
 import 'core_components.dart';
+import 'media_components.dart';
 import 'page_providers.dart';
 
 /// Arrange mode on a phone (APK-V3.md §10.4 — the user chose a drag-to-
@@ -260,6 +261,14 @@ Future<void> showAddBlockSheet(
                 leading: const Icon(Icons.view_column_outlined),
                 title: Text(l10n.pbColumns),
                 onTap: () => Navigator.pop(sheet, () => add(const NewBlock(type: 'columns', config: {'n': 2}))),
+              ),
+            const Divider(),
+            // the media blocks (MEDIA-EMBED.md): a poster that opens the file
+            for (final MapEntry(key: id, value: kind) in mediaBlockKinds.entries)
+              ListTile(
+                leading: Icon(kind.icon),
+                title: Text(components[id]!.label(l10n)),
+                onTap: () => Navigator.pop(sheet, () => add(NewBlock(component: id))),
               ),
             if (own.isNotEmpty) const Divider(),
             for (final id in own)

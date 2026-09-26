@@ -105,6 +105,42 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Tümünü göster';
+
+  @override
+  String get themeShowLess => 'Daralt';
+
+  @override
+  String get pageLayout => 'Başlık düzeni';
+
+  @override
+  String get titleAlign => 'Başlığı hizala';
+
+  @override
+  String get alignLeft => 'Sol';
+
+  @override
+  String get alignCenter => 'Orta';
+
+  @override
+  String get alignRight => 'Sağ';
+
+  @override
+  String get pageIcon => 'Başlığın üstündeki simge';
+
+  @override
+  String get pageCover => 'Kapak görseli';
+
+  @override
+  String get pageCoverNone => 'Kapak yok';
+
+  @override
+  String get pageCoverEmpty => 'Kapak olarak kullanmak için bu Nexus\'a bir görsel aktarın';
+
+  @override
+  String get pageLayoutScope => 'Yalnızca bu sayfa için geçerli';
+
+  @override
   String get languageLabel => 'Dil';
 
   @override
@@ -1765,4 +1801,175 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Alta satır ekle';
+
+  @override
+  String get exportTitle => 'Dışa aktar…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Yazdırmak, paylaşmak ya da matbaaya göndermek için';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Word, Google Docs veya Pages’te düzenlemeye devam etmek için';
+
+  @override
+  String get exportEpub => 'EPUB (e-kitap)';
+
+  @override
+  String get exportEpubD => 'Apple Books, Kindle, Kobo veya Calibre için';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Tablo başına bir sayfa; Excel, Sheets veya Numbers için';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Düz tablo — CSV içe aktarma ile geri alınır';
+
+  @override
+  String get htmlExport => 'Web sitesi olarak dışa aktar (HTML)';
+
+  @override
+  String get exportMarkdown => 'Markdown olarak dışa aktar (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Resimli notlar — Obsidian’da açılır';
+
+  @override
+  String get exportMddxD => 'Bu modül, başka bir kasaya taşımak için';
+
+  @override
+  String get exportNoPage => 'Klasörün kendi sayfası yok';
+
+  @override
+  String get exportOnlyDocs => 'Yalnızca Author, Classifier, Chronicler, Drafter ve Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Yalnızca Author kitapları';
+
+  @override
+  String get exportOnlyTables => 'Yalnızca Classifier ve Chronicler';
+
+  @override
+  String get exportGo => 'Dışa aktar';
+
+  @override
+  String get exportScope => 'Kapsam';
+
+  @override
+  String get exportScopePage => 'Bu sayfa';
+
+  @override
+  String get exportScopeModule => 'Bu modül ve tüm öğeleri';
+
+  @override
+  String get exportScopeInside => 'Bu modül ve içindeki her şey';
+
+  @override
+  String get exportScopeNexus => 'Tüm Nexus';
+
+  @override
+  String get exportPaper => 'Kâğıt';
+
+  @override
+  String get exportOrientation => 'Yön';
+
+  @override
+  String get exportPortrait => 'Dikey';
+
+  @override
+  String get exportLandscape => 'Yatay';
+
+  @override
+  String get exportHeaderFooter => 'Başlık ve sayfa numaraları';
+
+  @override
+  String get exportToc => 'İçindekiler sayfası';
+
+  @override
+  String get exportCsvHint => 'Tek tablo: Classifier öğeleri ya da Chronicler’ın ilk zaman çizelgesi. Formül alanları alınmaz. CSV içe aktarma geri okur.';
+
+  @override
+  String get exportXlsxHint => 'Tablo başına bir sayfa (Chronicler’ın her zaman çizelgesi), kalın ve sabit başlık. Formül alanları alınmaz.';
+
+  @override
+  String get exportMdAnyHint => 'Öğe başına bir .md, alanlar özellik olarak; sayfanın resimleri assets/ içinde. Klasörü Obsidian’da kasa olarak açın.';
+
+  @override
+  String get exportDocxHint => 'Bölüm, öğe veya olay başına bir başlık (Word gezinti bölmesinde görünür), alanlar tablo, sayfanın resimleri, bölümler arasında sayfa sonu.';
+
+  @override
+  String get exportEpubHint => 'Bölüm başına bir dosya ve içindekiler; kitap sayfasının başlık kapağı kapak olur.';
+
+  @override
+  String get exportMddxHint => 'Başka bir DraconDex kasasının içe aktarabileceği bir .mddx dosyası.';
+
+  @override
+  String get exportFormulaSkipped => 'Alınmayan formül alanları: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV tek zaman çizelgesi taşır — diğer {n} tanesi Excel dışa aktarımında';
+
+  @override
+  String get exportMediaMissing => '{n} resim bulunamadı ve atlandı';
+
+  @override
+  String get exportMarkdownEmpty => 'Henüz dışa aktarılacak bir şey yok';
+
+  @override
+  String get exportWorking => 'Sayfalar çiziliyor…';
+
+  @override
+  String get exportPictures => 'resim';
+
+  @override
+  String get exportRows => 'satır';
+
+  @override
+  String get exportHtmlPageD => 'Bu sayfa, resimleriyle birlikte bir web sayfası olarak';
+
+  @override
+  String get exportHtmlPageHint => 'index.html ve media/ içindeki resimleri içeren bir .zip — açın ve index.html dosyasını herhangi bir tarayıcıda açın.';
+
+  @override
+  String get exportPrint => 'Yazdır…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Ses';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3B model';
+
+  @override
+  String get pcMedia => 'Karma medya';
+
+  @override
+  String get pcMediaEmpty => 'Henüz dosya yok.';
+
+  @override
+  String get pbChooseFile => 'Dosya seç';
+
+  @override
+  String get pcAddFile => 'Dosya ekle';
+
+  @override
+  String get pcOpenIn => 'Başka bir uygulamada aç';
+
+  @override
+  String get mediaOpenFailed => 'Bu dosya açılamadı';
 }

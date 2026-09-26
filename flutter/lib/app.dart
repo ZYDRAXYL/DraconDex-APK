@@ -12,11 +12,7 @@ class DraconDexApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
 
-    final themeData = switch (settings.theme) {
-      AppThemeMode.midnight => AppTheme.midnight,
-      AppThemeMode.moonlight => AppTheme.moonlight,
-      AppThemeMode.daylight => AppTheme.daylight,
-    };
+    final themeData = AppTheme.forName(settings.theme);
 
     return MaterialApp.router(
       title: 'DraconDex',

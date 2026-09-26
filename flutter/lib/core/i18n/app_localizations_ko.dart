@@ -105,6 +105,42 @@ class AppLocalizationsKo extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => '모두 보기';
+
+  @override
+  String get themeShowLess => '접기';
+
+  @override
+  String get pageLayout => '제목 레이아웃';
+
+  @override
+  String get titleAlign => '제목 정렬';
+
+  @override
+  String get alignLeft => '왼쪽';
+
+  @override
+  String get alignCenter => '가운데';
+
+  @override
+  String get alignRight => '오른쪽';
+
+  @override
+  String get pageIcon => '제목 위 아이콘';
+
+  @override
+  String get pageCover => '커버 이미지';
+
+  @override
+  String get pageCoverNone => '커버 없음';
+
+  @override
+  String get pageCoverEmpty => '커버로 쓰려면 이 Nexus에 이미지를 가져오세요';
+
+  @override
+  String get pageLayoutScope => '이 페이지에만 적용됩니다';
+
+  @override
   String get languageLabel => '언어';
 
   @override
@@ -1768,4 +1804,175 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get clsInsertBelow => '아래에 행 삽입';
+
+  @override
+  String get exportTitle => '내보내기…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => '인쇄·공유·인쇄소 전달용';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Word·Google 문서·Pages에서 계속 편집';
+
+  @override
+  String get exportEpub => 'EPUB(전자책)';
+
+  @override
+  String get exportEpubD => 'Apple Books·Kindle·Kobo·Calibre용';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => '표마다 시트 하나 — Excel·Sheets·Numbers용';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => '단순한 표 — CSV 가져오기로 다시 불러올 수 있음';
+
+  @override
+  String get htmlExport => '웹사이트로 내보내기 (HTML)';
+
+  @override
+  String get exportMarkdown => 'Markdown으로 내보내기 (.zip)';
+
+  @override
+  String get exportMdAnyD => '그림이 있는 노트 — Obsidian에서 열림';
+
+  @override
+  String get exportMddxD => '이 모듈을 다른 볼트로 옮기기용';
+
+  @override
+  String get exportNoPage => '폴더에는 자체 페이지가 없습니다';
+
+  @override
+  String get exportOnlyDocs => 'Author·Classifier·Chronicler·Drafter·Inspector만';
+
+  @override
+  String get exportOnlyBooks => 'Author 책만';
+
+  @override
+  String get exportOnlyTables => 'Classifier와 Chronicler만';
+
+  @override
+  String get exportGo => '내보내기';
+
+  @override
+  String get exportScope => '포함할 범위';
+
+  @override
+  String get exportScopePage => '이 페이지';
+
+  @override
+  String get exportScopeModule => '이 모듈과 모든 요소';
+
+  @override
+  String get exportScopeInside => '이 모듈과 그 안의 모든 것';
+
+  @override
+  String get exportScopeNexus => 'Nexus 전체';
+
+  @override
+  String get exportPaper => '용지';
+
+  @override
+  String get exportOrientation => '방향';
+
+  @override
+  String get exportPortrait => '세로';
+
+  @override
+  String get exportLandscape => '가로';
+
+  @override
+  String get exportHeaderFooter => '제목과 쪽 번호';
+
+  @override
+  String get exportToc => '목차 페이지';
+
+  @override
+  String get exportCsvHint => '표 하나: Classifier의 요소 또는 Chronicler의 첫 타임라인. 수식 필드는 빠집니다. CSV 가져오기로 다시 읽을 수 있습니다.';
+
+  @override
+  String get exportXlsxHint => '표마다 시트 하나(Chronicler는 모든 타임라인), 굵게 고정된 머리글. 수식 필드는 빠집니다.';
+
+  @override
+  String get exportMdAnyHint => '요소마다 .md 하나(필드는 속성으로), 페이지의 그림은 assets/에 담깁니다. 폴더를 Obsidian 볼트로 여세요.';
+
+  @override
+  String get exportDocxHint => '장·요소·사건마다 제목(Word 탐색 창에 표시), 필드는 표로, 페이지의 그림, 장 사이 페이지 나누기.';
+
+  @override
+  String get exportEpubHint => '장마다 파일 하나와 목차, 책 페이지의 제목 표지가 표지가 됩니다.';
+
+  @override
+  String get exportMddxHint => '다른 DraconDex 볼트에서 가져올 수 있는 .mddx 파일.';
+
+  @override
+  String get exportFormulaSkipped => '제외된 수식 필드: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV에는 타임라인 하나만 — 나머지 {n}개는 Excel 내보내기로';
+
+  @override
+  String get exportMediaMissing => '그림 {n}개를 찾지 못해 제외했습니다';
+
+  @override
+  String get exportMarkdownEmpty => '아직 내보낼 내용이 없습니다';
+
+  @override
+  String get exportWorking => '페이지를 그리는 중…';
+
+  @override
+  String get exportPictures => '그림';
+
+  @override
+  String get exportRows => '행';
+
+  @override
+  String get exportHtmlPageD => '이 페이지를 웹 페이지로 — 그림도 함께';
+
+  @override
+  String get exportHtmlPageHint => 'index.html과 media/의 그림이 든 .zip — 압축을 풀고 아무 브라우저에서 index.html을 여세요.';
+
+  @override
+  String get exportPrint => '인쇄…';
+
+  @override
+  String get pcVideo => '동영상';
+
+  @override
+  String get pcAudio => '오디오';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D 모델';
+
+  @override
+  String get pcMedia => '미디어 모음';
+
+  @override
+  String get pcMediaEmpty => '아직 파일이 없습니다.';
+
+  @override
+  String get pbChooseFile => '파일 선택';
+
+  @override
+  String get pcAddFile => '파일 추가';
+
+  @override
+  String get pcOpenIn => '다른 앱에서 열기';
+
+  @override
+  String get mediaOpenFailed => '이 파일을 열 수 없습니다';
 }
