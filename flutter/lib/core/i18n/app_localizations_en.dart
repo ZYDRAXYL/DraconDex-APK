@@ -2323,4 +2323,343 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Page strip';
+
+  @override
+  String get pcInfobox => 'Infobox';
+
+  @override
+  String get pcCallout => 'Callout';
+
+  @override
+  String get pcStats => 'Stats';
+
+  @override
+  String get pcToc => 'Contents';
+
+  @override
+  String get pcSpotlight => 'Spotlight';
+
+  @override
+  String get pcRoster => 'Roster';
+
+  @override
+  String get pcBreakdown => 'Breakdown';
+
+  @override
+  String get pcEras => 'Eras';
+
+  @override
+  String get pcUpcoming => 'Upcoming';
+
+  @override
+  String get pcPinlist => 'Pin list';
+
+  @override
+  String get pcProgress => 'Progress';
+
+  @override
+  String get pcChapters => 'Chapters';
+
+  @override
+  String get pcEndings => 'Endings';
+
+  @override
+  String get pcVariables => 'Variables';
+
+  @override
+  String get pcFocus => 'Focus';
+
+  @override
+  String get pcLegend => 'Legend';
+
+  @override
+  String get pcJourney => 'Journey';
+
+  @override
+  String get pcStrip => 'Strip';
+
+  @override
+  String get pcFeatured => 'Featured';
+
+  @override
+  String get pcDashboard => 'Dashboard';
+
+  @override
+  String get pcRecent => 'Recently changed';
+
+  @override
+  String get pcQuickroll => 'Quick roll';
+
+  @override
+  String get pcPinned => 'Pinned';
+
+  @override
+  String get pcTasks => 'Tasks';
+
+  @override
+  String get pcBanner => 'Banner';
+
+  @override
+  String get pcGallery => 'Gallery';
+
+  @override
+  String get pcDivider => 'Divider';
+
+  @override
+  String get pcIconrow => 'Icon row';
+
+  @override
+  String get pcFigure => 'Figure';
+
+  @override
+  String get pcInfoboxEmpty => 'No fields yet';
+
+  @override
+  String get pcStatsEmpty => 'Nothing to count yet';
+
+  @override
+  String get pcTocEmpty => 'Add a heading to build the contents';
+
+  @override
+  String get pcNoElements => 'No elements yet';
+
+  @override
+  String get pcBreakdownEmpty => 'Pick a field to count by';
+
+  @override
+  String get noEventsYet => 'No events yet';
+
+  @override
+  String get mapNoAreas => 'No areas yet';
+
+  @override
+  String get pcNoChapters => 'No chapters yet';
+
+  @override
+  String get pcWords => 'words';
+
+  @override
+  String get pcNoEndings => 'No endings yet';
+
+  @override
+  String get pcNoVariables => 'No variables yet';
+
+  @override
+  String get pcNoRelations => 'No relations yet';
+
+  @override
+  String get pcUnlabelled => 'Unlabelled';
+
+  @override
+  String get pcNoPanels => 'No panels yet';
+
+  @override
+  String get pcNoSketches => 'No sketches yet';
+
+  @override
+  String get managerEmpty => 'Nothing selected — set a filter or pick modules.';
+
+  @override
+  String get pcRoll => 'Roll';
+
+  @override
+  String get pcNoRolls => 'No rolls yet';
+
+  @override
+  String get pcNoPinned => 'Start a message with 📌 to pin it here';
+
+  @override
+  String get pcNoTasks => 'Write “- [ ] …” in the notes to add a task';
+
+  @override
+  String get pcBannerEmpty => 'No picture yet.';
+
+  @override
+  String get pcGalleryEmpty => 'No pictures yet.';
+
+  @override
+  String get pcIconrowEmpty => 'No icons yet.';
+
+  @override
+  String get pcFigureEmpty => 'No picture yet.';
+
+  @override
+  String get pcStatItems => 'Items';
+
+  @override
+  String get pcStatModules => 'Modules';
+
+  @override
+  String get backlinks => 'Backlinks';
+
+  @override
+  String get pcCalloutPh => 'Write a note…';
+
+  @override
+  String get pcDecorPickArrange => 'Nothing to show yet — choose it with ⚙ → Options.';
+
+  @override
+  String get pcToneNote => 'Note';
+
+  @override
+  String get pcToneTip => 'Tip';
+
+  @override
+  String get pcToneWarning => 'Warning';
+
+  @override
+  String get pcToneQuote => 'Quote';
+
+  @override
+  String get pcToneSecret => 'Secret';
+
+  @override
+  String get pcOptFields => 'Fields shown';
+
+  @override
+  String get pcOptDock => 'Position';
+
+  @override
+  String get pcOptTone => 'Tone';
+
+  @override
+  String get pcOptField => 'Count by field';
+
+  @override
+  String get pcOptFrom => 'From the year';
+
+  @override
+  String get pcOptGoal => 'Word goal';
+
+  @override
+  String get pcOptSubtitle => 'Line below';
+
+  @override
+  String get pcOptHeight => 'Height';
+
+  @override
+  String get pcOptScrim => 'Shade under the text';
+
+  @override
+  String get pbImages => 'Pictures';
+
+  @override
+  String get pcOptFromModule => 'Every picture filed under this module';
+
+  @override
+  String get pcOptCaptions => 'Show file names';
+
+  @override
+  String get pcOptItems => 'Items';
+
+  @override
+  String get pcOptSize => 'Size';
+
+  @override
+  String get pcOptFit => 'Fit';
+
+  @override
+  String get pcOptFloat => 'Text flows';
+
+  @override
+  String get pcOptRound => 'Rounded corners';
+
+  @override
+  String get pcLayoutTable => 'Table';
+
+  @override
+  String get pcLayoutStacked => 'Stacked';
+
+  @override
+  String get pcDockRight => 'Right';
+
+  @override
+  String get pcDockLeft => 'Left';
+
+  @override
+  String get pcDockFull => 'Full width';
+
+  @override
+  String get pcSizeS => 'Small';
+
+  @override
+  String get pcSizeM => 'Medium';
+
+  @override
+  String get pcSizeL => 'Large';
+
+  @override
+  String get pcSizeFull => 'Full width';
+
+  @override
+  String get pcScrimSoft => 'Soft';
+
+  @override
+  String get pcScrimStrong => 'Strong';
+
+  @override
+  String get pcGalMasonry => 'Masonry';
+
+  @override
+  String get pcDivLine => 'Line';
+
+  @override
+  String get pcDivDouble => 'Double';
+
+  @override
+  String get pcDivDots => 'Dots';
+
+  @override
+  String get pcDivOrnament => 'Ornament';
+
+  @override
+  String get pcDivImage => 'Picture band';
+
+  @override
+  String get pcIrChip => 'Chips';
+
+  @override
+  String get pcIrBig => 'Large icons';
+
+  @override
+  String get pcFitContain => 'Whole picture';
+
+  @override
+  String get pcFitCover => 'Fill the frame';
+
+  @override
+  String get pcFloatNone => 'On its own';
+
+  @override
+  String get pcFloatLeft => 'Picture left';
+
+  @override
+  String get pcFloatRight => 'Picture right';
+
+  @override
+  String get pcLoadFailed => 'Could not load this block';
+
+  @override
+  String get pcNoValue => '(none)';
+
+  @override
+  String get tplUse => 'Use template…';
+
+  @override
+  String get tplUseHint => 'Replaces this page’s layout. Your content stays, and you can undo right after.';
+
+  @override
+  String get tplDefault => 'Default';
+
+  @override
+  String get tplOtherTypes => 'Other types';
+
+  @override
+  String get tplApplied => 'Template applied';
+
+  @override
+  String get tplBorrowDropped => '{n} block(s) left out — they borrow from a module this one is not linked to';
+
+  @override
+  String get tplGallery => 'Page templates';
 }

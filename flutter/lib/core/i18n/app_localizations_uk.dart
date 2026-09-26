@@ -2320,4 +2320,343 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Стрічка сторінок';
+
+  @override
+  String get pcInfobox => 'Картка';
+
+  @override
+  String get pcCallout => 'Виноска';
+
+  @override
+  String get pcStats => 'Статистика';
+
+  @override
+  String get pcToc => 'Зміст';
+
+  @override
+  String get pcSpotlight => 'У центрі уваги';
+
+  @override
+  String get pcRoster => 'Склад';
+
+  @override
+  String get pcBreakdown => 'Розподіл';
+
+  @override
+  String get pcEras => 'Епохи';
+
+  @override
+  String get pcUpcoming => 'Найближчі';
+
+  @override
+  String get pcPinlist => 'Список міток';
+
+  @override
+  String get pcProgress => 'Поступ';
+
+  @override
+  String get pcChapters => 'Розділи';
+
+  @override
+  String get pcEndings => 'Фінали';
+
+  @override
+  String get pcVariables => 'Змінні';
+
+  @override
+  String get pcFocus => 'Фокус';
+
+  @override
+  String get pcLegend => 'Легенда';
+
+  @override
+  String get pcJourney => 'Подорож';
+
+  @override
+  String get pcStrip => 'Розкадровка';
+
+  @override
+  String get pcFeatured => 'Вибране';
+
+  @override
+  String get pcDashboard => 'Панель';
+
+  @override
+  String get pcRecent => 'Нещодавно змінені';
+
+  @override
+  String get pcQuickroll => 'Швидкий кидок';
+
+  @override
+  String get pcPinned => 'Закріплені';
+
+  @override
+  String get pcTasks => 'Завдання';
+
+  @override
+  String get pcBanner => 'Банер';
+
+  @override
+  String get pcGallery => 'Галерея';
+
+  @override
+  String get pcDivider => 'Роздільник';
+
+  @override
+  String get pcIconrow => 'Ряд значків';
+
+  @override
+  String get pcFigure => 'Ілюстрація';
+
+  @override
+  String get pcInfoboxEmpty => 'Полів поки немає';
+
+  @override
+  String get pcStatsEmpty => 'Поки нічого рахувати';
+
+  @override
+  String get pcTocEmpty => 'Додайте заголовок, щоб створити зміст';
+
+  @override
+  String get pcNoElements => 'Елементів поки немає';
+
+  @override
+  String get pcBreakdownEmpty => 'Виберіть поле для підрахунку';
+
+  @override
+  String get noEventsYet => 'Поки немає подій';
+
+  @override
+  String get mapNoAreas => 'Областей поки немає';
+
+  @override
+  String get pcNoChapters => 'Розділів поки немає';
+
+  @override
+  String get pcWords => 'слів';
+
+  @override
+  String get pcNoEndings => 'Фіналів поки немає';
+
+  @override
+  String get pcNoVariables => 'Змінних поки немає';
+
+  @override
+  String get pcNoRelations => 'Зв’язків поки немає';
+
+  @override
+  String get pcUnlabelled => 'Без підпису';
+
+  @override
+  String get pcNoPanels => 'Кадрів поки немає';
+
+  @override
+  String get pcNoSketches => 'Ескізів поки немає';
+
+  @override
+  String get managerEmpty => 'Нічого не вибрано — задайте фільтр або виберіть модулі.';
+
+  @override
+  String get pcRoll => 'Кинути';
+
+  @override
+  String get pcNoRolls => 'Кидків поки немає';
+
+  @override
+  String get pcNoPinned => 'Почніть повідомлення з 📌, щоб закріпити його тут';
+
+  @override
+  String get pcNoTasks => 'Напишіть «- [ ] …» у нотатках, щоб додати завдання';
+
+  @override
+  String get pcBannerEmpty => 'Зображення поки немає.';
+
+  @override
+  String get pcGalleryEmpty => 'Зображень поки немає.';
+
+  @override
+  String get pcIconrowEmpty => 'Значків поки немає.';
+
+  @override
+  String get pcFigureEmpty => 'Зображення поки немає.';
+
+  @override
+  String get pcStatItems => 'Елементи';
+
+  @override
+  String get pcStatModules => 'Модулі';
+
+  @override
+  String get backlinks => 'Зворотні посилання';
+
+  @override
+  String get pcCalloutPh => 'Напишіть нотатку…';
+
+  @override
+  String get pcDecorPickArrange => 'Поки порожньо — виберіть через ⚙ → Параметри.';
+
+  @override
+  String get pcToneNote => 'Нотатка';
+
+  @override
+  String get pcToneTip => 'Порада';
+
+  @override
+  String get pcToneWarning => 'Попередження';
+
+  @override
+  String get pcToneQuote => 'Цитата';
+
+  @override
+  String get pcToneSecret => 'Таємниця';
+
+  @override
+  String get pcOptFields => 'Показувані поля';
+
+  @override
+  String get pcOptDock => 'Положення';
+
+  @override
+  String get pcOptTone => 'Тон';
+
+  @override
+  String get pcOptField => 'Рахувати за полем';
+
+  @override
+  String get pcOptFrom => 'З року';
+
+  @override
+  String get pcOptGoal => 'Мета слів';
+
+  @override
+  String get pcOptSubtitle => 'Підзаголовок';
+
+  @override
+  String get pcOptHeight => 'Висота';
+
+  @override
+  String get pcOptScrim => 'Затемнення під текстом';
+
+  @override
+  String get pbImages => 'Зображення';
+
+  @override
+  String get pcOptFromModule => 'Усі зображення цього модуля';
+
+  @override
+  String get pcOptCaptions => 'Показувати назви файлів';
+
+  @override
+  String get pcOptItems => 'Елементи';
+
+  @override
+  String get pcOptSize => 'Розмір';
+
+  @override
+  String get pcOptFit => 'Вписування';
+
+  @override
+  String get pcOptFloat => 'Обтікання';
+
+  @override
+  String get pcOptRound => 'Заокруглені кути';
+
+  @override
+  String get pcLayoutTable => 'Таблиця';
+
+  @override
+  String get pcLayoutStacked => 'Стовпчиком';
+
+  @override
+  String get pcDockRight => 'Праворуч';
+
+  @override
+  String get pcDockLeft => 'Ліворуч';
+
+  @override
+  String get pcDockFull => 'На всю ширину';
+
+  @override
+  String get pcSizeS => 'Малий';
+
+  @override
+  String get pcSizeM => 'Середній';
+
+  @override
+  String get pcSizeL => 'Великий';
+
+  @override
+  String get pcSizeFull => 'На всю ширину';
+
+  @override
+  String get pcScrimSoft => 'М’яке';
+
+  @override
+  String get pcScrimStrong => 'Сильне';
+
+  @override
+  String get pcGalMasonry => 'Кладка';
+
+  @override
+  String get pcDivLine => 'Лінія';
+
+  @override
+  String get pcDivDouble => 'Подвійна';
+
+  @override
+  String get pcDivDots => 'Крапки';
+
+  @override
+  String get pcDivOrnament => 'Орнамент';
+
+  @override
+  String get pcDivImage => 'Смуга зображення';
+
+  @override
+  String get pcIrChip => 'Мітки';
+
+  @override
+  String get pcIrBig => 'Великі значки';
+
+  @override
+  String get pcFitContain => 'Повністю';
+
+  @override
+  String get pcFitCover => 'Заповнити рамку';
+
+  @override
+  String get pcFloatNone => 'Окремо';
+
+  @override
+  String get pcFloatLeft => 'Зображення ліворуч';
+
+  @override
+  String get pcFloatRight => 'Зображення праворуч';
+
+  @override
+  String get pcLoadFailed => 'Не вдалося завантажити блок';
+
+  @override
+  String get pcNoValue => '(немає)';
+
+  @override
+  String get tplUse => 'Застосувати шаблон…';
+
+  @override
+  String get tplUseHint => 'Замінює макет сторінки. Вміст зберігається, скасувати можна одразу після.';
+
+  @override
+  String get tplDefault => 'Типовий';
+
+  @override
+  String get tplOtherTypes => 'Інші типи';
+
+  @override
+  String get tplApplied => 'Шаблон застосовано';
+
+  @override
+  String get tplBorrowDropped => 'Пропущено блоків: {n} — вони беруть дані з непов’язаного модуля';
+
+  @override
+  String get tplGallery => 'Шаблони сторінок';
 }

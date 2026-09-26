@@ -2320,4 +2320,343 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Paginastrook';
+
+  @override
+  String get pcInfobox => 'Infobox';
+
+  @override
+  String get pcCallout => 'Kader';
+
+  @override
+  String get pcStats => 'Statistieken';
+
+  @override
+  String get pcToc => 'Inhoud';
+
+  @override
+  String get pcSpotlight => 'Uitgelicht';
+
+  @override
+  String get pcRoster => 'Overzicht';
+
+  @override
+  String get pcBreakdown => 'Verdeling';
+
+  @override
+  String get pcEras => 'Tijdperken';
+
+  @override
+  String get pcUpcoming => 'Binnenkort';
+
+  @override
+  String get pcPinlist => 'Pinlijst';
+
+  @override
+  String get pcProgress => 'Voortgang';
+
+  @override
+  String get pcChapters => 'Hoofdstukken';
+
+  @override
+  String get pcEndings => 'Eindes';
+
+  @override
+  String get pcVariables => 'Variabelen';
+
+  @override
+  String get pcFocus => 'Focus';
+
+  @override
+  String get pcLegend => 'Legenda';
+
+  @override
+  String get pcJourney => 'Reis';
+
+  @override
+  String get pcStrip => 'Strook';
+
+  @override
+  String get pcFeatured => 'Uitgelicht';
+
+  @override
+  String get pcDashboard => 'Dashboard';
+
+  @override
+  String get pcRecent => 'Recent gewijzigd';
+
+  @override
+  String get pcQuickroll => 'Snelle worp';
+
+  @override
+  String get pcPinned => 'Vastgemaakt';
+
+  @override
+  String get pcTasks => 'Taken';
+
+  @override
+  String get pcBanner => 'Banner';
+
+  @override
+  String get pcGallery => 'Galerij';
+
+  @override
+  String get pcDivider => 'Scheiding';
+
+  @override
+  String get pcIconrow => 'Pictogrammenrij';
+
+  @override
+  String get pcFigure => 'Figuur';
+
+  @override
+  String get pcInfoboxEmpty => 'Nog geen velden';
+
+  @override
+  String get pcStatsEmpty => 'Nog niets te tellen';
+
+  @override
+  String get pcTocEmpty => 'Voeg een kop toe om de inhoud op te bouwen';
+
+  @override
+  String get pcNoElements => 'Nog geen elementen';
+
+  @override
+  String get pcBreakdownEmpty => 'Kies een veld om op te tellen';
+
+  @override
+  String get noEventsYet => 'Nog geen gebeurtenissen';
+
+  @override
+  String get mapNoAreas => 'Nog geen gebieden';
+
+  @override
+  String get pcNoChapters => 'Nog geen hoofdstukken';
+
+  @override
+  String get pcWords => 'woorden';
+
+  @override
+  String get pcNoEndings => 'Nog geen eindes';
+
+  @override
+  String get pcNoVariables => 'Nog geen variabelen';
+
+  @override
+  String get pcNoRelations => 'Nog geen relaties';
+
+  @override
+  String get pcUnlabelled => 'Zonder label';
+
+  @override
+  String get pcNoPanels => 'Nog geen panelen';
+
+  @override
+  String get pcNoSketches => 'Nog geen schetsen';
+
+  @override
+  String get managerEmpty => 'Niets geselecteerd — stel een filter in of kies modules.';
+
+  @override
+  String get pcRoll => 'Werpen';
+
+  @override
+  String get pcNoRolls => 'Nog geen worpen';
+
+  @override
+  String get pcNoPinned => 'Begin een bericht met 📌 om het hier vast te maken';
+
+  @override
+  String get pcNoTasks => 'Schrijf ‘- [ ] …’ in de notities om een taak toe te voegen';
+
+  @override
+  String get pcBannerEmpty => 'Nog geen afbeelding.';
+
+  @override
+  String get pcGalleryEmpty => 'Nog geen afbeeldingen.';
+
+  @override
+  String get pcIconrowEmpty => 'Nog geen pictogrammen.';
+
+  @override
+  String get pcFigureEmpty => 'Nog geen afbeelding.';
+
+  @override
+  String get pcStatItems => 'Items';
+
+  @override
+  String get pcStatModules => 'Modules';
+
+  @override
+  String get backlinks => 'Backlinks';
+
+  @override
+  String get pcCalloutPh => 'Schrijf een notitie…';
+
+  @override
+  String get pcDecorPickArrange => 'Nog niets — kies het via ⚙ → Opties.';
+
+  @override
+  String get pcToneNote => 'Notitie';
+
+  @override
+  String get pcToneTip => 'Tip';
+
+  @override
+  String get pcToneWarning => 'Waarschuwing';
+
+  @override
+  String get pcToneQuote => 'Citaat';
+
+  @override
+  String get pcToneSecret => 'Geheim';
+
+  @override
+  String get pcOptFields => 'Getoonde velden';
+
+  @override
+  String get pcOptDock => 'Positie';
+
+  @override
+  String get pcOptTone => 'Toon';
+
+  @override
+  String get pcOptField => 'Tellen per veld';
+
+  @override
+  String get pcOptFrom => 'Vanaf het jaar';
+
+  @override
+  String get pcOptGoal => 'Woorddoel';
+
+  @override
+  String get pcOptSubtitle => 'Ondertitel';
+
+  @override
+  String get pcOptHeight => 'Hoogte';
+
+  @override
+  String get pcOptScrim => 'Schaduw onder de tekst';
+
+  @override
+  String get pbImages => 'Afbeeldingen';
+
+  @override
+  String get pcOptFromModule => 'Alle afbeeldingen van deze module';
+
+  @override
+  String get pcOptCaptions => 'Bestandsnamen tonen';
+
+  @override
+  String get pcOptItems => 'Items';
+
+  @override
+  String get pcOptSize => 'Grootte';
+
+  @override
+  String get pcOptFit => 'Passend';
+
+  @override
+  String get pcOptFloat => 'Tekstomloop';
+
+  @override
+  String get pcOptRound => 'Afgeronde hoeken';
+
+  @override
+  String get pcLayoutTable => 'Tabel';
+
+  @override
+  String get pcLayoutStacked => 'Gestapeld';
+
+  @override
+  String get pcDockRight => 'Rechts';
+
+  @override
+  String get pcDockLeft => 'Links';
+
+  @override
+  String get pcDockFull => 'Volle breedte';
+
+  @override
+  String get pcSizeS => 'Klein';
+
+  @override
+  String get pcSizeM => 'Middel';
+
+  @override
+  String get pcSizeL => 'Groot';
+
+  @override
+  String get pcSizeFull => 'Volle breedte';
+
+  @override
+  String get pcScrimSoft => 'Zacht';
+
+  @override
+  String get pcScrimStrong => 'Sterk';
+
+  @override
+  String get pcGalMasonry => 'Metselwerk';
+
+  @override
+  String get pcDivLine => 'Lijn';
+
+  @override
+  String get pcDivDouble => 'Dubbel';
+
+  @override
+  String get pcDivDots => 'Stippen';
+
+  @override
+  String get pcDivOrnament => 'Ornament';
+
+  @override
+  String get pcDivImage => 'Afbeeldingsstrook';
+
+  @override
+  String get pcIrChip => 'Chips';
+
+  @override
+  String get pcIrBig => 'Grote pictogrammen';
+
+  @override
+  String get pcFitContain => 'Geheel';
+
+  @override
+  String get pcFitCover => 'Kader vullen';
+
+  @override
+  String get pcFloatNone => 'Los';
+
+  @override
+  String get pcFloatLeft => 'Afbeelding links';
+
+  @override
+  String get pcFloatRight => 'Afbeelding rechts';
+
+  @override
+  String get pcLoadFailed => 'Dit blok kon niet worden geladen';
+
+  @override
+  String get pcNoValue => '(geen)';
+
+  @override
+  String get tplUse => 'Sjabloon gebruiken…';
+
+  @override
+  String get tplUseHint => 'Vervangt de lay-out van deze pagina. Je inhoud blijft, en je kunt het direct ongedaan maken.';
+
+  @override
+  String get tplDefault => 'Standaard';
+
+  @override
+  String get tplOtherTypes => 'Andere typen';
+
+  @override
+  String get tplApplied => 'Sjabloon toegepast';
+
+  @override
+  String get tplBorrowDropped => '{n} blok(ken) weggelaten — ze lenen van een module die hier niet aan gekoppeld is';
+
+  @override
+  String get tplGallery => 'Paginasjablonen';
 }

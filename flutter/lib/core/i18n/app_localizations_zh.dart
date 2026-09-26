@@ -2323,4 +2323,343 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get pcPdfStrip => '缩略条';
+
+  @override
+  String get pcInfobox => '信息框';
+
+  @override
+  String get pcCallout => '标注';
+
+  @override
+  String get pcStats => '统计';
+
+  @override
+  String get pcToc => '目录';
+
+  @override
+  String get pcSpotlight => '聚光';
+
+  @override
+  String get pcRoster => '名册';
+
+  @override
+  String get pcBreakdown => '分布';
+
+  @override
+  String get pcEras => '时代';
+
+  @override
+  String get pcUpcoming => '即将到来';
+
+  @override
+  String get pcPinlist => '图钉列表';
+
+  @override
+  String get pcProgress => '进度';
+
+  @override
+  String get pcChapters => '章节';
+
+  @override
+  String get pcEndings => '结局';
+
+  @override
+  String get pcVariables => '变量';
+
+  @override
+  String get pcFocus => '焦点';
+
+  @override
+  String get pcLegend => '图例';
+
+  @override
+  String get pcJourney => '旅程';
+
+  @override
+  String get pcStrip => '分格条';
+
+  @override
+  String get pcFeatured => '精选';
+
+  @override
+  String get pcDashboard => '仪表板';
+
+  @override
+  String get pcRecent => '最近更改';
+
+  @override
+  String get pcQuickroll => '快速掷骰';
+
+  @override
+  String get pcPinned => '已置顶';
+
+  @override
+  String get pcTasks => '任务';
+
+  @override
+  String get pcBanner => '横幅';
+
+  @override
+  String get pcGallery => '图库';
+
+  @override
+  String get pcDivider => '分隔线';
+
+  @override
+  String get pcIconrow => '图标行';
+
+  @override
+  String get pcFigure => '插图';
+
+  @override
+  String get pcInfoboxEmpty => '还没有字段';
+
+  @override
+  String get pcStatsEmpty => '暂无可统计内容';
+
+  @override
+  String get pcTocEmpty => '添加标题即可生成目录';
+
+  @override
+  String get pcNoElements => '还没有元素';
+
+  @override
+  String get pcBreakdownEmpty => '选择一个用于统计的字段';
+
+  @override
+  String get noEventsYet => '还没有事件';
+
+  @override
+  String get mapNoAreas => '还没有区域';
+
+  @override
+  String get pcNoChapters => '还没有章节';
+
+  @override
+  String get pcWords => '字';
+
+  @override
+  String get pcNoEndings => '还没有结局';
+
+  @override
+  String get pcNoVariables => '还没有变量';
+
+  @override
+  String get pcNoRelations => '还没有关系';
+
+  @override
+  String get pcUnlabelled => '未标记';
+
+  @override
+  String get pcNoPanels => '还没有分格';
+
+  @override
+  String get pcNoSketches => '还没有草图';
+
+  @override
+  String get managerEmpty => '未选择任何内容 — 设置筛选或挑选模块。';
+
+  @override
+  String get pcRoll => '掷骰';
+
+  @override
+  String get pcNoRolls => '还没有掷骰记录';
+
+  @override
+  String get pcNoPinned => '以 📌 开头的消息会置顶在这里';
+
+  @override
+  String get pcNoTasks => '在笔记中写“- [ ] …”即可添加任务';
+
+  @override
+  String get pcBannerEmpty => '暂无图片。';
+
+  @override
+  String get pcGalleryEmpty => '暂无图片。';
+
+  @override
+  String get pcIconrowEmpty => '暂无图标。';
+
+  @override
+  String get pcFigureEmpty => '暂无图片。';
+
+  @override
+  String get pcStatItems => '条目';
+
+  @override
+  String get pcStatModules => '模块';
+
+  @override
+  String get backlinks => '反向链接';
+
+  @override
+  String get pcCalloutPh => '写一条备注…';
+
+  @override
+  String get pcDecorPickArrange => '暂无内容——在 ⚙ → 选项 中选择。';
+
+  @override
+  String get pcToneNote => '注释';
+
+  @override
+  String get pcToneTip => '提示';
+
+  @override
+  String get pcToneWarning => '警告';
+
+  @override
+  String get pcToneQuote => '引文';
+
+  @override
+  String get pcToneSecret => '秘密';
+
+  @override
+  String get pcOptFields => '显示的字段';
+
+  @override
+  String get pcOptDock => '位置';
+
+  @override
+  String get pcOptTone => '语气';
+
+  @override
+  String get pcOptField => '按字段统计';
+
+  @override
+  String get pcOptFrom => '起始年份';
+
+  @override
+  String get pcOptGoal => '目标字数';
+
+  @override
+  String get pcOptSubtitle => '副标题';
+
+  @override
+  String get pcOptHeight => '高度';
+
+  @override
+  String get pcOptScrim => '文字底部阴影';
+
+  @override
+  String get pbImages => '图片';
+
+  @override
+  String get pcOptFromModule => '此模块下的所有图片';
+
+  @override
+  String get pcOptCaptions => '显示文件名';
+
+  @override
+  String get pcOptItems => '项目';
+
+  @override
+  String get pcOptSize => '大小';
+
+  @override
+  String get pcOptFit => '适配';
+
+  @override
+  String get pcOptFloat => '文字环绕';
+
+  @override
+  String get pcOptRound => '圆角';
+
+  @override
+  String get pcLayoutTable => '表格';
+
+  @override
+  String get pcLayoutStacked => '堆叠';
+
+  @override
+  String get pcDockRight => '右侧';
+
+  @override
+  String get pcDockLeft => '左侧';
+
+  @override
+  String get pcDockFull => '全宽';
+
+  @override
+  String get pcSizeS => '小';
+
+  @override
+  String get pcSizeM => '中';
+
+  @override
+  String get pcSizeL => '大';
+
+  @override
+  String get pcSizeFull => '全宽';
+
+  @override
+  String get pcScrimSoft => '柔和';
+
+  @override
+  String get pcScrimStrong => '浓重';
+
+  @override
+  String get pcGalMasonry => '瀑布流';
+
+  @override
+  String get pcDivLine => '直线';
+
+  @override
+  String get pcDivDouble => '双线';
+
+  @override
+  String get pcDivDots => '点线';
+
+  @override
+  String get pcDivOrnament => '装饰';
+
+  @override
+  String get pcDivImage => '图片条';
+
+  @override
+  String get pcIrChip => '标签';
+
+  @override
+  String get pcIrBig => '大图标';
+
+  @override
+  String get pcFitContain => '完整';
+
+  @override
+  String get pcFitCover => '填满';
+
+  @override
+  String get pcFloatNone => '独立';
+
+  @override
+  String get pcFloatLeft => '图片居左';
+
+  @override
+  String get pcFloatRight => '图片居右';
+
+  @override
+  String get pcLoadFailed => '无法加载此区块';
+
+  @override
+  String get pcNoValue => '（无）';
+
+  @override
+  String get tplUse => '使用模板…';
+
+  @override
+  String get tplUseHint => '替换此页面的布局。内容保持不变，之后可立即撤销。';
+
+  @override
+  String get tplDefault => '默认';
+
+  @override
+  String get tplOtherTypes => '其他类型';
+
+  @override
+  String get tplApplied => '已应用模板';
+
+  @override
+  String get tplBorrowDropped => '已略过 {n} 个区块 — 它们借用的模块未与此模块关联';
+
+  @override
+  String get tplGallery => '页面模板';
 }

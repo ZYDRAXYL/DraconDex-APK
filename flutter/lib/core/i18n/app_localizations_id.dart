@@ -2323,4 +2323,343 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Strip halaman';
+
+  @override
+  String get pcInfobox => 'Kotak info';
+
+  @override
+  String get pcCallout => 'Callout';
+
+  @override
+  String get pcStats => 'Statistik';
+
+  @override
+  String get pcToc => 'Daftar isi';
+
+  @override
+  String get pcSpotlight => 'Sorotan';
+
+  @override
+  String get pcRoster => 'Daftar';
+
+  @override
+  String get pcBreakdown => 'Rincian';
+
+  @override
+  String get pcEras => 'Era';
+
+  @override
+  String get pcUpcoming => 'Mendatang';
+
+  @override
+  String get pcPinlist => 'Daftar pin';
+
+  @override
+  String get pcProgress => 'Progres';
+
+  @override
+  String get pcChapters => 'Bab';
+
+  @override
+  String get pcEndings => 'Akhir cerita';
+
+  @override
+  String get pcVariables => 'Variabel';
+
+  @override
+  String get pcFocus => 'Fokus';
+
+  @override
+  String get pcLegend => 'Legenda';
+
+  @override
+  String get pcJourney => 'Perjalanan';
+
+  @override
+  String get pcStrip => 'Strip';
+
+  @override
+  String get pcFeatured => 'Unggulan';
+
+  @override
+  String get pcDashboard => 'Dasbor';
+
+  @override
+  String get pcRecent => 'Baru diubah';
+
+  @override
+  String get pcQuickroll => 'Lempar cepat';
+
+  @override
+  String get pcPinned => 'Disematkan';
+
+  @override
+  String get pcTasks => 'Tugas';
+
+  @override
+  String get pcBanner => 'Spanduk';
+
+  @override
+  String get pcGallery => 'Galeri';
+
+  @override
+  String get pcDivider => 'Pemisah';
+
+  @override
+  String get pcIconrow => 'Baris ikon';
+
+  @override
+  String get pcFigure => 'Figur';
+
+  @override
+  String get pcInfoboxEmpty => 'Belum ada field';
+
+  @override
+  String get pcStatsEmpty => 'Belum ada yang dihitung';
+
+  @override
+  String get pcTocEmpty => 'Tambahkan judul untuk membuat daftar isi';
+
+  @override
+  String get pcNoElements => 'Belum ada elemen';
+
+  @override
+  String get pcBreakdownEmpty => 'Pilih field untuk dihitung';
+
+  @override
+  String get noEventsYet => 'Belum ada peristiwa';
+
+  @override
+  String get mapNoAreas => 'Belum ada area';
+
+  @override
+  String get pcNoChapters => 'Belum ada bab';
+
+  @override
+  String get pcWords => 'kata';
+
+  @override
+  String get pcNoEndings => 'Belum ada akhir cerita';
+
+  @override
+  String get pcNoVariables => 'Belum ada variabel';
+
+  @override
+  String get pcNoRelations => 'Belum ada relasi';
+
+  @override
+  String get pcUnlabelled => 'Tanpa label';
+
+  @override
+  String get pcNoPanels => 'Belum ada panel';
+
+  @override
+  String get pcNoSketches => 'Belum ada sketsa';
+
+  @override
+  String get managerEmpty => 'Belum ada yang dipilih — atur filter atau pilih modul.';
+
+  @override
+  String get pcRoll => 'Lempar';
+
+  @override
+  String get pcNoRolls => 'Belum ada lemparan';
+
+  @override
+  String get pcNoPinned => 'Awali pesan dengan 📌 untuk menyematkannya di sini';
+
+  @override
+  String get pcNoTasks => 'Tulis “- [ ] …” di catatan untuk menambah tugas';
+
+  @override
+  String get pcBannerEmpty => 'Belum ada gambar.';
+
+  @override
+  String get pcGalleryEmpty => 'Belum ada gambar.';
+
+  @override
+  String get pcIconrowEmpty => 'Belum ada ikon.';
+
+  @override
+  String get pcFigureEmpty => 'Belum ada gambar.';
+
+  @override
+  String get pcStatItems => 'Item';
+
+  @override
+  String get pcStatModules => 'Modul';
+
+  @override
+  String get backlinks => 'Tautan balik';
+
+  @override
+  String get pcCalloutPh => 'Tulis catatan…';
+
+  @override
+  String get pcDecorPickArrange => 'Belum ada — pilih lewat ⚙ → Opsi.';
+
+  @override
+  String get pcToneNote => 'Catatan';
+
+  @override
+  String get pcToneTip => 'Tip';
+
+  @override
+  String get pcToneWarning => 'Peringatan';
+
+  @override
+  String get pcToneQuote => 'Kutipan';
+
+  @override
+  String get pcToneSecret => 'Rahasia';
+
+  @override
+  String get pcOptFields => 'Kolom yang ditampilkan';
+
+  @override
+  String get pcOptDock => 'Posisi';
+
+  @override
+  String get pcOptTone => 'Nada';
+
+  @override
+  String get pcOptField => 'Hitung per kolom';
+
+  @override
+  String get pcOptFrom => 'Dari tahun';
+
+  @override
+  String get pcOptGoal => 'Target kata';
+
+  @override
+  String get pcOptSubtitle => 'Subjudul';
+
+  @override
+  String get pcOptHeight => 'Tinggi';
+
+  @override
+  String get pcOptScrim => 'Bayangan di bawah teks';
+
+  @override
+  String get pbImages => 'Gambar';
+
+  @override
+  String get pcOptFromModule => 'Semua gambar di modul ini';
+
+  @override
+  String get pcOptCaptions => 'Tampilkan nama berkas';
+
+  @override
+  String get pcOptItems => 'Item';
+
+  @override
+  String get pcOptSize => 'Ukuran';
+
+  @override
+  String get pcOptFit => 'Penyesuaian';
+
+  @override
+  String get pcOptFloat => 'Aliran teks';
+
+  @override
+  String get pcOptRound => 'Sudut bulat';
+
+  @override
+  String get pcLayoutTable => 'Tabel';
+
+  @override
+  String get pcLayoutStacked => 'Bertumpuk';
+
+  @override
+  String get pcDockRight => 'Kanan';
+
+  @override
+  String get pcDockLeft => 'Kiri';
+
+  @override
+  String get pcDockFull => 'Lebar penuh';
+
+  @override
+  String get pcSizeS => 'Kecil';
+
+  @override
+  String get pcSizeM => 'Sedang';
+
+  @override
+  String get pcSizeL => 'Besar';
+
+  @override
+  String get pcSizeFull => 'Lebar penuh';
+
+  @override
+  String get pcScrimSoft => 'Lembut';
+
+  @override
+  String get pcScrimStrong => 'Kuat';
+
+  @override
+  String get pcGalMasonry => 'Masonri';
+
+  @override
+  String get pcDivLine => 'Garis';
+
+  @override
+  String get pcDivDouble => 'Ganda';
+
+  @override
+  String get pcDivDots => 'Titik';
+
+  @override
+  String get pcDivOrnament => 'Ornamen';
+
+  @override
+  String get pcDivImage => 'Pita gambar';
+
+  @override
+  String get pcIrChip => 'Chip';
+
+  @override
+  String get pcIrBig => 'Ikon besar';
+
+  @override
+  String get pcFitContain => 'Utuh';
+
+  @override
+  String get pcFitCover => 'Penuhi bingkai';
+
+  @override
+  String get pcFloatNone => 'Sendiri';
+
+  @override
+  String get pcFloatLeft => 'Gambar kiri';
+
+  @override
+  String get pcFloatRight => 'Gambar kanan';
+
+  @override
+  String get pcLoadFailed => 'Blok ini gagal dimuat';
+
+  @override
+  String get pcNoValue => '(kosong)';
+
+  @override
+  String get tplUse => 'Pakai templat…';
+
+  @override
+  String get tplUseHint => 'Mengganti tata letak halaman ini. Isinya tetap, dan bisa dibatalkan setelahnya.';
+
+  @override
+  String get tplDefault => 'Bawaan';
+
+  @override
+  String get tplOtherTypes => 'Jenis lain';
+
+  @override
+  String get tplApplied => 'Templat diterapkan';
+
+  @override
+  String get tplBorrowDropped => '{n} blok dilewati — blok itu meminjam dari modul yang belum ditautkan';
+
+  @override
+  String get tplGallery => 'Templat halaman';
 }

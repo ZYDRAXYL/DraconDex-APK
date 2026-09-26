@@ -40,6 +40,13 @@ class OptDef {
 
 const _media = {'image', 'video', 'model'};
 
+/// A divider's options — the plain `divider` block has them too (the
+/// desktop's PB_BASIC_OPTIONS.divider).
+const _divider = [
+  OptDef('look', OptType.select, 'pcOptLook', choices: ['line', 'double', 'dots', 'ornament', 'image'], choicePrefix: 'pcDiv', defaultValue: 'line'),
+  OptDef('image', OptType.image, 'pbImage'),
+];
+
 /// Every option the phone can edit, by component — the desktop's own keys
 /// and limits, so a block edited on either side reads the same on both.
 const Map<String, List<OptDef>> componentOptions = {
@@ -61,6 +68,44 @@ const Map<String, List<OptDef>> componentOptions = {
   'core.media': [
     OptDef('files', OptType.images, 'pcMedia', classes: _media),
     OptDef('cols', OptType.select, 'pbColumns', choices: ['2', '3', '4', '5'], defaultValue: '3'),
+  ],
+  'core.infobox': [
+    OptDef('layout', OptType.select, 'pcOptLayout', choices: ['table', 'stacked'], choicePrefix: 'pcLayout', defaultValue: 'table'),
+    OptDef('dock', OptType.select, 'pcOptDock', choices: ['right', 'left', 'full'], choicePrefix: 'pcDock', defaultValue: 'right'),
+  ],
+  'core.callout': [
+    OptDef('tone', OptType.select, 'pcOptTone', choices: ['note', 'tip', 'warning', 'quote', 'secret'], choicePrefix: 'pcTone', defaultValue: 'note'),
+  ],
+  'chronicler.upcoming': [OptDef('from', OptType.number, 'pcOptFrom')],
+  'author.progress': [OptDef('goal', OptType.number, 'pcOptGoal', min: 0, max: 10000000)],
+  'core.banner': [
+    OptDef('image', OptType.image, 'pbImage'),
+    OptDef('title', OptType.text, 'pbHeaderTitle', max: 80),
+    OptDef('sub', OptType.text, 'pcOptSubtitle', max: 160),
+    OptDef('height', OptType.select, 'pcOptHeight', choices: ['s', 'm', 'l'], choicePrefix: 'pcSize', defaultValue: 'm'),
+    OptDef('scrim', OptType.select, 'pcOptScrim', choices: ['soft', 'strong'], choicePrefix: 'pcScrim', defaultValue: 'soft'),
+    OptDef('align', OptType.select, 'pbStyleAlign', choices: ['left', 'center'], choicePrefix: 'align', defaultValue: 'left'),
+  ],
+  'core.gallery': [
+    OptDef('images', OptType.images, 'pbImages'),
+    OptDef('fromModule', OptType.toggle, 'pcOptFromModule', defaultValue: false),
+    OptDef('layout', OptType.select, 'pcOptLayout', choices: ['grid', 'masonry', 'strip'], choicePrefix: 'pcGal', defaultValue: 'grid'),
+    OptDef('cols', OptType.select, 'pbColumns', choices: ['2', '3', '4', '5', '6'], defaultValue: '3'),
+    OptDef('captions', OptType.toggle, 'pcOptCaptions', defaultValue: false),
+  ],
+  'core.divider': _divider,
+  'core.iconrow': [
+    OptDef('look', OptType.select, 'pcOptLook', choices: ['chip', 'big'], choicePrefix: 'pcIr', defaultValue: 'chip'),
+    OptDef('size', OptType.select, 'pcOptSize', choices: ['s', 'm', 'l'], choicePrefix: 'pcSize', defaultValue: 'm'),
+  ],
+  'core.figure': [
+    OptDef('image', OptType.image, 'pbImage'),
+    OptDef('size', OptType.select, 'pcOptSize', choices: ['s', 'm', 'l', 'full'], choicePrefix: 'pcSize', defaultValue: 'full'),
+    OptDef('fit', OptType.select, 'pcOptFit', choices: ['contain', 'cover'], choicePrefix: 'pcFit', defaultValue: 'contain'),
+    OptDef('float', OptType.select, 'pcOptFloat', choices: ['none', 'left', 'right'], choicePrefix: 'pcFloat', defaultValue: 'none'),
+    OptDef('round', OptType.toggle, 'pcOptRound', defaultValue: true),
+    OptDef('caption', OptType.text, 'pcOptCaption', max: 200),
+    OptDef('links', OptType.links, 'pbLinks'),
   ],
   'core.linkbar': [
     OptDef('links', OptType.links, 'pbLinks'),
@@ -103,7 +148,7 @@ const Map<String, List<OptDef>> componentOptions = {
   ],
 };
 
-List<OptDef> optionsOf(PageBlock b) => componentOptions[b.component] ?? const [];
+List<OptDef> optionsOf(PageBlock b) => b.type == 'divider' ? _divider : (componentOptions[b.component] ?? const []);
 
 final _fileRef = RegExp(r'^file_\d+$');
 
@@ -143,6 +188,7 @@ Object? optValue(PageBlock b, String key) {
   final opts = b.config['opts'];
   final raw = opts is Map && opts[key] != null ? opts[key] : b.config[key];
   final d = optionsOf(b).where((o) => o.key == key).firstOrNull;
+  // an option the phone reads but does not edit (fields, focus, icon items)
   if (d == null) return raw;
   return optValid(d, raw) ?? d.defaultValue;
 }

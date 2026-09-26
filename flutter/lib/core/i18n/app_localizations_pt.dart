@@ -2323,4 +2323,343 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Faixa de páginas';
+
+  @override
+  String get pcInfobox => 'Caixa de informações';
+
+  @override
+  String get pcCallout => 'Destaque';
+
+  @override
+  String get pcStats => 'Estatísticas';
+
+  @override
+  String get pcToc => 'Sumário';
+
+  @override
+  String get pcSpotlight => 'Em destaque';
+
+  @override
+  String get pcRoster => 'Elenco';
+
+  @override
+  String get pcBreakdown => 'Distribuição';
+
+  @override
+  String get pcEras => 'Eras';
+
+  @override
+  String get pcUpcoming => 'Próximos';
+
+  @override
+  String get pcPinlist => 'Lista de marcadores';
+
+  @override
+  String get pcProgress => 'Progresso';
+
+  @override
+  String get pcChapters => 'Capítulos';
+
+  @override
+  String get pcEndings => 'Finais';
+
+  @override
+  String get pcVariables => 'Variáveis';
+
+  @override
+  String get pcFocus => 'Foco';
+
+  @override
+  String get pcLegend => 'Legenda';
+
+  @override
+  String get pcJourney => 'Jornada';
+
+  @override
+  String get pcStrip => 'Tira';
+
+  @override
+  String get pcFeatured => 'Em destaque';
+
+  @override
+  String get pcDashboard => 'Painel';
+
+  @override
+  String get pcRecent => 'Alterados recentemente';
+
+  @override
+  String get pcQuickroll => 'Rolagem rápida';
+
+  @override
+  String get pcPinned => 'Fixados';
+
+  @override
+  String get pcTasks => 'Tarefas';
+
+  @override
+  String get pcBanner => 'Faixa';
+
+  @override
+  String get pcGallery => 'Galeria';
+
+  @override
+  String get pcDivider => 'Separador';
+
+  @override
+  String get pcIconrow => 'Linha de ícones';
+
+  @override
+  String get pcFigure => 'Figura';
+
+  @override
+  String get pcInfoboxEmpty => 'Ainda não há campos';
+
+  @override
+  String get pcStatsEmpty => 'Ainda não há nada para contar';
+
+  @override
+  String get pcTocEmpty => 'Adicione um título para montar o sumário';
+
+  @override
+  String get pcNoElements => 'Ainda não há elementos';
+
+  @override
+  String get pcBreakdownEmpty => 'Escolha um campo para contar';
+
+  @override
+  String get noEventsYet => 'Ainda não há eventos';
+
+  @override
+  String get mapNoAreas => 'Ainda não há áreas';
+
+  @override
+  String get pcNoChapters => 'Ainda não há capítulos';
+
+  @override
+  String get pcWords => 'palavras';
+
+  @override
+  String get pcNoEndings => 'Ainda não há finais';
+
+  @override
+  String get pcNoVariables => 'Ainda não há variáveis';
+
+  @override
+  String get pcNoRelations => 'Ainda não há relações';
+
+  @override
+  String get pcUnlabelled => 'Sem rótulo';
+
+  @override
+  String get pcNoPanels => 'Ainda não há quadros';
+
+  @override
+  String get pcNoSketches => 'Ainda não há esboços';
+
+  @override
+  String get managerEmpty => 'Nada selecionado — defina um filtro ou escolha módulos.';
+
+  @override
+  String get pcRoll => 'Rolar';
+
+  @override
+  String get pcNoRolls => 'Ainda não há rolagens';
+
+  @override
+  String get pcNoPinned => 'Comece uma mensagem com 📌 para fixá-la aqui';
+
+  @override
+  String get pcNoTasks => 'Escreva “- [ ] …” nas notas para adicionar uma tarefa';
+
+  @override
+  String get pcBannerEmpty => 'Ainda sem imagem.';
+
+  @override
+  String get pcGalleryEmpty => 'Ainda sem imagens.';
+
+  @override
+  String get pcIconrowEmpty => 'Ainda sem ícones.';
+
+  @override
+  String get pcFigureEmpty => 'Ainda sem imagem.';
+
+  @override
+  String get pcStatItems => 'Itens';
+
+  @override
+  String get pcStatModules => 'Módulos';
+
+  @override
+  String get backlinks => 'Backlinks';
+
+  @override
+  String get pcCalloutPh => 'Escreva uma nota…';
+
+  @override
+  String get pcDecorPickArrange => 'Ainda nada — escolha em ⚙ → Opções.';
+
+  @override
+  String get pcToneNote => 'Nota';
+
+  @override
+  String get pcToneTip => 'Dica';
+
+  @override
+  String get pcToneWarning => 'Aviso';
+
+  @override
+  String get pcToneQuote => 'Citação';
+
+  @override
+  String get pcToneSecret => 'Segredo';
+
+  @override
+  String get pcOptFields => 'Campos mostrados';
+
+  @override
+  String get pcOptDock => 'Posição';
+
+  @override
+  String get pcOptTone => 'Tom';
+
+  @override
+  String get pcOptField => 'Contar por campo';
+
+  @override
+  String get pcOptFrom => 'Desde o ano';
+
+  @override
+  String get pcOptGoal => 'Meta de palavras';
+
+  @override
+  String get pcOptSubtitle => 'Subtítulo';
+
+  @override
+  String get pcOptHeight => 'Altura';
+
+  @override
+  String get pcOptScrim => 'Sombra sob o texto';
+
+  @override
+  String get pbImages => 'Imagens';
+
+  @override
+  String get pcOptFromModule => 'Todas as imagens deste módulo';
+
+  @override
+  String get pcOptCaptions => 'Mostrar nomes';
+
+  @override
+  String get pcOptItems => 'Itens';
+
+  @override
+  String get pcOptSize => 'Tamanho';
+
+  @override
+  String get pcOptFit => 'Ajuste';
+
+  @override
+  String get pcOptFloat => 'Texto à volta';
+
+  @override
+  String get pcOptRound => 'Cantos arredondados';
+
+  @override
+  String get pcLayoutTable => 'Tabela';
+
+  @override
+  String get pcLayoutStacked => 'Empilhado';
+
+  @override
+  String get pcDockRight => 'Direita';
+
+  @override
+  String get pcDockLeft => 'Esquerda';
+
+  @override
+  String get pcDockFull => 'Largura total';
+
+  @override
+  String get pcSizeS => 'Pequeno';
+
+  @override
+  String get pcSizeM => 'Médio';
+
+  @override
+  String get pcSizeL => 'Grande';
+
+  @override
+  String get pcSizeFull => 'Largura total';
+
+  @override
+  String get pcScrimSoft => 'Suave';
+
+  @override
+  String get pcScrimStrong => 'Forte';
+
+  @override
+  String get pcGalMasonry => 'Mosaico';
+
+  @override
+  String get pcDivLine => 'Linha';
+
+  @override
+  String get pcDivDouble => 'Dupla';
+
+  @override
+  String get pcDivDots => 'Pontos';
+
+  @override
+  String get pcDivOrnament => 'Ornamento';
+
+  @override
+  String get pcDivImage => 'Faixa de imagem';
+
+  @override
+  String get pcIrChip => 'Etiquetas';
+
+  @override
+  String get pcIrBig => 'Ícones grandes';
+
+  @override
+  String get pcFitContain => 'Inteira';
+
+  @override
+  String get pcFitCover => 'Preencher';
+
+  @override
+  String get pcFloatNone => 'Sozinha';
+
+  @override
+  String get pcFloatLeft => 'Imagem à esquerda';
+
+  @override
+  String get pcFloatRight => 'Imagem à direita';
+
+  @override
+  String get pcLoadFailed => 'Não foi possível carregar este bloco';
+
+  @override
+  String get pcNoValue => '(nenhum)';
+
+  @override
+  String get tplUse => 'Usar modelo…';
+
+  @override
+  String get tplUseHint => 'Substitui o layout desta página. Seu conteúdo fica, e você pode desfazer logo em seguida.';
+
+  @override
+  String get tplDefault => 'Padrão';
+
+  @override
+  String get tplOtherTypes => 'Outros tipos';
+
+  @override
+  String get tplApplied => 'Modelo aplicado';
+
+  @override
+  String get tplBorrowDropped => '{n} bloco(s) ficaram de fora — usam um módulo não vinculado a este';
+
+  @override
+  String get tplGallery => 'Modelos de página';
 }

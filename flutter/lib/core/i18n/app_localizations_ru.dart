@@ -2323,4 +2323,343 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Лента страниц';
+
+  @override
+  String get pcInfobox => 'Карточка';
+
+  @override
+  String get pcCallout => 'Выноска';
+
+  @override
+  String get pcStats => 'Статистика';
+
+  @override
+  String get pcToc => 'Содержание';
+
+  @override
+  String get pcSpotlight => 'В центре внимания';
+
+  @override
+  String get pcRoster => 'Состав';
+
+  @override
+  String get pcBreakdown => 'Разбивка';
+
+  @override
+  String get pcEras => 'Эпохи';
+
+  @override
+  String get pcUpcoming => 'Предстоящие';
+
+  @override
+  String get pcPinlist => 'Список меток';
+
+  @override
+  String get pcProgress => 'Прогресс';
+
+  @override
+  String get pcChapters => 'Главы';
+
+  @override
+  String get pcEndings => 'Концовки';
+
+  @override
+  String get pcVariables => 'Переменные';
+
+  @override
+  String get pcFocus => 'Фокус';
+
+  @override
+  String get pcLegend => 'Легенда';
+
+  @override
+  String get pcJourney => 'Путь';
+
+  @override
+  String get pcStrip => 'Раскадровка';
+
+  @override
+  String get pcFeatured => 'Избранное';
+
+  @override
+  String get pcDashboard => 'Панель';
+
+  @override
+  String get pcRecent => 'Недавно изменённые';
+
+  @override
+  String get pcQuickroll => 'Быстрый бросок';
+
+  @override
+  String get pcPinned => 'Закреплённые';
+
+  @override
+  String get pcTasks => 'Задачи';
+
+  @override
+  String get pcBanner => 'Баннер';
+
+  @override
+  String get pcGallery => 'Галерея';
+
+  @override
+  String get pcDivider => 'Разделитель';
+
+  @override
+  String get pcIconrow => 'Ряд значков';
+
+  @override
+  String get pcFigure => 'Иллюстрация';
+
+  @override
+  String get pcInfoboxEmpty => 'Полей пока нет';
+
+  @override
+  String get pcStatsEmpty => 'Пока нечего считать';
+
+  @override
+  String get pcTocEmpty => 'Добавьте заголовок, чтобы собрать содержание';
+
+  @override
+  String get pcNoElements => 'Элементов пока нет';
+
+  @override
+  String get pcBreakdownEmpty => 'Выберите поле для подсчёта';
+
+  @override
+  String get noEventsYet => 'Пока нет событий';
+
+  @override
+  String get mapNoAreas => 'Областей пока нет';
+
+  @override
+  String get pcNoChapters => 'Глав пока нет';
+
+  @override
+  String get pcWords => 'слов';
+
+  @override
+  String get pcNoEndings => 'Концовок пока нет';
+
+  @override
+  String get pcNoVariables => 'Переменных пока нет';
+
+  @override
+  String get pcNoRelations => 'Связей пока нет';
+
+  @override
+  String get pcUnlabelled => 'Без подписи';
+
+  @override
+  String get pcNoPanels => 'Кадров пока нет';
+
+  @override
+  String get pcNoSketches => 'Эскизов пока нет';
+
+  @override
+  String get managerEmpty => 'Ничего не выбрано — задайте фильтр или выберите модули.';
+
+  @override
+  String get pcRoll => 'Бросить';
+
+  @override
+  String get pcNoRolls => 'Бросков пока нет';
+
+  @override
+  String get pcNoPinned => 'Начните сообщение с 📌, чтобы закрепить его здесь';
+
+  @override
+  String get pcNoTasks => 'Напишите «- [ ] …» в заметках, чтобы добавить задачу';
+
+  @override
+  String get pcBannerEmpty => 'Изображения пока нет.';
+
+  @override
+  String get pcGalleryEmpty => 'Изображений пока нет.';
+
+  @override
+  String get pcIconrowEmpty => 'Значков пока нет.';
+
+  @override
+  String get pcFigureEmpty => 'Изображения пока нет.';
+
+  @override
+  String get pcStatItems => 'Элементы';
+
+  @override
+  String get pcStatModules => 'Модули';
+
+  @override
+  String get backlinks => 'Обратные ссылки';
+
+  @override
+  String get pcCalloutPh => 'Напишите заметку…';
+
+  @override
+  String get pcDecorPickArrange => 'Пока пусто — выберите через ⚙ → Параметры.';
+
+  @override
+  String get pcToneNote => 'Заметка';
+
+  @override
+  String get pcToneTip => 'Совет';
+
+  @override
+  String get pcToneWarning => 'Предупреждение';
+
+  @override
+  String get pcToneQuote => 'Цитата';
+
+  @override
+  String get pcToneSecret => 'Секрет';
+
+  @override
+  String get pcOptFields => 'Показываемые поля';
+
+  @override
+  String get pcOptDock => 'Положение';
+
+  @override
+  String get pcOptTone => 'Тон';
+
+  @override
+  String get pcOptField => 'Считать по полю';
+
+  @override
+  String get pcOptFrom => 'С года';
+
+  @override
+  String get pcOptGoal => 'Цель по словам';
+
+  @override
+  String get pcOptSubtitle => 'Подзаголовок';
+
+  @override
+  String get pcOptHeight => 'Высота';
+
+  @override
+  String get pcOptScrim => 'Затемнение под текстом';
+
+  @override
+  String get pbImages => 'Изображения';
+
+  @override
+  String get pcOptFromModule => 'Все изображения этого модуля';
+
+  @override
+  String get pcOptCaptions => 'Показывать имена файлов';
+
+  @override
+  String get pcOptItems => 'Элементы';
+
+  @override
+  String get pcOptSize => 'Размер';
+
+  @override
+  String get pcOptFit => 'Вписывание';
+
+  @override
+  String get pcOptFloat => 'Обтекание';
+
+  @override
+  String get pcOptRound => 'Скруглённые углы';
+
+  @override
+  String get pcLayoutTable => 'Таблица';
+
+  @override
+  String get pcLayoutStacked => 'Стопкой';
+
+  @override
+  String get pcDockRight => 'Справа';
+
+  @override
+  String get pcDockLeft => 'Слева';
+
+  @override
+  String get pcDockFull => 'Во всю ширину';
+
+  @override
+  String get pcSizeS => 'Маленький';
+
+  @override
+  String get pcSizeM => 'Средний';
+
+  @override
+  String get pcSizeL => 'Большой';
+
+  @override
+  String get pcSizeFull => 'Во всю ширину';
+
+  @override
+  String get pcScrimSoft => 'Мягкое';
+
+  @override
+  String get pcScrimStrong => 'Сильное';
+
+  @override
+  String get pcGalMasonry => 'Кладка';
+
+  @override
+  String get pcDivLine => 'Линия';
+
+  @override
+  String get pcDivDouble => 'Двойная';
+
+  @override
+  String get pcDivDots => 'Точки';
+
+  @override
+  String get pcDivOrnament => 'Орнамент';
+
+  @override
+  String get pcDivImage => 'Полоса изображения';
+
+  @override
+  String get pcIrChip => 'Метки';
+
+  @override
+  String get pcIrBig => 'Крупные значки';
+
+  @override
+  String get pcFitContain => 'Целиком';
+
+  @override
+  String get pcFitCover => 'Заполнить рамку';
+
+  @override
+  String get pcFloatNone => 'Отдельно';
+
+  @override
+  String get pcFloatLeft => 'Изображение слева';
+
+  @override
+  String get pcFloatRight => 'Изображение справа';
+
+  @override
+  String get pcLoadFailed => 'Не удалось загрузить блок';
+
+  @override
+  String get pcNoValue => '(нет)';
+
+  @override
+  String get tplUse => 'Применить шаблон…';
+
+  @override
+  String get tplUseHint => 'Заменяет макет страницы. Содержимое сохраняется, отменить можно сразу после.';
+
+  @override
+  String get tplDefault => 'По умолчанию';
+
+  @override
+  String get tplOtherTypes => 'Другие типы';
+
+  @override
+  String get tplApplied => 'Шаблон применён';
+
+  @override
+  String get tplBorrowDropped => 'Пропущено блоков: {n} — они берут данные из несвязанного модуля';
+
+  @override
+  String get tplGallery => 'Шаблоны страниц';
 }

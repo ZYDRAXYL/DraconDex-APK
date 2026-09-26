@@ -2320,4 +2320,343 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Sayfa şeridi';
+
+  @override
+  String get pcInfobox => 'Bilgi kutusu';
+
+  @override
+  String get pcCallout => 'Not kutusu';
+
+  @override
+  String get pcStats => 'İstatistik';
+
+  @override
+  String get pcToc => 'İçindekiler';
+
+  @override
+  String get pcSpotlight => 'Öne çıkan';
+
+  @override
+  String get pcRoster => 'Kadro';
+
+  @override
+  String get pcBreakdown => 'Dağılım';
+
+  @override
+  String get pcEras => 'Çağlar';
+
+  @override
+  String get pcUpcoming => 'Yaklaşan';
+
+  @override
+  String get pcPinlist => 'İğne listesi';
+
+  @override
+  String get pcProgress => 'İlerleme';
+
+  @override
+  String get pcChapters => 'Bölümler';
+
+  @override
+  String get pcEndings => 'Sonlar';
+
+  @override
+  String get pcVariables => 'Değişkenler';
+
+  @override
+  String get pcFocus => 'Odak';
+
+  @override
+  String get pcLegend => 'Açıklama';
+
+  @override
+  String get pcJourney => 'Yolculuk';
+
+  @override
+  String get pcStrip => 'Şerit';
+
+  @override
+  String get pcFeatured => 'Öne çıkan';
+
+  @override
+  String get pcDashboard => 'Pano';
+
+  @override
+  String get pcRecent => 'Son değişenler';
+
+  @override
+  String get pcQuickroll => 'Hızlı zar';
+
+  @override
+  String get pcPinned => 'Sabitlenenler';
+
+  @override
+  String get pcTasks => 'Görevler';
+
+  @override
+  String get pcBanner => 'Afiş';
+
+  @override
+  String get pcGallery => 'Galeri';
+
+  @override
+  String get pcDivider => 'Ayırıcı';
+
+  @override
+  String get pcIconrow => 'Simge satırı';
+
+  @override
+  String get pcFigure => 'Şekil';
+
+  @override
+  String get pcInfoboxEmpty => 'Henüz alan yok';
+
+  @override
+  String get pcStatsEmpty => 'Henüz sayılacak bir şey yok';
+
+  @override
+  String get pcTocEmpty => 'İçindekiler için bir başlık ekleyin';
+
+  @override
+  String get pcNoElements => 'Henüz öğe yok';
+
+  @override
+  String get pcBreakdownEmpty => 'Saymak için bir alan seçin';
+
+  @override
+  String get noEventsYet => 'Henüz olay yok';
+
+  @override
+  String get mapNoAreas => 'Henüz alan yok';
+
+  @override
+  String get pcNoChapters => 'Henüz bölüm yok';
+
+  @override
+  String get pcWords => 'kelime';
+
+  @override
+  String get pcNoEndings => 'Henüz son yok';
+
+  @override
+  String get pcNoVariables => 'Henüz değişken yok';
+
+  @override
+  String get pcNoRelations => 'Henüz ilişki yok';
+
+  @override
+  String get pcUnlabelled => 'Etiketsiz';
+
+  @override
+  String get pcNoPanels => 'Henüz panel yok';
+
+  @override
+  String get pcNoSketches => 'Henüz eskiz yok';
+
+  @override
+  String get managerEmpty => 'Hiçbir şey seçilmedi — bir filtre ayarlayın ya da modül seçin.';
+
+  @override
+  String get pcRoll => 'Zar at';
+
+  @override
+  String get pcNoRolls => 'Henüz zar atılmadı';
+
+  @override
+  String get pcNoPinned => 'Buraya sabitlemek için mesaja 📌 ile başlayın';
+
+  @override
+  String get pcNoTasks => 'Görev eklemek için notlara “- [ ] …” yazın';
+
+  @override
+  String get pcBannerEmpty => 'Henüz resim yok.';
+
+  @override
+  String get pcGalleryEmpty => 'Henüz resim yok.';
+
+  @override
+  String get pcIconrowEmpty => 'Henüz simge yok.';
+
+  @override
+  String get pcFigureEmpty => 'Henüz resim yok.';
+
+  @override
+  String get pcStatItems => 'Öğe';
+
+  @override
+  String get pcStatModules => 'Modül';
+
+  @override
+  String get backlinks => 'Geri bağlantılar';
+
+  @override
+  String get pcCalloutPh => 'Not yazın…';
+
+  @override
+  String get pcDecorPickArrange => 'Henüz bir şey yok — ⚙ → Seçenekler ile seçin.';
+
+  @override
+  String get pcToneNote => 'Not';
+
+  @override
+  String get pcToneTip => 'İpucu';
+
+  @override
+  String get pcToneWarning => 'Uyarı';
+
+  @override
+  String get pcToneQuote => 'Alıntı';
+
+  @override
+  String get pcToneSecret => 'Sır';
+
+  @override
+  String get pcOptFields => 'Gösterilen alanlar';
+
+  @override
+  String get pcOptDock => 'Konum';
+
+  @override
+  String get pcOptTone => 'Ton';
+
+  @override
+  String get pcOptField => 'Alana göre say';
+
+  @override
+  String get pcOptFrom => 'Başlangıç yılı';
+
+  @override
+  String get pcOptGoal => 'Kelime hedefi';
+
+  @override
+  String get pcOptSubtitle => 'Alt başlık';
+
+  @override
+  String get pcOptHeight => 'Yükseklik';
+
+  @override
+  String get pcOptScrim => 'Metin altı gölge';
+
+  @override
+  String get pbImages => 'Resimler';
+
+  @override
+  String get pcOptFromModule => 'Bu modüldeki tüm resimler';
+
+  @override
+  String get pcOptCaptions => 'Dosya adlarını göster';
+
+  @override
+  String get pcOptItems => 'Öğeler';
+
+  @override
+  String get pcOptSize => 'Boyut';
+
+  @override
+  String get pcOptFit => 'Sığdırma';
+
+  @override
+  String get pcOptFloat => 'Metin akışı';
+
+  @override
+  String get pcOptRound => 'Yuvarlak köşeler';
+
+  @override
+  String get pcLayoutTable => 'Tablo';
+
+  @override
+  String get pcLayoutStacked => 'Yığılmış';
+
+  @override
+  String get pcDockRight => 'Sağ';
+
+  @override
+  String get pcDockLeft => 'Sol';
+
+  @override
+  String get pcDockFull => 'Tam genişlik';
+
+  @override
+  String get pcSizeS => 'Küçük';
+
+  @override
+  String get pcSizeM => 'Orta';
+
+  @override
+  String get pcSizeL => 'Büyük';
+
+  @override
+  String get pcSizeFull => 'Tam genişlik';
+
+  @override
+  String get pcScrimSoft => 'Hafif';
+
+  @override
+  String get pcScrimStrong => 'Güçlü';
+
+  @override
+  String get pcGalMasonry => 'Duvar';
+
+  @override
+  String get pcDivLine => 'Çizgi';
+
+  @override
+  String get pcDivDouble => 'Çift';
+
+  @override
+  String get pcDivDots => 'Noktalar';
+
+  @override
+  String get pcDivOrnament => 'Süsleme';
+
+  @override
+  String get pcDivImage => 'Resim şeridi';
+
+  @override
+  String get pcIrChip => 'Çipler';
+
+  @override
+  String get pcIrBig => 'Büyük simgeler';
+
+  @override
+  String get pcFitContain => 'Tamamı';
+
+  @override
+  String get pcFitCover => 'Çerçeveyi doldur';
+
+  @override
+  String get pcFloatNone => 'Tek başına';
+
+  @override
+  String get pcFloatLeft => 'Resim solda';
+
+  @override
+  String get pcFloatRight => 'Resim sağda';
+
+  @override
+  String get pcLoadFailed => 'Bu blok yüklenemedi';
+
+  @override
+  String get pcNoValue => '(yok)';
+
+  @override
+  String get tplUse => 'Şablon kullan…';
+
+  @override
+  String get tplUseHint => 'Bu sayfanın düzenini değiştirir. İçerik kalır, hemen ardından geri alabilirsiniz.';
+
+  @override
+  String get tplDefault => 'Varsayılan';
+
+  @override
+  String get tplOtherTypes => 'Diğer türler';
+
+  @override
+  String get tplApplied => 'Şablon uygulandı';
+
+  @override
+  String get tplBorrowDropped => '{n} blok atlandı — bu modüle bağlı olmayan bir modülden ödünç alıyorlar';
+
+  @override
+  String get tplGallery => 'Sayfa şablonları';
 }

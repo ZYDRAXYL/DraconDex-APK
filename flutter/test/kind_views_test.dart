@@ -172,7 +172,7 @@ void main() {
   });
 
   test('there are 43 views', () {
-    final n = components.values.where((d) => d.kind != null).fold<int>(0, (a, d) => a + (d.presets.isEmpty ? 1 : d.presets.length));
+    final n = components.values.where((d) => d.kind != null && d.id.endsWith('.view')).fold<int>(0, (a, d) => a + (d.presets.isEmpty ? 1 : d.presets.length));
     expect(n, 43);
   });
 }

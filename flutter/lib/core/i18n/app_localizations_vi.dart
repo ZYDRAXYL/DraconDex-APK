@@ -2323,4 +2323,343 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Dải trang';
+
+  @override
+  String get pcInfobox => 'Hộp thông tin';
+
+  @override
+  String get pcCallout => 'Hộp chú thích';
+
+  @override
+  String get pcStats => 'Thống kê';
+
+  @override
+  String get pcToc => 'Mục lục';
+
+  @override
+  String get pcSpotlight => 'Tiêu điểm';
+
+  @override
+  String get pcRoster => 'Danh sách';
+
+  @override
+  String get pcBreakdown => 'Phân bổ';
+
+  @override
+  String get pcEras => 'Thời kỳ';
+
+  @override
+  String get pcUpcoming => 'Sắp tới';
+
+  @override
+  String get pcPinlist => 'Danh sách ghim';
+
+  @override
+  String get pcProgress => 'Tiến độ';
+
+  @override
+  String get pcChapters => 'Chương';
+
+  @override
+  String get pcEndings => 'Kết thúc';
+
+  @override
+  String get pcVariables => 'Biến';
+
+  @override
+  String get pcFocus => 'Tiêu điểm';
+
+  @override
+  String get pcLegend => 'Chú giải';
+
+  @override
+  String get pcJourney => 'Hành trình';
+
+  @override
+  String get pcStrip => 'Dải khung';
+
+  @override
+  String get pcFeatured => 'Nổi bật';
+
+  @override
+  String get pcDashboard => 'Bảng điều khiển';
+
+  @override
+  String get pcRecent => 'Thay đổi gần đây';
+
+  @override
+  String get pcQuickroll => 'Tung nhanh';
+
+  @override
+  String get pcPinned => 'Đã ghim';
+
+  @override
+  String get pcTasks => 'Nhiệm vụ';
+
+  @override
+  String get pcBanner => 'Biểu ngữ';
+
+  @override
+  String get pcGallery => 'Thư viện ảnh';
+
+  @override
+  String get pcDivider => 'Đường phân cách';
+
+  @override
+  String get pcIconrow => 'Hàng biểu tượng';
+
+  @override
+  String get pcFigure => 'Hình minh họa';
+
+  @override
+  String get pcInfoboxEmpty => 'Chưa có trường nào';
+
+  @override
+  String get pcStatsEmpty => 'Chưa có gì để đếm';
+
+  @override
+  String get pcTocEmpty => 'Thêm tiêu đề để tạo mục lục';
+
+  @override
+  String get pcNoElements => 'Chưa có phần tử nào';
+
+  @override
+  String get pcBreakdownEmpty => 'Chọn một trường để đếm';
+
+  @override
+  String get noEventsYet => 'Chưa có sự kiện';
+
+  @override
+  String get mapNoAreas => 'Chưa có khu vực nào';
+
+  @override
+  String get pcNoChapters => 'Chưa có chương nào';
+
+  @override
+  String get pcWords => 'từ';
+
+  @override
+  String get pcNoEndings => 'Chưa có kết thúc nào';
+
+  @override
+  String get pcNoVariables => 'Chưa có biến nào';
+
+  @override
+  String get pcNoRelations => 'Chưa có quan hệ nào';
+
+  @override
+  String get pcUnlabelled => 'Chưa gắn nhãn';
+
+  @override
+  String get pcNoPanels => 'Chưa có khung nào';
+
+  @override
+  String get pcNoSketches => 'Chưa có bản phác nào';
+
+  @override
+  String get managerEmpty => 'Chưa chọn gì — đặt bộ lọc hoặc chọn mô-đun.';
+
+  @override
+  String get pcRoll => 'Tung';
+
+  @override
+  String get pcNoRolls => 'Chưa tung lần nào';
+
+  @override
+  String get pcNoPinned => 'Bắt đầu tin nhắn bằng 📌 để ghim ở đây';
+
+  @override
+  String get pcNoTasks => 'Viết “- [ ] …” trong ghi chú để thêm nhiệm vụ';
+
+  @override
+  String get pcBannerEmpty => 'Chưa có ảnh.';
+
+  @override
+  String get pcGalleryEmpty => 'Chưa có ảnh.';
+
+  @override
+  String get pcIconrowEmpty => 'Chưa có biểu tượng.';
+
+  @override
+  String get pcFigureEmpty => 'Chưa có ảnh.';
+
+  @override
+  String get pcStatItems => 'Mục';
+
+  @override
+  String get pcStatModules => 'Module';
+
+  @override
+  String get backlinks => 'Liên kết đến';
+
+  @override
+  String get pcCalloutPh => 'Viết ghi chú…';
+
+  @override
+  String get pcDecorPickArrange => 'Chưa có gì — chọn ở ⚙ → Tùy chọn.';
+
+  @override
+  String get pcToneNote => 'Ghi chú';
+
+  @override
+  String get pcToneTip => 'Mẹo';
+
+  @override
+  String get pcToneWarning => 'Cảnh báo';
+
+  @override
+  String get pcToneQuote => 'Trích dẫn';
+
+  @override
+  String get pcToneSecret => 'Bí mật';
+
+  @override
+  String get pcOptFields => 'Trường hiển thị';
+
+  @override
+  String get pcOptDock => 'Vị trí';
+
+  @override
+  String get pcOptTone => 'Sắc thái';
+
+  @override
+  String get pcOptField => 'Đếm theo trường';
+
+  @override
+  String get pcOptFrom => 'Từ năm';
+
+  @override
+  String get pcOptGoal => 'Mục tiêu số từ';
+
+  @override
+  String get pcOptSubtitle => 'Dòng phụ';
+
+  @override
+  String get pcOptHeight => 'Chiều cao';
+
+  @override
+  String get pcOptScrim => 'Lớp tối dưới chữ';
+
+  @override
+  String get pbImages => 'Ảnh';
+
+  @override
+  String get pcOptFromModule => 'Mọi ảnh thuộc mô-đun này';
+
+  @override
+  String get pcOptCaptions => 'Hiện tên tệp';
+
+  @override
+  String get pcOptItems => 'Mục';
+
+  @override
+  String get pcOptSize => 'Kích thước';
+
+  @override
+  String get pcOptFit => 'Vừa khung';
+
+  @override
+  String get pcOptFloat => 'Chữ chạy quanh';
+
+  @override
+  String get pcOptRound => 'Bo góc';
+
+  @override
+  String get pcLayoutTable => 'Bảng';
+
+  @override
+  String get pcLayoutStacked => 'Xếp chồng';
+
+  @override
+  String get pcDockRight => 'Phải';
+
+  @override
+  String get pcDockLeft => 'Trái';
+
+  @override
+  String get pcDockFull => 'Toàn chiều rộng';
+
+  @override
+  String get pcSizeS => 'Nhỏ';
+
+  @override
+  String get pcSizeM => 'Vừa';
+
+  @override
+  String get pcSizeL => 'Lớn';
+
+  @override
+  String get pcSizeFull => 'Toàn chiều rộng';
+
+  @override
+  String get pcScrimSoft => 'Nhẹ';
+
+  @override
+  String get pcScrimStrong => 'Đậm';
+
+  @override
+  String get pcGalMasonry => 'Xếp gạch';
+
+  @override
+  String get pcDivLine => 'Đường kẻ';
+
+  @override
+  String get pcDivDouble => 'Đôi';
+
+  @override
+  String get pcDivDots => 'Chấm';
+
+  @override
+  String get pcDivOrnament => 'Họa tiết';
+
+  @override
+  String get pcDivImage => 'Dải ảnh';
+
+  @override
+  String get pcIrChip => 'Thẻ nhỏ';
+
+  @override
+  String get pcIrBig => 'Biểu tượng lớn';
+
+  @override
+  String get pcFitContain => 'Toàn ảnh';
+
+  @override
+  String get pcFitCover => 'Lấp khung';
+
+  @override
+  String get pcFloatNone => 'Riêng';
+
+  @override
+  String get pcFloatLeft => 'Ảnh bên trái';
+
+  @override
+  String get pcFloatRight => 'Ảnh bên phải';
+
+  @override
+  String get pcLoadFailed => 'Không tải được khối này';
+
+  @override
+  String get pcNoValue => '(không có)';
+
+  @override
+  String get tplUse => 'Dùng mẫu…';
+
+  @override
+  String get tplUseHint => 'Thay bố cục của trang này. Nội dung vẫn giữ nguyên và bạn có thể hoàn tác ngay sau đó.';
+
+  @override
+  String get tplDefault => 'Mặc định';
+
+  @override
+  String get tplOtherTypes => 'Loại khác';
+
+  @override
+  String get tplApplied => 'Đã áp dụng mẫu';
+
+  @override
+  String get tplBorrowDropped => 'Bỏ qua {n} khối — chúng mượn từ module chưa liên kết với module này';
+
+  @override
+  String get tplGallery => 'Mẫu trang';
 }

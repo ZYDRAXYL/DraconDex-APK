@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:sqflite/sqflite.dart';
 
+import 'page_template_service.dart';
 import 'wiki_service.dart';
 
 /// Bundles — a whole project in one step (V5.md §11.7), the port of EXE
@@ -31,6 +32,17 @@ class BundleService {
   }
 
   static List _a(Object? v) => v is List ? v : const [];
+
+  static const _collections = ['objects', 'events', 'chapters', 'dialogues', 'sessions', 'nodes', 'pages', 'tables'];
+
+  /// Sample data out (v2 spec.includeSamples: false): a module marked
+  /// `samples` loses its collections; an item marked `sample` goes by
+  /// itself. Everything else is structure and stays.
+  static Map withoutSamples(Map m) => {
+        ...m,
+        for (final c in _collections)
+          if (m[c] is List) c: m['samples'] == true ? const [] : [for (final x in m[c] as List) if (!(x is Map && x['sample'] == true)) x],
+      };
 
   /// `{t: key, suffix}` → the string in [locale], else English, else the key
   /// (SDB templates/README.md). Plain strings pass through.
@@ -129,18 +141,45 @@ class BundleService {
 
   /// Builds [spec] under [parentId]. Returns (folder, manager, module ids);
   /// throws [ArgumentError] without a name.
-  static Future<({int? folderId, int? managerId, List<int> moduleIds})> create(
+  static Future<({int? folderId, int? managerId, int? homeId, List<int> moduleIds})> create(
       Database db, int nexusId, int? parentId, Map<String, dynamic> spec) async {
     final name = _s(spec['name'], 200).trim();
     if (name.isEmpty) throw ArgumentError('name_required');
     final mods = [
       for (final m in _a(spec['modules']))
-        if (m is Map && kinds.contains(m['kind']) && _s(m['name'], 200).trim().isNotEmpty) m,
+        if (m is Map && kinds.contains(m['kind']) && _s(m['name'], 200).trim().isNotEmpty)
+          spec['includeSamples'] == false ? withoutSamples(m) : m,
     ].take(maxModules).toList();
+    // v2: a module's page names a template; load them before the transaction
+    final tpls = <String, PageTemplate>{};
+    for (final m in mods) {
+      for (final w in ['page', 'itemPage']) {
+        final v = m[w];
+        if (v is String && !tpls.containsKey(v)) {
+          final t = await PageTemplateService.byId(v);
+          if (t != null) tpls[v] = t;
+        }
+      }
+    }
     final out = await db.transaction((d) async {
       final col = await _colorId(d, spec['color']);
       final bare = spec['folder'] == false;
       final folderId = bare ? parentId : await _module(d, nexusId, parentId, name, 'collector', icon: spec['icon'], color: col);
+      // v2 folders, parents first; the root (no parent) is the project's own
+      final folderIds = <String, int?>{};
+      final folders = bare ? const [] : [for (final x in _a(spec['folders'])) if (x is Map && x['ref'] is String) x];
+      final root = folders.where((x) => x['parent'] == null).firstOrNull;
+      if (root != null) folderIds[root['ref'] as String] = folderId;
+      for (var pass = 0; pass < folders.length && folderIds.length < folders.length; pass++) {
+        for (final x in folders) {
+          if (folderIds.containsKey(x['ref']) || !folderIds.containsKey(x['parent'])) continue;
+          final fname = _s(x['name'], 200).trim();
+          folderIds[x['ref'] as String] =
+              await _module(d, nexusId, folderIds[x['parent']], fname.isEmpty ? x['ref'] as String : fname, 'collector', color: col);
+        }
+      }
+      final pendingPages = <(int, Map)>[];
+      final pendingUses = <(int, List)>[];
       final created = <int>[];
       final modByRef = <String, int>{};
       final objByRef = <String, int>{};
@@ -149,7 +188,7 @@ class BundleService {
       final pendingSelects = <(int, List)>[];
       for (final m in mods) {
         final kind = m['kind'] as String;
-        final id = await _module(d, nexusId, folderId, _s(m['name'], 200).trim(), kind,
+        final id = await _module(d, nexusId, folderIds[m['folder']] ?? folderId, _s(m['name'], 200).trim(), kind,
             icon: m['icon'],
             color: col,
             catType: kind == 'classifier' ? (const ['object', 'character', 'element'].contains(m['catType']) ? m['catType'] as String : 'object') : null);
@@ -161,6 +200,9 @@ class BundleService {
         switch (kind) {
           case 'classifier':
             final tplByName = <String, int>{};
+            // values / links name a field by key (v2) or by name (v1, guides)
+            final tplByKey = <String, int>{};
+            int? field(String k) => tplByKey[k] ?? tplByName[k];
             var fo = 0;
             for (final f in _a(m['fields'])) {
               if (f is! Map) continue;
@@ -168,6 +210,7 @@ class BundleService {
               final opts = <String, dynamic>{
                 ...?(raw is String ? jsonDecode(raw) as Map<String, dynamic>? : raw as Map<String, dynamic>?),
                 if (f['role'] != null) 'role': f['role'],
+                if (f['key'] != null) 'key': '${f['key']}',
               };
               final tid = await d.insert('classifier_template', {
                 'module_ref': id,
@@ -179,6 +222,7 @@ class BundleService {
                 'display_order': fo++,
               });
               tplByName[_s(f['name'], 200)] = tid;
+              if (f['key'] != null) tplByKey['${f['key']}'] = tid;
               if (f['relTo'] is String) pendingFieldRel.add((tid, f['relTo'] as String, opts));
             }
             var oo = 0;
@@ -192,7 +236,7 @@ class BundleService {
               });
               if (ob['ref'] is String) objByRef[ob['ref'] as String] = oid;
               for (final e in (ob['values'] as Map? ?? const {}).entries) {
-                final tid = tplByName[e.key];
+                final tid = field('${e.key}');
                 if (tid == null) continue;
                 final v = e.value;
                 final val = v is List ? jsonEncode(v) : (v is bool ? (v ? '1' : '0') : _s(v));
@@ -200,7 +244,7 @@ class BundleService {
                     conflictAlgorithm: ConflictAlgorithm.replace);
               }
               for (final e in (ob['links'] as Map? ?? const {}).entries) {
-                final tid = tplByName[e.key];
+                final tid = field('${e.key}');
                 if (tid != null) pendingLinks.add((oid, tid, _a(e.value)));
               }
             }
@@ -314,7 +358,10 @@ class BundleService {
             }
           case 'exhibitor' || 'manager':
             if (_a(m['selects']).isNotEmpty) pendingSelects.add((id, _a(m['selects'])));
+          case 'wanderer':
+            if (_a(m['uses']).isNotEmpty) pendingUses.add((id, _a(m['uses'])));
         }
+        if (m['page'] != null || m['itemPage'] != null) pendingPages.add((id, m));
       }
       // A relation field names the module it points into; values point at objects.
       for (final (tid, relTo, o) in pendingFieldRel) {
@@ -335,19 +382,60 @@ class BundleService {
               conflictAlgorithm: ConflictAlgorithm.ignore);
         }
       }
+      // A filter says "inside these". A Manager naming a module that is not
+      // a folder selects the folder it sits in — the same modules, and the
+      // ones added there later.
       for (final (mid, refs) in pendingSelects) {
+        Future<Map<String, Object?>?> row(int id) async {
+          final r = await d.rawQuery('SELECT kind, parent_id FROM module WHERE id=?', [id]);
+          return r.firstOrNull;
+        }
+
+        final isManager = (await row(mid))?['kind'] == 'manager';
+        final scope = <int>{};
+        for (final r in refs) {
+          final id = modByRef['$r'] ?? folderIds['$r'];
+          if (id == null) continue;
+          final m = await row(id);
+          scope.add(isManager && m?['kind'] != 'collector' && m?['parent_id'] != null ? m!['parent_id'] as int : id);
+        }
         final groups = [
-          for (final r in refs)
-            if (modByRef[r] case final int m) {
+          for (final id in scope)
+            {
               'rules': [
-                {'field': 'childOf', 'moduleId': m},
+                {'field': 'childOf', 'moduleId': id},
               ],
             },
         ];
         if (groups.isNotEmpty) await _ui(d, mid, 'filterDef', jsonEncode({'groups': groups}));
       }
+      // A Wanderer walks a Locator's map along a Chronicler's time.
+      for (final (wid, refs) in pendingUses) {
+        for (final r in refs) {
+          final tid = modByRef['$r'];
+          if (tid == null) continue;
+          final k = (await d.rawQuery('SELECT kind FROM module WHERE id=?', [tid])).firstOrNull?['kind'];
+          if (k == 'locator') await _ui(d, wid, 'mapModule', '$tid');
+          if (k == 'chronicler') await _ui(d, wid, 'timelineModule', '$tid');
+        }
+      }
+      // Pages last: a template may borrow any module of the bundle. A
+      // template id brings both its pages; an explicit itemPage wins.
+      for (final (mid, m) in pendingPages) {
+        final tpl = m['page'] is String ? tpls[m['page']] : null;
+        for (final (which, itemKey) in [('page', null), ('itemPage', '*')]) {
+          Object? blocks = m[which] ?? (which == 'page' ? tpl?.page : tpl?.itemPage);
+          if (blocks is String) blocks = which == 'page' ? tpls[blocks]?.page : tpls[blocks]?.itemPage;
+          if (blocks is! List || blocks.isEmpty) continue;
+          await PageTemplateService.fillPage(d, mid, itemKey, blocks, modByRef);
+        }
+      }
       int? managerId;
-      if (spec['manager'] != false && !bare) {
+      // a spec that brings its own Manager gets no second one
+      final own = mods.indexWhere((m) => m['kind'] == 'manager');
+      if (own >= 0) {
+        managerId = created[own];
+      } else if (spec['manager'] != false && !bare) {
         managerId = await _module(d, nexusId, folderId, name, 'manager', color: col);
         await _ui(d, managerId, 'filterDef', jsonEncode({
           'groups': [
@@ -360,7 +448,8 @@ class BundleService {
         }));
         await _projectPage(d, managerId, created, mods);
       }
-      return (folderId: bare ? null : folderId, managerId: managerId, moduleIds: created);
+      final homeId = spec['home'] is String ? modByRef[spec['home']] : null;
+      return (folderId: bare ? null : folderId, managerId: managerId, homeId: homeId, moduleIds: created);
     });
     // Index text once every row exists: a [[link]] to a module made later in
     // the same bundle resolves instead of dangling.

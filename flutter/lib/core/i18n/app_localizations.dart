@@ -4758,6 +4758,684 @@ abstract class AppLocalizations {
   /// **Page strip**
   String get pcPdfStrip;
 
+  /// No description provided for @pcInfobox.
+  ///
+  /// In en, this message translates to:
+  /// **Infobox**
+  String get pcInfobox;
+
+  /// No description provided for @pcCallout.
+  ///
+  /// In en, this message translates to:
+  /// **Callout**
+  String get pcCallout;
+
+  /// No description provided for @pcStats.
+  ///
+  /// In en, this message translates to:
+  /// **Stats**
+  String get pcStats;
+
+  /// No description provided for @pcToc.
+  ///
+  /// In en, this message translates to:
+  /// **Contents**
+  String get pcToc;
+
+  /// No description provided for @pcSpotlight.
+  ///
+  /// In en, this message translates to:
+  /// **Spotlight**
+  String get pcSpotlight;
+
+  /// No description provided for @pcRoster.
+  ///
+  /// In en, this message translates to:
+  /// **Roster**
+  String get pcRoster;
+
+  /// No description provided for @pcBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **Breakdown**
+  String get pcBreakdown;
+
+  /// No description provided for @pcEras.
+  ///
+  /// In en, this message translates to:
+  /// **Eras**
+  String get pcEras;
+
+  /// No description provided for @pcUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **Upcoming**
+  String get pcUpcoming;
+
+  /// No description provided for @pcPinlist.
+  ///
+  /// In en, this message translates to:
+  /// **Pin list**
+  String get pcPinlist;
+
+  /// No description provided for @pcProgress.
+  ///
+  /// In en, this message translates to:
+  /// **Progress**
+  String get pcProgress;
+
+  /// No description provided for @pcChapters.
+  ///
+  /// In en, this message translates to:
+  /// **Chapters**
+  String get pcChapters;
+
+  /// No description provided for @pcEndings.
+  ///
+  /// In en, this message translates to:
+  /// **Endings**
+  String get pcEndings;
+
+  /// No description provided for @pcVariables.
+  ///
+  /// In en, this message translates to:
+  /// **Variables**
+  String get pcVariables;
+
+  /// No description provided for @pcFocus.
+  ///
+  /// In en, this message translates to:
+  /// **Focus**
+  String get pcFocus;
+
+  /// No description provided for @pcLegend.
+  ///
+  /// In en, this message translates to:
+  /// **Legend**
+  String get pcLegend;
+
+  /// No description provided for @pcJourney.
+  ///
+  /// In en, this message translates to:
+  /// **Journey**
+  String get pcJourney;
+
+  /// No description provided for @pcStrip.
+  ///
+  /// In en, this message translates to:
+  /// **Strip**
+  String get pcStrip;
+
+  /// No description provided for @pcFeatured.
+  ///
+  /// In en, this message translates to:
+  /// **Featured**
+  String get pcFeatured;
+
+  /// No description provided for @pcDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **Dashboard**
+  String get pcDashboard;
+
+  /// No description provided for @pcRecent.
+  ///
+  /// In en, this message translates to:
+  /// **Recently changed**
+  String get pcRecent;
+
+  /// No description provided for @pcQuickroll.
+  ///
+  /// In en, this message translates to:
+  /// **Quick roll**
+  String get pcQuickroll;
+
+  /// No description provided for @pcPinned.
+  ///
+  /// In en, this message translates to:
+  /// **Pinned**
+  String get pcPinned;
+
+  /// No description provided for @pcTasks.
+  ///
+  /// In en, this message translates to:
+  /// **Tasks**
+  String get pcTasks;
+
+  /// No description provided for @pcBanner.
+  ///
+  /// In en, this message translates to:
+  /// **Banner**
+  String get pcBanner;
+
+  /// No description provided for @pcGallery.
+  ///
+  /// In en, this message translates to:
+  /// **Gallery**
+  String get pcGallery;
+
+  /// No description provided for @pcDivider.
+  ///
+  /// In en, this message translates to:
+  /// **Divider**
+  String get pcDivider;
+
+  /// No description provided for @pcIconrow.
+  ///
+  /// In en, this message translates to:
+  /// **Icon row**
+  String get pcIconrow;
+
+  /// No description provided for @pcFigure.
+  ///
+  /// In en, this message translates to:
+  /// **Figure**
+  String get pcFigure;
+
+  /// No description provided for @pcInfoboxEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No fields yet**
+  String get pcInfoboxEmpty;
+
+  /// No description provided for @pcStatsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **Nothing to count yet**
+  String get pcStatsEmpty;
+
+  /// No description provided for @pcTocEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **Add a heading to build the contents**
+  String get pcTocEmpty;
+
+  /// No description provided for @pcNoElements.
+  ///
+  /// In en, this message translates to:
+  /// **No elements yet**
+  String get pcNoElements;
+
+  /// No description provided for @pcBreakdownEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **Pick a field to count by**
+  String get pcBreakdownEmpty;
+
+  /// No description provided for @noEventsYet.
+  ///
+  /// In en, this message translates to:
+  /// **No events yet**
+  String get noEventsYet;
+
+  /// No description provided for @mapNoAreas.
+  ///
+  /// In en, this message translates to:
+  /// **No areas yet**
+  String get mapNoAreas;
+
+  /// No description provided for @pcNoChapters.
+  ///
+  /// In en, this message translates to:
+  /// **No chapters yet**
+  String get pcNoChapters;
+
+  /// No description provided for @pcWords.
+  ///
+  /// In en, this message translates to:
+  /// **words**
+  String get pcWords;
+
+  /// No description provided for @pcNoEndings.
+  ///
+  /// In en, this message translates to:
+  /// **No endings yet**
+  String get pcNoEndings;
+
+  /// No description provided for @pcNoVariables.
+  ///
+  /// In en, this message translates to:
+  /// **No variables yet**
+  String get pcNoVariables;
+
+  /// No description provided for @pcNoRelations.
+  ///
+  /// In en, this message translates to:
+  /// **No relations yet**
+  String get pcNoRelations;
+
+  /// No description provided for @pcUnlabelled.
+  ///
+  /// In en, this message translates to:
+  /// **Unlabelled**
+  String get pcUnlabelled;
+
+  /// No description provided for @pcNoPanels.
+  ///
+  /// In en, this message translates to:
+  /// **No panels yet**
+  String get pcNoPanels;
+
+  /// No description provided for @pcNoSketches.
+  ///
+  /// In en, this message translates to:
+  /// **No sketches yet**
+  String get pcNoSketches;
+
+  /// No description provided for @managerEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **Nothing selected — set a filter or pick modules.**
+  String get managerEmpty;
+
+  /// No description provided for @pcRoll.
+  ///
+  /// In en, this message translates to:
+  /// **Roll**
+  String get pcRoll;
+
+  /// No description provided for @pcNoRolls.
+  ///
+  /// In en, this message translates to:
+  /// **No rolls yet**
+  String get pcNoRolls;
+
+  /// No description provided for @pcNoPinned.
+  ///
+  /// In en, this message translates to:
+  /// **Start a message with 📌 to pin it here**
+  String get pcNoPinned;
+
+  /// No description provided for @pcNoTasks.
+  ///
+  /// In en, this message translates to:
+  /// **Write “- [ ] …” in the notes to add a task**
+  String get pcNoTasks;
+
+  /// No description provided for @pcBannerEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No picture yet.**
+  String get pcBannerEmpty;
+
+  /// No description provided for @pcGalleryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No pictures yet.**
+  String get pcGalleryEmpty;
+
+  /// No description provided for @pcIconrowEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No icons yet.**
+  String get pcIconrowEmpty;
+
+  /// No description provided for @pcFigureEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **No picture yet.**
+  String get pcFigureEmpty;
+
+  /// No description provided for @pcStatItems.
+  ///
+  /// In en, this message translates to:
+  /// **Items**
+  String get pcStatItems;
+
+  /// No description provided for @pcStatModules.
+  ///
+  /// In en, this message translates to:
+  /// **Modules**
+  String get pcStatModules;
+
+  /// No description provided for @backlinks.
+  ///
+  /// In en, this message translates to:
+  /// **Backlinks**
+  String get backlinks;
+
+  /// No description provided for @pcCalloutPh.
+  ///
+  /// In en, this message translates to:
+  /// **Write a note…**
+  String get pcCalloutPh;
+
+  /// No description provided for @pcDecorPickArrange.
+  ///
+  /// In en, this message translates to:
+  /// **Nothing to show yet — choose it with ⚙ → Options.**
+  String get pcDecorPickArrange;
+
+  /// No description provided for @pcToneNote.
+  ///
+  /// In en, this message translates to:
+  /// **Note**
+  String get pcToneNote;
+
+  /// No description provided for @pcToneTip.
+  ///
+  /// In en, this message translates to:
+  /// **Tip**
+  String get pcToneTip;
+
+  /// No description provided for @pcToneWarning.
+  ///
+  /// In en, this message translates to:
+  /// **Warning**
+  String get pcToneWarning;
+
+  /// No description provided for @pcToneQuote.
+  ///
+  /// In en, this message translates to:
+  /// **Quote**
+  String get pcToneQuote;
+
+  /// No description provided for @pcToneSecret.
+  ///
+  /// In en, this message translates to:
+  /// **Secret**
+  String get pcToneSecret;
+
+  /// No description provided for @pcOptFields.
+  ///
+  /// In en, this message translates to:
+  /// **Fields shown**
+  String get pcOptFields;
+
+  /// No description provided for @pcOptDock.
+  ///
+  /// In en, this message translates to:
+  /// **Position**
+  String get pcOptDock;
+
+  /// No description provided for @pcOptTone.
+  ///
+  /// In en, this message translates to:
+  /// **Tone**
+  String get pcOptTone;
+
+  /// No description provided for @pcOptField.
+  ///
+  /// In en, this message translates to:
+  /// **Count by field**
+  String get pcOptField;
+
+  /// No description provided for @pcOptFrom.
+  ///
+  /// In en, this message translates to:
+  /// **From the year**
+  String get pcOptFrom;
+
+  /// No description provided for @pcOptGoal.
+  ///
+  /// In en, this message translates to:
+  /// **Word goal**
+  String get pcOptGoal;
+
+  /// No description provided for @pcOptSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **Line below**
+  String get pcOptSubtitle;
+
+  /// No description provided for @pcOptHeight.
+  ///
+  /// In en, this message translates to:
+  /// **Height**
+  String get pcOptHeight;
+
+  /// No description provided for @pcOptScrim.
+  ///
+  /// In en, this message translates to:
+  /// **Shade under the text**
+  String get pcOptScrim;
+
+  /// No description provided for @pbImages.
+  ///
+  /// In en, this message translates to:
+  /// **Pictures**
+  String get pbImages;
+
+  /// No description provided for @pcOptFromModule.
+  ///
+  /// In en, this message translates to:
+  /// **Every picture filed under this module**
+  String get pcOptFromModule;
+
+  /// No description provided for @pcOptCaptions.
+  ///
+  /// In en, this message translates to:
+  /// **Show file names**
+  String get pcOptCaptions;
+
+  /// No description provided for @pcOptItems.
+  ///
+  /// In en, this message translates to:
+  /// **Items**
+  String get pcOptItems;
+
+  /// No description provided for @pcOptSize.
+  ///
+  /// In en, this message translates to:
+  /// **Size**
+  String get pcOptSize;
+
+  /// No description provided for @pcOptFit.
+  ///
+  /// In en, this message translates to:
+  /// **Fit**
+  String get pcOptFit;
+
+  /// No description provided for @pcOptFloat.
+  ///
+  /// In en, this message translates to:
+  /// **Text flows**
+  String get pcOptFloat;
+
+  /// No description provided for @pcOptRound.
+  ///
+  /// In en, this message translates to:
+  /// **Rounded corners**
+  String get pcOptRound;
+
+  /// No description provided for @pcLayoutTable.
+  ///
+  /// In en, this message translates to:
+  /// **Table**
+  String get pcLayoutTable;
+
+  /// No description provided for @pcLayoutStacked.
+  ///
+  /// In en, this message translates to:
+  /// **Stacked**
+  String get pcLayoutStacked;
+
+  /// No description provided for @pcDockRight.
+  ///
+  /// In en, this message translates to:
+  /// **Right**
+  String get pcDockRight;
+
+  /// No description provided for @pcDockLeft.
+  ///
+  /// In en, this message translates to:
+  /// **Left**
+  String get pcDockLeft;
+
+  /// No description provided for @pcDockFull.
+  ///
+  /// In en, this message translates to:
+  /// **Full width**
+  String get pcDockFull;
+
+  /// No description provided for @pcSizeS.
+  ///
+  /// In en, this message translates to:
+  /// **Small**
+  String get pcSizeS;
+
+  /// No description provided for @pcSizeM.
+  ///
+  /// In en, this message translates to:
+  /// **Medium**
+  String get pcSizeM;
+
+  /// No description provided for @pcSizeL.
+  ///
+  /// In en, this message translates to:
+  /// **Large**
+  String get pcSizeL;
+
+  /// No description provided for @pcSizeFull.
+  ///
+  /// In en, this message translates to:
+  /// **Full width**
+  String get pcSizeFull;
+
+  /// No description provided for @pcScrimSoft.
+  ///
+  /// In en, this message translates to:
+  /// **Soft**
+  String get pcScrimSoft;
+
+  /// No description provided for @pcScrimStrong.
+  ///
+  /// In en, this message translates to:
+  /// **Strong**
+  String get pcScrimStrong;
+
+  /// No description provided for @pcGalMasonry.
+  ///
+  /// In en, this message translates to:
+  /// **Masonry**
+  String get pcGalMasonry;
+
+  /// No description provided for @pcDivLine.
+  ///
+  /// In en, this message translates to:
+  /// **Line**
+  String get pcDivLine;
+
+  /// No description provided for @pcDivDouble.
+  ///
+  /// In en, this message translates to:
+  /// **Double**
+  String get pcDivDouble;
+
+  /// No description provided for @pcDivDots.
+  ///
+  /// In en, this message translates to:
+  /// **Dots**
+  String get pcDivDots;
+
+  /// No description provided for @pcDivOrnament.
+  ///
+  /// In en, this message translates to:
+  /// **Ornament**
+  String get pcDivOrnament;
+
+  /// No description provided for @pcDivImage.
+  ///
+  /// In en, this message translates to:
+  /// **Picture band**
+  String get pcDivImage;
+
+  /// No description provided for @pcIrChip.
+  ///
+  /// In en, this message translates to:
+  /// **Chips**
+  String get pcIrChip;
+
+  /// No description provided for @pcIrBig.
+  ///
+  /// In en, this message translates to:
+  /// **Large icons**
+  String get pcIrBig;
+
+  /// No description provided for @pcFitContain.
+  ///
+  /// In en, this message translates to:
+  /// **Whole picture**
+  String get pcFitContain;
+
+  /// No description provided for @pcFitCover.
+  ///
+  /// In en, this message translates to:
+  /// **Fill the frame**
+  String get pcFitCover;
+
+  /// No description provided for @pcFloatNone.
+  ///
+  /// In en, this message translates to:
+  /// **On its own**
+  String get pcFloatNone;
+
+  /// No description provided for @pcFloatLeft.
+  ///
+  /// In en, this message translates to:
+  /// **Picture left**
+  String get pcFloatLeft;
+
+  /// No description provided for @pcFloatRight.
+  ///
+  /// In en, this message translates to:
+  /// **Picture right**
+  String get pcFloatRight;
+
+  /// No description provided for @pcLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **Could not load this block**
+  String get pcLoadFailed;
+
+  /// No description provided for @pcNoValue.
+  ///
+  /// In en, this message translates to:
+  /// **(none)**
+  String get pcNoValue;
+
+  /// No description provided for @tplUse.
+  ///
+  /// In en, this message translates to:
+  /// **Use template…**
+  String get tplUse;
+
+  /// No description provided for @tplUseHint.
+  ///
+  /// In en, this message translates to:
+  /// **Replaces this page’s layout. Your content stays, and you can undo right after.**
+  String get tplUseHint;
+
+  /// No description provided for @tplDefault.
+  ///
+  /// In en, this message translates to:
+  /// **Default**
+  String get tplDefault;
+
+  /// No description provided for @tplOtherTypes.
+  ///
+  /// In en, this message translates to:
+  /// **Other types**
+  String get tplOtherTypes;
+
+  /// No description provided for @tplApplied.
+  ///
+  /// In en, this message translates to:
+  /// **Template applied**
+  String get tplApplied;
+
+  /// No description provided for @tplBorrowDropped.
+  ///
+  /// In en, this message translates to:
+  /// **{n} block(s) left out — they borrow from a module this one is not linked to**
+  String get tplBorrowDropped;
+
+  /// No description provided for @tplGallery.
+  ///
+  /// In en, this message translates to:
+  /// **Page templates**
+  String get tplGallery;
+
 }
 
 class _AppLocalizationsDelegate

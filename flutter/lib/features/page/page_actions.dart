@@ -7,6 +7,7 @@ import '../../data/models/module_model.dart';
 import '../../widgets/row_menu.dart';
 import 'page_header.dart';
 import 'page_providers.dart';
+import 'template_gallery.dart';
 
 /// The page's own entries in the screen's ⋮: arrange it, and on an element
 /// page, split it off the shared layout or go back to it (V5.md §12.5).
@@ -22,6 +23,12 @@ List<RowAction> pageActions(BuildContext context, WidgetRef ref, ModuleModel mod
       icon: Icons.format_align_center,
       onTap: () => showPageLayoutSheet(context, ref, module, itemKey),
     ),
+    if (itemKey == null)
+      RowAction(
+        label: l10n.tplUse,
+        icon: Icons.dashboard_outlined,
+        onTap: () => showTemplateGallery(context, ref, module),
+      ),
     RowAction(
       label: l10n.pbArrange,
       icon: Icons.dashboard_customize_outlined,

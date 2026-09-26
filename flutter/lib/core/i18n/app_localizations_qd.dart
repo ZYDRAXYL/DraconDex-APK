@@ -2323,4 +2323,343 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'Strippe of Leaves';
+
+  @override
+  String get pcInfobox => 'Lore Boxe';
+
+  @override
+  String get pcCallout => 'Proclamation';
+
+  @override
+  String get pcStats => 'Tallies';
+
+  @override
+  String get pcToc => 'Contentes';
+
+  @override
+  String get pcSpotlight => 'Lanterne';
+
+  @override
+  String get pcRoster => 'Roll of Names';
+
+  @override
+  String get pcBreakdown => 'Sunderinge';
+
+  @override
+  String get pcEras => 'Ages';
+
+  @override
+  String get pcUpcoming => 'Yette to Come';
+
+  @override
+  String get pcPinlist => 'Roll of Pinnes';
+
+  @override
+  String get pcProgress => 'Progresse';
+
+  @override
+  String get pcChapters => 'Chapteres';
+
+  @override
+  String get pcEndings => 'Endinges';
+
+  @override
+  String get pcVariables => 'Runes of State';
+
+  @override
+  String get pcFocus => 'Heart of the Webbe';
+
+  @override
+  String get pcLegend => 'Key of Signes';
+
+  @override
+  String get pcJourney => 'Wayfaringe';
+
+  @override
+  String get pcStrip => 'Strippe of Panes';
+
+  @override
+  String get pcFeatured => 'Chosen Worke';
+
+  @override
+  String get pcDashboard => 'Warde Table';
+
+  @override
+  String get pcRecent => 'Late Changed';
+
+  @override
+  String get pcQuickroll => 'Swift Caste';
+
+  @override
+  String get pcPinned => 'Pinned';
+
+  @override
+  String get pcTasks => 'Taskes';
+
+  @override
+  String get pcBanner => 'Banere';
+
+  @override
+  String get pcGallery => 'Gallerie';
+
+  @override
+  String get pcDivider => 'Divider';
+
+  @override
+  String get pcIconrow => 'Rowe of Signes';
+
+  @override
+  String get pcFigure => 'Figure';
+
+  @override
+  String get pcInfoboxEmpty => 'No fieldes yette';
+
+  @override
+  String get pcStatsEmpty => 'Naught to tallie yette';
+
+  @override
+  String get pcTocEmpty => 'Adde a heading to raise the contentes';
+
+  @override
+  String get pcNoElements => 'No thinges yette';
+
+  @override
+  String get pcBreakdownEmpty => 'Chuse a fielde to tallie by';
+
+  @override
+  String get noEventsYet => 'Nyn Eventyx yet';
+
+  @override
+  String get mapNoAreas => 'No areas yette';
+
+  @override
+  String get pcNoChapters => 'No chapteres yette';
+
+  @override
+  String get pcWords => 'wordes';
+
+  @override
+  String get pcNoEndings => 'No endinges yette';
+
+  @override
+  String get pcNoVariables => 'No runes yette';
+
+  @override
+  String get pcNoRelations => 'No bondes yette';
+
+  @override
+  String get pcUnlabelled => 'Unnamed';
+
+  @override
+  String get pcNoPanels => 'No panes yette';
+
+  @override
+  String get pcNoSketches => 'No limnings yette';
+
+  @override
+  String get managerEmpty => 'Naught chosen — set a sieve or pick modules.';
+
+  @override
+  String get pcRoll => 'Caste';
+
+  @override
+  String get pcNoRolls => 'No castes yette';
+
+  @override
+  String get pcNoPinned => 'Begin a missive with 📌 to pinne it here';
+
+  @override
+  String get pcNoTasks => 'Scribe “- [ ] …” in the notes to sette a taske';
+
+  @override
+  String get pcBannerEmpty => 'No Picture as yet.';
+
+  @override
+  String get pcGalleryEmpty => 'No Pictures as yet.';
+
+  @override
+  String get pcIconrowEmpty => 'No Signes as yet.';
+
+  @override
+  String get pcFigureEmpty => 'No Picture as yet.';
+
+  @override
+  String get pcStatItems => 'Thinges';
+
+  @override
+  String get pcStatModules => 'Modules';
+
+  @override
+  String get backlinks => 'Bakklynks';
+
+  @override
+  String get pcCalloutPh => 'Scribe a note…';
+
+  @override
+  String get pcDecorPickArrange => 'Naught as yet — chese it by ⚙ → Choises.';
+
+  @override
+  String get pcToneNote => 'Note';
+
+  @override
+  String get pcToneTip => 'Counsel';
+
+  @override
+  String get pcToneWarning => 'Warnynge';
+
+  @override
+  String get pcToneQuote => 'Sawe';
+
+  @override
+  String get pcToneSecret => 'Privitee';
+
+  @override
+  String get pcOptFields => 'Feldes Shewn';
+
+  @override
+  String get pcOptDock => 'Stede';
+
+  @override
+  String get pcOptTone => 'Tone';
+
+  @override
+  String get pcOptField => 'Tale by Felde';
+
+  @override
+  String get pcOptFrom => 'Fro the Yeer';
+
+  @override
+  String get pcOptGoal => 'Wordes Sought';
+
+  @override
+  String get pcOptSubtitle => 'Line Beneath';
+
+  @override
+  String get pcOptHeight => 'Heighte';
+
+  @override
+  String get pcOptScrim => 'Shade beneath the Wordes';
+
+  @override
+  String get pbImages => 'Pictures';
+
+  @override
+  String get pcOptFromModule => 'Every Picture laid under this Module';
+
+  @override
+  String get pcOptCaptions => 'Shewe the Names';
+
+  @override
+  String get pcOptItems => 'Thinges';
+
+  @override
+  String get pcOptSize => 'Bignesse';
+
+  @override
+  String get pcOptFit => 'Fitte';
+
+  @override
+  String get pcOptFloat => 'Wordes flowe';
+
+  @override
+  String get pcOptRound => 'Rounded Corners';
+
+  @override
+  String get pcLayoutTable => 'Table';
+
+  @override
+  String get pcLayoutStacked => 'Heaped';
+
+  @override
+  String get pcDockRight => 'Right';
+
+  @override
+  String get pcDockLeft => 'Lefte';
+
+  @override
+  String get pcDockFull => 'Fulle Brede';
+
+  @override
+  String get pcSizeS => 'Smal';
+
+  @override
+  String get pcSizeM => 'Meane';
+
+  @override
+  String get pcSizeL => 'Greate';
+
+  @override
+  String get pcSizeFull => 'Fulle Brede';
+
+  @override
+  String get pcScrimSoft => 'Softe';
+
+  @override
+  String get pcScrimStrong => 'Stronge';
+
+  @override
+  String get pcGalMasonry => 'Masonrie';
+
+  @override
+  String get pcDivLine => 'Lyne';
+
+  @override
+  String get pcDivDouble => 'Double';
+
+  @override
+  String get pcDivDots => 'Prickes';
+
+  @override
+  String get pcDivOrnament => 'Ornament';
+
+  @override
+  String get pcDivImage => 'Bande of Picture';
+
+  @override
+  String get pcIrChip => 'Tokens';
+
+  @override
+  String get pcIrBig => 'Greate Signes';
+
+  @override
+  String get pcFitContain => 'Whole';
+
+  @override
+  String get pcFitCover => 'Fille the Frame';
+
+  @override
+  String get pcFloatNone => 'By itselfe';
+
+  @override
+  String get pcFloatLeft => 'Picture on the Lefte';
+
+  @override
+  String get pcFloatRight => 'Picture on the Right';
+
+  @override
+  String get pcLoadFailed => 'This block would not wake';
+
+  @override
+  String get pcNoValue => '(naught)';
+
+  @override
+  String get tplUse => 'Take a patterne…';
+
+  @override
+  String get tplUseHint => 'Reshapes this page. Thy writings bide, and thou mayst undoe it anon.';
+
+  @override
+  String get tplDefault => 'Wonted';
+
+  @override
+  String get tplOtherTypes => 'Othere Kindes';
+
+  @override
+  String get tplApplied => 'Patterne laid';
+
+  @override
+  String get tplBorrowDropped => '{n} block(s) left behinde — they borrowe from a module not tethered here';
+
+  @override
+  String get tplGallery => 'Page Patternes';
 }

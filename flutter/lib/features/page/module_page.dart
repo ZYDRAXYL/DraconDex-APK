@@ -10,7 +10,9 @@ import '../../providers/module_provider.dart';
 import '../tools/assets_screen.dart';
 import '../../widgets/markdown_view.dart';
 import 'arrange_mode.dart';
+import 'block_options.dart';
 import 'block_style.dart';
+import 'decor_components.dart';
 import 'component_registry.dart';
 import 'core_components.dart';
 import 'links.dart';
@@ -145,7 +147,10 @@ class BlockView extends ConsumerWidget {
           ),
         ));
       case 'divider':
-        return Padding(padding: EdgeInsets.symmetric(horizontal: inset), child: const Divider());
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: inset),
+          child: DecorDivider(opts: (k) => optValue(block, k), nexusId: page.module.nexusRef),
+        );
       case 'image':
         return pad(ImageBlock(block: block, nexusId: page.module.nexusRef));
       case 'columns':
@@ -260,7 +265,9 @@ class ComponentBlockView extends ConsumerWidget {
               style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.primary),
             ),
           ),
-        if (block.component!.startsWith('core.') || block.component == 'item.body')
+        // a kind's full view draws its own insets; every smaller component
+        // sits at the page's
+        if (!block.component!.endsWith('.view'))
           Padding(padding: EdgeInsets.symmetric(horizontal: inset, vertical: 4), child: body)
         else
           body,

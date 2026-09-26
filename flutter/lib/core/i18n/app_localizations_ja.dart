@@ -2323,4 +2323,343 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'ページ一覧';
+
+  @override
+  String get pcInfobox => 'インフォボックス';
+
+  @override
+  String get pcCallout => 'コールアウト';
+
+  @override
+  String get pcStats => '統計';
+
+  @override
+  String get pcToc => '目次';
+
+  @override
+  String get pcSpotlight => 'スポットライト';
+
+  @override
+  String get pcRoster => '名簿';
+
+  @override
+  String get pcBreakdown => '内訳';
+
+  @override
+  String get pcEras => '時代';
+
+  @override
+  String get pcUpcoming => '今後の予定';
+
+  @override
+  String get pcPinlist => 'ピン一覧';
+
+  @override
+  String get pcProgress => '進捗';
+
+  @override
+  String get pcChapters => '章';
+
+  @override
+  String get pcEndings => 'エンディング';
+
+  @override
+  String get pcVariables => '変数';
+
+  @override
+  String get pcFocus => 'フォーカス';
+
+  @override
+  String get pcLegend => '凡例';
+
+  @override
+  String get pcJourney => '旅路';
+
+  @override
+  String get pcStrip => 'コマ一覧';
+
+  @override
+  String get pcFeatured => '注目';
+
+  @override
+  String get pcDashboard => 'ダッシュボード';
+
+  @override
+  String get pcRecent => '最近の変更';
+
+  @override
+  String get pcQuickroll => 'クイックロール';
+
+  @override
+  String get pcPinned => 'ピン留め';
+
+  @override
+  String get pcTasks => 'タスク';
+
+  @override
+  String get pcBanner => 'バナー';
+
+  @override
+  String get pcGallery => 'ギャラリー';
+
+  @override
+  String get pcDivider => '区切り';
+
+  @override
+  String get pcIconrow => 'アイコン列';
+
+  @override
+  String get pcFigure => '図';
+
+  @override
+  String get pcInfoboxEmpty => 'フィールドはまだありません';
+
+  @override
+  String get pcStatsEmpty => 'まだ数えるものがありません';
+
+  @override
+  String get pcTocEmpty => '見出しを追加すると目次ができます';
+
+  @override
+  String get pcNoElements => '要素はまだありません';
+
+  @override
+  String get pcBreakdownEmpty => '集計するフィールドを選んでください';
+
+  @override
+  String get noEventsYet => 'まだイベントがありません';
+
+  @override
+  String get mapNoAreas => 'エリアはまだありません';
+
+  @override
+  String get pcNoChapters => '章はまだありません';
+
+  @override
+  String get pcWords => '語';
+
+  @override
+  String get pcNoEndings => 'エンディングはまだありません';
+
+  @override
+  String get pcNoVariables => '変数はまだありません';
+
+  @override
+  String get pcNoRelations => '関係はまだありません';
+
+  @override
+  String get pcUnlabelled => 'ラベルなし';
+
+  @override
+  String get pcNoPanels => 'コマはまだありません';
+
+  @override
+  String get pcNoSketches => 'スケッチはまだありません';
+
+  @override
+  String get managerEmpty => '何も選択されていません — フィルタを設定するかモジュールを選んでください。';
+
+  @override
+  String get pcRoll => '振る';
+
+  @override
+  String get pcNoRolls => 'まだ振っていません';
+
+  @override
+  String get pcNoPinned => 'メッセージを📌で始めるとここに固定されます';
+
+  @override
+  String get pcNoTasks => 'メモに「- [ ] …」と書くとタスクになります';
+
+  @override
+  String get pcBannerEmpty => '画像はまだありません。';
+
+  @override
+  String get pcGalleryEmpty => '画像はまだありません。';
+
+  @override
+  String get pcIconrowEmpty => 'アイコンはまだありません。';
+
+  @override
+  String get pcFigureEmpty => '画像はまだありません。';
+
+  @override
+  String get pcStatItems => '項目';
+
+  @override
+  String get pcStatModules => 'モジュール';
+
+  @override
+  String get backlinks => 'バックリンク';
+
+  @override
+  String get pcCalloutPh => 'メモを書く…';
+
+  @override
+  String get pcDecorPickArrange => 'まだ何もありません。⚙ → オプションで選びます。';
+
+  @override
+  String get pcToneNote => 'メモ';
+
+  @override
+  String get pcToneTip => 'ヒント';
+
+  @override
+  String get pcToneWarning => '警告';
+
+  @override
+  String get pcToneQuote => '引用';
+
+  @override
+  String get pcToneSecret => '秘密';
+
+  @override
+  String get pcOptFields => '表示するフィールド';
+
+  @override
+  String get pcOptDock => '位置';
+
+  @override
+  String get pcOptTone => 'トーン';
+
+  @override
+  String get pcOptField => '集計するフィールド';
+
+  @override
+  String get pcOptFrom => '開始年';
+
+  @override
+  String get pcOptGoal => '目標語数';
+
+  @override
+  String get pcOptSubtitle => 'サブタイトル';
+
+  @override
+  String get pcOptHeight => '高さ';
+
+  @override
+  String get pcOptScrim => '文字の下の影';
+
+  @override
+  String get pbImages => '画像';
+
+  @override
+  String get pcOptFromModule => 'このモジュールのすべての画像';
+
+  @override
+  String get pcOptCaptions => 'ファイル名を表示';
+
+  @override
+  String get pcOptItems => '項目';
+
+  @override
+  String get pcOptSize => 'サイズ';
+
+  @override
+  String get pcOptFit => '収め方';
+
+  @override
+  String get pcOptFloat => '文字の回り込み';
+
+  @override
+  String get pcOptRound => '角丸';
+
+  @override
+  String get pcLayoutTable => '表';
+
+  @override
+  String get pcLayoutStacked => '縦並び';
+
+  @override
+  String get pcDockRight => '右';
+
+  @override
+  String get pcDockLeft => '左';
+
+  @override
+  String get pcDockFull => '全幅';
+
+  @override
+  String get pcSizeS => '小';
+
+  @override
+  String get pcSizeM => '中';
+
+  @override
+  String get pcSizeL => '大';
+
+  @override
+  String get pcSizeFull => '全幅';
+
+  @override
+  String get pcScrimSoft => '弱め';
+
+  @override
+  String get pcScrimStrong => '強め';
+
+  @override
+  String get pcGalMasonry => '石積み';
+
+  @override
+  String get pcDivLine => '線';
+
+  @override
+  String get pcDivDouble => '二重線';
+
+  @override
+  String get pcDivDots => '点線';
+
+  @override
+  String get pcDivOrnament => '飾り';
+
+  @override
+  String get pcDivImage => '画像の帯';
+
+  @override
+  String get pcIrChip => 'チップ';
+
+  @override
+  String get pcIrBig => '大きいアイコン';
+
+  @override
+  String get pcFitContain => '全体';
+
+  @override
+  String get pcFitCover => '枠いっぱい';
+
+  @override
+  String get pcFloatNone => '単独';
+
+  @override
+  String get pcFloatLeft => '画像を左';
+
+  @override
+  String get pcFloatRight => '画像を右';
+
+  @override
+  String get pcLoadFailed => 'このブロックを読み込めませんでした';
+
+  @override
+  String get pcNoValue => '（なし）';
+
+  @override
+  String get tplUse => 'テンプレートを使う…';
+
+  @override
+  String get tplUseHint => 'このページのレイアウトを置き換えます。内容はそのまま残り、直後に元に戻せます。';
+
+  @override
+  String get tplDefault => '既定';
+
+  @override
+  String get tplOtherTypes => '他の種類';
+
+  @override
+  String get tplApplied => 'テンプレートを適用しました';
+
+  @override
+  String get tplBorrowDropped => '{n} 個のブロックを省きました — リンクされていないモジュールから借りるためです';
+
+  @override
+  String get tplGallery => 'ページテンプレート';
 }

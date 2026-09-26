@@ -2323,4 +2323,343 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get pcPdfStrip => '페이지 띠';
+
+  @override
+  String get pcInfobox => '정보 상자';
+
+  @override
+  String get pcCallout => '강조 상자';
+
+  @override
+  String get pcStats => '통계';
+
+  @override
+  String get pcToc => '목차';
+
+  @override
+  String get pcSpotlight => '스포트라이트';
+
+  @override
+  String get pcRoster => '명단';
+
+  @override
+  String get pcBreakdown => '분포';
+
+  @override
+  String get pcEras => '시대';
+
+  @override
+  String get pcUpcoming => '다가오는 일';
+
+  @override
+  String get pcPinlist => '핀 목록';
+
+  @override
+  String get pcProgress => '진행 상황';
+
+  @override
+  String get pcChapters => '장';
+
+  @override
+  String get pcEndings => '엔딩';
+
+  @override
+  String get pcVariables => '변수';
+
+  @override
+  String get pcFocus => '초점';
+
+  @override
+  String get pcLegend => '범례';
+
+  @override
+  String get pcJourney => '여정';
+
+  @override
+  String get pcStrip => '컷 목록';
+
+  @override
+  String get pcFeatured => '주목';
+
+  @override
+  String get pcDashboard => '대시보드';
+
+  @override
+  String get pcRecent => '최근 변경';
+
+  @override
+  String get pcQuickroll => '빠른 굴림';
+
+  @override
+  String get pcPinned => '고정됨';
+
+  @override
+  String get pcTasks => '작업';
+
+  @override
+  String get pcBanner => '배너';
+
+  @override
+  String get pcGallery => '갤러리';
+
+  @override
+  String get pcDivider => '구분선';
+
+  @override
+  String get pcIconrow => '아이콘 줄';
+
+  @override
+  String get pcFigure => '그림';
+
+  @override
+  String get pcInfoboxEmpty => '아직 필드가 없습니다';
+
+  @override
+  String get pcStatsEmpty => '아직 셀 것이 없습니다';
+
+  @override
+  String get pcTocEmpty => '제목을 추가하면 목차가 만들어집니다';
+
+  @override
+  String get pcNoElements => '아직 요소가 없습니다';
+
+  @override
+  String get pcBreakdownEmpty => '집계할 필드를 고르세요';
+
+  @override
+  String get noEventsYet => '아직 이벤트가 없습니다';
+
+  @override
+  String get mapNoAreas => '아직 영역이 없습니다';
+
+  @override
+  String get pcNoChapters => '아직 장이 없습니다';
+
+  @override
+  String get pcWords => '단어';
+
+  @override
+  String get pcNoEndings => '아직 엔딩이 없습니다';
+
+  @override
+  String get pcNoVariables => '아직 변수가 없습니다';
+
+  @override
+  String get pcNoRelations => '아직 관계가 없습니다';
+
+  @override
+  String get pcUnlabelled => '라벨 없음';
+
+  @override
+  String get pcNoPanels => '아직 컷이 없습니다';
+
+  @override
+  String get pcNoSketches => '아직 스케치가 없습니다';
+
+  @override
+  String get managerEmpty => '선택된 항목이 없습니다 — 필터를 설정하거나 모듈을 고르세요.';
+
+  @override
+  String get pcRoll => '굴리기';
+
+  @override
+  String get pcNoRolls => '아직 굴린 기록이 없습니다';
+
+  @override
+  String get pcNoPinned => '메시지를 📌로 시작하면 여기에 고정됩니다';
+
+  @override
+  String get pcNoTasks => '메모에 “- [ ] …”를 쓰면 작업이 추가됩니다';
+
+  @override
+  String get pcBannerEmpty => '아직 그림이 없습니다.';
+
+  @override
+  String get pcGalleryEmpty => '아직 그림이 없습니다.';
+
+  @override
+  String get pcIconrowEmpty => '아직 아이콘이 없습니다.';
+
+  @override
+  String get pcFigureEmpty => '아직 그림이 없습니다.';
+
+  @override
+  String get pcStatItems => '항목';
+
+  @override
+  String get pcStatModules => '모듈';
+
+  @override
+  String get backlinks => '백링크';
+
+  @override
+  String get pcCalloutPh => '메모 작성…';
+
+  @override
+  String get pcDecorPickArrange => '아직 없습니다. ⚙ → 옵션에서 고르세요.';
+
+  @override
+  String get pcToneNote => '메모';
+
+  @override
+  String get pcToneTip => '팁';
+
+  @override
+  String get pcToneWarning => '경고';
+
+  @override
+  String get pcToneQuote => '인용';
+
+  @override
+  String get pcToneSecret => '비밀';
+
+  @override
+  String get pcOptFields => '표시할 필드';
+
+  @override
+  String get pcOptDock => '위치';
+
+  @override
+  String get pcOptTone => '어조';
+
+  @override
+  String get pcOptField => '집계할 필드';
+
+  @override
+  String get pcOptFrom => '시작 연도';
+
+  @override
+  String get pcOptGoal => '목표 단어 수';
+
+  @override
+  String get pcOptSubtitle => '부제';
+
+  @override
+  String get pcOptHeight => '높이';
+
+  @override
+  String get pcOptScrim => '글자 아래 그늘';
+
+  @override
+  String get pbImages => '그림';
+
+  @override
+  String get pcOptFromModule => '이 모듈의 모든 그림';
+
+  @override
+  String get pcOptCaptions => '파일 이름 표시';
+
+  @override
+  String get pcOptItems => '항목';
+
+  @override
+  String get pcOptSize => '크기';
+
+  @override
+  String get pcOptFit => '맞춤';
+
+  @override
+  String get pcOptFloat => '글 흐름';
+
+  @override
+  String get pcOptRound => '둥근 모서리';
+
+  @override
+  String get pcLayoutTable => '표';
+
+  @override
+  String get pcLayoutStacked => '세로 배치';
+
+  @override
+  String get pcDockRight => '오른쪽';
+
+  @override
+  String get pcDockLeft => '왼쪽';
+
+  @override
+  String get pcDockFull => '전체 너비';
+
+  @override
+  String get pcSizeS => '작게';
+
+  @override
+  String get pcSizeM => '보통';
+
+  @override
+  String get pcSizeL => '크게';
+
+  @override
+  String get pcSizeFull => '전체 너비';
+
+  @override
+  String get pcScrimSoft => '약하게';
+
+  @override
+  String get pcScrimStrong => '강하게';
+
+  @override
+  String get pcGalMasonry => '벽돌식';
+
+  @override
+  String get pcDivLine => '선';
+
+  @override
+  String get pcDivDouble => '이중선';
+
+  @override
+  String get pcDivDots => '점선';
+
+  @override
+  String get pcDivOrnament => '장식';
+
+  @override
+  String get pcDivImage => '그림 띠';
+
+  @override
+  String get pcIrChip => '칩';
+
+  @override
+  String get pcIrBig => '큰 아이콘';
+
+  @override
+  String get pcFitContain => '전체';
+
+  @override
+  String get pcFitCover => '틀 채우기';
+
+  @override
+  String get pcFloatNone => '단독';
+
+  @override
+  String get pcFloatLeft => '그림 왼쪽';
+
+  @override
+  String get pcFloatRight => '그림 오른쪽';
+
+  @override
+  String get pcLoadFailed => '이 블록을 불러오지 못했습니다';
+
+  @override
+  String get pcNoValue => '(없음)';
+
+  @override
+  String get tplUse => '템플릿 사용…';
+
+  @override
+  String get tplUseHint => '이 페이지의 레이아웃을 바꿉니다. 내용은 그대로이며 바로 실행 취소할 수 있습니다.';
+
+  @override
+  String get tplDefault => '기본';
+
+  @override
+  String get tplOtherTypes => '다른 유형';
+
+  @override
+  String get tplApplied => '템플릿을 적용했습니다';
+
+  @override
+  String get tplBorrowDropped => '{n}개 블록 제외 — 연결되지 않은 모듈에서 가져오는 블록입니다';
+
+  @override
+  String get tplGallery => '페이지 템플릿';
 }

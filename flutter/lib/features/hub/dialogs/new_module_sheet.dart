@@ -13,6 +13,7 @@ import '../../../data/services/mddx.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_provider.dart';
 import '../../../providers/navigation_providers.dart';
+import '../../page/template_gallery.dart';
 import '../../page/views/view_common.dart';
 
 /// The kind picker's groups (V5.md §9.5, EXE hub/kinds.js KIND_GROUPS):
@@ -62,7 +63,7 @@ Future<void> createFromTemplate(BuildContext context, WidgetRef ref, int nexusId
   final db = await ref.read(databaseProvider.future);
   final r = await BundleService.create(db, nexusId, parentId, spec);
   refreshTree(ref, nexusId);
-  final open = r.managerId ?? r.folderId ?? (r.moduleIds.isEmpty ? null : r.moduleIds.first);
+  final open = r.homeId ?? r.managerId ?? r.folderId ?? (r.moduleIds.isEmpty ? null : r.moduleIds.first);
   if (open != null) router.push(RecentView.locationFor(nexusId, open));
 }
 
@@ -108,6 +109,7 @@ Future<Map<String, dynamic>?> pickTemplate(BuildContext context) async {
 /// list, with a template, a .mddx file or a CSV above it.
 Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId, int? parentId) async {
   final router = GoRouter.of(context);
+  final locale = Localizations.localeOf(context).languageCode;
   final picked = await showModalBottomSheet<Object>(
     context: context,
     useRootNavigator: true,
@@ -124,6 +126,8 @@ Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId
       final name = await askText(context, kindName(l, kind), initial: kindName(l, kind), label: l.labelName);
       if (name == null) return;
       final id = await ModuleDao(db).createModule(nexusRef: nexusId, parentId: parentId, name: name, kind: kind);
+      // its first page: the kind's ★ template (TEMPLATES.md §3.2)
+      await applyStartTemplate(db, id, kind, locale);
       await rememberRecentKind(kind);
       refreshTree(ref, nexusId);
       router.push(RecentView.locationFor(nexusId, id));

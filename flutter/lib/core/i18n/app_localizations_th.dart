@@ -2323,4 +2323,343 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get pcPdfStrip => 'แถบภาพย่อ';
+
+  @override
+  String get pcInfobox => 'กล่องข้อมูล';
+
+  @override
+  String get pcCallout => 'กล่องเน้น';
+
+  @override
+  String get pcStats => 'สถิติ';
+
+  @override
+  String get pcToc => 'สารบัญ';
+
+  @override
+  String get pcSpotlight => 'สปอตไลต์';
+
+  @override
+  String get pcRoster => 'รายชื่อ';
+
+  @override
+  String get pcBreakdown => 'การแจกแจง';
+
+  @override
+  String get pcEras => 'ยุคสมัย';
+
+  @override
+  String get pcUpcoming => 'กำลังจะมาถึง';
+
+  @override
+  String get pcPinlist => 'รายการหมุด';
+
+  @override
+  String get pcProgress => 'ความคืบหน้า';
+
+  @override
+  String get pcChapters => 'บท';
+
+  @override
+  String get pcEndings => 'ตอนจบ';
+
+  @override
+  String get pcVariables => 'ตัวแปร';
+
+  @override
+  String get pcFocus => 'จุดโฟกัส';
+
+  @override
+  String get pcLegend => 'คำอธิบายสัญลักษณ์';
+
+  @override
+  String get pcJourney => 'การเดินทาง';
+
+  @override
+  String get pcStrip => 'แถบช่อง';
+
+  @override
+  String get pcFeatured => 'ไฮไลต์';
+
+  @override
+  String get pcDashboard => 'แดชบอร์ด';
+
+  @override
+  String get pcRecent => 'เปลี่ยนล่าสุด';
+
+  @override
+  String get pcQuickroll => 'สุ่มด่วน';
+
+  @override
+  String get pcPinned => 'ปักหมุด';
+
+  @override
+  String get pcTasks => 'งาน';
+
+  @override
+  String get pcBanner => 'แบนเนอร์';
+
+  @override
+  String get pcGallery => 'แกลเลอรี';
+
+  @override
+  String get pcDivider => 'เส้นแบ่ง';
+
+  @override
+  String get pcIconrow => 'แถวไอคอน';
+
+  @override
+  String get pcFigure => 'ภาพประกอบ';
+
+  @override
+  String get pcInfoboxEmpty => 'ยังไม่มีฟิลด์';
+
+  @override
+  String get pcStatsEmpty => 'ยังไม่มีอะไรให้นับ';
+
+  @override
+  String get pcTocEmpty => 'เพิ่มหัวข้อเพื่อสร้างสารบัญ';
+
+  @override
+  String get pcNoElements => 'ยังไม่มี Element';
+
+  @override
+  String get pcBreakdownEmpty => 'เลือกฟิลด์ที่จะใช้นับ';
+
+  @override
+  String get noEventsYet => 'ยังไม่มีเหตุการณ์';
+
+  @override
+  String get mapNoAreas => 'ยังไม่มี Area';
+
+  @override
+  String get pcNoChapters => 'ยังไม่มีบท';
+
+  @override
+  String get pcWords => 'คำ';
+
+  @override
+  String get pcNoEndings => 'ยังไม่มีตอนจบ';
+
+  @override
+  String get pcNoVariables => 'ยังไม่มีตัวแปร';
+
+  @override
+  String get pcNoRelations => 'ยังไม่มีความสัมพันธ์';
+
+  @override
+  String get pcUnlabelled => 'ไม่มีป้าย';
+
+  @override
+  String get pcNoPanels => 'ยังไม่มีช่องภาพ';
+
+  @override
+  String get pcNoSketches => 'ยังไม่มีภาพร่าง';
+
+  @override
+  String get managerEmpty => 'ยังไม่ได้เลือกอะไร — ตั้งตัวกรองหรือเลือก module';
+
+  @override
+  String get pcRoll => 'สุ่ม';
+
+  @override
+  String get pcNoRolls => 'ยังไม่มีการสุ่ม';
+
+  @override
+  String get pcNoPinned => 'ขึ้นต้นข้อความด้วย 📌 เพื่อปักหมุดไว้ที่นี่';
+
+  @override
+  String get pcNoTasks => 'เขียน “- [ ] …” ในโน้ตเพื่อเพิ่มงาน';
+
+  @override
+  String get pcBannerEmpty => 'ยังไม่มีรูป';
+
+  @override
+  String get pcGalleryEmpty => 'ยังไม่มีรูป';
+
+  @override
+  String get pcIconrowEmpty => 'ยังไม่มีไอคอน';
+
+  @override
+  String get pcFigureEmpty => 'ยังไม่มีรูป';
+
+  @override
+  String get pcStatItems => 'รายการ';
+
+  @override
+  String get pcStatModules => 'โมดูล';
+
+  @override
+  String get backlinks => 'ลิงก์มาที่นี่';
+
+  @override
+  String get pcCalloutPh => 'เขียนโน้ต…';
+
+  @override
+  String get pcDecorPickArrange => 'ยังไม่มีอะไร — เลือกได้ที่ ⚙ → ตัวเลือก';
+
+  @override
+  String get pcToneNote => 'บันทึก';
+
+  @override
+  String get pcToneTip => 'เคล็ดลับ';
+
+  @override
+  String get pcToneWarning => 'คำเตือน';
+
+  @override
+  String get pcToneQuote => 'คำพูด';
+
+  @override
+  String get pcToneSecret => 'ความลับ';
+
+  @override
+  String get pcOptFields => 'field ที่แสดง';
+
+  @override
+  String get pcOptDock => 'ตำแหน่ง';
+
+  @override
+  String get pcOptTone => 'โทน';
+
+  @override
+  String get pcOptField => 'นับตาม field';
+
+  @override
+  String get pcOptFrom => 'ตั้งแต่ปี';
+
+  @override
+  String get pcOptGoal => 'เป้าจำนวนคำ';
+
+  @override
+  String get pcOptSubtitle => 'คำโปรย';
+
+  @override
+  String get pcOptHeight => 'ความสูง';
+
+  @override
+  String get pcOptScrim => 'เงาใต้ข้อความ';
+
+  @override
+  String get pbImages => 'รูปภาพ';
+
+  @override
+  String get pcOptFromModule => 'ทุกรูปที่อยู่ใน module นี้';
+
+  @override
+  String get pcOptCaptions => 'แสดงชื่อไฟล์';
+
+  @override
+  String get pcOptItems => 'รายการ';
+
+  @override
+  String get pcOptSize => 'ขนาด';
+
+  @override
+  String get pcOptFit => 'การพอดี';
+
+  @override
+  String get pcOptFloat => 'ข้อความไหลรอบ';
+
+  @override
+  String get pcOptRound => 'มุมโค้ง';
+
+  @override
+  String get pcLayoutTable => 'ตาราง';
+
+  @override
+  String get pcLayoutStacked => 'เรียงซ้อน';
+
+  @override
+  String get pcDockRight => 'ขวา';
+
+  @override
+  String get pcDockLeft => 'ซ้าย';
+
+  @override
+  String get pcDockFull => 'เต็มความกว้าง';
+
+  @override
+  String get pcSizeS => 'เล็ก';
+
+  @override
+  String get pcSizeM => 'กลาง';
+
+  @override
+  String get pcSizeL => 'ใหญ่';
+
+  @override
+  String get pcSizeFull => 'เต็มความกว้าง';
+
+  @override
+  String get pcScrimSoft => 'อ่อน';
+
+  @override
+  String get pcScrimStrong => 'เข้ม';
+
+  @override
+  String get pcGalMasonry => 'ก่ออิฐ';
+
+  @override
+  String get pcDivLine => 'เส้น';
+
+  @override
+  String get pcDivDouble => 'เส้นคู่';
+
+  @override
+  String get pcDivDots => 'จุด';
+
+  @override
+  String get pcDivOrnament => 'ลวดลาย';
+
+  @override
+  String get pcDivImage => 'แถบรูป';
+
+  @override
+  String get pcIrChip => 'ชิป';
+
+  @override
+  String get pcIrBig => 'ไอคอนใหญ่';
+
+  @override
+  String get pcFitContain => 'ทั้งรูป';
+
+  @override
+  String get pcFitCover => 'เต็มกรอบ';
+
+  @override
+  String get pcFloatNone => 'อยู่แยก';
+
+  @override
+  String get pcFloatLeft => 'รูปซ้าย';
+
+  @override
+  String get pcFloatRight => 'รูปขวา';
+
+  @override
+  String get pcLoadFailed => 'โหลดบล็อกนี้ไม่ได้';
+
+  @override
+  String get pcNoValue => '(ไม่มี)';
+
+  @override
+  String get tplUse => 'ใช้เทมเพลต…';
+
+  @override
+  String get tplUseHint => 'แทนที่เลย์เอาต์ของหน้านี้ เนื้อหายังอยู่ครบ และเลิกทำได้ทันทีหลังจากนั้น';
+
+  @override
+  String get tplDefault => 'ค่าเริ่มต้น';
+
+  @override
+  String get tplOtherTypes => 'ประเภทอื่น';
+
+  @override
+  String get tplApplied => 'ใช้เทมเพลตแล้ว';
+
+  @override
+  String get tplBorrowDropped => 'ข้าม {n} บล็อก — บล็อกเหล่านี้ยืมจากโมดูลที่ยังไม่ได้เชื่อมกับโมดูลนี้';
+
+  @override
+  String get tplGallery => 'เทมเพลตหน้า';
 }
