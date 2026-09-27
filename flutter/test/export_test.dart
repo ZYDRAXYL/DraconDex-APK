@@ -277,13 +277,21 @@ void main() {
     // a book-only format on a Classifier: dimmed, with the reason, and not
     // the one picked even though it was the saved choice
     expect(find.text('Author books only'), findsOneWidget);
-    expect(find.text('Paper'), findsOneWidget, reason: 'fell back to PDF, whose options show');
-    await tester.tap(find.text('EPUB (e-book)'));
+    // the footer's button names the format actually picked
+    expect(find.text('Export · PDF'), findsOneWidget, reason: 'fell back to PDF');
+    final list = find.byType(Scrollable).first;
+    await tester.scrollUntilVisible(find.text('Paper'), 200, scrollable: list);
+    expect(find.text('Paper'), findsOneWidget, reason: "PDF's options show");
+    await tester.ensureVisible(find.text('EPUB (e-book)'));
+    await tester.tap(find.text('EPUB (e-book)'), warnIfMissed: false);
     await tester.pump();
-    expect(find.text('Paper'), findsOneWidget);
-    await tester.tap(find.text('CSV'));
+    expect(find.text('Export · PDF'), findsOneWidget, reason: 'a dimmed card cannot be picked');
+    await tester.ensureVisible(find.text('CSV').first);
+    await tester.tap(find.text('CSV').first);
     await tester.pump();
+    expect(find.text('Export · CSV'), findsOneWidget);
     expect(find.text('Paper'), findsNothing);
+    await tester.scrollUntilVisible(find.textContaining('Import CSV reads it back'), 200, scrollable: list);
     expect(find.textContaining('Import CSV reads it back'), findsOneWidget);
   });
 }
