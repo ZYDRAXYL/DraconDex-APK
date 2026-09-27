@@ -2659,4 +2659,19 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get tplGallery => 'Paginasjablonen';
+
+  @override
+  String get pcFacts => 'Feiten';
+
+  @override
+  String get pcNoFacts => 'Schrijf regels als „Gesticht: 300” in de notitie';
+
+  @override
+  String get pcPlacecard => 'Plaatskaart';
+
+  @override
+  String get pcBorders => 'Grenst aan';
+
+  @override
+  String get pcOptArea => 'Gebied (naam)';
 }

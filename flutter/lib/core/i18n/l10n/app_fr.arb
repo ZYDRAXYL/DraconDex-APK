@@ -883,5 +883,10 @@
   "tplOtherTypes": "Autres types",
   "tplApplied": "Modèle appliqué",
   "tplBorrowDropped": "{n} bloc(s) omis — ils empruntent à un module non lié à celui-ci",
-  "tplGallery": "Modèles de page"
+  "tplGallery": "Modèles de page",
+  "pcFacts": "Faits",
+  "pcNoFacts": "Écrivez des lignes comme « Fondation : 300 » dans la note",
+  "pcPlacecard": "Fiche de lieu",
+  "pcBorders": "Voisins",
+  "pcOptArea": "Zone (nom)"
 }

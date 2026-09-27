@@ -883,5 +883,10 @@
   "tplOtherTypes": "Otros tipos",
   "tplApplied": "Plantilla aplicada",
   "tplBorrowDropped": "Se omitieron {n} bloque(s): toman datos de un módulo no vinculado a este",
-  "tplGallery": "Plantillas de página"
+  "tplGallery": "Plantillas de página",
+  "pcFacts": "Datos",
+  "pcNoFacts": "Escribe líneas como «Fundación: 300» en la nota",
+  "pcPlacecard": "Ficha de lugar",
+  "pcBorders": "Limita con",
+  "pcOptArea": "Zona (nombre)"
 }

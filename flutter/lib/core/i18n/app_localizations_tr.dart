@@ -2659,4 +2659,19 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get tplGallery => 'Sayfa şablonları';
+
+  @override
+  String get pcFacts => 'Bilgiler';
+
+  @override
+  String get pcNoFacts => 'Notta “Kuruluş: 300” gibi satırlar yazın';
+
+  @override
+  String get pcPlacecard => 'Yer kartı';
+
+  @override
+  String get pcBorders => 'Komşular';
+
+  @override
+  String get pcOptArea => 'Bölge (ad)';
 }

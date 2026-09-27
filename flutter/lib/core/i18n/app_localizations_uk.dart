@@ -2659,4 +2659,19 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get tplGallery => 'Шаблони сторінок';
+
+  @override
+  String get pcFacts => 'Факти';
+
+  @override
+  String get pcNoFacts => 'Пишіть у нотатці рядки на кшталт «Засновано: 300»';
+
+  @override
+  String get pcPlacecard => 'Картка місця';
+
+  @override
+  String get pcBorders => 'Межує з';
+
+  @override
+  String get pcOptArea => 'Область (назва)';
 }

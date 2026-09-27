@@ -883,5 +883,10 @@
   "tplOtherTypes": "他の種類",
   "tplApplied": "テンプレートを適用しました",
   "tplBorrowDropped": "{n} 個のブロックを省きました — リンクされていないモジュールから借りるためです",
-  "tplGallery": "ページテンプレート"
+  "tplGallery": "ページテンプレート",
+  "pcFacts": "事実",
+  "pcNoFacts": "ノートに「設立: 300年」のような行を書く",
+  "pcPlacecard": "場所カード",
+  "pcBorders": "隣接",
+  "pcOptArea": "エリア（名前）"
 }

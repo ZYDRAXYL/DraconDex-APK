@@ -883,5 +883,10 @@
   "tplOtherTypes": "其他类型",
   "tplApplied": "已应用模板",
   "tplBorrowDropped": "已略过 {n} 个区块 — 它们借用的模块未与此模块关联",
-  "tplGallery": "页面模板"
+  "tplGallery": "页面模板",
+  "pcFacts": "事实",
+  "pcNoFacts": "在笔记中写“建立: 300年”这样的行",
+  "pcPlacecard": "地点卡片",
+  "pcBorders": "相邻",
+  "pcOptArea": "区域（名称）"
 }

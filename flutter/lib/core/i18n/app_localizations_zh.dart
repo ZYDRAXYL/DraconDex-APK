@@ -2662,4 +2662,19 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get tplGallery => '页面模板';
+
+  @override
+  String get pcFacts => '事实';
+
+  @override
+  String get pcNoFacts => '在笔记中写“建立: 300年”这样的行';
+
+  @override
+  String get pcPlacecard => '地点卡片';
+
+  @override
+  String get pcBorders => '相邻';
+
+  @override
+  String get pcOptArea => '区域（名称）';
 }

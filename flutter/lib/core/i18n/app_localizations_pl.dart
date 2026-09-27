@@ -2659,4 +2659,19 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get tplGallery => 'Szablony stron';
+
+  @override
+  String get pcFacts => 'Fakty';
+
+  @override
+  String get pcNoFacts => 'Wpisz w notatce linie w rodzaju „Założono: 300”';
+
+  @override
+  String get pcPlacecard => 'Karta miejsca';
+
+  @override
+  String get pcBorders => 'Graniczy z';
+
+  @override
+  String get pcOptArea => 'Obszar (nazwa)';
 }

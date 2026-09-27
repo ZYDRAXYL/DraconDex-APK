@@ -2662,4 +2662,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get tplGallery => 'ページテンプレート';
+
+  @override
+  String get pcFacts => '事実';
+
+  @override
+  String get pcNoFacts => 'ノートに「設立: 300年」のような行を書く';
+
+  @override
+  String get pcPlacecard => '場所カード';
+
+  @override
+  String get pcBorders => '隣接';
+
+  @override
+  String get pcOptArea => 'エリア（名前）';
 }

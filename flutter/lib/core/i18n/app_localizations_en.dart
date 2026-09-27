@@ -2662,4 +2662,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tplGallery => 'Page templates';
+
+  @override
+  String get pcFacts => 'Facts';
+
+  @override
+  String get pcNoFacts => 'Write lines like “Founded: 300 BR” in the note';
+
+  @override
+  String get pcPlacecard => 'Place card';
+
+  @override
+  String get pcBorders => 'Borders';
+
+  @override
+  String get pcOptArea => 'Area (name)';
 }

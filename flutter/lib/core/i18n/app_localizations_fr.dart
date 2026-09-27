@@ -2662,4 +2662,19 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get tplGallery => 'Modèles de page';
+
+  @override
+  String get pcFacts => 'Faits';
+
+  @override
+  String get pcNoFacts => 'Écrivez des lignes comme « Fondation : 300 » dans la note';
+
+  @override
+  String get pcPlacecard => 'Fiche de lieu';
+
+  @override
+  String get pcBorders => 'Voisins';
+
+  @override
+  String get pcOptArea => 'Zone (nom)';
 }

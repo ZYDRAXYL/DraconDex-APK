@@ -883,5 +883,10 @@
   "tplOtherTypes": "다른 유형",
   "tplApplied": "템플릿을 적용했습니다",
   "tplBorrowDropped": "{n}개 블록 제외 — 연결되지 않은 모듈에서 가져오는 블록입니다",
-  "tplGallery": "페이지 템플릿"
+  "tplGallery": "페이지 템플릿",
+  "pcFacts": "사실",
+  "pcNoFacts": "노트에 “건국: 300년” 같은 줄을 적으세요",
+  "pcPlacecard": "장소 카드",
+  "pcBorders": "인접 지역",
+  "pcOptArea": "구역(이름)"
 }

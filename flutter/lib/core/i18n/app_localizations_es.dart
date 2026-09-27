@@ -2662,4 +2662,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get tplGallery => 'Plantillas de página';
+
+  @override
+  String get pcFacts => 'Datos';
+
+  @override
+  String get pcNoFacts => 'Escribe líneas como «Fundación: 300» en la nota';
+
+  @override
+  String get pcPlacecard => 'Ficha de lugar';
+
+  @override
+  String get pcBorders => 'Limita con';
+
+  @override
+  String get pcOptArea => 'Zona (nombre)';
 }

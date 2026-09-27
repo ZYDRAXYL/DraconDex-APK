@@ -2662,4 +2662,19 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get tplGallery => 'Page Patternes';
+
+  @override
+  String get pcFacts => 'Truths';
+
+  @override
+  String get pcNoFacts => 'Set down lines such as “Founded: 300” in thy note';
+
+  @override
+  String get pcPlacecard => 'Card of the Place';
+
+  @override
+  String get pcBorders => 'Marcheth with';
+
+  @override
+  String get pcOptArea => 'Region (its name)';
 }

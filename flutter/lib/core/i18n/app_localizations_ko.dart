@@ -2662,4 +2662,19 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get tplGallery => '페이지 템플릿';
+
+  @override
+  String get pcFacts => '사실';
+
+  @override
+  String get pcNoFacts => '노트에 “건국: 300년” 같은 줄을 적으세요';
+
+  @override
+  String get pcPlacecard => '장소 카드';
+
+  @override
+  String get pcBorders => '인접 지역';
+
+  @override
+  String get pcOptArea => '구역(이름)';
 }

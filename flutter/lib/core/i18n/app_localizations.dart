@@ -5436,6 +5436,36 @@ abstract class AppLocalizations {
   /// **Page templates**
   String get tplGallery;
 
+  /// No description provided for @pcFacts.
+  ///
+  /// In en, this message translates to:
+  /// **Facts**
+  String get pcFacts;
+
+  /// No description provided for @pcNoFacts.
+  ///
+  /// In en, this message translates to:
+  /// **Write lines like “Founded: 300 BR” in the note**
+  String get pcNoFacts;
+
+  /// No description provided for @pcPlacecard.
+  ///
+  /// In en, this message translates to:
+  /// **Place card**
+  String get pcPlacecard;
+
+  /// No description provided for @pcBorders.
+  ///
+  /// In en, this message translates to:
+  /// **Borders**
+  String get pcBorders;
+
+  /// No description provided for @pcOptArea.
+  ///
+  /// In en, this message translates to:
+  /// **Area (name)**
+  String get pcOptArea;
+
 }
 
 class _AppLocalizationsDelegate

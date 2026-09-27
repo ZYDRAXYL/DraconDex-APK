@@ -2662,4 +2662,19 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get tplGallery => 'เทมเพลตหน้า';
+
+  @override
+  String get pcFacts => 'ข้อเท็จจริง';
+
+  @override
+  String get pcNoFacts => 'เขียนบรรทัดแบบ “ก่อตั้ง: ปีที่ 300” ในโน้ต';
+
+  @override
+  String get pcPlacecard => 'การ์ดสถานที่';
+
+  @override
+  String get pcBorders => 'ติดกับ';
+
+  @override
+  String get pcOptArea => 'พื้นที่ (ชื่อ)';
 }

@@ -2662,4 +2662,19 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get tplGallery => 'Seitenvorlagen';
+
+  @override
+  String get pcFacts => 'Fakten';
+
+  @override
+  String get pcNoFacts => 'Schreibe Zeilen wie „Gegründet: 300“ in die Notiz';
+
+  @override
+  String get pcPlacecard => 'Ortskarte';
+
+  @override
+  String get pcBorders => 'Grenzt an';
+
+  @override
+  String get pcOptArea => 'Gebiet (Name)';
 }

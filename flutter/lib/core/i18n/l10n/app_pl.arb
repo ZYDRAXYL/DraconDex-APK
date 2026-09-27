@@ -883,5 +883,10 @@
   "tplOtherTypes": "Inne typy",
   "tplApplied": "Zastosowano szablon",
   "tplBorrowDropped": "Pominięto bloki: {n} — korzystają z niepowiązanego modułu",
-  "tplGallery": "Szablony stron"
+  "tplGallery": "Szablony stron",
+  "pcFacts": "Fakty",
+  "pcNoFacts": "Wpisz w notatce linie w rodzaju „Założono: 300”",
+  "pcPlacecard": "Karta miejsca",
+  "pcBorders": "Graniczy z",
+  "pcOptArea": "Obszar (nazwa)"
 }

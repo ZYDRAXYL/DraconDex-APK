@@ -883,5 +883,10 @@
   "tplOtherTypes": "Loại khác",
   "tplApplied": "Đã áp dụng mẫu",
   "tplBorrowDropped": "Bỏ qua {n} khối — chúng mượn từ module chưa liên kết với module này",
-  "tplGallery": "Mẫu trang"
+  "tplGallery": "Mẫu trang",
+  "pcFacts": "Dữ kiện",
+  "pcNoFacts": "Viết các dòng như “Thành lập: năm 300” trong ghi chú",
+  "pcPlacecard": "Thẻ địa điểm",
+  "pcBorders": "Giáp với",
+  "pcOptArea": "Khu vực (tên)"
 }

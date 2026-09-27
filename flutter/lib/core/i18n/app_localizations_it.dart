@@ -2659,4 +2659,19 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get tplGallery => 'Modelli di pagina';
+
+  @override
+  String get pcFacts => 'Fatti';
+
+  @override
+  String get pcNoFacts => 'Scrivi righe come «Fondazione: 300» nella nota';
+
+  @override
+  String get pcPlacecard => 'Scheda luogo';
+
+  @override
+  String get pcBorders => 'Confina con';
+
+  @override
+  String get pcOptArea => 'Area (nome)';
 }

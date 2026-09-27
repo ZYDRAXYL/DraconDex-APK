@@ -883,5 +883,10 @@
   "tplOtherTypes": "Outros tipos",
   "tplApplied": "Modelo aplicado",
   "tplBorrowDropped": "{n} bloco(s) ficaram de fora — usam um módulo não vinculado a este",
-  "tplGallery": "Modelos de página"
+  "tplGallery": "Modelos de página",
+  "pcFacts": "Fatos",
+  "pcNoFacts": "Escreva linhas como “Fundação: 300” na nota",
+  "pcPlacecard": "Ficha de lugar",
+  "pcBorders": "Faz fronteira",
+  "pcOptArea": "Área (nome)"
 }

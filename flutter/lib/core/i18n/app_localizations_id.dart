@@ -2662,4 +2662,19 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get tplGallery => 'Templat halaman';
+
+  @override
+  String get pcFacts => 'Fakta';
+
+  @override
+  String get pcNoFacts => 'Tulis baris seperti “Didirikan: 300” di catatan';
+
+  @override
+  String get pcPlacecard => 'Kartu tempat';
+
+  @override
+  String get pcBorders => 'Berbatasan';
+
+  @override
+  String get pcOptArea => 'Area (nama)';
 }

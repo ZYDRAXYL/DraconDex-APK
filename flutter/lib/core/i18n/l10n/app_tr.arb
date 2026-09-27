@@ -883,5 +883,10 @@
   "tplOtherTypes": "Diğer türler",
   "tplApplied": "Şablon uygulandı",
   "tplBorrowDropped": "{n} blok atlandı — bu modüle bağlı olmayan bir modülden ödünç alıyorlar",
-  "tplGallery": "Sayfa şablonları"
+  "tplGallery": "Sayfa şablonları",
+  "pcFacts": "Bilgiler",
+  "pcNoFacts": "Notta “Kuruluş: 300” gibi satırlar yazın",
+  "pcPlacecard": "Yer kartı",
+  "pcBorders": "Komşular",
+  "pcOptArea": "Bölge (ad)"
 }

@@ -2662,4 +2662,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get tplGallery => 'Шаблоны страниц';
+
+  @override
+  String get pcFacts => 'Факты';
+
+  @override
+  String get pcNoFacts => 'Пишите в заметке строки вида «Основан: 300»';
+
+  @override
+  String get pcPlacecard => 'Карточка места';
+
+  @override
+  String get pcBorders => 'Граничит с';
+
+  @override
+  String get pcOptArea => 'Область (название)';
 }

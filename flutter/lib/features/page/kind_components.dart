@@ -39,6 +39,7 @@ final List<ComponentDef> dataComponents = [
   _def('chronicler.eras', ModuleKind.chronicler, (l) => l.pcEras, _eras),
   _def('chronicler.upcoming', ModuleKind.chronicler, (l) => l.pcUpcoming, _upcoming),
   _def('locator.pinlist', ModuleKind.locator, (l) => l.pcPinlist, _pinlist),
+  _def('locator.placecard', ModuleKind.locator, (l) => l.pcPlacecard, _placecard),
   _def('author.progress', ModuleKind.author, (l) => l.pcProgress, _progress),
   _def('author.chapters', ModuleKind.author, (l) => l.pcChapters, _chapters),
   _def('narrator.endings', ModuleKind.narrator, (l) => l.pcEndings, _endings),
@@ -53,6 +54,7 @@ final List<ComponentDef> dataComponents = [
   ComponentDef(id: 'diviner.quickroll', kind: ModuleKind.diviner, borrow: true, label: (l) => l.pcQuickroll, build: (c, x) => _QuickRoll(ctx: x)),
   _def('scribe.pinned', ModuleKind.scribe, (l) => l.pcPinned, _pinned),
   _def('drafter.tasks', ModuleKind.drafter, (l) => l.pcTasks, _tasks),
+  _def('inspector.facts', ModuleKind.inspector, (l) => l.pcFacts, _facts),
 ];
 
 /// A component that reads, then draws: [load] runs against the vault, and
@@ -549,6 +551,165 @@ final _pinlist = (
   },
 );
 
+/// One area of a Locator's map, with its outline.
+class PlaceArea {
+  final int id;
+  final String name;
+  final String? color;
+  final List<Offset> points;
+  const PlaceArea(this.id, this.name, this.color, this.points);
+}
+
+/// Which area a place card shows: [want] by name (any case), else the first.
+PlaceArea? pickArea(List<PlaceArea> areas, String? want) {
+  final w = (want ?? '').trim().toLowerCase();
+  if (w.isNotEmpty) {
+    for (final a in areas) {
+      if (a.name.trim().toLowerCase() == w) return a;
+    }
+  }
+  return areas.isEmpty ? null : areas.first;
+}
+
+Rect? _boxOf(List<Offset> pts) {
+  if (pts.isEmpty) return null;
+  var r = Rect.fromPoints(pts.first, pts.first);
+  for (final p in pts) {
+    r = r.expandToInclude(Rect.fromPoints(p, p));
+  }
+  return r;
+}
+
+/// The crop around [chosen] — its box, at least 20 across, with 40% around
+/// it (the whole map if it has no outline) — and the areas whose boxes
+/// touch its. EXE page/components/common.js pcPlaceGeom.
+(Rect?, List<PlaceArea>) placeGeom(List<PlaceArea> areas, PlaceArea chosen) {
+  final own = _boxOf(chosen.points);
+  final borders = <PlaceArea>[];
+  if (own != null) {
+    for (final a in areas) {
+      final b = _boxOf(a.points);
+      if (a.id != chosen.id && b != null && b.left <= own.right && b.right >= own.left && b.top <= own.bottom && b.bottom >= own.top) {
+        borders.add(a);
+      }
+    }
+  }
+  final all = [for (final a in areas) ?_boxOf(a.points)];
+  final b = own ?? (all.isEmpty ? null : all.reduce((p, q) => p.expandToInclude(q)));
+  if (b == null) return (null, borders);
+  final side = max(max(b.width, 20.0), max(b.height, 20.0)) * 1.4;
+  double r1(double v) => (v * 10).roundToDouble() / 10;
+  return (Rect.fromLTWH(r1(b.center.dx - side / 2), r1(b.center.dy - side / 2), r1(side), r1(side)), borders);
+}
+
+/// Place card: one area of the map — its outline among its neighbours', its
+/// name, where it comes from and what it borders. Which area: config.area
+/// by name, else the one named like this page, else the first.
+final _placecard = (
+  (Database db, ComponentCtx ctx) async {
+    final rows = await db.rawQuery('''
+      SELECT a.id, a.area_name, c.color_code FROM map_area a JOIN map m ON a.map_id=m.id
+      LEFT JOIN use_color c ON a.color=c.id WHERE m.module_ref=? ORDER BY a.area_name''', [ctx.source.id]);
+    final areas = <PlaceArea>[];
+    for (final r in rows) {
+      final pts = await db.rawQuery('SELECT x, y FROM map_point WHERE area_id=? ORDER BY point_order, id', [r['id']]);
+      areas.add(PlaceArea(r['id'] as int, '${r['area_name'] ?? ''}', r['color_code'] as String?,
+          [for (final p in pts) Offset((p['x'] as num).toDouble(), (p['y'] as num).toDouble())]));
+    }
+    final here = ctx.itemKey != null ? await EntityKinds.nameOf(db, ctx.itemKey!) : ctx.page.module.name;
+    final want = optValue(ctx.block, 'area') as String?;
+    return (areas, pickArea(areas, (want == null || want.trim().isEmpty) ? here : want));
+  },
+  (BuildContext context, WidgetRef ref, ComponentCtx ctx, Object? d) {
+    final (areas, area) = d as (List<PlaceArea>, PlaceArea?);
+    if (area == null) return _empty(context, AppLocalizations.of(context)!.mapNoAreas);
+    final (view, borders) = placeGeom(areas, area);
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final info = Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(area.name.isEmpty ? '—' : area.name, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700)),
+      Padding(
+        padding: const EdgeInsets.only(top: 2, bottom: 8),
+        child: Text('↪ ${ctx.source.name}', style: TextStyle(fontSize: 12, color: context.ddx.textMuted)),
+      ),
+      if (borders.isNotEmpty) ...[
+        Text(l10n.pcBorders, style: TextStyle(fontSize: 12, color: context.ddx.textMuted)),
+        const SizedBox(height: 4),
+        Wrap(spacing: 4, runSpacing: 4, children: [
+          for (final b in borders)
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              decoration: BoxDecoration(color: theme.colorScheme.onSurface.withValues(alpha: .08), borderRadius: BorderRadius.circular(99)),
+              child: Text(b.name.isEmpty ? '—' : b.name, style: const TextStyle(fontSize: 12)),
+            ),
+        ]),
+      ],
+    ]);
+    final map = view == null
+        ? null
+        : Container(
+            decoration: BoxDecoration(border: Border.all(color: theme.dividerColor), borderRadius: BorderRadius.circular(8)),
+            clipBehavior: Clip.antiAlias,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: CustomPaint(painter: _PlacePainter(areas, area, view, _hex(area.color) ?? theme.colorScheme.primary, context.ddx.textMuted)),
+            ),
+          );
+    return InkWell(
+      onTap: () => _openModule(context, ctx, ctx.source.id),
+      child: LayoutBuilder(builder: (context, c) {
+        if (map == null) return info;
+        if (c.maxWidth < 360) {
+          return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Center(child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 220), child: map)),
+            const SizedBox(height: 10),
+            info,
+          ]);
+        }
+        return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(width: min(220, c.maxWidth * .4), child: map),
+          const SizedBox(width: 12),
+          Expanded(child: info),
+        ]);
+      }),
+    );
+  },
+);
+
+class _PlacePainter extends CustomPainter {
+  final List<PlaceArea> areas;
+  final PlaceArea on;
+  final Rect view;
+  final Color accent, muted;
+  _PlacePainter(this.areas, this.on, this.view, this.accent, this.muted);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final k = size.width / view.width;
+    Path path(PlaceArea a) => Path()..addPolygon([for (final p in a.points) (p - view.topLeft) * k], true);
+    final line = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.5
+      ..color = muted.withValues(alpha: .55);
+    for (final a in areas) {
+      if (a.id != on.id && a.points.length >= 3) canvas.drawPath(path(a), line);
+    }
+    if (on.points.length >= 3) {
+      final p = path(on);
+      canvas.drawPath(p, Paint()..color = accent.withValues(alpha: .35));
+      canvas.drawPath(
+          p,
+          Paint()
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 2
+            ..color = accent);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_PlacePainter o) => o.view != view || o.on.id != on.id || o.areas.length != areas.length || o.accent != accent;
+}
+
 // ── author ──────────────────────────────────────────────────────────────
 Future<List<Map<String, Object?>>> _chaptersOf(Database db, int moduleId) => db.rawQuery(
     'SELECT id, name, chapter_label, chapter_content, status FROM book_chapter WHERE module_ref=? ORDER BY chapter_order, id', [moduleId]);
@@ -996,5 +1157,70 @@ final _tasks = (
           ]),
         ),
     ]);
+  },
+);
+
+// ── inspector ───────────────────────────────────────────────────────────
+/// Facts: the `key: value` lines of a note, markdown or the desktop
+/// editor's HTML. A key is 1–40 characters with a letter in it and the
+/// colon needs a space after it, so links, times and a bare scheme never
+/// count; headings, fenced code and task lines are skipped. EXE
+/// page/components/common.js pcFactsOf.
+List<(String, String)> factsOf(String? text, {int max = 12}) {
+  const ent = {'amp': '&', 'lt': '<', 'gt': '>', 'quot': '"', '#39': "'", 'nbsp': ' '};
+  final lines = (text ?? '')
+      .replaceAll(RegExp(r'<br\s*/?>', caseSensitive: false), '\n')
+      .replaceAll(RegExp(r'</(p|div|li|h\d)>', caseSensitive: false), '\n')
+      .replaceAll(RegExp(r'<[^>]*>'), '')
+      .replaceAllMapped(RegExp(r'&(amp|lt|gt|quot|#39|nbsp);'), (m) => ent[m[1]]!)
+      .split('\n');
+  final out = <(String, String)>[];
+  final line = RegExp(r'^(?:[-*]\s+)?\**([^:*]{1,40}?)\**\s*:\s+\**\s*(.+?)\s*$', unicode: true);
+  final letter = RegExp(r'\p{L}', unicode: true);
+  final scheme = RegExp(r'^(https?|ftp|mailto|file|data|javascript)$', caseSensitive: false);
+  var fence = false;
+  for (final raw in lines) {
+    final l = raw.trim();
+    if (l.startsWith('```') || l.startsWith('~~~')) {
+      fence = !fence;
+      continue;
+    }
+    if (fence || l.isEmpty || l.startsWith('#') || RegExp(r'^[-*]\s*\[( |x|X)\]').hasMatch(l)) continue;
+    final m = line.firstMatch(l);
+    if (m == null) continue;
+    final k = m[1]!.trim();
+    final v = m[2]!.replaceAll(RegExp(r'\*+$'), '').trim();
+    if (!letter.hasMatch(k) || scheme.hasMatch(k) || v.isEmpty) continue;
+    out.add((k, v));
+    if (out.length >= max) break;
+  }
+  return out;
+}
+
+final _facts = (
+  (Database db, ComponentCtx ctx) async {
+    final r = await db.rawQuery('SELECT description FROM module WHERE id=?', [ctx.source.id]);
+    final n = (optValue(ctx.block, 'count') as num?)?.toInt() ?? 12;
+    return factsOf(r.isEmpty ? null : r.first['description'] as String?, max: n);
+  },
+  (BuildContext context, WidgetRef ref, ComponentCtx ctx, Object? d) {
+    final facts = d as List<(String, String)>;
+    if (facts.isEmpty) return _empty(context, AppLocalizations.of(context)!.pcNoFacts);
+    return Table(
+      columnWidths: const {0: IntrinsicColumnWidth(), 1: FlexColumnWidth()},
+      children: [
+        for (final (k, v) in facts)
+          TableRow(children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 14, bottom: 4),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 140),
+                child: Text(k, style: TextStyle(fontWeight: FontWeight.w600, color: context.ddx.textMuted)),
+              ),
+            ),
+            Padding(padding: const EdgeInsets.only(bottom: 4), child: Text(v)),
+          ]),
+      ],
+    );
   },
 );

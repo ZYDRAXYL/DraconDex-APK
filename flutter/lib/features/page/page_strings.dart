@@ -85,6 +85,7 @@ String pageText(AppLocalizations l, String key) => switch (key) {
       'pcOptBar' => l.pcOptBar,
       'pcOptCaption' => l.pcOptCaption,
       'pcOptCount' => l.pcOptCount,
+      'pcOptArea' => l.pcOptArea,
       'pcOptCover' => l.pcOptCover,
       'pcOptDepth' => l.pcOptDepth,
       'pcOptHatKind' => l.pcOptHatKind,

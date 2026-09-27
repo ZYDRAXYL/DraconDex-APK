@@ -883,5 +883,10 @@
   "tplOtherTypes": "Andere Typen",
   "tplApplied": "Vorlage angewendet",
   "tplBorrowDropped": "{n} Block/Blöcke ausgelassen — sie leihen von einem nicht verknüpften Modul",
-  "tplGallery": "Seitenvorlagen"
+  "tplGallery": "Seitenvorlagen",
+  "pcFacts": "Fakten",
+  "pcNoFacts": "Schreibe Zeilen wie „Gegründet: 300“ in die Notiz",
+  "pcPlacecard": "Ortskarte",
+  "pcBorders": "Grenzt an",
+  "pcOptArea": "Gebiet (Name)"
 }

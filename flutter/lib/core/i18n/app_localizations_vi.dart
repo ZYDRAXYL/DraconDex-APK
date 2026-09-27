@@ -2662,4 +2662,19 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get tplGallery => 'Mẫu trang';
+
+  @override
+  String get pcFacts => 'Dữ kiện';
+
+  @override
+  String get pcNoFacts => 'Viết các dòng như “Thành lập: năm 300” trong ghi chú';
+
+  @override
+  String get pcPlacecard => 'Thẻ địa điểm';
+
+  @override
+  String get pcBorders => 'Giáp với';
+
+  @override
+  String get pcOptArea => 'Khu vực (tên)';
 }

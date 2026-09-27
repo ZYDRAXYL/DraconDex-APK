@@ -883,5 +883,10 @@
   "tplOtherTypes": "Othere Kindes",
   "tplApplied": "Patterne laid",
   "tplBorrowDropped": "{n} block(s) left behinde — they borrowe from a module not tethered here",
-  "tplGallery": "Page Patternes"
+  "tplGallery": "Page Patternes",
+  "pcFacts": "Truths",
+  "pcNoFacts": "Set down lines such as “Founded: 300” in thy note",
+  "pcPlacecard": "Card of the Place",
+  "pcBorders": "Marcheth with",
+  "pcOptArea": "Region (its name)"
 }

@@ -78,6 +78,8 @@ const Map<String, List<OptDef>> componentOptions = {
   ],
   'chronicler.upcoming': [OptDef('from', OptType.number, 'pcOptFrom')],
   'author.progress': [OptDef('goal', OptType.number, 'pcOptGoal', min: 0, max: 10000000)],
+  'inspector.facts': [OptDef('count', OptType.number, 'pcOptCount', min: 1, max: 30, defaultValue: 12)],
+  'locator.placecard': [OptDef('area', OptType.text, 'pcOptArea', max: 80)],
   'core.banner': [
     OptDef('image', OptType.image, 'pbImage'),
     OptDef('title', OptType.text, 'pbHeaderTitle', max: 80),

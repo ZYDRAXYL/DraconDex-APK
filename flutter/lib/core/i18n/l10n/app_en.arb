@@ -883,5 +883,10 @@
   "tplOtherTypes": "Other types",
   "tplApplied": "Template applied",
   "tplBorrowDropped": "{n} block(s) left out — they borrow from a module this one is not linked to",
-  "tplGallery": "Page templates"
+  "tplGallery": "Page templates",
+  "pcFacts": "Facts",
+  "pcNoFacts": "Write lines like “Founded: 300 BR” in the note",
+  "pcPlacecard": "Place card",
+  "pcBorders": "Borders",
+  "pcOptArea": "Area (name)"
 }

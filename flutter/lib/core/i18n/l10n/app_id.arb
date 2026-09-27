@@ -883,5 +883,10 @@
   "tplOtherTypes": "Jenis lain",
   "tplApplied": "Templat diterapkan",
   "tplBorrowDropped": "{n} blok dilewati — blok itu meminjam dari modul yang belum ditautkan",
-  "tplGallery": "Templat halaman"
+  "tplGallery": "Templat halaman",
+  "pcFacts": "Fakta",
+  "pcNoFacts": "Tulis baris seperti “Didirikan: 300” di catatan",
+  "pcPlacecard": "Kartu tempat",
+  "pcBorders": "Berbatasan",
+  "pcOptArea": "Area (nama)"
 }

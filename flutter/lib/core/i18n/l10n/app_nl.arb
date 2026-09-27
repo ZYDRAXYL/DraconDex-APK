@@ -883,5 +883,10 @@
   "tplOtherTypes": "Andere typen",
   "tplApplied": "Sjabloon toegepast",
   "tplBorrowDropped": "{n} blok(ken) weggelaten — ze lenen van een module die hier niet aan gekoppeld is",
-  "tplGallery": "Paginasjablonen"
+  "tplGallery": "Paginasjablonen",
+  "pcFacts": "Feiten",
+  "pcNoFacts": "Schrijf regels als „Gesticht: 300” in de notitie",
+  "pcPlacecard": "Plaatskaart",
+  "pcBorders": "Grenst aan",
+  "pcOptArea": "Gebied (naam)"
 }
