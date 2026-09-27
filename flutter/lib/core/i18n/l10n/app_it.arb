@@ -922,5 +922,13 @@
   "artBefore": "Prima di creare",
   "exportFormat": "Formato",
   "exportPreview": "Anteprima",
-  "exportPreviewNote": "Uno schizzo del layout: il file contiene le tue pagine reali"
+  "exportPreviewNote": "Uno schizzo del layout: il file contiene le tue pagine reali",
+  "tplBrowse": "Altri modelli…",
+  "tplFields": "Includi i campi del modello",
+  "tplModulePage": "Pagina del modulo",
+  "tplItemPage": "Pagina dell'elemento",
+  "tplKindCount": "{n} modelli",
+  "tplFieldsHead": "Campi",
+  "btnApply": "Applica",
+  "btnCreate": "Crea"
 }

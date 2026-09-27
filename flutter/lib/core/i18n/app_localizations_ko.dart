@@ -2779,4 +2779,28 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get exportPreviewNote => '레이아웃 스케치입니다 — 파일에는 실제 페이지가 담깁니다';
+
+  @override
+  String get tplBrowse => '다른 템플릿…';
+
+  @override
+  String get tplFields => '템플릿의 필드도 넣기';
+
+  @override
+  String get tplModulePage => '모듈 페이지';
+
+  @override
+  String get tplItemPage => '요소 페이지';
+
+  @override
+  String get tplKindCount => '{n}개';
+
+  @override
+  String get tplFieldsHead => '필드';
+
+  @override
+  String get btnApply => '적용';
+
+  @override
+  String get btnCreate => '생성';
 }

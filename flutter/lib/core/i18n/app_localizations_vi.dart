@@ -2779,4 +2779,28 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Bản phác bố cục — tệp chứa các trang thật của bạn';
+
+  @override
+  String get tplBrowse => 'Mẫu khác…';
+
+  @override
+  String get tplFields => 'Kèm các trường của mẫu';
+
+  @override
+  String get tplModulePage => 'Trang mô-đun';
+
+  @override
+  String get tplItemPage => 'Trang phần tử';
+
+  @override
+  String get tplKindCount => '{n} mẫu';
+
+  @override
+  String get tplFieldsHead => 'Trường';
+
+  @override
+  String get btnApply => 'Áp dụng';
+
+  @override
+  String get btnCreate => 'Tạo';
 }

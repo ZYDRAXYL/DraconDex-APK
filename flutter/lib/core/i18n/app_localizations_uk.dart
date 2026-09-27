@@ -2776,4 +2776,28 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Ескіз макета — у файлі будуть ваші справжні сторінки';
+
+  @override
+  String get tplBrowse => 'Інші шаблони…';
+
+  @override
+  String get tplFields => 'Додати поля шаблону';
+
+  @override
+  String get tplModulePage => 'Сторінка модуля';
+
+  @override
+  String get tplItemPage => 'Сторінка елемента';
+
+  @override
+  String get tplKindCount => 'Шаблонів: {n}';
+
+  @override
+  String get tplFieldsHead => 'Поля';
+
+  @override
+  String get btnApply => 'Застосувати';
+
+  @override
+  String get btnCreate => 'Створити';
 }

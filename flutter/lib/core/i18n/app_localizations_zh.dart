@@ -2779,4 +2779,28 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get exportPreviewNote => '版式示意图——文件中是你真实的页面';
+
+  @override
+  String get tplBrowse => '更多模板…';
+
+  @override
+  String get tplFields => '同时加入模板的字段';
+
+  @override
+  String get tplModulePage => '模块页面';
+
+  @override
+  String get tplItemPage => '元素页面';
+
+  @override
+  String get tplKindCount => '{n} 个';
+
+  @override
+  String get tplFieldsHead => '字段';
+
+  @override
+  String get btnApply => '应用';
+
+  @override
+  String get btnCreate => '创建';
 }

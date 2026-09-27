@@ -922,5 +922,13 @@
   "artBefore": "ก่อนสร้าง",
   "exportFormat": "รูปแบบ",
   "exportPreview": "ตัวอย่าง",
-  "exportPreviewNote": "ภาพร่างของเลย์เอาต์ — ไฟล์จริงจะมีหน้าของคุณครบ"
+  "exportPreviewNote": "ภาพร่างของเลย์เอาต์ — ไฟล์จริงจะมีหน้าของคุณครบ",
+  "tplBrowse": "เทมเพลตอื่น…",
+  "tplFields": "ใส่ field ของเทมเพลตด้วย",
+  "tplModulePage": "หน้าของโมดูล",
+  "tplItemPage": "หน้าของ element",
+  "tplKindCount": "{n} แบบ",
+  "tplFieldsHead": "Fields",
+  "btnApply": "ใช้งาน",
+  "btnCreate": "สร้าง"
 }

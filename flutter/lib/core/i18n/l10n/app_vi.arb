@@ -922,5 +922,13 @@
   "artBefore": "Trước khi tạo",
   "exportFormat": "Định dạng",
   "exportPreview": "Xem trước",
-  "exportPreviewNote": "Bản phác bố cục — tệp chứa các trang thật của bạn"
+  "exportPreviewNote": "Bản phác bố cục — tệp chứa các trang thật của bạn",
+  "tplBrowse": "Mẫu khác…",
+  "tplFields": "Kèm các trường của mẫu",
+  "tplModulePage": "Trang mô-đun",
+  "tplItemPage": "Trang phần tử",
+  "tplKindCount": "{n} mẫu",
+  "tplFieldsHead": "Trường",
+  "btnApply": "Áp dụng",
+  "btnCreate": "Tạo"
 }

@@ -922,5 +922,13 @@
   "artBefore": "Voor het maken",
   "exportFormat": "Formaat",
   "exportPreview": "Voorbeeld",
-  "exportPreviewNote": "Een schets van de opmaak — het bestand bevat je echte pagina's"
+  "exportPreviewNote": "Een schets van de opmaak — het bestand bevat je echte pagina's",
+  "tplBrowse": "Meer sjablonen…",
+  "tplFields": "Velden van het sjabloon meenemen",
+  "tplModulePage": "Modulepagina",
+  "tplItemPage": "Elementpagina",
+  "tplKindCount": "{n} sjablonen",
+  "tplFieldsHead": "Velden",
+  "btnApply": "Toepassen",
+  "btnCreate": "Aanmaken"
 }

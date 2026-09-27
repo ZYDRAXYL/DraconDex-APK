@@ -2776,4 +2776,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Düzenin bir taslağı — dosya gerçek sayfalarınızı taşır';
+
+  @override
+  String get tplBrowse => 'Diğer şablonlar…';
+
+  @override
+  String get tplFields => 'Şablonun alanlarını ekle';
+
+  @override
+  String get tplModulePage => 'Modül sayfası';
+
+  @override
+  String get tplItemPage => 'Öğe sayfası';
+
+  @override
+  String get tplKindCount => '{n} şablon';
+
+  @override
+  String get tplFieldsHead => 'Alanlar';
+
+  @override
+  String get btnApply => 'Uygula';
+
+  @override
+  String get btnCreate => 'Oluştur';
 }

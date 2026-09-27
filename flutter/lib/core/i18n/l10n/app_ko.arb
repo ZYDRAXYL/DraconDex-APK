@@ -922,5 +922,13 @@
   "artBefore": "만들기 전에",
   "exportFormat": "형식",
   "exportPreview": "미리보기",
-  "exportPreviewNote": "레이아웃 스케치입니다 — 파일에는 실제 페이지가 담깁니다"
+  "exportPreviewNote": "레이아웃 스케치입니다 — 파일에는 실제 페이지가 담깁니다",
+  "tplBrowse": "다른 템플릿…",
+  "tplFields": "템플릿의 필드도 넣기",
+  "tplModulePage": "모듈 페이지",
+  "tplItemPage": "요소 페이지",
+  "tplKindCount": "{n}개",
+  "tplFieldsHead": "필드",
+  "btnApply": "적용",
+  "btnCreate": "생성"
 }

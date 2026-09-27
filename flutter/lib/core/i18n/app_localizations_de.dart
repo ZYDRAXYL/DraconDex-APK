@@ -2779,4 +2779,28 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Eine Skizze des Layouts — die Datei enthält Ihre echten Seiten';
+
+  @override
+  String get tplBrowse => 'Weitere Vorlagen…';
+
+  @override
+  String get tplFields => 'Felder der Vorlage übernehmen';
+
+  @override
+  String get tplModulePage => 'Modulseite';
+
+  @override
+  String get tplItemPage => 'Elementseite';
+
+  @override
+  String get tplKindCount => '{n} Vorlagen';
+
+  @override
+  String get tplFieldsHead => 'Felder';
+
+  @override
+  String get btnApply => 'Übernehmen';
+
+  @override
+  String get btnCreate => 'Erstellen';
 }

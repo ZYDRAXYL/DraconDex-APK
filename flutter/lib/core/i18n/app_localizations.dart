@@ -5670,6 +5670,54 @@ abstract class AppLocalizations {
   /// **A sketch of the layout — the file carries your real pages**
   String get exportPreviewNote;
 
+  /// No description provided for @tplBrowse.
+  ///
+  /// In en, this message translates to:
+  /// **More templates…**
+  String get tplBrowse;
+
+  /// No description provided for @tplFields.
+  ///
+  /// In en, this message translates to:
+  /// **Include the template's fields**
+  String get tplFields;
+
+  /// No description provided for @tplModulePage.
+  ///
+  /// In en, this message translates to:
+  /// **Module page**
+  String get tplModulePage;
+
+  /// No description provided for @tplItemPage.
+  ///
+  /// In en, this message translates to:
+  /// **Element page**
+  String get tplItemPage;
+
+  /// No description provided for @tplKindCount.
+  ///
+  /// In en, this message translates to:
+  /// **{n} templates**
+  String get tplKindCount;
+
+  /// No description provided for @tplFieldsHead.
+  ///
+  /// In en, this message translates to:
+  /// **Fields**
+  String get tplFieldsHead;
+
+  /// No description provided for @btnApply.
+  ///
+  /// In en, this message translates to:
+  /// **Apply**
+  String get btnApply;
+
+  /// No description provided for @btnCreate.
+  ///
+  /// In en, this message translates to:
+  /// **Create**
+  String get btnCreate;
+
 }
 
 class _AppLocalizationsDelegate

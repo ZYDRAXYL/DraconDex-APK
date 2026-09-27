@@ -922,5 +922,13 @@
   "artBefore": "Vor dem Erstellen",
   "exportFormat": "Format",
   "exportPreview": "Vorschau",
-  "exportPreviewNote": "Eine Skizze des Layouts — die Datei enthält Ihre echten Seiten"
+  "exportPreviewNote": "Eine Skizze des Layouts — die Datei enthält Ihre echten Seiten",
+  "tplBrowse": "Weitere Vorlagen…",
+  "tplFields": "Felder der Vorlage übernehmen",
+  "tplModulePage": "Modulseite",
+  "tplItemPage": "Elementseite",
+  "tplKindCount": "{n} Vorlagen",
+  "tplFieldsHead": "Felder",
+  "btnApply": "Übernehmen",
+  "btnCreate": "Erstellen"
 }

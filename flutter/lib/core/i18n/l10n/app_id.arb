@@ -922,5 +922,13 @@
   "artBefore": "Sebelum membuat",
   "exportFormat": "Format",
   "exportPreview": "Pratinjau",
-  "exportPreviewNote": "Sketsa tata letak — berkas berisi halaman asli Anda"
+  "exportPreviewNote": "Sketsa tata letak — berkas berisi halaman asli Anda",
+  "tplBrowse": "Templat lain…",
+  "tplFields": "Sertakan kolom templat",
+  "tplModulePage": "Halaman modul",
+  "tplItemPage": "Halaman elemen",
+  "tplKindCount": "{n} templat",
+  "tplFieldsHead": "Bidang",
+  "btnApply": "Terapkan",
+  "btnCreate": "Buat"
 }

@@ -922,5 +922,13 @@
   "artBefore": "Przed utworzeniem",
   "exportFormat": "Format",
   "exportPreview": "Podgląd",
-  "exportPreviewNote": "Szkic układu — plik zawiera Twoje prawdziwe strony"
+  "exportPreviewNote": "Szkic układu — plik zawiera Twoje prawdziwe strony",
+  "tplBrowse": "Więcej szablonów…",
+  "tplFields": "Dołącz pola szablonu",
+  "tplModulePage": "Strona modułu",
+  "tplItemPage": "Strona elementu",
+  "tplKindCount": "Szablony: {n}",
+  "tplFieldsHead": "Pola",
+  "btnApply": "Zastosuj",
+  "btnCreate": "Utwórz"
 }

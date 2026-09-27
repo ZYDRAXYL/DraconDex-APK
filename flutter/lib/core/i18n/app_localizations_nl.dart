@@ -2776,4 +2776,28 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Een schets van de opmaak — het bestand bevat je echte pagina\'s';
+
+  @override
+  String get tplBrowse => 'Meer sjablonen…';
+
+  @override
+  String get tplFields => 'Velden van het sjabloon meenemen';
+
+  @override
+  String get tplModulePage => 'Modulepagina';
+
+  @override
+  String get tplItemPage => 'Elementpagina';
+
+  @override
+  String get tplKindCount => '{n} sjablonen';
+
+  @override
+  String get tplFieldsHead => 'Velden';
+
+  @override
+  String get btnApply => 'Toepassen';
+
+  @override
+  String get btnCreate => 'Aanmaken';
 }

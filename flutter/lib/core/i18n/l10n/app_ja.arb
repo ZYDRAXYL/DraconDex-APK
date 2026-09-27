@@ -922,5 +922,13 @@
   "artBefore": "作成の前に",
   "exportFormat": "形式",
   "exportPreview": "プレビュー",
-  "exportPreviewNote": "レイアウトの見取り図です — ファイルには実際のページが入ります"
+  "exportPreviewNote": "レイアウトの見取り図です — ファイルには実際のページが入ります",
+  "tplBrowse": "他のテンプレート…",
+  "tplFields": "テンプレートの項目も入れる",
+  "tplModulePage": "モジュールのページ",
+  "tplItemPage": "要素のページ",
+  "tplKindCount": "{n} 種類",
+  "tplFieldsHead": "フィールド",
+  "btnApply": "適用",
+  "btnCreate": "作成"
 }

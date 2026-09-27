@@ -2779,4 +2779,28 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Sketsa tata letak — berkas berisi halaman asli Anda';
+
+  @override
+  String get tplBrowse => 'Templat lain…';
+
+  @override
+  String get tplFields => 'Sertakan kolom templat';
+
+  @override
+  String get tplModulePage => 'Halaman modul';
+
+  @override
+  String get tplItemPage => 'Halaman elemen';
+
+  @override
+  String get tplKindCount => '{n} templat';
+
+  @override
+  String get tplFieldsHead => 'Bidang';
+
+  @override
+  String get btnApply => 'Terapkan';
+
+  @override
+  String get btnCreate => 'Buat';
 }

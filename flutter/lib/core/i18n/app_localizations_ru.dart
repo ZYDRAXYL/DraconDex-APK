@@ -2779,4 +2779,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Эскиз макета — в файле будут ваши настоящие страницы';
+
+  @override
+  String get tplBrowse => 'Другие шаблоны…';
+
+  @override
+  String get tplFields => 'Добавить поля шаблона';
+
+  @override
+  String get tplModulePage => 'Страница модуля';
+
+  @override
+  String get tplItemPage => 'Страница элемента';
+
+  @override
+  String get tplKindCount => 'Шаблонов: {n}';
+
+  @override
+  String get tplFieldsHead => 'Поля';
+
+  @override
+  String get btnApply => 'Применить';
+
+  @override
+  String get btnCreate => 'Создать';
 }

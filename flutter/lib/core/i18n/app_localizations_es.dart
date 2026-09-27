@@ -2779,4 +2779,28 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Un boceto del diseño: el archivo lleva tus páginas reales';
+
+  @override
+  String get tplBrowse => 'Más plantillas…';
+
+  @override
+  String get tplFields => 'Incluir los campos de la plantilla';
+
+  @override
+  String get tplModulePage => 'Página del módulo';
+
+  @override
+  String get tplItemPage => 'Página del elemento';
+
+  @override
+  String get tplKindCount => '{n} plantillas';
+
+  @override
+  String get tplFieldsHead => 'Campos';
+
+  @override
+  String get btnApply => 'Aplicar';
+
+  @override
+  String get btnCreate => 'Crear';
 }

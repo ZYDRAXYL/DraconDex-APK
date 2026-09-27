@@ -2779,4 +2779,28 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'A sketch of the layout — the file carries your real pages';
+
+  @override
+  String get tplBrowse => 'More templates…';
+
+  @override
+  String get tplFields => 'Include the template\'s fields';
+
+  @override
+  String get tplModulePage => 'Module page';
+
+  @override
+  String get tplItemPage => 'Element page';
+
+  @override
+  String get tplKindCount => '{n} templates';
+
+  @override
+  String get tplFieldsHead => 'Feldyra';
+
+  @override
+  String get btnApply => 'Enakth';
+
+  @override
+  String get btnCreate => 'Kryneth';
 }

@@ -2776,4 +2776,28 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Szkic układu — plik zawiera Twoje prawdziwe strony';
+
+  @override
+  String get tplBrowse => 'Więcej szablonów…';
+
+  @override
+  String get tplFields => 'Dołącz pola szablonu';
+
+  @override
+  String get tplModulePage => 'Strona modułu';
+
+  @override
+  String get tplItemPage => 'Strona elementu';
+
+  @override
+  String get tplKindCount => 'Szablony: {n}';
+
+  @override
+  String get tplFieldsHead => 'Pola';
+
+  @override
+  String get btnApply => 'Zastosuj';
+
+  @override
+  String get btnCreate => 'Utwórz';
 }

@@ -922,5 +922,13 @@
   "artBefore": "Before creating",
   "exportFormat": "Format",
   "exportPreview": "Preview",
-  "exportPreviewNote": "A sketch of the layout — the file carries your real pages"
+  "exportPreviewNote": "A sketch of the layout — the file carries your real pages",
+  "tplBrowse": "More templates…",
+  "tplFields": "Include the template's fields",
+  "tplModulePage": "Module page",
+  "tplItemPage": "Element page",
+  "tplKindCount": "{n} templates",
+  "tplFieldsHead": "Fields",
+  "btnApply": "Apply",
+  "btnCreate": "Create"
 }

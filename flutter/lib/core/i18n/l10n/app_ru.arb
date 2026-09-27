@@ -922,5 +922,13 @@
   "artBefore": "Перед созданием",
   "exportFormat": "Формат",
   "exportPreview": "Предпросмотр",
-  "exportPreviewNote": "Эскиз макета — в файле будут ваши настоящие страницы"
+  "exportPreviewNote": "Эскиз макета — в файле будут ваши настоящие страницы",
+  "tplBrowse": "Другие шаблоны…",
+  "tplFields": "Добавить поля шаблона",
+  "tplModulePage": "Страница модуля",
+  "tplItemPage": "Страница элемента",
+  "tplKindCount": "Шаблонов: {n}",
+  "tplFieldsHead": "Поля",
+  "btnApply": "Применить",
+  "btnCreate": "Создать"
 }

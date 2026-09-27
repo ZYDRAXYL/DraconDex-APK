@@ -2779,4 +2779,28 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'ภาพร่างของเลย์เอาต์ — ไฟล์จริงจะมีหน้าของคุณครบ';
+
+  @override
+  String get tplBrowse => 'เทมเพลตอื่น…';
+
+  @override
+  String get tplFields => 'ใส่ field ของเทมเพลตด้วย';
+
+  @override
+  String get tplModulePage => 'หน้าของโมดูล';
+
+  @override
+  String get tplItemPage => 'หน้าของ element';
+
+  @override
+  String get tplKindCount => '{n} แบบ';
+
+  @override
+  String get tplFieldsHead => 'Fields';
+
+  @override
+  String get btnApply => 'ใช้งาน';
+
+  @override
+  String get btnCreate => 'สร้าง';
 }

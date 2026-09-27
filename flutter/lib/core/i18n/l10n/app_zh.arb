@@ -922,5 +922,13 @@
   "artBefore": "创建之前",
   "exportFormat": "格式",
   "exportPreview": "预览",
-  "exportPreviewNote": "版式示意图——文件中是你真实的页面"
+  "exportPreviewNote": "版式示意图——文件中是你真实的页面",
+  "tplBrowse": "更多模板…",
+  "tplFields": "同时加入模板的字段",
+  "tplModulePage": "模块页面",
+  "tplItemPage": "元素页面",
+  "tplKindCount": "{n} 个",
+  "tplFieldsHead": "字段",
+  "btnApply": "应用",
+  "btnCreate": "创建"
 }

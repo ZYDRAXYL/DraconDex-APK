@@ -2779,4 +2779,28 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'レイアウトの見取り図です — ファイルには実際のページが入ります';
+
+  @override
+  String get tplBrowse => '他のテンプレート…';
+
+  @override
+  String get tplFields => 'テンプレートの項目も入れる';
+
+  @override
+  String get tplModulePage => 'モジュールのページ';
+
+  @override
+  String get tplItemPage => '要素のページ';
+
+  @override
+  String get tplKindCount => '{n} 種類';
+
+  @override
+  String get tplFieldsHead => 'フィールド';
+
+  @override
+  String get btnApply => '適用';
+
+  @override
+  String get btnCreate => '作成';
 }

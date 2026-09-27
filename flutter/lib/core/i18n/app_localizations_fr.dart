@@ -2779,4 +2779,28 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Une esquisse de la mise en page — le fichier contient vos vraies pages';
+
+  @override
+  String get tplBrowse => 'Plus de modèles…';
+
+  @override
+  String get tplFields => 'Inclure les champs du modèle';
+
+  @override
+  String get tplModulePage => 'Page du module';
+
+  @override
+  String get tplItemPage => 'Page de l\'élément';
+
+  @override
+  String get tplKindCount => '{n} modèles';
+
+  @override
+  String get tplFieldsHead => 'Champs';
+
+  @override
+  String get btnApply => 'Appliquer';
+
+  @override
+  String get btnCreate => 'Créer';
 }

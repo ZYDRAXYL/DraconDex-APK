@@ -10,6 +10,7 @@ import '../../../data/models/module_model.dart';
 import '../../../data/models/recent_view_model.dart';
 import '../../../data/services/bundle_service.dart';
 import '../../../data/services/mddx.dart';
+import '../../../data/services/page_template_service.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_provider.dart';
 import '../../../providers/navigation_providers.dart';
@@ -98,6 +99,21 @@ Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId
       if (!context.mounted) return;
       final spec = await pickArtisanBundle(context, ref, nexusId);
       if (spec != null && context.mounted) await createFromTemplate(context, ref, nexusId, parentId, spec);
+    case 'pages':
+      // the page-template gallery with its kind row (mockup 07): pick a
+      // kind and a template, then name the module
+      if (!context.mounted) return;
+      final pick = await pickPageTemplate(context, ref, nexusId: nexusId, kind: ModuleKind.classifier);
+      if (pick == null || !context.mounted) return;
+      final name = await askText(context, kindName(l, pick.kind), initial: kindName(l, pick.kind), label: l.labelName);
+      if (name == null) return;
+      final id = await ModuleDao(db).createModule(nexusRef: nexusId, parentId: parentId, name: name, kind: pick.kind);
+      try {
+        await PageTemplateService.apply(db, id, pick.tpl, fields: pick.fields);
+      } catch (_) {}
+      await rememberRecentKind(pick.kind);
+      refreshTree(ref, nexusId);
+      router.push(RecentView.locationFor(nexusId, id));
     case 'mddx':
       final res = await FilePicker.platform.pickFiles(withData: true);
       final bytes = res?.files.firstOrNull?.bytes;
@@ -212,6 +228,11 @@ class _KindSheetState extends State<_KindSheet> {
                   leading: const Icon(Icons.auto_awesome_mosaic_outlined),
                   title: Text(l.fromTemplate),
                   onTap: () => Navigator.pop(context, 'template'),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.dashboard_customize_outlined),
+                  title: Text(l.tplBrowse),
+                  onTap: () => Navigator.pop(context, 'pages'),
                 ),
                 ListTile(
                   leading: const Icon(Icons.file_open_outlined),

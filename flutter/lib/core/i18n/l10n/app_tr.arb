@@ -922,5 +922,13 @@
   "artBefore": "Oluşturmadan önce",
   "exportFormat": "Biçim",
   "exportPreview": "Önizleme",
-  "exportPreviewNote": "Düzenin bir taslağı — dosya gerçek sayfalarınızı taşır"
+  "exportPreviewNote": "Düzenin bir taslağı — dosya gerçek sayfalarınızı taşır",
+  "tplBrowse": "Diğer şablonlar…",
+  "tplFields": "Şablonun alanlarını ekle",
+  "tplModulePage": "Modül sayfası",
+  "tplItemPage": "Öğe sayfası",
+  "tplKindCount": "{n} şablon",
+  "tplFieldsHead": "Alanlar",
+  "btnApply": "Uygula",
+  "btnCreate": "Oluştur"
 }

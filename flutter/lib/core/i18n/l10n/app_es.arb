@@ -922,5 +922,13 @@
   "artBefore": "Antes de crear",
   "exportFormat": "Formato",
   "exportPreview": "Vista previa",
-  "exportPreviewNote": "Un boceto del diseño: el archivo lleva tus páginas reales"
+  "exportPreviewNote": "Un boceto del diseño: el archivo lleva tus páginas reales",
+  "tplBrowse": "Más plantillas…",
+  "tplFields": "Incluir los campos de la plantilla",
+  "tplModulePage": "Página del módulo",
+  "tplItemPage": "Página del elemento",
+  "tplKindCount": "{n} plantillas",
+  "tplFieldsHead": "Campos",
+  "btnApply": "Aplicar",
+  "btnCreate": "Crear"
 }

@@ -2776,4 +2776,28 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get exportPreviewNote => 'Uno schizzo del layout: il file contiene le tue pagine reali';
+
+  @override
+  String get tplBrowse => 'Altri modelli…';
+
+  @override
+  String get tplFields => 'Includi i campi del modello';
+
+  @override
+  String get tplModulePage => 'Pagina del modulo';
+
+  @override
+  String get tplItemPage => 'Pagina dell\'elemento';
+
+  @override
+  String get tplKindCount => '{n} modelli';
+
+  @override
+  String get tplFieldsHead => 'Campi';
+
+  @override
+  String get btnApply => 'Applica';
+
+  @override
+  String get btnCreate => 'Crea';
 }
