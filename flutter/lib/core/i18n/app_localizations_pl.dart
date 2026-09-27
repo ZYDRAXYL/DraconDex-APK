@@ -2674,4 +2674,79 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Obszar (nazwa)';
+
+  @override
+  String get tplSave => 'Zapisz stronę jako szablon…';
+
+  @override
+  String get tplMine => 'Mój';
+
+  @override
+  String get savePresetHint => 'Zapisuje wygląd, widok i pola tego modułu (bez treści) jako punkt wyjścia dla nowych modułów tego samego rodzaju.';
+
+  @override
+  String get presetSaved => 'Zapisano szablon';
+
+  @override
+  String get presetDeleteConfirm => 'Usunąć ten szablon? Moduły z niego utworzone pozostaną bez zmian.';
+
+  @override
+  String get bundleTabClassic => 'Klasyczne';
+
+  @override
+  String get bundleTabGenre => 'Gatunek';
+
+  @override
+  String get bundleTabMine => 'Moje';
+
+  @override
+  String get bundleMineEmpty => 'Nic jeszcze nie zapisano — kliknij folder prawym przyciskiem i wybierz „Zapisz jako pakiet Artisan…”';
+
+  @override
+  String get bundleSampleCount => 'Dane przykładowe';
+
+  @override
+  String get bundleIncludeSamples => 'Dołącz dane przykładowe';
+
+  @override
+  String get bundleSaveMine => 'Zapisz jako pakiet Artisan…';
+
+  @override
+  String get bundleSaveData => 'Dane';
+
+  @override
+  String get bundleDataNone => 'Tylko struktura';
+
+  @override
+  String get bundleDataSamples => 'Do 3 przykładów na moduł';
+
+  @override
+  String get bundleSaveHint => 'Zapisywane są foldery, moduły, pola i układy stron. Linki do modułów spoza tego folderu są pomijane.';
+
+  @override
+  String get bundleSaved => 'Pakiet zapisany';
+
+  @override
+  String get bundleCreate => 'Utwórz';
+
+  @override
+  String get bundleAdjust => 'Najpierw dostosuj';
+
+  @override
+  String get bundleCreated => 'Projekt utworzony';
+
+  @override
+  String get bundleProjectName => 'Nazwa projektu';
+
+  @override
+  String get bundleIncludes => 'Zawiera';
+
+  @override
+  String get bundleFields => 'Pola (puste = pomiń)';
+
+  @override
+  String get nameRequired => 'Nazwa jest wymagana';
+
+  @override
+  String get nameField => 'Nazwa';
 }

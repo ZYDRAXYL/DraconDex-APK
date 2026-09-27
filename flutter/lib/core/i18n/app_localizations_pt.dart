@@ -2677,4 +2677,79 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Área (nome)';
+
+  @override
+  String get tplSave => 'Salvar página como modelo…';
+
+  @override
+  String get tplMine => 'Meu';
+
+  @override
+  String get savePresetHint => 'Salva a aparência, a visualização e os campos deste módulo (não o conteúdo) como ponto de partida para novos módulos do mesmo tipo.';
+
+  @override
+  String get presetSaved => 'Predefinição salva';
+
+  @override
+  String get presetDeleteConfirm => 'Excluir esta predefinição? Os módulos feitos com ela continuam como estão.';
+
+  @override
+  String get bundleTabClassic => 'Clássicos';
+
+  @override
+  String get bundleTabGenre => 'Gênero';
+
+  @override
+  String get bundleTabMine => 'Meus';
+
+  @override
+  String get bundleMineEmpty => 'Nada salvo ainda — clique com o botão direito numa pasta e escolha “Salvar como pacote do Artisan…”';
+
+  @override
+  String get bundleSampleCount => 'Dados de exemplo';
+
+  @override
+  String get bundleIncludeSamples => 'Incluir dados de exemplo';
+
+  @override
+  String get bundleSaveMine => 'Salvar como pacote do Artisan…';
+
+  @override
+  String get bundleSaveData => 'Dados';
+
+  @override
+  String get bundleDataNone => 'Só a estrutura';
+
+  @override
+  String get bundleDataSamples => 'Até 3 exemplos por módulo';
+
+  @override
+  String get bundleSaveHint => 'Pastas, módulos, campos e layouts de página são salvos. Links para módulos fora desta pasta ficam de fora.';
+
+  @override
+  String get bundleSaved => 'Pacote salvo';
+
+  @override
+  String get bundleCreate => 'Criar';
+
+  @override
+  String get bundleAdjust => 'Ajustar antes';
+
+  @override
+  String get bundleCreated => 'Projeto criado';
+
+  @override
+  String get bundleProjectName => 'Nome do projeto';
+
+  @override
+  String get bundleIncludes => 'Inclui';
+
+  @override
+  String get bundleFields => 'Campos (vazio = deixar de fora)';
+
+  @override
+  String get nameRequired => 'O nome é obrigatório';
+
+  @override
+  String get nameField => 'Nome';
 }

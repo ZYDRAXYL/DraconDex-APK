@@ -2677,4 +2677,79 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get pcOptArea => 'พื้นที่ (ชื่อ)';
+
+  @override
+  String get tplSave => 'บันทึกหน้าเป็นเทมเพลต…';
+
+  @override
+  String get tplMine => 'ของฉัน';
+
+  @override
+  String get savePresetHint => 'บันทึกหน้าตา มุมมอง และฟิลด์ของ module นี้ (ไม่รวมเนื้อหา) เป็นจุดเริ่มต้นของ module ชนิดเดียวกันที่สร้างใหม่';
+
+  @override
+  String get presetSaved => 'บันทึก preset แล้ว';
+
+  @override
+  String get presetDeleteConfirm => 'ลบ preset นี้? module ที่สร้างจากมันยังอยู่เหมือนเดิม';
+
+  @override
+  String get bundleTabClassic => 'คลาสสิก';
+
+  @override
+  String get bundleTabGenre => 'แนวเรื่อง';
+
+  @override
+  String get bundleTabMine => 'ของฉัน';
+
+  @override
+  String get bundleMineEmpty => 'ยังไม่มีที่บันทึกไว้ — คลิกขวาที่โฟลเดอร์แล้วเลือก “บันทึกเป็น Artisan bundle…”';
+
+  @override
+  String get bundleSampleCount => 'ข้อมูลตัวอย่าง';
+
+  @override
+  String get bundleIncludeSamples => 'รวมข้อมูลตัวอย่าง';
+
+  @override
+  String get bundleSaveMine => 'บันทึกเป็น Artisan bundle…';
+
+  @override
+  String get bundleSaveData => 'ข้อมูล';
+
+  @override
+  String get bundleDataNone => 'เฉพาะโครงสร้าง';
+
+  @override
+  String get bundleDataSamples => 'ตัวอย่างสูงสุด 3 รายการต่อโมดูล';
+
+  @override
+  String get bundleSaveHint => 'บันทึกโฟลเดอร์ โมดูล ฟิลด์ และเลย์เอาต์หน้า ลิงก์ไปยังโมดูลนอกโฟลเดอร์นี้จะไม่ถูกเก็บ';
+
+  @override
+  String get bundleSaved => 'บันทึก bundle แล้ว';
+
+  @override
+  String get bundleCreate => 'สร้าง';
+
+  @override
+  String get bundleAdjust => 'ปรับก่อนสร้าง';
+
+  @override
+  String get bundleCreated => 'สร้างโปรเจกต์แล้ว';
+
+  @override
+  String get bundleProjectName => 'ชื่อโปรเจกต์';
+
+  @override
+  String get bundleIncludes => 'ประกอบด้วย';
+
+  @override
+  String get bundleFields => 'ช่องข้อมูล (เว้นว่าง = ไม่เอา)';
+
+  @override
+  String get nameRequired => 'ต้องใส่ชื่อ';
+
+  @override
+  String get nameField => 'ชื่อ';
 }

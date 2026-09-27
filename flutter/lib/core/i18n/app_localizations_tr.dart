@@ -2674,4 +2674,79 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Bölge (ad)';
+
+  @override
+  String get tplSave => 'Sayfayı şablon olarak kaydet…';
+
+  @override
+  String get tplMine => 'Benim';
+
+  @override
+  String get savePresetHint => 'Bu modülün görünüşünü, görünümünü ve alanlarını (içeriği değil) aynı türdeki yeni modüller için başlangıç noktası olarak kaydeder.';
+
+  @override
+  String get presetSaved => 'Ön ayar kaydedildi';
+
+  @override
+  String get presetDeleteConfirm => 'Bu ön ayar silinsin mi? Ondan oluşturulan modüller olduğu gibi kalır.';
+
+  @override
+  String get bundleTabClassic => 'Klasik';
+
+  @override
+  String get bundleTabGenre => 'Tür';
+
+  @override
+  String get bundleTabMine => 'Benimkiler';
+
+  @override
+  String get bundleMineEmpty => 'Henüz kayıt yok — bir klasöre sağ tıklayıp “Artisan paketi olarak kaydet…” seçin';
+
+  @override
+  String get bundleSampleCount => 'Örnek veri';
+
+  @override
+  String get bundleIncludeSamples => 'Örnek veriyi ekle';
+
+  @override
+  String get bundleSaveMine => 'Artisan paketi olarak kaydet…';
+
+  @override
+  String get bundleSaveData => 'Veri';
+
+  @override
+  String get bundleDataNone => 'Yalnızca yapı';
+
+  @override
+  String get bundleDataSamples => 'Modül başına en fazla 3 örnek';
+
+  @override
+  String get bundleSaveHint => 'Klasörler, modüller, alanlar ve sayfa düzenleri kaydedilir. Bu klasör dışındaki modüllere bağlantılar alınmaz.';
+
+  @override
+  String get bundleSaved => 'Paket kaydedildi';
+
+  @override
+  String get bundleCreate => 'Oluştur';
+
+  @override
+  String get bundleAdjust => 'Önce ayarla';
+
+  @override
+  String get bundleCreated => 'Proje oluşturuldu';
+
+  @override
+  String get bundleProjectName => 'Proje adı';
+
+  @override
+  String get bundleIncludes => 'İçerir';
+
+  @override
+  String get bundleFields => 'Alanlar (boş = çıkar)';
+
+  @override
+  String get nameRequired => 'Ad gerekli';
+
+  @override
+  String get nameField => 'Ad';
 }

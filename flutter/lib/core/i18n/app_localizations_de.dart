@@ -2677,4 +2677,79 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Gebiet (Name)';
+
+  @override
+  String get tplSave => 'Seite als Vorlage speichern…';
+
+  @override
+  String get tplMine => 'Eigene';
+
+  @override
+  String get savePresetHint => 'Speichert Aussehen, Ansicht und Felder dieses Moduls (nicht den Inhalt) als Ausgangspunkt für neue Module derselben Art.';
+
+  @override
+  String get presetSaved => 'Vorlage gespeichert';
+
+  @override
+  String get presetDeleteConfirm => 'Diese Vorlage löschen? Daraus erstellte Module bleiben unverändert.';
+
+  @override
+  String get bundleTabClassic => 'Klassisch';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Meine';
+
+  @override
+  String get bundleMineEmpty => 'Noch nichts gespeichert — Rechtsklick auf einen Ordner und „Als Artisan-Paket speichern…“ wählen';
+
+  @override
+  String get bundleSampleCount => 'Beispieldaten';
+
+  @override
+  String get bundleIncludeSamples => 'Beispieldaten einbeziehen';
+
+  @override
+  String get bundleSaveMine => 'Als Artisan-Paket speichern…';
+
+  @override
+  String get bundleSaveData => 'Daten';
+
+  @override
+  String get bundleDataNone => 'Nur Struktur';
+
+  @override
+  String get bundleDataSamples => 'Bis zu 3 Beispiele pro Modul';
+
+  @override
+  String get bundleSaveHint => 'Ordner, Module, Felder und Seitenlayouts werden gespeichert. Links zu Modulen außerhalb dieses Ordners entfallen.';
+
+  @override
+  String get bundleSaved => 'Paket gespeichert';
+
+  @override
+  String get bundleCreate => 'Erstellen';
+
+  @override
+  String get bundleAdjust => 'Erst anpassen';
+
+  @override
+  String get bundleCreated => 'Projekt erstellt';
+
+  @override
+  String get bundleProjectName => 'Projektname';
+
+  @override
+  String get bundleIncludes => 'Enthält';
+
+  @override
+  String get bundleFields => 'Felder (leer = weglassen)';
+
+  @override
+  String get nameRequired => 'Ein Name ist erforderlich';
+
+  @override
+  String get nameField => 'Name';
 }

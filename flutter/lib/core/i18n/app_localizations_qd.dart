@@ -2677,4 +2677,79 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Region (its name)';
+
+  @override
+  String get tplSave => 'Keepe page as patterne…';
+
+  @override
+  String get tplMine => 'Myne Owne';
+
+  @override
+  String get savePresetHint => 'Keepeth this module\'s look, view and fields (not its lore) as a starting point for new modules of ye same sort.';
+
+  @override
+  String get presetSaved => 'Pattern kept';
+
+  @override
+  String get presetDeleteConfirm => 'Strike this pattern? Modules made from it abide as they are.';
+
+  @override
+  String get bundleTabClassic => 'Olde Ways';
+
+  @override
+  String get bundleTabGenre => 'Kindes of Tale';
+
+  @override
+  String get bundleTabMine => 'Myne Owne';
+
+  @override
+  String get bundleMineEmpty => 'Naught kept yette — right-clicke a folder and chuse “Keepe as Artisan bundle…”';
+
+  @override
+  String get bundleSampleCount => 'Sample Lore';
+
+  @override
+  String get bundleIncludeSamples => 'Bringe sample lore';
+
+  @override
+  String get bundleSaveMine => 'Keepe as Artisan bundle…';
+
+  @override
+  String get bundleSaveData => 'Lore';
+
+  @override
+  String get bundleDataNone => 'Bones onlie';
+
+  @override
+  String get bundleDataSamples => 'Up to three samples each';
+
+  @override
+  String get bundleSaveHint => 'Folders, modules, fieldes and page shapes are kept. Tethers beyond this folder are left behinde.';
+
+  @override
+  String get bundleSaved => 'Bundle kept';
+
+  @override
+  String get bundleCreate => 'Forgyth';
+
+  @override
+  String get bundleAdjust => 'Amendyth Firste';
+
+  @override
+  String get bundleCreated => 'Werke Forgyd';
+
+  @override
+  String get bundleProjectName => 'Name of ythe Werke';
+
+  @override
+  String get bundleIncludes => 'Holdyth';
+
+  @override
+  String get bundleFields => 'Fieldys (emptye = leve owte)';
+
+  @override
+  String get nameRequired => 'A name is required';
+
+  @override
+  String get nameField => 'Yssira';
 }

@@ -2677,4 +2677,79 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pcOptArea => 'エリア（名前）';
+
+  @override
+  String get tplSave => 'ページをテンプレートとして保存…';
+
+  @override
+  String get tplMine => 'マイテンプレート';
+
+  @override
+  String get savePresetHint => 'このモジュールの見た目・表示・フィールド（内容は含まない）を、同じ種類の新しいモジュールの出発点として保存します。';
+
+  @override
+  String get presetSaved => 'プリセットを保存しました';
+
+  @override
+  String get presetDeleteConfirm => 'このプリセットを削除しますか？これから作ったモジュールはそのまま残ります。';
+
+  @override
+  String get bundleTabClassic => 'クラシック';
+
+  @override
+  String get bundleTabGenre => 'ジャンル';
+
+  @override
+  String get bundleTabMine => 'マイバンドル';
+
+  @override
+  String get bundleMineEmpty => 'まだ保存されていません — フォルダーを右クリックして「Artisanバンドルとして保存…」を選んでください';
+
+  @override
+  String get bundleSampleCount => 'サンプルデータ';
+
+  @override
+  String get bundleIncludeSamples => 'サンプルデータを含める';
+
+  @override
+  String get bundleSaveMine => 'Artisanバンドルとして保存…';
+
+  @override
+  String get bundleSaveData => 'データ';
+
+  @override
+  String get bundleDataNone => '構造のみ';
+
+  @override
+  String get bundleDataSamples => 'モジュールごとに最大3件のサンプル';
+
+  @override
+  String get bundleSaveHint => 'フォルダー、モジュール、フィールド、ページレイアウトが保存されます。このフォルダー外のモジュールへのリンクは含まれません。';
+
+  @override
+  String get bundleSaved => 'バンドルを保存しました';
+
+  @override
+  String get bundleCreate => '作成';
+
+  @override
+  String get bundleAdjust => '先に調整';
+
+  @override
+  String get bundleCreated => 'プロジェクトを作成しました';
+
+  @override
+  String get bundleProjectName => 'プロジェクト名';
+
+  @override
+  String get bundleIncludes => '含まれるもの';
+
+  @override
+  String get bundleFields => '項目（空欄 = 含めない）';
+
+  @override
+  String get nameRequired => '名前は必須です';
+
+  @override
+  String get nameField => '名前';
 }

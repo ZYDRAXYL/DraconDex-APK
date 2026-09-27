@@ -2677,4 +2677,79 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get pcOptArea => '구역(이름)';
+
+  @override
+  String get tplSave => '페이지를 템플릿으로 저장…';
+
+  @override
+  String get tplMine => '내 템플릿';
+
+  @override
+  String get savePresetHint => '이 모듈의 모양, 보기, 필드(내용 제외)를 같은 종류의 새 모듈을 위한 시작점으로 저장합니다.';
+
+  @override
+  String get presetSaved => '프리셋을 저장했습니다';
+
+  @override
+  String get presetDeleteConfirm => '이 프리셋을 삭제할까요? 이것으로 만든 모듈은 그대로 남습니다.';
+
+  @override
+  String get bundleTabClassic => '클래식';
+
+  @override
+  String get bundleTabGenre => '장르';
+
+  @override
+  String get bundleTabMine => '내 번들';
+
+  @override
+  String get bundleMineEmpty => '아직 저장된 것이 없습니다 — 폴더를 우클릭하고 “Artisan 번들로 저장…”을 선택하세요';
+
+  @override
+  String get bundleSampleCount => '샘플 데이터';
+
+  @override
+  String get bundleIncludeSamples => '샘플 데이터 포함';
+
+  @override
+  String get bundleSaveMine => 'Artisan 번들로 저장…';
+
+  @override
+  String get bundleSaveData => '데이터';
+
+  @override
+  String get bundleDataNone => '구조만';
+
+  @override
+  String get bundleDataSamples => '모듈당 최대 3개 샘플';
+
+  @override
+  String get bundleSaveHint => '폴더, 모듈, 필드, 페이지 레이아웃이 저장됩니다. 이 폴더 밖 모듈로의 링크는 제외됩니다.';
+
+  @override
+  String get bundleSaved => '번들을 저장했습니다';
+
+  @override
+  String get bundleCreate => '만들기';
+
+  @override
+  String get bundleAdjust => '먼저 조정';
+
+  @override
+  String get bundleCreated => '프로젝트를 만들었습니다';
+
+  @override
+  String get bundleProjectName => '프로젝트 이름';
+
+  @override
+  String get bundleIncludes => '포함';
+
+  @override
+  String get bundleFields => '필드 (비우면 제외)';
+
+  @override
+  String get nameRequired => '이름은 필수입니다';
+
+  @override
+  String get nameField => '이름';
 }

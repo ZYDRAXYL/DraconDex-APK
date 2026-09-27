@@ -5466,6 +5466,156 @@ abstract class AppLocalizations {
   /// **Area (name)**
   String get pcOptArea;
 
+  /// No description provided for @tplSave.
+  ///
+  /// In en, this message translates to:
+  /// **Save page as template…**
+  String get tplSave;
+
+  /// No description provided for @tplMine.
+  ///
+  /// In en, this message translates to:
+  /// **Mine**
+  String get tplMine;
+
+  /// No description provided for @savePresetHint.
+  ///
+  /// In en, this message translates to:
+  /// **Saves this module's look, view and fields (not its content) as a starting point for new modules of the same kind.**
+  String get savePresetHint;
+
+  /// No description provided for @presetSaved.
+  ///
+  /// In en, this message translates to:
+  /// **Preset saved**
+  String get presetSaved;
+
+  /// No description provided for @presetDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **Delete this preset? Modules made from it stay as they are.**
+  String get presetDeleteConfirm;
+
+  /// No description provided for @bundleTabClassic.
+  ///
+  /// In en, this message translates to:
+  /// **Classic**
+  String get bundleTabClassic;
+
+  /// No description provided for @bundleTabGenre.
+  ///
+  /// In en, this message translates to:
+  /// **Genre**
+  String get bundleTabGenre;
+
+  /// No description provided for @bundleTabMine.
+  ///
+  /// In en, this message translates to:
+  /// **Mine**
+  String get bundleTabMine;
+
+  /// No description provided for @bundleMineEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **Nothing saved yet — right-click a folder and choose “Save as Artisan bundle…”**
+  String get bundleMineEmpty;
+
+  /// No description provided for @bundleSampleCount.
+  ///
+  /// In en, this message translates to:
+  /// **Sample data**
+  String get bundleSampleCount;
+
+  /// No description provided for @bundleIncludeSamples.
+  ///
+  /// In en, this message translates to:
+  /// **Include sample data**
+  String get bundleIncludeSamples;
+
+  /// No description provided for @bundleSaveMine.
+  ///
+  /// In en, this message translates to:
+  /// **Save as Artisan bundle…**
+  String get bundleSaveMine;
+
+  /// No description provided for @bundleSaveData.
+  ///
+  /// In en, this message translates to:
+  /// **Data**
+  String get bundleSaveData;
+
+  /// No description provided for @bundleDataNone.
+  ///
+  /// In en, this message translates to:
+  /// **Structure only**
+  String get bundleDataNone;
+
+  /// No description provided for @bundleDataSamples.
+  ///
+  /// In en, this message translates to:
+  /// **Up to 3 samples per module**
+  String get bundleDataSamples;
+
+  /// No description provided for @bundleSaveHint.
+  ///
+  /// In en, this message translates to:
+  /// **Folders, modules, fields and page layouts are saved. Links to modules outside this folder are left out.**
+  String get bundleSaveHint;
+
+  /// No description provided for @bundleSaved.
+  ///
+  /// In en, this message translates to:
+  /// **Bundle saved**
+  String get bundleSaved;
+
+  /// No description provided for @bundleCreate.
+  ///
+  /// In en, this message translates to:
+  /// **Create**
+  String get bundleCreate;
+
+  /// No description provided for @bundleAdjust.
+  ///
+  /// In en, this message translates to:
+  /// **Adjust first**
+  String get bundleAdjust;
+
+  /// No description provided for @bundleCreated.
+  ///
+  /// In en, this message translates to:
+  /// **Project created**
+  String get bundleCreated;
+
+  /// No description provided for @bundleProjectName.
+  ///
+  /// In en, this message translates to:
+  /// **Project name**
+  String get bundleProjectName;
+
+  /// No description provided for @bundleIncludes.
+  ///
+  /// In en, this message translates to:
+  /// **Includes**
+  String get bundleIncludes;
+
+  /// No description provided for @bundleFields.
+  ///
+  /// In en, this message translates to:
+  /// **Fields (blank = leave out)**
+  String get bundleFields;
+
+  /// No description provided for @nameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **A name is required**
+  String get nameRequired;
+
+  /// No description provided for @nameField.
+  ///
+  /// In en, this message translates to:
+  /// **Name**
+  String get nameField;
+
 }
 
 class _AppLocalizationsDelegate

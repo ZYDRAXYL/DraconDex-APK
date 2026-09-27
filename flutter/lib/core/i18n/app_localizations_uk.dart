@@ -2674,4 +2674,79 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Область (назва)';
+
+  @override
+  String get tplSave => 'Зберегти сторінку як шаблон…';
+
+  @override
+  String get tplMine => 'Мій';
+
+  @override
+  String get savePresetHint => 'Зберігає вигляд, подання та поля цього модуля (без вмісту) як відправну точку для нових модулів того ж типу.';
+
+  @override
+  String get presetSaved => 'Шаблон збережено';
+
+  @override
+  String get presetDeleteConfirm => 'Видалити цей шаблон? Модулі, створені з нього, лишаться як є.';
+
+  @override
+  String get bundleTabClassic => 'Класичні';
+
+  @override
+  String get bundleTabGenre => 'Жанр';
+
+  @override
+  String get bundleTabMine => 'Мої';
+
+  @override
+  String get bundleMineEmpty => 'Ще нічого не збережено — клацніть папку правою кнопкою й виберіть «Зберегти як набір Artisan…»';
+
+  @override
+  String get bundleSampleCount => 'Приклад даних';
+
+  @override
+  String get bundleIncludeSamples => 'Додати приклад даних';
+
+  @override
+  String get bundleSaveMine => 'Зберегти як набір Artisan…';
+
+  @override
+  String get bundleSaveData => 'Дані';
+
+  @override
+  String get bundleDataNone => 'Лише структура';
+
+  @override
+  String get bundleDataSamples => 'До 3 прикладів на модуль';
+
+  @override
+  String get bundleSaveHint => 'Зберігаються папки, модулі, поля й макети сторінок. Посилання на модулі поза цією папкою не зберігаються.';
+
+  @override
+  String get bundleSaved => 'Набір збережено';
+
+  @override
+  String get bundleCreate => 'Створити';
+
+  @override
+  String get bundleAdjust => 'Спершу налаштувати';
+
+  @override
+  String get bundleCreated => 'Проєкт створено';
+
+  @override
+  String get bundleProjectName => 'Назва проєкту';
+
+  @override
+  String get bundleIncludes => 'Містить';
+
+  @override
+  String get bundleFields => 'Поля (порожньо = не треба)';
+
+  @override
+  String get nameRequired => 'Потрібна назва';
+
+  @override
+  String get nameField => 'Назва';
 }

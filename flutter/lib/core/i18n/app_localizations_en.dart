@@ -2677,4 +2677,79 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Area (name)';
+
+  @override
+  String get tplSave => 'Save page as template…';
+
+  @override
+  String get tplMine => 'Mine';
+
+  @override
+  String get savePresetHint => 'Saves this module\'s look, view and fields (not its content) as a starting point for new modules of the same kind.';
+
+  @override
+  String get presetSaved => 'Preset saved';
+
+  @override
+  String get presetDeleteConfirm => 'Delete this preset? Modules made from it stay as they are.';
+
+  @override
+  String get bundleTabClassic => 'Classic';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Mine';
+
+  @override
+  String get bundleMineEmpty => 'Nothing saved yet — right-click a folder and choose “Save as Artisan bundle…”';
+
+  @override
+  String get bundleSampleCount => 'Sample data';
+
+  @override
+  String get bundleIncludeSamples => 'Include sample data';
+
+  @override
+  String get bundleSaveMine => 'Save as Artisan bundle…';
+
+  @override
+  String get bundleSaveData => 'Data';
+
+  @override
+  String get bundleDataNone => 'Structure only';
+
+  @override
+  String get bundleDataSamples => 'Up to 3 samples per module';
+
+  @override
+  String get bundleSaveHint => 'Folders, modules, fields and page layouts are saved. Links to modules outside this folder are left out.';
+
+  @override
+  String get bundleSaved => 'Bundle saved';
+
+  @override
+  String get bundleCreate => 'Create';
+
+  @override
+  String get bundleAdjust => 'Adjust first';
+
+  @override
+  String get bundleCreated => 'Project created';
+
+  @override
+  String get bundleProjectName => 'Project name';
+
+  @override
+  String get bundleIncludes => 'Includes';
+
+  @override
+  String get bundleFields => 'Fields (blank = leave out)';
+
+  @override
+  String get nameRequired => 'A name is required';
+
+  @override
+  String get nameField => 'Name';
 }

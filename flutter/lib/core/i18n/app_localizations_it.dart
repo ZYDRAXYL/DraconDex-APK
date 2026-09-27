@@ -2674,4 +2674,79 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Area (nome)';
+
+  @override
+  String get tplSave => 'Salva pagina come modello…';
+
+  @override
+  String get tplMine => 'Mio';
+
+  @override
+  String get savePresetHint => 'Salva l\'aspetto, la vista e i campi di questo modulo (non il contenuto) come punto di partenza per nuovi moduli dello stesso tipo.';
+
+  @override
+  String get presetSaved => 'Preset salvato';
+
+  @override
+  String get presetDeleteConfirm => 'Eliminare questo preset? I moduli creati con esso restano come sono.';
+
+  @override
+  String get bundleTabClassic => 'Classici';
+
+  @override
+  String get bundleTabGenre => 'Genere';
+
+  @override
+  String get bundleTabMine => 'Miei';
+
+  @override
+  String get bundleMineEmpty => 'Ancora niente di salvato: fai clic destro su una cartella e scegli «Salva come pacchetto Artisan…»';
+
+  @override
+  String get bundleSampleCount => 'Dati di esempio';
+
+  @override
+  String get bundleIncludeSamples => 'Includi dati di esempio';
+
+  @override
+  String get bundleSaveMine => 'Salva come pacchetto Artisan…';
+
+  @override
+  String get bundleSaveData => 'Dati';
+
+  @override
+  String get bundleDataNone => 'Solo la struttura';
+
+  @override
+  String get bundleDataSamples => 'Fino a 3 esempi per modulo';
+
+  @override
+  String get bundleSaveHint => 'Vengono salvati cartelle, moduli, campi e layout di pagina. I collegamenti a moduli fuori da questa cartella vengono omessi.';
+
+  @override
+  String get bundleSaved => 'Pacchetto salvato';
+
+  @override
+  String get bundleCreate => 'Crea';
+
+  @override
+  String get bundleAdjust => 'Regola prima';
+
+  @override
+  String get bundleCreated => 'Progetto creato';
+
+  @override
+  String get bundleProjectName => 'Nome del progetto';
+
+  @override
+  String get bundleIncludes => 'Include';
+
+  @override
+  String get bundleFields => 'Campi (vuoto = escludi)';
+
+  @override
+  String get nameRequired => 'Il nome è obbligatorio';
+
+  @override
+  String get nameField => 'Nome';
 }

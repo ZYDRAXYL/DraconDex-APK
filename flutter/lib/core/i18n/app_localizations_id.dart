@@ -2677,4 +2677,79 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Area (nama)';
+
+  @override
+  String get tplSave => 'Simpan halaman sebagai templat…';
+
+  @override
+  String get tplMine => 'Milik saya';
+
+  @override
+  String get savePresetHint => 'Menyimpan tampilan, mode lihat, dan bidang modul ini (bukan isinya) sebagai titik awal modul baru dengan jenis yang sama.';
+
+  @override
+  String get presetSaved => 'Preset disimpan';
+
+  @override
+  String get presetDeleteConfirm => 'Hapus preset ini? Modul yang dibuat darinya tetap seperti semula.';
+
+  @override
+  String get bundleTabClassic => 'Klasik';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Milik saya';
+
+  @override
+  String get bundleMineEmpty => 'Belum ada yang disimpan — klik kanan folder lalu pilih “Simpan sebagai bundel Artisan…”';
+
+  @override
+  String get bundleSampleCount => 'Data contoh';
+
+  @override
+  String get bundleIncludeSamples => 'Sertakan data contoh';
+
+  @override
+  String get bundleSaveMine => 'Simpan sebagai bundel Artisan…';
+
+  @override
+  String get bundleSaveData => 'Data';
+
+  @override
+  String get bundleDataNone => 'Hanya struktur';
+
+  @override
+  String get bundleDataSamples => 'Hingga 3 contoh per modul';
+
+  @override
+  String get bundleSaveHint => 'Folder, modul, field, dan tata letak halaman disimpan. Tautan ke modul di luar folder ini tidak disertakan.';
+
+  @override
+  String get bundleSaved => 'Bundel disimpan';
+
+  @override
+  String get bundleCreate => 'Buat';
+
+  @override
+  String get bundleAdjust => 'Sesuaikan dulu';
+
+  @override
+  String get bundleCreated => 'Proyek dibuat';
+
+  @override
+  String get bundleProjectName => 'Nama proyek';
+
+  @override
+  String get bundleIncludes => 'Berisi';
+
+  @override
+  String get bundleFields => 'Field (kosong = tidak dipakai)';
+
+  @override
+  String get nameRequired => 'Nama wajib diisi';
+
+  @override
+  String get nameField => 'Nama';
 }

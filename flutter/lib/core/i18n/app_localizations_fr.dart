@@ -2677,4 +2677,79 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Zone (nom)';
+
+  @override
+  String get tplSave => 'Enregistrer la page comme modèle…';
+
+  @override
+  String get tplMine => 'Le mien';
+
+  @override
+  String get savePresetHint => 'Enregistre l\'apparence, la vue et les champs de ce module (pas son contenu) comme point de départ pour de nouveaux modules du même type.';
+
+  @override
+  String get presetSaved => 'Préréglage enregistré';
+
+  @override
+  String get presetDeleteConfirm => 'Supprimer ce préréglage ? Les modules créés avec restent tels quels.';
+
+  @override
+  String get bundleTabClassic => 'Classiques';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Les miens';
+
+  @override
+  String get bundleMineEmpty => 'Rien d’enregistré pour l’instant — clic droit sur un dossier, puis « Enregistrer comme lot Artisan… »';
+
+  @override
+  String get bundleSampleCount => 'Données d’exemple';
+
+  @override
+  String get bundleIncludeSamples => 'Inclure les données d’exemple';
+
+  @override
+  String get bundleSaveMine => 'Enregistrer comme lot Artisan…';
+
+  @override
+  String get bundleSaveData => 'Données';
+
+  @override
+  String get bundleDataNone => 'Structure seule';
+
+  @override
+  String get bundleDataSamples => 'Jusqu’à 3 exemples par module';
+
+  @override
+  String get bundleSaveHint => 'Les dossiers, modules, champs et mises en page sont enregistrés. Les liens vers des modules hors de ce dossier sont omis.';
+
+  @override
+  String get bundleSaved => 'Lot enregistré';
+
+  @override
+  String get bundleCreate => 'Créer';
+
+  @override
+  String get bundleAdjust => 'Ajuster d’abord';
+
+  @override
+  String get bundleCreated => 'Projet créé';
+
+  @override
+  String get bundleProjectName => 'Nom du projet';
+
+  @override
+  String get bundleIncludes => 'Contient';
+
+  @override
+  String get bundleFields => 'Champs (vide = omis)';
+
+  @override
+  String get nameRequired => 'Le nom est obligatoire';
+
+  @override
+  String get nameField => 'Nom';
 }

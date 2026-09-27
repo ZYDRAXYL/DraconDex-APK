@@ -2677,4 +2677,79 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Область (название)';
+
+  @override
+  String get tplSave => 'Сохранить страницу как шаблон…';
+
+  @override
+  String get tplMine => 'Мой';
+
+  @override
+  String get savePresetHint => 'Сохраняет вид, представление и поля этого модуля (без содержимого) как отправную точку для новых модулей того же типа.';
+
+  @override
+  String get presetSaved => 'Шаблон сохранён';
+
+  @override
+  String get presetDeleteConfirm => 'Удалить этот шаблон? Модули, созданные из него, останутся как есть.';
+
+  @override
+  String get bundleTabClassic => 'Классика';
+
+  @override
+  String get bundleTabGenre => 'Жанр';
+
+  @override
+  String get bundleTabMine => 'Мои';
+
+  @override
+  String get bundleMineEmpty => 'Пока ничего не сохранено — щёлкните папку правой кнопкой и выберите «Сохранить как набор Artisan…»';
+
+  @override
+  String get bundleSampleCount => 'Пример данных';
+
+  @override
+  String get bundleIncludeSamples => 'Включить пример данных';
+
+  @override
+  String get bundleSaveMine => 'Сохранить как набор Artisan…';
+
+  @override
+  String get bundleSaveData => 'Данные';
+
+  @override
+  String get bundleDataNone => 'Только структура';
+
+  @override
+  String get bundleDataSamples => 'До 3 примеров на модуль';
+
+  @override
+  String get bundleSaveHint => 'Сохраняются папки, модули, поля и макеты страниц. Ссылки на модули вне этой папки не сохраняются.';
+
+  @override
+  String get bundleSaved => 'Набор сохранён';
+
+  @override
+  String get bundleCreate => 'Создать';
+
+  @override
+  String get bundleAdjust => 'Сначала настроить';
+
+  @override
+  String get bundleCreated => 'Проект создан';
+
+  @override
+  String get bundleProjectName => 'Название проекта';
+
+  @override
+  String get bundleIncludes => 'Включает';
+
+  @override
+  String get bundleFields => 'Поля (пусто = не нужно)';
+
+  @override
+  String get nameRequired => 'Нужно указать название';
+
+  @override
+  String get nameField => 'Имя';
 }

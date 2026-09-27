@@ -29,6 +29,12 @@ List<RowAction> pageActions(BuildContext context, WidgetRef ref, ModuleModel mod
         icon: Icons.dashboard_outlined,
         onTap: () => showTemplateGallery(context, ref, module),
       ),
+    if (itemKey == null)
+      RowAction(
+        label: l10n.tplSave,
+        icon: Icons.bookmark_add_outlined,
+        onTap: () => showSaveTemplateDialog(context, ref, module),
+      ),
     RowAction(
       label: l10n.pbArrange,
       icon: Icons.dashboard_customize_outlined,

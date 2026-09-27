@@ -2677,4 +2677,79 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Khu vực (tên)';
+
+  @override
+  String get tplSave => 'Lưu trang thành mẫu…';
+
+  @override
+  String get tplMine => 'Của tôi';
+
+  @override
+  String get savePresetHint => 'Lưu giao diện, chế độ xem và các trường của mô-đun này (không gồm nội dung) làm điểm bắt đầu cho mô-đun mới cùng loại.';
+
+  @override
+  String get presetSaved => 'Đã lưu mẫu sẵn';
+
+  @override
+  String get presetDeleteConfirm => 'Xóa mẫu sẵn này? Các mô-đun tạo từ nó vẫn giữ nguyên.';
+
+  @override
+  String get bundleTabClassic => 'Cổ điển';
+
+  @override
+  String get bundleTabGenre => 'Thể loại';
+
+  @override
+  String get bundleTabMine => 'Của tôi';
+
+  @override
+  String get bundleMineEmpty => 'Chưa lưu gì — nhấp chuột phải vào thư mục và chọn “Lưu thành gói Artisan…”';
+
+  @override
+  String get bundleSampleCount => 'Dữ liệu mẫu';
+
+  @override
+  String get bundleIncludeSamples => 'Kèm dữ liệu mẫu';
+
+  @override
+  String get bundleSaveMine => 'Lưu thành gói Artisan…';
+
+  @override
+  String get bundleSaveData => 'Dữ liệu';
+
+  @override
+  String get bundleDataNone => 'Chỉ cấu trúc';
+
+  @override
+  String get bundleDataSamples => 'Tối đa 3 mẫu mỗi module';
+
+  @override
+  String get bundleSaveHint => 'Lưu thư mục, module, trường và bố cục trang. Liên kết tới module ngoài thư mục này sẽ bị bỏ qua.';
+
+  @override
+  String get bundleSaved => 'Đã lưu gói';
+
+  @override
+  String get bundleCreate => 'Tạo';
+
+  @override
+  String get bundleAdjust => 'Chỉnh trước';
+
+  @override
+  String get bundleCreated => 'Đã tạo dự án';
+
+  @override
+  String get bundleProjectName => 'Tên dự án';
+
+  @override
+  String get bundleIncludes => 'Gồm có';
+
+  @override
+  String get bundleFields => 'Trường (để trống = bỏ)';
+
+  @override
+  String get nameRequired => 'Cần có tên';
+
+  @override
+  String get nameField => 'Tên';
 }

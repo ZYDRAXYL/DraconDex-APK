@@ -2674,4 +2674,79 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Gebied (naam)';
+
+  @override
+  String get tplSave => 'Pagina opslaan als sjabloon…';
+
+  @override
+  String get tplMine => 'Eigen';
+
+  @override
+  String get savePresetHint => 'Slaat het uiterlijk, de weergave en de velden van deze module (niet de inhoud) op als startpunt voor nieuwe modules van dezelfde soort.';
+
+  @override
+  String get presetSaved => 'Voorinstelling opgeslagen';
+
+  @override
+  String get presetDeleteConfirm => 'Deze voorinstelling verwijderen? Modules die ermee zijn gemaakt blijven zoals ze zijn.';
+
+  @override
+  String get bundleTabClassic => 'Klassiek';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Mijn';
+
+  @override
+  String get bundleMineEmpty => 'Nog niets opgeslagen — klik met rechts op een map en kies ‘Opslaan als Artisan-bundel…’';
+
+  @override
+  String get bundleSampleCount => 'Voorbeeldgegevens';
+
+  @override
+  String get bundleIncludeSamples => 'Voorbeeldgegevens meenemen';
+
+  @override
+  String get bundleSaveMine => 'Opslaan als Artisan-bundel…';
+
+  @override
+  String get bundleSaveData => 'Gegevens';
+
+  @override
+  String get bundleDataNone => 'Alleen structuur';
+
+  @override
+  String get bundleDataSamples => 'Tot 3 voorbeelden per module';
+
+  @override
+  String get bundleSaveHint => 'Mappen, modules, velden en paginalay-outs worden opgeslagen. Links naar modules buiten deze map vallen weg.';
+
+  @override
+  String get bundleSaved => 'Bundel opgeslagen';
+
+  @override
+  String get bundleCreate => 'Maken';
+
+  @override
+  String get bundleAdjust => 'Eerst aanpassen';
+
+  @override
+  String get bundleCreated => 'Project gemaakt';
+
+  @override
+  String get bundleProjectName => 'Projectnaam';
+
+  @override
+  String get bundleIncludes => 'Bevat';
+
+  @override
+  String get bundleFields => 'Velden (leeg = weglaten)';
+
+  @override
+  String get nameRequired => 'Een naam is verplicht';
+
+  @override
+  String get nameField => 'Naam';
 }

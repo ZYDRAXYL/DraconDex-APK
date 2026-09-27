@@ -2677,4 +2677,79 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get pcOptArea => '区域（名称）';
+
+  @override
+  String get tplSave => '将页面另存为模板…';
+
+  @override
+  String get tplMine => '我的';
+
+  @override
+  String get savePresetHint => '将此模块的外观、视图和字段（不含内容）保存为同类新模块的起点。';
+
+  @override
+  String get presetSaved => '预设已保存';
+
+  @override
+  String get presetDeleteConfirm => '删除此预设？用它创建的模块保持不变。';
+
+  @override
+  String get bundleTabClassic => '经典';
+
+  @override
+  String get bundleTabGenre => '类型';
+
+  @override
+  String get bundleTabMine => '我的';
+
+  @override
+  String get bundleMineEmpty => '尚未保存 — 右键点击文件夹并选择“另存为 Artisan 包…”';
+
+  @override
+  String get bundleSampleCount => '示例数据';
+
+  @override
+  String get bundleIncludeSamples => '包含示例数据';
+
+  @override
+  String get bundleSaveMine => '另存为 Artisan 包…';
+
+  @override
+  String get bundleSaveData => '数据';
+
+  @override
+  String get bundleDataNone => '仅结构';
+
+  @override
+  String get bundleDataSamples => '每个模块最多 3 个示例';
+
+  @override
+  String get bundleSaveHint => '将保存文件夹、模块、字段和页面布局。指向此文件夹外模块的链接不会保存。';
+
+  @override
+  String get bundleSaved => '包已保存';
+
+  @override
+  String get bundleCreate => '创建';
+
+  @override
+  String get bundleAdjust => '先调整';
+
+  @override
+  String get bundleCreated => '项目已创建';
+
+  @override
+  String get bundleProjectName => '项目名称';
+
+  @override
+  String get bundleIncludes => '包含';
+
+  @override
+  String get bundleFields => '字段（留空 = 不要）';
+
+  @override
+  String get nameRequired => '名称为必填项';
+
+  @override
+  String get nameField => '名称';
 }

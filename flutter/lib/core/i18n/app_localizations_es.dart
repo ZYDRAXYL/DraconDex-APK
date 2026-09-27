@@ -2677,4 +2677,79 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pcOptArea => 'Zona (nombre)';
+
+  @override
+  String get tplSave => 'Guardar página como plantilla…';
+
+  @override
+  String get tplMine => 'Mía';
+
+  @override
+  String get savePresetHint => 'Guarda el aspecto, la vista y los campos de este módulo (no su contenido) como punto de partida para nuevos módulos del mismo tipo.';
+
+  @override
+  String get presetSaved => 'Plantilla guardada';
+
+  @override
+  String get presetDeleteConfirm => '¿Eliminar esta plantilla? Los módulos creados con ella se quedan como están.';
+
+  @override
+  String get bundleTabClassic => 'Clásicos';
+
+  @override
+  String get bundleTabGenre => 'Género';
+
+  @override
+  String get bundleTabMine => 'Míos';
+
+  @override
+  String get bundleMineEmpty => 'Aún no hay nada guardado: haz clic derecho en una carpeta y elige «Guardar como paquete de Artisan…»';
+
+  @override
+  String get bundleSampleCount => 'Datos de ejemplo';
+
+  @override
+  String get bundleIncludeSamples => 'Incluir datos de ejemplo';
+
+  @override
+  String get bundleSaveMine => 'Guardar como paquete de Artisan…';
+
+  @override
+  String get bundleSaveData => 'Datos';
+
+  @override
+  String get bundleDataNone => 'Solo la estructura';
+
+  @override
+  String get bundleDataSamples => 'Hasta 3 ejemplos por módulo';
+
+  @override
+  String get bundleSaveHint => 'Se guardan carpetas, módulos, campos y diseños de página. Los enlaces a módulos fuera de esta carpeta se omiten.';
+
+  @override
+  String get bundleSaved => 'Paquete guardado';
+
+  @override
+  String get bundleCreate => 'Crear';
+
+  @override
+  String get bundleAdjust => 'Ajustar antes';
+
+  @override
+  String get bundleCreated => 'Proyecto creado';
+
+  @override
+  String get bundleProjectName => 'Nombre del proyecto';
+
+  @override
+  String get bundleIncludes => 'Incluye';
+
+  @override
+  String get bundleFields => 'Campos (vacío = omitir)';
+
+  @override
+  String get nameRequired => 'El nombre es obligatorio';
+
+  @override
+  String get nameField => 'Nombre';
 }
