@@ -105,6 +105,42 @@ class AppLocalizationsNl extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Alles tonen';
+
+  @override
+  String get themeShowLess => 'Inklappen';
+
+  @override
+  String get pageLayout => 'Titelopmaak';
+
+  @override
+  String get titleAlign => 'Titel uitlijnen';
+
+  @override
+  String get alignLeft => 'Links';
+
+  @override
+  String get alignCenter => 'Midden';
+
+  @override
+  String get alignRight => 'Rechts';
+
+  @override
+  String get pageIcon => 'Pictogram boven de titel';
+
+  @override
+  String get pageCover => 'Omslagafbeelding';
+
+  @override
+  String get pageCoverNone => 'Geen omslag';
+
+  @override
+  String get pageCoverEmpty => 'Importeer een afbeelding in deze Nexus om die als omslag te gebruiken';
+
+  @override
+  String get pageLayoutScope => 'Geldt alleen voor deze pagina';
+
+  @override
   String get languageLabel => 'Taal';
 
   @override
@@ -1765,4 +1801,1003 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Rij eronder invoegen';
+
+  @override
+  String get exportTitle => 'Exporteren…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Om te printen, te delen of naar de drukker te sturen';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Om verder te bewerken in Word, Google Docs of Pages';
+
+  @override
+  String get exportEpub => 'EPUB (e-book)';
+
+  @override
+  String get exportEpubD => 'Voor Apple Books, Kindle, Kobo of Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Eén blad per tabel, voor Excel, Sheets of Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Kale tabel — komt terug via CSV importeren';
+
+  @override
+  String get htmlExport => 'Exporteren als website (HTML)';
+
+  @override
+  String get exportMarkdown => 'Exporteren als Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Notities met afbeeldingen — opent in Obsidian';
+
+  @override
+  String get exportMddxD => 'Deze module, om naar een andere kluis te verhuizen';
+
+  @override
+  String get exportNoPage => 'Een map heeft geen eigen pagina';
+
+  @override
+  String get exportOnlyDocs => 'Alleen Author, Classifier, Chronicler, Drafter en Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Alleen Author-boeken';
+
+  @override
+  String get exportOnlyTables => 'Alleen Classifier en Chronicler';
+
+  @override
+  String get exportGo => 'Exporteren';
+
+  @override
+  String get exportScope => 'Wat mee te nemen';
+
+  @override
+  String get exportScopePage => 'Deze pagina';
+
+  @override
+  String get exportScopeModule => 'Deze module en alle elementen';
+
+  @override
+  String get exportScopeInside => 'Deze module en alles erin';
+
+  @override
+  String get exportScopeNexus => 'De hele Nexus';
+
+  @override
+  String get exportPaper => 'Papier';
+
+  @override
+  String get exportOrientation => 'Richting';
+
+  @override
+  String get exportPortrait => 'Staand';
+
+  @override
+  String get exportLandscape => 'Liggend';
+
+  @override
+  String get exportHeaderFooter => 'Titel en paginanummers';
+
+  @override
+  String get exportToc => 'Inhoudspagina';
+
+  @override
+  String get exportCsvHint => 'Eén tabel: de elementen van een Classifier of de eerste tijdlijn van een Chronicler. Formulevelden vallen weg. CSV importeren leest het terug.';
+
+  @override
+  String get exportXlsxHint => 'Eén blad per tabel (elke tijdlijn van een Chronicler), vetgedrukte vaste kopregel. Formulevelden vallen weg.';
+
+  @override
+  String get exportMdAnyHint => 'Eén .md per element met de velden als eigenschappen; de afbeeldingen van de pagina gaan in assets/. Open de map als kluis in Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Een kop per hoofdstuk, element of gebeurtenis (in het navigatievenster van Word), velden als tabel, de afbeeldingen van de pagina, een pagina-einde tussen hoofdstukken.';
+
+  @override
+  String get exportEpubHint => 'Eén bestand per hoofdstuk met inhoudsopgave; de titelomslag van de boekpagina wordt de omslag.';
+
+  @override
+  String get exportMddxHint => 'Een .mddx-bestand dat een andere DraconDex-kluis kan importeren.';
+
+  @override
+  String get exportFormulaSkipped => 'Weggelaten formulevelden: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV bevat één tijdlijn — {n} andere staan in de Excel-export';
+
+  @override
+  String get exportMediaMissing => '{n} afbeelding(en) niet gevonden en weggelaten';
+
+  @override
+  String get exportMarkdownEmpty => 'Nog niets om te exporteren';
+
+  @override
+  String get exportWorking => 'Pagina’s tekenen…';
+
+  @override
+  String get exportPictures => 'afbeeldingen';
+
+  @override
+  String get exportRows => 'rijen';
+
+  @override
+  String get exportHtmlPageD => 'Deze pagina als webpagina, met de afbeeldingen';
+
+  @override
+  String get exportHtmlPageHint => 'Een .zip met index.html en de afbeeldingen in media/ — pak uit en open index.html in een willekeurige browser.';
+
+  @override
+  String get exportPrint => 'Afdrukken…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Audio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D-model';
+
+  @override
+  String get pcMedia => 'Gemengde media';
+
+  @override
+  String get pcMediaEmpty => 'Nog geen bestand.';
+
+  @override
+  String get pbChooseFile => 'Bestand kiezen';
+
+  @override
+  String get pcAddFile => 'Bestand toevoegen';
+
+  @override
+  String get pcOpenIn => 'Openen in andere app';
+
+  @override
+  String get mediaOpenFailed => 'Dit bestand kon niet worden geopend';
+
+  @override
+  String get pbBlockSettings => 'Blokinstellingen';
+
+  @override
+  String get pbStyle => 'Stijl';
+
+  @override
+  String get pbOptions => 'Opties';
+
+  @override
+  String get pbStyleVariant => 'Uiterlijk';
+
+  @override
+  String get pbStyleAccent => 'Accentkleur';
+
+  @override
+  String get pbStyleWidth => 'Breedte';
+
+  @override
+  String get pbStyleAlign => 'Uitlijnen';
+
+  @override
+  String get pbStyleDensity => 'Ruimte';
+
+  @override
+  String get pbStyleHeader => 'Kop';
+
+  @override
+  String get pbHeaderShow => 'Kop tonen';
+
+  @override
+  String get pbHeaderTitle => 'Koptitel';
+
+  @override
+  String get pbStyleCollapsible => 'Inklapbaar';
+
+  @override
+  String get pbStyleAnchor => 'Anker (#)';
+
+  @override
+  String get pbStyleHideOn => 'Verbergen op';
+
+  @override
+  String get pbStyleReset => 'Herstellen';
+
+  @override
+  String get pbStyleApplyAll => 'Op alle blokken van deze soort toepassen';
+
+  @override
+  String get pbStyleApplied => 'Stijl toegepast op {n} andere blokken';
+
+  @override
+  String get pbStyleCopy => 'Stijl kopiëren';
+
+  @override
+  String get pbStylePaste => 'Stijl plakken';
+
+  @override
+  String get pbNoOptions => 'Dit blok heeft geen eigen opties — het uiterlijk staat op het tabblad Stijl.';
+
+  @override
+  String get pbVariantPlain => 'Eenvoudig';
+
+  @override
+  String get pbVariantCard => 'Kaart';
+
+  @override
+  String get pbVariantOutline => 'Omlijning';
+
+  @override
+  String get pbVariantTinted => 'Getint';
+
+  @override
+  String get pbVariantHero => 'Uitgelicht';
+
+  @override
+  String get pbAccKind => 'Moduletype';
+
+  @override
+  String get pbAccAccent => 'Thema-accent';
+
+  @override
+  String get pbAccBlue => 'Blauw';
+
+  @override
+  String get pbAccGreen => 'Groen';
+
+  @override
+  String get pbAccAmber => 'Amber';
+
+  @override
+  String get pbAccRose => 'Roze';
+
+  @override
+  String get pbAccViolet => 'Violet';
+
+  @override
+  String get pbAccSlate => 'Leisteen';
+
+  @override
+  String get pbWidthNarrow => 'Smal';
+
+  @override
+  String get pbWidthNormal => 'Normaal';
+
+  @override
+  String get pbWidthWide => 'Breed';
+
+  @override
+  String get pbWidthFull => 'Volledig';
+
+  @override
+  String get pbDensityComfy => 'Ruim';
+
+  @override
+  String get pbDensityCompact => 'Compact';
+
+  @override
+  String get pbCollOff => 'Nee';
+
+  @override
+  String get pbCollOpen => 'Open';
+
+  @override
+  String get pbCollClosed => 'Ingeklapt';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Telefoon';
+
+  @override
+  String get pbHideDesktop => 'Desktop';
+
+  @override
+  String get pbLinks => 'Links';
+
+  @override
+  String get pbLinkAdd => 'Link toevoegen';
+
+  @override
+  String get pbLinkAddPh => '+ [[Naam]] · #anker · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Dat is geen link: gebruik [[Naam]], #anker of een http(s)-adres';
+
+  @override
+  String get pbLinkLabel => 'Label';
+
+  @override
+  String get pbLinkTo => 'Gaat naar';
+
+  @override
+  String get pbLinkGroup => 'Groep';
+
+  @override
+  String get pbLinkHint => 'Weblinks openen in je browser, alleen http en https — de app opent het opgeslagen adres, nooit een ander.';
+
+  @override
+  String get pbLinkMissing => 'Nog niets met die naam — klik om het te maken';
+
+  @override
+  String get pbLinkUp => 'Omhoog';
+
+  @override
+  String get pbLinkDown => 'Omlaag';
+
+  @override
+  String get pbLinksEmpty => 'Nog geen links.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Nog geen links — voeg ze toe via ⚙ → Opties.';
+
+  @override
+  String get pbListAdd => 'Toevoegen';
+
+  @override
+  String get pcLinkbar => 'Linkbalk';
+
+  @override
+  String get pcLinkcard => 'Linkkaarten';
+
+  @override
+  String get pcHatnote => 'Kopnoot';
+
+  @override
+  String get pcSeeAlso => 'Zie ook';
+
+  @override
+  String get pcReferences => 'Referenties';
+
+  @override
+  String get pcTabs => 'Tabbladen';
+
+  @override
+  String get pcToggle => 'Uitklapblok';
+
+  @override
+  String get pcNavbox => 'Navigatiebox';
+
+  @override
+  String get pcChildren => 'Onderliggende pagina’s';
+
+  @override
+  String get pcHatAnd => 'en';
+
+  @override
+  String get pcHatnotePh => 'Hoofdartikel: …';
+
+  @override
+  String get pcReferencesEmpty => 'Nog geen voetnoten — schrijf [^1] in een tekstblok en "[^1]: …" op een eigen regel.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Nog geen links vanaf deze pagina';
+
+  @override
+  String get pcSuggested => 'Suggesties:';
+
+  @override
+  String get pcTab => 'Tabblad';
+
+  @override
+  String get pcChildrenNone => 'Er staat niets onder deze pagina.';
+
+  @override
+  String get pbFootnoteMissing => 'Deze voetnoot heeft nog geen tekst — voeg een regel "[^n]: …" toe';
+
+  @override
+  String get pcOptBar => 'Balkstijl';
+
+  @override
+  String get pcOptCaption => 'Onderschrift';
+
+  @override
+  String get pcOptCount => 'Hoeveel';
+
+  @override
+  String get pcOptCover => 'Omslagafbeelding';
+
+  @override
+  String get pcOptDepth => 'Diepte';
+
+  @override
+  String get pcOptHatKind => 'Soort notitie';
+
+  @override
+  String get pcOptLayout => 'Indeling';
+
+  @override
+  String get pcOptLook => 'Uiterlijk';
+
+  @override
+  String get pcOptLoop => 'Herhalen';
+
+  @override
+  String get pcOptPoster => 'Posterafbeelding';
+
+  @override
+  String get pcOptSort => 'Volgorde';
+
+  @override
+  String get pcOptSource => 'Vullen vanuit module';
+
+  @override
+  String get pcOptStart => 'Begint';
+
+  @override
+  String get pcOptStartPage => 'Eerste pagina';
+
+  @override
+  String get pcOptStartTab => 'Eerst getoond tabblad';
+
+  @override
+  String get pcOptSticky => 'Bovenaan blijven bij scrollen';
+
+  @override
+  String get pcOptSuggest => 'Pagina’s voorstellen die hierheen of hiervandaan linken';
+
+  @override
+  String get pcOptTabs => 'Tabnamen';
+
+  @override
+  String get pcBarPills => 'Pillen';
+
+  @override
+  String get pcBarTabs => 'Tabbladen';
+
+  @override
+  String get pcBarUnderline => 'Onderstreept';
+
+  @override
+  String get pcBarButtons => 'Knoppen';
+
+  @override
+  String get pcCardCard => 'Kaart';
+
+  @override
+  String get pcCardCompact => 'Compact';
+
+  @override
+  String get pcCardButton => 'Knop';
+
+  @override
+  String get pcHatMain => 'Hoofdartikel:';
+
+  @override
+  String get pcHatAbout => 'Zie voor meer';
+
+  @override
+  String get pcHatDistinguish => 'Niet te verwarren met';
+
+  @override
+  String get pcTabsLine => 'Lijn';
+
+  @override
+  String get pcTabsBoxed => 'Omkaderd';
+
+  @override
+  String get pcTabsPills => 'Pillen';
+
+  @override
+  String get pcKidsList => 'Lijst';
+
+  @override
+  String get pcKidsTree => 'Boom';
+
+  @override
+  String get pcKidsCards => 'Kaarten';
+
+  @override
+  String get pcSortOrder => 'Zoals in de Nest';
+
+  @override
+  String get pcSortName => 'Op naam';
+
+  @override
+  String get pcGalGrid => 'Raster';
+
+  @override
+  String get pcGalStrip => 'Strook';
+
+  @override
+  String get pcPdfSingle => 'Eén pagina';
+
+  @override
+  String get pcPdfStrip => 'Paginastrook';
+
+  @override
+  String get pcInfobox => 'Infobox';
+
+  @override
+  String get pcCallout => 'Kader';
+
+  @override
+  String get pcStats => 'Statistieken';
+
+  @override
+  String get pcToc => 'Inhoud';
+
+  @override
+  String get pcSpotlight => 'Uitgelicht';
+
+  @override
+  String get pcRoster => 'Overzicht';
+
+  @override
+  String get pcBreakdown => 'Verdeling';
+
+  @override
+  String get pcEras => 'Tijdperken';
+
+  @override
+  String get pcUpcoming => 'Binnenkort';
+
+  @override
+  String get pcPinlist => 'Pinlijst';
+
+  @override
+  String get pcProgress => 'Voortgang';
+
+  @override
+  String get pcChapters => 'Hoofdstukken';
+
+  @override
+  String get pcEndings => 'Eindes';
+
+  @override
+  String get pcVariables => 'Variabelen';
+
+  @override
+  String get pcFocus => 'Focus';
+
+  @override
+  String get pcLegend => 'Legenda';
+
+  @override
+  String get pcJourney => 'Reis';
+
+  @override
+  String get pcStrip => 'Strook';
+
+  @override
+  String get pcFeatured => 'Uitgelicht';
+
+  @override
+  String get pcDashboard => 'Dashboard';
+
+  @override
+  String get pcRecent => 'Recent gewijzigd';
+
+  @override
+  String get pcQuickroll => 'Snelle worp';
+
+  @override
+  String get pcPinned => 'Vastgemaakt';
+
+  @override
+  String get pcTasks => 'Taken';
+
+  @override
+  String get pcBanner => 'Banner';
+
+  @override
+  String get pcGallery => 'Galerij';
+
+  @override
+  String get pcDivider => 'Scheiding';
+
+  @override
+  String get pcIconrow => 'Pictogrammenrij';
+
+  @override
+  String get pcFigure => 'Figuur';
+
+  @override
+  String get pcInfoboxEmpty => 'Nog geen velden';
+
+  @override
+  String get pcStatsEmpty => 'Nog niets te tellen';
+
+  @override
+  String get pcTocEmpty => 'Voeg een kop toe om de inhoud op te bouwen';
+
+  @override
+  String get pcNoElements => 'Nog geen elementen';
+
+  @override
+  String get pcBreakdownEmpty => 'Kies een veld om op te tellen';
+
+  @override
+  String get noEventsYet => 'Nog geen gebeurtenissen';
+
+  @override
+  String get mapNoAreas => 'Nog geen gebieden';
+
+  @override
+  String get pcNoChapters => 'Nog geen hoofdstukken';
+
+  @override
+  String get pcWords => 'woorden';
+
+  @override
+  String get pcNoEndings => 'Nog geen eindes';
+
+  @override
+  String get pcNoVariables => 'Nog geen variabelen';
+
+  @override
+  String get pcNoRelations => 'Nog geen relaties';
+
+  @override
+  String get pcUnlabelled => 'Zonder label';
+
+  @override
+  String get pcNoPanels => 'Nog geen panelen';
+
+  @override
+  String get pcNoSketches => 'Nog geen schetsen';
+
+  @override
+  String get managerEmpty => 'Niets geselecteerd — stel een filter in of kies modules.';
+
+  @override
+  String get pcRoll => 'Werpen';
+
+  @override
+  String get pcNoRolls => 'Nog geen worpen';
+
+  @override
+  String get pcNoPinned => 'Begin een bericht met 📌 om het hier vast te maken';
+
+  @override
+  String get pcNoTasks => 'Schrijf ‘- [ ] …’ in de notities om een taak toe te voegen';
+
+  @override
+  String get pcBannerEmpty => 'Nog geen afbeelding.';
+
+  @override
+  String get pcGalleryEmpty => 'Nog geen afbeeldingen.';
+
+  @override
+  String get pcIconrowEmpty => 'Nog geen pictogrammen.';
+
+  @override
+  String get pcFigureEmpty => 'Nog geen afbeelding.';
+
+  @override
+  String get pcStatItems => 'Items';
+
+  @override
+  String get pcStatModules => 'Modules';
+
+  @override
+  String get backlinks => 'Backlinks';
+
+  @override
+  String get pcCalloutPh => 'Schrijf een notitie…';
+
+  @override
+  String get pcDecorPickArrange => 'Nog niets — kies het via ⚙ → Opties.';
+
+  @override
+  String get pcToneNote => 'Notitie';
+
+  @override
+  String get pcToneTip => 'Tip';
+
+  @override
+  String get pcToneWarning => 'Waarschuwing';
+
+  @override
+  String get pcToneQuote => 'Citaat';
+
+  @override
+  String get pcToneSecret => 'Geheim';
+
+  @override
+  String get pcOptFields => 'Getoonde velden';
+
+  @override
+  String get pcOptDock => 'Positie';
+
+  @override
+  String get pcOptTone => 'Toon';
+
+  @override
+  String get pcOptField => 'Tellen per veld';
+
+  @override
+  String get pcOptFrom => 'Vanaf het jaar';
+
+  @override
+  String get pcOptGoal => 'Woorddoel';
+
+  @override
+  String get pcOptSubtitle => 'Ondertitel';
+
+  @override
+  String get pcOptHeight => 'Hoogte';
+
+  @override
+  String get pcOptScrim => 'Schaduw onder de tekst';
+
+  @override
+  String get pbImages => 'Afbeeldingen';
+
+  @override
+  String get pcOptFromModule => 'Alle afbeeldingen van deze module';
+
+  @override
+  String get pcOptCaptions => 'Bestandsnamen tonen';
+
+  @override
+  String get pcOptItems => 'Items';
+
+  @override
+  String get pcOptSize => 'Grootte';
+
+  @override
+  String get pcOptFit => 'Passend';
+
+  @override
+  String get pcOptFloat => 'Tekstomloop';
+
+  @override
+  String get pcOptRound => 'Afgeronde hoeken';
+
+  @override
+  String get pcLayoutTable => 'Tabel';
+
+  @override
+  String get pcLayoutStacked => 'Gestapeld';
+
+  @override
+  String get pcDockRight => 'Rechts';
+
+  @override
+  String get pcDockLeft => 'Links';
+
+  @override
+  String get pcDockFull => 'Volle breedte';
+
+  @override
+  String get pcSizeS => 'Klein';
+
+  @override
+  String get pcSizeM => 'Middel';
+
+  @override
+  String get pcSizeL => 'Groot';
+
+  @override
+  String get pcSizeFull => 'Volle breedte';
+
+  @override
+  String get pcScrimSoft => 'Zacht';
+
+  @override
+  String get pcScrimStrong => 'Sterk';
+
+  @override
+  String get pcGalMasonry => 'Metselwerk';
+
+  @override
+  String get pcDivLine => 'Lijn';
+
+  @override
+  String get pcDivDouble => 'Dubbel';
+
+  @override
+  String get pcDivDots => 'Stippen';
+
+  @override
+  String get pcDivOrnament => 'Ornament';
+
+  @override
+  String get pcDivImage => 'Afbeeldingsstrook';
+
+  @override
+  String get pcIrChip => 'Chips';
+
+  @override
+  String get pcIrBig => 'Grote pictogrammen';
+
+  @override
+  String get pcFitContain => 'Geheel';
+
+  @override
+  String get pcFitCover => 'Kader vullen';
+
+  @override
+  String get pcFloatNone => 'Los';
+
+  @override
+  String get pcFloatLeft => 'Afbeelding links';
+
+  @override
+  String get pcFloatRight => 'Afbeelding rechts';
+
+  @override
+  String get pcLoadFailed => 'Dit blok kon niet worden geladen';
+
+  @override
+  String get pcNoValue => '(geen)';
+
+  @override
+  String get tplUse => 'Sjabloon gebruiken…';
+
+  @override
+  String get tplUseHint => 'Vervangt de lay-out van deze pagina. Je inhoud blijft, en je kunt het direct ongedaan maken.';
+
+  @override
+  String get tplDefault => 'Standaard';
+
+  @override
+  String get tplOtherTypes => 'Andere typen';
+
+  @override
+  String get tplApplied => 'Sjabloon toegepast';
+
+  @override
+  String get tplBorrowDropped => '{n} blok(ken) weggelaten — ze lenen van een module die hier niet aan gekoppeld is';
+
+  @override
+  String get tplGallery => 'Paginasjablonen';
+
+  @override
+  String get pcFacts => 'Feiten';
+
+  @override
+  String get pcNoFacts => 'Schrijf regels als „Gesticht: 300” in de notitie';
+
+  @override
+  String get pcPlacecard => 'Plaatskaart';
+
+  @override
+  String get pcBorders => 'Grenst aan';
+
+  @override
+  String get pcOptArea => 'Gebied (naam)';
+
+  @override
+  String get tplSave => 'Pagina opslaan als sjabloon…';
+
+  @override
+  String get tplMine => 'Eigen';
+
+  @override
+  String get savePresetHint => 'Slaat het uiterlijk, de weergave en de velden van deze module (niet de inhoud) op als startpunt voor nieuwe modules van dezelfde soort.';
+
+  @override
+  String get presetSaved => 'Voorinstelling opgeslagen';
+
+  @override
+  String get presetDeleteConfirm => 'Deze voorinstelling verwijderen? Modules die ermee zijn gemaakt blijven zoals ze zijn.';
+
+  @override
+  String get bundleTabClassic => 'Klassiek';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Mijn';
+
+  @override
+  String get bundleMineEmpty => 'Nog niets opgeslagen — klik met rechts op een map en kies ‘Opslaan als Artisan-bundel…’';
+
+  @override
+  String get bundleSampleCount => 'Voorbeeldgegevens';
+
+  @override
+  String get bundleIncludeSamples => 'Voorbeeldgegevens meenemen';
+
+  @override
+  String get bundleSaveMine => 'Opslaan als Artisan-bundel…';
+
+  @override
+  String get bundleSaveData => 'Gegevens';
+
+  @override
+  String get bundleDataNone => 'Alleen structuur';
+
+  @override
+  String get bundleDataSamples => 'Tot 3 voorbeelden per module';
+
+  @override
+  String get bundleSaveHint => 'Mappen, modules, velden en paginalay-outs worden opgeslagen. Links naar modules buiten deze map vallen weg.';
+
+  @override
+  String get bundleSaved => 'Bundel opgeslagen';
+
+  @override
+  String get bundleCreate => 'Maken';
+
+  @override
+  String get bundleAdjust => 'Eerst aanpassen';
+
+  @override
+  String get bundleCreated => 'Project gemaakt';
+
+  @override
+  String get bundleProjectName => 'Projectnaam';
+
+  @override
+  String get bundleIncludes => 'Bevat';
+
+  @override
+  String get bundleFields => 'Velden (leeg = weglaten)';
+
+  @override
+  String get nameRequired => 'Een naam is verplicht';
+
+  @override
+  String get nameField => 'Naam';
+
+  @override
+  String get artCounts => '{f} mappen · {m} modules · {l} koppelingen · {s} voorbeelden';
+
+  @override
+  String get artStructure => 'Wat er wordt gemaakt';
+
+  @override
+  String get artLinks => 'Koppelingen tussen modules';
+
+  @override
+  String get artLinkRel => 'relatieveld / selectie';
+
+  @override
+  String get artLinkBorrow => 'geleend onderdeel';
+
+  @override
+  String get artBefore => 'Voor het maken';
+
+  @override
+  String get exportFormat => 'Formaat';
+
+  @override
+  String get exportPreview => 'Voorbeeld';
+
+  @override
+  String get exportPreviewNote => 'Een schets van de opmaak — het bestand bevat je echte pagina\'s';
+
+  @override
+  String get tplBrowse => 'Meer sjablonen…';
+
+  @override
+  String get tplFields => 'Velden van het sjabloon meenemen';
+
+  @override
+  String get tplModulePage => 'Modulepagina';
+
+  @override
+  String get tplItemPage => 'Elementpagina';
+
+  @override
+  String get tplKindCount => '{n} sjablonen';
+
+  @override
+  String get tplFieldsHead => 'Velden';
+
+  @override
+  String get btnApply => 'Toepassen';
+
+  @override
+  String get btnCreate => 'Aanmaken';
 }

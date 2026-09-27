@@ -105,6 +105,42 @@ class AppLocalizationsTh extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'แสดงทั้งหมด';
+
+  @override
+  String get themeShowLess => 'ยุบ';
+
+  @override
+  String get pageLayout => 'จัดหน้า title';
+
+  @override
+  String get titleAlign => 'ตำแหน่ง title';
+
+  @override
+  String get alignLeft => 'ซ้าย';
+
+  @override
+  String get alignCenter => 'กลาง';
+
+  @override
+  String get alignRight => 'ขวา';
+
+  @override
+  String get pageIcon => 'ไอคอนเหนือ title';
+
+  @override
+  String get pageCover => 'ภาพปก';
+
+  @override
+  String get pageCoverNone => 'ไม่มีปก';
+
+  @override
+  String get pageCoverEmpty => 'นำเข้ารูปเข้า Nexus นี้ก่อน แล้วค่อยเลือกเป็นภาพปก';
+
+  @override
+  String get pageLayoutScope => 'มีผลกับหน้านี้หน้าเดียว';
+
+  @override
   String get languageLabel => 'ภาษา';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'แทรกแถวด้านล่าง';
+
+  @override
+  String get exportTitle => 'ส่งออก…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'สำหรับพิมพ์ แชร์ หรือส่งโรงพิมพ์';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'แก้ต่อใน Word, Google Docs หรือ Pages';
+
+  @override
+  String get exportEpub => 'EPUB (อีบุ๊ก)';
+
+  @override
+  String get exportEpubD => 'สำหรับ Apple Books, Kindle, Kobo หรือ Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'หนึ่งชีตต่อตาราง เปิดใน Excel, Sheets หรือ Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'ตารางล้วน — นำกลับเข้าด้วย "นำเข้า CSV" ได้';
+
+  @override
+  String get htmlExport => 'ส่งออกเป็นเว็บไซต์ (HTML)';
+
+  @override
+  String get exportMarkdown => 'ส่งออกเป็น Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'โน้ตพร้อมรูป — เปิดใน Obsidian ได้';
+
+  @override
+  String get exportMddxD => 'โมดูลนี้ สำหรับย้ายไป vault อื่น';
+
+  @override
+  String get exportNoPage => 'โฟลเดอร์ไม่มีหน้าของตัวเอง';
+
+  @override
+  String get exportOnlyDocs => 'เฉพาะ Author, Classifier, Chronicler, Drafter และ Inspector';
+
+  @override
+  String get exportOnlyBooks => 'เฉพาะหนังสือของ Author';
+
+  @override
+  String get exportOnlyTables => 'เฉพาะ Classifier และ Chronicler';
+
+  @override
+  String get exportGo => 'ส่งออก';
+
+  @override
+  String get exportScope => 'ขอบเขต';
+
+  @override
+  String get exportScopePage => 'หน้านี้';
+
+  @override
+  String get exportScopeModule => 'โมดูลนี้และ Element ทั้งหมด';
+
+  @override
+  String get exportScopeInside => 'โมดูลนี้และทุกอย่างข้างใน';
+
+  @override
+  String get exportScopeNexus => 'ทั้ง Nexus';
+
+  @override
+  String get exportPaper => 'กระดาษ';
+
+  @override
+  String get exportOrientation => 'แนว';
+
+  @override
+  String get exportPortrait => 'แนวตั้ง';
+
+  @override
+  String get exportLandscape => 'แนวนอน';
+
+  @override
+  String get exportHeaderFooter => 'ชื่อเรื่องและเลขหน้า';
+
+  @override
+  String get exportToc => 'หน้าสารบัญ';
+
+  @override
+  String get exportCsvHint => 'ตารางเดียว : Element ของ Classifier หรือไทม์ไลน์แรกของ Chronicler · ไม่รวมฟิลด์สูตร · นำกลับเข้าด้วย "นำเข้า CSV" ได้';
+
+  @override
+  String get exportXlsxHint => 'หนึ่งชีตต่อตาราง (ทุกไทม์ไลน์ของ Chronicler) หัวตารางตัวหนาและตรึงไว้ · ไม่รวมฟิลด์สูตร';
+
+  @override
+  String get exportMdAnyHint => 'Element ละไฟล์ .md (ฟิลด์เป็น property) · รูปที่หน้าแสดงอยู่ใน assets/ · เปิดโฟลเดอร์เป็น vault ใน Obsidian ได้เลย';
+
+  @override
+  String get exportDocxHint => 'หัวข้อต่อบท Element หรือเหตุการณ์ (ขึ้นในแถบนำทางของ Word) · ฟิลด์เป็นตาราง · รูปของหน้า · ขึ้นหน้าใหม่ระหว่างบท';
+
+  @override
+  String get exportEpubHint => 'บทละไฟล์พร้อมสารบัญ · ปกหัวเรื่องของหน้าหนังสือกลายเป็นปก';
+
+  @override
+  String get exportMddxHint => 'ไฟล์ .mddx ที่ vault อื่นของ DraconDex นำเข้าได้';
+
+  @override
+  String get exportFormulaSkipped => 'ไม่รวมฟิลด์สูตร : {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV เก็บได้ไทม์ไลน์เดียว — อีก {n} เส้นอยู่ในการส่งออก Excel';
+
+  @override
+  String get exportMediaMissing => 'หารูปไม่เจอ {n} รูป จึงไม่ได้ใส่ไว้';
+
+  @override
+  String get exportMarkdownEmpty => 'ยังไม่มีอะไรให้ส่งออก';
+
+  @override
+  String get exportWorking => 'กำลังวาดหน้า…';
+
+  @override
+  String get exportPictures => 'รูป';
+
+  @override
+  String get exportRows => 'แถว';
+
+  @override
+  String get exportHtmlPageD => 'หน้านี้เป็นหน้าเว็บ พร้อมรูปภาพ';
+
+  @override
+  String get exportHtmlPageHint => 'ไฟล์ .zip ที่มี index.html และรูปใน media/ — แตกไฟล์แล้วเปิด index.html ในเบราว์เซอร์ใดก็ได้';
+
+  @override
+  String get exportPrint => 'พิมพ์…';
+
+  @override
+  String get pcVideo => 'วิดีโอ';
+
+  @override
+  String get pcAudio => 'เสียง';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'โมเดล 3D';
+
+  @override
+  String get pcMedia => 'สื่อผสม';
+
+  @override
+  String get pcMediaEmpty => 'ยังไม่มีไฟล์';
+
+  @override
+  String get pbChooseFile => 'เลือกไฟล์';
+
+  @override
+  String get pcAddFile => 'เพิ่มไฟล์';
+
+  @override
+  String get pcOpenIn => 'เปิดด้วยแอปอื่น';
+
+  @override
+  String get mediaOpenFailed => 'เปิดไฟล์นี้ไม่ได้';
+
+  @override
+  String get pbBlockSettings => 'ตั้งค่า block';
+
+  @override
+  String get pbStyle => 'รูปแบบ';
+
+  @override
+  String get pbOptions => 'ตัวเลือก';
+
+  @override
+  String get pbStyleVariant => 'หน้าตา';
+
+  @override
+  String get pbStyleAccent => 'สีเน้น';
+
+  @override
+  String get pbStyleWidth => 'ความกว้าง';
+
+  @override
+  String get pbStyleAlign => 'จัดวาง';
+
+  @override
+  String get pbStyleDensity => 'ระยะ';
+
+  @override
+  String get pbStyleHeader => 'หัวของ block';
+
+  @override
+  String get pbHeaderShow => 'แสดงหัว';
+
+  @override
+  String get pbHeaderTitle => 'ชื่อที่หัว';
+
+  @override
+  String get pbStyleCollapsible => 'พับได้';
+
+  @override
+  String get pbStyleAnchor => 'anchor (#)';
+
+  @override
+  String get pbStyleHideOn => 'ซ่อนบน';
+
+  @override
+  String get pbStyleReset => 'คืนค่า';
+
+  @override
+  String get pbStyleApplyAll => 'ใช้กับ block ชนิดนี้ทั้งหน้า';
+
+  @override
+  String get pbStyleApplied => 'ใช้กับอีก {n} block แล้ว';
+
+  @override
+  String get pbStyleCopy => 'คัดลอกสไตล์';
+
+  @override
+  String get pbStylePaste => 'วางสไตล์';
+
+  @override
+  String get pbNoOptions => 'block นี้ไม่มีตัวเลือกเฉพาะ — ปรับหน้าตาได้ที่แท็บรูปแบบ';
+
+  @override
+  String get pbVariantPlain => 'เรียบ';
+
+  @override
+  String get pbVariantCard => 'การ์ด';
+
+  @override
+  String get pbVariantOutline => 'เส้นขอบ';
+
+  @override
+  String get pbVariantTinted => 'แต้มสี';
+
+  @override
+  String get pbVariantHero => 'เด่น';
+
+  @override
+  String get pbAccKind => 'ชนิดของ module';
+
+  @override
+  String get pbAccAccent => 'สีเน้นของธีม';
+
+  @override
+  String get pbAccBlue => 'น้ำเงิน';
+
+  @override
+  String get pbAccGreen => 'เขียว';
+
+  @override
+  String get pbAccAmber => 'อำพัน';
+
+  @override
+  String get pbAccRose => 'ชมพูกุหลาบ';
+
+  @override
+  String get pbAccViolet => 'ม่วง';
+
+  @override
+  String get pbAccSlate => 'เทาหิน';
+
+  @override
+  String get pbWidthNarrow => 'แคบ';
+
+  @override
+  String get pbWidthNormal => 'ปกติ';
+
+  @override
+  String get pbWidthWide => 'กว้าง';
+
+  @override
+  String get pbWidthFull => 'เต็ม';
+
+  @override
+  String get pbDensityComfy => 'โปร่ง';
+
+  @override
+  String get pbDensityCompact => 'แน่น';
+
+  @override
+  String get pbCollOff => 'ไม่';
+
+  @override
+  String get pbCollOpen => 'เปิดอยู่';
+
+  @override
+  String get pbCollClosed => 'พับอยู่';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'มือถือ';
+
+  @override
+  String get pbHideDesktop => 'เดสก์ท็อป';
+
+  @override
+  String get pbLinks => 'ลิงก์';
+
+  @override
+  String get pbLinkAdd => 'เพิ่มลิงก์';
+
+  @override
+  String get pbLinkAddPh => '+ [[ชื่อ]] · #anchor · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'นี่ไม่ใช่ลิงก์ — ใช้ [[ชื่อ]] · #anchor หรือที่อยู่ http(s)';
+
+  @override
+  String get pbLinkLabel => 'ข้อความ';
+
+  @override
+  String get pbLinkTo => 'ไปที่';
+
+  @override
+  String get pbLinkGroup => 'กลุ่ม';
+
+  @override
+  String get pbLinkHint => 'ลิงก์เว็บเปิดในเบราว์เซอร์ รับเฉพาะ http/https — แอปเปิดจากค่าที่บันทึกไว้เท่านั้น';
+
+  @override
+  String get pbLinkMissing => 'ยังไม่มีหน้าชื่อนี้ — คลิกเพื่อสร้าง';
+
+  @override
+  String get pbLinkUp => 'เลื่อนขึ้น';
+
+  @override
+  String get pbLinkDown => 'เลื่อนลง';
+
+  @override
+  String get pbLinksEmpty => 'ยังไม่มีลิงก์';
+
+  @override
+  String get pbLinksEmptyArrange => 'ยังไม่มีลิงก์ — เพิ่มได้ที่ ⚙ → ตัวเลือก';
+
+  @override
+  String get pbListAdd => 'เพิ่ม';
+
+  @override
+  String get pcLinkbar => 'แถบลิงก์';
+
+  @override
+  String get pcLinkcard => 'การ์ดลิงก์';
+
+  @override
+  String get pcHatnote => 'หมายเหตุหัวบทความ';
+
+  @override
+  String get pcSeeAlso => 'ดูเพิ่ม';
+
+  @override
+  String get pcReferences => 'อ้างอิง';
+
+  @override
+  String get pcTabs => 'แท็บ';
+
+  @override
+  String get pcToggle => 'หัวข้อพับได้';
+
+  @override
+  String get pcNavbox => 'กล่องนำทาง';
+
+  @override
+  String get pcChildren => 'หน้าลูก';
+
+  @override
+  String get pcHatAnd => 'และ';
+
+  @override
+  String get pcHatnotePh => 'บทความหลัก: …';
+
+  @override
+  String get pcReferencesEmpty => 'ยังไม่มีเชิงอรรถ — เขียน [^1] ใน text block และ "[^1]: …" แยกบรรทัด';
+
+  @override
+  String get pcSeeAlsoEmpty => 'หน้านี้ยังไม่มีลิงก์ออก';
+
+  @override
+  String get pcSuggested => 'แนะนำ:';
+
+  @override
+  String get pcTab => 'แท็บ';
+
+  @override
+  String get pcChildrenNone => 'ไม่มีอะไรอยู่ใต้หน้านี้';
+
+  @override
+  String get pbFootnoteMissing => 'เชิงอรรถนี้ยังไม่มีข้อความ — เพิ่มบรรทัด "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'สไตล์แถบ';
+
+  @override
+  String get pcOptCaption => 'คำบรรยาย';
+
+  @override
+  String get pcOptCount => 'จำนวน';
+
+  @override
+  String get pcOptCover => 'ภาพปก';
+
+  @override
+  String get pcOptDepth => 'ความลึก';
+
+  @override
+  String get pcOptHatKind => 'ชนิดของหมายเหตุ';
+
+  @override
+  String get pcOptLayout => 'การจัดวาง';
+
+  @override
+  String get pcOptLook => 'หน้าตา';
+
+  @override
+  String get pcOptLoop => 'วนซ้ำ';
+
+  @override
+  String get pcOptPoster => 'ภาพปก';
+
+  @override
+  String get pcOptSort => 'เรียงตาม';
+
+  @override
+  String get pcOptSource => 'เติมจาก module';
+
+  @override
+  String get pcOptStart => 'สถานะเริ่มต้น';
+
+  @override
+  String get pcOptStartPage => 'หน้าเริ่มต้น';
+
+  @override
+  String get pcOptStartTab => 'แท็บเริ่มต้น';
+
+  @override
+  String get pcOptSticky => 'ติดด้านบนเมื่อเลื่อน';
+
+  @override
+  String get pcOptSuggest => 'แนะนำหน้าที่ลิงก์มาหรือลิงก์ไป';
+
+  @override
+  String get pcOptTabs => 'ชื่อแท็บ';
+
+  @override
+  String get pcBarPills => 'เม็ดยา';
+
+  @override
+  String get pcBarTabs => 'แท็บ';
+
+  @override
+  String get pcBarUnderline => 'ขีดเส้นใต้';
+
+  @override
+  String get pcBarButtons => 'ปุ่ม';
+
+  @override
+  String get pcCardCard => 'การ์ด';
+
+  @override
+  String get pcCardCompact => 'กะทัดรัด';
+
+  @override
+  String get pcCardButton => 'ปุ่ม';
+
+  @override
+  String get pcHatMain => 'บทความหลัก:';
+
+  @override
+  String get pcHatAbout => 'ดูเพิ่มที่';
+
+  @override
+  String get pcHatDistinguish => 'อย่าสับสนกับ';
+
+  @override
+  String get pcTabsLine => 'เส้น';
+
+  @override
+  String get pcTabsBoxed => 'กล่อง';
+
+  @override
+  String get pcTabsPills => 'เม็ดยา';
+
+  @override
+  String get pcKidsList => 'รายการ';
+
+  @override
+  String get pcKidsTree => 'ต้นไม้';
+
+  @override
+  String get pcKidsCards => 'การ์ด';
+
+  @override
+  String get pcSortOrder => 'ตามลำดับใน Nest';
+
+  @override
+  String get pcSortName => 'ตามชื่อ';
+
+  @override
+  String get pcGalGrid => 'ตาราง';
+
+  @override
+  String get pcGalStrip => 'แถบเลื่อน';
+
+  @override
+  String get pcPdfSingle => 'ทีละหน้า';
+
+  @override
+  String get pcPdfStrip => 'แถบภาพย่อ';
+
+  @override
+  String get pcInfobox => 'กล่องข้อมูล';
+
+  @override
+  String get pcCallout => 'กล่องเน้น';
+
+  @override
+  String get pcStats => 'สถิติ';
+
+  @override
+  String get pcToc => 'สารบัญ';
+
+  @override
+  String get pcSpotlight => 'สปอตไลต์';
+
+  @override
+  String get pcRoster => 'รายชื่อ';
+
+  @override
+  String get pcBreakdown => 'การแจกแจง';
+
+  @override
+  String get pcEras => 'ยุคสมัย';
+
+  @override
+  String get pcUpcoming => 'กำลังจะมาถึง';
+
+  @override
+  String get pcPinlist => 'รายการหมุด';
+
+  @override
+  String get pcProgress => 'ความคืบหน้า';
+
+  @override
+  String get pcChapters => 'บท';
+
+  @override
+  String get pcEndings => 'ตอนจบ';
+
+  @override
+  String get pcVariables => 'ตัวแปร';
+
+  @override
+  String get pcFocus => 'จุดโฟกัส';
+
+  @override
+  String get pcLegend => 'คำอธิบายสัญลักษณ์';
+
+  @override
+  String get pcJourney => 'การเดินทาง';
+
+  @override
+  String get pcStrip => 'แถบช่อง';
+
+  @override
+  String get pcFeatured => 'ไฮไลต์';
+
+  @override
+  String get pcDashboard => 'แดชบอร์ด';
+
+  @override
+  String get pcRecent => 'เปลี่ยนล่าสุด';
+
+  @override
+  String get pcQuickroll => 'สุ่มด่วน';
+
+  @override
+  String get pcPinned => 'ปักหมุด';
+
+  @override
+  String get pcTasks => 'งาน';
+
+  @override
+  String get pcBanner => 'แบนเนอร์';
+
+  @override
+  String get pcGallery => 'แกลเลอรี';
+
+  @override
+  String get pcDivider => 'เส้นแบ่ง';
+
+  @override
+  String get pcIconrow => 'แถวไอคอน';
+
+  @override
+  String get pcFigure => 'ภาพประกอบ';
+
+  @override
+  String get pcInfoboxEmpty => 'ยังไม่มีฟิลด์';
+
+  @override
+  String get pcStatsEmpty => 'ยังไม่มีอะไรให้นับ';
+
+  @override
+  String get pcTocEmpty => 'เพิ่มหัวข้อเพื่อสร้างสารบัญ';
+
+  @override
+  String get pcNoElements => 'ยังไม่มี Element';
+
+  @override
+  String get pcBreakdownEmpty => 'เลือกฟิลด์ที่จะใช้นับ';
+
+  @override
+  String get noEventsYet => 'ยังไม่มีเหตุการณ์';
+
+  @override
+  String get mapNoAreas => 'ยังไม่มี Area';
+
+  @override
+  String get pcNoChapters => 'ยังไม่มีบท';
+
+  @override
+  String get pcWords => 'คำ';
+
+  @override
+  String get pcNoEndings => 'ยังไม่มีตอนจบ';
+
+  @override
+  String get pcNoVariables => 'ยังไม่มีตัวแปร';
+
+  @override
+  String get pcNoRelations => 'ยังไม่มีความสัมพันธ์';
+
+  @override
+  String get pcUnlabelled => 'ไม่มีป้าย';
+
+  @override
+  String get pcNoPanels => 'ยังไม่มีช่องภาพ';
+
+  @override
+  String get pcNoSketches => 'ยังไม่มีภาพร่าง';
+
+  @override
+  String get managerEmpty => 'ยังไม่ได้เลือกอะไร — ตั้งตัวกรองหรือเลือก module';
+
+  @override
+  String get pcRoll => 'สุ่ม';
+
+  @override
+  String get pcNoRolls => 'ยังไม่มีการสุ่ม';
+
+  @override
+  String get pcNoPinned => 'ขึ้นต้นข้อความด้วย 📌 เพื่อปักหมุดไว้ที่นี่';
+
+  @override
+  String get pcNoTasks => 'เขียน “- [ ] …” ในโน้ตเพื่อเพิ่มงาน';
+
+  @override
+  String get pcBannerEmpty => 'ยังไม่มีรูป';
+
+  @override
+  String get pcGalleryEmpty => 'ยังไม่มีรูป';
+
+  @override
+  String get pcIconrowEmpty => 'ยังไม่มีไอคอน';
+
+  @override
+  String get pcFigureEmpty => 'ยังไม่มีรูป';
+
+  @override
+  String get pcStatItems => 'รายการ';
+
+  @override
+  String get pcStatModules => 'โมดูล';
+
+  @override
+  String get backlinks => 'ลิงก์มาที่นี่';
+
+  @override
+  String get pcCalloutPh => 'เขียนโน้ต…';
+
+  @override
+  String get pcDecorPickArrange => 'ยังไม่มีอะไร — เลือกได้ที่ ⚙ → ตัวเลือก';
+
+  @override
+  String get pcToneNote => 'บันทึก';
+
+  @override
+  String get pcToneTip => 'เคล็ดลับ';
+
+  @override
+  String get pcToneWarning => 'คำเตือน';
+
+  @override
+  String get pcToneQuote => 'คำพูด';
+
+  @override
+  String get pcToneSecret => 'ความลับ';
+
+  @override
+  String get pcOptFields => 'field ที่แสดง';
+
+  @override
+  String get pcOptDock => 'ตำแหน่ง';
+
+  @override
+  String get pcOptTone => 'โทน';
+
+  @override
+  String get pcOptField => 'นับตาม field';
+
+  @override
+  String get pcOptFrom => 'ตั้งแต่ปี';
+
+  @override
+  String get pcOptGoal => 'เป้าจำนวนคำ';
+
+  @override
+  String get pcOptSubtitle => 'คำโปรย';
+
+  @override
+  String get pcOptHeight => 'ความสูง';
+
+  @override
+  String get pcOptScrim => 'เงาใต้ข้อความ';
+
+  @override
+  String get pbImages => 'รูปภาพ';
+
+  @override
+  String get pcOptFromModule => 'ทุกรูปที่อยู่ใน module นี้';
+
+  @override
+  String get pcOptCaptions => 'แสดงชื่อไฟล์';
+
+  @override
+  String get pcOptItems => 'รายการ';
+
+  @override
+  String get pcOptSize => 'ขนาด';
+
+  @override
+  String get pcOptFit => 'การพอดี';
+
+  @override
+  String get pcOptFloat => 'ข้อความไหลรอบ';
+
+  @override
+  String get pcOptRound => 'มุมโค้ง';
+
+  @override
+  String get pcLayoutTable => 'ตาราง';
+
+  @override
+  String get pcLayoutStacked => 'เรียงซ้อน';
+
+  @override
+  String get pcDockRight => 'ขวา';
+
+  @override
+  String get pcDockLeft => 'ซ้าย';
+
+  @override
+  String get pcDockFull => 'เต็มความกว้าง';
+
+  @override
+  String get pcSizeS => 'เล็ก';
+
+  @override
+  String get pcSizeM => 'กลาง';
+
+  @override
+  String get pcSizeL => 'ใหญ่';
+
+  @override
+  String get pcSizeFull => 'เต็มความกว้าง';
+
+  @override
+  String get pcScrimSoft => 'อ่อน';
+
+  @override
+  String get pcScrimStrong => 'เข้ม';
+
+  @override
+  String get pcGalMasonry => 'ก่ออิฐ';
+
+  @override
+  String get pcDivLine => 'เส้น';
+
+  @override
+  String get pcDivDouble => 'เส้นคู่';
+
+  @override
+  String get pcDivDots => 'จุด';
+
+  @override
+  String get pcDivOrnament => 'ลวดลาย';
+
+  @override
+  String get pcDivImage => 'แถบรูป';
+
+  @override
+  String get pcIrChip => 'ชิป';
+
+  @override
+  String get pcIrBig => 'ไอคอนใหญ่';
+
+  @override
+  String get pcFitContain => 'ทั้งรูป';
+
+  @override
+  String get pcFitCover => 'เต็มกรอบ';
+
+  @override
+  String get pcFloatNone => 'อยู่แยก';
+
+  @override
+  String get pcFloatLeft => 'รูปซ้าย';
+
+  @override
+  String get pcFloatRight => 'รูปขวา';
+
+  @override
+  String get pcLoadFailed => 'โหลดบล็อกนี้ไม่ได้';
+
+  @override
+  String get pcNoValue => '(ไม่มี)';
+
+  @override
+  String get tplUse => 'ใช้เทมเพลต…';
+
+  @override
+  String get tplUseHint => 'แทนที่เลย์เอาต์ของหน้านี้ เนื้อหายังอยู่ครบ และเลิกทำได้ทันทีหลังจากนั้น';
+
+  @override
+  String get tplDefault => 'ค่าเริ่มต้น';
+
+  @override
+  String get tplOtherTypes => 'ประเภทอื่น';
+
+  @override
+  String get tplApplied => 'ใช้เทมเพลตแล้ว';
+
+  @override
+  String get tplBorrowDropped => 'ข้าม {n} บล็อก — บล็อกเหล่านี้ยืมจากโมดูลที่ยังไม่ได้เชื่อมกับโมดูลนี้';
+
+  @override
+  String get tplGallery => 'เทมเพลตหน้า';
+
+  @override
+  String get pcFacts => 'ข้อเท็จจริง';
+
+  @override
+  String get pcNoFacts => 'เขียนบรรทัดแบบ “ก่อตั้ง: ปีที่ 300” ในโน้ต';
+
+  @override
+  String get pcPlacecard => 'การ์ดสถานที่';
+
+  @override
+  String get pcBorders => 'ติดกับ';
+
+  @override
+  String get pcOptArea => 'พื้นที่ (ชื่อ)';
+
+  @override
+  String get tplSave => 'บันทึกหน้าเป็นเทมเพลต…';
+
+  @override
+  String get tplMine => 'ของฉัน';
+
+  @override
+  String get savePresetHint => 'บันทึกหน้าตา มุมมอง และฟิลด์ของ module นี้ (ไม่รวมเนื้อหา) เป็นจุดเริ่มต้นของ module ชนิดเดียวกันที่สร้างใหม่';
+
+  @override
+  String get presetSaved => 'บันทึก preset แล้ว';
+
+  @override
+  String get presetDeleteConfirm => 'ลบ preset นี้? module ที่สร้างจากมันยังอยู่เหมือนเดิม';
+
+  @override
+  String get bundleTabClassic => 'คลาสสิก';
+
+  @override
+  String get bundleTabGenre => 'แนวเรื่อง';
+
+  @override
+  String get bundleTabMine => 'ของฉัน';
+
+  @override
+  String get bundleMineEmpty => 'ยังไม่มีที่บันทึกไว้ — คลิกขวาที่โฟลเดอร์แล้วเลือก “บันทึกเป็น Artisan bundle…”';
+
+  @override
+  String get bundleSampleCount => 'ข้อมูลตัวอย่าง';
+
+  @override
+  String get bundleIncludeSamples => 'รวมข้อมูลตัวอย่าง';
+
+  @override
+  String get bundleSaveMine => 'บันทึกเป็น Artisan bundle…';
+
+  @override
+  String get bundleSaveData => 'ข้อมูล';
+
+  @override
+  String get bundleDataNone => 'เฉพาะโครงสร้าง';
+
+  @override
+  String get bundleDataSamples => 'ตัวอย่างสูงสุด 3 รายการต่อโมดูล';
+
+  @override
+  String get bundleSaveHint => 'บันทึกโฟลเดอร์ โมดูล ฟิลด์ และเลย์เอาต์หน้า ลิงก์ไปยังโมดูลนอกโฟลเดอร์นี้จะไม่ถูกเก็บ';
+
+  @override
+  String get bundleSaved => 'บันทึก bundle แล้ว';
+
+  @override
+  String get bundleCreate => 'สร้าง';
+
+  @override
+  String get bundleAdjust => 'ปรับก่อนสร้าง';
+
+  @override
+  String get bundleCreated => 'สร้างโปรเจกต์แล้ว';
+
+  @override
+  String get bundleProjectName => 'ชื่อโปรเจกต์';
+
+  @override
+  String get bundleIncludes => 'ประกอบด้วย';
+
+  @override
+  String get bundleFields => 'ช่องข้อมูล (เว้นว่าง = ไม่เอา)';
+
+  @override
+  String get nameRequired => 'ต้องใส่ชื่อ';
+
+  @override
+  String get nameField => 'ชื่อ';
+
+  @override
+  String get artCounts => '{f} folder · {m} module · {l} link · ตัวอย่าง {s} รายการ';
+
+  @override
+  String get artStructure => 'โครงที่จะสร้าง';
+
+  @override
+  String get artLinks => 'link ระหว่าง module';
+
+  @override
+  String get artLinkRel => 'relation field / การเลือก';
+
+  @override
+  String get artLinkBorrow => 'ยืม component';
+
+  @override
+  String get artBefore => 'ก่อนสร้าง';
+
+  @override
+  String get exportFormat => 'รูปแบบ';
+
+  @override
+  String get exportPreview => 'ตัวอย่าง';
+
+  @override
+  String get exportPreviewNote => 'ภาพร่างของเลย์เอาต์ — ไฟล์จริงจะมีหน้าของคุณครบ';
+
+  @override
+  String get tplBrowse => 'เทมเพลตอื่น…';
+
+  @override
+  String get tplFields => 'ใส่ field ของเทมเพลตด้วย';
+
+  @override
+  String get tplModulePage => 'หน้าของโมดูล';
+
+  @override
+  String get tplItemPage => 'หน้าของ element';
+
+  @override
+  String get tplKindCount => '{n} แบบ';
+
+  @override
+  String get tplFieldsHead => 'Fields';
+
+  @override
+  String get btnApply => 'ใช้งาน';
+
+  @override
+  String get btnCreate => 'สร้าง';
 }

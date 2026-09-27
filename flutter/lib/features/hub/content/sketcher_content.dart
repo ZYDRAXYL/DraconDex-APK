@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
+import '../../../data/models/module_model.dart';
 import '../../../data/models/sketcher_model.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../page/views/view_common.dart';
 
 /// Sketcher kind: freehand drawing pages.
 ///
@@ -20,7 +22,10 @@ class SketcherContent extends ConsumerStatefulWidget {
   /// The board's height: 360 on a page, the screen's in full screen.
   final double boardHeight;
 
-  const SketcherContent({super.key, required this.moduleId, this.boardHeight = 360});
+  /// The module, when the page has it: empty, the kind's empty state
+  /// (KindEmptyState) stands in for the list.
+  final ModuleModel? module;
+  const SketcherContent({super.key, required this.moduleId, this.boardHeight = 360, this.module});
 
   @override
   ConsumerState<SketcherContent> createState() => _SketcherContentState();
@@ -107,7 +112,9 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
                 ],
               ),
             ),
-            if (pages.isEmpty)
+            if (pages.isEmpty && widget.module != null)
+              KindEmptyState(module: widget.module!, note: l10n.sketcherNoPages, startLabel: l10n.sketcherNewPage, onStart: _addPage)
+            else if (pages.isEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
                 child: Text(l10n.sketcherNoPages, style: theme.textTheme.bodySmall),

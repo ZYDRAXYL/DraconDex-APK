@@ -105,6 +105,42 @@ class AppLocalizationsJa extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'すべて表示';
+
+  @override
+  String get themeShowLess => '折りたたむ';
+
+  @override
+  String get pageLayout => 'タイトルのレイアウト';
+
+  @override
+  String get titleAlign => 'タイトルの配置';
+
+  @override
+  String get alignLeft => '左';
+
+  @override
+  String get alignCenter => '中央';
+
+  @override
+  String get alignRight => '右';
+
+  @override
+  String get pageIcon => 'タイトル上のアイコン';
+
+  @override
+  String get pageCover => 'カバー画像';
+
+  @override
+  String get pageCoverNone => 'カバーなし';
+
+  @override
+  String get pageCoverEmpty => 'カバーにするには、このNexusに画像をインポートしてください';
+
+  @override
+  String get pageLayoutScope => 'このページだけに適用されます';
+
+  @override
   String get languageLabel => '言語';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get clsInsertBelow => '下に行を挿入';
+
+  @override
+  String get exportTitle => 'エクスポート…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => '印刷・共有・入稿用';
+
+  @override
+  String get exportDocx => 'Word（DOCX）';
+
+  @override
+  String get exportDocxD => 'Word・Googleドキュメント・Pagesで編集を続けるため';
+
+  @override
+  String get exportEpub => 'EPUB（電子書籍）';
+
+  @override
+  String get exportEpubD => 'Apple Books・Kindle・Kobo・Calibre用';
+
+  @override
+  String get exportXlsx => 'Excel（XLSX）';
+
+  @override
+  String get exportXlsxD => '表ごとに1シート — Excel・Sheets・Numbers 用';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'シンプルな表 — CSV取り込みで戻せます';
+
+  @override
+  String get htmlExport => 'Webサイトとして書き出す (HTML)';
+
+  @override
+  String get exportMarkdown => 'Markdown としてエクスポート (.zip)';
+
+  @override
+  String get exportMdAnyD => '画像付きノート — Obsidianで開けます';
+
+  @override
+  String get exportMddxD => 'このモジュールを別のボールトへ移すため';
+
+  @override
+  String get exportNoPage => 'フォルダーには独自のページがありません';
+
+  @override
+  String get exportOnlyDocs => 'Author・Classifier・Chronicler・Drafter・Inspectorのみ';
+
+  @override
+  String get exportOnlyBooks => 'Authorの本のみ';
+
+  @override
+  String get exportOnlyTables => 'ClassifierとChroniclerのみ';
+
+  @override
+  String get exportGo => 'エクスポート';
+
+  @override
+  String get exportScope => '含める範囲';
+
+  @override
+  String get exportScopePage => 'このページ';
+
+  @override
+  String get exportScopeModule => 'このモジュールと全要素';
+
+  @override
+  String get exportScopeInside => 'このモジュールと中身すべて';
+
+  @override
+  String get exportScopeNexus => 'Nexus全体';
+
+  @override
+  String get exportPaper => '用紙';
+
+  @override
+  String get exportOrientation => '向き';
+
+  @override
+  String get exportPortrait => '縦';
+
+  @override
+  String get exportLandscape => '横';
+
+  @override
+  String get exportHeaderFooter => 'タイトルとページ番号';
+
+  @override
+  String get exportToc => '目次ページ';
+
+  @override
+  String get exportCsvHint => '1つの表：Classifierの要素、またはChroniclerの最初のタイムライン。数式フィールドは含みません。CSV取り込みで読み戻せます。';
+
+  @override
+  String get exportXlsxHint => '表ごとに1シート（Chroniclerは全タイムライン）、太字で固定された見出し行。数式フィールドは含みません。';
+
+  @override
+  String get exportMdAnyHint => '要素ごとに1つの .md（フィールドはプロパティ）。ページの画像は assets/ に入ります。フォルダーをObsidianのボールトとして開けます。';
+
+  @override
+  String get exportDocxHint => '章・要素・出来事ごとに見出し（Wordのナビゲーションに表示）、フィールドは表、ページの画像、章の間に改ページ。';
+
+  @override
+  String get exportEpubHint => '章ごとに1ファイル、目次付き。本のページのタイトルカバーが表紙になります。';
+
+  @override
+  String get exportMddxHint => '別のDraconDexボールトで取り込める .mddx ファイル。';
+
+  @override
+  String get exportFormulaSkipped => '除外した数式フィールド：{names}';
+
+  @override
+  String get exportMoreTimelines => 'CSVは1本のタイムラインのみ — 残り{n}本はExcelで';
+
+  @override
+  String get exportMediaMissing => '{n} 枚の画像が見つからず、除外しました';
+
+  @override
+  String get exportMarkdownEmpty => 'エクスポートする内容がまだありません';
+
+  @override
+  String get exportWorking => 'ページを描画中…';
+
+  @override
+  String get exportPictures => '画像';
+
+  @override
+  String get exportRows => '行';
+
+  @override
+  String get exportHtmlPageD => 'このページをWebページとして — 画像も同梱';
+
+  @override
+  String get exportHtmlPageHint => 'index.html と media/ 内の画像を含む .zip — 展開して任意のブラウザで index.html を開きます。';
+
+  @override
+  String get exportPrint => '印刷…';
+
+  @override
+  String get pcVideo => '動画';
+
+  @override
+  String get pcAudio => '音声';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3Dモデル';
+
+  @override
+  String get pcMedia => 'メディア';
+
+  @override
+  String get pcMediaEmpty => 'ファイルはまだありません。';
+
+  @override
+  String get pbChooseFile => 'ファイルを選ぶ';
+
+  @override
+  String get pcAddFile => 'ファイルを追加';
+
+  @override
+  String get pcOpenIn => '別のアプリで開く';
+
+  @override
+  String get mediaOpenFailed => 'このファイルを開けませんでした';
+
+  @override
+  String get pbBlockSettings => 'ブロックの設定';
+
+  @override
+  String get pbStyle => 'スタイル';
+
+  @override
+  String get pbOptions => 'オプション';
+
+  @override
+  String get pbStyleVariant => '見た目';
+
+  @override
+  String get pbStyleAccent => 'アクセントカラー';
+
+  @override
+  String get pbStyleWidth => '幅';
+
+  @override
+  String get pbStyleAlign => '配置';
+
+  @override
+  String get pbStyleDensity => '余白';
+
+  @override
+  String get pbStyleHeader => '見出し';
+
+  @override
+  String get pbHeaderShow => '見出しを表示';
+
+  @override
+  String get pbHeaderTitle => '見出しのタイトル';
+
+  @override
+  String get pbStyleCollapsible => '折りたたみ';
+
+  @override
+  String get pbStyleAnchor => 'アンカー（#）';
+
+  @override
+  String get pbStyleHideOn => '非表示にする画面';
+
+  @override
+  String get pbStyleReset => 'リセット';
+
+  @override
+  String get pbStyleApplyAll => '同じ種類のブロックすべてに適用';
+
+  @override
+  String get pbStyleApplied => '{n} 個のブロックに適用しました';
+
+  @override
+  String get pbStyleCopy => 'スタイルをコピー';
+
+  @override
+  String get pbStylePaste => 'スタイルを貼り付け';
+
+  @override
+  String get pbNoOptions => 'このブロック固有のオプションはありません。見た目は「スタイル」タブで変えられます。';
+
+  @override
+  String get pbVariantPlain => 'なし';
+
+  @override
+  String get pbVariantCard => 'カード';
+
+  @override
+  String get pbVariantOutline => '枠線';
+
+  @override
+  String get pbVariantTinted => '色付き';
+
+  @override
+  String get pbVariantHero => 'ヒーロー';
+
+  @override
+  String get pbAccKind => 'モジュールの種類';
+
+  @override
+  String get pbAccAccent => 'テーマのアクセント';
+
+  @override
+  String get pbAccBlue => '青';
+
+  @override
+  String get pbAccGreen => '緑';
+
+  @override
+  String get pbAccAmber => '琥珀';
+
+  @override
+  String get pbAccRose => 'ローズ';
+
+  @override
+  String get pbAccViolet => '紫';
+
+  @override
+  String get pbAccSlate => 'スレート';
+
+  @override
+  String get pbWidthNarrow => '狭い';
+
+  @override
+  String get pbWidthNormal => '標準';
+
+  @override
+  String get pbWidthWide => '広い';
+
+  @override
+  String get pbWidthFull => '全幅';
+
+  @override
+  String get pbDensityComfy => 'ゆったり';
+
+  @override
+  String get pbDensityCompact => '詰める';
+
+  @override
+  String get pbCollOff => 'しない';
+
+  @override
+  String get pbCollOpen => '開いた状態';
+
+  @override
+  String get pbCollClosed => '閉じた状態';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'スマホ';
+
+  @override
+  String get pbHideDesktop => 'デスクトップ';
+
+  @override
+  String get pbLinks => 'リンク';
+
+  @override
+  String get pbLinkAdd => 'リンクを追加';
+
+  @override
+  String get pbLinkAddPh => '+ [[名前]] · #アンカー · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'リンクではありません。[[名前]]、#アンカー、http(s) アドレスを使ってください';
+
+  @override
+  String get pbLinkLabel => '表示名';
+
+  @override
+  String get pbLinkTo => 'リンク先';
+
+  @override
+  String get pbLinkGroup => 'グループ';
+
+  @override
+  String get pbLinkHint => 'Webリンクはブラウザーで開きます（http・httpsのみ）。開くのは保存済みのアドレスだけです。';
+
+  @override
+  String get pbLinkMissing => 'その名前のページはまだありません。クリックで作成';
+
+  @override
+  String get pbLinkUp => '上へ';
+
+  @override
+  String get pbLinkDown => '下へ';
+
+  @override
+  String get pbLinksEmpty => 'リンクはまだありません。';
+
+  @override
+  String get pbLinksEmptyArrange => 'リンクはまだありません。⚙ → オプションで追加します。';
+
+  @override
+  String get pbListAdd => '追加';
+
+  @override
+  String get pcLinkbar => 'リンクバー';
+
+  @override
+  String get pcLinkcard => 'リンクカード';
+
+  @override
+  String get pcHatnote => '冒頭注記';
+
+  @override
+  String get pcSeeAlso => '関連項目';
+
+  @override
+  String get pcReferences => '脚注';
+
+  @override
+  String get pcTabs => 'タブ';
+
+  @override
+  String get pcToggle => '折りたたみ';
+
+  @override
+  String get pcNavbox => 'ナビゲーションボックス';
+
+  @override
+  String get pcChildren => '子ページ';
+
+  @override
+  String get pcHatAnd => '、';
+
+  @override
+  String get pcHatnotePh => 'メイン記事: …';
+
+  @override
+  String get pcReferencesEmpty => 'このページにはまだ脚注がありません。テキストに [^1] と書き、別の行に「[^1]: …」を書きます。';
+
+  @override
+  String get pcSeeAlsoEmpty => 'このページからのリンクはまだありません';
+
+  @override
+  String get pcSuggested => 'おすすめ:';
+
+  @override
+  String get pcTab => 'タブ';
+
+  @override
+  String get pcChildrenNone => 'このページの下には何もありません。';
+
+  @override
+  String get pbFootnoteMissing => 'この脚注にはまだ本文がありません。「[^n]: …」の行を追加してください';
+
+  @override
+  String get pcOptBar => 'バーのスタイル';
+
+  @override
+  String get pcOptCaption => 'キャプション';
+
+  @override
+  String get pcOptCount => '件数';
+
+  @override
+  String get pcOptCover => 'カバー画像';
+
+  @override
+  String get pcOptDepth => '深さ';
+
+  @override
+  String get pcOptHatKind => '注記の種類';
+
+  @override
+  String get pcOptLayout => 'レイアウト';
+
+  @override
+  String get pcOptLook => '見た目';
+
+  @override
+  String get pcOptLoop => '繰り返し';
+
+  @override
+  String get pcOptPoster => 'ポスター画像';
+
+  @override
+  String get pcOptSort => '並び順';
+
+  @override
+  String get pcOptSource => 'モジュールから埋める';
+
+  @override
+  String get pcOptStart => '初期状態';
+
+  @override
+  String get pcOptStartPage => '最初に表示するページ';
+
+  @override
+  String get pcOptStartTab => '最初に表示するタブ';
+
+  @override
+  String get pcOptSticky => 'スクロール中も上部に固定';
+
+  @override
+  String get pcOptSuggest => 'ここにリンクしているページ・ここからのリンク先を提案';
+
+  @override
+  String get pcOptTabs => 'タブ名';
+
+  @override
+  String get pcBarPills => 'ピル';
+
+  @override
+  String get pcBarTabs => 'タブ';
+
+  @override
+  String get pcBarUnderline => '下線';
+
+  @override
+  String get pcBarButtons => 'ボタン';
+
+  @override
+  String get pcCardCard => 'カード';
+
+  @override
+  String get pcCardCompact => 'コンパクト';
+
+  @override
+  String get pcCardButton => 'ボタン';
+
+  @override
+  String get pcHatMain => 'メイン記事:';
+
+  @override
+  String get pcHatAbout => '詳しくは';
+
+  @override
+  String get pcHatDistinguish => '次と混同しないこと:';
+
+  @override
+  String get pcTabsLine => 'ライン';
+
+  @override
+  String get pcTabsBoxed => 'ボックス';
+
+  @override
+  String get pcTabsPills => 'ピル';
+
+  @override
+  String get pcKidsList => 'リスト';
+
+  @override
+  String get pcKidsTree => 'ツリー';
+
+  @override
+  String get pcKidsCards => 'カード';
+
+  @override
+  String get pcSortOrder => 'Nest の順';
+
+  @override
+  String get pcSortName => '名前順';
+
+  @override
+  String get pcGalGrid => 'グリッド';
+
+  @override
+  String get pcGalStrip => '横スクロール';
+
+  @override
+  String get pcPdfSingle => '1ページずつ';
+
+  @override
+  String get pcPdfStrip => 'ページ一覧';
+
+  @override
+  String get pcInfobox => 'インフォボックス';
+
+  @override
+  String get pcCallout => 'コールアウト';
+
+  @override
+  String get pcStats => '統計';
+
+  @override
+  String get pcToc => '目次';
+
+  @override
+  String get pcSpotlight => 'スポットライト';
+
+  @override
+  String get pcRoster => '名簿';
+
+  @override
+  String get pcBreakdown => '内訳';
+
+  @override
+  String get pcEras => '時代';
+
+  @override
+  String get pcUpcoming => '今後の予定';
+
+  @override
+  String get pcPinlist => 'ピン一覧';
+
+  @override
+  String get pcProgress => '進捗';
+
+  @override
+  String get pcChapters => '章';
+
+  @override
+  String get pcEndings => 'エンディング';
+
+  @override
+  String get pcVariables => '変数';
+
+  @override
+  String get pcFocus => 'フォーカス';
+
+  @override
+  String get pcLegend => '凡例';
+
+  @override
+  String get pcJourney => '旅路';
+
+  @override
+  String get pcStrip => 'コマ一覧';
+
+  @override
+  String get pcFeatured => '注目';
+
+  @override
+  String get pcDashboard => 'ダッシュボード';
+
+  @override
+  String get pcRecent => '最近の変更';
+
+  @override
+  String get pcQuickroll => 'クイックロール';
+
+  @override
+  String get pcPinned => 'ピン留め';
+
+  @override
+  String get pcTasks => 'タスク';
+
+  @override
+  String get pcBanner => 'バナー';
+
+  @override
+  String get pcGallery => 'ギャラリー';
+
+  @override
+  String get pcDivider => '区切り';
+
+  @override
+  String get pcIconrow => 'アイコン列';
+
+  @override
+  String get pcFigure => '図';
+
+  @override
+  String get pcInfoboxEmpty => 'フィールドはまだありません';
+
+  @override
+  String get pcStatsEmpty => 'まだ数えるものがありません';
+
+  @override
+  String get pcTocEmpty => '見出しを追加すると目次ができます';
+
+  @override
+  String get pcNoElements => '要素はまだありません';
+
+  @override
+  String get pcBreakdownEmpty => '集計するフィールドを選んでください';
+
+  @override
+  String get noEventsYet => 'まだイベントがありません';
+
+  @override
+  String get mapNoAreas => 'エリアはまだありません';
+
+  @override
+  String get pcNoChapters => '章はまだありません';
+
+  @override
+  String get pcWords => '語';
+
+  @override
+  String get pcNoEndings => 'エンディングはまだありません';
+
+  @override
+  String get pcNoVariables => '変数はまだありません';
+
+  @override
+  String get pcNoRelations => '関係はまだありません';
+
+  @override
+  String get pcUnlabelled => 'ラベルなし';
+
+  @override
+  String get pcNoPanels => 'コマはまだありません';
+
+  @override
+  String get pcNoSketches => 'スケッチはまだありません';
+
+  @override
+  String get managerEmpty => '何も選択されていません — フィルタを設定するかモジュールを選んでください。';
+
+  @override
+  String get pcRoll => '振る';
+
+  @override
+  String get pcNoRolls => 'まだ振っていません';
+
+  @override
+  String get pcNoPinned => 'メッセージを📌で始めるとここに固定されます';
+
+  @override
+  String get pcNoTasks => 'メモに「- [ ] …」と書くとタスクになります';
+
+  @override
+  String get pcBannerEmpty => '画像はまだありません。';
+
+  @override
+  String get pcGalleryEmpty => '画像はまだありません。';
+
+  @override
+  String get pcIconrowEmpty => 'アイコンはまだありません。';
+
+  @override
+  String get pcFigureEmpty => '画像はまだありません。';
+
+  @override
+  String get pcStatItems => '項目';
+
+  @override
+  String get pcStatModules => 'モジュール';
+
+  @override
+  String get backlinks => 'バックリンク';
+
+  @override
+  String get pcCalloutPh => 'メモを書く…';
+
+  @override
+  String get pcDecorPickArrange => 'まだ何もありません。⚙ → オプションで選びます。';
+
+  @override
+  String get pcToneNote => 'メモ';
+
+  @override
+  String get pcToneTip => 'ヒント';
+
+  @override
+  String get pcToneWarning => '警告';
+
+  @override
+  String get pcToneQuote => '引用';
+
+  @override
+  String get pcToneSecret => '秘密';
+
+  @override
+  String get pcOptFields => '表示するフィールド';
+
+  @override
+  String get pcOptDock => '位置';
+
+  @override
+  String get pcOptTone => 'トーン';
+
+  @override
+  String get pcOptField => '集計するフィールド';
+
+  @override
+  String get pcOptFrom => '開始年';
+
+  @override
+  String get pcOptGoal => '目標語数';
+
+  @override
+  String get pcOptSubtitle => 'サブタイトル';
+
+  @override
+  String get pcOptHeight => '高さ';
+
+  @override
+  String get pcOptScrim => '文字の下の影';
+
+  @override
+  String get pbImages => '画像';
+
+  @override
+  String get pcOptFromModule => 'このモジュールのすべての画像';
+
+  @override
+  String get pcOptCaptions => 'ファイル名を表示';
+
+  @override
+  String get pcOptItems => '項目';
+
+  @override
+  String get pcOptSize => 'サイズ';
+
+  @override
+  String get pcOptFit => '収め方';
+
+  @override
+  String get pcOptFloat => '文字の回り込み';
+
+  @override
+  String get pcOptRound => '角丸';
+
+  @override
+  String get pcLayoutTable => '表';
+
+  @override
+  String get pcLayoutStacked => '縦並び';
+
+  @override
+  String get pcDockRight => '右';
+
+  @override
+  String get pcDockLeft => '左';
+
+  @override
+  String get pcDockFull => '全幅';
+
+  @override
+  String get pcSizeS => '小';
+
+  @override
+  String get pcSizeM => '中';
+
+  @override
+  String get pcSizeL => '大';
+
+  @override
+  String get pcSizeFull => '全幅';
+
+  @override
+  String get pcScrimSoft => '弱め';
+
+  @override
+  String get pcScrimStrong => '強め';
+
+  @override
+  String get pcGalMasonry => '石積み';
+
+  @override
+  String get pcDivLine => '線';
+
+  @override
+  String get pcDivDouble => '二重線';
+
+  @override
+  String get pcDivDots => '点線';
+
+  @override
+  String get pcDivOrnament => '飾り';
+
+  @override
+  String get pcDivImage => '画像の帯';
+
+  @override
+  String get pcIrChip => 'チップ';
+
+  @override
+  String get pcIrBig => '大きいアイコン';
+
+  @override
+  String get pcFitContain => '全体';
+
+  @override
+  String get pcFitCover => '枠いっぱい';
+
+  @override
+  String get pcFloatNone => '単独';
+
+  @override
+  String get pcFloatLeft => '画像を左';
+
+  @override
+  String get pcFloatRight => '画像を右';
+
+  @override
+  String get pcLoadFailed => 'このブロックを読み込めませんでした';
+
+  @override
+  String get pcNoValue => '（なし）';
+
+  @override
+  String get tplUse => 'テンプレートを使う…';
+
+  @override
+  String get tplUseHint => 'このページのレイアウトを置き換えます。内容はそのまま残り、直後に元に戻せます。';
+
+  @override
+  String get tplDefault => '既定';
+
+  @override
+  String get tplOtherTypes => '他の種類';
+
+  @override
+  String get tplApplied => 'テンプレートを適用しました';
+
+  @override
+  String get tplBorrowDropped => '{n} 個のブロックを省きました — リンクされていないモジュールから借りるためです';
+
+  @override
+  String get tplGallery => 'ページテンプレート';
+
+  @override
+  String get pcFacts => '事実';
+
+  @override
+  String get pcNoFacts => 'ノートに「設立: 300年」のような行を書く';
+
+  @override
+  String get pcPlacecard => '場所カード';
+
+  @override
+  String get pcBorders => '隣接';
+
+  @override
+  String get pcOptArea => 'エリア（名前）';
+
+  @override
+  String get tplSave => 'ページをテンプレートとして保存…';
+
+  @override
+  String get tplMine => 'マイテンプレート';
+
+  @override
+  String get savePresetHint => 'このモジュールの見た目・表示・フィールド（内容は含まない）を、同じ種類の新しいモジュールの出発点として保存します。';
+
+  @override
+  String get presetSaved => 'プリセットを保存しました';
+
+  @override
+  String get presetDeleteConfirm => 'このプリセットを削除しますか？これから作ったモジュールはそのまま残ります。';
+
+  @override
+  String get bundleTabClassic => 'クラシック';
+
+  @override
+  String get bundleTabGenre => 'ジャンル';
+
+  @override
+  String get bundleTabMine => 'マイバンドル';
+
+  @override
+  String get bundleMineEmpty => 'まだ保存されていません — フォルダーを右クリックして「Artisanバンドルとして保存…」を選んでください';
+
+  @override
+  String get bundleSampleCount => 'サンプルデータ';
+
+  @override
+  String get bundleIncludeSamples => 'サンプルデータを含める';
+
+  @override
+  String get bundleSaveMine => 'Artisanバンドルとして保存…';
+
+  @override
+  String get bundleSaveData => 'データ';
+
+  @override
+  String get bundleDataNone => '構造のみ';
+
+  @override
+  String get bundleDataSamples => 'モジュールごとに最大3件のサンプル';
+
+  @override
+  String get bundleSaveHint => 'フォルダー、モジュール、フィールド、ページレイアウトが保存されます。このフォルダー外のモジュールへのリンクは含まれません。';
+
+  @override
+  String get bundleSaved => 'バンドルを保存しました';
+
+  @override
+  String get bundleCreate => '作成';
+
+  @override
+  String get bundleAdjust => '先に調整';
+
+  @override
+  String get bundleCreated => 'プロジェクトを作成しました';
+
+  @override
+  String get bundleProjectName => 'プロジェクト名';
+
+  @override
+  String get bundleIncludes => '含まれるもの';
+
+  @override
+  String get bundleFields => '項目（空欄 = 含めない）';
+
+  @override
+  String get nameRequired => '名前は必須です';
+
+  @override
+  String get nameField => '名前';
+
+  @override
+  String get artCounts => 'フォルダ {f} · モジュール {m} · リンク {l} · サンプル {s}';
+
+  @override
+  String get artStructure => '作成される構成';
+
+  @override
+  String get artLinks => 'モジュール間のリンク';
+
+  @override
+  String get artLinkRel => 'リレーション項目 / 選択';
+
+  @override
+  String get artLinkBorrow => '借用コンポーネント';
+
+  @override
+  String get artBefore => '作成の前に';
+
+  @override
+  String get exportFormat => '形式';
+
+  @override
+  String get exportPreview => 'プレビュー';
+
+  @override
+  String get exportPreviewNote => 'レイアウトの見取り図です — ファイルには実際のページが入ります';
+
+  @override
+  String get tplBrowse => '他のテンプレート…';
+
+  @override
+  String get tplFields => 'テンプレートの項目も入れる';
+
+  @override
+  String get tplModulePage => 'モジュールのページ';
+
+  @override
+  String get tplItemPage => '要素のページ';
+
+  @override
+  String get tplKindCount => '{n} 種類';
+
+  @override
+  String get tplFieldsHead => 'フィールド';
+
+  @override
+  String get btnApply => '適用';
+
+  @override
+  String get btnCreate => '作成';
 }

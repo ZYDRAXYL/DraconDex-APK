@@ -105,6 +105,42 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Tümünü göster';
+
+  @override
+  String get themeShowLess => 'Daralt';
+
+  @override
+  String get pageLayout => 'Başlık düzeni';
+
+  @override
+  String get titleAlign => 'Başlığı hizala';
+
+  @override
+  String get alignLeft => 'Sol';
+
+  @override
+  String get alignCenter => 'Orta';
+
+  @override
+  String get alignRight => 'Sağ';
+
+  @override
+  String get pageIcon => 'Başlığın üstündeki simge';
+
+  @override
+  String get pageCover => 'Kapak görseli';
+
+  @override
+  String get pageCoverNone => 'Kapak yok';
+
+  @override
+  String get pageCoverEmpty => 'Kapak olarak kullanmak için bu Nexus\'a bir görsel aktarın';
+
+  @override
+  String get pageLayoutScope => 'Yalnızca bu sayfa için geçerli';
+
+  @override
   String get languageLabel => 'Dil';
 
   @override
@@ -1765,4 +1801,1003 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Alta satır ekle';
+
+  @override
+  String get exportTitle => 'Dışa aktar…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Yazdırmak, paylaşmak ya da matbaaya göndermek için';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Word, Google Docs veya Pages’te düzenlemeye devam etmek için';
+
+  @override
+  String get exportEpub => 'EPUB (e-kitap)';
+
+  @override
+  String get exportEpubD => 'Apple Books, Kindle, Kobo veya Calibre için';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Tablo başına bir sayfa; Excel, Sheets veya Numbers için';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Düz tablo — CSV içe aktarma ile geri alınır';
+
+  @override
+  String get htmlExport => 'Web sitesi olarak dışa aktar (HTML)';
+
+  @override
+  String get exportMarkdown => 'Markdown olarak dışa aktar (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Resimli notlar — Obsidian’da açılır';
+
+  @override
+  String get exportMddxD => 'Bu modül, başka bir kasaya taşımak için';
+
+  @override
+  String get exportNoPage => 'Klasörün kendi sayfası yok';
+
+  @override
+  String get exportOnlyDocs => 'Yalnızca Author, Classifier, Chronicler, Drafter ve Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Yalnızca Author kitapları';
+
+  @override
+  String get exportOnlyTables => 'Yalnızca Classifier ve Chronicler';
+
+  @override
+  String get exportGo => 'Dışa aktar';
+
+  @override
+  String get exportScope => 'Kapsam';
+
+  @override
+  String get exportScopePage => 'Bu sayfa';
+
+  @override
+  String get exportScopeModule => 'Bu modül ve tüm öğeleri';
+
+  @override
+  String get exportScopeInside => 'Bu modül ve içindeki her şey';
+
+  @override
+  String get exportScopeNexus => 'Tüm Nexus';
+
+  @override
+  String get exportPaper => 'Kâğıt';
+
+  @override
+  String get exportOrientation => 'Yön';
+
+  @override
+  String get exportPortrait => 'Dikey';
+
+  @override
+  String get exportLandscape => 'Yatay';
+
+  @override
+  String get exportHeaderFooter => 'Başlık ve sayfa numaraları';
+
+  @override
+  String get exportToc => 'İçindekiler sayfası';
+
+  @override
+  String get exportCsvHint => 'Tek tablo: Classifier öğeleri ya da Chronicler’ın ilk zaman çizelgesi. Formül alanları alınmaz. CSV içe aktarma geri okur.';
+
+  @override
+  String get exportXlsxHint => 'Tablo başına bir sayfa (Chronicler’ın her zaman çizelgesi), kalın ve sabit başlık. Formül alanları alınmaz.';
+
+  @override
+  String get exportMdAnyHint => 'Öğe başına bir .md, alanlar özellik olarak; sayfanın resimleri assets/ içinde. Klasörü Obsidian’da kasa olarak açın.';
+
+  @override
+  String get exportDocxHint => 'Bölüm, öğe veya olay başına bir başlık (Word gezinti bölmesinde görünür), alanlar tablo, sayfanın resimleri, bölümler arasında sayfa sonu.';
+
+  @override
+  String get exportEpubHint => 'Bölüm başına bir dosya ve içindekiler; kitap sayfasının başlık kapağı kapak olur.';
+
+  @override
+  String get exportMddxHint => 'Başka bir DraconDex kasasının içe aktarabileceği bir .mddx dosyası.';
+
+  @override
+  String get exportFormulaSkipped => 'Alınmayan formül alanları: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV tek zaman çizelgesi taşır — diğer {n} tanesi Excel dışa aktarımında';
+
+  @override
+  String get exportMediaMissing => '{n} resim bulunamadı ve atlandı';
+
+  @override
+  String get exportMarkdownEmpty => 'Henüz dışa aktarılacak bir şey yok';
+
+  @override
+  String get exportWorking => 'Sayfalar çiziliyor…';
+
+  @override
+  String get exportPictures => 'resim';
+
+  @override
+  String get exportRows => 'satır';
+
+  @override
+  String get exportHtmlPageD => 'Bu sayfa, resimleriyle birlikte bir web sayfası olarak';
+
+  @override
+  String get exportHtmlPageHint => 'index.html ve media/ içindeki resimleri içeren bir .zip — açın ve index.html dosyasını herhangi bir tarayıcıda açın.';
+
+  @override
+  String get exportPrint => 'Yazdır…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Ses';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3B model';
+
+  @override
+  String get pcMedia => 'Karma medya';
+
+  @override
+  String get pcMediaEmpty => 'Henüz dosya yok.';
+
+  @override
+  String get pbChooseFile => 'Dosya seç';
+
+  @override
+  String get pcAddFile => 'Dosya ekle';
+
+  @override
+  String get pcOpenIn => 'Başka bir uygulamada aç';
+
+  @override
+  String get mediaOpenFailed => 'Bu dosya açılamadı';
+
+  @override
+  String get pbBlockSettings => 'Blok ayarları';
+
+  @override
+  String get pbStyle => 'Stil';
+
+  @override
+  String get pbOptions => 'Seçenekler';
+
+  @override
+  String get pbStyleVariant => 'Görünüm';
+
+  @override
+  String get pbStyleAccent => 'Vurgu rengi';
+
+  @override
+  String get pbStyleWidth => 'Genişlik';
+
+  @override
+  String get pbStyleAlign => 'Hizala';
+
+  @override
+  String get pbStyleDensity => 'Boşluk';
+
+  @override
+  String get pbStyleHeader => 'Başlık';
+
+  @override
+  String get pbHeaderShow => 'Başlığı göster';
+
+  @override
+  String get pbHeaderTitle => 'Başlık metni';
+
+  @override
+  String get pbStyleCollapsible => 'Katlanır';
+
+  @override
+  String get pbStyleAnchor => 'Çapa (#)';
+
+  @override
+  String get pbStyleHideOn => 'Şurada gizle';
+
+  @override
+  String get pbStyleReset => 'Sıfırla';
+
+  @override
+  String get pbStyleApplyAll => 'Bu türdeki tüm bloklara uygula';
+
+  @override
+  String get pbStyleApplied => 'Stil {n} bloğa daha uygulandı';
+
+  @override
+  String get pbStyleCopy => 'Stili kopyala';
+
+  @override
+  String get pbStylePaste => 'Stili yapıştır';
+
+  @override
+  String get pbNoOptions => 'Bu bloğun kendi seçeneği yok — görünümü Stil sekmesinde.';
+
+  @override
+  String get pbVariantPlain => 'Sade';
+
+  @override
+  String get pbVariantCard => 'Kart';
+
+  @override
+  String get pbVariantOutline => 'Çerçeve';
+
+  @override
+  String get pbVariantTinted => 'Renkli';
+
+  @override
+  String get pbVariantHero => 'Öne çıkan';
+
+  @override
+  String get pbAccKind => 'Modül türü';
+
+  @override
+  String get pbAccAccent => 'Tema vurgusu';
+
+  @override
+  String get pbAccBlue => 'Mavi';
+
+  @override
+  String get pbAccGreen => 'Yeşil';
+
+  @override
+  String get pbAccAmber => 'Kehribar';
+
+  @override
+  String get pbAccRose => 'Gül';
+
+  @override
+  String get pbAccViolet => 'Mor';
+
+  @override
+  String get pbAccSlate => 'Arduvaz';
+
+  @override
+  String get pbWidthNarrow => 'Dar';
+
+  @override
+  String get pbWidthNormal => 'Normal';
+
+  @override
+  String get pbWidthWide => 'Geniş';
+
+  @override
+  String get pbWidthFull => 'Tam';
+
+  @override
+  String get pbDensityComfy => 'Ferah';
+
+  @override
+  String get pbDensityCompact => 'Sıkı';
+
+  @override
+  String get pbCollOff => 'Hayır';
+
+  @override
+  String get pbCollOpen => 'Açık';
+
+  @override
+  String get pbCollClosed => 'Kapalı';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Telefon';
+
+  @override
+  String get pbHideDesktop => 'Masaüstü';
+
+  @override
+  String get pbLinks => 'Bağlantılar';
+
+  @override
+  String get pbLinkAdd => 'Bağlantı ekle';
+
+  @override
+  String get pbLinkAddPh => '+ [[Ad]] · #çapa · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Bu bir bağlantı değil: [[Ad]], #çapa veya http(s) adresi kullanın';
+
+  @override
+  String get pbLinkLabel => 'Etiket';
+
+  @override
+  String get pbLinkTo => 'Hedef';
+
+  @override
+  String get pbLinkGroup => 'Grup';
+
+  @override
+  String get pbLinkHint => 'Web bağlantıları tarayıcıda açılır, yalnızca http ve https — uygulama yalnızca kayıtlı adresi açar.';
+
+  @override
+  String get pbLinkMissing => 'Bu adda bir şey yok — oluşturmak için tıklayın';
+
+  @override
+  String get pbLinkUp => 'Yukarı';
+
+  @override
+  String get pbLinkDown => 'Aşağı';
+
+  @override
+  String get pbLinksEmpty => 'Henüz bağlantı yok.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Henüz bağlantı yok — ⚙ → Seçenekler ile ekleyin.';
+
+  @override
+  String get pbListAdd => 'Ekle';
+
+  @override
+  String get pcLinkbar => 'Bağlantı çubuğu';
+
+  @override
+  String get pcLinkcard => 'Bağlantı kartları';
+
+  @override
+  String get pcHatnote => 'Üst not';
+
+  @override
+  String get pcSeeAlso => 'Ayrıca bakın';
+
+  @override
+  String get pcReferences => 'Kaynakça';
+
+  @override
+  String get pcTabs => 'Sekmeler';
+
+  @override
+  String get pcToggle => 'Açılır blok';
+
+  @override
+  String get pcNavbox => 'Gezinti kutusu';
+
+  @override
+  String get pcChildren => 'Alt sayfalar';
+
+  @override
+  String get pcHatAnd => 've';
+
+  @override
+  String get pcHatnotePh => 'Ana madde: …';
+
+  @override
+  String get pcReferencesEmpty => 'Henüz dipnot yok — metin bloğuna [^1], ayrı satıra "[^1]: …" yazın.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Bu sayfadan henüz bağlantı yok';
+
+  @override
+  String get pcSuggested => 'Öneriler:';
+
+  @override
+  String get pcTab => 'Sekme';
+
+  @override
+  String get pcChildrenNone => 'Bu sayfanın altında bir şey yok.';
+
+  @override
+  String get pbFootnoteMissing => 'Bu dipnotun henüz metni yok — "[^n]: …" satırı ekleyin';
+
+  @override
+  String get pcOptBar => 'Çubuk stili';
+
+  @override
+  String get pcOptCaption => 'Açıklama';
+
+  @override
+  String get pcOptCount => 'Kaç tane';
+
+  @override
+  String get pcOptCover => 'Kapak resmi';
+
+  @override
+  String get pcOptDepth => 'Derinlik';
+
+  @override
+  String get pcOptHatKind => 'Not türü';
+
+  @override
+  String get pcOptLayout => 'Düzen';
+
+  @override
+  String get pcOptLook => 'Görünüm';
+
+  @override
+  String get pcOptLoop => 'Döngü';
+
+  @override
+  String get pcOptPoster => 'Poster resmi';
+
+  @override
+  String get pcOptSort => 'Sıra';
+
+  @override
+  String get pcOptSource => 'Modülden doldur';
+
+  @override
+  String get pcOptStart => 'Başlangıç';
+
+  @override
+  String get pcOptStartPage => 'İlk gösterilen sayfa';
+
+  @override
+  String get pcOptStartTab => 'İlk gösterilen sekme';
+
+  @override
+  String get pcOptSticky => 'Kaydırırken üstte kalsın';
+
+  @override
+  String get pcOptSuggest => 'Buraya veya buradan bağlantı veren sayfaları öner';
+
+  @override
+  String get pcOptTabs => 'Sekme adları';
+
+  @override
+  String get pcBarPills => 'Hap';
+
+  @override
+  String get pcBarTabs => 'Sekmeler';
+
+  @override
+  String get pcBarUnderline => 'Altı çizili';
+
+  @override
+  String get pcBarButtons => 'Düğmeler';
+
+  @override
+  String get pcCardCard => 'Kart';
+
+  @override
+  String get pcCardCompact => 'Kompakt';
+
+  @override
+  String get pcCardButton => 'Düğme';
+
+  @override
+  String get pcHatMain => 'Ana madde:';
+
+  @override
+  String get pcHatAbout => 'Daha fazlası için bkz.';
+
+  @override
+  String get pcHatDistinguish => 'Şununla karıştırılmamalı:';
+
+  @override
+  String get pcTabsLine => 'Çizgi';
+
+  @override
+  String get pcTabsBoxed => 'Kutulu';
+
+  @override
+  String get pcTabsPills => 'Hap';
+
+  @override
+  String get pcKidsList => 'Liste';
+
+  @override
+  String get pcKidsTree => 'Ağaç';
+
+  @override
+  String get pcKidsCards => 'Kartlar';
+
+  @override
+  String get pcSortOrder => 'Nest’teki gibi';
+
+  @override
+  String get pcSortName => 'Ada göre';
+
+  @override
+  String get pcGalGrid => 'Izgara';
+
+  @override
+  String get pcGalStrip => 'Şerit';
+
+  @override
+  String get pcPdfSingle => 'Tek sayfa';
+
+  @override
+  String get pcPdfStrip => 'Sayfa şeridi';
+
+  @override
+  String get pcInfobox => 'Bilgi kutusu';
+
+  @override
+  String get pcCallout => 'Not kutusu';
+
+  @override
+  String get pcStats => 'İstatistik';
+
+  @override
+  String get pcToc => 'İçindekiler';
+
+  @override
+  String get pcSpotlight => 'Öne çıkan';
+
+  @override
+  String get pcRoster => 'Kadro';
+
+  @override
+  String get pcBreakdown => 'Dağılım';
+
+  @override
+  String get pcEras => 'Çağlar';
+
+  @override
+  String get pcUpcoming => 'Yaklaşan';
+
+  @override
+  String get pcPinlist => 'İğne listesi';
+
+  @override
+  String get pcProgress => 'İlerleme';
+
+  @override
+  String get pcChapters => 'Bölümler';
+
+  @override
+  String get pcEndings => 'Sonlar';
+
+  @override
+  String get pcVariables => 'Değişkenler';
+
+  @override
+  String get pcFocus => 'Odak';
+
+  @override
+  String get pcLegend => 'Açıklama';
+
+  @override
+  String get pcJourney => 'Yolculuk';
+
+  @override
+  String get pcStrip => 'Şerit';
+
+  @override
+  String get pcFeatured => 'Öne çıkan';
+
+  @override
+  String get pcDashboard => 'Pano';
+
+  @override
+  String get pcRecent => 'Son değişenler';
+
+  @override
+  String get pcQuickroll => 'Hızlı zar';
+
+  @override
+  String get pcPinned => 'Sabitlenenler';
+
+  @override
+  String get pcTasks => 'Görevler';
+
+  @override
+  String get pcBanner => 'Afiş';
+
+  @override
+  String get pcGallery => 'Galeri';
+
+  @override
+  String get pcDivider => 'Ayırıcı';
+
+  @override
+  String get pcIconrow => 'Simge satırı';
+
+  @override
+  String get pcFigure => 'Şekil';
+
+  @override
+  String get pcInfoboxEmpty => 'Henüz alan yok';
+
+  @override
+  String get pcStatsEmpty => 'Henüz sayılacak bir şey yok';
+
+  @override
+  String get pcTocEmpty => 'İçindekiler için bir başlık ekleyin';
+
+  @override
+  String get pcNoElements => 'Henüz öğe yok';
+
+  @override
+  String get pcBreakdownEmpty => 'Saymak için bir alan seçin';
+
+  @override
+  String get noEventsYet => 'Henüz olay yok';
+
+  @override
+  String get mapNoAreas => 'Henüz alan yok';
+
+  @override
+  String get pcNoChapters => 'Henüz bölüm yok';
+
+  @override
+  String get pcWords => 'kelime';
+
+  @override
+  String get pcNoEndings => 'Henüz son yok';
+
+  @override
+  String get pcNoVariables => 'Henüz değişken yok';
+
+  @override
+  String get pcNoRelations => 'Henüz ilişki yok';
+
+  @override
+  String get pcUnlabelled => 'Etiketsiz';
+
+  @override
+  String get pcNoPanels => 'Henüz panel yok';
+
+  @override
+  String get pcNoSketches => 'Henüz eskiz yok';
+
+  @override
+  String get managerEmpty => 'Hiçbir şey seçilmedi — bir filtre ayarlayın ya da modül seçin.';
+
+  @override
+  String get pcRoll => 'Zar at';
+
+  @override
+  String get pcNoRolls => 'Henüz zar atılmadı';
+
+  @override
+  String get pcNoPinned => 'Buraya sabitlemek için mesaja 📌 ile başlayın';
+
+  @override
+  String get pcNoTasks => 'Görev eklemek için notlara “- [ ] …” yazın';
+
+  @override
+  String get pcBannerEmpty => 'Henüz resim yok.';
+
+  @override
+  String get pcGalleryEmpty => 'Henüz resim yok.';
+
+  @override
+  String get pcIconrowEmpty => 'Henüz simge yok.';
+
+  @override
+  String get pcFigureEmpty => 'Henüz resim yok.';
+
+  @override
+  String get pcStatItems => 'Öğe';
+
+  @override
+  String get pcStatModules => 'Modül';
+
+  @override
+  String get backlinks => 'Geri bağlantılar';
+
+  @override
+  String get pcCalloutPh => 'Not yazın…';
+
+  @override
+  String get pcDecorPickArrange => 'Henüz bir şey yok — ⚙ → Seçenekler ile seçin.';
+
+  @override
+  String get pcToneNote => 'Not';
+
+  @override
+  String get pcToneTip => 'İpucu';
+
+  @override
+  String get pcToneWarning => 'Uyarı';
+
+  @override
+  String get pcToneQuote => 'Alıntı';
+
+  @override
+  String get pcToneSecret => 'Sır';
+
+  @override
+  String get pcOptFields => 'Gösterilen alanlar';
+
+  @override
+  String get pcOptDock => 'Konum';
+
+  @override
+  String get pcOptTone => 'Ton';
+
+  @override
+  String get pcOptField => 'Alana göre say';
+
+  @override
+  String get pcOptFrom => 'Başlangıç yılı';
+
+  @override
+  String get pcOptGoal => 'Kelime hedefi';
+
+  @override
+  String get pcOptSubtitle => 'Alt başlık';
+
+  @override
+  String get pcOptHeight => 'Yükseklik';
+
+  @override
+  String get pcOptScrim => 'Metin altı gölge';
+
+  @override
+  String get pbImages => 'Resimler';
+
+  @override
+  String get pcOptFromModule => 'Bu modüldeki tüm resimler';
+
+  @override
+  String get pcOptCaptions => 'Dosya adlarını göster';
+
+  @override
+  String get pcOptItems => 'Öğeler';
+
+  @override
+  String get pcOptSize => 'Boyut';
+
+  @override
+  String get pcOptFit => 'Sığdırma';
+
+  @override
+  String get pcOptFloat => 'Metin akışı';
+
+  @override
+  String get pcOptRound => 'Yuvarlak köşeler';
+
+  @override
+  String get pcLayoutTable => 'Tablo';
+
+  @override
+  String get pcLayoutStacked => 'Yığılmış';
+
+  @override
+  String get pcDockRight => 'Sağ';
+
+  @override
+  String get pcDockLeft => 'Sol';
+
+  @override
+  String get pcDockFull => 'Tam genişlik';
+
+  @override
+  String get pcSizeS => 'Küçük';
+
+  @override
+  String get pcSizeM => 'Orta';
+
+  @override
+  String get pcSizeL => 'Büyük';
+
+  @override
+  String get pcSizeFull => 'Tam genişlik';
+
+  @override
+  String get pcScrimSoft => 'Hafif';
+
+  @override
+  String get pcScrimStrong => 'Güçlü';
+
+  @override
+  String get pcGalMasonry => 'Duvar';
+
+  @override
+  String get pcDivLine => 'Çizgi';
+
+  @override
+  String get pcDivDouble => 'Çift';
+
+  @override
+  String get pcDivDots => 'Noktalar';
+
+  @override
+  String get pcDivOrnament => 'Süsleme';
+
+  @override
+  String get pcDivImage => 'Resim şeridi';
+
+  @override
+  String get pcIrChip => 'Çipler';
+
+  @override
+  String get pcIrBig => 'Büyük simgeler';
+
+  @override
+  String get pcFitContain => 'Tamamı';
+
+  @override
+  String get pcFitCover => 'Çerçeveyi doldur';
+
+  @override
+  String get pcFloatNone => 'Tek başına';
+
+  @override
+  String get pcFloatLeft => 'Resim solda';
+
+  @override
+  String get pcFloatRight => 'Resim sağda';
+
+  @override
+  String get pcLoadFailed => 'Bu blok yüklenemedi';
+
+  @override
+  String get pcNoValue => '(yok)';
+
+  @override
+  String get tplUse => 'Şablon kullan…';
+
+  @override
+  String get tplUseHint => 'Bu sayfanın düzenini değiştirir. İçerik kalır, hemen ardından geri alabilirsiniz.';
+
+  @override
+  String get tplDefault => 'Varsayılan';
+
+  @override
+  String get tplOtherTypes => 'Diğer türler';
+
+  @override
+  String get tplApplied => 'Şablon uygulandı';
+
+  @override
+  String get tplBorrowDropped => '{n} blok atlandı — bu modüle bağlı olmayan bir modülden ödünç alıyorlar';
+
+  @override
+  String get tplGallery => 'Sayfa şablonları';
+
+  @override
+  String get pcFacts => 'Bilgiler';
+
+  @override
+  String get pcNoFacts => 'Notta “Kuruluş: 300” gibi satırlar yazın';
+
+  @override
+  String get pcPlacecard => 'Yer kartı';
+
+  @override
+  String get pcBorders => 'Komşular';
+
+  @override
+  String get pcOptArea => 'Bölge (ad)';
+
+  @override
+  String get tplSave => 'Sayfayı şablon olarak kaydet…';
+
+  @override
+  String get tplMine => 'Benim';
+
+  @override
+  String get savePresetHint => 'Bu modülün görünüşünü, görünümünü ve alanlarını (içeriği değil) aynı türdeki yeni modüller için başlangıç noktası olarak kaydeder.';
+
+  @override
+  String get presetSaved => 'Ön ayar kaydedildi';
+
+  @override
+  String get presetDeleteConfirm => 'Bu ön ayar silinsin mi? Ondan oluşturulan modüller olduğu gibi kalır.';
+
+  @override
+  String get bundleTabClassic => 'Klasik';
+
+  @override
+  String get bundleTabGenre => 'Tür';
+
+  @override
+  String get bundleTabMine => 'Benimkiler';
+
+  @override
+  String get bundleMineEmpty => 'Henüz kayıt yok — bir klasöre sağ tıklayıp “Artisan paketi olarak kaydet…” seçin';
+
+  @override
+  String get bundleSampleCount => 'Örnek veri';
+
+  @override
+  String get bundleIncludeSamples => 'Örnek veriyi ekle';
+
+  @override
+  String get bundleSaveMine => 'Artisan paketi olarak kaydet…';
+
+  @override
+  String get bundleSaveData => 'Veri';
+
+  @override
+  String get bundleDataNone => 'Yalnızca yapı';
+
+  @override
+  String get bundleDataSamples => 'Modül başına en fazla 3 örnek';
+
+  @override
+  String get bundleSaveHint => 'Klasörler, modüller, alanlar ve sayfa düzenleri kaydedilir. Bu klasör dışındaki modüllere bağlantılar alınmaz.';
+
+  @override
+  String get bundleSaved => 'Paket kaydedildi';
+
+  @override
+  String get bundleCreate => 'Oluştur';
+
+  @override
+  String get bundleAdjust => 'Önce ayarla';
+
+  @override
+  String get bundleCreated => 'Proje oluşturuldu';
+
+  @override
+  String get bundleProjectName => 'Proje adı';
+
+  @override
+  String get bundleIncludes => 'İçerir';
+
+  @override
+  String get bundleFields => 'Alanlar (boş = çıkar)';
+
+  @override
+  String get nameRequired => 'Ad gerekli';
+
+  @override
+  String get nameField => 'Ad';
+
+  @override
+  String get artCounts => '{f} klasör · {m} modül · {l} bağlantı · {s} örnek';
+
+  @override
+  String get artStructure => 'Oluşturulacak yapı';
+
+  @override
+  String get artLinks => 'Modüller arası bağlantılar';
+
+  @override
+  String get artLinkRel => 'ilişki alanı / seçim';
+
+  @override
+  String get artLinkBorrow => 'ödünç bileşen';
+
+  @override
+  String get artBefore => 'Oluşturmadan önce';
+
+  @override
+  String get exportFormat => 'Biçim';
+
+  @override
+  String get exportPreview => 'Önizleme';
+
+  @override
+  String get exportPreviewNote => 'Düzenin bir taslağı — dosya gerçek sayfalarınızı taşır';
+
+  @override
+  String get tplBrowse => 'Diğer şablonlar…';
+
+  @override
+  String get tplFields => 'Şablonun alanlarını ekle';
+
+  @override
+  String get tplModulePage => 'Modül sayfası';
+
+  @override
+  String get tplItemPage => 'Öğe sayfası';
+
+  @override
+  String get tplKindCount => '{n} şablon';
+
+  @override
+  String get tplFieldsHead => 'Alanlar';
+
+  @override
+  String get btnApply => 'Uygula';
+
+  @override
+  String get btnCreate => 'Oluştur';
 }

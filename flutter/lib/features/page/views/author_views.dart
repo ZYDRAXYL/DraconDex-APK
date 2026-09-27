@@ -56,24 +56,22 @@ class AuthorView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context)!;
     final id = ctx.source.id;
-    if (ctx.preset == 'editor' || ctx.preset.isEmpty) return AuthorContent(moduleId: id);
+    if (ctx.preset == 'editor' || ctx.preset.isEmpty) return AuthorContent(moduleId: id, module: ctx.source);
     final chapters = ref.watch(chaptersProvider(id)).valueOrNull;
     if (chapters == null) return const SizedBox(height: 48);
+    Future<void> add() async {
+      final name = await askText(context, l.authorNewChapter, label: l.labelName);
+      if (name == null) return;
+      final db = await ref.read(databaseProvider.future);
+      await AuthorDao(db).createChapter(moduleRef: id, name: name);
+      ref.invalidate(chaptersProvider(id));
+      ref.invalidate(nexusIndexProvider(ctx.nexusId));
+    }
+
     final bar = ViewBar(actions: [
-      IconButton(
-        tooltip: l.authorNewChapter,
-        icon: const Icon(Icons.add),
-        onPressed: () async {
-          final name = await askText(context, l.authorNewChapter, label: l.labelName);
-          if (name == null) return;
-          final db = await ref.read(databaseProvider.future);
-          await AuthorDao(db).createChapter(moduleRef: id, name: name);
-          ref.invalidate(chaptersProvider(id));
-          ref.invalidate(nexusIndexProvider(ctx.nexusId));
-        },
-      ),
+      IconButton(tooltip: l.authorNewChapter, icon: const Icon(Icons.add), onPressed: add),
     ]);
-    if (chapters.isEmpty) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, EmptyHint(l.authorNoChapters)]);
+    if (chapters.isEmpty) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.authorNoChapters, startLabel: l.authorNewChapter, onStart: add)]);
     final body = switch (ctx.preset) {
       'board' => _Board(ctx: ctx, chapters: chapters),
       'outline' => _Outline(ctx: ctx, chapters: chapters),

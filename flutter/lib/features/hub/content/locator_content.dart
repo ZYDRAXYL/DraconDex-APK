@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/locator_model.dart';
+import '../../../data/models/module_model.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../page/views/view_common.dart';
 
 /// Locator kind: a map with drawable polygon areas.
 ///
@@ -24,8 +26,11 @@ class LocatorContent extends ConsumerWidget {
   final int moduleId;
   /// The board's height: 360 on a page, the screen's in full screen.
   final double boardHeight;
+  /// The module, when the page has it: with no areas yet the kind's empty
+  /// state (KindEmptyState) stands in for the area list.
+  final ModuleModel? module;
 
-  const LocatorContent({super.key, required this.moduleId, this.boardHeight = 360});
+  const LocatorContent({super.key, required this.moduleId, this.boardHeight = 360, this.module});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -43,7 +48,7 @@ class LocatorContent extends ConsumerWidget {
       ),
       data: (map) => map == null
           ? const SizedBox.shrink()
-          : _MapBoard(moduleId: moduleId, mapId: map.id, boardHeight: boardHeight),
+          : _MapBoard(moduleId: moduleId, mapId: map.id, boardHeight: boardHeight, module: module),
     );
   }
 }
@@ -52,7 +57,8 @@ class _MapBoard extends ConsumerStatefulWidget {
   final int moduleId;
   final int mapId;
   final double boardHeight;
-  const _MapBoard({required this.moduleId, required this.mapId, required this.boardHeight});
+  final ModuleModel? module;
+  const _MapBoard({required this.moduleId, required this.mapId, required this.boardHeight, this.module});
 
   @override
   ConsumerState<_MapBoard> createState() => _MapBoardState();
@@ -176,7 +182,9 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
                 ],
               ),
             ),
-            if (areas.isEmpty)
+            if (areas.isEmpty && widget.module != null)
+              KindEmptyState(module: widget.module!, note: l10n.locatorNoAreas, startLabel: l10n.locatorNewArea, onStart: _addArea)
+            else if (areas.isEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
                 child: Text(l10n.locatorNoAreas, style: theme.textTheme.bodySmall),

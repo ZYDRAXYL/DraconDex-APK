@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/chronicler_model.dart';
+import '../../../data/models/module_model.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../page/views/view_common.dart';
 
 /// Chronicler kind: the module's timeline, in chronological order.
 ///
@@ -14,7 +16,10 @@ import '../../../widgets/confirm_dialog.dart';
 /// numeric for the same reason.
 class ChroniclerContent extends ConsumerWidget {
   final int moduleId;
-  const ChroniclerContent({super.key, required this.moduleId});
+  /// The module, when the page has it: with no events yet the kind's empty
+  /// state (KindEmptyState) stands in for the event list.
+  final ModuleModel? module;
+  const ChroniclerContent({super.key, required this.moduleId, this.module});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,14 +36,15 @@ class ChroniclerContent extends ConsumerWidget {
         child: Text('$e', style: TextStyle(color: theme.colorScheme.error)),
       ),
       data: (timelineId) =>
-          timelineId == null ? const SizedBox.shrink() : _Events(timelineId: timelineId),
+          timelineId == null ? const SizedBox.shrink() : _Events(timelineId: timelineId, module: module),
     );
   }
 }
 
 class _Events extends ConsumerWidget {
   final int timelineId;
-  const _Events({required this.timelineId});
+  final ModuleModel? module;
+  const _Events({required this.timelineId, this.module});
 
   Future<void> _edit(BuildContext context, WidgetRef ref, {TimelineEventModel? existing}) async {
     final result = await showDialog<_EventDraft>(
@@ -120,6 +126,9 @@ class _Events extends ConsumerWidget {
             child: Text('$e', style: TextStyle(color: theme.colorScheme.error)),
           ),
           data: (events) {
+            if (events.isEmpty && module != null) {
+              return KindEmptyState(module: module!, note: l10n.chroniclerNoEvents, startLabel: l10n.chroniclerNewEvent, onStart: () => _edit(context, ref));
+            }
             if (events.isEmpty) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),

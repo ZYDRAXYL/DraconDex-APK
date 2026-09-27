@@ -30,6 +30,10 @@ class PageData {
   /// Top-level blocks, in order.
   List<PageBlock> get top => [for (final b in blocks) if (b.parentId == null) b];
 
+  /// The children a container (columns, tabs, toggle) holds in slot [col].
+  List<PageBlock> childrenOf(PageBlock parent, int col) =>
+      [for (final b in blocks) if (b.parentId == parent.id && b.column == col) b];
+
   /// A columns block's children, per column.
   List<List<PageBlock>> columnsOf(PageBlock columns) {
     final n = ((columns.config['n'] as num?)?.toInt() ?? 2).clamp(1, 3);

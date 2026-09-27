@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
+import '../../../data/models/module_model.dart';
 import '../../../data/models/author_model.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../page/views/view_common.dart';
 
 /// Author kind: a book made of chapters. The chapter list picks one; the
 /// editor below writes `book_chapter.chapter_content`.
@@ -14,7 +16,10 @@ import '../../../widgets/confirm_dialog.dart';
 /// chapter is not one database write per character.
 class AuthorContent extends ConsumerStatefulWidget {
   final int moduleId;
-  const AuthorContent({super.key, required this.moduleId});
+  /// The module, when the page has it: empty, the kind's empty state
+  /// (KindEmptyState) stands in for the list.
+  final ModuleModel? module;
+  const AuthorContent({super.key, required this.moduleId, this.module});
 
   @override
   ConsumerState<AuthorContent> createState() => _AuthorContentState();
@@ -112,7 +117,9 @@ class _AuthorContentState extends ConsumerState<AuthorContent> {
                 ],
               ),
             ),
-            if (chapters.isEmpty)
+            if (chapters.isEmpty && widget.module != null)
+              KindEmptyState(module: widget.module!, note: l10n.authorNoChapters, startLabel: l10n.authorNewChapter, onStart: _addChapter)
+            else if (chapters.isEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
                 child: Text(l10n.authorNoChapters, style: theme.textTheme.bodySmall),

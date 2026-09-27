@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/i18n/app_localizations.dart';
 import '../../core/layout/breakpoints.dart';
+import '../../core/theme/ddx_theme.dart';
 import '../../data/services/bundle_service.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
@@ -70,6 +72,8 @@ class _BuilderShellState extends ConsumerState<BuilderShell> {
   /// nothing about which way they are reading. A few pixels of slack keep a
   /// tap with a wobble in it from flicking the bars.
   bool _onScroll(ScrollNotification n) {
+    // iOS keeps its tab bar while scrolling (APP docs/REDESIGN.md C3).
+    if (context.isIosStyle) return false;
     if (n.metrics.axis != Axis.vertical || n is! ScrollUpdateNotification) return false;
     final chrome = ref.read(chromeVisibleProvider.notifier);
     final delta = n.scrollDelta ?? 0;
@@ -231,9 +235,7 @@ class BuilderNavibar extends ConsumerWidget {
     final atNest = location == '/' || (here.nexusId != null && here.moduleId == null);
     final atSearch = location == '/search';
 
-    return BottomAppBar(
-      padding: EdgeInsets.zero,
-      child: SafeArea(
+    final row = SafeArea(
         top: false,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -273,8 +275,25 @@ class BuilderNavibar extends ConsumerWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
+    if (context.isIosStyle) {
+      // The Apple tab bar (C3): translucent over the page, blurred, a hairline
+      // on top — the same five destinations.
+      final ddx = context.ddx;
+      return ClipRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: ddx.iosBar,
+              border: Border(top: BorderSide(color: ddx.iosSeparator, width: 0.5)),
+            ),
+            child: Padding(padding: const EdgeInsets.only(top: 4), child: row),
+          ),
+        ),
+      );
+    }
+    return BottomAppBar(padding: EdgeInsets.zero, child: row);
   }
 }
 
@@ -296,7 +315,10 @@ class _NavibarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final color = highlighted ? scheme.primary : scheme.onSurface.withValues(alpha: 0.75);
+    final ios = context.isIosStyle;
+    final color = highlighted
+        ? (ios ? context.ddx.iosTint : scheme.primary)
+        : (ios ? context.ddx.textMuted : scheme.onSurface.withValues(alpha: 0.75));
     final iconWidget = Icon(icon, size: 22, color: color);
 
     return Expanded(

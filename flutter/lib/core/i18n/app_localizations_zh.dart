@@ -105,6 +105,42 @@ class AppLocalizationsZh extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => '显示全部';
+
+  @override
+  String get themeShowLess => '收起';
+
+  @override
+  String get pageLayout => '标题布局';
+
+  @override
+  String get titleAlign => '标题对齐';
+
+  @override
+  String get alignLeft => '左';
+
+  @override
+  String get alignCenter => '居中';
+
+  @override
+  String get alignRight => '右';
+
+  @override
+  String get pageIcon => '标题上方的图标';
+
+  @override
+  String get pageCover => '封面图片';
+
+  @override
+  String get pageCoverNone => '无封面';
+
+  @override
+  String get pageCoverEmpty => '先将图片导入此 Nexus，才能用作封面';
+
+  @override
+  String get pageLayoutScope => '仅应用于此页面';
+
+  @override
   String get languageLabel => '语言';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get clsInsertBelow => '在下方插入行';
+
+  @override
+  String get exportTitle => '导出…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => '用于打印、分享或交付印刷';
+
+  @override
+  String get exportDocx => 'Word（DOCX）';
+
+  @override
+  String get exportDocxD => '在 Word、Google 文档或 Pages 中继续编辑';
+
+  @override
+  String get exportEpub => 'EPUB（电子书）';
+
+  @override
+  String get exportEpubD => '用于 Apple Books、Kindle、Kobo 或 Calibre';
+
+  @override
+  String get exportXlsx => 'Excel（XLSX）';
+
+  @override
+  String get exportXlsxD => '每个表一张工作表，可用 Excel、Sheets 或 Numbers 打开';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => '纯表格 — 可通过“导入 CSV”再导回';
+
+  @override
+  String get htmlExport => '导出为网站 (HTML)';
+
+  @override
+  String get exportMarkdown => '导出为 Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => '带图片的笔记 — 可在 Obsidian 打开';
+
+  @override
+  String get exportMddxD => '此模块，用于移到另一个库';
+
+  @override
+  String get exportNoPage => '文件夹没有自己的页面';
+
+  @override
+  String get exportOnlyDocs => '仅限 Author、Classifier、Chronicler、Drafter 和 Inspector';
+
+  @override
+  String get exportOnlyBooks => '仅限 Author 的书';
+
+  @override
+  String get exportOnlyTables => '仅限 Classifier 和 Chronicler';
+
+  @override
+  String get exportGo => '导出';
+
+  @override
+  String get exportScope => '包含范围';
+
+  @override
+  String get exportScopePage => '此页';
+
+  @override
+  String get exportScopeModule => '此模块及所有元素';
+
+  @override
+  String get exportScopeInside => '此模块及其中所有内容';
+
+  @override
+  String get exportScopeNexus => '整个 Nexus';
+
+  @override
+  String get exportPaper => '纸张';
+
+  @override
+  String get exportOrientation => '方向';
+
+  @override
+  String get exportPortrait => '纵向';
+
+  @override
+  String get exportLandscape => '横向';
+
+  @override
+  String get exportHeaderFooter => '标题和页码';
+
+  @override
+  String get exportToc => '目录页';
+
+  @override
+  String get exportCsvHint => '单个表格：Classifier 的元素，或 Chronicler 的第一条时间线。不含公式字段。可通过“导入 CSV”读回。';
+
+  @override
+  String get exportXlsxHint => '每个表一张工作表（Chronicler 的每条时间线），表头加粗并冻结。不含公式字段。';
+
+  @override
+  String get exportMdAnyHint => '每个元素一个 .md（字段为属性），页面图片放在 assets/。可在 Obsidian 中将文件夹作为库打开。';
+
+  @override
+  String get exportDocxHint => '每章、每个元素或事件一个标题（显示在 Word 导航窗格），字段为表格，含页面图片，章与章之间分页。';
+
+  @override
+  String get exportEpubHint => '每章一个文件并附目录；书页标题封面即为封面。';
+
+  @override
+  String get exportMddxHint => '另一个 DraconDex 库可导入的 .mddx 文件。';
+
+  @override
+  String get exportFormulaSkipped => '未包含的公式字段：{names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV 只含一条时间线 — 其余 {n} 条请用 Excel 导出';
+
+  @override
+  String get exportMediaMissing => '有 {n} 张图片找不到，已略过';
+
+  @override
+  String get exportMarkdownEmpty => '还没有可导出的内容';
+
+  @override
+  String get exportWorking => '正在绘制页面…';
+
+  @override
+  String get exportPictures => '图片';
+
+  @override
+  String get exportRows => '行';
+
+  @override
+  String get exportHtmlPageD => '将此页导出为网页，图片一并附带';
+
+  @override
+  String get exportHtmlPageHint => '包含 index.html 及 media/ 中图片的 .zip — 解压后用任意浏览器打开 index.html。';
+
+  @override
+  String get exportPrint => '打印…';
+
+  @override
+  String get pcVideo => '视频';
+
+  @override
+  String get pcAudio => '音频';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D 模型';
+
+  @override
+  String get pcMedia => '混合媒体';
+
+  @override
+  String get pcMediaEmpty => '暂无文件。';
+
+  @override
+  String get pbChooseFile => '选择文件';
+
+  @override
+  String get pcAddFile => '添加文件';
+
+  @override
+  String get pcOpenIn => '用其他应用打开';
+
+  @override
+  String get mediaOpenFailed => '无法打开此文件';
+
+  @override
+  String get pbBlockSettings => '区块设置';
+
+  @override
+  String get pbStyle => '样式';
+
+  @override
+  String get pbOptions => '选项';
+
+  @override
+  String get pbStyleVariant => '外观';
+
+  @override
+  String get pbStyleAccent => '强调色';
+
+  @override
+  String get pbStyleWidth => '宽度';
+
+  @override
+  String get pbStyleAlign => '对齐';
+
+  @override
+  String get pbStyleDensity => '间距';
+
+  @override
+  String get pbStyleHeader => '标题栏';
+
+  @override
+  String get pbHeaderShow => '显示标题栏';
+
+  @override
+  String get pbHeaderTitle => '标题文字';
+
+  @override
+  String get pbStyleCollapsible => '可折叠';
+
+  @override
+  String get pbStyleAnchor => '锚点（#）';
+
+  @override
+  String get pbStyleHideOn => '隐藏于';
+
+  @override
+  String get pbStyleReset => '重置';
+
+  @override
+  String get pbStyleApplyAll => '应用到此页同类区块';
+
+  @override
+  String get pbStyleApplied => '已应用到另外 {n} 个区块';
+
+  @override
+  String get pbStyleCopy => '复制样式';
+
+  @override
+  String get pbStylePaste => '粘贴样式';
+
+  @override
+  String get pbNoOptions => '此区块没有自己的选项——外观在“样式”标签中设置。';
+
+  @override
+  String get pbVariantPlain => '朴素';
+
+  @override
+  String get pbVariantCard => '卡片';
+
+  @override
+  String get pbVariantOutline => '描边';
+
+  @override
+  String get pbVariantTinted => '着色';
+
+  @override
+  String get pbVariantHero => '主视觉';
+
+  @override
+  String get pbAccKind => '模块类型';
+
+  @override
+  String get pbAccAccent => '主题强调色';
+
+  @override
+  String get pbAccBlue => '蓝';
+
+  @override
+  String get pbAccGreen => '绿';
+
+  @override
+  String get pbAccAmber => '琥珀';
+
+  @override
+  String get pbAccRose => '玫瑰';
+
+  @override
+  String get pbAccViolet => '紫';
+
+  @override
+  String get pbAccSlate => '石板灰';
+
+  @override
+  String get pbWidthNarrow => '窄';
+
+  @override
+  String get pbWidthNormal => '标准';
+
+  @override
+  String get pbWidthWide => '宽';
+
+  @override
+  String get pbWidthFull => '全宽';
+
+  @override
+  String get pbDensityComfy => '宽松';
+
+  @override
+  String get pbDensityCompact => '紧凑';
+
+  @override
+  String get pbCollOff => '否';
+
+  @override
+  String get pbCollOpen => '默认展开';
+
+  @override
+  String get pbCollClosed => '默认折叠';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => '手机';
+
+  @override
+  String get pbHideDesktop => '桌面';
+
+  @override
+  String get pbLinks => '链接';
+
+  @override
+  String get pbLinkAdd => '添加链接';
+
+  @override
+  String get pbLinkAddPh => '+ [[名称]] · #锚点 · https://…';
+
+  @override
+  String get pbLinkBadUrl => '这不是链接：请用 [[名称]]、#锚点 或 http(s) 地址';
+
+  @override
+  String get pbLinkLabel => '显示文字';
+
+  @override
+  String get pbLinkTo => '目标';
+
+  @override
+  String get pbLinkGroup => '分组';
+
+  @override
+  String get pbLinkHint => '网页链接在浏览器中打开，仅限 http 和 https——应用只打开已保存的地址。';
+
+  @override
+  String get pbLinkMissing => '尚无此名称的页面——点击创建';
+
+  @override
+  String get pbLinkUp => '上移';
+
+  @override
+  String get pbLinkDown => '下移';
+
+  @override
+  String get pbLinksEmpty => '暂无链接。';
+
+  @override
+  String get pbLinksEmptyArrange => '暂无链接——在 ⚙ → 选项 中添加。';
+
+  @override
+  String get pbListAdd => '添加';
+
+  @override
+  String get pcLinkbar => '链接栏';
+
+  @override
+  String get pcLinkcard => '链接卡片';
+
+  @override
+  String get pcHatnote => '顶注';
+
+  @override
+  String get pcSeeAlso => '另请参阅';
+
+  @override
+  String get pcReferences => '参考';
+
+  @override
+  String get pcTabs => '标签页';
+
+  @override
+  String get pcToggle => '折叠块';
+
+  @override
+  String get pcNavbox => '导航框';
+
+  @override
+  String get pcChildren => '子页面';
+
+  @override
+  String get pcHatAnd => '和';
+
+  @override
+  String get pcHatnotePh => '主条目：…';
+
+  @override
+  String get pcReferencesEmpty => '此页尚无脚注——在文本块中写 [^1]，另起一行写 “[^1]: …”。';
+
+  @override
+  String get pcSeeAlsoEmpty => '此页面还没有链接';
+
+  @override
+  String get pcSuggested => '建议：';
+
+  @override
+  String get pcTab => '标签';
+
+  @override
+  String get pcChildrenNone => '此页面下没有内容。';
+
+  @override
+  String get pbFootnoteMissing => '此脚注尚无内容——请添加一行 “[^n]: …”';
+
+  @override
+  String get pcOptBar => '栏样式';
+
+  @override
+  String get pcOptCaption => '说明';
+
+  @override
+  String get pcOptCount => '数量';
+
+  @override
+  String get pcOptCover => '封面图';
+
+  @override
+  String get pcOptDepth => '层级';
+
+  @override
+  String get pcOptHatKind => '注记类型';
+
+  @override
+  String get pcOptLayout => '布局';
+
+  @override
+  String get pcOptLook => '外观';
+
+  @override
+  String get pcOptLoop => '循环';
+
+  @override
+  String get pcOptPoster => '封面图';
+
+  @override
+  String get pcOptSort => '排序';
+
+  @override
+  String get pcOptSource => '从模块填充';
+
+  @override
+  String get pcOptStart => '初始状态';
+
+  @override
+  String get pcOptStartPage => '起始页';
+
+  @override
+  String get pcOptStartTab => '默认标签';
+
+  @override
+  String get pcOptSticky => '滚动时固定在顶部';
+
+  @override
+  String get pcOptSuggest => '推荐链接到此处或由此链接的页面';
+
+  @override
+  String get pcOptTabs => '标签名称';
+
+  @override
+  String get pcBarPills => '胶囊';
+
+  @override
+  String get pcBarTabs => '标签';
+
+  @override
+  String get pcBarUnderline => '下划线';
+
+  @override
+  String get pcBarButtons => '按钮';
+
+  @override
+  String get pcCardCard => '卡片';
+
+  @override
+  String get pcCardCompact => '紧凑';
+
+  @override
+  String get pcCardButton => '按钮';
+
+  @override
+  String get pcHatMain => '主条目：';
+
+  @override
+  String get pcHatAbout => '更多内容见';
+
+  @override
+  String get pcHatDistinguish => '不要与以下混淆：';
+
+  @override
+  String get pcTabsLine => '线条';
+
+  @override
+  String get pcTabsBoxed => '方框';
+
+  @override
+  String get pcTabsPills => '胶囊';
+
+  @override
+  String get pcKidsList => '列表';
+
+  @override
+  String get pcKidsTree => '树形';
+
+  @override
+  String get pcKidsCards => '卡片';
+
+  @override
+  String get pcSortOrder => '按 Nest 顺序';
+
+  @override
+  String get pcSortName => '按名称';
+
+  @override
+  String get pcGalGrid => '网格';
+
+  @override
+  String get pcGalStrip => '横条';
+
+  @override
+  String get pcPdfSingle => '单页';
+
+  @override
+  String get pcPdfStrip => '缩略条';
+
+  @override
+  String get pcInfobox => '信息框';
+
+  @override
+  String get pcCallout => '标注';
+
+  @override
+  String get pcStats => '统计';
+
+  @override
+  String get pcToc => '目录';
+
+  @override
+  String get pcSpotlight => '聚光';
+
+  @override
+  String get pcRoster => '名册';
+
+  @override
+  String get pcBreakdown => '分布';
+
+  @override
+  String get pcEras => '时代';
+
+  @override
+  String get pcUpcoming => '即将到来';
+
+  @override
+  String get pcPinlist => '图钉列表';
+
+  @override
+  String get pcProgress => '进度';
+
+  @override
+  String get pcChapters => '章节';
+
+  @override
+  String get pcEndings => '结局';
+
+  @override
+  String get pcVariables => '变量';
+
+  @override
+  String get pcFocus => '焦点';
+
+  @override
+  String get pcLegend => '图例';
+
+  @override
+  String get pcJourney => '旅程';
+
+  @override
+  String get pcStrip => '分格条';
+
+  @override
+  String get pcFeatured => '精选';
+
+  @override
+  String get pcDashboard => '仪表板';
+
+  @override
+  String get pcRecent => '最近更改';
+
+  @override
+  String get pcQuickroll => '快速掷骰';
+
+  @override
+  String get pcPinned => '已置顶';
+
+  @override
+  String get pcTasks => '任务';
+
+  @override
+  String get pcBanner => '横幅';
+
+  @override
+  String get pcGallery => '图库';
+
+  @override
+  String get pcDivider => '分隔线';
+
+  @override
+  String get pcIconrow => '图标行';
+
+  @override
+  String get pcFigure => '插图';
+
+  @override
+  String get pcInfoboxEmpty => '还没有字段';
+
+  @override
+  String get pcStatsEmpty => '暂无可统计内容';
+
+  @override
+  String get pcTocEmpty => '添加标题即可生成目录';
+
+  @override
+  String get pcNoElements => '还没有元素';
+
+  @override
+  String get pcBreakdownEmpty => '选择一个用于统计的字段';
+
+  @override
+  String get noEventsYet => '还没有事件';
+
+  @override
+  String get mapNoAreas => '还没有区域';
+
+  @override
+  String get pcNoChapters => '还没有章节';
+
+  @override
+  String get pcWords => '字';
+
+  @override
+  String get pcNoEndings => '还没有结局';
+
+  @override
+  String get pcNoVariables => '还没有变量';
+
+  @override
+  String get pcNoRelations => '还没有关系';
+
+  @override
+  String get pcUnlabelled => '未标记';
+
+  @override
+  String get pcNoPanels => '还没有分格';
+
+  @override
+  String get pcNoSketches => '还没有草图';
+
+  @override
+  String get managerEmpty => '未选择任何内容 — 设置筛选或挑选模块。';
+
+  @override
+  String get pcRoll => '掷骰';
+
+  @override
+  String get pcNoRolls => '还没有掷骰记录';
+
+  @override
+  String get pcNoPinned => '以 📌 开头的消息会置顶在这里';
+
+  @override
+  String get pcNoTasks => '在笔记中写“- [ ] …”即可添加任务';
+
+  @override
+  String get pcBannerEmpty => '暂无图片。';
+
+  @override
+  String get pcGalleryEmpty => '暂无图片。';
+
+  @override
+  String get pcIconrowEmpty => '暂无图标。';
+
+  @override
+  String get pcFigureEmpty => '暂无图片。';
+
+  @override
+  String get pcStatItems => '条目';
+
+  @override
+  String get pcStatModules => '模块';
+
+  @override
+  String get backlinks => '反向链接';
+
+  @override
+  String get pcCalloutPh => '写一条备注…';
+
+  @override
+  String get pcDecorPickArrange => '暂无内容——在 ⚙ → 选项 中选择。';
+
+  @override
+  String get pcToneNote => '注释';
+
+  @override
+  String get pcToneTip => '提示';
+
+  @override
+  String get pcToneWarning => '警告';
+
+  @override
+  String get pcToneQuote => '引文';
+
+  @override
+  String get pcToneSecret => '秘密';
+
+  @override
+  String get pcOptFields => '显示的字段';
+
+  @override
+  String get pcOptDock => '位置';
+
+  @override
+  String get pcOptTone => '语气';
+
+  @override
+  String get pcOptField => '按字段统计';
+
+  @override
+  String get pcOptFrom => '起始年份';
+
+  @override
+  String get pcOptGoal => '目标字数';
+
+  @override
+  String get pcOptSubtitle => '副标题';
+
+  @override
+  String get pcOptHeight => '高度';
+
+  @override
+  String get pcOptScrim => '文字底部阴影';
+
+  @override
+  String get pbImages => '图片';
+
+  @override
+  String get pcOptFromModule => '此模块下的所有图片';
+
+  @override
+  String get pcOptCaptions => '显示文件名';
+
+  @override
+  String get pcOptItems => '项目';
+
+  @override
+  String get pcOptSize => '大小';
+
+  @override
+  String get pcOptFit => '适配';
+
+  @override
+  String get pcOptFloat => '文字环绕';
+
+  @override
+  String get pcOptRound => '圆角';
+
+  @override
+  String get pcLayoutTable => '表格';
+
+  @override
+  String get pcLayoutStacked => '堆叠';
+
+  @override
+  String get pcDockRight => '右侧';
+
+  @override
+  String get pcDockLeft => '左侧';
+
+  @override
+  String get pcDockFull => '全宽';
+
+  @override
+  String get pcSizeS => '小';
+
+  @override
+  String get pcSizeM => '中';
+
+  @override
+  String get pcSizeL => '大';
+
+  @override
+  String get pcSizeFull => '全宽';
+
+  @override
+  String get pcScrimSoft => '柔和';
+
+  @override
+  String get pcScrimStrong => '浓重';
+
+  @override
+  String get pcGalMasonry => '瀑布流';
+
+  @override
+  String get pcDivLine => '直线';
+
+  @override
+  String get pcDivDouble => '双线';
+
+  @override
+  String get pcDivDots => '点线';
+
+  @override
+  String get pcDivOrnament => '装饰';
+
+  @override
+  String get pcDivImage => '图片条';
+
+  @override
+  String get pcIrChip => '标签';
+
+  @override
+  String get pcIrBig => '大图标';
+
+  @override
+  String get pcFitContain => '完整';
+
+  @override
+  String get pcFitCover => '填满';
+
+  @override
+  String get pcFloatNone => '独立';
+
+  @override
+  String get pcFloatLeft => '图片居左';
+
+  @override
+  String get pcFloatRight => '图片居右';
+
+  @override
+  String get pcLoadFailed => '无法加载此区块';
+
+  @override
+  String get pcNoValue => '（无）';
+
+  @override
+  String get tplUse => '使用模板…';
+
+  @override
+  String get tplUseHint => '替换此页面的布局。内容保持不变，之后可立即撤销。';
+
+  @override
+  String get tplDefault => '默认';
+
+  @override
+  String get tplOtherTypes => '其他类型';
+
+  @override
+  String get tplApplied => '已应用模板';
+
+  @override
+  String get tplBorrowDropped => '已略过 {n} 个区块 — 它们借用的模块未与此模块关联';
+
+  @override
+  String get tplGallery => '页面模板';
+
+  @override
+  String get pcFacts => '事实';
+
+  @override
+  String get pcNoFacts => '在笔记中写“建立: 300年”这样的行';
+
+  @override
+  String get pcPlacecard => '地点卡片';
+
+  @override
+  String get pcBorders => '相邻';
+
+  @override
+  String get pcOptArea => '区域（名称）';
+
+  @override
+  String get tplSave => '将页面另存为模板…';
+
+  @override
+  String get tplMine => '我的';
+
+  @override
+  String get savePresetHint => '将此模块的外观、视图和字段（不含内容）保存为同类新模块的起点。';
+
+  @override
+  String get presetSaved => '预设已保存';
+
+  @override
+  String get presetDeleteConfirm => '删除此预设？用它创建的模块保持不变。';
+
+  @override
+  String get bundleTabClassic => '经典';
+
+  @override
+  String get bundleTabGenre => '类型';
+
+  @override
+  String get bundleTabMine => '我的';
+
+  @override
+  String get bundleMineEmpty => '尚未保存 — 右键点击文件夹并选择“另存为 Artisan 包…”';
+
+  @override
+  String get bundleSampleCount => '示例数据';
+
+  @override
+  String get bundleIncludeSamples => '包含示例数据';
+
+  @override
+  String get bundleSaveMine => '另存为 Artisan 包…';
+
+  @override
+  String get bundleSaveData => '数据';
+
+  @override
+  String get bundleDataNone => '仅结构';
+
+  @override
+  String get bundleDataSamples => '每个模块最多 3 个示例';
+
+  @override
+  String get bundleSaveHint => '将保存文件夹、模块、字段和页面布局。指向此文件夹外模块的链接不会保存。';
+
+  @override
+  String get bundleSaved => '包已保存';
+
+  @override
+  String get bundleCreate => '创建';
+
+  @override
+  String get bundleAdjust => '先调整';
+
+  @override
+  String get bundleCreated => '项目已创建';
+
+  @override
+  String get bundleProjectName => '项目名称';
+
+  @override
+  String get bundleIncludes => '包含';
+
+  @override
+  String get bundleFields => '字段（留空 = 不要）';
+
+  @override
+  String get nameRequired => '名称为必填项';
+
+  @override
+  String get nameField => '名称';
+
+  @override
+  String get artCounts => '{f} 个文件夹 · {m} 个模块 · {l} 个链接 · {s} 个示例';
+
+  @override
+  String get artStructure => '将创建的结构';
+
+  @override
+  String get artLinks => '模块之间的链接';
+
+  @override
+  String get artLinkRel => '关系字段 / 选择';
+
+  @override
+  String get artLinkBorrow => '借用组件';
+
+  @override
+  String get artBefore => '创建之前';
+
+  @override
+  String get exportFormat => '格式';
+
+  @override
+  String get exportPreview => '预览';
+
+  @override
+  String get exportPreviewNote => '版式示意图——文件中是你真实的页面';
+
+  @override
+  String get tplBrowse => '更多模板…';
+
+  @override
+  String get tplFields => '同时加入模板的字段';
+
+  @override
+  String get tplModulePage => '模块页面';
+
+  @override
+  String get tplItemPage => '元素页面';
+
+  @override
+  String get tplKindCount => '{n} 个';
+
+  @override
+  String get tplFieldsHead => '字段';
+
+  @override
+  String get btnApply => '应用';
+
+  @override
+  String get btnCreate => '创建';
 }

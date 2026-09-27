@@ -48,7 +48,7 @@ final List<ComponentDef> kindViewComponents = [
       canvas: true, canvasPresets: {'canvas'}),
   _view(ModuleKind.scribe, ['chat', 'transcript'], (c, x) => ScribeView(ctx: x)),
   _view(ModuleKind.diviner, const [], (c, x) => DivinerView(ctx: x)),
-  _view(ModuleKind.locator, const [], (c, x) => LocatorContent(moduleId: x.source.id, boardHeight: fullBoard(c, x)), canvas: true),
+  _view(ModuleKind.locator, const [], (c, x) => LocatorContent(moduleId: x.source.id, boardHeight: fullBoard(c, x), module: x.source), canvas: true),
   // The module's description IS the document for these two, so each is
   // `once` — two live editors on one text would overwrite each other.
   _view(ModuleKind.drafter, const [], (c, x) => DescriptionDocument(module: x.source, tall: true), once: true),

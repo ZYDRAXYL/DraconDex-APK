@@ -3,10 +3,10 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/i18n/app_localizations.dart';
+import '../../core/links/safe_launch.dart';
+import '../../data/services/assets/asset_open.dart';
 import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/navigation_providers.dart';
@@ -33,7 +33,9 @@ IconData assetIcon(Asset a) => switch (a.cls) {
       'image' => Icons.image_outlined,
       'audio' => Icons.audiotrack_outlined,
       'video' => Icons.movie_outlined,
-      'doc' => Icons.description_outlined,
+      'doc' => a.type == 'pdf' ? Icons.picture_as_pdf_outlined : Icons.description_outlined,
+      'track' => Icons.subtitles_outlined,
+      'model' => Icons.view_in_ar_outlined,
       'url' => Icons.link,
       _ => Icons.insert_drive_file_outlined,
     };
@@ -64,13 +66,17 @@ class AssetThumb extends StatelessWidget {
 }
 
 /// Picks files from the device into the Nest; returns the new ids.
-Future<List<int>> addAssetsFromDevice(BuildContext context, WidgetRef ref, int nexusId, {bool imagesOnly = false}) async {
+/// [classes] limits the picker to those asset classes (a video block asks
+/// for 'video', a PDF block for 'pdf').
+Future<List<int>> addAssetsFromDevice(BuildContext context, WidgetRef ref, int nexusId,
+    {bool imagesOnly = false, Set<String>? classes}) async {
   final l = AppLocalizations.of(context)!;
   final messenger = ScaffoldMessenger.of(context);
   final res = await FilePicker.platform.pickFiles(
-    allowMultiple: !imagesOnly,
+    allowMultiple: !imagesOnly && classes == null,
     withData: true,
-    type: imagesOnly ? FileType.image : FileType.any,
+    type: imagesOnly ? FileType.image : (classes != null ? FileType.custom : FileType.any),
+    allowedExtensions: !imagesOnly && classes != null ? extensionsOf(classes) : null,
   );
   if (res == null) return const [];
   final db = await ref.read(databaseProvider.future);
@@ -90,10 +96,14 @@ Future<List<int>> addAssetsFromDevice(BuildContext context, WidgetRef ref, int n
   return ids;
 }
 
-/// An asset of this Nexus, or a new one from the device.
-Future<int?> pickAsset(BuildContext context, WidgetRef ref, int nexusId, {bool imagesOnly = false}) async {
+/// An asset of this Nexus, or a new one from the device — only [classes]
+/// when given.
+Future<int?> pickAsset(BuildContext context, WidgetRef ref, int nexusId, {bool imagesOnly = false, Set<String>? classes}) async {
   final l = AppLocalizations.of(context)!;
-  final list = [for (final a in await ref.read(assetsProvider(nexusId).future)) if (!imagesOnly || a.isImage) a];
+  final list = [
+    for (final a in await ref.read(assetsProvider(nexusId).future))
+      if ((!imagesOnly || a.isImage) && (classes == null || a.isOf(classes))) a,
+  ];
   if (!context.mounted) return null;
   final pick = await showModalBottomSheet<int>(
     context: context,
@@ -110,7 +120,7 @@ Future<int?> pickAsset(BuildContext context, WidgetRef ref, int nexusId, {bool i
     ),
   );
   if (pick == -1 && context.mounted) {
-    final ids = await addAssetsFromDevice(context, ref, nexusId, imagesOnly: imagesOnly);
+    final ids = await addAssetsFromDevice(context, ref, nexusId, imagesOnly: imagesOnly, classes: classes);
     return ids.isEmpty ? null : ids.first;
   }
   return pick;
@@ -123,22 +133,26 @@ class AssetsScreen extends ConsumerWidget {
 
   Future<void> _open(BuildContext context, Asset a) async {
     if (a.isUrl) {
-      await launchUrl(Uri.parse(a.path), mode: LaunchMode.externalApplication);
+      await safeLaunch(a.path);
       return;
     }
-    final bytes = await AssetStore.bytesOf(a);
-    if (bytes == null || !context.mounted) return;
     if (a.isImage) {
+      final bytes = await AssetStore.bytesOf(a);
+      if (bytes == null || !context.mounted) return;
       await Navigator.of(context).push(MaterialPageRoute<void>(
         builder: (c) => Scaffold(
           appBar: AppBar(title: Text(a.name)),
           body: InteractiveViewer(maxScale: 6, child: Center(child: Image.memory(bytes))),
         ),
       ));
-    } else {
-      await Share.shareXFiles([XFile.fromData(bytes, name: a.name)]);
+      return;
     }
+    // a video, a PDF, a model: the app on this device that opens it
+    final messenger = ScaffoldMessenger.of(context);
+    final l = AppLocalizations.of(context)!;
+    if (!await openAssetExternally(a)) messenger.showSnackBar(SnackBar(content: Text(l.mediaOpenFailed)));
   }
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

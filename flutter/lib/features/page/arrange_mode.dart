@@ -7,7 +7,11 @@ import '../../data/models/module_model.dart';
 import '../../providers/db_providers.dart';
 import 'component_registry.dart';
 import 'core_components.dart';
+import 'block_options.dart';
+import 'block_settings_sheet.dart';
+import 'media_components.dart';
 import 'page_providers.dart';
+import 'wiki_components.dart';
 
 /// Arrange mode on a phone (APK-V3.md §10.4 — the user chose a drag-to-
 /// reorder list): the page's top-level blocks as a reorderable list. A
@@ -103,7 +107,7 @@ String blockLabel(AppLocalizations l10n, PageBlock b, [ModuleModel? source]) {
     default:
       final def = components[b.component];
       final name = def?.label(l10n) ?? b.component ?? '?';
-      return b.sourceKey == null ? name : '$name ↪ ${source?.name ?? b.sourceKey}';
+      return b.sourceKey == null ? name : '$name · ${source?.name ?? b.sourceKey}';
   }
 }
 
@@ -129,14 +133,11 @@ class _ArrangeTile extends ConsumerWidget {
     final tile = ListTile(
       leading: ReorderableDragStartListener(index: index, child: const Icon(Icons.drag_indicator)),
       title: Text(blockLabel(l10n, block), maxLines: 1, overflow: TextOverflow.ellipsis),
-      trailing: IconButton(
-        icon: const Icon(Icons.delete_outline),
-        tooltip: l10n.btnDelete,
-        onPressed: () => deleteBlockWithUndo(context, ref, pageKey, block.id),
-      ),
+      trailing: _TileActions(pageKey: pageKey, block: block),
     );
-    if (block.type != 'columns') return Card(margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3), child: tile);
-    final cols = page.columnsOf(block);
+    final slots = slotLabels(l10n, block);
+    if (slots.isEmpty) return Card(margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3), child: tile);
+    final cols = [for (var c = 0; c < slots.length; c++) page.childrenOf(block, c)];
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
       child: Column(
@@ -149,7 +150,7 @@ class _ArrangeTile extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text('${l10n.pbColumn} ${c + 1}', style: Theme.of(context).textTheme.labelSmall),
+                  Text(slots[c], style: Theme.of(context).textTheme.labelSmall),
                   ReorderableListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -173,11 +174,7 @@ class _ArrangeTile extends ConsumerWidget {
                           dense: true,
                           leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator, size: 18)),
                           title: Text(blockLabel(l10n, cols[c][i]), maxLines: 1, overflow: TextOverflow.ellipsis),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.close, size: 18),
-                            tooltip: l10n.btnDelete,
-                            onPressed: () => deleteBlockWithUndo(context, ref, pageKey, cols[c][i].id),
-                          ),
+                          trailing: _TileActions(pageKey: pageKey, block: cols[c][i], small: true),
                         ),
                     ],
                   ),
@@ -261,6 +258,27 @@ Future<void> showAddBlockSheet(
                 title: Text(l10n.pbColumns),
                 onTap: () => Navigator.pop(sheet, () => add(const NewBlock(type: 'columns', config: {'n': 2}))),
               ),
+            const Divider(),
+            // the media blocks (MEDIA-EMBED.md): a poster that opens the file
+            for (final MapEntry(key: id, value: kind) in mediaBlockKinds.entries)
+              ListTile(
+                leading: Icon(kind.icon),
+                title: Text(components[id]!.label(l10n)),
+                onTap: () => Navigator.pop(sheet, () => add(NewBlock(component: id))),
+              ),
+            const Divider(),
+            // the wiki components (TEMPLATES.md §7); a container never
+            // goes inside another one
+            for (final id in const [
+              'core.linkbar', 'core.linkcard', 'core.hatnote', 'core.seealso', 'core.navbox', //
+              'core.children', 'core.references', 'core.tabs', 'core.toggle',
+            ])
+              if (!(components[id]!.once && onPage.contains(id)) && !(parent != null && containerComponents.contains(id)))
+                ListTile(
+                  leading: Icon(wikiIcons[id] ?? Icons.widgets_outlined),
+                  title: Text(components[id]!.label(l10n)),
+                  onTap: () => Navigator.pop(sheet, () => add(NewBlock(component: id))),
+                ),
             if (own.isNotEmpty) const Divider(),
             for (final id in own)
               ListTile(
@@ -322,4 +340,46 @@ Future<ModuleModel?> _pickBorrowSource(BuildContext context, WidgetRef ref, Modu
       ),
     ),
   );
+}
+
+/// The slots a container holds its blocks in — columns, a tabs block's
+/// tabs, a toggle's one — named for the arrange list; empty for a block
+/// that holds none.
+List<String> slotLabels(AppLocalizations l10n, PageBlock b) {
+  if (b.type == 'columns') {
+    final n = ((b.config['n'] as num?)?.toInt() ?? 2).clamp(1, 3);
+    return [for (var c = 0; c < n; c++) '${l10n.pbColumn} ${c + 1}'];
+  }
+  if (b.component == 'core.tabs') return tabNames(l10n, optValue(b, 'tabs'));
+  if (b.component == 'core.toggle') {
+    final t = '${optValue(b, 'title') ?? ''}'.trim();
+    return [t.isEmpty ? l10n.pcToggle : t];
+  }
+  return const [];
+}
+
+/// ⚙ and delete on an arrange tile.
+class _TileActions extends ConsumerWidget {
+  final PageKey pageKey;
+  final PageBlock block;
+  final bool small;
+  const _TileActions({required this.pageKey, required this.block, this.small = false});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final size = small ? 18.0 : 24.0;
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      IconButton(
+        icon: Icon(Icons.tune, size: size),
+        tooltip: l10n.pbBlockSettings,
+        onPressed: () => showBlockSettings(context, ref, pageKey, block.id),
+      ),
+      IconButton(
+        icon: Icon(small ? Icons.close : Icons.delete_outline, size: size),
+        tooltip: l10n.btnDelete,
+        onPressed: () => deleteBlockWithUndo(context, ref, pageKey, block.id),
+      ),
+    ]);
+  }
 }

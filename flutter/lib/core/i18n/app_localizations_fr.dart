@@ -105,6 +105,42 @@ class AppLocalizationsFr extends AppLocalizations {
   String get themeDaylight => 'Lumière du Jour';
 
   @override
+  String get themeShowAll => 'Tout afficher';
+
+  @override
+  String get themeShowLess => 'Réduire';
+
+  @override
+  String get pageLayout => 'Mise en page du titre';
+
+  @override
+  String get titleAlign => 'Aligner le titre';
+
+  @override
+  String get alignLeft => 'Gauche';
+
+  @override
+  String get alignCenter => 'Centre';
+
+  @override
+  String get alignRight => 'Droite';
+
+  @override
+  String get pageIcon => 'Icône au-dessus du titre';
+
+  @override
+  String get pageCover => 'Image de couverture';
+
+  @override
+  String get pageCoverNone => 'Aucune couverture';
+
+  @override
+  String get pageCoverEmpty => 'Importez une image dans ce Nexus pour l\'utiliser comme couverture';
+
+  @override
+  String get pageLayoutScope => 'S\'applique à cette page uniquement';
+
+  @override
   String get languageLabel => 'Langue';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Insérer une ligne en dessous';
+
+  @override
+  String get exportTitle => 'Exporter…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Pour imprimer, partager ou envoyer à l’imprimeur';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Pour continuer dans Word, Google Docs ou Pages';
+
+  @override
+  String get exportEpub => 'EPUB (livre numérique)';
+
+  @override
+  String get exportEpubD => 'Pour Apple Books, Kindle, Kobo ou Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Une feuille par tableau, pour Excel, Sheets ou Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Tableau brut — réimportable via Importer un CSV';
+
+  @override
+  String get htmlExport => 'Exporter en site web (HTML)';
+
+  @override
+  String get exportMarkdown => 'Exporter en Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Notes avec images — s’ouvre dans Obsidian';
+
+  @override
+  String get exportMddxD => 'Ce module, pour le déplacer vers un autre coffre';
+
+  @override
+  String get exportNoPage => 'Un dossier n’a pas de page à lui';
+
+  @override
+  String get exportOnlyDocs => 'Author, Classifier, Chronicler, Drafter et Inspector seulement';
+
+  @override
+  String get exportOnlyBooks => 'Livres d’Author seulement';
+
+  @override
+  String get exportOnlyTables => 'Classifier et Chronicler seulement';
+
+  @override
+  String get exportGo => 'Exporter';
+
+  @override
+  String get exportScope => 'Contenu';
+
+  @override
+  String get exportScopePage => 'Cette page';
+
+  @override
+  String get exportScopeModule => 'Ce module et tous ses éléments';
+
+  @override
+  String get exportScopeInside => 'Ce module et tout son contenu';
+
+  @override
+  String get exportScopeNexus => 'Tout le Nexus';
+
+  @override
+  String get exportPaper => 'Papier';
+
+  @override
+  String get exportOrientation => 'Orientation';
+
+  @override
+  String get exportPortrait => 'Portrait';
+
+  @override
+  String get exportLandscape => 'Paysage';
+
+  @override
+  String get exportHeaderFooter => 'Titre et numéros de page';
+
+  @override
+  String get exportToc => 'Page de sommaire';
+
+  @override
+  String get exportCsvHint => 'Un tableau : les éléments d’un Classifier ou la première frise d’un Chronicler. Sans les champs formule. Importer un CSV le relit.';
+
+  @override
+  String get exportXlsxHint => 'Une feuille par tableau (chaque frise d’un Chronicler), en-tête en gras et figé. Sans les champs formule.';
+
+  @override
+  String get exportMdAnyHint => 'Un .md par élément, champs en propriétés ; les images de la page vont dans assets/. Ouvrez le dossier comme coffre dans Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Un titre par chapitre, élément ou événement (volet de navigation de Word), champs en tableau, images de la page, saut de page entre les chapitres.';
+
+  @override
+  String get exportEpubHint => 'Un fichier par chapitre avec sommaire ; la couverture du titre de la page du livre devient la couverture.';
+
+  @override
+  String get exportMddxHint => 'Un fichier .mddx qu’un autre coffre DraconDex peut importer.';
+
+  @override
+  String get exportFormulaSkipped => 'Champs formule omis : {names}';
+
+  @override
+  String get exportMoreTimelines => 'Le CSV ne contient qu’une frise — {n} autre(s) dans l’export Excel';
+
+  @override
+  String get exportMediaMissing => '{n} image(s) introuvable(s), laissée(s) de côté';
+
+  @override
+  String get exportMarkdownEmpty => 'Rien à exporter pour le moment';
+
+  @override
+  String get exportWorking => 'Dessin des pages…';
+
+  @override
+  String get exportPictures => 'images';
+
+  @override
+  String get exportRows => 'lignes';
+
+  @override
+  String get exportHtmlPageD => 'Cette page en page web, avec ses images';
+
+  @override
+  String get exportHtmlPageHint => 'Un .zip avec index.html et ses images dans media/ — décompressez-le et ouvrez index.html dans n’importe quel navigateur.';
+
+  @override
+  String get exportPrint => 'Imprimer…';
+
+  @override
+  String get pcVideo => 'Vidéo';
+
+  @override
+  String get pcAudio => 'Audio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Modèle 3D';
+
+  @override
+  String get pcMedia => 'Médias mixtes';
+
+  @override
+  String get pcMediaEmpty => 'Pas encore de fichier.';
+
+  @override
+  String get pbChooseFile => 'Choisir un fichier';
+
+  @override
+  String get pcAddFile => 'Ajouter un fichier';
+
+  @override
+  String get pcOpenIn => 'Ouvrir dans une autre app';
+
+  @override
+  String get mediaOpenFailed => 'Impossible d’ouvrir ce fichier';
+
+  @override
+  String get pbBlockSettings => 'Réglages du bloc';
+
+  @override
+  String get pbStyle => 'Style';
+
+  @override
+  String get pbOptions => 'Options';
+
+  @override
+  String get pbStyleVariant => 'Apparence';
+
+  @override
+  String get pbStyleAccent => 'Couleur d’accent';
+
+  @override
+  String get pbStyleWidth => 'Largeur';
+
+  @override
+  String get pbStyleAlign => 'Aligner';
+
+  @override
+  String get pbStyleDensity => 'Espacement';
+
+  @override
+  String get pbStyleHeader => 'En-tête';
+
+  @override
+  String get pbHeaderShow => 'Afficher un en-tête';
+
+  @override
+  String get pbHeaderTitle => 'Titre de l’en-tête';
+
+  @override
+  String get pbStyleCollapsible => 'Repliable';
+
+  @override
+  String get pbStyleAnchor => 'Ancre (#)';
+
+  @override
+  String get pbStyleHideOn => 'Masquer sur';
+
+  @override
+  String get pbStyleReset => 'Réinitialiser';
+
+  @override
+  String get pbStyleApplyAll => 'Appliquer à tous les blocs de ce type';
+
+  @override
+  String get pbStyleApplied => 'Style appliqué à {n} autres blocs';
+
+  @override
+  String get pbStyleCopy => 'Copier le style';
+
+  @override
+  String get pbStylePaste => 'Coller le style';
+
+  @override
+  String get pbNoOptions => 'Ce bloc n’a pas d’options propres ; son apparence est dans l’onglet Style.';
+
+  @override
+  String get pbVariantPlain => 'Simple';
+
+  @override
+  String get pbVariantCard => 'Carte';
+
+  @override
+  String get pbVariantOutline => 'Contour';
+
+  @override
+  String get pbVariantTinted => 'Teinté';
+
+  @override
+  String get pbVariantHero => 'Vedette';
+
+  @override
+  String get pbAccKind => 'Type de module';
+
+  @override
+  String get pbAccAccent => 'Accent du thème';
+
+  @override
+  String get pbAccBlue => 'Bleu';
+
+  @override
+  String get pbAccGreen => 'Vert';
+
+  @override
+  String get pbAccAmber => 'Ambre';
+
+  @override
+  String get pbAccRose => 'Rose';
+
+  @override
+  String get pbAccViolet => 'Violet';
+
+  @override
+  String get pbAccSlate => 'Ardoise';
+
+  @override
+  String get pbWidthNarrow => 'Étroit';
+
+  @override
+  String get pbWidthNormal => 'Normal';
+
+  @override
+  String get pbWidthWide => 'Large';
+
+  @override
+  String get pbWidthFull => 'Pleine';
+
+  @override
+  String get pbDensityComfy => 'Aéré';
+
+  @override
+  String get pbDensityCompact => 'Compact';
+
+  @override
+  String get pbCollOff => 'Non';
+
+  @override
+  String get pbCollOpen => 'Ouvert';
+
+  @override
+  String get pbCollClosed => 'Replié';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Téléphone';
+
+  @override
+  String get pbHideDesktop => 'Ordinateur';
+
+  @override
+  String get pbLinks => 'Liens';
+
+  @override
+  String get pbLinkAdd => 'Ajouter un lien';
+
+  @override
+  String get pbLinkAddPh => '+ [[Nom]] · #ancre · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Ce n’est pas un lien : utilisez [[Nom]], #ancre ou une adresse http(s)';
+
+  @override
+  String get pbLinkLabel => 'Libellé';
+
+  @override
+  String get pbLinkTo => 'Destination';
+
+  @override
+  String get pbLinkGroup => 'Groupe';
+
+  @override
+  String get pbLinkHint => 'Les liens web s’ouvrent dans le navigateur, http et https uniquement : l’app ouvre l’adresse enregistrée, jamais une autre.';
+
+  @override
+  String get pbLinkMissing => 'Rien de ce nom pour l’instant — cliquez pour le créer';
+
+  @override
+  String get pbLinkUp => 'Monter';
+
+  @override
+  String get pbLinkDown => 'Descendre';
+
+  @override
+  String get pbLinksEmpty => 'Aucun lien pour l’instant.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Aucun lien : ajoutez-les via ⚙ → Options.';
+
+  @override
+  String get pbListAdd => 'Ajouter';
+
+  @override
+  String get pcLinkbar => 'Barre de liens';
+
+  @override
+  String get pcLinkcard => 'Cartes de liens';
+
+  @override
+  String get pcHatnote => 'Bandeau de renvoi';
+
+  @override
+  String get pcSeeAlso => 'Voir aussi';
+
+  @override
+  String get pcReferences => 'Références';
+
+  @override
+  String get pcTabs => 'Onglets';
+
+  @override
+  String get pcToggle => 'Repliable';
+
+  @override
+  String get pcNavbox => 'Boîte de navigation';
+
+  @override
+  String get pcChildren => 'Pages enfants';
+
+  @override
+  String get pcHatAnd => 'et';
+
+  @override
+  String get pcHatnotePh => 'Article principal : …';
+
+  @override
+  String get pcReferencesEmpty => 'Pas encore de notes : écrivez [^1] dans un bloc de texte et « [^1]: … » sur sa propre ligne.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Aucun lien depuis cette page pour l’instant';
+
+  @override
+  String get pcSuggested => 'Suggestions :';
+
+  @override
+  String get pcTab => 'Onglet';
+
+  @override
+  String get pcChildrenNone => 'Rien sous cette page.';
+
+  @override
+  String get pbFootnoteMissing => 'Cette note n’a pas encore de texte : ajoutez une ligne « [^n]: … »';
+
+  @override
+  String get pcOptBar => 'Style de barre';
+
+  @override
+  String get pcOptCaption => 'Légende';
+
+  @override
+  String get pcOptCount => 'Combien';
+
+  @override
+  String get pcOptCover => 'Image de couverture';
+
+  @override
+  String get pcOptDepth => 'Profondeur';
+
+  @override
+  String get pcOptHatKind => 'Type de note';
+
+  @override
+  String get pcOptLayout => 'Disposition';
+
+  @override
+  String get pcOptLook => 'Apparence';
+
+  @override
+  String get pcOptLoop => 'En boucle';
+
+  @override
+  String get pcOptPoster => 'Image d’affiche';
+
+  @override
+  String get pcOptSort => 'Ordre';
+
+  @override
+  String get pcOptSource => 'Remplir depuis un module';
+
+  @override
+  String get pcOptStart => 'Au départ';
+
+  @override
+  String get pcOptStartPage => 'Première page affichée';
+
+  @override
+  String get pcOptStartTab => 'Onglet affiché d’abord';
+
+  @override
+  String get pcOptSticky => 'Reste en haut au défilement';
+
+  @override
+  String get pcOptSuggest => 'Suggérer les pages qui pointent ici ou depuis ici';
+
+  @override
+  String get pcOptTabs => 'Noms des onglets';
+
+  @override
+  String get pcBarPills => 'Pastilles';
+
+  @override
+  String get pcBarTabs => 'Onglets';
+
+  @override
+  String get pcBarUnderline => 'Soulignement';
+
+  @override
+  String get pcBarButtons => 'Boutons';
+
+  @override
+  String get pcCardCard => 'Carte';
+
+  @override
+  String get pcCardCompact => 'Compact';
+
+  @override
+  String get pcCardButton => 'Bouton';
+
+  @override
+  String get pcHatMain => 'Article principal :';
+
+  @override
+  String get pcHatAbout => 'Pour en savoir plus, voir';
+
+  @override
+  String get pcHatDistinguish => 'À ne pas confondre avec';
+
+  @override
+  String get pcTabsLine => 'Ligne';
+
+  @override
+  String get pcTabsBoxed => 'Encadré';
+
+  @override
+  String get pcTabsPills => 'Pastilles';
+
+  @override
+  String get pcKidsList => 'Liste';
+
+  @override
+  String get pcKidsTree => 'Arbre';
+
+  @override
+  String get pcKidsCards => 'Cartes';
+
+  @override
+  String get pcSortOrder => 'Comme dans le Nest';
+
+  @override
+  String get pcSortName => 'Par nom';
+
+  @override
+  String get pcGalGrid => 'Grille';
+
+  @override
+  String get pcGalStrip => 'Bande';
+
+  @override
+  String get pcPdfSingle => 'Une page';
+
+  @override
+  String get pcPdfStrip => 'Bande de pages';
+
+  @override
+  String get pcInfobox => 'Infobox';
+
+  @override
+  String get pcCallout => 'Encadré';
+
+  @override
+  String get pcStats => 'Statistiques';
+
+  @override
+  String get pcToc => 'Sommaire';
+
+  @override
+  String get pcSpotlight => 'À la une';
+
+  @override
+  String get pcRoster => 'Galerie';
+
+  @override
+  String get pcBreakdown => 'Répartition';
+
+  @override
+  String get pcEras => 'Ères';
+
+  @override
+  String get pcUpcoming => 'À venir';
+
+  @override
+  String get pcPinlist => 'Liste des repères';
+
+  @override
+  String get pcProgress => 'Progression';
+
+  @override
+  String get pcChapters => 'Chapitres';
+
+  @override
+  String get pcEndings => 'Fins';
+
+  @override
+  String get pcVariables => 'Variables';
+
+  @override
+  String get pcFocus => 'Focus';
+
+  @override
+  String get pcLegend => 'Légende';
+
+  @override
+  String get pcJourney => 'Voyage';
+
+  @override
+  String get pcStrip => 'Bande';
+
+  @override
+  String get pcFeatured => 'À la une';
+
+  @override
+  String get pcDashboard => 'Tableau de bord';
+
+  @override
+  String get pcRecent => 'Modifiés récemment';
+
+  @override
+  String get pcQuickroll => 'Tirage rapide';
+
+  @override
+  String get pcPinned => 'Épinglés';
+
+  @override
+  String get pcTasks => 'Tâches';
+
+  @override
+  String get pcBanner => 'Bannière';
+
+  @override
+  String get pcGallery => 'Galerie';
+
+  @override
+  String get pcDivider => 'Séparateur';
+
+  @override
+  String get pcIconrow => 'Rangée d’icônes';
+
+  @override
+  String get pcFigure => 'Figure';
+
+  @override
+  String get pcInfoboxEmpty => 'Aucun champ pour l’instant';
+
+  @override
+  String get pcStatsEmpty => 'Rien à compter pour l’instant';
+
+  @override
+  String get pcTocEmpty => 'Ajoutez un titre pour créer le sommaire';
+
+  @override
+  String get pcNoElements => 'Aucun élément pour l’instant';
+
+  @override
+  String get pcBreakdownEmpty => 'Choisissez un champ à compter';
+
+  @override
+  String get noEventsYet => 'Pas encore d\'événements';
+
+  @override
+  String get mapNoAreas => 'Aucune zone pour l’instant';
+
+  @override
+  String get pcNoChapters => 'Aucun chapitre pour l’instant';
+
+  @override
+  String get pcWords => 'mots';
+
+  @override
+  String get pcNoEndings => 'Aucune fin pour l’instant';
+
+  @override
+  String get pcNoVariables => 'Aucune variable pour l’instant';
+
+  @override
+  String get pcNoRelations => 'Aucune relation pour l’instant';
+
+  @override
+  String get pcUnlabelled => 'Sans libellé';
+
+  @override
+  String get pcNoPanels => 'Aucune case pour l’instant';
+
+  @override
+  String get pcNoSketches => 'Aucune esquisse pour l’instant';
+
+  @override
+  String get managerEmpty => 'Rien de sélectionné — définissez un filtre ou choisissez des modules.';
+
+  @override
+  String get pcRoll => 'Lancer';
+
+  @override
+  String get pcNoRolls => 'Aucun tirage pour l’instant';
+
+  @override
+  String get pcNoPinned => 'Commencez un message par 📌 pour l’épingler ici';
+
+  @override
+  String get pcNoTasks => 'Écrivez « - [ ] … » dans les notes pour ajouter une tâche';
+
+  @override
+  String get pcBannerEmpty => 'Pas encore d’image.';
+
+  @override
+  String get pcGalleryEmpty => 'Pas encore d’images.';
+
+  @override
+  String get pcIconrowEmpty => 'Pas encore d’icônes.';
+
+  @override
+  String get pcFigureEmpty => 'Pas encore d’image.';
+
+  @override
+  String get pcStatItems => 'Éléments';
+
+  @override
+  String get pcStatModules => 'Modules';
+
+  @override
+  String get backlinks => 'Liens entrants';
+
+  @override
+  String get pcCalloutPh => 'Écrire une note…';
+
+  @override
+  String get pcDecorPickArrange => 'Rien pour l’instant : choisissez via ⚙ → Options.';
+
+  @override
+  String get pcToneNote => 'Note';
+
+  @override
+  String get pcToneTip => 'Astuce';
+
+  @override
+  String get pcToneWarning => 'Avertissement';
+
+  @override
+  String get pcToneQuote => 'Citation';
+
+  @override
+  String get pcToneSecret => 'Secret';
+
+  @override
+  String get pcOptFields => 'Champs affichés';
+
+  @override
+  String get pcOptDock => 'Position';
+
+  @override
+  String get pcOptTone => 'Ton';
+
+  @override
+  String get pcOptField => 'Compter par champ';
+
+  @override
+  String get pcOptFrom => 'À partir de l’année';
+
+  @override
+  String get pcOptGoal => 'Objectif de mots';
+
+  @override
+  String get pcOptSubtitle => 'Sous-titre';
+
+  @override
+  String get pcOptHeight => 'Hauteur';
+
+  @override
+  String get pcOptScrim => 'Voile sous le texte';
+
+  @override
+  String get pbImages => 'Images';
+
+  @override
+  String get pcOptFromModule => 'Toutes les images de ce module';
+
+  @override
+  String get pcOptCaptions => 'Afficher les noms';
+
+  @override
+  String get pcOptItems => 'Éléments';
+
+  @override
+  String get pcOptSize => 'Taille';
+
+  @override
+  String get pcOptFit => 'Ajustement';
+
+  @override
+  String get pcOptFloat => 'Habillage';
+
+  @override
+  String get pcOptRound => 'Coins arrondis';
+
+  @override
+  String get pcLayoutTable => 'Tableau';
+
+  @override
+  String get pcLayoutStacked => 'Empilé';
+
+  @override
+  String get pcDockRight => 'Droite';
+
+  @override
+  String get pcDockLeft => 'Gauche';
+
+  @override
+  String get pcDockFull => 'Pleine largeur';
+
+  @override
+  String get pcSizeS => 'Petit';
+
+  @override
+  String get pcSizeM => 'Moyen';
+
+  @override
+  String get pcSizeL => 'Grand';
+
+  @override
+  String get pcSizeFull => 'Pleine largeur';
+
+  @override
+  String get pcScrimSoft => 'Léger';
+
+  @override
+  String get pcScrimStrong => 'Fort';
+
+  @override
+  String get pcGalMasonry => 'Maçonnerie';
+
+  @override
+  String get pcDivLine => 'Ligne';
+
+  @override
+  String get pcDivDouble => 'Double';
+
+  @override
+  String get pcDivDots => 'Points';
+
+  @override
+  String get pcDivOrnament => 'Ornement';
+
+  @override
+  String get pcDivImage => 'Bande d’image';
+
+  @override
+  String get pcIrChip => 'Pastilles';
+
+  @override
+  String get pcIrBig => 'Grandes icônes';
+
+  @override
+  String get pcFitContain => 'Entière';
+
+  @override
+  String get pcFitCover => 'Remplir le cadre';
+
+  @override
+  String get pcFloatNone => 'Seule';
+
+  @override
+  String get pcFloatLeft => 'Image à gauche';
+
+  @override
+  String get pcFloatRight => 'Image à droite';
+
+  @override
+  String get pcLoadFailed => 'Impossible de charger ce bloc';
+
+  @override
+  String get pcNoValue => '(aucun)';
+
+  @override
+  String get tplUse => 'Utiliser un modèle…';
+
+  @override
+  String get tplUseHint => 'Remplace la mise en page. Votre contenu reste, et vous pouvez annuler juste après.';
+
+  @override
+  String get tplDefault => 'Par défaut';
+
+  @override
+  String get tplOtherTypes => 'Autres types';
+
+  @override
+  String get tplApplied => 'Modèle appliqué';
+
+  @override
+  String get tplBorrowDropped => '{n} bloc(s) omis — ils empruntent à un module non lié à celui-ci';
+
+  @override
+  String get tplGallery => 'Modèles de page';
+
+  @override
+  String get pcFacts => 'Faits';
+
+  @override
+  String get pcNoFacts => 'Écrivez des lignes comme « Fondation : 300 » dans la note';
+
+  @override
+  String get pcPlacecard => 'Fiche de lieu';
+
+  @override
+  String get pcBorders => 'Voisins';
+
+  @override
+  String get pcOptArea => 'Zone (nom)';
+
+  @override
+  String get tplSave => 'Enregistrer la page comme modèle…';
+
+  @override
+  String get tplMine => 'Le mien';
+
+  @override
+  String get savePresetHint => 'Enregistre l\'apparence, la vue et les champs de ce module (pas son contenu) comme point de départ pour de nouveaux modules du même type.';
+
+  @override
+  String get presetSaved => 'Préréglage enregistré';
+
+  @override
+  String get presetDeleteConfirm => 'Supprimer ce préréglage ? Les modules créés avec restent tels quels.';
+
+  @override
+  String get bundleTabClassic => 'Classiques';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Les miens';
+
+  @override
+  String get bundleMineEmpty => 'Rien d’enregistré pour l’instant — clic droit sur un dossier, puis « Enregistrer comme lot Artisan… »';
+
+  @override
+  String get bundleSampleCount => 'Données d’exemple';
+
+  @override
+  String get bundleIncludeSamples => 'Inclure les données d’exemple';
+
+  @override
+  String get bundleSaveMine => 'Enregistrer comme lot Artisan…';
+
+  @override
+  String get bundleSaveData => 'Données';
+
+  @override
+  String get bundleDataNone => 'Structure seule';
+
+  @override
+  String get bundleDataSamples => 'Jusqu’à 3 exemples par module';
+
+  @override
+  String get bundleSaveHint => 'Les dossiers, modules, champs et mises en page sont enregistrés. Les liens vers des modules hors de ce dossier sont omis.';
+
+  @override
+  String get bundleSaved => 'Lot enregistré';
+
+  @override
+  String get bundleCreate => 'Créer';
+
+  @override
+  String get bundleAdjust => 'Ajuster d’abord';
+
+  @override
+  String get bundleCreated => 'Projet créé';
+
+  @override
+  String get bundleProjectName => 'Nom du projet';
+
+  @override
+  String get bundleIncludes => 'Contient';
+
+  @override
+  String get bundleFields => 'Champs (vide = omis)';
+
+  @override
+  String get nameRequired => 'Le nom est obligatoire';
+
+  @override
+  String get nameField => 'Nom';
+
+  @override
+  String get artCounts => '{f} dossiers · {m} modules · {l} liens · {s} exemples';
+
+  @override
+  String get artStructure => 'Ce qui sera créé';
+
+  @override
+  String get artLinks => 'Liens entre modules';
+
+  @override
+  String get artLinkRel => 'champ de relation / sélection';
+
+  @override
+  String get artLinkBorrow => 'composant emprunté';
+
+  @override
+  String get artBefore => 'Avant de créer';
+
+  @override
+  String get exportFormat => 'Format';
+
+  @override
+  String get exportPreview => 'Aperçu';
+
+  @override
+  String get exportPreviewNote => 'Une esquisse de la mise en page — le fichier contient vos vraies pages';
+
+  @override
+  String get tplBrowse => 'Plus de modèles…';
+
+  @override
+  String get tplFields => 'Inclure les champs du modèle';
+
+  @override
+  String get tplModulePage => 'Page du module';
+
+  @override
+  String get tplItemPage => 'Page de l\'élément';
+
+  @override
+  String get tplKindCount => '{n} modèles';
+
+  @override
+  String get tplFieldsHead => 'Champs';
+
+  @override
+  String get btnApply => 'Appliquer';
+
+  @override
+  String get btnCreate => 'Créer';
 }

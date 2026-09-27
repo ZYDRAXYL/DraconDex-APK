@@ -3,12 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/i18n/app_localizations.dart';
+import '../../../core/theme/ddx_theme.dart';
 import '../../../data/models/module_model.dart';
 import '../../../data/models/recent_view_model.dart';
 import '../../../data/models/viewer_model.dart';
 import '../../../data/services/entity_location.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/navigation_providers.dart';
+import '../../../widgets/color_dot.dart';
 
 /// Shared bits of the per-kind views.
 
@@ -24,6 +26,55 @@ class EmptyHint extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Text(text,
           style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
+    );
+  }
+}
+
+/// A kind's empty page — the desktop's kindEmptyStateHtml (EXE
+/// hub/kind-page.js), the component contract's empty state (APP
+/// docs/redesign/COMPONENTS.md): the kind's icon in the module's colour, the
+/// module's name, what the kind is for, a line about this page's state, and
+/// ONE primary action. [EmptyHint] stays for the smaller empties inside a
+/// view that already has content (no messages in a session, no routes).
+class KindEmptyState extends StatelessWidget {
+  final ModuleModel module;
+  final String? note;
+  final String? startLabel;
+  final VoidCallback? onStart;
+  const KindEmptyState({super.key, required this.module, this.note, this.startLabel, this.onStart});
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final info = moduleKindInfo[module.kind]!;
+    final code = module.colorCode;
+    final color = code != null && RegExp(r'^#?[0-9a-fA-F]{6}$').hasMatch(code) ? hexToColor(code) : theme.colorScheme.primary;
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 460),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(info.icon, size: 40, color: color),
+              const SizedBox(height: 10),
+              Text(module.name, textAlign: TextAlign.center, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
+              const SizedBox(height: 4),
+              Text(kindDesc(l, module.kind), textAlign: TextAlign.center, style: theme.textTheme.bodyMedium),
+              if (note != null) ...[
+                const SizedBox(height: 6),
+                Text(note!, textAlign: TextAlign.center, style: theme.textTheme.bodySmall?.copyWith(color: context.ddx.textMuted)),
+              ],
+              if (onStart != null && startLabel != null) ...[
+                const SizedBox(height: 16),
+                FilledButton.icon(onPressed: onStart, icon: const Icon(Icons.add, size: 18), label: Text(startLabel!)),
+              ],
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

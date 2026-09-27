@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../core/i18n/app_localizations.dart';
 import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
-import '../../data/services/mddx.dart';
 import '../../data/services/trash_service.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../widgets/row_menu.dart';
+import '../export/export_sheet.dart';
 import '../tools/trash_screen.dart';
+import 'dialogs/artisan_sheet.dart';
 import 'dialogs/module_dialog.dart';
 
 /// A module's menu — one list for every place a module is a row (a tile, a
@@ -21,12 +21,15 @@ import 'dialogs/module_dialog.dart';
 /// (long press, ⋮) and the page itself never disagree (APP docs/APK-V3.md §5).
 ///
 /// [onOwnPage] leaves "open" out and, after a delete, walks up to the parent
-/// rather than staying on a page that no longer exists.
+/// rather than staying on a page that no longer exists. On an element's page
+/// [itemKey]/[itemName] make Export… that element's.
 List<RowAction> moduleRowActions(
   BuildContext context,
   WidgetRef ref,
   ModuleModel module, {
   bool onOwnPage = false,
+  String? itemKey,
+  String? itemName,
 }) {
   final l10n = AppLocalizations.of(context)!;
   final nexusId = module.nexusRef;
@@ -54,16 +57,19 @@ List<RowAction> moduleRowActions(
         _refreshModule(ref, module);
       },
     ),
+    // A folder, as one of the user's own Artisan bundles (TEMPLATES.md §4.4).
+    if (module.kind == ModuleKind.collector)
+      RowAction(
+        label: l10n.bundleSaveMine,
+        icon: Icons.inventory_2_outlined,
+        onTap: () => showSaveBundleDialog(context, ref, module),
+      ),
+    // Every way out — PDF, Word, EPUB, tables, web page, Markdown, .mddx
+    // (APP docs/EXPORT-DECOR.md E8).
     RowAction(
-      label: l10n.mddxExport,
+      label: l10n.exportTitle,
       icon: Icons.ios_share,
-      onTap: () async {
-        final db = await ref.read(databaseProvider.future);
-        final bytes = await Mddx.export(db, nexusId, module.id);
-        if (bytes == null) return;
-        final safe = module.name.replaceAll(RegExp(r'[\\/:*?"<>|]'), '_');
-        await Share.shareXFiles([XFile.fromData(bytes, mimeType: 'application/json', name: '$safe.mddx')]);
-      },
+      onTap: () => showExportSheet(context, ref, module, itemKey: itemKey, itemName: itemName),
     ),
     RowAction(
       label: l10n.btnDelete,

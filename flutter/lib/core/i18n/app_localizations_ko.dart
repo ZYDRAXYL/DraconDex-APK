@@ -105,6 +105,42 @@ class AppLocalizationsKo extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => '모두 보기';
+
+  @override
+  String get themeShowLess => '접기';
+
+  @override
+  String get pageLayout => '제목 레이아웃';
+
+  @override
+  String get titleAlign => '제목 정렬';
+
+  @override
+  String get alignLeft => '왼쪽';
+
+  @override
+  String get alignCenter => '가운데';
+
+  @override
+  String get alignRight => '오른쪽';
+
+  @override
+  String get pageIcon => '제목 위 아이콘';
+
+  @override
+  String get pageCover => '커버 이미지';
+
+  @override
+  String get pageCoverNone => '커버 없음';
+
+  @override
+  String get pageCoverEmpty => '커버로 쓰려면 이 Nexus에 이미지를 가져오세요';
+
+  @override
+  String get pageLayoutScope => '이 페이지에만 적용됩니다';
+
+  @override
   String get languageLabel => '언어';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get clsInsertBelow => '아래에 행 삽입';
+
+  @override
+  String get exportTitle => '내보내기…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => '인쇄·공유·인쇄소 전달용';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Word·Google 문서·Pages에서 계속 편집';
+
+  @override
+  String get exportEpub => 'EPUB(전자책)';
+
+  @override
+  String get exportEpubD => 'Apple Books·Kindle·Kobo·Calibre용';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => '표마다 시트 하나 — Excel·Sheets·Numbers용';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => '단순한 표 — CSV 가져오기로 다시 불러올 수 있음';
+
+  @override
+  String get htmlExport => '웹사이트로 내보내기 (HTML)';
+
+  @override
+  String get exportMarkdown => 'Markdown으로 내보내기 (.zip)';
+
+  @override
+  String get exportMdAnyD => '그림이 있는 노트 — Obsidian에서 열림';
+
+  @override
+  String get exportMddxD => '이 모듈을 다른 볼트로 옮기기용';
+
+  @override
+  String get exportNoPage => '폴더에는 자체 페이지가 없습니다';
+
+  @override
+  String get exportOnlyDocs => 'Author·Classifier·Chronicler·Drafter·Inspector만';
+
+  @override
+  String get exportOnlyBooks => 'Author 책만';
+
+  @override
+  String get exportOnlyTables => 'Classifier와 Chronicler만';
+
+  @override
+  String get exportGo => '내보내기';
+
+  @override
+  String get exportScope => '포함할 범위';
+
+  @override
+  String get exportScopePage => '이 페이지';
+
+  @override
+  String get exportScopeModule => '이 모듈과 모든 요소';
+
+  @override
+  String get exportScopeInside => '이 모듈과 그 안의 모든 것';
+
+  @override
+  String get exportScopeNexus => 'Nexus 전체';
+
+  @override
+  String get exportPaper => '용지';
+
+  @override
+  String get exportOrientation => '방향';
+
+  @override
+  String get exportPortrait => '세로';
+
+  @override
+  String get exportLandscape => '가로';
+
+  @override
+  String get exportHeaderFooter => '제목과 쪽 번호';
+
+  @override
+  String get exportToc => '목차 페이지';
+
+  @override
+  String get exportCsvHint => '표 하나: Classifier의 요소 또는 Chronicler의 첫 타임라인. 수식 필드는 빠집니다. CSV 가져오기로 다시 읽을 수 있습니다.';
+
+  @override
+  String get exportXlsxHint => '표마다 시트 하나(Chronicler는 모든 타임라인), 굵게 고정된 머리글. 수식 필드는 빠집니다.';
+
+  @override
+  String get exportMdAnyHint => '요소마다 .md 하나(필드는 속성으로), 페이지의 그림은 assets/에 담깁니다. 폴더를 Obsidian 볼트로 여세요.';
+
+  @override
+  String get exportDocxHint => '장·요소·사건마다 제목(Word 탐색 창에 표시), 필드는 표로, 페이지의 그림, 장 사이 페이지 나누기.';
+
+  @override
+  String get exportEpubHint => '장마다 파일 하나와 목차, 책 페이지의 제목 표지가 표지가 됩니다.';
+
+  @override
+  String get exportMddxHint => '다른 DraconDex 볼트에서 가져올 수 있는 .mddx 파일.';
+
+  @override
+  String get exportFormulaSkipped => '제외된 수식 필드: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV에는 타임라인 하나만 — 나머지 {n}개는 Excel 내보내기로';
+
+  @override
+  String get exportMediaMissing => '그림 {n}개를 찾지 못해 제외했습니다';
+
+  @override
+  String get exportMarkdownEmpty => '아직 내보낼 내용이 없습니다';
+
+  @override
+  String get exportWorking => '페이지를 그리는 중…';
+
+  @override
+  String get exportPictures => '그림';
+
+  @override
+  String get exportRows => '행';
+
+  @override
+  String get exportHtmlPageD => '이 페이지를 웹 페이지로 — 그림도 함께';
+
+  @override
+  String get exportHtmlPageHint => 'index.html과 media/의 그림이 든 .zip — 압축을 풀고 아무 브라우저에서 index.html을 여세요.';
+
+  @override
+  String get exportPrint => '인쇄…';
+
+  @override
+  String get pcVideo => '동영상';
+
+  @override
+  String get pcAudio => '오디오';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D 모델';
+
+  @override
+  String get pcMedia => '미디어 모음';
+
+  @override
+  String get pcMediaEmpty => '아직 파일이 없습니다.';
+
+  @override
+  String get pbChooseFile => '파일 선택';
+
+  @override
+  String get pcAddFile => '파일 추가';
+
+  @override
+  String get pcOpenIn => '다른 앱에서 열기';
+
+  @override
+  String get mediaOpenFailed => '이 파일을 열 수 없습니다';
+
+  @override
+  String get pbBlockSettings => '블록 설정';
+
+  @override
+  String get pbStyle => '스타일';
+
+  @override
+  String get pbOptions => '옵션';
+
+  @override
+  String get pbStyleVariant => '모양';
+
+  @override
+  String get pbStyleAccent => '강조 색';
+
+  @override
+  String get pbStyleWidth => '너비';
+
+  @override
+  String get pbStyleAlign => '정렬';
+
+  @override
+  String get pbStyleDensity => '간격';
+
+  @override
+  String get pbStyleHeader => '머리글';
+
+  @override
+  String get pbHeaderShow => '머리글 표시';
+
+  @override
+  String get pbHeaderTitle => '머리글 제목';
+
+  @override
+  String get pbStyleCollapsible => '접기';
+
+  @override
+  String get pbStyleAnchor => '앵커(#)';
+
+  @override
+  String get pbStyleHideOn => '숨길 화면';
+
+  @override
+  String get pbStyleReset => '초기화';
+
+  @override
+  String get pbStyleApplyAll => '이 종류의 모든 블록에 적용';
+
+  @override
+  String get pbStyleApplied => '블록 {n}개에 적용함';
+
+  @override
+  String get pbStyleCopy => '스타일 복사';
+
+  @override
+  String get pbStylePaste => '스타일 붙여넣기';
+
+  @override
+  String get pbNoOptions => '이 블록에는 자체 옵션이 없습니다. 모양은 스타일 탭에서 바꿉니다.';
+
+  @override
+  String get pbVariantPlain => '기본';
+
+  @override
+  String get pbVariantCard => '카드';
+
+  @override
+  String get pbVariantOutline => '윤곽선';
+
+  @override
+  String get pbVariantTinted => '색조';
+
+  @override
+  String get pbVariantHero => '히어로';
+
+  @override
+  String get pbAccKind => '모듈 종류';
+
+  @override
+  String get pbAccAccent => '테마 강조색';
+
+  @override
+  String get pbAccBlue => '파랑';
+
+  @override
+  String get pbAccGreen => '초록';
+
+  @override
+  String get pbAccAmber => '호박색';
+
+  @override
+  String get pbAccRose => '장미';
+
+  @override
+  String get pbAccViolet => '보라';
+
+  @override
+  String get pbAccSlate => '슬레이트';
+
+  @override
+  String get pbWidthNarrow => '좁게';
+
+  @override
+  String get pbWidthNormal => '보통';
+
+  @override
+  String get pbWidthWide => '넓게';
+
+  @override
+  String get pbWidthFull => '전체';
+
+  @override
+  String get pbDensityComfy => '넉넉하게';
+
+  @override
+  String get pbDensityCompact => '촘촘하게';
+
+  @override
+  String get pbCollOff => '안 함';
+
+  @override
+  String get pbCollOpen => '펼친 상태';
+
+  @override
+  String get pbCollClosed => '접힌 상태';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => '휴대폰';
+
+  @override
+  String get pbHideDesktop => '데스크톱';
+
+  @override
+  String get pbLinks => '링크';
+
+  @override
+  String get pbLinkAdd => '링크 추가';
+
+  @override
+  String get pbLinkAddPh => '+ [[이름]] · #앵커 · https://…';
+
+  @override
+  String get pbLinkBadUrl => '링크가 아닙니다. [[이름]], #앵커 또는 http(s) 주소를 쓰세요';
+
+  @override
+  String get pbLinkLabel => '표시 이름';
+
+  @override
+  String get pbLinkTo => '연결 대상';
+
+  @override
+  String get pbLinkGroup => '그룹';
+
+  @override
+  String get pbLinkHint => '웹 링크는 브라우저에서 열립니다(http·https만). 앱은 저장된 주소만 엽니다.';
+
+  @override
+  String get pbLinkMissing => '아직 그 이름의 페이지가 없습니다. 눌러서 만들기';
+
+  @override
+  String get pbLinkUp => '위로';
+
+  @override
+  String get pbLinkDown => '아래로';
+
+  @override
+  String get pbLinksEmpty => '아직 링크가 없습니다.';
+
+  @override
+  String get pbLinksEmptyArrange => '아직 링크가 없습니다. ⚙ → 옵션에서 추가하세요.';
+
+  @override
+  String get pbListAdd => '추가';
+
+  @override
+  String get pcLinkbar => '링크 막대';
+
+  @override
+  String get pcLinkcard => '링크 카드';
+
+  @override
+  String get pcHatnote => '머리말 주석';
+
+  @override
+  String get pcSeeAlso => '함께 보기';
+
+  @override
+  String get pcReferences => '각주';
+
+  @override
+  String get pcTabs => '탭';
+
+  @override
+  String get pcToggle => '토글';
+
+  @override
+  String get pcNavbox => '탐색 상자';
+
+  @override
+  String get pcChildren => '하위 페이지';
+
+  @override
+  String get pcHatAnd => '및';
+
+  @override
+  String get pcHatnotePh => '주요 문서: …';
+
+  @override
+  String get pcReferencesEmpty => '이 페이지에는 아직 각주가 없습니다. 텍스트에 [^1]을 쓰고 별도 줄에 "[^1]: …"를 쓰세요.';
+
+  @override
+  String get pcSeeAlsoEmpty => '이 페이지의 링크가 아직 없습니다';
+
+  @override
+  String get pcSuggested => '추천:';
+
+  @override
+  String get pcTab => '탭';
+
+  @override
+  String get pcChildrenNone => '이 페이지 아래에는 아무것도 없습니다.';
+
+  @override
+  String get pbFootnoteMissing => '이 각주에는 아직 내용이 없습니다. "[^n]: …" 줄을 추가하세요';
+
+  @override
+  String get pcOptBar => '막대 스타일';
+
+  @override
+  String get pcOptCaption => '캡션';
+
+  @override
+  String get pcOptCount => '개수';
+
+  @override
+  String get pcOptCover => '표지 그림';
+
+  @override
+  String get pcOptDepth => '깊이';
+
+  @override
+  String get pcOptHatKind => '주석 종류';
+
+  @override
+  String get pcOptLayout => '레이아웃';
+
+  @override
+  String get pcOptLook => '모양';
+
+  @override
+  String get pcOptLoop => '반복';
+
+  @override
+  String get pcOptPoster => '포스터 그림';
+
+  @override
+  String get pcOptSort => '정렬';
+
+  @override
+  String get pcOptSource => '모듈에서 채우기';
+
+  @override
+  String get pcOptStart => '시작 상태';
+
+  @override
+  String get pcOptStartPage => '처음 보일 페이지';
+
+  @override
+  String get pcOptStartTab => '처음 표시할 탭';
+
+  @override
+  String get pcOptSticky => '스크롤할 때 위에 고정';
+
+  @override
+  String get pcOptSuggest => '여기로 연결되거나 여기서 연결되는 페이지 추천';
+
+  @override
+  String get pcOptTabs => '탭 이름';
+
+  @override
+  String get pcBarPills => '알약';
+
+  @override
+  String get pcBarTabs => '탭';
+
+  @override
+  String get pcBarUnderline => '밑줄';
+
+  @override
+  String get pcBarButtons => '버튼';
+
+  @override
+  String get pcCardCard => '카드';
+
+  @override
+  String get pcCardCompact => '간단히';
+
+  @override
+  String get pcCardButton => '버튼';
+
+  @override
+  String get pcHatMain => '주요 문서:';
+
+  @override
+  String get pcHatAbout => '자세한 내용은';
+
+  @override
+  String get pcHatDistinguish => '다음과 혼동하지 마세요:';
+
+  @override
+  String get pcTabsLine => '선';
+
+  @override
+  String get pcTabsBoxed => '상자';
+
+  @override
+  String get pcTabsPills => '알약';
+
+  @override
+  String get pcKidsList => '목록';
+
+  @override
+  String get pcKidsTree => '트리';
+
+  @override
+  String get pcKidsCards => '카드';
+
+  @override
+  String get pcSortOrder => 'Nest 순서';
+
+  @override
+  String get pcSortName => '이름순';
+
+  @override
+  String get pcGalGrid => '격자';
+
+  @override
+  String get pcGalStrip => '가로 띠';
+
+  @override
+  String get pcPdfSingle => '한 페이지씩';
+
+  @override
+  String get pcPdfStrip => '페이지 띠';
+
+  @override
+  String get pcInfobox => '정보 상자';
+
+  @override
+  String get pcCallout => '강조 상자';
+
+  @override
+  String get pcStats => '통계';
+
+  @override
+  String get pcToc => '목차';
+
+  @override
+  String get pcSpotlight => '스포트라이트';
+
+  @override
+  String get pcRoster => '명단';
+
+  @override
+  String get pcBreakdown => '분포';
+
+  @override
+  String get pcEras => '시대';
+
+  @override
+  String get pcUpcoming => '다가오는 일';
+
+  @override
+  String get pcPinlist => '핀 목록';
+
+  @override
+  String get pcProgress => '진행 상황';
+
+  @override
+  String get pcChapters => '장';
+
+  @override
+  String get pcEndings => '엔딩';
+
+  @override
+  String get pcVariables => '변수';
+
+  @override
+  String get pcFocus => '초점';
+
+  @override
+  String get pcLegend => '범례';
+
+  @override
+  String get pcJourney => '여정';
+
+  @override
+  String get pcStrip => '컷 목록';
+
+  @override
+  String get pcFeatured => '주목';
+
+  @override
+  String get pcDashboard => '대시보드';
+
+  @override
+  String get pcRecent => '최근 변경';
+
+  @override
+  String get pcQuickroll => '빠른 굴림';
+
+  @override
+  String get pcPinned => '고정됨';
+
+  @override
+  String get pcTasks => '작업';
+
+  @override
+  String get pcBanner => '배너';
+
+  @override
+  String get pcGallery => '갤러리';
+
+  @override
+  String get pcDivider => '구분선';
+
+  @override
+  String get pcIconrow => '아이콘 줄';
+
+  @override
+  String get pcFigure => '그림';
+
+  @override
+  String get pcInfoboxEmpty => '아직 필드가 없습니다';
+
+  @override
+  String get pcStatsEmpty => '아직 셀 것이 없습니다';
+
+  @override
+  String get pcTocEmpty => '제목을 추가하면 목차가 만들어집니다';
+
+  @override
+  String get pcNoElements => '아직 요소가 없습니다';
+
+  @override
+  String get pcBreakdownEmpty => '집계할 필드를 고르세요';
+
+  @override
+  String get noEventsYet => '아직 이벤트가 없습니다';
+
+  @override
+  String get mapNoAreas => '아직 영역이 없습니다';
+
+  @override
+  String get pcNoChapters => '아직 장이 없습니다';
+
+  @override
+  String get pcWords => '단어';
+
+  @override
+  String get pcNoEndings => '아직 엔딩이 없습니다';
+
+  @override
+  String get pcNoVariables => '아직 변수가 없습니다';
+
+  @override
+  String get pcNoRelations => '아직 관계가 없습니다';
+
+  @override
+  String get pcUnlabelled => '라벨 없음';
+
+  @override
+  String get pcNoPanels => '아직 컷이 없습니다';
+
+  @override
+  String get pcNoSketches => '아직 스케치가 없습니다';
+
+  @override
+  String get managerEmpty => '선택된 항목이 없습니다 — 필터를 설정하거나 모듈을 고르세요.';
+
+  @override
+  String get pcRoll => '굴리기';
+
+  @override
+  String get pcNoRolls => '아직 굴린 기록이 없습니다';
+
+  @override
+  String get pcNoPinned => '메시지를 📌로 시작하면 여기에 고정됩니다';
+
+  @override
+  String get pcNoTasks => '메모에 “- [ ] …”를 쓰면 작업이 추가됩니다';
+
+  @override
+  String get pcBannerEmpty => '아직 그림이 없습니다.';
+
+  @override
+  String get pcGalleryEmpty => '아직 그림이 없습니다.';
+
+  @override
+  String get pcIconrowEmpty => '아직 아이콘이 없습니다.';
+
+  @override
+  String get pcFigureEmpty => '아직 그림이 없습니다.';
+
+  @override
+  String get pcStatItems => '항목';
+
+  @override
+  String get pcStatModules => '모듈';
+
+  @override
+  String get backlinks => '백링크';
+
+  @override
+  String get pcCalloutPh => '메모 작성…';
+
+  @override
+  String get pcDecorPickArrange => '아직 없습니다. ⚙ → 옵션에서 고르세요.';
+
+  @override
+  String get pcToneNote => '메모';
+
+  @override
+  String get pcToneTip => '팁';
+
+  @override
+  String get pcToneWarning => '경고';
+
+  @override
+  String get pcToneQuote => '인용';
+
+  @override
+  String get pcToneSecret => '비밀';
+
+  @override
+  String get pcOptFields => '표시할 필드';
+
+  @override
+  String get pcOptDock => '위치';
+
+  @override
+  String get pcOptTone => '어조';
+
+  @override
+  String get pcOptField => '집계할 필드';
+
+  @override
+  String get pcOptFrom => '시작 연도';
+
+  @override
+  String get pcOptGoal => '목표 단어 수';
+
+  @override
+  String get pcOptSubtitle => '부제';
+
+  @override
+  String get pcOptHeight => '높이';
+
+  @override
+  String get pcOptScrim => '글자 아래 그늘';
+
+  @override
+  String get pbImages => '그림';
+
+  @override
+  String get pcOptFromModule => '이 모듈의 모든 그림';
+
+  @override
+  String get pcOptCaptions => '파일 이름 표시';
+
+  @override
+  String get pcOptItems => '항목';
+
+  @override
+  String get pcOptSize => '크기';
+
+  @override
+  String get pcOptFit => '맞춤';
+
+  @override
+  String get pcOptFloat => '글 흐름';
+
+  @override
+  String get pcOptRound => '둥근 모서리';
+
+  @override
+  String get pcLayoutTable => '표';
+
+  @override
+  String get pcLayoutStacked => '세로 배치';
+
+  @override
+  String get pcDockRight => '오른쪽';
+
+  @override
+  String get pcDockLeft => '왼쪽';
+
+  @override
+  String get pcDockFull => '전체 너비';
+
+  @override
+  String get pcSizeS => '작게';
+
+  @override
+  String get pcSizeM => '보통';
+
+  @override
+  String get pcSizeL => '크게';
+
+  @override
+  String get pcSizeFull => '전체 너비';
+
+  @override
+  String get pcScrimSoft => '약하게';
+
+  @override
+  String get pcScrimStrong => '강하게';
+
+  @override
+  String get pcGalMasonry => '벽돌식';
+
+  @override
+  String get pcDivLine => '선';
+
+  @override
+  String get pcDivDouble => '이중선';
+
+  @override
+  String get pcDivDots => '점선';
+
+  @override
+  String get pcDivOrnament => '장식';
+
+  @override
+  String get pcDivImage => '그림 띠';
+
+  @override
+  String get pcIrChip => '칩';
+
+  @override
+  String get pcIrBig => '큰 아이콘';
+
+  @override
+  String get pcFitContain => '전체';
+
+  @override
+  String get pcFitCover => '틀 채우기';
+
+  @override
+  String get pcFloatNone => '단독';
+
+  @override
+  String get pcFloatLeft => '그림 왼쪽';
+
+  @override
+  String get pcFloatRight => '그림 오른쪽';
+
+  @override
+  String get pcLoadFailed => '이 블록을 불러오지 못했습니다';
+
+  @override
+  String get pcNoValue => '(없음)';
+
+  @override
+  String get tplUse => '템플릿 사용…';
+
+  @override
+  String get tplUseHint => '이 페이지의 레이아웃을 바꿉니다. 내용은 그대로이며 바로 실행 취소할 수 있습니다.';
+
+  @override
+  String get tplDefault => '기본';
+
+  @override
+  String get tplOtherTypes => '다른 유형';
+
+  @override
+  String get tplApplied => '템플릿을 적용했습니다';
+
+  @override
+  String get tplBorrowDropped => '{n}개 블록 제외 — 연결되지 않은 모듈에서 가져오는 블록입니다';
+
+  @override
+  String get tplGallery => '페이지 템플릿';
+
+  @override
+  String get pcFacts => '사실';
+
+  @override
+  String get pcNoFacts => '노트에 “건국: 300년” 같은 줄을 적으세요';
+
+  @override
+  String get pcPlacecard => '장소 카드';
+
+  @override
+  String get pcBorders => '인접 지역';
+
+  @override
+  String get pcOptArea => '구역(이름)';
+
+  @override
+  String get tplSave => '페이지를 템플릿으로 저장…';
+
+  @override
+  String get tplMine => '내 템플릿';
+
+  @override
+  String get savePresetHint => '이 모듈의 모양, 보기, 필드(내용 제외)를 같은 종류의 새 모듈을 위한 시작점으로 저장합니다.';
+
+  @override
+  String get presetSaved => '프리셋을 저장했습니다';
+
+  @override
+  String get presetDeleteConfirm => '이 프리셋을 삭제할까요? 이것으로 만든 모듈은 그대로 남습니다.';
+
+  @override
+  String get bundleTabClassic => '클래식';
+
+  @override
+  String get bundleTabGenre => '장르';
+
+  @override
+  String get bundleTabMine => '내 번들';
+
+  @override
+  String get bundleMineEmpty => '아직 저장된 것이 없습니다 — 폴더를 우클릭하고 “Artisan 번들로 저장…”을 선택하세요';
+
+  @override
+  String get bundleSampleCount => '샘플 데이터';
+
+  @override
+  String get bundleIncludeSamples => '샘플 데이터 포함';
+
+  @override
+  String get bundleSaveMine => 'Artisan 번들로 저장…';
+
+  @override
+  String get bundleSaveData => '데이터';
+
+  @override
+  String get bundleDataNone => '구조만';
+
+  @override
+  String get bundleDataSamples => '모듈당 최대 3개 샘플';
+
+  @override
+  String get bundleSaveHint => '폴더, 모듈, 필드, 페이지 레이아웃이 저장됩니다. 이 폴더 밖 모듈로의 링크는 제외됩니다.';
+
+  @override
+  String get bundleSaved => '번들을 저장했습니다';
+
+  @override
+  String get bundleCreate => '만들기';
+
+  @override
+  String get bundleAdjust => '먼저 조정';
+
+  @override
+  String get bundleCreated => '프로젝트를 만들었습니다';
+
+  @override
+  String get bundleProjectName => '프로젝트 이름';
+
+  @override
+  String get bundleIncludes => '포함';
+
+  @override
+  String get bundleFields => '필드 (비우면 제외)';
+
+  @override
+  String get nameRequired => '이름은 필수입니다';
+
+  @override
+  String get nameField => '이름';
+
+  @override
+  String get artCounts => '폴더 {f} · 모듈 {m} · 링크 {l} · 예시 {s}';
+
+  @override
+  String get artStructure => '만들어지는 구조';
+
+  @override
+  String get artLinks => '모듈 간 링크';
+
+  @override
+  String get artLinkRel => '관계 필드 / 선택';
+
+  @override
+  String get artLinkBorrow => '빌려 쓴 컴포넌트';
+
+  @override
+  String get artBefore => '만들기 전에';
+
+  @override
+  String get exportFormat => '형식';
+
+  @override
+  String get exportPreview => '미리보기';
+
+  @override
+  String get exportPreviewNote => '레이아웃 스케치입니다 — 파일에는 실제 페이지가 담깁니다';
+
+  @override
+  String get tplBrowse => '다른 템플릿…';
+
+  @override
+  String get tplFields => '템플릿의 필드도 넣기';
+
+  @override
+  String get tplModulePage => '모듈 페이지';
+
+  @override
+  String get tplItemPage => '요소 페이지';
+
+  @override
+  String get tplKindCount => '{n}개';
+
+  @override
+  String get tplFieldsHead => '필드';
+
+  @override
+  String get btnApply => '적용';
+
+  @override
+  String get btnCreate => '생성';
 }

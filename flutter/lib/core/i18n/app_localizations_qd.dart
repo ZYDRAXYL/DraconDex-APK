@@ -105,6 +105,42 @@ class AppLocalizationsQd extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Shewyth Alle';
+
+  @override
+  String get themeShowLess => 'Foldyth Inne';
+
+  @override
+  String get pageLayout => 'Tytl layuth';
+
+  @override
+  String get titleAlign => 'Alygn tytl';
+
+  @override
+  String get alignLeft => 'Lefth';
+
+  @override
+  String get alignCenter => 'Centyr';
+
+  @override
+  String get alignRight => 'Ryth';
+
+  @override
+  String get pageIcon => 'Iconyx abuv tytl';
+
+  @override
+  String get pageCover => 'Kovyr imaj';
+
+  @override
+  String get pageCoverNone => 'Nyn kovyr';
+
+  @override
+  String get pageCoverEmpty => 'Importyth imaj into Nexus fyr kovyr';
+
+  @override
+  String get pageLayoutScope => 'Onlyth thys pagyx';
+
+  @override
   String get languageLabel => 'Zhorvex';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Insert row below';
+
+  @override
+  String get exportTitle => 'Sende Forth…';
+
+  @override
+  String get exportPdf => 'PDF Scrolle';
+
+  @override
+  String get exportPdfD => 'For the presse, or to share abroade';
+
+  @override
+  String get exportDocx => 'Word Scrolle (DOCX)';
+
+  @override
+  String get exportDocxD => 'To scribe on in other hands';
+
+  @override
+  String get exportEpub => 'EPUB (bound tome)';
+
+  @override
+  String get exportEpubD => 'For readers of every realm';
+
+  @override
+  String get exportXlsx => 'Ledger (XLSX)';
+
+  @override
+  String get exportXlsxD => 'A leafe for every table';
+
+  @override
+  String get exportCsv => 'CSV Roll';
+
+  @override
+  String get exportCsvD => 'A plaine roll, that may come home againe';
+
+  @override
+  String get htmlExport => 'Sende forthe as a Webbe (HTML)';
+
+  @override
+  String get exportMarkdown => 'Sendyth forth as Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Notes with limnings';
+
+  @override
+  String get exportMddxD => 'This module, to carrie to another hoard';
+
+  @override
+  String get exportNoPage => 'A folder hath no page of its owne';
+
+  @override
+  String get exportOnlyDocs => 'Author, Classifier, Chronicler, Drafter and Inspector onlie';
+
+  @override
+  String get exportOnlyBooks => 'Author’s tomes onlie';
+
+  @override
+  String get exportOnlyTables => 'Classifier and Chronicler onlie';
+
+  @override
+  String get exportGo => 'Sende Forth';
+
+  @override
+  String get exportScope => 'What to bringe';
+
+  @override
+  String get exportScopePage => 'This page';
+
+  @override
+  String get exportScopeModule => 'This module and all its thinges';
+
+  @override
+  String get exportScopeInside => 'This module and all within';
+
+  @override
+  String get exportScopeNexus => 'The whole Nexus';
+
+  @override
+  String get exportPaper => 'Parchment';
+
+  @override
+  String get exportOrientation => 'Turning';
+
+  @override
+  String get exportPortrait => 'Upright';
+
+  @override
+  String get exportLandscape => 'Broadwise';
+
+  @override
+  String get exportHeaderFooter => 'Title and page nombres';
+
+  @override
+  String get exportToc => 'Page of contentes';
+
+  @override
+  String get exportCsvHint => 'One roll: a Classifier’s thinges, or a Chronicler’s first line of time. Formulae are left behinde.';
+
+  @override
+  String get exportXlsxHint => 'A leafe for every table, the head made bolde and fixt. Formulae are left behinde.';
+
+  @override
+  String get exportMdAnyHint => 'A scrolle for every thing; its limnings bide in assets/.';
+
+  @override
+  String get exportDocxHint => 'A heading for each chapter, fields in a table, and a fresh leafe between chapters.';
+
+  @override
+  String get exportEpubHint => 'A leafe for each chapter, and the tome’s face upon its front.';
+
+  @override
+  String get exportMddxHint => 'A .mddx scrolle another hoard may take in.';
+
+  @override
+  String get exportFormulaSkipped => 'Formulae left behinde: {names}';
+
+  @override
+  String get exportMoreTimelines => 'A CSV holdeth but one line — {n} more bide in the Ledger';
+
+  @override
+  String get exportMediaMissing => '{n} limning(s) could not be founde, and were left behinde';
+
+  @override
+  String get exportMarkdownEmpty => 'Noght yet to sendyth forth';
+
+  @override
+  String get exportWorking => 'Limning the pages…';
+
+  @override
+  String get exportPictures => 'limnings';
+
+  @override
+  String get exportRows => 'rowes';
+
+  @override
+  String get exportHtmlPageD => 'Thys Pagyx as a Webbrath, its Imagyx besyde';
+
+  @override
+  String get exportHtmlPageHint => 'A .zip bearing index.html and its Imagyx in media/ — unbynd it and open index.html in any Browsyr.';
+
+  @override
+  String get exportPrint => 'Inkscrybe…';
+
+  @override
+  String get pcVideo => 'Moving Picture';
+
+  @override
+  String get pcAudio => 'Soundes';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Carven Figure';
+
+  @override
+  String get pcMedia => 'Sundrie Things';
+
+  @override
+  String get pcMediaEmpty => 'No Scrowle as yet.';
+
+  @override
+  String get pbChooseFile => 'Chese a Scrowle';
+
+  @override
+  String get pcAddFile => 'Grothul a Scrollyx';
+
+  @override
+  String get pcOpenIn => 'Unseal in anothyr Enginyx';
+
+  @override
+  String get mediaOpenFailed => 'Thys Scrollyx wouldst not unseal';
+
+  @override
+  String get pbBlockSettings => 'Settinges of the Blokke';
+
+  @override
+  String get pbStyle => 'Fasoun';
+
+  @override
+  String get pbOptions => 'Choises';
+
+  @override
+  String get pbStyleVariant => 'Semblaunce';
+
+  @override
+  String get pbStyleAccent => 'Hewe of Note';
+
+  @override
+  String get pbStyleWidth => 'Brede';
+
+  @override
+  String get pbStyleAlign => 'Ordeyne';
+
+  @override
+  String get pbStyleDensity => 'Spaces';
+
+  @override
+  String get pbStyleHeader => 'Heed';
+
+  @override
+  String get pbHeaderShow => 'Shewe an Heed';
+
+  @override
+  String get pbHeaderTitle => 'Title of the Heed';
+
+  @override
+  String get pbStyleCollapsible => 'Foldeth';
+
+  @override
+  String get pbStyleAnchor => 'Ancre (#)';
+
+  @override
+  String get pbStyleHideOn => 'Hide upon';
+
+  @override
+  String get pbStyleReset => 'Unmake';
+
+  @override
+  String get pbStyleApplyAll => 'Yeve it to Every Blokke of this Kynde';
+
+  @override
+  String get pbStyleApplied => 'Fasoun yeven to {n} Blokkes moore';
+
+  @override
+  String get pbStyleCopy => 'Copye the Fasoun';
+
+  @override
+  String get pbStylePaste => 'Sette the Fasoun';
+
+  @override
+  String get pbNoOptions => 'This Blokke hath no Choises of its owne — its Fasoun lyeth in the Style tabbe.';
+
+  @override
+  String get pbVariantPlain => 'Pleyn';
+
+  @override
+  String get pbVariantCard => 'Carde';
+
+  @override
+  String get pbVariantOutline => 'Bordure';
+
+  @override
+  String get pbVariantTinted => 'Steyned';
+
+  @override
+  String get pbVariantHero => 'Heroic';
+
+  @override
+  String get pbAccKind => 'Kynde of Module';
+
+  @override
+  String get pbAccAccent => 'Hewe of the Theme';
+
+  @override
+  String get pbAccBlue => 'Blewe';
+
+  @override
+  String get pbAccGreen => 'Grene';
+
+  @override
+  String get pbAccAmber => 'Ambre';
+
+  @override
+  String get pbAccRose => 'Rose';
+
+  @override
+  String get pbAccViolet => 'Violette';
+
+  @override
+  String get pbAccSlate => 'Sclate';
+
+  @override
+  String get pbWidthNarrow => 'Narwe';
+
+  @override
+  String get pbWidthNormal => 'Commune';
+
+  @override
+  String get pbWidthWide => 'Wyde';
+
+  @override
+  String get pbWidthFull => 'Fulle';
+
+  @override
+  String get pbDensityComfy => 'Roomy';
+
+  @override
+  String get pbDensityCompact => 'Streite';
+
+  @override
+  String get pbCollOff => 'Nay';
+
+  @override
+  String get pbCollOpen => 'Open';
+
+  @override
+  String get pbCollClosed => 'Folded';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Pocket Glasse';
+
+  @override
+  String get pbHideDesktop => 'Writing Borde';
+
+  @override
+  String get pbLinks => 'Linkes';
+
+  @override
+  String get pbLinkAdd => 'Adde a Linke';
+
+  @override
+  String get pbLinkAddPh => '+ [[Name]] · #ancre · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'That is no Linke: use [[Name]], #ancre, or an http(s) Address';
+
+  @override
+  String get pbLinkLabel => 'Label';
+
+  @override
+  String get pbLinkTo => 'Goeth to';
+
+  @override
+  String get pbLinkGroup => 'Companie';
+
+  @override
+  String get pbLinkHint => 'Web Linkes open in thy Browser, http and https onlie — the app openeth the saved Address, none other.';
+
+  @override
+  String get pbLinkMissing => 'Naught of that Name as yet — clicke to make it';
+
+  @override
+  String get pbLinkUp => 'Uppe';
+
+  @override
+  String get pbLinkDown => 'Doune';
+
+  @override
+  String get pbLinksEmpty => 'No Linkes as yet.';
+
+  @override
+  String get pbLinksEmptyArrange => 'No Linkes as yet — adde them by ⚙ → Choises.';
+
+  @override
+  String get pbListAdd => 'Adde';
+
+  @override
+  String get pcLinkbar => 'Barre of Linkes';
+
+  @override
+  String get pcLinkcard => 'Cardes of Linkes';
+
+  @override
+  String get pcHatnote => 'Hatte Note';
+
+  @override
+  String get pcSeeAlso => 'Looke also';
+
+  @override
+  String get pcReferences => 'Notes';
+
+  @override
+  String get pcTabs => 'Tabbes';
+
+  @override
+  String get pcToggle => 'Folde';
+
+  @override
+  String get pcNavbox => 'Boxe of Wayes';
+
+  @override
+  String get pcChildren => 'Pages Beneath';
+
+  @override
+  String get pcHatAnd => 'and';
+
+  @override
+  String get pcHatnotePh => 'Chiefe tale: …';
+
+  @override
+  String get pcReferencesEmpty => 'No Foote-notes as yet — write [^1] in a Text Blokke and "[^1]: …" upon a line of its owne.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'No tethers from this page yette';
+
+  @override
+  String get pcSuggested => 'Counselled:';
+
+  @override
+  String get pcTab => 'Tabbe';
+
+  @override
+  String get pcChildrenNone => 'Naught sitteth beneath this Page.';
+
+  @override
+  String get pbFootnoteMissing => 'This Foote-note hath no Wordes yet — adde a line "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'Fasoun of the Barre';
+
+  @override
+  String get pcOptCaption => 'Legende';
+
+  @override
+  String get pcOptCount => 'How Manie';
+
+  @override
+  String get pcOptCover => 'Cover Picture';
+
+  @override
+  String get pcOptDepth => 'Depthe';
+
+  @override
+  String get pcOptHatKind => 'Kynde of Note';
+
+  @override
+  String get pcOptLayout => 'Ordinaunce';
+
+  @override
+  String get pcOptLook => 'Semblaunce';
+
+  @override
+  String get pcOptLoop => 'Againe and againe';
+
+  @override
+  String get pcOptPoster => 'Poster Picture';
+
+  @override
+  String get pcOptSort => 'Ordre';
+
+  @override
+  String get pcOptSource => 'Fille from Module';
+
+  @override
+  String get pcOptStart => 'Beginneth';
+
+  @override
+  String get pcOptStartPage => 'First Leafe shewn';
+
+  @override
+  String get pcOptStartTab => 'Tabbe shewn first';
+
+  @override
+  String get pcOptSticky => 'Abide atop whilst scrolling';
+
+  @override
+  String get pcOptSuggest => 'Counsel Pages linked hither or thence';
+
+  @override
+  String get pcOptTabs => 'Names of Tabbes';
+
+  @override
+  String get pcBarPills => 'Pilles';
+
+  @override
+  String get pcBarTabs => 'Tabbes';
+
+  @override
+  String get pcBarUnderline => 'Under-lyned';
+
+  @override
+  String get pcBarButtons => 'Buttons';
+
+  @override
+  String get pcCardCard => 'Carde';
+
+  @override
+  String get pcCardCompact => 'Streite';
+
+  @override
+  String get pcCardButton => 'Button';
+
+  @override
+  String get pcHatMain => 'Chiefe tale:';
+
+  @override
+  String get pcHatAbout => 'For moore, see';
+
+  @override
+  String get pcHatDistinguish => 'Not to be mistaken for';
+
+  @override
+  String get pcTabsLine => 'Lyne';
+
+  @override
+  String get pcTabsBoxed => 'Boxed';
+
+  @override
+  String get pcTabsPills => 'Pilles';
+
+  @override
+  String get pcKidsList => 'Roll';
+
+  @override
+  String get pcKidsTree => 'Tree';
+
+  @override
+  String get pcKidsCards => 'Cardes';
+
+  @override
+  String get pcSortOrder => 'As in the Nest';
+
+  @override
+  String get pcSortName => 'By Name';
+
+  @override
+  String get pcGalGrid => 'Grate';
+
+  @override
+  String get pcGalStrip => 'Strippe';
+
+  @override
+  String get pcPdfSingle => 'One Leafe';
+
+  @override
+  String get pcPdfStrip => 'Strippe of Leaves';
+
+  @override
+  String get pcInfobox => 'Lore Boxe';
+
+  @override
+  String get pcCallout => 'Proclamation';
+
+  @override
+  String get pcStats => 'Tallies';
+
+  @override
+  String get pcToc => 'Contentes';
+
+  @override
+  String get pcSpotlight => 'Lanterne';
+
+  @override
+  String get pcRoster => 'Roll of Names';
+
+  @override
+  String get pcBreakdown => 'Sunderinge';
+
+  @override
+  String get pcEras => 'Ages';
+
+  @override
+  String get pcUpcoming => 'Yette to Come';
+
+  @override
+  String get pcPinlist => 'Roll of Pinnes';
+
+  @override
+  String get pcProgress => 'Progresse';
+
+  @override
+  String get pcChapters => 'Chapteres';
+
+  @override
+  String get pcEndings => 'Endinges';
+
+  @override
+  String get pcVariables => 'Runes of State';
+
+  @override
+  String get pcFocus => 'Heart of the Webbe';
+
+  @override
+  String get pcLegend => 'Key of Signes';
+
+  @override
+  String get pcJourney => 'Wayfaringe';
+
+  @override
+  String get pcStrip => 'Strippe of Panes';
+
+  @override
+  String get pcFeatured => 'Chosen Worke';
+
+  @override
+  String get pcDashboard => 'Warde Table';
+
+  @override
+  String get pcRecent => 'Late Changed';
+
+  @override
+  String get pcQuickroll => 'Swift Caste';
+
+  @override
+  String get pcPinned => 'Pinned';
+
+  @override
+  String get pcTasks => 'Taskes';
+
+  @override
+  String get pcBanner => 'Banere';
+
+  @override
+  String get pcGallery => 'Gallerie';
+
+  @override
+  String get pcDivider => 'Divider';
+
+  @override
+  String get pcIconrow => 'Rowe of Signes';
+
+  @override
+  String get pcFigure => 'Figure';
+
+  @override
+  String get pcInfoboxEmpty => 'No fieldes yette';
+
+  @override
+  String get pcStatsEmpty => 'Naught to tallie yette';
+
+  @override
+  String get pcTocEmpty => 'Adde a heading to raise the contentes';
+
+  @override
+  String get pcNoElements => 'No thinges yette';
+
+  @override
+  String get pcBreakdownEmpty => 'Chuse a fielde to tallie by';
+
+  @override
+  String get noEventsYet => 'Nyn Eventyx yet';
+
+  @override
+  String get mapNoAreas => 'No areas yette';
+
+  @override
+  String get pcNoChapters => 'No chapteres yette';
+
+  @override
+  String get pcWords => 'wordes';
+
+  @override
+  String get pcNoEndings => 'No endinges yette';
+
+  @override
+  String get pcNoVariables => 'No runes yette';
+
+  @override
+  String get pcNoRelations => 'No bondes yette';
+
+  @override
+  String get pcUnlabelled => 'Unnamed';
+
+  @override
+  String get pcNoPanels => 'No panes yette';
+
+  @override
+  String get pcNoSketches => 'No limnings yette';
+
+  @override
+  String get managerEmpty => 'Naught chosen — set a sieve or pick modules.';
+
+  @override
+  String get pcRoll => 'Caste';
+
+  @override
+  String get pcNoRolls => 'No castes yette';
+
+  @override
+  String get pcNoPinned => 'Begin a missive with 📌 to pinne it here';
+
+  @override
+  String get pcNoTasks => 'Scribe “- [ ] …” in the notes to sette a taske';
+
+  @override
+  String get pcBannerEmpty => 'No Picture as yet.';
+
+  @override
+  String get pcGalleryEmpty => 'No Pictures as yet.';
+
+  @override
+  String get pcIconrowEmpty => 'No Signes as yet.';
+
+  @override
+  String get pcFigureEmpty => 'No Picture as yet.';
+
+  @override
+  String get pcStatItems => 'Thinges';
+
+  @override
+  String get pcStatModules => 'Modules';
+
+  @override
+  String get backlinks => 'Bakklynks';
+
+  @override
+  String get pcCalloutPh => 'Scribe a note…';
+
+  @override
+  String get pcDecorPickArrange => 'Naught as yet — chese it by ⚙ → Choises.';
+
+  @override
+  String get pcToneNote => 'Note';
+
+  @override
+  String get pcToneTip => 'Counsel';
+
+  @override
+  String get pcToneWarning => 'Warnynge';
+
+  @override
+  String get pcToneQuote => 'Sawe';
+
+  @override
+  String get pcToneSecret => 'Privitee';
+
+  @override
+  String get pcOptFields => 'Feldes Shewn';
+
+  @override
+  String get pcOptDock => 'Stede';
+
+  @override
+  String get pcOptTone => 'Tone';
+
+  @override
+  String get pcOptField => 'Tale by Felde';
+
+  @override
+  String get pcOptFrom => 'Fro the Yeer';
+
+  @override
+  String get pcOptGoal => 'Wordes Sought';
+
+  @override
+  String get pcOptSubtitle => 'Line Beneath';
+
+  @override
+  String get pcOptHeight => 'Heighte';
+
+  @override
+  String get pcOptScrim => 'Shade beneath the Wordes';
+
+  @override
+  String get pbImages => 'Pictures';
+
+  @override
+  String get pcOptFromModule => 'Every Picture laid under this Module';
+
+  @override
+  String get pcOptCaptions => 'Shewe the Names';
+
+  @override
+  String get pcOptItems => 'Thinges';
+
+  @override
+  String get pcOptSize => 'Bignesse';
+
+  @override
+  String get pcOptFit => 'Fitte';
+
+  @override
+  String get pcOptFloat => 'Wordes flowe';
+
+  @override
+  String get pcOptRound => 'Rounded Corners';
+
+  @override
+  String get pcLayoutTable => 'Table';
+
+  @override
+  String get pcLayoutStacked => 'Heaped';
+
+  @override
+  String get pcDockRight => 'Right';
+
+  @override
+  String get pcDockLeft => 'Lefte';
+
+  @override
+  String get pcDockFull => 'Fulle Brede';
+
+  @override
+  String get pcSizeS => 'Smal';
+
+  @override
+  String get pcSizeM => 'Meane';
+
+  @override
+  String get pcSizeL => 'Greate';
+
+  @override
+  String get pcSizeFull => 'Fulle Brede';
+
+  @override
+  String get pcScrimSoft => 'Softe';
+
+  @override
+  String get pcScrimStrong => 'Stronge';
+
+  @override
+  String get pcGalMasonry => 'Masonrie';
+
+  @override
+  String get pcDivLine => 'Lyne';
+
+  @override
+  String get pcDivDouble => 'Double';
+
+  @override
+  String get pcDivDots => 'Prickes';
+
+  @override
+  String get pcDivOrnament => 'Ornament';
+
+  @override
+  String get pcDivImage => 'Bande of Picture';
+
+  @override
+  String get pcIrChip => 'Tokens';
+
+  @override
+  String get pcIrBig => 'Greate Signes';
+
+  @override
+  String get pcFitContain => 'Whole';
+
+  @override
+  String get pcFitCover => 'Fille the Frame';
+
+  @override
+  String get pcFloatNone => 'By itselfe';
+
+  @override
+  String get pcFloatLeft => 'Picture on the Lefte';
+
+  @override
+  String get pcFloatRight => 'Picture on the Right';
+
+  @override
+  String get pcLoadFailed => 'This block would not wake';
+
+  @override
+  String get pcNoValue => '(naught)';
+
+  @override
+  String get tplUse => 'Take a patterne…';
+
+  @override
+  String get tplUseHint => 'Reshapes this page. Thy writings bide, and thou mayst undoe it anon.';
+
+  @override
+  String get tplDefault => 'Wonted';
+
+  @override
+  String get tplOtherTypes => 'Othere Kindes';
+
+  @override
+  String get tplApplied => 'Patterne laid';
+
+  @override
+  String get tplBorrowDropped => '{n} block(s) left behinde — they borrowe from a module not tethered here';
+
+  @override
+  String get tplGallery => 'Page Patternes';
+
+  @override
+  String get pcFacts => 'Truths';
+
+  @override
+  String get pcNoFacts => 'Set down lines such as “Founded: 300” in thy note';
+
+  @override
+  String get pcPlacecard => 'Card of the Place';
+
+  @override
+  String get pcBorders => 'Marcheth with';
+
+  @override
+  String get pcOptArea => 'Region (its name)';
+
+  @override
+  String get tplSave => 'Keepe page as patterne…';
+
+  @override
+  String get tplMine => 'Myne Owne';
+
+  @override
+  String get savePresetHint => 'Keepeth this module\'s look, view and fields (not its lore) as a starting point for new modules of ye same sort.';
+
+  @override
+  String get presetSaved => 'Pattern kept';
+
+  @override
+  String get presetDeleteConfirm => 'Strike this pattern? Modules made from it abide as they are.';
+
+  @override
+  String get bundleTabClassic => 'Olde Ways';
+
+  @override
+  String get bundleTabGenre => 'Kindes of Tale';
+
+  @override
+  String get bundleTabMine => 'Myne Owne';
+
+  @override
+  String get bundleMineEmpty => 'Naught kept yette — right-clicke a folder and chuse “Keepe as Artisan bundle…”';
+
+  @override
+  String get bundleSampleCount => 'Sample Lore';
+
+  @override
+  String get bundleIncludeSamples => 'Bringe sample lore';
+
+  @override
+  String get bundleSaveMine => 'Keepe as Artisan bundle…';
+
+  @override
+  String get bundleSaveData => 'Lore';
+
+  @override
+  String get bundleDataNone => 'Bones onlie';
+
+  @override
+  String get bundleDataSamples => 'Up to three samples each';
+
+  @override
+  String get bundleSaveHint => 'Folders, modules, fieldes and page shapes are kept. Tethers beyond this folder are left behinde.';
+
+  @override
+  String get bundleSaved => 'Bundle kept';
+
+  @override
+  String get bundleCreate => 'Forgyth';
+
+  @override
+  String get bundleAdjust => 'Amendyth Firste';
+
+  @override
+  String get bundleCreated => 'Werke Forgyd';
+
+  @override
+  String get bundleProjectName => 'Name of ythe Werke';
+
+  @override
+  String get bundleIncludes => 'Holdyth';
+
+  @override
+  String get bundleFields => 'Fieldys (emptye = leve owte)';
+
+  @override
+  String get nameRequired => 'A name is required';
+
+  @override
+  String get nameField => 'Yssira';
+
+  @override
+  String get artCounts => '{f} folders · {m} modules · {l} bonds · {s} examples';
+
+  @override
+  String get artStructure => 'What shall be wrought';
+
+  @override
+  String get artLinks => 'Bonds betwixt modules';
+
+  @override
+  String get artLinkRel => 'field of kinship / choosing';
+
+  @override
+  String get artLinkBorrow => 'borrowed piece';
+
+  @override
+  String get artBefore => 'Ere thou create';
+
+  @override
+  String get exportFormat => 'Format';
+
+  @override
+  String get exportPreview => 'Preview';
+
+  @override
+  String get exportPreviewNote => 'A sketch of the layout — the file carries your real pages';
+
+  @override
+  String get tplBrowse => 'More templates…';
+
+  @override
+  String get tplFields => 'Include the template\'s fields';
+
+  @override
+  String get tplModulePage => 'Module page';
+
+  @override
+  String get tplItemPage => 'Element page';
+
+  @override
+  String get tplKindCount => '{n} templates';
+
+  @override
+  String get tplFieldsHead => 'Feldyra';
+
+  @override
+  String get btnApply => 'Enakth';
+
+  @override
+  String get btnCreate => 'Kryneth';
 }

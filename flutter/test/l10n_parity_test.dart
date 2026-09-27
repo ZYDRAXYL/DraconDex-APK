@@ -30,6 +30,24 @@ void main() {
     });
   }
 
+  // The handwritten Dart class is what the app shows; the ARB is what the
+  // next generator run (and every translator) reads. German once showed
+  // twelve strings in English — "Title layout" in the page menu — because
+  // its Dart getters held the English while its ARB had the translation.
+  for (final f in arbs) {
+    final code = RegExp(r'app_(\w+)\.arb').firstMatch(f.path)![1]!;
+    test('app_localizations_$code.dart says what app_$code.arb says', () {
+      final m = read(f);
+      final dart = File('lib/core/i18n/app_localizations_$code.dart').readAsStringSync();
+      final differ = <String>[];
+      for (final g in RegExp(r"String get (\w+) => '((?:[^'\\]|\\.)*)';").allMatches(dart)) {
+        final v = g[2]!.replaceAllMapped(RegExp(r'\\(.)'), (x) => x[1] == 'n' ? '\n' : x[1]!);
+        if (m.containsKey(g[1]) && m[g[1]] != v) differ.add(g[1]!);
+      }
+      expect(differ, isEmpty);
+    });
+  }
+
   test('every locale is registered and has its Dart file', () {
     final main = File('lib/core/i18n/app_localizations.dart').readAsStringSync();
     for (final f in arbs) {

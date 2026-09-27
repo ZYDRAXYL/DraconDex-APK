@@ -105,6 +105,42 @@ class AppLocalizationsVi extends AppLocalizations {
   String get themeDaylight => 'Ban Ngày';
 
   @override
+  String get themeShowAll => 'Hiện tất cả';
+
+  @override
+  String get themeShowLess => 'Thu gọn';
+
+  @override
+  String get pageLayout => 'Bố cục tiêu đề';
+
+  @override
+  String get titleAlign => 'Căn tiêu đề';
+
+  @override
+  String get alignLeft => 'Trái';
+
+  @override
+  String get alignCenter => 'Giữa';
+
+  @override
+  String get alignRight => 'Phải';
+
+  @override
+  String get pageIcon => 'Biểu tượng trên tiêu đề';
+
+  @override
+  String get pageCover => 'Ảnh bìa';
+
+  @override
+  String get pageCoverNone => 'Không có ảnh bìa';
+
+  @override
+  String get pageCoverEmpty => 'Hãy nhập ảnh vào Nexus này để dùng làm ảnh bìa';
+
+  @override
+  String get pageLayoutScope => 'Chỉ áp dụng cho trang này';
+
+  @override
   String get languageLabel => 'Ngôn Ngữ';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Chèn hàng phía dưới';
+
+  @override
+  String get exportTitle => 'Xuất…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Để in, chia sẻ hoặc gửi nhà in';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Để sửa tiếp trong Word, Google Docs hoặc Pages';
+
+  @override
+  String get exportEpub => 'EPUB (sách điện tử)';
+
+  @override
+  String get exportEpubD => 'Cho Apple Books, Kindle, Kobo hoặc Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Mỗi bảng một trang tính, cho Excel, Sheets hoặc Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Bảng thuần — nhập lại được bằng Nhập CSV';
+
+  @override
+  String get htmlExport => 'Xuất thành trang web (HTML)';
+
+  @override
+  String get exportMarkdown => 'Xuất dạng Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Ghi chú kèm ảnh — mở được trong Obsidian';
+
+  @override
+  String get exportMddxD => 'Module này, để chuyển sang vault khác';
+
+  @override
+  String get exportNoPage => 'Thư mục không có trang riêng';
+
+  @override
+  String get exportOnlyDocs => 'Chỉ Author, Classifier, Chronicler, Drafter và Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Chỉ sách của Author';
+
+  @override
+  String get exportOnlyTables => 'Chỉ Classifier và Chronicler';
+
+  @override
+  String get exportGo => 'Xuất';
+
+  @override
+  String get exportScope => 'Phạm vi';
+
+  @override
+  String get exportScopePage => 'Trang này';
+
+  @override
+  String get exportScopeModule => 'Module này và mọi phần tử';
+
+  @override
+  String get exportScopeInside => 'Module này và mọi thứ bên trong';
+
+  @override
+  String get exportScopeNexus => 'Toàn bộ Nexus';
+
+  @override
+  String get exportPaper => 'Khổ giấy';
+
+  @override
+  String get exportOrientation => 'Hướng';
+
+  @override
+  String get exportPortrait => 'Dọc';
+
+  @override
+  String get exportLandscape => 'Ngang';
+
+  @override
+  String get exportHeaderFooter => 'Tiêu đề và số trang';
+
+  @override
+  String get exportToc => 'Trang mục lục';
+
+  @override
+  String get exportCsvHint => 'Một bảng: phần tử của Classifier, hoặc dòng thời gian đầu của Chronicler. Không gồm trường công thức. Nhập CSV đọc lại được.';
+
+  @override
+  String get exportXlsxHint => 'Mỗi bảng một trang tính (mọi dòng thời gian của Chronicler), hàng tiêu đề đậm và cố định. Không gồm trường công thức.';
+
+  @override
+  String get exportMdAnyHint => 'Mỗi phần tử một tệp .md (trường thành thuộc tính); ảnh của trang nằm trong assets/. Mở thư mục như một vault trong Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Mỗi chương, phần tử hoặc sự kiện một tiêu đề (hiện trong ngăn điều hướng của Word), trường thành bảng, ảnh của trang, ngắt trang giữa các chương.';
+
+  @override
+  String get exportEpubHint => 'Mỗi chương một tệp kèm mục lục; ảnh bìa tiêu đề của trang sách thành bìa.';
+
+  @override
+  String get exportMddxHint => 'Tệp .mddx mà vault DraconDex khác nhập được.';
+
+  @override
+  String get exportFormulaSkipped => 'Bỏ qua trường công thức: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV chỉ chứa một dòng thời gian — {n} dòng còn lại có trong bản xuất Excel';
+
+  @override
+  String get exportMediaMissing => 'Không tìm thấy {n} ảnh nên đã bỏ qua';
+
+  @override
+  String get exportMarkdownEmpty => 'Chưa có gì để xuất';
+
+  @override
+  String get exportWorking => 'Đang vẽ các trang…';
+
+  @override
+  String get exportPictures => 'ảnh';
+
+  @override
+  String get exportRows => 'dòng';
+
+  @override
+  String get exportHtmlPageD => 'Trang này dưới dạng trang web, kèm hình ảnh';
+
+  @override
+  String get exportHtmlPageHint => 'Tệp .zip gồm index.html và hình trong media/ — giải nén rồi mở index.html bằng trình duyệt bất kỳ.';
+
+  @override
+  String get exportPrint => 'In…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Âm thanh';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Mô hình 3D';
+
+  @override
+  String get pcMedia => 'Đa phương tiện';
+
+  @override
+  String get pcMediaEmpty => 'Chưa có tệp.';
+
+  @override
+  String get pbChooseFile => 'Chọn tệp';
+
+  @override
+  String get pcAddFile => 'Thêm tệp';
+
+  @override
+  String get pcOpenIn => 'Mở bằng ứng dụng khác';
+
+  @override
+  String get mediaOpenFailed => 'Không thể mở tệp này';
+
+  @override
+  String get pbBlockSettings => 'Cài đặt khối';
+
+  @override
+  String get pbStyle => 'Kiểu';
+
+  @override
+  String get pbOptions => 'Tùy chọn';
+
+  @override
+  String get pbStyleVariant => 'Giao diện';
+
+  @override
+  String get pbStyleAccent => 'Màu nhấn';
+
+  @override
+  String get pbStyleWidth => 'Độ rộng';
+
+  @override
+  String get pbStyleAlign => 'Căn chỉnh';
+
+  @override
+  String get pbStyleDensity => 'Khoảng cách';
+
+  @override
+  String get pbStyleHeader => 'Tiêu đề';
+
+  @override
+  String get pbHeaderShow => 'Hiện tiêu đề';
+
+  @override
+  String get pbHeaderTitle => 'Tên tiêu đề';
+
+  @override
+  String get pbStyleCollapsible => 'Thu gọn';
+
+  @override
+  String get pbStyleAnchor => 'Neo (#)';
+
+  @override
+  String get pbStyleHideOn => 'Ẩn trên';
+
+  @override
+  String get pbStyleReset => 'Đặt lại';
+
+  @override
+  String get pbStyleApplyAll => 'Dùng cho mọi khối cùng loại';
+
+  @override
+  String get pbStyleApplied => 'Đã dùng cho {n} khối khác';
+
+  @override
+  String get pbStyleCopy => 'Chép kiểu';
+
+  @override
+  String get pbStylePaste => 'Dán kiểu';
+
+  @override
+  String get pbNoOptions => 'Khối này không có tùy chọn riêng — giao diện nằm ở thẻ Kiểu.';
+
+  @override
+  String get pbVariantPlain => 'Trơn';
+
+  @override
+  String get pbVariantCard => 'Thẻ';
+
+  @override
+  String get pbVariantOutline => 'Viền';
+
+  @override
+  String get pbVariantTinted => 'Nhuộm màu';
+
+  @override
+  String get pbVariantHero => 'Nổi bật';
+
+  @override
+  String get pbAccKind => 'Loại mô-đun';
+
+  @override
+  String get pbAccAccent => 'Màu nhấn của chủ đề';
+
+  @override
+  String get pbAccBlue => 'Xanh dương';
+
+  @override
+  String get pbAccGreen => 'Xanh lá';
+
+  @override
+  String get pbAccAmber => 'Hổ phách';
+
+  @override
+  String get pbAccRose => 'Hồng';
+
+  @override
+  String get pbAccViolet => 'Tím';
+
+  @override
+  String get pbAccSlate => 'Xám đá';
+
+  @override
+  String get pbWidthNarrow => 'Hẹp';
+
+  @override
+  String get pbWidthNormal => 'Bình thường';
+
+  @override
+  String get pbWidthWide => 'Rộng';
+
+  @override
+  String get pbWidthFull => 'Toàn bộ';
+
+  @override
+  String get pbDensityComfy => 'Thoáng';
+
+  @override
+  String get pbDensityCompact => 'Gọn';
+
+  @override
+  String get pbCollOff => 'Không';
+
+  @override
+  String get pbCollOpen => 'Mở sẵn';
+
+  @override
+  String get pbCollClosed => 'Thu sẵn';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Điện thoại';
+
+  @override
+  String get pbHideDesktop => 'Máy tính';
+
+  @override
+  String get pbLinks => 'Liên kết';
+
+  @override
+  String get pbLinkAdd => 'Thêm liên kết';
+
+  @override
+  String get pbLinkAddPh => '+ [[Tên]] · #neo · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Đây không phải liên kết: dùng [[Tên]], #neo hoặc địa chỉ http(s)';
+
+  @override
+  String get pbLinkLabel => 'Nhãn';
+
+  @override
+  String get pbLinkTo => 'Đi tới';
+
+  @override
+  String get pbLinkGroup => 'Nhóm';
+
+  @override
+  String get pbLinkHint => 'Liên kết web mở trong trình duyệt, chỉ http và https — ứng dụng chỉ mở địa chỉ đã lưu.';
+
+  @override
+  String get pbLinkMissing => 'Chưa có trang tên này — bấm để tạo';
+
+  @override
+  String get pbLinkUp => 'Lên';
+
+  @override
+  String get pbLinkDown => 'Xuống';
+
+  @override
+  String get pbLinksEmpty => 'Chưa có liên kết.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Chưa có liên kết — thêm ở ⚙ → Tùy chọn.';
+
+  @override
+  String get pbListAdd => 'Thêm';
+
+  @override
+  String get pcLinkbar => 'Thanh liên kết';
+
+  @override
+  String get pcLinkcard => 'Thẻ liên kết';
+
+  @override
+  String get pcHatnote => 'Chú thích đầu trang';
+
+  @override
+  String get pcSeeAlso => 'Xem thêm';
+
+  @override
+  String get pcReferences => 'Tham khảo';
+
+  @override
+  String get pcTabs => 'Thẻ';
+
+  @override
+  String get pcToggle => 'Khối thu gọn';
+
+  @override
+  String get pcNavbox => 'Hộp điều hướng';
+
+  @override
+  String get pcChildren => 'Trang con';
+
+  @override
+  String get pcHatAnd => 'và';
+
+  @override
+  String get pcHatnotePh => 'Bài chính: …';
+
+  @override
+  String get pcReferencesEmpty => 'Trang này chưa có chú thích — viết [^1] trong khối văn bản và "[^1]: …" trên dòng riêng.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Trang này chưa có liên kết nào';
+
+  @override
+  String get pcSuggested => 'Gợi ý:';
+
+  @override
+  String get pcTab => 'Thẻ';
+
+  @override
+  String get pcChildrenNone => 'Không có gì bên dưới trang này.';
+
+  @override
+  String get pbFootnoteMissing => 'Chú thích này chưa có nội dung — thêm dòng "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'Kiểu thanh';
+
+  @override
+  String get pcOptCaption => 'Chú thích';
+
+  @override
+  String get pcOptCount => 'Số lượng';
+
+  @override
+  String get pcOptCover => 'Ảnh bìa';
+
+  @override
+  String get pcOptDepth => 'Độ sâu';
+
+  @override
+  String get pcOptHatKind => 'Loại ghi chú';
+
+  @override
+  String get pcOptLayout => 'Bố cục';
+
+  @override
+  String get pcOptLook => 'Giao diện';
+
+  @override
+  String get pcOptLoop => 'Lặp lại';
+
+  @override
+  String get pcOptPoster => 'Ảnh bìa';
+
+  @override
+  String get pcOptSort => 'Thứ tự';
+
+  @override
+  String get pcOptSource => 'Lấy từ mô-đun';
+
+  @override
+  String get pcOptStart => 'Ban đầu';
+
+  @override
+  String get pcOptStartPage => 'Trang đầu hiển thị';
+
+  @override
+  String get pcOptStartTab => 'Thẻ hiện đầu tiên';
+
+  @override
+  String get pcOptSticky => 'Giữ ở trên khi cuộn';
+
+  @override
+  String get pcOptSuggest => 'Gợi ý trang liên kết tới hoặc từ đây';
+
+  @override
+  String get pcOptTabs => 'Tên thẻ';
+
+  @override
+  String get pcBarPills => 'Viên';
+
+  @override
+  String get pcBarTabs => 'Thẻ';
+
+  @override
+  String get pcBarUnderline => 'Gạch chân';
+
+  @override
+  String get pcBarButtons => 'Nút';
+
+  @override
+  String get pcCardCard => 'Thẻ';
+
+  @override
+  String get pcCardCompact => 'Gọn';
+
+  @override
+  String get pcCardButton => 'Nút';
+
+  @override
+  String get pcHatMain => 'Bài chính:';
+
+  @override
+  String get pcHatAbout => 'Xem thêm';
+
+  @override
+  String get pcHatDistinguish => 'Đừng nhầm với';
+
+  @override
+  String get pcTabsLine => 'Đường';
+
+  @override
+  String get pcTabsBoxed => 'Hộp';
+
+  @override
+  String get pcTabsPills => 'Viên';
+
+  @override
+  String get pcKidsList => 'Danh sách';
+
+  @override
+  String get pcKidsTree => 'Cây';
+
+  @override
+  String get pcKidsCards => 'Thẻ';
+
+  @override
+  String get pcSortOrder => 'Theo Nest';
+
+  @override
+  String get pcSortName => 'Theo tên';
+
+  @override
+  String get pcGalGrid => 'Lưới';
+
+  @override
+  String get pcGalStrip => 'Dải cuộn';
+
+  @override
+  String get pcPdfSingle => 'Từng trang';
+
+  @override
+  String get pcPdfStrip => 'Dải trang';
+
+  @override
+  String get pcInfobox => 'Hộp thông tin';
+
+  @override
+  String get pcCallout => 'Hộp chú thích';
+
+  @override
+  String get pcStats => 'Thống kê';
+
+  @override
+  String get pcToc => 'Mục lục';
+
+  @override
+  String get pcSpotlight => 'Tiêu điểm';
+
+  @override
+  String get pcRoster => 'Danh sách';
+
+  @override
+  String get pcBreakdown => 'Phân bổ';
+
+  @override
+  String get pcEras => 'Thời kỳ';
+
+  @override
+  String get pcUpcoming => 'Sắp tới';
+
+  @override
+  String get pcPinlist => 'Danh sách ghim';
+
+  @override
+  String get pcProgress => 'Tiến độ';
+
+  @override
+  String get pcChapters => 'Chương';
+
+  @override
+  String get pcEndings => 'Kết thúc';
+
+  @override
+  String get pcVariables => 'Biến';
+
+  @override
+  String get pcFocus => 'Tiêu điểm';
+
+  @override
+  String get pcLegend => 'Chú giải';
+
+  @override
+  String get pcJourney => 'Hành trình';
+
+  @override
+  String get pcStrip => 'Dải khung';
+
+  @override
+  String get pcFeatured => 'Nổi bật';
+
+  @override
+  String get pcDashboard => 'Bảng điều khiển';
+
+  @override
+  String get pcRecent => 'Thay đổi gần đây';
+
+  @override
+  String get pcQuickroll => 'Tung nhanh';
+
+  @override
+  String get pcPinned => 'Đã ghim';
+
+  @override
+  String get pcTasks => 'Nhiệm vụ';
+
+  @override
+  String get pcBanner => 'Biểu ngữ';
+
+  @override
+  String get pcGallery => 'Thư viện ảnh';
+
+  @override
+  String get pcDivider => 'Đường phân cách';
+
+  @override
+  String get pcIconrow => 'Hàng biểu tượng';
+
+  @override
+  String get pcFigure => 'Hình minh họa';
+
+  @override
+  String get pcInfoboxEmpty => 'Chưa có trường nào';
+
+  @override
+  String get pcStatsEmpty => 'Chưa có gì để đếm';
+
+  @override
+  String get pcTocEmpty => 'Thêm tiêu đề để tạo mục lục';
+
+  @override
+  String get pcNoElements => 'Chưa có phần tử nào';
+
+  @override
+  String get pcBreakdownEmpty => 'Chọn một trường để đếm';
+
+  @override
+  String get noEventsYet => 'Chưa có sự kiện';
+
+  @override
+  String get mapNoAreas => 'Chưa có khu vực nào';
+
+  @override
+  String get pcNoChapters => 'Chưa có chương nào';
+
+  @override
+  String get pcWords => 'từ';
+
+  @override
+  String get pcNoEndings => 'Chưa có kết thúc nào';
+
+  @override
+  String get pcNoVariables => 'Chưa có biến nào';
+
+  @override
+  String get pcNoRelations => 'Chưa có quan hệ nào';
+
+  @override
+  String get pcUnlabelled => 'Chưa gắn nhãn';
+
+  @override
+  String get pcNoPanels => 'Chưa có khung nào';
+
+  @override
+  String get pcNoSketches => 'Chưa có bản phác nào';
+
+  @override
+  String get managerEmpty => 'Chưa chọn gì — đặt bộ lọc hoặc chọn mô-đun.';
+
+  @override
+  String get pcRoll => 'Tung';
+
+  @override
+  String get pcNoRolls => 'Chưa tung lần nào';
+
+  @override
+  String get pcNoPinned => 'Bắt đầu tin nhắn bằng 📌 để ghim ở đây';
+
+  @override
+  String get pcNoTasks => 'Viết “- [ ] …” trong ghi chú để thêm nhiệm vụ';
+
+  @override
+  String get pcBannerEmpty => 'Chưa có ảnh.';
+
+  @override
+  String get pcGalleryEmpty => 'Chưa có ảnh.';
+
+  @override
+  String get pcIconrowEmpty => 'Chưa có biểu tượng.';
+
+  @override
+  String get pcFigureEmpty => 'Chưa có ảnh.';
+
+  @override
+  String get pcStatItems => 'Mục';
+
+  @override
+  String get pcStatModules => 'Module';
+
+  @override
+  String get backlinks => 'Liên kết đến';
+
+  @override
+  String get pcCalloutPh => 'Viết ghi chú…';
+
+  @override
+  String get pcDecorPickArrange => 'Chưa có gì — chọn ở ⚙ → Tùy chọn.';
+
+  @override
+  String get pcToneNote => 'Ghi chú';
+
+  @override
+  String get pcToneTip => 'Mẹo';
+
+  @override
+  String get pcToneWarning => 'Cảnh báo';
+
+  @override
+  String get pcToneQuote => 'Trích dẫn';
+
+  @override
+  String get pcToneSecret => 'Bí mật';
+
+  @override
+  String get pcOptFields => 'Trường hiển thị';
+
+  @override
+  String get pcOptDock => 'Vị trí';
+
+  @override
+  String get pcOptTone => 'Sắc thái';
+
+  @override
+  String get pcOptField => 'Đếm theo trường';
+
+  @override
+  String get pcOptFrom => 'Từ năm';
+
+  @override
+  String get pcOptGoal => 'Mục tiêu số từ';
+
+  @override
+  String get pcOptSubtitle => 'Dòng phụ';
+
+  @override
+  String get pcOptHeight => 'Chiều cao';
+
+  @override
+  String get pcOptScrim => 'Lớp tối dưới chữ';
+
+  @override
+  String get pbImages => 'Ảnh';
+
+  @override
+  String get pcOptFromModule => 'Mọi ảnh thuộc mô-đun này';
+
+  @override
+  String get pcOptCaptions => 'Hiện tên tệp';
+
+  @override
+  String get pcOptItems => 'Mục';
+
+  @override
+  String get pcOptSize => 'Kích thước';
+
+  @override
+  String get pcOptFit => 'Vừa khung';
+
+  @override
+  String get pcOptFloat => 'Chữ chạy quanh';
+
+  @override
+  String get pcOptRound => 'Bo góc';
+
+  @override
+  String get pcLayoutTable => 'Bảng';
+
+  @override
+  String get pcLayoutStacked => 'Xếp chồng';
+
+  @override
+  String get pcDockRight => 'Phải';
+
+  @override
+  String get pcDockLeft => 'Trái';
+
+  @override
+  String get pcDockFull => 'Toàn chiều rộng';
+
+  @override
+  String get pcSizeS => 'Nhỏ';
+
+  @override
+  String get pcSizeM => 'Vừa';
+
+  @override
+  String get pcSizeL => 'Lớn';
+
+  @override
+  String get pcSizeFull => 'Toàn chiều rộng';
+
+  @override
+  String get pcScrimSoft => 'Nhẹ';
+
+  @override
+  String get pcScrimStrong => 'Đậm';
+
+  @override
+  String get pcGalMasonry => 'Xếp gạch';
+
+  @override
+  String get pcDivLine => 'Đường kẻ';
+
+  @override
+  String get pcDivDouble => 'Đôi';
+
+  @override
+  String get pcDivDots => 'Chấm';
+
+  @override
+  String get pcDivOrnament => 'Họa tiết';
+
+  @override
+  String get pcDivImage => 'Dải ảnh';
+
+  @override
+  String get pcIrChip => 'Thẻ nhỏ';
+
+  @override
+  String get pcIrBig => 'Biểu tượng lớn';
+
+  @override
+  String get pcFitContain => 'Toàn ảnh';
+
+  @override
+  String get pcFitCover => 'Lấp khung';
+
+  @override
+  String get pcFloatNone => 'Riêng';
+
+  @override
+  String get pcFloatLeft => 'Ảnh bên trái';
+
+  @override
+  String get pcFloatRight => 'Ảnh bên phải';
+
+  @override
+  String get pcLoadFailed => 'Không tải được khối này';
+
+  @override
+  String get pcNoValue => '(không có)';
+
+  @override
+  String get tplUse => 'Dùng mẫu…';
+
+  @override
+  String get tplUseHint => 'Thay bố cục của trang này. Nội dung vẫn giữ nguyên và bạn có thể hoàn tác ngay sau đó.';
+
+  @override
+  String get tplDefault => 'Mặc định';
+
+  @override
+  String get tplOtherTypes => 'Loại khác';
+
+  @override
+  String get tplApplied => 'Đã áp dụng mẫu';
+
+  @override
+  String get tplBorrowDropped => 'Bỏ qua {n} khối — chúng mượn từ module chưa liên kết với module này';
+
+  @override
+  String get tplGallery => 'Mẫu trang';
+
+  @override
+  String get pcFacts => 'Dữ kiện';
+
+  @override
+  String get pcNoFacts => 'Viết các dòng như “Thành lập: năm 300” trong ghi chú';
+
+  @override
+  String get pcPlacecard => 'Thẻ địa điểm';
+
+  @override
+  String get pcBorders => 'Giáp với';
+
+  @override
+  String get pcOptArea => 'Khu vực (tên)';
+
+  @override
+  String get tplSave => 'Lưu trang thành mẫu…';
+
+  @override
+  String get tplMine => 'Của tôi';
+
+  @override
+  String get savePresetHint => 'Lưu giao diện, chế độ xem và các trường của mô-đun này (không gồm nội dung) làm điểm bắt đầu cho mô-đun mới cùng loại.';
+
+  @override
+  String get presetSaved => 'Đã lưu mẫu sẵn';
+
+  @override
+  String get presetDeleteConfirm => 'Xóa mẫu sẵn này? Các mô-đun tạo từ nó vẫn giữ nguyên.';
+
+  @override
+  String get bundleTabClassic => 'Cổ điển';
+
+  @override
+  String get bundleTabGenre => 'Thể loại';
+
+  @override
+  String get bundleTabMine => 'Của tôi';
+
+  @override
+  String get bundleMineEmpty => 'Chưa lưu gì — nhấp chuột phải vào thư mục và chọn “Lưu thành gói Artisan…”';
+
+  @override
+  String get bundleSampleCount => 'Dữ liệu mẫu';
+
+  @override
+  String get bundleIncludeSamples => 'Kèm dữ liệu mẫu';
+
+  @override
+  String get bundleSaveMine => 'Lưu thành gói Artisan…';
+
+  @override
+  String get bundleSaveData => 'Dữ liệu';
+
+  @override
+  String get bundleDataNone => 'Chỉ cấu trúc';
+
+  @override
+  String get bundleDataSamples => 'Tối đa 3 mẫu mỗi module';
+
+  @override
+  String get bundleSaveHint => 'Lưu thư mục, module, trường và bố cục trang. Liên kết tới module ngoài thư mục này sẽ bị bỏ qua.';
+
+  @override
+  String get bundleSaved => 'Đã lưu gói';
+
+  @override
+  String get bundleCreate => 'Tạo';
+
+  @override
+  String get bundleAdjust => 'Chỉnh trước';
+
+  @override
+  String get bundleCreated => 'Đã tạo dự án';
+
+  @override
+  String get bundleProjectName => 'Tên dự án';
+
+  @override
+  String get bundleIncludes => 'Gồm có';
+
+  @override
+  String get bundleFields => 'Trường (để trống = bỏ)';
+
+  @override
+  String get nameRequired => 'Cần có tên';
+
+  @override
+  String get nameField => 'Tên';
+
+  @override
+  String get artCounts => '{f} thư mục · {m} module · {l} liên kết · {s} mẫu';
+
+  @override
+  String get artStructure => 'Cấu trúc sẽ tạo';
+
+  @override
+  String get artLinks => 'Liên kết giữa các module';
+
+  @override
+  String get artLinkRel => 'trường quan hệ / lựa chọn';
+
+  @override
+  String get artLinkBorrow => 'thành phần mượn';
+
+  @override
+  String get artBefore => 'Trước khi tạo';
+
+  @override
+  String get exportFormat => 'Định dạng';
+
+  @override
+  String get exportPreview => 'Xem trước';
+
+  @override
+  String get exportPreviewNote => 'Bản phác bố cục — tệp chứa các trang thật của bạn';
+
+  @override
+  String get tplBrowse => 'Mẫu khác…';
+
+  @override
+  String get tplFields => 'Kèm các trường của mẫu';
+
+  @override
+  String get tplModulePage => 'Trang mô-đun';
+
+  @override
+  String get tplItemPage => 'Trang phần tử';
+
+  @override
+  String get tplKindCount => '{n} mẫu';
+
+  @override
+  String get tplFieldsHead => 'Trường';
+
+  @override
+  String get btnApply => 'Áp dụng';
+
+  @override
+  String get btnCreate => 'Tạo';
 }

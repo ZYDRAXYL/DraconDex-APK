@@ -24,12 +24,12 @@ class _ScribeViewState extends ConsumerState<ScribeView> {
   @override
   Widget build(BuildContext context) {
     final id = widget.ctx.source.id;
-    if (widget.ctx.preset != 'transcript') return ScribeContent(moduleId: id);
+    if (widget.ctx.preset != 'transcript') return ScribeContent(moduleId: id, module: widget.ctx.source);
     final l = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final sessions = ref.watch(chatSessionsProvider(id)).valueOrNull;
     if (sessions == null) return const SizedBox(height: 48);
-    if (sessions.isEmpty) return EmptyHint(l.scribeNoSessions);
+    if (sessions.isEmpty) return ScribeContent(moduleId: id, module: widget.ctx.source);
     final ses = sessions.where((s) => s.id == _session).firstOrNull ?? sessions.first;
     final msgs = ref.watch(chatMessagesProvider(ses.id)).valueOrNull ?? const [];
     return Padding(

@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/classifier/formula.dart';
+import '../../../core/links/safe_launch.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/dao/classifier_dao.dart';
 import '../../../data/models/classifier_model.dart';
@@ -121,27 +121,25 @@ class ClassifierView extends ConsumerWidget {
     final m = ctx.source;
     final data = ref.watch(clsDataProvider(m.id)).valueOrNull;
     if (data == null) return const SizedBox(height: 48);
+    Future<void> add() async {
+      final name = await askText(context, l.classifierNewItem, label: l.labelName);
+      if (name == null) return;
+      final db = await ref.read(databaseProvider.future);
+      await ClassifierDao(db).createItem(moduleRef: m.id, name: name);
+      _refresh(ref, m.id);
+      ref.invalidate(nexusIndexProvider(m.nexusRef));
+    }
+
     final bar = ViewBar(actions: [
       IconButton(
         tooltip: l.classifierNewField,
         icon: const Icon(Icons.view_column_outlined),
         onPressed: () => editClsField(context, ref, m.id, null),
       ),
-      IconButton(
-        tooltip: l.classifierNewItem,
-        icon: const Icon(Icons.add),
-        onPressed: () async {
-          final name = await askText(context, l.classifierNewItem, label: l.labelName);
-          if (name == null) return;
-          final db = await ref.read(databaseProvider.future);
-          await ClassifierDao(db).createItem(moduleRef: m.id, name: name);
-          _refresh(ref, m.id);
-          ref.invalidate(nexusIndexProvider(m.nexusRef));
-        },
-      ),
+      IconButton(tooltip: l.classifierNewItem, icon: const Icon(Icons.add), onPressed: add),
     ]);
     final body = data.items.isEmpty
-        ? EmptyHint(l.classifierNoItems)
+        ? KindEmptyState(module: m, note: l.classifierNoItems, startLabel: l.classifierNewItem, onStart: add)
         : switch (ctx.preset) {
             'table' => _ClsTable(ctx: ctx, data: data),
             'relationCat' => _ClsRelations(ctx: ctx, data: data),
@@ -381,8 +379,11 @@ class ClsItemFields extends ConsumerWidget {
     if (f.type == 'url') {
       final v = data.valuesOf(item.id)[f.id] ?? '';
       if (v.isEmpty) return const Text('—');
+      // "example.com" means the web; anything but http(s) stays plain text
+      final url = v.contains(':') ? v : 'https://$v';
+      if (!isSafeWebUrl(url)) return Text(v, maxLines: 2, overflow: TextOverflow.ellipsis);
       return InkWell(
-        onTap: () => launchUrl(Uri.parse(v), mode: LaunchMode.externalApplication),
+        onTap: () => safeLaunch(url),
         child: Text(v, style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
       );
     }

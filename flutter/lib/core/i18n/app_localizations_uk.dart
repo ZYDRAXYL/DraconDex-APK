@@ -105,6 +105,42 @@ class AppLocalizationsUk extends AppLocalizations {
   String get themeDaylight => 'Daylight';
 
   @override
+  String get themeShowAll => 'Показати все';
+
+  @override
+  String get themeShowLess => 'Згорнути';
+
+  @override
+  String get pageLayout => 'Макет заголовка';
+
+  @override
+  String get titleAlign => 'Вирівнювання заголовка';
+
+  @override
+  String get alignLeft => 'Ліворуч';
+
+  @override
+  String get alignCenter => 'По центру';
+
+  @override
+  String get alignRight => 'Праворуч';
+
+  @override
+  String get pageIcon => 'Значок над заголовком';
+
+  @override
+  String get pageCover => 'Обкладинка';
+
+  @override
+  String get pageCoverNone => 'Без обкладинки';
+
+  @override
+  String get pageCoverEmpty => 'Імпортуйте зображення до цього Nexus, щоб зробити його обкладинкою';
+
+  @override
+  String get pageLayoutScope => 'Лише для цієї сторінки';
+
+  @override
   String get languageLabel => 'Мова';
 
   @override
@@ -1765,4 +1801,1003 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Вставити рядок нижче';
+
+  @override
+  String get exportTitle => 'Експорт…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Для друку, поширення чи друкарні';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Щоб редагувати далі у Word, Google Docs чи Pages';
+
+  @override
+  String get exportEpub => 'EPUB (електронна книга)';
+
+  @override
+  String get exportEpubD => 'Для Apple Books, Kindle, Kobo чи Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Аркуш на таблицю — для Excel, Sheets чи Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Проста таблиця — повертається через імпорт CSV';
+
+  @override
+  String get htmlExport => 'Експорт як вебсайт (HTML)';
+
+  @override
+  String get exportMarkdown => 'Експорт у Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Нотатки із зображеннями — відкриваються в Obsidian';
+
+  @override
+  String get exportMddxD => 'Цей модуль — для перенесення в інше сховище';
+
+  @override
+  String get exportNoPage => 'Папка не має власної сторінки';
+
+  @override
+  String get exportOnlyDocs => 'Лише Author, Classifier, Chronicler, Drafter та Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Лише книги Author';
+
+  @override
+  String get exportOnlyTables => 'Лише Classifier і Chronicler';
+
+  @override
+  String get exportGo => 'Експортувати';
+
+  @override
+  String get exportScope => 'Що включити';
+
+  @override
+  String get exportScopePage => 'Ця сторінка';
+
+  @override
+  String get exportScopeModule => 'Цей модуль і всі елементи';
+
+  @override
+  String get exportScopeInside => 'Цей модуль і все всередині';
+
+  @override
+  String get exportScopeNexus => 'Увесь Nexus';
+
+  @override
+  String get exportPaper => 'Папір';
+
+  @override
+  String get exportOrientation => 'Орієнтація';
+
+  @override
+  String get exportPortrait => 'Книжкова';
+
+  @override
+  String get exportLandscape => 'Альбомна';
+
+  @override
+  String get exportHeaderFooter => 'Заголовок і номери сторінок';
+
+  @override
+  String get exportToc => 'Сторінка змісту';
+
+  @override
+  String get exportCsvHint => 'Одна таблиця: елементи Classifier або перша шкала Chronicler. Поля-формули не включаються. Імпорт CSV прочитає її назад.';
+
+  @override
+  String get exportXlsxHint => 'Аркуш на таблицю (кожна шкала Chronicler), жирний закріплений заголовок. Поля-формули не включаються.';
+
+  @override
+  String get exportMdAnyHint => 'По .md на елемент, поля — властивості; зображення сторінки — в assets/. Відкрийте теку як сховище в Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Заголовок на розділ, елемент чи подію (видно в області навігації Word), поля таблицею, зображення сторінки, розрив сторінки між розділами.';
+
+  @override
+  String get exportEpubHint => 'По файлу на розділ і зміст; обкладинка заголовка сторінки книги стане обкладинкою.';
+
+  @override
+  String get exportMddxHint => 'Файл .mddx, який імпортує інше сховище DraconDex.';
+
+  @override
+  String get exportFormulaSkipped => 'Пропущено поля-формули: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV вміщує одну шкалу — ще {n} в експорті Excel';
+
+  @override
+  String get exportMediaMissing => 'Не знайдено зображень: {n} — їх пропущено';
+
+  @override
+  String get exportMarkdownEmpty => 'Поки що нічого експортувати';
+
+  @override
+  String get exportWorking => 'Малювання сторінок…';
+
+  @override
+  String get exportPictures => 'зображень';
+
+  @override
+  String get exportRows => 'рядків';
+
+  @override
+  String get exportHtmlPageD => 'Ця сторінка як вебсторінка, з зображеннями';
+
+  @override
+  String get exportHtmlPageHint => 'Архів .zip з index.html і зображеннями в media/ — розпакуйте й відкрийте index.html у будь-якому браузері.';
+
+  @override
+  String get exportPrint => 'Друк…';
+
+  @override
+  String get pcVideo => 'Відео';
+
+  @override
+  String get pcAudio => 'Аудіо';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => '3D-модель';
+
+  @override
+  String get pcMedia => 'Медіа';
+
+  @override
+  String get pcMediaEmpty => 'Файлу поки немає.';
+
+  @override
+  String get pbChooseFile => 'Вибрати файл';
+
+  @override
+  String get pcAddFile => 'Додати файл';
+
+  @override
+  String get pcOpenIn => 'Відкрити в іншій програмі';
+
+  @override
+  String get mediaOpenFailed => 'Не вдалося відкрити цей файл';
+
+  @override
+  String get pbBlockSettings => 'Налаштування блока';
+
+  @override
+  String get pbStyle => 'Стиль';
+
+  @override
+  String get pbOptions => 'Параметри';
+
+  @override
+  String get pbStyleVariant => 'Вигляд';
+
+  @override
+  String get pbStyleAccent => 'Акцентний колір';
+
+  @override
+  String get pbStyleWidth => 'Ширина';
+
+  @override
+  String get pbStyleAlign => 'Вирівнювання';
+
+  @override
+  String get pbStyleDensity => 'Відступи';
+
+  @override
+  String get pbStyleHeader => 'Заголовок';
+
+  @override
+  String get pbHeaderShow => 'Показувати заголовок';
+
+  @override
+  String get pbHeaderTitle => 'Текст заголовка';
+
+  @override
+  String get pbStyleCollapsible => 'Згортання';
+
+  @override
+  String get pbStyleAnchor => 'Якір (#)';
+
+  @override
+  String get pbStyleHideOn => 'Приховати на';
+
+  @override
+  String get pbStyleReset => 'Скинути';
+
+  @override
+  String get pbStyleApplyAll => 'Застосувати до всіх блоків цього виду';
+
+  @override
+  String get pbStyleApplied => 'Стиль застосовано ще до {n} блоків';
+
+  @override
+  String get pbStyleCopy => 'Копіювати стиль';
+
+  @override
+  String get pbStylePaste => 'Вставити стиль';
+
+  @override
+  String get pbNoOptions => 'Цей блок не має власних параметрів — вигляд задається на вкладці «Стиль».';
+
+  @override
+  String get pbVariantPlain => 'Простий';
+
+  @override
+  String get pbVariantCard => 'Картка';
+
+  @override
+  String get pbVariantOutline => 'Контур';
+
+  @override
+  String get pbVariantTinted => 'Тонований';
+
+  @override
+  String get pbVariantHero => 'Акцент';
+
+  @override
+  String get pbAccKind => 'Тип модуля';
+
+  @override
+  String get pbAccAccent => 'Акцент теми';
+
+  @override
+  String get pbAccBlue => 'Синій';
+
+  @override
+  String get pbAccGreen => 'Зелений';
+
+  @override
+  String get pbAccAmber => 'Бурштиновий';
+
+  @override
+  String get pbAccRose => 'Рожевий';
+
+  @override
+  String get pbAccViolet => 'Фіолетовий';
+
+  @override
+  String get pbAccSlate => 'Сланцевий';
+
+  @override
+  String get pbWidthNarrow => 'Вузький';
+
+  @override
+  String get pbWidthNormal => 'Звичайний';
+
+  @override
+  String get pbWidthWide => 'Широкий';
+
+  @override
+  String get pbWidthFull => 'На всю ширину';
+
+  @override
+  String get pbDensityComfy => 'Вільно';
+
+  @override
+  String get pbDensityCompact => 'Компактно';
+
+  @override
+  String get pbCollOff => 'Ні';
+
+  @override
+  String get pbCollOpen => 'Розгорнуто';
+
+  @override
+  String get pbCollClosed => 'Згорнуто';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Телефон';
+
+  @override
+  String get pbHideDesktop => 'Комп’ютер';
+
+  @override
+  String get pbLinks => 'Посилання';
+
+  @override
+  String get pbLinkAdd => 'Додати посилання';
+
+  @override
+  String get pbLinkAddPh => '+ [[Назва]] · #якір · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Це не посилання: використайте [[Назва]], #якір або адресу http(s)';
+
+  @override
+  String get pbLinkLabel => 'Підпис';
+
+  @override
+  String get pbLinkTo => 'Куди';
+
+  @override
+  String get pbLinkGroup => 'Група';
+
+  @override
+  String get pbLinkHint => 'Веб-посилання відкриваються в браузері, лише http і https — застосунок відкриває лише збережену адресу.';
+
+  @override
+  String get pbLinkMissing => 'Ще немає сторінки з такою назвою — натисніть, щоб створити';
+
+  @override
+  String get pbLinkUp => 'Вище';
+
+  @override
+  String get pbLinkDown => 'Нижче';
+
+  @override
+  String get pbLinksEmpty => 'Посилань поки немає.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Посилань немає — додайте їх через ⚙ → Параметри.';
+
+  @override
+  String get pbListAdd => 'Додати';
+
+  @override
+  String get pcLinkbar => 'Панель посилань';
+
+  @override
+  String get pcLinkcard => 'Картки посилань';
+
+  @override
+  String get pcHatnote => 'Примітка-шапка';
+
+  @override
+  String get pcSeeAlso => 'Див. також';
+
+  @override
+  String get pcReferences => 'Примітки';
+
+  @override
+  String get pcTabs => 'Вкладки';
+
+  @override
+  String get pcToggle => 'Згортуваний блок';
+
+  @override
+  String get pcNavbox => 'Навігаційний шаблон';
+
+  @override
+  String get pcChildren => 'Дочірні сторінки';
+
+  @override
+  String get pcHatAnd => 'і';
+
+  @override
+  String get pcHatnotePh => 'Основна стаття: …';
+
+  @override
+  String get pcReferencesEmpty => 'Виносок поки немає — напишіть [^1] у текстовому блоці й «[^1]: …» окремим рядком.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'На цій сторінці поки немає посилань';
+
+  @override
+  String get pcSuggested => 'Пропозиції:';
+
+  @override
+  String get pcTab => 'Вкладка';
+
+  @override
+  String get pcChildrenNone => 'Під цією сторінкою нічого немає.';
+
+  @override
+  String get pbFootnoteMissing => 'Ця виноска ще не має тексту — додайте рядок «[^n]: …»';
+
+  @override
+  String get pcOptBar => 'Стиль панелі';
+
+  @override
+  String get pcOptCaption => 'Підпис';
+
+  @override
+  String get pcOptCount => 'Скільки';
+
+  @override
+  String get pcOptCover => 'Обкладинка';
+
+  @override
+  String get pcOptDepth => 'Глибина';
+
+  @override
+  String get pcOptHatKind => 'Тип примітки';
+
+  @override
+  String get pcOptLayout => 'Розкладка';
+
+  @override
+  String get pcOptLook => 'Вигляд';
+
+  @override
+  String get pcOptLoop => 'Повтор';
+
+  @override
+  String get pcOptPoster => 'Обкладинка';
+
+  @override
+  String get pcOptSort => 'Порядок';
+
+  @override
+  String get pcOptSource => 'Заповнювати з модуля';
+
+  @override
+  String get pcOptStart => 'Спочатку';
+
+  @override
+  String get pcOptStartPage => 'Перша сторінка';
+
+  @override
+  String get pcOptStartTab => 'Вкладка за замовчуванням';
+
+  @override
+  String get pcOptSticky => 'Закріплювати вгорі під час прокручування';
+
+  @override
+  String get pcOptSuggest => 'Пропонувати сторінки, що посилаються сюди або звідси';
+
+  @override
+  String get pcOptTabs => 'Назви вкладок';
+
+  @override
+  String get pcBarPills => 'Пігулки';
+
+  @override
+  String get pcBarTabs => 'Вкладки';
+
+  @override
+  String get pcBarUnderline => 'Підкреслення';
+
+  @override
+  String get pcBarButtons => 'Кнопки';
+
+  @override
+  String get pcCardCard => 'Картка';
+
+  @override
+  String get pcCardCompact => 'Компактно';
+
+  @override
+  String get pcCardButton => 'Кнопка';
+
+  @override
+  String get pcHatMain => 'Основна стаття:';
+
+  @override
+  String get pcHatAbout => 'Докладніше див.';
+
+  @override
+  String get pcHatDistinguish => 'Не плутати з';
+
+  @override
+  String get pcTabsLine => 'Лінія';
+
+  @override
+  String get pcTabsBoxed => 'У рамці';
+
+  @override
+  String get pcTabsPills => 'Пігулки';
+
+  @override
+  String get pcKidsList => 'Список';
+
+  @override
+  String get pcKidsTree => 'Дерево';
+
+  @override
+  String get pcKidsCards => 'Картки';
+
+  @override
+  String get pcSortOrder => 'Як у Nest';
+
+  @override
+  String get pcSortName => 'За назвою';
+
+  @override
+  String get pcGalGrid => 'Сітка';
+
+  @override
+  String get pcGalStrip => 'Стрічка';
+
+  @override
+  String get pcPdfSingle => 'По одній сторінці';
+
+  @override
+  String get pcPdfStrip => 'Стрічка сторінок';
+
+  @override
+  String get pcInfobox => 'Картка';
+
+  @override
+  String get pcCallout => 'Виноска';
+
+  @override
+  String get pcStats => 'Статистика';
+
+  @override
+  String get pcToc => 'Зміст';
+
+  @override
+  String get pcSpotlight => 'У центрі уваги';
+
+  @override
+  String get pcRoster => 'Склад';
+
+  @override
+  String get pcBreakdown => 'Розподіл';
+
+  @override
+  String get pcEras => 'Епохи';
+
+  @override
+  String get pcUpcoming => 'Найближчі';
+
+  @override
+  String get pcPinlist => 'Список міток';
+
+  @override
+  String get pcProgress => 'Поступ';
+
+  @override
+  String get pcChapters => 'Розділи';
+
+  @override
+  String get pcEndings => 'Фінали';
+
+  @override
+  String get pcVariables => 'Змінні';
+
+  @override
+  String get pcFocus => 'Фокус';
+
+  @override
+  String get pcLegend => 'Легенда';
+
+  @override
+  String get pcJourney => 'Подорож';
+
+  @override
+  String get pcStrip => 'Розкадровка';
+
+  @override
+  String get pcFeatured => 'Вибране';
+
+  @override
+  String get pcDashboard => 'Панель';
+
+  @override
+  String get pcRecent => 'Нещодавно змінені';
+
+  @override
+  String get pcQuickroll => 'Швидкий кидок';
+
+  @override
+  String get pcPinned => 'Закріплені';
+
+  @override
+  String get pcTasks => 'Завдання';
+
+  @override
+  String get pcBanner => 'Банер';
+
+  @override
+  String get pcGallery => 'Галерея';
+
+  @override
+  String get pcDivider => 'Роздільник';
+
+  @override
+  String get pcIconrow => 'Ряд значків';
+
+  @override
+  String get pcFigure => 'Ілюстрація';
+
+  @override
+  String get pcInfoboxEmpty => 'Полів поки немає';
+
+  @override
+  String get pcStatsEmpty => 'Поки нічого рахувати';
+
+  @override
+  String get pcTocEmpty => 'Додайте заголовок, щоб створити зміст';
+
+  @override
+  String get pcNoElements => 'Елементів поки немає';
+
+  @override
+  String get pcBreakdownEmpty => 'Виберіть поле для підрахунку';
+
+  @override
+  String get noEventsYet => 'Поки немає подій';
+
+  @override
+  String get mapNoAreas => 'Областей поки немає';
+
+  @override
+  String get pcNoChapters => 'Розділів поки немає';
+
+  @override
+  String get pcWords => 'слів';
+
+  @override
+  String get pcNoEndings => 'Фіналів поки немає';
+
+  @override
+  String get pcNoVariables => 'Змінних поки немає';
+
+  @override
+  String get pcNoRelations => 'Зв’язків поки немає';
+
+  @override
+  String get pcUnlabelled => 'Без підпису';
+
+  @override
+  String get pcNoPanels => 'Кадрів поки немає';
+
+  @override
+  String get pcNoSketches => 'Ескізів поки немає';
+
+  @override
+  String get managerEmpty => 'Нічого не вибрано — задайте фільтр або виберіть модулі.';
+
+  @override
+  String get pcRoll => 'Кинути';
+
+  @override
+  String get pcNoRolls => 'Кидків поки немає';
+
+  @override
+  String get pcNoPinned => 'Почніть повідомлення з 📌, щоб закріпити його тут';
+
+  @override
+  String get pcNoTasks => 'Напишіть «- [ ] …» у нотатках, щоб додати завдання';
+
+  @override
+  String get pcBannerEmpty => 'Зображення поки немає.';
+
+  @override
+  String get pcGalleryEmpty => 'Зображень поки немає.';
+
+  @override
+  String get pcIconrowEmpty => 'Значків поки немає.';
+
+  @override
+  String get pcFigureEmpty => 'Зображення поки немає.';
+
+  @override
+  String get pcStatItems => 'Елементи';
+
+  @override
+  String get pcStatModules => 'Модулі';
+
+  @override
+  String get backlinks => 'Зворотні посилання';
+
+  @override
+  String get pcCalloutPh => 'Напишіть нотатку…';
+
+  @override
+  String get pcDecorPickArrange => 'Поки порожньо — виберіть через ⚙ → Параметри.';
+
+  @override
+  String get pcToneNote => 'Нотатка';
+
+  @override
+  String get pcToneTip => 'Порада';
+
+  @override
+  String get pcToneWarning => 'Попередження';
+
+  @override
+  String get pcToneQuote => 'Цитата';
+
+  @override
+  String get pcToneSecret => 'Таємниця';
+
+  @override
+  String get pcOptFields => 'Показувані поля';
+
+  @override
+  String get pcOptDock => 'Положення';
+
+  @override
+  String get pcOptTone => 'Тон';
+
+  @override
+  String get pcOptField => 'Рахувати за полем';
+
+  @override
+  String get pcOptFrom => 'З року';
+
+  @override
+  String get pcOptGoal => 'Мета слів';
+
+  @override
+  String get pcOptSubtitle => 'Підзаголовок';
+
+  @override
+  String get pcOptHeight => 'Висота';
+
+  @override
+  String get pcOptScrim => 'Затемнення під текстом';
+
+  @override
+  String get pbImages => 'Зображення';
+
+  @override
+  String get pcOptFromModule => 'Усі зображення цього модуля';
+
+  @override
+  String get pcOptCaptions => 'Показувати назви файлів';
+
+  @override
+  String get pcOptItems => 'Елементи';
+
+  @override
+  String get pcOptSize => 'Розмір';
+
+  @override
+  String get pcOptFit => 'Вписування';
+
+  @override
+  String get pcOptFloat => 'Обтікання';
+
+  @override
+  String get pcOptRound => 'Заокруглені кути';
+
+  @override
+  String get pcLayoutTable => 'Таблиця';
+
+  @override
+  String get pcLayoutStacked => 'Стовпчиком';
+
+  @override
+  String get pcDockRight => 'Праворуч';
+
+  @override
+  String get pcDockLeft => 'Ліворуч';
+
+  @override
+  String get pcDockFull => 'На всю ширину';
+
+  @override
+  String get pcSizeS => 'Малий';
+
+  @override
+  String get pcSizeM => 'Середній';
+
+  @override
+  String get pcSizeL => 'Великий';
+
+  @override
+  String get pcSizeFull => 'На всю ширину';
+
+  @override
+  String get pcScrimSoft => 'М’яке';
+
+  @override
+  String get pcScrimStrong => 'Сильне';
+
+  @override
+  String get pcGalMasonry => 'Кладка';
+
+  @override
+  String get pcDivLine => 'Лінія';
+
+  @override
+  String get pcDivDouble => 'Подвійна';
+
+  @override
+  String get pcDivDots => 'Крапки';
+
+  @override
+  String get pcDivOrnament => 'Орнамент';
+
+  @override
+  String get pcDivImage => 'Смуга зображення';
+
+  @override
+  String get pcIrChip => 'Мітки';
+
+  @override
+  String get pcIrBig => 'Великі значки';
+
+  @override
+  String get pcFitContain => 'Повністю';
+
+  @override
+  String get pcFitCover => 'Заповнити рамку';
+
+  @override
+  String get pcFloatNone => 'Окремо';
+
+  @override
+  String get pcFloatLeft => 'Зображення ліворуч';
+
+  @override
+  String get pcFloatRight => 'Зображення праворуч';
+
+  @override
+  String get pcLoadFailed => 'Не вдалося завантажити блок';
+
+  @override
+  String get pcNoValue => '(немає)';
+
+  @override
+  String get tplUse => 'Застосувати шаблон…';
+
+  @override
+  String get tplUseHint => 'Замінює макет сторінки. Вміст зберігається, скасувати можна одразу після.';
+
+  @override
+  String get tplDefault => 'Типовий';
+
+  @override
+  String get tplOtherTypes => 'Інші типи';
+
+  @override
+  String get tplApplied => 'Шаблон застосовано';
+
+  @override
+  String get tplBorrowDropped => 'Пропущено блоків: {n} — вони беруть дані з непов’язаного модуля';
+
+  @override
+  String get tplGallery => 'Шаблони сторінок';
+
+  @override
+  String get pcFacts => 'Факти';
+
+  @override
+  String get pcNoFacts => 'Пишіть у нотатці рядки на кшталт «Засновано: 300»';
+
+  @override
+  String get pcPlacecard => 'Картка місця';
+
+  @override
+  String get pcBorders => 'Межує з';
+
+  @override
+  String get pcOptArea => 'Область (назва)';
+
+  @override
+  String get tplSave => 'Зберегти сторінку як шаблон…';
+
+  @override
+  String get tplMine => 'Мій';
+
+  @override
+  String get savePresetHint => 'Зберігає вигляд, подання та поля цього модуля (без вмісту) як відправну точку для нових модулів того ж типу.';
+
+  @override
+  String get presetSaved => 'Шаблон збережено';
+
+  @override
+  String get presetDeleteConfirm => 'Видалити цей шаблон? Модулі, створені з нього, лишаться як є.';
+
+  @override
+  String get bundleTabClassic => 'Класичні';
+
+  @override
+  String get bundleTabGenre => 'Жанр';
+
+  @override
+  String get bundleTabMine => 'Мої';
+
+  @override
+  String get bundleMineEmpty => 'Ще нічого не збережено — клацніть папку правою кнопкою й виберіть «Зберегти як набір Artisan…»';
+
+  @override
+  String get bundleSampleCount => 'Приклад даних';
+
+  @override
+  String get bundleIncludeSamples => 'Додати приклад даних';
+
+  @override
+  String get bundleSaveMine => 'Зберегти як набір Artisan…';
+
+  @override
+  String get bundleSaveData => 'Дані';
+
+  @override
+  String get bundleDataNone => 'Лише структура';
+
+  @override
+  String get bundleDataSamples => 'До 3 прикладів на модуль';
+
+  @override
+  String get bundleSaveHint => 'Зберігаються папки, модулі, поля й макети сторінок. Посилання на модулі поза цією папкою не зберігаються.';
+
+  @override
+  String get bundleSaved => 'Набір збережено';
+
+  @override
+  String get bundleCreate => 'Створити';
+
+  @override
+  String get bundleAdjust => 'Спершу налаштувати';
+
+  @override
+  String get bundleCreated => 'Проєкт створено';
+
+  @override
+  String get bundleProjectName => 'Назва проєкту';
+
+  @override
+  String get bundleIncludes => 'Містить';
+
+  @override
+  String get bundleFields => 'Поля (порожньо = не треба)';
+
+  @override
+  String get nameRequired => 'Потрібна назва';
+
+  @override
+  String get nameField => 'Назва';
+
+  @override
+  String get artCounts => '{f} тек · {m} модулів · {l} звʼязків · {s} прикладів';
+
+  @override
+  String get artStructure => 'Що буде створено';
+
+  @override
+  String get artLinks => 'Звʼязки між модулями';
+
+  @override
+  String get artLinkRel => 'поле звʼязку / вибірка';
+
+  @override
+  String get artLinkBorrow => 'запозичений компонент';
+
+  @override
+  String get artBefore => 'Перед створенням';
+
+  @override
+  String get exportFormat => 'Формат';
+
+  @override
+  String get exportPreview => 'Попередній перегляд';
+
+  @override
+  String get exportPreviewNote => 'Ескіз макета — у файлі будуть ваші справжні сторінки';
+
+  @override
+  String get tplBrowse => 'Інші шаблони…';
+
+  @override
+  String get tplFields => 'Додати поля шаблону';
+
+  @override
+  String get tplModulePage => 'Сторінка модуля';
+
+  @override
+  String get tplItemPage => 'Сторінка елемента';
+
+  @override
+  String get tplKindCount => 'Шаблонів: {n}';
+
+  @override
+  String get tplFieldsHead => 'Поля';
+
+  @override
+  String get btnApply => 'Застосувати';
+
+  @override
+  String get btnCreate => 'Створити';
 }

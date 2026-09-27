@@ -4,7 +4,11 @@ import '../../core/i18n/app_localizations.dart';
 import '../../data/dao/page_block_dao.dart';
 import '../../data/models/module_model.dart';
 import 'core_components.dart';
+import 'decor_components.dart';
+import 'kind_components.dart';
 import 'kind_views.dart';
+import 'media_components.dart';
+import 'wiki_components.dart';
 import 'page_providers.dart';
 
 /// What a component block is drawn with.
@@ -139,7 +143,8 @@ String kindViewId(ModuleKind kind) => '${kind.id}.view';
 
 /// Every component this app can draw, core first.
 final Map<String, ComponentDef> components = {
-  for (final def in [...coreComponents, ...kindViewComponents]) def.id: def,
+  for (final def in [...coreComponents, ...dataComponents, ...decorComponents, ...mediaComponents, ...wikiComponents, ...kindViewComponents])
+    def.id: def,
 };
 
 /// A module page's first layout (EXE registry.js defaultPageLayout): a

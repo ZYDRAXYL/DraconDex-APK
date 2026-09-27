@@ -105,6 +105,42 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeDaylight => 'Siang Hari';
 
   @override
+  String get themeShowAll => 'Tampilkan semua';
+
+  @override
+  String get themeShowLess => 'Ciutkan';
+
+  @override
+  String get pageLayout => 'Tata letak judul';
+
+  @override
+  String get titleAlign => 'Perataan judul';
+
+  @override
+  String get alignLeft => 'Kiri';
+
+  @override
+  String get alignCenter => 'Tengah';
+
+  @override
+  String get alignRight => 'Kanan';
+
+  @override
+  String get pageIcon => 'Ikon di atas judul';
+
+  @override
+  String get pageCover => 'Gambar sampul';
+
+  @override
+  String get pageCoverNone => 'Tanpa sampul';
+
+  @override
+  String get pageCoverEmpty => 'Impor gambar ke Nexus ini untuk dipakai sebagai sampul';
+
+  @override
+  String get pageLayoutScope => 'Hanya berlaku untuk halaman ini';
+
+  @override
   String get languageLabel => 'Bahasa';
 
   @override
@@ -1768,4 +1804,1003 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get clsInsertBelow => 'Sisipkan baris di bawah';
+
+  @override
+  String get exportTitle => 'Ekspor…';
+
+  @override
+  String get exportPdf => 'PDF';
+
+  @override
+  String get exportPdfD => 'Untuk dicetak, dibagikan, atau dikirim ke percetakan';
+
+  @override
+  String get exportDocx => 'Word (DOCX)';
+
+  @override
+  String get exportDocxD => 'Untuk diedit lagi di Word, Google Docs, atau Pages';
+
+  @override
+  String get exportEpub => 'EPUB (e-book)';
+
+  @override
+  String get exportEpubD => 'Untuk Apple Books, Kindle, Kobo, atau Calibre';
+
+  @override
+  String get exportXlsx => 'Excel (XLSX)';
+
+  @override
+  String get exportXlsxD => 'Satu sheet per tabel, untuk Excel, Sheets, atau Numbers';
+
+  @override
+  String get exportCsv => 'CSV';
+
+  @override
+  String get exportCsvD => 'Tabel polos — bisa diimpor lagi lewat Impor CSV';
+
+  @override
+  String get htmlExport => 'Ekspor sebagai situs web (HTML)';
+
+  @override
+  String get exportMarkdown => 'Ekspor sebagai Markdown (.zip)';
+
+  @override
+  String get exportMdAnyD => 'Catatan dengan gambar — bisa dibuka di Obsidian';
+
+  @override
+  String get exportMddxD => 'Modul ini, untuk dipindah ke vault lain';
+
+  @override
+  String get exportNoPage => 'Folder tidak punya halaman sendiri';
+
+  @override
+  String get exportOnlyDocs => 'Hanya Author, Classifier, Chronicler, Drafter, dan Inspector';
+
+  @override
+  String get exportOnlyBooks => 'Hanya buku Author';
+
+  @override
+  String get exportOnlyTables => 'Hanya Classifier dan Chronicler';
+
+  @override
+  String get exportGo => 'Ekspor';
+
+  @override
+  String get exportScope => 'Cakupan';
+
+  @override
+  String get exportScopePage => 'Halaman ini';
+
+  @override
+  String get exportScopeModule => 'Modul ini dan semua elemen';
+
+  @override
+  String get exportScopeInside => 'Modul ini dan semua isinya';
+
+  @override
+  String get exportScopeNexus => 'Seluruh Nexus';
+
+  @override
+  String get exportPaper => 'Kertas';
+
+  @override
+  String get exportOrientation => 'Orientasi';
+
+  @override
+  String get exportPortrait => 'Tegak';
+
+  @override
+  String get exportLandscape => 'Mendatar';
+
+  @override
+  String get exportHeaderFooter => 'Judul dan nomor halaman';
+
+  @override
+  String get exportToc => 'Halaman daftar isi';
+
+  @override
+  String get exportCsvHint => 'Satu tabel: elemen Classifier, atau timeline pertama Chronicler. Field rumus tidak disertakan. Bisa dibaca lagi lewat Impor CSV.';
+
+  @override
+  String get exportXlsxHint => 'Satu sheet per tabel (setiap timeline Chronicler), header tebal dan dibekukan. Field rumus tidak disertakan.';
+
+  @override
+  String get exportMdAnyHint => 'Satu .md per elemen dengan field sebagai properti; gambar halaman masuk ke assets/. Buka foldernya sebagai vault di Obsidian.';
+
+  @override
+  String get exportDocxHint => 'Satu judul per bab, elemen, atau peristiwa (muncul di panel navigasi Word), field sebagai tabel, gambar halaman, pemisah halaman antarbab.';
+
+  @override
+  String get exportEpubHint => 'Satu file per bab dengan daftar isi; sampul judul halaman buku menjadi sampulnya.';
+
+  @override
+  String get exportMddxHint => 'File .mddx yang bisa diimpor vault DraconDex lain.';
+
+  @override
+  String get exportFormulaSkipped => 'Field rumus tidak disertakan: {names}';
+
+  @override
+  String get exportMoreTimelines => 'CSV hanya memuat satu timeline — {n} lainnya ada di ekspor Excel';
+
+  @override
+  String get exportMediaMissing => '{n} gambar tidak ditemukan dan dilewati';
+
+  @override
+  String get exportMarkdownEmpty => 'Belum ada yang bisa diekspor';
+
+  @override
+  String get exportWorking => 'Menggambar halaman…';
+
+  @override
+  String get exportPictures => 'gambar';
+
+  @override
+  String get exportRows => 'baris';
+
+  @override
+  String get exportHtmlPageD => 'Halaman ini sebagai halaman web, beserta gambarnya';
+
+  @override
+  String get exportHtmlPageHint => 'File .zip berisi index.html dan gambarnya di media/ — ekstrak lalu buka index.html di browser apa pun.';
+
+  @override
+  String get exportPrint => 'Cetak…';
+
+  @override
+  String get pcVideo => 'Video';
+
+  @override
+  String get pcAudio => 'Audio';
+
+  @override
+  String get pcPdf => 'PDF';
+
+  @override
+  String get pcModel3d => 'Model 3D';
+
+  @override
+  String get pcMedia => 'Media campuran';
+
+  @override
+  String get pcMediaEmpty => 'Belum ada berkas.';
+
+  @override
+  String get pbChooseFile => 'Pilih berkas';
+
+  @override
+  String get pcAddFile => 'Tambah file';
+
+  @override
+  String get pcOpenIn => 'Buka di aplikasi lain';
+
+  @override
+  String get mediaOpenFailed => 'File ini tidak dapat dibuka';
+
+  @override
+  String get pbBlockSettings => 'Pengaturan blok';
+
+  @override
+  String get pbStyle => 'Gaya';
+
+  @override
+  String get pbOptions => 'Opsi';
+
+  @override
+  String get pbStyleVariant => 'Tampilan';
+
+  @override
+  String get pbStyleAccent => 'Warna aksen';
+
+  @override
+  String get pbStyleWidth => 'Lebar';
+
+  @override
+  String get pbStyleAlign => 'Perataan';
+
+  @override
+  String get pbStyleDensity => 'Jarak';
+
+  @override
+  String get pbStyleHeader => 'Judul';
+
+  @override
+  String get pbHeaderShow => 'Tampilkan judul';
+
+  @override
+  String get pbHeaderTitle => 'Teks judul';
+
+  @override
+  String get pbStyleCollapsible => 'Dapat dilipat';
+
+  @override
+  String get pbStyleAnchor => 'Jangkar (#)';
+
+  @override
+  String get pbStyleHideOn => 'Sembunyikan di';
+
+  @override
+  String get pbStyleReset => 'Atur ulang';
+
+  @override
+  String get pbStyleApplyAll => 'Terapkan ke semua blok sejenis';
+
+  @override
+  String get pbStyleApplied => 'Diterapkan ke {n} blok lain';
+
+  @override
+  String get pbStyleCopy => 'Salin gaya';
+
+  @override
+  String get pbStylePaste => 'Tempel gaya';
+
+  @override
+  String get pbNoOptions => 'Blok ini tidak punya opsi sendiri — tampilannya ada di tab Gaya.';
+
+  @override
+  String get pbVariantPlain => 'Polos';
+
+  @override
+  String get pbVariantCard => 'Kartu';
+
+  @override
+  String get pbVariantOutline => 'Garis tepi';
+
+  @override
+  String get pbVariantTinted => 'Berwarna';
+
+  @override
+  String get pbVariantHero => 'Utama';
+
+  @override
+  String get pbAccKind => 'Jenis modul';
+
+  @override
+  String get pbAccAccent => 'Aksen tema';
+
+  @override
+  String get pbAccBlue => 'Biru';
+
+  @override
+  String get pbAccGreen => 'Hijau';
+
+  @override
+  String get pbAccAmber => 'Kuning tua';
+
+  @override
+  String get pbAccRose => 'Mawar';
+
+  @override
+  String get pbAccViolet => 'Ungu';
+
+  @override
+  String get pbAccSlate => 'Abu batu';
+
+  @override
+  String get pbWidthNarrow => 'Sempit';
+
+  @override
+  String get pbWidthNormal => 'Normal';
+
+  @override
+  String get pbWidthWide => 'Lebar';
+
+  @override
+  String get pbWidthFull => 'Penuh';
+
+  @override
+  String get pbDensityComfy => 'Longgar';
+
+  @override
+  String get pbDensityCompact => 'Rapat';
+
+  @override
+  String get pbCollOff => 'Tidak';
+
+  @override
+  String get pbCollOpen => 'Mulai terbuka';
+
+  @override
+  String get pbCollClosed => 'Mulai terlipat';
+
+  @override
+  String get pbHideNone => '—';
+
+  @override
+  String get pbHidePhone => 'Ponsel';
+
+  @override
+  String get pbHideDesktop => 'Desktop';
+
+  @override
+  String get pbLinks => 'Tautan';
+
+  @override
+  String get pbLinkAdd => 'Tambah tautan';
+
+  @override
+  String get pbLinkAddPh => '+ [[Nama]] · #jangkar · https://…';
+
+  @override
+  String get pbLinkBadUrl => 'Itu bukan tautan: gunakan [[Nama]], #jangkar, atau alamat http(s)';
+
+  @override
+  String get pbLinkLabel => 'Label';
+
+  @override
+  String get pbLinkTo => 'Menuju';
+
+  @override
+  String get pbLinkGroup => 'Grup';
+
+  @override
+  String get pbLinkHint => 'Tautan web dibuka di peramban, hanya http dan https — aplikasi hanya membuka alamat yang tersimpan.';
+
+  @override
+  String get pbLinkMissing => 'Belum ada halaman bernama itu — klik untuk membuat';
+
+  @override
+  String get pbLinkUp => 'Naik';
+
+  @override
+  String get pbLinkDown => 'Turun';
+
+  @override
+  String get pbLinksEmpty => 'Belum ada tautan.';
+
+  @override
+  String get pbLinksEmptyArrange => 'Belum ada tautan — tambahkan lewat ⚙ → Opsi.';
+
+  @override
+  String get pbListAdd => 'Tambah';
+
+  @override
+  String get pcLinkbar => 'Bilah tautan';
+
+  @override
+  String get pcLinkcard => 'Kartu tautan';
+
+  @override
+  String get pcHatnote => 'Catatan atas';
+
+  @override
+  String get pcSeeAlso => 'Lihat juga';
+
+  @override
+  String get pcReferences => 'Referensi';
+
+  @override
+  String get pcTabs => 'Tab';
+
+  @override
+  String get pcToggle => 'Toggle';
+
+  @override
+  String get pcNavbox => 'Kotak navigasi';
+
+  @override
+  String get pcChildren => 'Halaman anak';
+
+  @override
+  String get pcHatAnd => 'dan';
+
+  @override
+  String get pcHatnotePh => 'Artikel utama: …';
+
+  @override
+  String get pcReferencesEmpty => 'Belum ada catatan kaki — tulis [^1] di blok teks dan "[^1]: …" di baris tersendiri.';
+
+  @override
+  String get pcSeeAlsoEmpty => 'Belum ada tautan dari halaman ini';
+
+  @override
+  String get pcSuggested => 'Saran:';
+
+  @override
+  String get pcTab => 'Tab';
+
+  @override
+  String get pcChildrenNone => 'Tidak ada apa pun di bawah halaman ini.';
+
+  @override
+  String get pbFootnoteMissing => 'Catatan kaki ini belum berisi — tambahkan baris "[^n]: …"';
+
+  @override
+  String get pcOptBar => 'Gaya bilah';
+
+  @override
+  String get pcOptCaption => 'Keterangan';
+
+  @override
+  String get pcOptCount => 'Jumlah';
+
+  @override
+  String get pcOptCover => 'Gambar sampul';
+
+  @override
+  String get pcOptDepth => 'Kedalaman';
+
+  @override
+  String get pcOptHatKind => 'Jenis catatan';
+
+  @override
+  String get pcOptLayout => 'Tata letak';
+
+  @override
+  String get pcOptLook => 'Tampilan';
+
+  @override
+  String get pcOptLoop => 'Ulangi';
+
+  @override
+  String get pcOptPoster => 'Gambar poster';
+
+  @override
+  String get pcOptSort => 'Urutan';
+
+  @override
+  String get pcOptSource => 'Isi dari modul';
+
+  @override
+  String get pcOptStart => 'Awal';
+
+  @override
+  String get pcOptStartPage => 'Halaman awal';
+
+  @override
+  String get pcOptStartTab => 'Tab yang tampil pertama';
+
+  @override
+  String get pcOptSticky => 'Tetap di atas saat menggulir';
+
+  @override
+  String get pcOptSuggest => 'Sarankan halaman yang menaut ke sini atau dari sini';
+
+  @override
+  String get pcOptTabs => 'Nama tab';
+
+  @override
+  String get pcBarPills => 'Pil';
+
+  @override
+  String get pcBarTabs => 'Tab';
+
+  @override
+  String get pcBarUnderline => 'Garis bawah';
+
+  @override
+  String get pcBarButtons => 'Tombol';
+
+  @override
+  String get pcCardCard => 'Kartu';
+
+  @override
+  String get pcCardCompact => 'Ringkas';
+
+  @override
+  String get pcCardButton => 'Tombol';
+
+  @override
+  String get pcHatMain => 'Artikel utama:';
+
+  @override
+  String get pcHatAbout => 'Selengkapnya lihat';
+
+  @override
+  String get pcHatDistinguish => 'Jangan tertukar dengan';
+
+  @override
+  String get pcTabsLine => 'Garis';
+
+  @override
+  String get pcTabsBoxed => 'Kotak';
+
+  @override
+  String get pcTabsPills => 'Pil';
+
+  @override
+  String get pcKidsList => 'Daftar';
+
+  @override
+  String get pcKidsTree => 'Pohon';
+
+  @override
+  String get pcKidsCards => 'Kartu';
+
+  @override
+  String get pcSortOrder => 'Sesuai Nest';
+
+  @override
+  String get pcSortName => 'Menurut nama';
+
+  @override
+  String get pcGalGrid => 'Kisi';
+
+  @override
+  String get pcGalStrip => 'Strip';
+
+  @override
+  String get pcPdfSingle => 'Satu halaman';
+
+  @override
+  String get pcPdfStrip => 'Strip halaman';
+
+  @override
+  String get pcInfobox => 'Kotak info';
+
+  @override
+  String get pcCallout => 'Callout';
+
+  @override
+  String get pcStats => 'Statistik';
+
+  @override
+  String get pcToc => 'Daftar isi';
+
+  @override
+  String get pcSpotlight => 'Sorotan';
+
+  @override
+  String get pcRoster => 'Daftar';
+
+  @override
+  String get pcBreakdown => 'Rincian';
+
+  @override
+  String get pcEras => 'Era';
+
+  @override
+  String get pcUpcoming => 'Mendatang';
+
+  @override
+  String get pcPinlist => 'Daftar pin';
+
+  @override
+  String get pcProgress => 'Progres';
+
+  @override
+  String get pcChapters => 'Bab';
+
+  @override
+  String get pcEndings => 'Akhir cerita';
+
+  @override
+  String get pcVariables => 'Variabel';
+
+  @override
+  String get pcFocus => 'Fokus';
+
+  @override
+  String get pcLegend => 'Legenda';
+
+  @override
+  String get pcJourney => 'Perjalanan';
+
+  @override
+  String get pcStrip => 'Strip';
+
+  @override
+  String get pcFeatured => 'Unggulan';
+
+  @override
+  String get pcDashboard => 'Dasbor';
+
+  @override
+  String get pcRecent => 'Baru diubah';
+
+  @override
+  String get pcQuickroll => 'Lempar cepat';
+
+  @override
+  String get pcPinned => 'Disematkan';
+
+  @override
+  String get pcTasks => 'Tugas';
+
+  @override
+  String get pcBanner => 'Spanduk';
+
+  @override
+  String get pcGallery => 'Galeri';
+
+  @override
+  String get pcDivider => 'Pemisah';
+
+  @override
+  String get pcIconrow => 'Baris ikon';
+
+  @override
+  String get pcFigure => 'Figur';
+
+  @override
+  String get pcInfoboxEmpty => 'Belum ada field';
+
+  @override
+  String get pcStatsEmpty => 'Belum ada yang dihitung';
+
+  @override
+  String get pcTocEmpty => 'Tambahkan judul untuk membuat daftar isi';
+
+  @override
+  String get pcNoElements => 'Belum ada elemen';
+
+  @override
+  String get pcBreakdownEmpty => 'Pilih field untuk dihitung';
+
+  @override
+  String get noEventsYet => 'Belum ada peristiwa';
+
+  @override
+  String get mapNoAreas => 'Belum ada area';
+
+  @override
+  String get pcNoChapters => 'Belum ada bab';
+
+  @override
+  String get pcWords => 'kata';
+
+  @override
+  String get pcNoEndings => 'Belum ada akhir cerita';
+
+  @override
+  String get pcNoVariables => 'Belum ada variabel';
+
+  @override
+  String get pcNoRelations => 'Belum ada relasi';
+
+  @override
+  String get pcUnlabelled => 'Tanpa label';
+
+  @override
+  String get pcNoPanels => 'Belum ada panel';
+
+  @override
+  String get pcNoSketches => 'Belum ada sketsa';
+
+  @override
+  String get managerEmpty => 'Belum ada yang dipilih — atur filter atau pilih modul.';
+
+  @override
+  String get pcRoll => 'Lempar';
+
+  @override
+  String get pcNoRolls => 'Belum ada lemparan';
+
+  @override
+  String get pcNoPinned => 'Awali pesan dengan 📌 untuk menyematkannya di sini';
+
+  @override
+  String get pcNoTasks => 'Tulis “- [ ] …” di catatan untuk menambah tugas';
+
+  @override
+  String get pcBannerEmpty => 'Belum ada gambar.';
+
+  @override
+  String get pcGalleryEmpty => 'Belum ada gambar.';
+
+  @override
+  String get pcIconrowEmpty => 'Belum ada ikon.';
+
+  @override
+  String get pcFigureEmpty => 'Belum ada gambar.';
+
+  @override
+  String get pcStatItems => 'Item';
+
+  @override
+  String get pcStatModules => 'Modul';
+
+  @override
+  String get backlinks => 'Tautan balik';
+
+  @override
+  String get pcCalloutPh => 'Tulis catatan…';
+
+  @override
+  String get pcDecorPickArrange => 'Belum ada — pilih lewat ⚙ → Opsi.';
+
+  @override
+  String get pcToneNote => 'Catatan';
+
+  @override
+  String get pcToneTip => 'Tip';
+
+  @override
+  String get pcToneWarning => 'Peringatan';
+
+  @override
+  String get pcToneQuote => 'Kutipan';
+
+  @override
+  String get pcToneSecret => 'Rahasia';
+
+  @override
+  String get pcOptFields => 'Kolom yang ditampilkan';
+
+  @override
+  String get pcOptDock => 'Posisi';
+
+  @override
+  String get pcOptTone => 'Nada';
+
+  @override
+  String get pcOptField => 'Hitung per kolom';
+
+  @override
+  String get pcOptFrom => 'Dari tahun';
+
+  @override
+  String get pcOptGoal => 'Target kata';
+
+  @override
+  String get pcOptSubtitle => 'Subjudul';
+
+  @override
+  String get pcOptHeight => 'Tinggi';
+
+  @override
+  String get pcOptScrim => 'Bayangan di bawah teks';
+
+  @override
+  String get pbImages => 'Gambar';
+
+  @override
+  String get pcOptFromModule => 'Semua gambar di modul ini';
+
+  @override
+  String get pcOptCaptions => 'Tampilkan nama berkas';
+
+  @override
+  String get pcOptItems => 'Item';
+
+  @override
+  String get pcOptSize => 'Ukuran';
+
+  @override
+  String get pcOptFit => 'Penyesuaian';
+
+  @override
+  String get pcOptFloat => 'Aliran teks';
+
+  @override
+  String get pcOptRound => 'Sudut bulat';
+
+  @override
+  String get pcLayoutTable => 'Tabel';
+
+  @override
+  String get pcLayoutStacked => 'Bertumpuk';
+
+  @override
+  String get pcDockRight => 'Kanan';
+
+  @override
+  String get pcDockLeft => 'Kiri';
+
+  @override
+  String get pcDockFull => 'Lebar penuh';
+
+  @override
+  String get pcSizeS => 'Kecil';
+
+  @override
+  String get pcSizeM => 'Sedang';
+
+  @override
+  String get pcSizeL => 'Besar';
+
+  @override
+  String get pcSizeFull => 'Lebar penuh';
+
+  @override
+  String get pcScrimSoft => 'Lembut';
+
+  @override
+  String get pcScrimStrong => 'Kuat';
+
+  @override
+  String get pcGalMasonry => 'Masonri';
+
+  @override
+  String get pcDivLine => 'Garis';
+
+  @override
+  String get pcDivDouble => 'Ganda';
+
+  @override
+  String get pcDivDots => 'Titik';
+
+  @override
+  String get pcDivOrnament => 'Ornamen';
+
+  @override
+  String get pcDivImage => 'Pita gambar';
+
+  @override
+  String get pcIrChip => 'Chip';
+
+  @override
+  String get pcIrBig => 'Ikon besar';
+
+  @override
+  String get pcFitContain => 'Utuh';
+
+  @override
+  String get pcFitCover => 'Penuhi bingkai';
+
+  @override
+  String get pcFloatNone => 'Sendiri';
+
+  @override
+  String get pcFloatLeft => 'Gambar kiri';
+
+  @override
+  String get pcFloatRight => 'Gambar kanan';
+
+  @override
+  String get pcLoadFailed => 'Blok ini gagal dimuat';
+
+  @override
+  String get pcNoValue => '(kosong)';
+
+  @override
+  String get tplUse => 'Pakai templat…';
+
+  @override
+  String get tplUseHint => 'Mengganti tata letak halaman ini. Isinya tetap, dan bisa dibatalkan setelahnya.';
+
+  @override
+  String get tplDefault => 'Bawaan';
+
+  @override
+  String get tplOtherTypes => 'Jenis lain';
+
+  @override
+  String get tplApplied => 'Templat diterapkan';
+
+  @override
+  String get tplBorrowDropped => '{n} blok dilewati — blok itu meminjam dari modul yang belum ditautkan';
+
+  @override
+  String get tplGallery => 'Templat halaman';
+
+  @override
+  String get pcFacts => 'Fakta';
+
+  @override
+  String get pcNoFacts => 'Tulis baris seperti “Didirikan: 300” di catatan';
+
+  @override
+  String get pcPlacecard => 'Kartu tempat';
+
+  @override
+  String get pcBorders => 'Berbatasan';
+
+  @override
+  String get pcOptArea => 'Area (nama)';
+
+  @override
+  String get tplSave => 'Simpan halaman sebagai templat…';
+
+  @override
+  String get tplMine => 'Milik saya';
+
+  @override
+  String get savePresetHint => 'Menyimpan tampilan, mode lihat, dan bidang modul ini (bukan isinya) sebagai titik awal modul baru dengan jenis yang sama.';
+
+  @override
+  String get presetSaved => 'Preset disimpan';
+
+  @override
+  String get presetDeleteConfirm => 'Hapus preset ini? Modul yang dibuat darinya tetap seperti semula.';
+
+  @override
+  String get bundleTabClassic => 'Klasik';
+
+  @override
+  String get bundleTabGenre => 'Genre';
+
+  @override
+  String get bundleTabMine => 'Milik saya';
+
+  @override
+  String get bundleMineEmpty => 'Belum ada yang disimpan — klik kanan folder lalu pilih “Simpan sebagai bundel Artisan…”';
+
+  @override
+  String get bundleSampleCount => 'Data contoh';
+
+  @override
+  String get bundleIncludeSamples => 'Sertakan data contoh';
+
+  @override
+  String get bundleSaveMine => 'Simpan sebagai bundel Artisan…';
+
+  @override
+  String get bundleSaveData => 'Data';
+
+  @override
+  String get bundleDataNone => 'Hanya struktur';
+
+  @override
+  String get bundleDataSamples => 'Hingga 3 contoh per modul';
+
+  @override
+  String get bundleSaveHint => 'Folder, modul, field, dan tata letak halaman disimpan. Tautan ke modul di luar folder ini tidak disertakan.';
+
+  @override
+  String get bundleSaved => 'Bundel disimpan';
+
+  @override
+  String get bundleCreate => 'Buat';
+
+  @override
+  String get bundleAdjust => 'Sesuaikan dulu';
+
+  @override
+  String get bundleCreated => 'Proyek dibuat';
+
+  @override
+  String get bundleProjectName => 'Nama proyek';
+
+  @override
+  String get bundleIncludes => 'Berisi';
+
+  @override
+  String get bundleFields => 'Field (kosong = tidak dipakai)';
+
+  @override
+  String get nameRequired => 'Nama wajib diisi';
+
+  @override
+  String get nameField => 'Nama';
+
+  @override
+  String get artCounts => '{f} folder · {m} modul · {l} tautan · {s} contoh';
+
+  @override
+  String get artStructure => 'Struktur yang dibuat';
+
+  @override
+  String get artLinks => 'Tautan antar modul';
+
+  @override
+  String get artLinkRel => 'kolom relasi / pilihan';
+
+  @override
+  String get artLinkBorrow => 'komponen pinjaman';
+
+  @override
+  String get artBefore => 'Sebelum membuat';
+
+  @override
+  String get exportFormat => 'Format';
+
+  @override
+  String get exportPreview => 'Pratinjau';
+
+  @override
+  String get exportPreviewNote => 'Sketsa tata letak — berkas berisi halaman asli Anda';
+
+  @override
+  String get tplBrowse => 'Templat lain…';
+
+  @override
+  String get tplFields => 'Sertakan kolom templat';
+
+  @override
+  String get tplModulePage => 'Halaman modul';
+
+  @override
+  String get tplItemPage => 'Halaman elemen';
+
+  @override
+  String get tplKindCount => '{n} templat';
+
+  @override
+  String get tplFieldsHead => 'Bidang';
+
+  @override
+  String get btnApply => 'Terapkan';
+
+  @override
+  String get btnCreate => 'Buat';
 }

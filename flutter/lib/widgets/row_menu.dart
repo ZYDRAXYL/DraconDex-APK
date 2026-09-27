@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import '../core/i18n/app_localizations.dart';
+import '../core/theme/ddx_theme.dart';
 
 /// One entry of a row's menu.
 class RowAction {
@@ -19,8 +22,39 @@ class RowAction {
 ///
 /// The sheet closes before the action runs, so an action that opens a dialog
 /// of its own does not open it over a sheet on its way out.
+///
+/// On iPhone/iPad it is an action sheet instead — the Apple-app layer (APP
+/// docs/REDESIGN.md C3): destructive actions in red, Cancel apart at the
+/// bottom. Same actions, same close-then-run order.
 Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String? title}) async {
   if (actions.isEmpty) return;
+  if (context.isIosStyle) {
+    // Cupertino draws in SF, which an iPhone has but the web build (the PWA
+    // on Safari) does not bundle — there it would fall back to a font
+    // fetched from the network, i.e. nothing offline. Use the app's own.
+    const web = kIsWeb ? TextStyle(fontFamily: 'NotoSans') : null;
+    final picked = await showCupertinoModalPopup<RowAction>(
+      context: context,
+      useRootNavigator: true,
+      builder: (sheetContext) => CupertinoActionSheet(
+        title: title == null ? null : Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: web),
+        actions: [
+          for (final a in actions)
+            CupertinoActionSheetAction(
+              isDestructiveAction: a.danger,
+              onPressed: () => Navigator.of(sheetContext).pop(a),
+              child: Text(a.label, style: web),
+            ),
+        ],
+        cancelButton: CupertinoActionSheetAction(
+          onPressed: () => Navigator.of(sheetContext).pop(),
+          child: Text(AppLocalizations.of(context)!.btnCancel, style: web),
+        ),
+      ),
+    );
+    picked?.onTap();
+    return;
+  }
   final picked = await showModalBottomSheet<RowAction>(
     context: context,
     // Over the Navibar, not under it: the shell's own navigator sits
