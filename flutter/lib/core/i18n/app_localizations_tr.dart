@@ -2767,4 +2767,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get artBefore => 'Oluşturmadan önce';
+
+  @override
+  String get exportFormat => 'Biçim';
+
+  @override
+  String get exportPreview => 'Önizleme';
+
+  @override
+  String get exportPreviewNote => 'Düzenin bir taslağı — dosya gerçek sayfalarınızı taşır';
 }

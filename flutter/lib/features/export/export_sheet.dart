@@ -7,8 +7,10 @@ import '../../core/entity/entity_kinds.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../core/theme/ddx_theme.dart';
 import '../../data/models/module_model.dart';
+import '../../data/services/export/doc_source.dart';
 import '../../data/services/export/export_service.dart';
 import '../../providers/db_providers.dart';
+import 'export_preview.dart';
 
 /// "Export…" — every way out of the app for this page, as cards (Procress 14,
 /// APP docs/EXPORT-DECOR.md E8; the desktop's hub/export.js). A card that
@@ -25,25 +27,30 @@ Future<void> showExportSheet(BuildContext context, WidgetRef ref, ModuleModel mo
     useRootNavigator: true,
     showDragHandle: true,
     isScrollControlled: true,
+    // past M3's 640 cap so a tablet gets the preview beside the options
+    constraints: const BoxConstraints(maxWidth: 1100),
     builder: (_) => ExportSheet(module: module, itemKey: itemKey, itemName: name, initial: prefs),
   );
 }
 
+/// A format card: its file badge and the badge's colour — the desktop's
+/// (css/page.css .ex-fi), each carrying white text at ≥4.5:1.
 class _Card {
   final ExportFormat f;
-  final IconData icon;
-  const _Card(this.f, this.icon);
+  final String ext;
+  final Color color;
+  const _Card(this.f, this.ext, this.color);
 }
 
 const _cards = [
-  _Card(ExportFormat.pdf, Icons.picture_as_pdf_outlined),
-  _Card(ExportFormat.docx, Icons.description_outlined),
-  _Card(ExportFormat.epub, Icons.menu_book_outlined),
-  _Card(ExportFormat.xlsx, Icons.table_chart_outlined),
-  _Card(ExportFormat.csv, Icons.list_alt),
-  _Card(ExportFormat.html, Icons.public),
-  _Card(ExportFormat.md, Icons.edit_note),
-  _Card(ExportFormat.mddx, Icons.ios_share),
+  _Card(ExportFormat.pdf, 'PDF', Color(0xFFDC2626)),
+  _Card(ExportFormat.docx, 'DOCX', Color(0xFF2563EB)),
+  _Card(ExportFormat.epub, 'EPUB', Color(0xFF9333EA)),
+  _Card(ExportFormat.xlsx, 'XLSX', Color(0xFF15803D)),
+  _Card(ExportFormat.csv, 'CSV', Color(0xFF166534)),
+  _Card(ExportFormat.html, 'HTML', Color(0xFF0E7490)),
+  _Card(ExportFormat.md, 'MD', Color(0xFF475569)),
+  _Card(ExportFormat.mddx, 'MDDX', Color(0xFF4338CA)),
 ];
 
 class ExportSheet extends ConsumerStatefulWidget {
@@ -61,6 +68,7 @@ class ExportSheet extends ConsumerStatefulWidget {
 class _ExportSheetState extends ConsumerState<ExportSheet> {
   late ExportPrefs _p;
   bool _busy = false;
+  List<String> _names = const []; // the preview's element (or chapter) names
 
   String get _kind => widget.module.kind.id;
 
@@ -73,6 +81,15 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
     if (cur == null || exportBlocked(cur, _kind) != null) {
       _p = _p.copyWith(fmt: _cards.firstWhere((c) => exportBlocked(c.f, _kind) == null).f.name);
     }
+    _loadNames();
+  }
+
+  Future<void> _loadNames() async {
+    try {
+      final db = await ref.read(databaseProvider.future);
+      final doc = await moduleDocument(db, widget.module.id, anyKind: true);
+      if (doc != null && mounted) setState(() => _names = [for (final s in doc.sections) s.title]);
+    } catch (_) {}
   }
 
   ExportFormat get _fmt => ExportFormat.values.firstWhere((f) => f.name == _p.fmt);
@@ -173,48 +190,51 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
         selected: on,
         enabled: why == null,
         button: true,
-        child: Opacity(
-          opacity: why == null ? 1 : .5,
-          child: Material(
-            // picked: a tint and a ring — never a filled primary, which the quiet
-            // description text cannot be read on in every theme
-            color: on ? Color.alphaBlend(scheme.primary.withValues(alpha: .10), scheme.surface) : scheme.surfaceContainerHighest.withValues(alpha: .5),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-              side: BorderSide(color: on ? scheme.primary : Colors.transparent, width: 2),
-            ),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(10),
-              onTap: why == null && !_busy ? () => setState(() => _p = _p.copyWith(fmt: c.f.name)) : null,
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+        child: Material(
+          // picked: a tint and a ring — never a filled primary, which the quiet
+          // description text cannot be read on in every theme
+          color: on ? Color.alphaBlend(scheme.primary.withValues(alpha: .10), scheme.surface) : scheme.surfaceContainerHighest.withValues(alpha: .5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: on ? scheme.primary : Colors.transparent, width: 2),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(10),
+            onTap: why == null && !_busy ? () => setState(() => _p = _p.copyWith(fmt: c.f.name)) : null,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // a card that cannot run fades its badge and name; the reason stays readable
+                  Opacity(
+                    opacity: why == null ? 1 : .5,
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(c.icon, size: 20, color: on ? scheme.primary : null),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            _title(l10n, c.f),
-                            style: const TextStyle(fontWeight: FontWeight.w600),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                        Container(
+                          width: 34,
+                          height: 40,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: c.color,
+                            borderRadius: const BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(4), bottomLeft: Radius.circular(4), bottomRight: Radius.circular(4)),
                           ),
+                          child: Text(c.ext, style: const TextStyle(color: Colors.white, fontSize: 9.5, fontWeight: FontWeight.w800)),
                         ),
+                        const SizedBox(height: 6),
+                        Text(_title(l10n, c.f), style: const TextStyle(fontWeight: FontWeight.w600), maxLines: 2, overflow: TextOverflow.ellipsis),
                       ],
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      why != null ? _why(l10n, why) : _desc(l10n, c.f),
-                      style: TextStyle(fontSize: 12, color: muted),
-                      maxLines: 4,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    why != null ? _why(l10n, why) : _desc(l10n, c.f),
+                    style: TextStyle(fontSize: 12, color: why != null ? scheme.error : muted),
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
           ),
@@ -233,14 +253,51 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
       ),
     );
 
+    // Scope as a segmented control (mockup 11-export) — only formats with a choice.
+    Widget? scope() {
+      final (value, opts, set) = switch (_fmt) {
+        ExportFormat.pdf when widget.itemKey == null => (
+          _p.scope,
+          [('page', l10n.exportScopePage), ('module', l10n.exportScopeModule)],
+          (String v) => _p.copyWith(scope: v),
+        ),
+        ExportFormat.md => (
+          _p.mdScope,
+          [('module', l10n.exportScopeInside), ('nexus', l10n.exportScopeNexus)],
+          (String v) => _p.copyWith(mdScope: v),
+        ),
+        _ => ('', const <(String, String)>[], (String v) => _p),
+      };
+      if (opts.isEmpty) return null;
+      return Padding(
+        padding: const EdgeInsets.only(top: 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(l10n.exportScope.toUpperCase(), style: TextStyle(fontSize: 11, letterSpacing: .5, fontWeight: FontWeight.w600, color: muted)),
+            const SizedBox(height: 6),
+            SegmentedButton<String>(
+              showSelectedIcon: false,
+              // a two-line label ("This module and every element") grows the
+              // segment instead of being clipped to M3's 40dp
+              style: SegmentedButton.styleFrom(
+                minimumSize: const Size(0, 48),
+                maximumSize: const Size(double.infinity, 72),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              ),
+              segments: [for (final (v, t) in opts) ButtonSegment(value: v, label: Text(t, maxLines: 2, textAlign: TextAlign.center))],
+              selected: {value},
+              onSelectionChanged: _busy ? null : (v) => setState(() => _p = set(v.first)),
+            ),
+          ],
+        ),
+      );
+    }
+
     final hint = _hint(l10n, _fmt);
     final options = <Widget>[
+      ?scope(),
       if (_fmt == ExportFormat.pdf) ...[
-        if (widget.itemKey == null)
-          select(l10n.exportScope, _p.scope, [
-            ('page', l10n.exportScopePage),
-            ('module', l10n.exportScopeModule),
-          ], (v) => setState(() => _p = _p.copyWith(scope: v))),
         Row(
           children: [
             Expanded(
@@ -272,11 +329,6 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
           onChanged: _busy ? null : (v) => setState(() => _p = _p.copyWith(toc: v)),
         ),
       ],
-      if (_fmt == ExportFormat.md)
-        select(l10n.exportScope, _p.mdScope, [
-          ('module', l10n.exportScopeInside),
-          ('nexus', l10n.exportScopeNexus),
-        ], (v) => setState(() => _p = _p.copyWith(mdScope: v))),
       if (hint != null)
         Padding(
           padding: const EdgeInsets.only(top: 10),
@@ -284,69 +336,144 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
         ),
     ];
 
+    final c = _cards.firstWhere((c) => c.f == _fmt);
+    final ext = switch (_fmt) { ExportFormat.md || ExportFormat.html => 'zip', _ => c.ext.toLowerCase() };
+    final preview = Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Theme.of(context).dividerColor),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text.rich(
+            TextSpan(children: [
+              TextSpan(text: l10n.exportPreview, style: const TextStyle(fontWeight: FontWeight.w700)),
+              TextSpan(text: ' · ${l10n.exportPreviewNote}', style: TextStyle(color: muted)),
+            ]),
+            style: const TextStyle(fontSize: 11.5),
+          ),
+          const SizedBox(height: 10),
+          Center(
+            child: ExportPreview(
+              format: _fmt,
+              prefs: _p,
+              title: name,
+              kindLabel: kindName(l10n, widget.module.kind),
+              names: widget.itemKey != null ? const [] : _names,
+              isItem: widget.itemKey != null,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    Widget formats() => LayoutBuilder(
+      builder: (context, box) {
+        final cols = box.maxWidth >= 560 ? 4 : 2;
+        final w = (box.maxWidth - 8 * (cols - 1)) / cols;
+        return Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final c in _cards)
+              SizedBox(
+                width: w,
+                child: ConstrainedBox(constraints: const BoxConstraints(minHeight: 104), child: card(c)),
+              ),
+          ],
+        );
+      },
+    );
+
+    final footer = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Divider(height: 1),
+        const SizedBox(height: 10),
+        if (_busy)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Row(children: [
+              const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)),
+              const SizedBox(width: 8),
+              Expanded(child: Text(l10n.exportWorking, style: TextStyle(color: muted), overflow: TextOverflow.ellipsis)),
+            ]),
+          ),
+        // the file the share sheet will carry
+        Row(children: [
+          Icon(Icons.insert_drive_file_outlined, size: 16, color: muted),
+          const SizedBox(width: 6),
+          Expanded(child: Text('${ExportService.fileBase(name)}.$ext', style: TextStyle(fontSize: 12, color: muted), maxLines: 1, overflow: TextOverflow.ellipsis)),
+        ]),
+        const SizedBox(height: 6),
+        // wraps to a column on a narrow phone rather than overflowing
+        OverflowBar(
+          alignment: MainAxisAlignment.end,
+          overflowAlignment: OverflowBarAlignment.end,
+          spacing: 8,
+          overflowSpacing: 6,
+          children: [
+            TextButton(onPressed: _busy ? null : () => Navigator.of(context).pop(), child: Text(l10n.btnCancel)),
+            if (_fmt == ExportFormat.pdf)
+              OutlinedButton.icon(
+                onPressed: _busy ? null : () => _go(print: true),
+                icon: const Icon(Icons.print_outlined, size: 18),
+                label: Text(l10n.exportPrint),
+              ),
+            FilledButton.icon(onPressed: _busy ? null : _go, icon: const Icon(Icons.ios_share, size: 18), label: Text('${l10n.exportGo} · ${c.ext}')),
+          ],
+        ),
+      ],
+    );
+
+    final heading = Text(
+      '${l10n.exportTitle} — $name',
+      style: Theme.of(context).textTheme.titleMedium,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+    );
+    final formatLabel = Padding(
+      padding: const EdgeInsets.only(top: 12, bottom: 6),
+      child: Text(l10n.exportFormat.toUpperCase(), style: TextStyle(fontSize: 11, letterSpacing: .5, fontWeight: FontWeight.w600, color: muted)),
+    );
+
     return SafeArea(
       top: false,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height * .88),
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                '${l10n.exportTitle} — $name',
-                style: Theme.of(context).textTheme.titleMedium,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 12),
-              LayoutBuilder(
-                builder: (context, box) {
-                  final cols = box.maxWidth >= 560 ? 4 : 2;
-                  final w = (box.maxWidth - 8 * (cols - 1)) / cols;
-                  return Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      for (final c in _cards)
-                        SizedBox(
-                          width: w,
-                          child: ConstrainedBox(constraints: const BoxConstraints(minHeight: 92), child: card(c)),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              ...options,
-              const SizedBox(height: 16),
-              if (_busy)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Row(children: [
-                    const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)),
-                    const SizedBox(width: 8),
-                    Expanded(child: Text(l10n.exportWorking, style: TextStyle(color: muted), overflow: TextOverflow.ellipsis)),
-                  ]),
-                ),
-              // wraps to a column on a narrow phone rather than overflowing
-              OverflowBar(
-                alignment: MainAxisAlignment.end,
-                overflowAlignment: OverflowBarAlignment.end,
-                spacing: 8,
-                overflowSpacing: 6,
+      child: SizedBox(
+        height: MediaQuery.sizeOf(context).height * .88,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+          child: LayoutBuilder(
+            builder: (context, box) {
+              // a tablet: options and preview side by side; a phone: one column
+              final wide = box.maxWidth >= 720;
+              final left = [heading, formatLabel, formats(), ...options];
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  TextButton(onPressed: _busy ? null : () => Navigator.of(context).pop(), child: Text(l10n.btnCancel)),
-                  if (_fmt == ExportFormat.pdf)
-                    OutlinedButton.icon(
-                      onPressed: _busy ? null : () => _go(print: true),
-                      icon: const Icon(Icons.print_outlined, size: 18),
-                      label: Text(l10n.exportPrint),
-                    ),
-                  FilledButton.icon(onPressed: _busy ? null : _go, icon: const Icon(Icons.ios_share, size: 18), label: Text(l10n.exportGo)),
+                  Expanded(
+                    child: wide
+                        ? Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(child: ListView(padding: const EdgeInsets.only(right: 16, bottom: 12), children: left)),
+                              SizedBox(width: 380, child: SingleChildScrollView(padding: const EdgeInsets.only(bottom: 12), child: preview)),
+                            ],
+                          )
+                        : ListView(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            children: [...left, const SizedBox(height: 14), preview],
+                          ),
+                  ),
+                  footer,
                 ],
-              ),
-            ],
+              );
+            },
           ),
         ),
       ),

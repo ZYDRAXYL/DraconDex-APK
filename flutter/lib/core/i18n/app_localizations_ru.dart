@@ -2770,4 +2770,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get artBefore => 'Перед созданием';
+
+  @override
+  String get exportFormat => 'Формат';
+
+  @override
+  String get exportPreview => 'Предпросмотр';
+
+  @override
+  String get exportPreviewNote => 'Эскиз макета — в файле будут ваши настоящие страницы';
 }

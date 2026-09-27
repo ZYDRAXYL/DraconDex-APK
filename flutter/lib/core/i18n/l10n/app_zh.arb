@@ -919,5 +919,8 @@
   "artLinks": "模块之间的链接",
   "artLinkRel": "关系字段 / 选择",
   "artLinkBorrow": "借用组件",
-  "artBefore": "创建之前"
+  "artBefore": "创建之前",
+  "exportFormat": "格式",
+  "exportPreview": "预览",
+  "exportPreviewNote": "版式示意图——文件中是你真实的页面"
 }

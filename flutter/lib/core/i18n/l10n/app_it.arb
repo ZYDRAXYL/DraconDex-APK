@@ -919,5 +919,8 @@
   "artLinks": "Collegamenti tra moduli",
   "artLinkRel": "campo relazione / selezione",
   "artLinkBorrow": "componente preso in prestito",
-  "artBefore": "Prima di creare"
+  "artBefore": "Prima di creare",
+  "exportFormat": "Formato",
+  "exportPreview": "Anteprima",
+  "exportPreviewNote": "Uno schizzo del layout: il file contiene le tue pagine reali"
 }

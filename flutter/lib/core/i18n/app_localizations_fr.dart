@@ -2770,4 +2770,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get artBefore => 'Avant de créer';
+
+  @override
+  String get exportFormat => 'Format';
+
+  @override
+  String get exportPreview => 'Aperçu';
+
+  @override
+  String get exportPreviewNote => 'Une esquisse de la mise en page — le fichier contient vos vraies pages';
 }

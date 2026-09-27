@@ -919,5 +919,8 @@
   "artLinks": "Verknüpfungen zwischen Modulen",
   "artLinkRel": "Beziehungsfeld / Auswahl",
   "artLinkBorrow": "geliehene Komponente",
-  "artBefore": "Vor dem Erstellen"
+  "artBefore": "Vor dem Erstellen",
+  "exportFormat": "Format",
+  "exportPreview": "Vorschau",
+  "exportPreviewNote": "Eine Skizze des Layouts — die Datei enthält Ihre echten Seiten"
 }

@@ -2770,4 +2770,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get artBefore => '만들기 전에';
+
+  @override
+  String get exportFormat => '형식';
+
+  @override
+  String get exportPreview => '미리보기';
+
+  @override
+  String get exportPreviewNote => '레이아웃 스케치입니다 — 파일에는 실제 페이지가 담깁니다';
 }

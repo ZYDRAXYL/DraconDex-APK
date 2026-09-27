@@ -2767,4 +2767,13 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get artBefore => 'Перед створенням';
+
+  @override
+  String get exportFormat => 'Формат';
+
+  @override
+  String get exportPreview => 'Попередній перегляд';
+
+  @override
+  String get exportPreviewNote => 'Ескіз макета — у файлі будуть ваші справжні сторінки';
 }

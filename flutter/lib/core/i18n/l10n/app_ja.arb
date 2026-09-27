@@ -919,5 +919,8 @@
   "artLinks": "モジュール間のリンク",
   "artLinkRel": "リレーション項目 / 選択",
   "artLinkBorrow": "借用コンポーネント",
-  "artBefore": "作成の前に"
+  "artBefore": "作成の前に",
+  "exportFormat": "形式",
+  "exportPreview": "プレビュー",
+  "exportPreviewNote": "レイアウトの見取り図です — ファイルには実際のページが入ります"
 }

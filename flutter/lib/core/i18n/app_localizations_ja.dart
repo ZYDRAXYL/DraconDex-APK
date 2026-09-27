@@ -2770,4 +2770,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get artBefore => '作成の前に';
+
+  @override
+  String get exportFormat => '形式';
+
+  @override
+  String get exportPreview => 'プレビュー';
+
+  @override
+  String get exportPreviewNote => 'レイアウトの見取り図です — ファイルには実際のページが入ります';
 }

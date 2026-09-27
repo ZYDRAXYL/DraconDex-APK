@@ -158,6 +158,10 @@ Future<PdfFonts> loadPdfFonts() async {
 }
 
 class ExportService {
+  /// The file name [run] gives an export of [name], without its extension —
+  /// what the Export sheet's footer shows before the file exists.
+  static String fileBase(String name) => _safeFile(name);
+
   /// [itemKey]: an element page's export — only that element.
   static Future<ExportOutcome> run(
     Database db, {

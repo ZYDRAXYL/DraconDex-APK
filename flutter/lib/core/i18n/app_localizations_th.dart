@@ -2770,4 +2770,13 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get artBefore => 'ก่อนสร้าง';
+
+  @override
+  String get exportFormat => 'รูปแบบ';
+
+  @override
+  String get exportPreview => 'ตัวอย่าง';
+
+  @override
+  String get exportPreviewNote => 'ภาพร่างของเลย์เอาต์ — ไฟล์จริงจะมีหน้าของคุณครบ';
 }

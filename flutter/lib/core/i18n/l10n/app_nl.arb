@@ -919,5 +919,8 @@
   "artLinks": "Koppelingen tussen modules",
   "artLinkRel": "relatieveld / selectie",
   "artLinkBorrow": "geleend onderdeel",
-  "artBefore": "Voor het maken"
+  "artBefore": "Voor het maken",
+  "exportFormat": "Formaat",
+  "exportPreview": "Voorbeeld",
+  "exportPreviewNote": "Een schets van de opmaak — het bestand bevat je echte pagina's"
 }

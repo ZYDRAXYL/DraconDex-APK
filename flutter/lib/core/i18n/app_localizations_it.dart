@@ -2767,4 +2767,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get artBefore => 'Prima di creare';
+
+  @override
+  String get exportFormat => 'Formato';
+
+  @override
+  String get exportPreview => 'Anteprima';
+
+  @override
+  String get exportPreviewNote => 'Uno schizzo del layout: il file contiene le tue pagine reali';
 }

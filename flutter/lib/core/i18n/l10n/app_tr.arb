@@ -919,5 +919,8 @@
   "artLinks": "Modüller arası bağlantılar",
   "artLinkRel": "ilişki alanı / seçim",
   "artLinkBorrow": "ödünç bileşen",
-  "artBefore": "Oluşturmadan önce"
+  "artBefore": "Oluşturmadan önce",
+  "exportFormat": "Biçim",
+  "exportPreview": "Önizleme",
+  "exportPreviewNote": "Düzenin bir taslağı — dosya gerçek sayfalarınızı taşır"
 }

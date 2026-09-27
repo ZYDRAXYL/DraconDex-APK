@@ -2770,4 +2770,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get artBefore => 'Trước khi tạo';
+
+  @override
+  String get exportFormat => 'Định dạng';
+
+  @override
+  String get exportPreview => 'Xem trước';
+
+  @override
+  String get exportPreviewNote => 'Bản phác bố cục — tệp chứa các trang thật của bạn';
 }

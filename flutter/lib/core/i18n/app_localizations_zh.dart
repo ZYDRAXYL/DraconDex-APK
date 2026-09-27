@@ -2770,4 +2770,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get artBefore => '创建之前';
+
+  @override
+  String get exportFormat => '格式';
+
+  @override
+  String get exportPreview => '预览';
+
+  @override
+  String get exportPreviewNote => '版式示意图——文件中是你真实的页面';
 }

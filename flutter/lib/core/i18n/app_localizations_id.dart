@@ -2770,4 +2770,13 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get artBefore => 'Sebelum membuat';
+
+  @override
+  String get exportFormat => 'Format';
+
+  @override
+  String get exportPreview => 'Pratinjau';
+
+  @override
+  String get exportPreviewNote => 'Sketsa tata letak — berkas berisi halaman asli Anda';
 }

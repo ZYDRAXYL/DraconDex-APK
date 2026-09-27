@@ -2767,4 +2767,13 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get artBefore => 'Przed utworzeniem';
+
+  @override
+  String get exportFormat => 'Format';
+
+  @override
+  String get exportPreview => 'Podgląd';
+
+  @override
+  String get exportPreviewNote => 'Szkic układu — plik zawiera Twoje prawdziwe strony';
 }

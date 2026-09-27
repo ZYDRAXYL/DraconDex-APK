@@ -2770,4 +2770,13 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get artBefore => 'Ere thou create';
+
+  @override
+  String get exportFormat => 'Format';
+
+  @override
+  String get exportPreview => 'Preview';
+
+  @override
+  String get exportPreviewNote => 'A sketch of the layout — the file carries your real pages';
 }

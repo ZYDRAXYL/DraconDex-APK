@@ -5652,6 +5652,24 @@ abstract class AppLocalizations {
   /// **Before creating**
   String get artBefore;
 
+  /// No description provided for @exportFormat.
+  ///
+  /// In en, this message translates to:
+  /// **Format**
+  String get exportFormat;
+
+  /// No description provided for @exportPreview.
+  ///
+  /// In en, this message translates to:
+  /// **Preview**
+  String get exportPreview;
+
+  /// No description provided for @exportPreviewNote.
+  ///
+  /// In en, this message translates to:
+  /// **A sketch of the layout — the file carries your real pages**
+  String get exportPreviewNote;
+
 }
 
 class _AppLocalizationsDelegate

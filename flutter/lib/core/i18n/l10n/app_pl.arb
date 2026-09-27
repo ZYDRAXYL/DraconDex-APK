@@ -919,5 +919,8 @@
   "artLinks": "Powiązania między modułami",
   "artLinkRel": "pole relacji / wybór",
   "artLinkBorrow": "pożyczony komponent",
-  "artBefore": "Przed utworzeniem"
+  "artBefore": "Przed utworzeniem",
+  "exportFormat": "Format",
+  "exportPreview": "Podgląd",
+  "exportPreviewNote": "Szkic układu — plik zawiera Twoje prawdziwe strony"
 }

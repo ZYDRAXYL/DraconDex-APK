@@ -919,5 +919,8 @@
   "artLinks": "Tautan antar modul",
   "artLinkRel": "kolom relasi / pilihan",
   "artLinkBorrow": "komponen pinjaman",
-  "artBefore": "Sebelum membuat"
+  "artBefore": "Sebelum membuat",
+  "exportFormat": "Format",
+  "exportPreview": "Pratinjau",
+  "exportPreviewNote": "Sketsa tata letak — berkas berisi halaman asli Anda"
 }

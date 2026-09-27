@@ -919,5 +919,8 @@
   "artLinks": "link ระหว่าง module",
   "artLinkRel": "relation field / การเลือก",
   "artLinkBorrow": "ยืม component",
-  "artBefore": "ก่อนสร้าง"
+  "artBefore": "ก่อนสร้าง",
+  "exportFormat": "รูปแบบ",
+  "exportPreview": "ตัวอย่าง",
+  "exportPreviewNote": "ภาพร่างของเลย์เอาต์ — ไฟล์จริงจะมีหน้าของคุณครบ"
 }

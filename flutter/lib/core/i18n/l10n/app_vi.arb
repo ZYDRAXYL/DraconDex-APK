@@ -919,5 +919,8 @@
   "artLinks": "Liên kết giữa các module",
   "artLinkRel": "trường quan hệ / lựa chọn",
   "artLinkBorrow": "thành phần mượn",
-  "artBefore": "Trước khi tạo"
+  "artBefore": "Trước khi tạo",
+  "exportFormat": "Định dạng",
+  "exportPreview": "Xem trước",
+  "exportPreviewNote": "Bản phác bố cục — tệp chứa các trang thật của bạn"
 }

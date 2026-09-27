@@ -919,5 +919,8 @@
   "artLinks": "모듈 간 링크",
   "artLinkRel": "관계 필드 / 선택",
   "artLinkBorrow": "빌려 쓴 컴포넌트",
-  "artBefore": "만들기 전에"
+  "artBefore": "만들기 전에",
+  "exportFormat": "형식",
+  "exportPreview": "미리보기",
+  "exportPreviewNote": "레이아웃 스케치입니다 — 파일에는 실제 페이지가 담깁니다"
 }

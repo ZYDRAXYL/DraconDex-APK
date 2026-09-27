@@ -919,5 +919,8 @@
   "artLinks": "Bonds betwixt modules",
   "artLinkRel": "field of kinship / choosing",
   "artLinkBorrow": "borrowed piece",
-  "artBefore": "Ere thou create"
+  "artBefore": "Ere thou create",
+  "exportFormat": "Format",
+  "exportPreview": "Preview",
+  "exportPreviewNote": "A sketch of the layout — the file carries your real pages"
 }

@@ -2767,4 +2767,13 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get artBefore => 'Voor het maken';
+
+  @override
+  String get exportFormat => 'Formaat';
+
+  @override
+  String get exportPreview => 'Voorbeeld';
+
+  @override
+  String get exportPreviewNote => 'Een schets van de opmaak — het bestand bevat je echte pagina\'s';
 }

@@ -919,5 +919,8 @@
   "artLinks": "Links between modules",
   "artLinkRel": "relation field / selection",
   "artLinkBorrow": "borrowed component",
-  "artBefore": "Before creating"
+  "artBefore": "Before creating",
+  "exportFormat": "Format",
+  "exportPreview": "Preview",
+  "exportPreviewNote": "A sketch of the layout — the file carries your real pages"
 }
