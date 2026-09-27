@@ -456,4 +456,270 @@ class BundleService {
     await WikiService.rebuildIndex(db);
     return out;
   }
+
+  // ── "Save as Artisan bundle…" (APP docs/TEMPLATES.md §4.4) ──────────────
+  // The port of EXE db/bundle-capture.js: a Collector's subtree as a v2
+  // spec that [create] makes again — folders, modules with their look and
+  // fields (a relation's target and an Exhibitor/Manager selection become
+  // refs), each module's pages (a borrowed block keeps pointing inside the
+  // bundle), and, when asked, up to three examples per module. Anything
+  // that points outside the folder is left out. Stored in module_preset as
+  // kind 'bundle', so it rides the vault and the snapshot like any preset.
+
+  static const maxSamples = 3;
+
+  static String _slug(String s) {
+    final words = s.replaceAll(RegExp(r'[^A-Za-z0-9]+'), ' ').trim().split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
+    if (words.isEmpty) return 'f';
+    return [
+      for (final (i, w) in words.indexed) i == 0 ? w.toLowerCase() : w[0].toUpperCase() + w.substring(1).toLowerCase(),
+    ].join();
+  }
+
+  static Map<String, dynamic>? _json(Object? v) {
+    try {
+      final o = v == null ? null : jsonDecode('$v');
+      return o is Map ? o.cast<String, dynamic>() : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// [folderId]'s subtree as a bundle spec; [samples]: up to three examples
+  /// per module (EXE captureBundle).
+  static Future<Map<String, dynamic>> capture(DatabaseExecutor d, int folderId, {bool samples = false}) async {
+    final roots = await d.rawQuery('SELECT id, name, kind, icon FROM module WHERE id=?', [folderId]);
+    if (roots.isEmpty || roots.first['kind'] != 'collector') throw ArgumentError('not a folder');
+    final root = roots.first;
+    final all = <Map<String, Object?>>[];
+    for (final q = [folderId]; q.isNotEmpty;) {
+      final id = q.removeAt(0);
+      for (final m in await d.rawQuery(
+          'SELECT id, parent_id, name, kind, icon, cat_type, description FROM module WHERE parent_id=? ORDER BY display_order, id', [id])) {
+        all.add(m);
+        if (m['kind'] == 'collector') q.add(m['id'] as int);
+      }
+    }
+    final inside = {folderId, for (final m in all) m['id'] as int};
+    String ref(int id) => 'm$id';
+    final folders = <Map<String, dynamic>>[
+      {'ref': 'root', 'name': root['name']},
+    ];
+    final folderRef = <int, String>{folderId: 'root'};
+    for (final m in all.where((x) => x['kind'] == 'collector')) {
+      folderRef[m['id'] as int] = 'f${m['id']}';
+      folders.add({'ref': 'f${m['id']}', 'name': m['name'], 'parent': folderRef[m['parent_id']]});
+    }
+    final objRef = <int, String>{};
+    final fieldIds = <Map<String, dynamic>, int>{};
+    final modules = <Map<String, dynamic>>[];
+    for (final m in all.where((x) => x['kind'] != 'collector')) {
+      final id = m['id'] as int;
+      final kind = '${m['kind']}';
+      final out = <String, dynamic>{'ref': ref(id), 'kind': kind, 'name': m['name'], 'folder': folderRef[m['parent_id']] ?? 'root'};
+      if (m['icon'] != null && '${m['icon']}'.isNotEmpty) out['icon'] = m['icon'];
+      if (m['description'] != null && '${m['description']}'.isNotEmpty) out['description'] = m['description'];
+      if (kind == 'classifier') {
+        out['catType'] = m['cat_type'] ?? 'object';
+        final used = <String>{};
+        out['fields'] = [
+          for (final f in await d.rawQuery('''
+              SELECT id, description AS name, attribute_type AS type, options, levelable, has_condition AS hasCondition
+              FROM classifier_template WHERE module_ref=? AND object_ref IS NULL ORDER BY display_order, id''', [id]))
+            () {
+              final o = _json(f['options']) ?? <String, dynamic>{};
+              var key = o['key'] is String ? o['key'] as String : _slug('${f['name'] ?? ''}');
+              for (var n = 2; used.contains(key); n++) {
+                key = '${_slug('${f['name'] ?? ''}')}$n';
+              }
+              used.add(key);
+              final target = o.remove('targetModuleId');
+              o.remove('key');
+              final field = <String, dynamic>{'key': key, 'name': f['name'], 'type': f['type']};
+              if (o.isNotEmpty) field['options'] = o;
+              if (f['levelable'] == 1) field['levelable'] = true;
+              if (f['hasCondition'] == 1) field['hasCondition'] = true;
+              final t = target is num ? target.toInt() : int.tryParse('${target ?? ''}');
+              if (t != null && inside.contains(t)) field['relTo'] = ref(t);
+              fieldIds[field] = f['id'] as int;
+              return field;
+            }(),
+        ];
+      }
+      final ui = {for (final r in await d.rawQuery('SELECT ui_key, ui_value FROM module_ui WHERE module_ref=?', [id])) '${r['ui_key']}': r['ui_value']};
+      final sel = <int>[
+        for (final g in (_json(ui['filterDef'])?['groups'] as List?) ?? const [])
+          for (final r in ((g is Map ? g['rules'] : null) as List?) ?? const [])
+            if (r is Map && r['field'] == 'childOf' && r['moduleId'] is num && (folderRef.containsKey((r['moduleId'] as num).toInt()) || inside.contains((r['moduleId'] as num).toInt())))
+              (r['moduleId'] as num).toInt(),
+      ];
+      if (sel.isNotEmpty && (kind == 'exhibitor' || kind == 'manager')) out['selects'] = [for (final s in sel) folderRef[s] ?? ref(s)];
+      if (kind == 'wanderer') {
+        final uses = [
+          for (final k in ['mapModule', 'timelineModule'])
+            if (int.tryParse('${ui[k] ?? ''}') case final u? when inside.contains(u)) ref(u),
+        ];
+        if (uses.isNotEmpty) out['uses'] = uses;
+      }
+      Object? borrow(String sk) {
+        final b = int.tryParse(sk.replaceFirst(RegExp(r'^module_'), ''));
+        return b != null && inside.contains(b) ? ref(b) : null;
+      }
+
+      final page = await PageTemplateService.capturePage(d, id, null, borrowRef: borrow);
+      final itemPage = await PageTemplateService.capturePage(d, id, '*', borrowRef: borrow);
+      if (page.isNotEmpty) out['page'] = page;
+      if (itemPage.isNotEmpty) out['itemPage'] = itemPage;
+      if (samples) {
+        if (kind == 'classifier') {
+          out['objects'] = [
+            for (final o in await d.rawQuery('SELECT id, name, note FROM classifier_object WHERE module_ref=? ORDER BY id LIMIT ?', [id, maxSamples]))
+              await () async {
+                objRef[o['id'] as int] = 'o${o['id']}';
+                final ob = <String, dynamic>{'ref': 'o${o['id']}', 'sample': true, 'name': o['name']};
+                if (o['note'] != null && '${o['note']}'.isNotEmpty) ob['note'] = o['note'];
+                for (final f in (out['fields'] as List).cast<Map<String, dynamic>>()) {
+                  if (f['type'] == 'relation') continue;
+                  final v = await d.rawQuery('SELECT attribute_value AS v FROM classifier_attribute WHERE object_ref=? AND template_ref=?', [o['id'], fieldIds[f]]);
+                  final val = v.isEmpty ? null : v.first['v'];
+                  if (val != null && '$val'.isNotEmpty) ((ob['values'] ??= <String, dynamic>{}) as Map)[f['key']] = val;
+                }
+                return ob;
+              }(),
+          ];
+        }
+        if (kind == 'chronicler') {
+          out['events'] = [
+            for (final e in await d.rawQuery('''
+                SELECT e.event_name AS name, e.story, dt.years AS y, dt.month AS mo, dt.day AS dy
+                FROM timeline_event e JOIN timeline t ON t.id=e.timeline_id LEFT JOIN timeline_date dt ON dt.id=e.start_at
+                WHERE t.module_ref=? ORDER BY e.id LIMIT ?''', [id, maxSamples]))
+              {
+                'sample': true,
+                'name': e['name'],
+                if (e['story'] != null && '${e['story']}'.isNotEmpty) 'story': e['story'],
+                'date': [e['y'] ?? 1, e['mo'] ?? 1, e['dy'] ?? 1],
+              },
+          ];
+        }
+        if (kind == 'author') {
+          out['chapters'] = [
+            for (final c in await d.rawQuery(
+                'SELECT name, chapter_content AS content, synopsis, status FROM book_chapter WHERE module_ref=? ORDER BY chapter_order, id LIMIT ?', [id, maxSamples]))
+              {
+                'sample': true,
+                'name': c['name'],
+                for (final k in ['content', 'synopsis', 'status'])
+                  if (c[k] != null && '${c[k]}'.isNotEmpty) k: c[k],
+              },
+          ];
+        }
+      }
+      modules.add(out);
+    }
+    // links between captured examples, through relation fields that stay inside
+    if (samples) {
+      for (final m in modules.where((x) => x['kind'] == 'classifier')) {
+        final rel = [for (final f in (m['fields'] as List).cast<Map<String, dynamic>>()) if (f['type'] == 'relation' && f['relTo'] != null) f];
+        for (final ob in ((m['objects'] as List?) ?? const []).cast<Map<String, dynamic>>()) {
+          final oid = int.parse('${ob['ref']}'.substring(1));
+          for (final f in rel) {
+            final to = [
+              for (final r in await d.rawQuery('SELECT to_key FROM entity_relation WHERE from_key=? AND rel_type=?', ['cobj_$oid', 'ctpl_${fieldIds[f]}']))
+                ?objRef[int.tryParse('${r['to_key']}'.replaceFirst('cobj_', '')) ?? -1],
+            ];
+            if (to.isNotEmpty) ((ob['links'] ??= <String, dynamic>{}) as Map)[f['key']] = to;
+          }
+        }
+      }
+    }
+    final manager = modules.where((m) => m['kind'] == 'manager').firstOrNull;
+    return {
+      'name': root['name'],
+      'icon': root['icon'],
+      'folders': folders,
+      'modules': modules,
+      if (manager != null) 'home': manager['ref'],
+    };
+  }
+
+  /// Save [folderId] as one of the user's bundles; the same name replaces.
+  /// Returns how many modules it holds.
+  static Future<int> saveMine(Database db, int nexusId, int folderId, String name, {bool samples = false}) async {
+    final n = name.trim().length > 120 ? name.trim().substring(0, 120) : name.trim();
+    if (n.isEmpty) throw ArgumentError('name required');
+    final spec = await capture(db, folderId, samples: samples);
+    await db.rawInsert('''
+      INSERT INTO module_preset (nexus_ref, kind, name, spec) VALUES (?, 'bundle', ?, ?)
+      ON CONFLICT(nexus_ref, kind, name) DO UPDATE SET spec=excluded.spec, update_at=datetime('now')''', [nexusId, n, jsonEncode(spec)]);
+    return (spec['modules'] as List).length;
+  }
+
+  /// The user's own bundles ("Mine" in the Artisan sheet), as picker
+  /// entries shaped like the catalog's.
+  static Future<List<Map<String, dynamic>>> listMine(DatabaseExecutor d, int nexusId) async => [
+        for (final r in await d.rawQuery("SELECT id, name, spec FROM module_preset WHERE nexus_ref=? AND kind='bundle' ORDER BY name COLLATE NOCASE", [nexusId]))
+          {
+            'id': 'u:${r['id']}',
+            'group': 'mine',
+            'name': r['name'],
+            'spec': _json(r['spec']) ?? {'modules': <Object?>[]},
+          },
+      ];
+
+  /// Whether a spec carries examples the Adjust step can leave out.
+  static bool hasSamples(Map spec) => _a(spec['modules']).any((m) =>
+      m is Map && (m['samples'] == true || _collections.any((c) => _a(m[c]).any((o) => o is Map && o['sample'] == true))));
+
+  /// Blocks that borrow a module the user left out have nothing to show.
+  static List keepBorrows(List blocks, Set<String> kept) => [
+        for (final b in blocks)
+          if (b is! Map || b['borrow'] is! String || kept.contains(b['borrow']))
+            b is Map && b['children'] is List
+                ? {...b, 'children': [for (final c in b['children'] as List) c is List ? keepBorrows(c, kept) : c]}
+                : b,
+      ];
+
+  /// "Adjust first": [spec] with only the modules at [keep] (indexes), each
+  /// renamed by [names] and its fields by [fieldNames] ('i:k' → name; a
+  /// blank name leaves that field out). Anything pointing at a module left
+  /// out — a relation field, a selection, a Wanderer's map or timeline, a
+  /// borrowed block, the home — goes with it (EXE submitBundleAdjust).
+  static Map<String, dynamic> adjust(Map<String, dynamic> spec,
+      {required String name, required Set<int> keep, Map<int, String> names = const {}, Map<String, String> fieldNames = const {}, bool includeSamples = true}) {
+    final mods = _a(spec['modules']);
+    final kept = <String>{};
+    final out = <Map<String, dynamic>>[];
+    for (final (i, m) in mods.indexed) {
+      if (m is! Map || !keep.contains(i)) continue;
+      final nm = (names[i] ?? '').trim();
+      final fields = m['fields'] is List
+          ? [
+              for (final (k, f) in (m['fields'] as List).indexed)
+                if (f is Map)
+                  if ((fieldNames['$i:$k'] ?? '${f['name'] ?? ''}').trim() case final fn when fn.isNotEmpty) {...f, 'name': fn},
+            ]
+          : null;
+      if (m['ref'] is String) kept.add(m['ref'] as String);
+      out.add({...m.cast<String, dynamic>(), 'name': nm.isEmpty ? m['name'] : nm, 'fields': ?fields});
+    }
+    final folderRefs = {for (final f in _a(spec['folders'])) if (f is Map) '${f['ref']}'};
+    for (final m in out) {
+      if (m['fields'] is List) {
+        m['fields'] = [
+          for (final f in m['fields'] as List)
+            f is Map && f['relTo'] != null && !kept.contains(f['relTo']) ? ({...f}..remove('relTo')) : f,
+        ];
+      }
+      if (m['selects'] is List) m['selects'] = [for (final r in m['selects'] as List) if (kept.contains(r) || folderRefs.contains(r)) r];
+      if (m['uses'] is List) m['uses'] = [for (final r in m['uses'] as List) if (kept.contains(r)) r];
+      for (final k in ['page', 'itemPage']) {
+        if (m[k] is List) m[k] = keepBorrows(m[k] as List, kept);
+      }
+    }
+    final res = <String, dynamic>{...spec, 'name': name, 'modules': out};
+    if (res['home'] != null && !kept.contains(res['home'])) res.remove('home');
+    if (!includeSamples) res['includeSamples'] = false;
+    return res;
+  }
 }

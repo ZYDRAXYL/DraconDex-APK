@@ -107,7 +107,7 @@ String blockLabel(AppLocalizations l10n, PageBlock b, [ModuleModel? source]) {
     default:
       final def = components[b.component];
       final name = def?.label(l10n) ?? b.component ?? '?';
-      return b.sourceKey == null ? name : '$name ↪ ${source?.name ?? b.sourceKey}';
+      return b.sourceKey == null ? name : '$name · ${source?.name ?? b.sourceKey}';
   }
 }
 

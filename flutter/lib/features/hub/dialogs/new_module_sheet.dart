@@ -15,6 +15,7 @@ import '../../../providers/module_provider.dart';
 import '../../../providers/navigation_providers.dart';
 import '../../page/template_gallery.dart';
 import '../../page/views/view_common.dart';
+import 'artisan_sheet.dart';
 
 /// The kind picker's groups (V5.md §9.5, EXE hub/kinds.js KIND_GROUPS):
 /// structure · view · data, and five sub-groups under data.
@@ -67,44 +68,6 @@ Future<void> createFromTemplate(BuildContext context, WidgetRef ref, int nexusId
   if (open != null) router.push(RecentView.locationFor(nexusId, open));
 }
 
-/// The genre bundles and the guide, in the UI language (SDB templates/).
-Future<Map<String, dynamic>?> pickTemplate(BuildContext context) async {
-  final l = AppLocalizations.of(context)!;
-  final locale = Localizations.localeOf(context).languageCode;
-  final bundles = await BundleService.loadBundles(locale);
-  if (!context.mounted) return null;
-  return showModalBottomSheet<Map<String, dynamic>>(
-    context: context,
-    useRootNavigator: true,
-    showDragHandle: true,
-    isScrollControlled: true,
-    builder: (s) => SafeArea(
-      child: ListView(shrinkWrap: true, children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-          child: Text(l.fromTemplate, style: Theme.of(s).textTheme.titleMedium),
-        ),
-        for (final b in bundles)
-          ListTile(
-            leading: const Icon(Icons.auto_awesome_mosaic_outlined),
-            title: Text('${b['name']}'),
-            subtitle: Text('${b['description'] ?? ''}', maxLines: 2, overflow: TextOverflow.ellipsis),
-            onTap: () => Navigator.pop(s, <String, dynamic>{...(b['spec'] as Map<String, dynamic>), 'name': b['name'], 'icon': b['icon']}),
-          ),
-        ListTile(
-          leading: const Icon(Icons.school_outlined),
-          title: Text(l.guideTitle),
-          subtitle: Text(l.guideDesc),
-          onTap: () async {
-            final spec = await BundleService.loadGuide(locale);
-            if (s.mounted) Navigator.pop(s, spec);
-          },
-        ),
-      ]),
-    ),
-  );
-}
-
 /// "New" in a Nexus or a folder (APK-V3.md §7): a searchable, grouped kind
 /// list, with a template, a .mddx file or a CSV above it.
 Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId, int? parentId) async {
@@ -133,7 +96,7 @@ Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId
       router.push(RecentView.locationFor(nexusId, id));
     case 'template':
       if (!context.mounted) return;
-      final spec = await pickTemplate(context);
+      final spec = await pickArtisanBundle(context, ref, nexusId);
       if (spec != null && context.mounted) await createFromTemplate(context, ref, nexusId, parentId, spec);
     case 'mddx':
       final res = await FilePicker.platform.pickFiles(withData: true);

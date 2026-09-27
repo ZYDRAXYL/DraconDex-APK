@@ -10,8 +10,10 @@ import '../../core/entity/entity_kinds.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../core/theme/ddx_theme.dart';
 import '../../data/dao/diviner_dao.dart';
+import '../../data/dao/viewer_dao.dart';
 import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
+import '../../data/models/viewer_model.dart';
 import '../../data/services/wiki_service.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/navigation_providers.dart';
@@ -630,7 +632,11 @@ final _placecard = (
       Text(area.name.isEmpty ? '—' : area.name, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700)),
       Padding(
         padding: const EdgeInsets.only(top: 2, bottom: 8),
-        child: Text('↪ ${ctx.source.name}', style: TextStyle(fontSize: 12, color: context.ddx.textMuted)),
+        child: Row(children: [
+          Icon(Icons.subdirectory_arrow_right, size: 14, color: context.ddx.textMuted),
+          const SizedBox(width: 4),
+          Flexible(child: Text(ctx.source.name, style: TextStyle(fontSize: 12, color: context.ddx.textMuted))),
+        ]),
       ),
       if (borders.isNotEmpty) ...[
         Text(l10n.pcBorders, style: TextStyle(fontSize: 12, color: context.ddx.textMuted)),
@@ -953,8 +959,9 @@ final _featured = (
 );
 
 // ── manager ─────────────────────────────────────────────────────────────
-/// The modules a Manager's selection names — its filter over the Nexus
-/// index, the same rows its own view shows.
+/// The modules a Manager's selection names: its picks, else its filter
+/// over the Nexus index (the rows its own view shows, EXE loadManagerData),
+/// else what sits directly under it.
 Future<List<Map<String, Object?>>> _managed(Database db, ComponentCtx ctx) async {
   final picks = await db.rawQuery("SELECT ui_value FROM module_ui WHERE module_ref=? AND ui_key='managerPicks'", [ctx.source.id]);
   List<int> ids = const [];
@@ -962,10 +969,21 @@ Future<List<Map<String, Object?>>> _managed(Database db, ComponentCtx ctx) async
     final v = jsonDecode(picks.isEmpty ? '[]' : '${picks.first['ui_value'] ?? '[]'}');
     if (v is List) ids = [for (final x in v) ?int.tryParse('$x')];
   } catch (_) {}
-  final rows = ids.isNotEmpty
-      ? await db.rawQuery('SELECT id, name, kind, update_at FROM module WHERE id IN (${List.filled(ids.length, '?').join(',')})', ids)
-      : await db.rawQuery('SELECT id, name, kind, update_at FROM module WHERE parent_id=? ORDER BY display_order, id', [ctx.source.id]);
-  return rows;
+  if (ids.isEmpty) {
+    final dao = ViewerDao(db);
+    final def = await dao.getFilterDef(ctx.source.id);
+    if (!def.isEmpty) {
+      ids = [
+        for (final it in applyFilter(await dao.index(ctx.source.nexusRef), def, ctx.source.id))
+          if (it.itemKind == 'module' && it.moduleKind != 'collector' && it.moduleId != ctx.source.id) it.moduleId,
+      ];
+      if (ids.isEmpty) return const [];
+    }
+  }
+  if (ids.isEmpty) return db.rawQuery('SELECT id, name, kind, update_at FROM module WHERE parent_id=? ORDER BY display_order, id', [ctx.source.id]);
+  final rows = await db.rawQuery('SELECT id, name, kind, update_at FROM module WHERE id IN (${List.filled(ids.length, '?').join(',')})', ids);
+  final at = {for (final (i, id) in ids.indexed) id: i};
+  return [...rows]..sort((a, b) => (at[a['id']] ?? 0).compareTo(at[b['id']] ?? 0));
 }
 
 final _dashboard = (

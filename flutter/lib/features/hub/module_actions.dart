@@ -13,6 +13,7 @@ import '../../providers/recent_views_provider.dart';
 import '../../widgets/row_menu.dart';
 import '../export/export_sheet.dart';
 import '../tools/trash_screen.dart';
+import 'dialogs/artisan_sheet.dart';
 import 'dialogs/module_dialog.dart';
 
 /// A module's menu — one list for every place a module is a row (a tile, a
@@ -56,6 +57,13 @@ List<RowAction> moduleRowActions(
         _refreshModule(ref, module);
       },
     ),
+    // A folder, as one of the user's own Artisan bundles (TEMPLATES.md §4.4).
+    if (module.kind == ModuleKind.collector)
+      RowAction(
+        label: l10n.bundleSaveMine,
+        icon: Icons.inventory_2_outlined,
+        onTap: () => showSaveBundleDialog(context, ref, module),
+      ),
     // Every way out — PDF, Word, EPUB, tables, web page, Markdown, .mddx
     // (APP docs/EXPORT-DECOR.md E8).
     RowAction(

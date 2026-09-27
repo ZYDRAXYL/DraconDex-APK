@@ -260,10 +260,19 @@ class ComponentBlockView extends ConsumerWidget {
         if (ctx.borrowed || block.component == 'core.related')
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
-            child: Text(
-              ctx.borrowed ? '↪ ${source.name} · ${def.label(l10n)}' : def.label(l10n),
-              style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.primary),
-            ),
+            // ↪ is not in the bundled NotoSans (a box on the web build): an icon
+            child: Row(children: [
+              if (ctx.borrowed) ...[
+                Icon(Icons.subdirectory_arrow_right, size: 15, color: theme.colorScheme.primary),
+                const SizedBox(width: 4),
+              ],
+              Flexible(
+                child: Text(
+                  ctx.borrowed ? '${source.name} · ${def.label(l10n)}' : def.label(l10n),
+                  style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.primary),
+                ),
+              ),
+            ]),
           ),
         // a kind's full view draws its own insets; every smaller component
         // sits at the page's
