@@ -208,7 +208,11 @@ class DecorDivider extends ConsumerWidget {
           Expanded(child: Divider(color: color)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(icon.startsWith('sym:') ? icon.substring(4) : '✦', style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16)),
+            // ✦ is not in the bundled NotoSans (a box wherever the system or
+            // the web can't fall back): the default ornament is an icon
+            child: icon.startsWith('sym:')
+                ? Text(icon.substring(4), style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16))
+                : Icon(Icons.auto_awesome, size: 16, color: Theme.of(context).colorScheme.primary),
           ),
           Expanded(child: Divider(color: color)),
         ]);

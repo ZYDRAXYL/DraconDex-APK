@@ -235,7 +235,7 @@ class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
             TextField(
               controller: _icon,
               maxLength: 16,
-              decoration: const InputDecoration(hintText: '✦', counterText: ''),
+              decoration: const InputDecoration(prefixIcon: Icon(Icons.auto_awesome_outlined, size: 18), counterText: ''),
               onSubmitted: (v) => _save(lay.copyWith(icon: v.trim().isEmpty ? null : v.trim())),
               onTapOutside: (_) => _save(lay.copyWith(icon: _icon.text.trim().isEmpty ? null : _icon.text.trim())),
             ),

@@ -105,40 +105,40 @@ class AppLocalizationsDe extends AppLocalizations {
   String get themeDaylight => 'Tageslicht';
 
   @override
-  String get themeShowAll => 'Show all';
+  String get themeShowAll => 'Alle anzeigen';
 
   @override
-  String get themeShowLess => 'Collapse';
+  String get themeShowLess => 'Einklappen';
 
   @override
-  String get pageLayout => 'Title layout';
+  String get pageLayout => 'Titel-Layout';
 
   @override
-  String get titleAlign => 'Align title';
+  String get titleAlign => 'Titel ausrichten';
 
   @override
-  String get alignLeft => 'Left';
+  String get alignLeft => 'Links';
 
   @override
-  String get alignCenter => 'Center';
+  String get alignCenter => 'Mitte';
 
   @override
-  String get alignRight => 'Right';
+  String get alignRight => 'Rechts';
 
   @override
-  String get pageIcon => 'Icon above the title';
+  String get pageIcon => 'Symbol über dem Titel';
 
   @override
-  String get pageCover => 'Cover image';
+  String get pageCover => 'Titelbild';
 
   @override
-  String get pageCoverNone => 'No cover';
+  String get pageCoverNone => 'Kein Titelbild';
 
   @override
-  String get pageCoverEmpty => 'Import an image into this Nexus to use it as a cover';
+  String get pageCoverEmpty => 'Importiere ein Bild in diesen Nexus, um es als Titelbild zu nutzen';
 
   @override
-  String get pageLayoutScope => 'Applies to this page only';
+  String get pageLayoutScope => 'Gilt nur für diese Seite';
 
   @override
   String get languageLabel => 'Sprache';
