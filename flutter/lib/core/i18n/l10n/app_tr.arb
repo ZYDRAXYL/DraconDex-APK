@@ -913,5 +913,11 @@
   "bundleIncludes": "İçerir",
   "bundleFields": "Alanlar (boş = çıkar)",
   "nameRequired": "Ad gerekli",
-  "nameField": "Ad"
+  "nameField": "Ad",
+  "artCounts": "{f} klasör · {m} modül · {l} bağlantı · {s} örnek",
+  "artStructure": "Oluşturulacak yapı",
+  "artLinks": "Modüller arası bağlantılar",
+  "artLinkRel": "ilişki alanı / seçim",
+  "artLinkBorrow": "ödünç bileşen",
+  "artBefore": "Oluşturmadan önce"
 }

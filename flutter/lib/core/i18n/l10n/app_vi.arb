@@ -913,5 +913,11 @@
   "bundleIncludes": "Gồm có",
   "bundleFields": "Trường (để trống = bỏ)",
   "nameRequired": "Cần có tên",
-  "nameField": "Tên"
+  "nameField": "Tên",
+  "artCounts": "{f} thư mục · {m} module · {l} liên kết · {s} mẫu",
+  "artStructure": "Cấu trúc sẽ tạo",
+  "artLinks": "Liên kết giữa các module",
+  "artLinkRel": "trường quan hệ / lựa chọn",
+  "artLinkBorrow": "thành phần mượn",
+  "artBefore": "Trước khi tạo"
 }

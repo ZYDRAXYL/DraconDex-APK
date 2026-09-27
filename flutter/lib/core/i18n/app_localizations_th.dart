@@ -2752,4 +2752,22 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get nameField => 'ชื่อ';
+
+  @override
+  String get artCounts => '{f} folder · {m} module · {l} link · ตัวอย่าง {s} รายการ';
+
+  @override
+  String get artStructure => 'โครงที่จะสร้าง';
+
+  @override
+  String get artLinks => 'link ระหว่าง module';
+
+  @override
+  String get artLinkRel => 'relation field / การเลือก';
+
+  @override
+  String get artLinkBorrow => 'ยืม component';
+
+  @override
+  String get artBefore => 'ก่อนสร้าง';
 }

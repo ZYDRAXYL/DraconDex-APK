@@ -913,5 +913,11 @@
   "bundleIncludes": "Includes",
   "bundleFields": "Fields (blank = leave out)",
   "nameRequired": "A name is required",
-  "nameField": "Name"
+  "nameField": "Name",
+  "artCounts": "{f} folder · {m} modules · {l} links · {s} samples",
+  "artStructure": "What it builds",
+  "artLinks": "Links between modules",
+  "artLinkRel": "relation field / selection",
+  "artLinkBorrow": "borrowed component",
+  "artBefore": "Before creating"
 }

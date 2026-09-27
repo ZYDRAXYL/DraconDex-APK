@@ -2752,4 +2752,22 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get nameField => 'Nama';
+
+  @override
+  String get artCounts => '{f} folder · {m} modul · {l} tautan · {s} contoh';
+
+  @override
+  String get artStructure => 'Struktur yang dibuat';
+
+  @override
+  String get artLinks => 'Tautan antar modul';
+
+  @override
+  String get artLinkRel => 'kolom relasi / pilihan';
+
+  @override
+  String get artLinkBorrow => 'komponen pinjaman';
+
+  @override
+  String get artBefore => 'Sebelum membuat';
 }

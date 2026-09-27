@@ -913,5 +913,11 @@
   "bundleIncludes": "Містить",
   "bundleFields": "Поля (порожньо = не треба)",
   "nameRequired": "Потрібна назва",
-  "nameField": "Назва"
+  "nameField": "Назва",
+  "artCounts": "{f} тек · {m} модулів · {l} звʼязків · {s} прикладів",
+  "artStructure": "Що буде створено",
+  "artLinks": "Звʼязки між модулями",
+  "artLinkRel": "поле звʼязку / вибірка",
+  "artLinkBorrow": "запозичений компонент",
+  "artBefore": "Перед створенням"
 }

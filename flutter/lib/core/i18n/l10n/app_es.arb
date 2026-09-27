@@ -913,5 +913,11 @@
   "bundleIncludes": "Incluye",
   "bundleFields": "Campos (vacío = omitir)",
   "nameRequired": "El nombre es obligatorio",
-  "nameField": "Nombre"
+  "nameField": "Nombre",
+  "artCounts": "{f} carpetas · {m} módulos · {l} enlaces · {s} ejemplos",
+  "artStructure": "Lo que crea",
+  "artLinks": "Enlaces entre módulos",
+  "artLinkRel": "campo de relación / selección",
+  "artLinkBorrow": "componente prestado",
+  "artBefore": "Antes de crear"
 }

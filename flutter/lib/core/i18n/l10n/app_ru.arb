@@ -913,5 +913,11 @@
   "bundleIncludes": "Включает",
   "bundleFields": "Поля (пусто = не нужно)",
   "nameRequired": "Нужно указать название",
-  "nameField": "Имя"
+  "nameField": "Имя",
+  "artCounts": "{f} папок · {m} модулей · {l} связей · {s} примеров",
+  "artStructure": "Что будет создано",
+  "artLinks": "Связи между модулями",
+  "artLinkRel": "поле связи / выборка",
+  "artLinkBorrow": "заимствованный компонент",
+  "artBefore": "Перед созданием"
 }

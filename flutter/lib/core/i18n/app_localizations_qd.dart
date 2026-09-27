@@ -2752,4 +2752,22 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get nameField => 'Yssira';
+
+  @override
+  String get artCounts => '{f} folders · {m} modules · {l} bonds · {s} examples';
+
+  @override
+  String get artStructure => 'What shall be wrought';
+
+  @override
+  String get artLinks => 'Bonds betwixt modules';
+
+  @override
+  String get artLinkRel => 'field of kinship / choosing';
+
+  @override
+  String get artLinkBorrow => 'borrowed piece';
+
+  @override
+  String get artBefore => 'Ere thou create';
 }

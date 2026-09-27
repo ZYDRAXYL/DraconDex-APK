@@ -5616,6 +5616,42 @@ abstract class AppLocalizations {
   /// **Name**
   String get nameField;
 
+  /// No description provided for @artCounts.
+  ///
+  /// In en, this message translates to:
+  /// **{f} folder · {m} modules · {l} links · {s} samples**
+  String get artCounts;
+
+  /// No description provided for @artStructure.
+  ///
+  /// In en, this message translates to:
+  /// **What it builds**
+  String get artStructure;
+
+  /// No description provided for @artLinks.
+  ///
+  /// In en, this message translates to:
+  /// **Links between modules**
+  String get artLinks;
+
+  /// No description provided for @artLinkRel.
+  ///
+  /// In en, this message translates to:
+  /// **relation field / selection**
+  String get artLinkRel;
+
+  /// No description provided for @artLinkBorrow.
+  ///
+  /// In en, this message translates to:
+  /// **borrowed component**
+  String get artLinkBorrow;
+
+  /// No description provided for @artBefore.
+  ///
+  /// In en, this message translates to:
+  /// **Before creating**
+  String get artBefore;
+
 }
 
 class _AppLocalizationsDelegate

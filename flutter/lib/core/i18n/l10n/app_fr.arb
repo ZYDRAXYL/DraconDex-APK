@@ -913,5 +913,11 @@
   "bundleIncludes": "Contient",
   "bundleFields": "Champs (vide = omis)",
   "nameRequired": "Le nom est obligatoire",
-  "nameField": "Nom"
+  "nameField": "Nom",
+  "artCounts": "{f} dossiers · {m} modules · {l} liens · {s} exemples",
+  "artStructure": "Ce qui sera créé",
+  "artLinks": "Liens entre modules",
+  "artLinkRel": "champ de relation / sélection",
+  "artLinkBorrow": "composant emprunté",
+  "artBefore": "Avant de créer"
 }

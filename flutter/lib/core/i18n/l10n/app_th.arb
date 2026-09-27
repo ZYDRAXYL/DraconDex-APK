@@ -913,5 +913,11 @@
   "bundleIncludes": "ประกอบด้วย",
   "bundleFields": "ช่องข้อมูล (เว้นว่าง = ไม่เอา)",
   "nameRequired": "ต้องใส่ชื่อ",
-  "nameField": "ชื่อ"
+  "nameField": "ชื่อ",
+  "artCounts": "{f} folder · {m} module · {l} link · ตัวอย่าง {s} รายการ",
+  "artStructure": "โครงที่จะสร้าง",
+  "artLinks": "link ระหว่าง module",
+  "artLinkRel": "relation field / การเลือก",
+  "artLinkBorrow": "ยืม component",
+  "artBefore": "ก่อนสร้าง"
 }

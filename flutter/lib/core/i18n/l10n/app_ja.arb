@@ -913,5 +913,11 @@
   "bundleIncludes": "含まれるもの",
   "bundleFields": "項目（空欄 = 含めない）",
   "nameRequired": "名前は必須です",
-  "nameField": "名前"
+  "nameField": "名前",
+  "artCounts": "フォルダ {f} · モジュール {m} · リンク {l} · サンプル {s}",
+  "artStructure": "作成される構成",
+  "artLinks": "モジュール間のリンク",
+  "artLinkRel": "リレーション項目 / 選択",
+  "artLinkBorrow": "借用コンポーネント",
+  "artBefore": "作成の前に"
 }

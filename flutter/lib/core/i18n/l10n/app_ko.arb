@@ -913,5 +913,11 @@
   "bundleIncludes": "포함",
   "bundleFields": "필드 (비우면 제외)",
   "nameRequired": "이름은 필수입니다",
-  "nameField": "이름"
+  "nameField": "이름",
+  "artCounts": "폴더 {f} · 모듈 {m} · 링크 {l} · 예시 {s}",
+  "artStructure": "만들어지는 구조",
+  "artLinks": "모듈 간 링크",
+  "artLinkRel": "관계 필드 / 선택",
+  "artLinkBorrow": "빌려 쓴 컴포넌트",
+  "artBefore": "만들기 전에"
 }

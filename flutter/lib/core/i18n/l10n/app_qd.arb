@@ -913,5 +913,11 @@
   "bundleIncludes": "Holdyth",
   "bundleFields": "Fieldys (emptye = leve owte)",
   "nameRequired": "A name is required",
-  "nameField": "Yssira"
+  "nameField": "Yssira",
+  "artCounts": "{f} folders · {m} modules · {l} bonds · {s} examples",
+  "artStructure": "What shall be wrought",
+  "artLinks": "Bonds betwixt modules",
+  "artLinkRel": "field of kinship / choosing",
+  "artLinkBorrow": "borrowed piece",
+  "artBefore": "Ere thou create"
 }

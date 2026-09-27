@@ -2749,4 +2749,22 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get nameField => 'Naam';
+
+  @override
+  String get artCounts => '{f} mappen · {m} modules · {l} koppelingen · {s} voorbeelden';
+
+  @override
+  String get artStructure => 'Wat er wordt gemaakt';
+
+  @override
+  String get artLinks => 'Koppelingen tussen modules';
+
+  @override
+  String get artLinkRel => 'relatieveld / selectie';
+
+  @override
+  String get artLinkBorrow => 'geleend onderdeel';
+
+  @override
+  String get artBefore => 'Voor het maken';
 }

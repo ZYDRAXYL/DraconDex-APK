@@ -2752,4 +2752,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nameField => 'Name';
+
+  @override
+  String get artCounts => '{f} folder · {m} modules · {l} links · {s} samples';
+
+  @override
+  String get artStructure => 'What it builds';
+
+  @override
+  String get artLinks => 'Links between modules';
+
+  @override
+  String get artLinkRel => 'relation field / selection';
+
+  @override
+  String get artLinkBorrow => 'borrowed component';
+
+  @override
+  String get artBefore => 'Before creating';
 }

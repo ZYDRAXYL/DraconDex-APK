@@ -2752,4 +2752,22 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get nameField => '名前';
+
+  @override
+  String get artCounts => 'フォルダ {f} · モジュール {m} · リンク {l} · サンプル {s}';
+
+  @override
+  String get artStructure => '作成される構成';
+
+  @override
+  String get artLinks => 'モジュール間のリンク';
+
+  @override
+  String get artLinkRel => 'リレーション項目 / 選択';
+
+  @override
+  String get artLinkBorrow => '借用コンポーネント';
+
+  @override
+  String get artBefore => '作成の前に';
 }

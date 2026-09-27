@@ -2752,4 +2752,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get nameField => '名称';
+
+  @override
+  String get artCounts => '{f} 个文件夹 · {m} 个模块 · {l} 个链接 · {s} 个示例';
+
+  @override
+  String get artStructure => '将创建的结构';
+
+  @override
+  String get artLinks => '模块之间的链接';
+
+  @override
+  String get artLinkRel => '关系字段 / 选择';
+
+  @override
+  String get artLinkBorrow => '借用组件';
+
+  @override
+  String get artBefore => '创建之前';
 }

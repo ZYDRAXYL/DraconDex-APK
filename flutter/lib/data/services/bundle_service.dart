@@ -722,4 +722,104 @@ class BundleService {
     if (!includeSamples) res['includeSamples'] = false;
     return res;
   }
+
+  // ── The Artisan gallery's preview (mockup 08-artisan.html) ─────────────
+  // EXE hub/bundles.js bundleShape: what a spec will build, read from the
+  // same spec [create] builds from — so the preview and the result agree.
+
+  /// Examples a module carries (a module marked `samples`: all of them).
+  static int samplesOf(Map m) => [
+        for (final c in const ['objects', 'events', 'chapters', 'dialogues', 'sessions'])
+          m['samples'] == true ? _a(m[c]).length : _a(m[c]).where((o) => o is Map && o['sample'] == true).length,
+      ].fold(0, (a, b) => a + b);
+
+  /// A spec's folders and modules as a tree, its links between modules —
+  /// relation field, selection, a Wanderer's map/time; a page block
+  /// borrowing another module (`borrow: true`) — and its example count.
+  static BundleShape shape(Map spec) {
+    final mods = [for (final m in _a(spec['modules'])) if (m is Map) m];
+    final refs = {for (final m in mods) if (m['ref'] is String) m['ref'] as String};
+    final links = <BundleLink>[];
+    void add(Object? from, Object? to, {bool borrow = false}) {
+      if (from is! String || to is! String || from == to || !refs.contains(to)) return;
+      if (links.any((l) => l.from == from && l.to == to)) return;
+      links.add(BundleLink(from, to, borrow));
+    }
+
+    void walk(Object? blocks, Object? from) {
+      for (final b in _a(blocks)) {
+        if (b is! Map) continue;
+        if (b['borrow'] is String) add(from, b['borrow'], borrow: true);
+        for (final c in _a(b['children'])) {
+          walk(c, from);
+        }
+      }
+    }
+
+    for (final m in mods) {
+      for (final f in _a(m['fields'])) {
+        if (f is Map) add(m['ref'], f['relTo']);
+      }
+      for (final r in _a(m['selects'])) {
+        add(m['ref'], r);
+      }
+      for (final r in _a(m['uses'])) {
+        add(m['ref'], r);
+      }
+      walk(m['page'], m['ref']);
+      walk(m['itemPage'], m['ref']);
+    }
+    final folders = [for (final f in _a(spec['folders'])) if (f is Map) f];
+    if (folders.isEmpty) folders.add({'ref': 'root', 'name': spec['name']});
+    final rows = <BundleRow>[];
+    final seen = <Map>{};
+    void visit(Map f, int depth) {
+      rows.add(BundleRow(depth, '${f['name'] ?? ''}', null, 0));
+      for (final m in mods.where((m) => (m['folder'] ?? 'root') == f['ref'])) {
+        seen.add(m);
+        rows.add(BundleRow(depth + 1, '${m['name'] ?? ''}', '${m['kind']}', samplesOf(m)));
+      }
+      for (final c in folders.where((c) => c['parent'] == f['ref'])) {
+        visit(c, depth + 1);
+      }
+    }
+
+    for (final f in folders.where((f) => f['parent'] == null)) {
+      visit(f, 0);
+    }
+    for (final m in mods.where((m) => !seen.contains(m))) {
+      rows.add(BundleRow(1, '${m['name'] ?? ''}', '${m['kind']}', samplesOf(m)));
+    }
+    return BundleShape(
+      rows,
+      [for (final m in mods) if (m['ref'] is String) (ref: m['ref'] as String, name: '${m['name'] ?? ''}', kind: '${m['kind']}')],
+      folders.length,
+      links,
+      mods.fold(0, (n, m) => n + samplesOf(m)),
+    );
+  }
+}
+
+/// A row of [BundleService.shape]'s tree: a folder ([kind] null) or a module.
+class BundleRow {
+  final int depth;
+  final String name;
+  final String? kind;
+  final int samples;
+  const BundleRow(this.depth, this.name, this.kind, this.samples);
+}
+
+/// A link between two modules of a bundle; [borrow]: a page block borrowing.
+class BundleLink {
+  final String from, to;
+  final bool borrow;
+  const BundleLink(this.from, this.to, this.borrow);
+}
+
+class BundleShape {
+  final List<BundleRow> rows;
+  final List<({String ref, String name, String kind})> mods;
+  final int folders, samples;
+  final List<BundleLink> links;
+  const BundleShape(this.rows, this.mods, this.folders, this.links, this.samples);
 }

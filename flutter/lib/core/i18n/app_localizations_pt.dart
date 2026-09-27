@@ -2752,4 +2752,22 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get nameField => 'Nome';
+
+  @override
+  String get artCounts => '{f} pastas · {m} módulos · {l} links · {s} exemplos';
+
+  @override
+  String get artStructure => 'O que é criado';
+
+  @override
+  String get artLinks => 'Links entre módulos';
+
+  @override
+  String get artLinkRel => 'campo de relação / seleção';
+
+  @override
+  String get artLinkBorrow => 'componente emprestado';
+
+  @override
+  String get artBefore => 'Antes de criar';
 }

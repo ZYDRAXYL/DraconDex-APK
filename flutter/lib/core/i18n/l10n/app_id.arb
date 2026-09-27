@@ -913,5 +913,11 @@
   "bundleIncludes": "Berisi",
   "bundleFields": "Field (kosong = tidak dipakai)",
   "nameRequired": "Nama wajib diisi",
-  "nameField": "Nama"
+  "nameField": "Nama",
+  "artCounts": "{f} folder · {m} modul · {l} tautan · {s} contoh",
+  "artStructure": "Struktur yang dibuat",
+  "artLinks": "Tautan antar modul",
+  "artLinkRel": "kolom relasi / pilihan",
+  "artLinkBorrow": "komponen pinjaman",
+  "artBefore": "Sebelum membuat"
 }

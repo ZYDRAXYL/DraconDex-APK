@@ -2752,4 +2752,22 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get nameField => 'Имя';
+
+  @override
+  String get artCounts => '{f} папок · {m} модулей · {l} связей · {s} примеров';
+
+  @override
+  String get artStructure => 'Что будет создано';
+
+  @override
+  String get artLinks => 'Связи между модулями';
+
+  @override
+  String get artLinkRel => 'поле связи / выборка';
+
+  @override
+  String get artLinkBorrow => 'заимствованный компонент';
+
+  @override
+  String get artBefore => 'Перед созданием';
 }

@@ -913,5 +913,11 @@
   "bundleIncludes": "Bevat",
   "bundleFields": "Velden (leeg = weglaten)",
   "nameRequired": "Een naam is verplicht",
-  "nameField": "Naam"
+  "nameField": "Naam",
+  "artCounts": "{f} mappen · {m} modules · {l} koppelingen · {s} voorbeelden",
+  "artStructure": "Wat er wordt gemaakt",
+  "artLinks": "Koppelingen tussen modules",
+  "artLinkRel": "relatieveld / selectie",
+  "artLinkBorrow": "geleend onderdeel",
+  "artBefore": "Voor het maken"
 }

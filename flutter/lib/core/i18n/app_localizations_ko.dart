@@ -2752,4 +2752,22 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get nameField => '이름';
+
+  @override
+  String get artCounts => '폴더 {f} · 모듈 {m} · 링크 {l} · 예시 {s}';
+
+  @override
+  String get artStructure => '만들어지는 구조';
+
+  @override
+  String get artLinks => '모듈 간 링크';
+
+  @override
+  String get artLinkRel => '관계 필드 / 선택';
+
+  @override
+  String get artLinkBorrow => '빌려 쓴 컴포넌트';
+
+  @override
+  String get artBefore => '만들기 전에';
 }

@@ -913,5 +913,11 @@
   "bundleIncludes": "Enthält",
   "bundleFields": "Felder (leer = weglassen)",
   "nameRequired": "Ein Name ist erforderlich",
-  "nameField": "Name"
+  "nameField": "Name",
+  "artCounts": "{f} Ordner · {m} Module · {l} Verknüpfungen · {s} Beispiele",
+  "artStructure": "Was entsteht",
+  "artLinks": "Verknüpfungen zwischen Modulen",
+  "artLinkRel": "Beziehungsfeld / Auswahl",
+  "artLinkBorrow": "geliehene Komponente",
+  "artBefore": "Vor dem Erstellen"
 }

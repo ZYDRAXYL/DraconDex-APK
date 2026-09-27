@@ -2749,4 +2749,22 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get nameField => 'Nome';
+
+  @override
+  String get artCounts => '{f} cartelle · {m} moduli · {l} collegamenti · {s} esempi';
+
+  @override
+  String get artStructure => 'Cosa viene creato';
+
+  @override
+  String get artLinks => 'Collegamenti tra moduli';
+
+  @override
+  String get artLinkRel => 'campo relazione / selezione';
+
+  @override
+  String get artLinkBorrow => 'componente preso in prestito';
+
+  @override
+  String get artBefore => 'Prima di creare';
 }

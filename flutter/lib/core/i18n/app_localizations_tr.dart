@@ -2749,4 +2749,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get nameField => 'Ad';
+
+  @override
+  String get artCounts => '{f} klasör · {m} modül · {l} bağlantı · {s} örnek';
+
+  @override
+  String get artStructure => 'Oluşturulacak yapı';
+
+  @override
+  String get artLinks => 'Modüller arası bağlantılar';
+
+  @override
+  String get artLinkRel => 'ilişki alanı / seçim';
+
+  @override
+  String get artLinkBorrow => 'ödünç bileşen';
+
+  @override
+  String get artBefore => 'Oluşturmadan önce';
 }

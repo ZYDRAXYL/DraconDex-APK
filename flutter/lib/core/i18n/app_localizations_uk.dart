@@ -2749,4 +2749,22 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get nameField => 'Назва';
+
+  @override
+  String get artCounts => '{f} тек · {m} модулів · {l} звʼязків · {s} прикладів';
+
+  @override
+  String get artStructure => 'Що буде створено';
+
+  @override
+  String get artLinks => 'Звʼязки між модулями';
+
+  @override
+  String get artLinkRel => 'поле звʼязку / вибірка';
+
+  @override
+  String get artLinkBorrow => 'запозичений компонент';
+
+  @override
+  String get artBefore => 'Перед створенням';
 }

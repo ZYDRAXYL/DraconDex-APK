@@ -153,6 +153,26 @@ String kindDesc(AppLocalizations l, ModuleKind k) => switch (k) {
 
 /// [label] and [description] are the unique English names, kept for logs
 /// and fallbacks; the screen goes through [kindName] / [kindDesc].
+/// Each kind's colour — EXE hub/kinds.js KIND_COLOR, so a kind reads the
+/// same on both apps (the Artisan gallery's covers, chips and tree).
+const Map<ModuleKind, Color> kindColor = {
+  ModuleKind.collector: Color(0xFF64748B),
+  ModuleKind.manager: Color(0xFF6366F1),
+  ModuleKind.inspector: Color(0xFF3B82F6),
+  ModuleKind.classifier: Color(0xFF8B5CF6),
+  ModuleKind.locator: Color(0xFF22C55E),
+  ModuleKind.chronicler: Color(0xFFF97316),
+  ModuleKind.wanderer: Color(0xFF06B6D4),
+  ModuleKind.narrator: Color(0xFFEC4899),
+  ModuleKind.author: Color(0xFFEAB308),
+  ModuleKind.scribe: Color(0xFF38BDF8),
+  ModuleKind.drafter: Color(0xFFA78BFA),
+  ModuleKind.exhibitor: Color(0xFFF43F5E),
+  ModuleKind.sketcher: Color(0xFFFB923C),
+  ModuleKind.designer: Color(0xFFA3E635),
+  ModuleKind.diviner: Color(0xFF14B8A6),
+};
+
 const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
   ModuleKind.collector: ModuleKindInfo(
     kind: ModuleKind.collector,

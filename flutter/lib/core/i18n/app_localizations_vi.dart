@@ -2752,4 +2752,22 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get nameField => 'Tên';
+
+  @override
+  String get artCounts => '{f} thư mục · {m} module · {l} liên kết · {s} mẫu';
+
+  @override
+  String get artStructure => 'Cấu trúc sẽ tạo';
+
+  @override
+  String get artLinks => 'Liên kết giữa các module';
+
+  @override
+  String get artLinkRel => 'trường quan hệ / lựa chọn';
+
+  @override
+  String get artLinkBorrow => 'thành phần mượn';
+
+  @override
+  String get artBefore => 'Trước khi tạo';
 }

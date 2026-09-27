@@ -72,6 +72,21 @@ void main() {
     expect((bare['modules'] as List).every((m) => (m as Map)['objects'] == null), isTrue, reason: 'structure only');
   });
 
+  test("shape: the preview's counts are the desktop's (Fantasy: 3 folders · 8 modules · 1 link · 4 samples)", () async {
+    final b = (await BundleService.loadBundles('en')).firstWhere((b) => b['id'] == 'fantasy');
+    final sh = BundleService.shape({...(b['spec'] as Map), 'name': b['name']});
+    expect((sh.folders, sh.mods.length, sh.links.length, sh.samples), (3, 8, 1, 4), reason: 'EXE bundleShape on the same spec');
+    expect(sh.rows.first.kind, isNull, reason: 'the project folder first');
+    expect(sh.rows.where((r) => r.kind != null).length, 8);
+    final borrow = BundleService.shape({
+      'modules': [
+        {'ref': 'a', 'kind': 'manager', 'page': [{'component': 'x', 'borrow': 'b'}, {'type': 'columns', 'children': [[{'borrow': 'b'}], [{'borrow': 'zz'}]]}]},
+        {'ref': 'b', 'kind': 'locator'},
+      ],
+    });
+    expect([for (final l in borrow.links) (l.from, l.to, l.borrow)], [('a', 'b', true)], reason: 'once, and never to a ref the spec lacks');
+  });
+
   test('a borrow of a module outside the folder is left out; one inside stays bound', () async {
     final nx = await db.insert('nexus', {'name': 'C'});
     final made = await BundleService.create(db, nx, null, await ttrpg());
