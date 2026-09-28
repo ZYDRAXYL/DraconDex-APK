@@ -155,8 +155,8 @@ void main() {
           final x = a.computeLuminance(), y = b.computeLuminance();
           return (math.max(x, y) + 0.05) / (math.min(x, y) + 0.05);
         }
-        expect(ratio(ext.warn, bg), greaterThanOrEqualTo(3.0), reason: '$name warn');
-        expect(ratio(ext.info, bg), greaterThanOrEqualTo(3.0), reason: '$name info');
+        expect(ratio(ext.warn, bg), greaterThanOrEqualTo(4.5), reason: '$name warn');
+        expect(ratio(ext.info, bg), greaterThanOrEqualTo(4.5), reason: '$name info');
       }
     });
   });
