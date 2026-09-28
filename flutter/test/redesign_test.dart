@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -107,6 +109,56 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(CupertinoActionSheet), findsOneWidget);
     expect(find.byType(BottomSheet), findsNothing);
+  });
+
+  group('UX-LAYOUT phase 1', () {
+    test('a grouped menu orders quick, then by section, danger last', () {
+      final order = groupedOrder([
+        RowAction(label: 'Delete', icon: Icons.delete, onTap: () {}, danger: true),
+        RowAction(label: 'Export', icon: Icons.upload, onTap: () {}, group: RowGroup.share),
+        RowAction(label: 'Layout', icon: Icons.view_quilt, onTap: () {}, group: RowGroup.page),
+        RowAction(label: 'Rename', icon: Icons.edit, onTap: () {}, quick: true),
+        RowAction(label: 'Open', icon: Icons.open_in_new, onTap: () {}),
+      ]).map((a) => a.label);
+      expect(order, ['Rename', 'Open', 'Layout', 'Export', 'Delete']);
+    });
+
+    testWidgets('a grouped sheet shows section headers', (tester) async {
+      await tester.pumpWidget(MaterialApp(
+        theme: AppTheme.forName('midnight'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('en'),
+        home: Builder(
+          builder: (context) => TextButton(
+            onPressed: () => showRowMenu(context, [
+              RowAction(label: 'Rename', icon: Icons.edit, onTap: () {}, quick: true),
+              RowAction(label: 'Layout', icon: Icons.view_quilt, onTap: () {}, group: RowGroup.page),
+              RowAction(label: 'Select', icon: Icons.checklist, onTap: () {}, group: RowGroup.organize),
+            ]),
+            child: const Text('open'),
+          ),
+        ),
+      ));
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+      expect(find.text('Rename'), findsOneWidget);
+      expect(find.text('Page'), findsOneWidget);
+      expect(find.text('Organize'), findsOneWidget);
+    });
+
+    test('warn and info follow the palette tone', () {
+      for (final name in AppTheme.names) {
+        final ext = AppTheme.forName(name).extension<DdxThemeExt>()!;
+        final bg = ddxPalettes[name]!.bg;
+        double ratio(Color a, Color b) {
+          final x = a.computeLuminance(), y = b.computeLuminance();
+          return (math.max(x, y) + 0.05) / (math.min(x, y) + 0.05);
+        }
+        expect(ratio(ext.warn, bg), greaterThanOrEqualTo(4.5), reason: '$name warn');
+        expect(ratio(ext.info, bg), greaterThanOrEqualTo(4.5), reason: '$name info');
+      }
+    });
   });
 
   group('component contract (part 6)', () {

@@ -2803,4 +2803,58 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get btnCreate => 'Kryneth';
+
+  @override
+  String get moveTo => 'Remoove to…';
+
+  @override
+  String get moveToRoot => 'Uppermoste rank';
+
+  @override
+  String get moveNewFolder => 'A nyw foldyr heere';
+
+  @override
+  String get moveDone => 'Remooved to {name}';
+
+  @override
+  String get selectItems => 'Chooseth';
+
+  @override
+  String get selectedCount => '{n} chosen';
+
+  @override
+  String get exportDxpack => 'Send forth as .dxpack';
+
+  @override
+  String get exportDxpackD => 'Foldyrs and theyre fyles, for the deske engyne';
+
+  @override
+  String get exportDxpackHint => 'A .dxpack holdeth these modyuls, theyre foldyrs and every fyle within. Ingurath yt in DraconDex upon Windows and ythe same foldyrs are buylded on ythe dysk, eche fyle in hys place.';
+
+  @override
+  String get folderFiles => 'Fyles';
+
+  @override
+  String get moveHere => 'Remoove hyther';
+
+  @override
+  String get moveIntoSelf => 'A foldyr may nought gooth within hymselfe';
+
+  @override
+  String get editPage => 'Amende ye page';
+
+  @override
+  String get arrangeDone => 'Y-doon';
+
+  @override
+  String get menuGroupPage => 'Page';
+
+  @override
+  String get menuGroupOrganize => 'Ordeyne';
+
+  @override
+  String get menuGroupShare => 'Imparte';
+
+  @override
+  String get pageInside => 'Withinne';
 }

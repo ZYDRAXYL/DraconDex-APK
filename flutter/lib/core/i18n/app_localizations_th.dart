@@ -2803,4 +2803,58 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get btnCreate => 'สร้าง';
+
+  @override
+  String get moveTo => 'ย้ายไป…';
+
+  @override
+  String get moveToRoot => 'ระดับบนสุด';
+
+  @override
+  String get moveNewFolder => 'สร้างโฟลเดอร์ใหม่ที่นี่';
+
+  @override
+  String get moveDone => 'ย้ายไปที่ {name} แล้ว';
+
+  @override
+  String get selectItems => 'เลือก';
+
+  @override
+  String get selectedCount => 'เลือกแล้ว {n} รายการ';
+
+  @override
+  String get exportDxpack => 'ส่งออกเป็น .dxpack';
+
+  @override
+  String get exportDxpackD => 'โฟลเดอร์และไฟล์ข้างใน สำหรับแอปเดสก์ท็อป';
+
+  @override
+  String get exportDxpackHint => 'ไฟล์ .dxpack เก็บโมดูลเหล่านี้ พร้อมโฟลเดอร์และทุกไฟล์ที่อยู่ข้างใน นำเข้าใน DraconDex บน Windows แล้วโครงสร้างโฟลเดอร์เดียวกันจะถูกสร้างบนดิสก์ พร้อมวางไฟล์ไว้ในที่ของมัน';
+
+  @override
+  String get folderFiles => 'ไฟล์';
+
+  @override
+  String get moveHere => 'ย้ายมาที่นี่';
+
+  @override
+  String get moveIntoSelf => 'ย้ายโฟลเดอร์เข้าไปในตัวเองไม่ได้';
+
+  @override
+  String get editPage => 'แก้หน้า';
+
+  @override
+  String get arrangeDone => 'เสร็จ';
+
+  @override
+  String get menuGroupPage => 'หน้า';
+
+  @override
+  String get menuGroupOrganize => 'จัดระเบียบ';
+
+  @override
+  String get menuGroupShare => 'แชร์';
+
+  @override
+  String get pageInside => 'ข้างใน';
 }

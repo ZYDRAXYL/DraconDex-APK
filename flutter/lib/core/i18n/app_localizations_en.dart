@@ -2803,4 +2803,58 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get btnCreate => 'Create';
+
+  @override
+  String get moveTo => 'Move to…';
+
+  @override
+  String get moveToRoot => 'Top level';
+
+  @override
+  String get moveNewFolder => 'New folder here';
+
+  @override
+  String get moveDone => 'Moved to {name}';
+
+  @override
+  String get selectItems => 'Select';
+
+  @override
+  String get selectedCount => '{n} selected';
+
+  @override
+  String get exportDxpack => 'Export as .dxpack';
+
+  @override
+  String get exportDxpackD => 'Folders and their files, for the desktop app';
+
+  @override
+  String get exportDxpackHint => 'A .dxpack holds these modules, their folders and every file inside them. Import it in DraconDex on Windows and the same folders are built on disk, with each file in its place.';
+
+  @override
+  String get folderFiles => 'Files';
+
+  @override
+  String get moveHere => 'Move here';
+
+  @override
+  String get moveIntoSelf => 'A folder can\'t go inside itself';
+
+  @override
+  String get editPage => 'Edit page';
+
+  @override
+  String get arrangeDone => 'Done';
+
+  @override
+  String get menuGroupPage => 'Page';
+
+  @override
+  String get menuGroupOrganize => 'Organize';
+
+  @override
+  String get menuGroupShare => 'Share';
+
+  @override
+  String get pageInside => 'Inside';
 }

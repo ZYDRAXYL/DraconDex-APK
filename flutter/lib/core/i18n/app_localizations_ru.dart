@@ -2803,4 +2803,58 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get btnCreate => 'Создать';
+
+  @override
+  String get moveTo => 'Переместить в…';
+
+  @override
+  String get moveToRoot => 'Верхний уровень';
+
+  @override
+  String get moveNewFolder => 'Новая папка здесь';
+
+  @override
+  String get moveDone => 'Перемещено в {name}';
+
+  @override
+  String get selectItems => 'Выбрать';
+
+  @override
+  String get selectedCount => 'Выбрано: {n}';
+
+  @override
+  String get exportDxpack => 'Экспорт в .dxpack';
+
+  @override
+  String get exportDxpackD => 'Папки и их файлы — для настольного приложения';
+
+  @override
+  String get exportDxpackHint => 'Файл .dxpack содержит эти модули, их папки и все файлы внутри. Импортируйте его в DraconDex для Windows — на диске появятся те же папки, и каждый файл окажется на своём месте.';
+
+  @override
+  String get folderFiles => 'Файлы';
+
+  @override
+  String get moveHere => 'Переместить сюда';
+
+  @override
+  String get moveIntoSelf => 'Папку нельзя переместить внутрь самой себя';
+
+  @override
+  String get editPage => 'Редактировать страницу';
+
+  @override
+  String get arrangeDone => 'Готово';
+
+  @override
+  String get menuGroupPage => 'Страница';
+
+  @override
+  String get menuGroupOrganize => 'Упорядочить';
+
+  @override
+  String get menuGroupShare => 'Поделиться';
+
+  @override
+  String get pageInside => 'Внутри';
 }

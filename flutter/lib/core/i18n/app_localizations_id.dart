@@ -2803,4 +2803,58 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get btnCreate => 'Buat';
+
+  @override
+  String get moveTo => 'Pindahkan ke…';
+
+  @override
+  String get moveToRoot => 'Tingkat teratas';
+
+  @override
+  String get moveNewFolder => 'Folder baru di sini';
+
+  @override
+  String get moveDone => 'Dipindahkan ke {name}';
+
+  @override
+  String get selectItems => 'Pilih';
+
+  @override
+  String get selectedCount => '{n} dipilih';
+
+  @override
+  String get exportDxpack => 'Ekspor sebagai .dxpack';
+
+  @override
+  String get exportDxpackD => 'Folder beserta berkasnya, untuk aplikasi desktop';
+
+  @override
+  String get exportDxpackHint => 'Sebuah .dxpack berisi modul-modul ini, foldernya, dan setiap berkas di dalamnya. Impor di DraconDex untuk Windows dan folder yang sama dibuat di disk, tiap berkas di tempatnya.';
+
+  @override
+  String get folderFiles => 'Berkas';
+
+  @override
+  String get moveHere => 'Pindahkan ke sini';
+
+  @override
+  String get moveIntoSelf => 'Folder tidak bisa dipindahkan ke dalam dirinya sendiri';
+
+  @override
+  String get editPage => 'Edit halaman';
+
+  @override
+  String get arrangeDone => 'Selesai';
+
+  @override
+  String get menuGroupPage => 'Halaman';
+
+  @override
+  String get menuGroupOrganize => 'Atur';
+
+  @override
+  String get menuGroupShare => 'Bagikan';
+
+  @override
+  String get pageInside => 'Isi';
 }

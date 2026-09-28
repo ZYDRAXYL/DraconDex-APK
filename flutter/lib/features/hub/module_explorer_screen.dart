@@ -15,7 +15,9 @@ import '../builder/breadcrumb_title.dart';
 import '../builder/view_mode_button.dart';
 import '../page/module_page.dart';
 import '../page/page_header.dart';
+import '../page/page_providers.dart';
 import '../page/page_actions.dart';
+import '../tools/folder_assets.dart';
 import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
@@ -115,6 +117,11 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
     final nexus = nexusAsync.valueOrNull;
     final itemName = itemAsync?.valueOrNull;
     final viewMode = ref.watch(builderViewModeProvider);
+    // Select mode (APP docs/ASSET-PACK.md §1): rows toggle instead of open,
+    // and the bottom bar moves what is picked. Back leaves it first.
+    final selection = ref.watch(moduleSelectionProvider(_childrenKey));
+    final selecting = selection.isNotEmpty;
+    void endSelect() => ref.read(moduleSelectionProvider(_childrenKey).notifier).state = const {};
 
     _recordOpenPage(nexus, module, itemName);
     _closeIfMissing(moduleAsync, itemAsync);
@@ -127,15 +134,22 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
       if (itemKey != null) Crumb(label: itemName ?? '…', nexusId: nexusId, moduleId: moduleId, itemKey: itemKey),
     ];
 
-    return Scaffold(
+    return PopScope(
+      canPop: !selecting,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) endSelect();
+      },
+      child: Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           HidingAppBar(
             appBar: AppBar(
               title: BreadcrumbTitle(crumbs: crumbs),
+              // Breadcrumb + ⋯ only (UX-LAYOUT §7.3): how the rows under a page
+              // are laid out is a choice about those rows, so it sits on their
+              // own header below, and a page with none has no such choice.
               actions: [
-                const ViewModeButton(),
                 if (module != null)
                   RowMenuButton(
                     iconSize: 24,
@@ -176,31 +190,91 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                                   ),
                             ),
                           )
-                        : ModuleCollectionView(
-                            nexusId: nexusId,
-                            modules: children,
-                            mode: viewMode,
-                            embedded: true,
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(16, 8, 4, 0),
+                                child: Row(children: [
+                                  Expanded(
+                                    child: Text(l10n.pageInside,
+                                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                              color: Theme.of(context).colorScheme.onSurfaceVariant,
+                                            )),
+                                  ),
+                                  const ViewModeButton(),
+                                ]),
+                              ),
+                              ModuleCollectionView(
+                                nexusId: nexusId,
+                                modules: children,
+                                mode: viewMode,
+                                embedded: true,
+                              ),
+                            ],
                           ),
                   ),
+                // A folder's own files, under its sub-folders and modules.
+                if (itemKey == null && moduleId != null && module?.kind == ModuleKind.collector)
+                  FolderAssets(nexusId: nexusId, moduleId: moduleId!),
               ],
             ),
           ),
         ],
       ),
-      // Only a Collector holds modules (v5, APP docs/V5.md §8.8): on any
-      // other page "new module" would have nowhere valid to put one.
-      floatingActionButton: moduleId != null && module?.kind != ModuleKind.collector
+      bottomNavigationBar: !selecting
           ? null
-          : FloatingActionButton(
-        tooltip: l10n.newModuleTooltip,
-        onPressed: () async {
-          await showNewModuleSheet(context, ref, nexusId, moduleId);
-          ref.invalidate(moduleChildrenProvider(_childrenKey));
-          ref.invalidate(nexusIndexProvider(nexusId));
-        },
-        child: const Icon(Icons.add),
-      ),
+          : BottomAppBar(
+              child: Row(children: [
+                IconButton(tooltip: MaterialLocalizations.of(context).closeButtonTooltip, icon: const Icon(Icons.close), onPressed: endSelect),
+                Expanded(child: Text(l10n.selectedCount.replaceAll('{n}', '${selection.length}'))),
+                FilledButton.icon(
+                  icon: const Icon(Icons.drive_file_move_outline),
+                  label: Text(l10n.moveTo),
+                  onPressed: () async {
+                    final picked = [
+                      for (final m in childrenAsync.valueOrNull ?? const <ModuleModel>[])
+                        if (selection.contains(m.id)) m,
+                    ];
+                    await moveModulesWithPicker(context, ref, picked);
+                    if (mounted) endSelect();
+                  },
+                ),
+              ]),
+            ),
+      floatingActionButton: selecting ? null : _fab(context, l10n, module),
+    ),
+    );
+  }
+}
+
+/// The page's one main action (UX-LAYOUT §7.1, decided 2026-09-28): on a
+/// content page "Edit page", which is Arrange, reading "Done" while
+/// arranging; on a Collector or the Nexus root "+", a new module — only a
+/// Collector holds modules (v5, APP docs/V5.md §8.8), so anywhere else a new
+/// one would have nowhere valid to go.
+extension on _ModuleExplorerScreenState {
+  Widget? _fab(BuildContext context, AppLocalizations l10n, ModuleModel? module) {
+    final contentPage = module != null && (itemKey != null || module.kind != ModuleKind.collector);
+    if (contentPage) {
+      final key = PageKey(module.id, itemKey);
+      final arranging = ref.watch(arrangeModeProvider(key));
+      return FloatingActionButton.extended(
+        heroTag: 'page-edit',
+        onPressed: () => ref.read(arrangeModeProvider(key).notifier).state = !arranging,
+        icon: Icon(arranging ? Icons.check : Icons.edit_outlined),
+        label: Text(arranging ? l10n.arrangeDone : l10n.editPage),
+      );
+    }
+    if (moduleId != null && module == null) return null; // still loading
+    return FloatingActionButton(
+      tooltip: l10n.newModuleTooltip,
+      onPressed: () async {
+        await showNewModuleSheet(context, ref, nexusId, moduleId);
+        ref.invalidate(moduleChildrenProvider(_childrenKey));
+        ref.invalidate(nexusIndexProvider(nexusId));
+      },
+      child: const Icon(Icons.add),
     );
   }
 }

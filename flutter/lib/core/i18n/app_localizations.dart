@@ -5718,6 +5718,114 @@ abstract class AppLocalizations {
   /// **Create**
   String get btnCreate;
 
+  /// No description provided for @moveTo.
+  ///
+  /// In en, this message translates to:
+  /// **Move to…**
+  String get moveTo;
+
+  /// No description provided for @moveToRoot.
+  ///
+  /// In en, this message translates to:
+  /// **Top level**
+  String get moveToRoot;
+
+  /// No description provided for @moveNewFolder.
+  ///
+  /// In en, this message translates to:
+  /// **New folder here**
+  String get moveNewFolder;
+
+  /// No description provided for @moveDone.
+  ///
+  /// In en, this message translates to:
+  /// **Moved to {name}**
+  String get moveDone;
+
+  /// No description provided for @selectItems.
+  ///
+  /// In en, this message translates to:
+  /// **Select**
+  String get selectItems;
+
+  /// No description provided for @selectedCount.
+  ///
+  /// In en, this message translates to:
+  /// **{n} selected**
+  String get selectedCount;
+
+  /// No description provided for @exportDxpack.
+  ///
+  /// In en, this message translates to:
+  /// **Export as .dxpack**
+  String get exportDxpack;
+
+  /// No description provided for @exportDxpackD.
+  ///
+  /// In en, this message translates to:
+  /// **Folders and their files, for the desktop app**
+  String get exportDxpackD;
+
+  /// No description provided for @exportDxpackHint.
+  ///
+  /// In en, this message translates to:
+  /// **A .dxpack holds these modules, their folders and every file inside them. Import it in DraconDex on Windows and the same folders are built on disk, with each file in its place.**
+  String get exportDxpackHint;
+
+  /// No description provided for @folderFiles.
+  ///
+  /// In en, this message translates to:
+  /// **Files**
+  String get folderFiles;
+
+  /// No description provided for @moveHere.
+  ///
+  /// In en, this message translates to:
+  /// **Move here**
+  String get moveHere;
+
+  /// No description provided for @moveIntoSelf.
+  ///
+  /// In en, this message translates to:
+  /// **A folder can't go inside itself**
+  String get moveIntoSelf;
+
+  /// No description provided for @editPage.
+  ///
+  /// In en, this message translates to:
+  /// **Edit page**
+  String get editPage;
+
+  /// No description provided for @arrangeDone.
+  ///
+  /// In en, this message translates to:
+  /// **Done**
+  String get arrangeDone;
+
+  /// No description provided for @menuGroupPage.
+  ///
+  /// In en, this message translates to:
+  /// **Page**
+  String get menuGroupPage;
+
+  /// No description provided for @menuGroupOrganize.
+  ///
+  /// In en, this message translates to:
+  /// **Organize**
+  String get menuGroupOrganize;
+
+  /// No description provided for @menuGroupShare.
+  ///
+  /// In en, this message translates to:
+  /// **Share**
+  String get menuGroupShare;
+
+  /// No description provided for @pageInside.
+  ///
+  /// In en, this message translates to:
+  /// **Inside**
+  String get pageInside;
+
 }
 
 class _AppLocalizationsDelegate

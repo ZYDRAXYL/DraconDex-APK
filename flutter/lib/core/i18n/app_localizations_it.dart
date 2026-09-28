@@ -2800,4 +2800,58 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get btnCreate => 'Crea';
+
+  @override
+  String get moveTo => 'Sposta in…';
+
+  @override
+  String get moveToRoot => 'Livello superiore';
+
+  @override
+  String get moveNewFolder => 'Nuova cartella qui';
+
+  @override
+  String get moveDone => 'Spostato in {name}';
+
+  @override
+  String get selectItems => 'Seleziona';
+
+  @override
+  String get selectedCount => '{n} selezionati';
+
+  @override
+  String get exportDxpack => 'Esporta come .dxpack';
+
+  @override
+  String get exportDxpackD => 'Cartelle e i loro file, per l\'app desktop';
+
+  @override
+  String get exportDxpackHint => 'Un .dxpack contiene questi moduli, le loro cartelle e ogni file al loro interno. Importalo in DraconDex per Windows e le stesse cartelle verranno create sul disco, ogni file al suo posto.';
+
+  @override
+  String get folderFiles => 'File';
+
+  @override
+  String get moveHere => 'Sposta qui';
+
+  @override
+  String get moveIntoSelf => 'Una cartella non può andare dentro se stessa';
+
+  @override
+  String get editPage => 'Modifica pagina';
+
+  @override
+  String get arrangeDone => 'Fatto';
+
+  @override
+  String get menuGroupPage => 'Pagina';
+
+  @override
+  String get menuGroupOrganize => 'Organizza';
+
+  @override
+  String get menuGroupShare => 'Condividi';
+
+  @override
+  String get pageInside => 'Contenuto';
 }

@@ -68,3 +68,10 @@ final moduleBreadcrumbProvider = FutureProvider.family<List<ModuleModel>, int>((
     error: (e, s) => Future<List<ModuleModel>>.error(e, s),
   );
 });
+
+/// The modules picked at one level of the tree while it is in select mode
+/// (empty = not selecting). Keyed like [moduleChildrenProvider], so selecting
+/// inside one folder never lights up rows of another; dropped with the page
+/// that shows that level, so a selection never outlives the screen it was on.
+final moduleSelectionProvider =
+    StateProvider.autoDispose.family<Set<int>, ModuleChildrenKey>((ref, key) => const {});
