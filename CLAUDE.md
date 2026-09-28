@@ -10,11 +10,24 @@ DraconDex monorepo until the 2026-09-10 split; the directory prefix is unchanged
 because `pubspec.yaml` declares its assets relative to its own package dir.
 
 Riverpod-based, structured under `flutter/lib/{core,data,providers,widgets,features}/`.
-It opens the same SQLite vault format as the desktop app but is developed
-independently and is **behind** it: there is no `module` table here at all, so
-none of the desktop app's v3 module-tree system exists yet, and several legacy
-modules (Hero, Writer, Scribe, Sage, Artisan, wikilinks, IDE shell) are not
-implemented on this side either.
+It opens the same SQLite vault format as the desktop app and is developed
+independently. It has the `module` table (from the vendored `vault_schema.g.dart`)
+and the same Collector-based module tree: `module_dao.dart` creates and moves
+modules and enforces that only a Collector holds children, `module_model.dart`
+defines all 15 kinds, and `vault_snapshot_service.dart` serializes `modules` in
+the snapshot both apps share.
+
+Where it differs from the desktop:
+
+- **One database, not one file per Nexus.** Every Nexus is rows in a single
+  `novel-manager.db`; there is no `.ddx` per Nexus.
+- **No machine-level tables.** `nexus_file` (and so `locate_dir`) is EXE-only,
+  so there is no Locate Nexus here.
+- **Legacy desktop systems not ported:** Hero, Writer, the Sage hub and the IDE
+  shell have no counterpart. (Wikilinks, Artisan bundles and the Scribe kind
+  *are* implemented — `wiki_service.dart`, `artisan_sheet.dart`,
+  `scribe_content.dart` — and legacy notes migrate into modules via
+  `legacy_notes.dart`.)
 
 ## This tree also builds the PWA — do not fork it
 
