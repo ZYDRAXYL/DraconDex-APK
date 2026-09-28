@@ -942,5 +942,11 @@
   "exportDxpackHint": "ไฟล์ .dxpack เก็บโมดูลเหล่านี้ พร้อมโฟลเดอร์และทุกไฟล์ที่อยู่ข้างใน นำเข้าใน DraconDex บน Windows แล้วโครงสร้างโฟลเดอร์เดียวกันจะถูกสร้างบนดิสก์ พร้อมวางไฟล์ไว้ในที่ของมัน",
   "folderFiles": "ไฟล์",
   "moveHere": "ย้ายมาที่นี่",
-  "moveIntoSelf": "ย้ายโฟลเดอร์เข้าไปในตัวเองไม่ได้"
+  "moveIntoSelf": "ย้ายโฟลเดอร์เข้าไปในตัวเองไม่ได้",
+  "editPage": "แก้หน้า",
+  "arrangeDone": "เสร็จ",
+  "menuGroupPage": "หน้า",
+  "menuGroupOrganize": "จัดระเบียบ",
+  "menuGroupShare": "แชร์",
+  "pageInside": "ข้างใน"
 }

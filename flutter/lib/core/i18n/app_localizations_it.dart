@@ -2836,4 +2836,22 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Una cartella non può andare dentro se stessa';
+
+  @override
+  String get editPage => 'Modifica pagina';
+
+  @override
+  String get arrangeDone => 'Fatto';
+
+  @override
+  String get menuGroupPage => 'Pagina';
+
+  @override
+  String get menuGroupOrganize => 'Organizza';
+
+  @override
+  String get menuGroupShare => 'Condividi';
+
+  @override
+  String get pageInside => 'Contenuto';
 }

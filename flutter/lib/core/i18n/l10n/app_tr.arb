@@ -942,5 +942,11 @@
   "exportDxpackHint": "Bir .dxpack bu modülleri, klasörlerini ve içlerindeki her dosyayı taşır. Windows'taki DraconDex'e aktarın; aynı klasörler diskte oluşturulur, her dosya yerine konur.",
   "folderFiles": "Dosyalar",
   "moveHere": "Buraya taşı",
-  "moveIntoSelf": "Bir klasör kendi içine taşınamaz"
+  "moveIntoSelf": "Bir klasör kendi içine taşınamaz",
+  "editPage": "Sayfayı düzenle",
+  "arrangeDone": "Bitti",
+  "menuGroupPage": "Sayfa",
+  "menuGroupOrganize": "Düzenle",
+  "menuGroupShare": "Paylaş",
+  "pageInside": "İçindekiler"
 }

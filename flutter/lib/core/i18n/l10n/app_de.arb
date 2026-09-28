@@ -942,5 +942,11 @@
   "exportDxpackHint": "Ein .dxpack enthält diese Module, ihre Ordner und jede Datei darin. In DraconDex unter Windows importiert, entstehen dieselben Ordner auf der Festplatte, jede Datei an ihrem Platz.",
   "folderFiles": "Dateien",
   "moveHere": "Hierher verschieben",
-  "moveIntoSelf": "Ein Ordner kann nicht in sich selbst verschoben werden"
+  "moveIntoSelf": "Ein Ordner kann nicht in sich selbst verschoben werden",
+  "editPage": "Seite bearbeiten",
+  "arrangeDone": "Fertig",
+  "menuGroupPage": "Seite",
+  "menuGroupOrganize": "Ordnen",
+  "menuGroupShare": "Teilen",
+  "pageInside": "Inhalt"
 }

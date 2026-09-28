@@ -942,5 +942,11 @@
   "exportDxpackHint": "Tệp .dxpack chứa các mô-đun này, thư mục của chúng và mọi tệp bên trong. Nhập vào DraconDex trên Windows, các thư mục giống hệt sẽ được tạo trên ổ đĩa, mỗi tệp đúng chỗ.",
   "folderFiles": "Tệp",
   "moveHere": "Chuyển đến đây",
-  "moveIntoSelf": "Không thể chuyển thư mục vào chính nó"
+  "moveIntoSelf": "Không thể chuyển thư mục vào chính nó",
+  "editPage": "Sửa trang",
+  "arrangeDone": "Xong",
+  "menuGroupPage": "Trang",
+  "menuGroupOrganize": "Sắp xếp",
+  "menuGroupShare": "Chia sẻ",
+  "pageInside": "Bên trong"
 }

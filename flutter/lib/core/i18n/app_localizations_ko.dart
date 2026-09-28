@@ -2839,4 +2839,22 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get moveIntoSelf => '폴더를 자기 자신 안으로 옮길 수 없습니다';
+
+  @override
+  String get editPage => '페이지 편집';
+
+  @override
+  String get arrangeDone => '완료';
+
+  @override
+  String get menuGroupPage => '페이지';
+
+  @override
+  String get menuGroupOrganize => '정리';
+
+  @override
+  String get menuGroupShare => '공유';
+
+  @override
+  String get pageInside => '안에 있는 항목';
 }

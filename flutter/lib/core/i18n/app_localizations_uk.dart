@@ -2836,4 +2836,22 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Теку не можна перемістити всередину неї самої';
+
+  @override
+  String get editPage => 'Редагувати сторінку';
+
+  @override
+  String get arrangeDone => 'Готово';
+
+  @override
+  String get menuGroupPage => 'Сторінка';
+
+  @override
+  String get menuGroupOrganize => 'Упорядкувати';
+
+  @override
+  String get menuGroupShare => 'Поділитися';
+
+  @override
+  String get pageInside => 'Всередині';
 }

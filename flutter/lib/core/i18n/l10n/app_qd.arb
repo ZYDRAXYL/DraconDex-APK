@@ -942,5 +942,11 @@
   "exportDxpackHint": "A .dxpack holdeth these modyuls, theyre foldyrs and every fyle within. Ingurath yt in DraconDex upon Windows and ythe same foldyrs are buylded on ythe dysk, eche fyle in hys place.",
   "folderFiles": "Fyles",
   "moveHere": "Remoove hyther",
-  "moveIntoSelf": "A foldyr may nought gooth within hymselfe"
+  "moveIntoSelf": "A foldyr may nought gooth within hymselfe",
+  "editPage": "Amende ye page",
+  "arrangeDone": "Y-doon",
+  "menuGroupPage": "Page",
+  "menuGroupOrganize": "Ordeyne",
+  "menuGroupShare": "Imparte",
+  "pageInside": "Withinne"
 }

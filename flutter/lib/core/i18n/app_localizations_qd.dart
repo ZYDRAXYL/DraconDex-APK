@@ -2839,4 +2839,22 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'A foldyr may nought gooth within hymselfe';
+
+  @override
+  String get editPage => 'Amende ye page';
+
+  @override
+  String get arrangeDone => 'Y-doon';
+
+  @override
+  String get menuGroupPage => 'Page';
+
+  @override
+  String get menuGroupOrganize => 'Ordeyne';
+
+  @override
+  String get menuGroupShare => 'Imparte';
+
+  @override
+  String get pageInside => 'Withinne';
 }

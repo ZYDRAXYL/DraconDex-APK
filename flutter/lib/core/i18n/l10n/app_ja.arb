@@ -942,5 +942,11 @@
   "exportDxpackHint": ".dxpackにはこれらのモジュールとフォルダー、その中のすべてのファイルが入ります。Windows版DraconDexでインポートすると、同じフォルダー構成がディスク上に作られ、各ファイルがその場所に置かれます。",
   "folderFiles": "ファイル",
   "moveHere": "ここに移動",
-  "moveIntoSelf": "フォルダーを自分自身の中には移動できません"
+  "moveIntoSelf": "フォルダーを自分自身の中には移動できません",
+  "editPage": "ページを編集",
+  "arrangeDone": "完了",
+  "menuGroupPage": "ページ",
+  "menuGroupOrganize": "整理",
+  "menuGroupShare": "共有",
+  "pageInside": "中身"
 }

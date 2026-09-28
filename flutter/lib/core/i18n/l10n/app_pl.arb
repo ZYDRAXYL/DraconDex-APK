@@ -942,5 +942,11 @@
   "exportDxpackHint": "Plik .dxpack zawiera te moduły, ich foldery i każdy plik w środku. Zaimportuj go w DraconDex na Windows, a na dysku powstaną te same foldery, z każdym plikiem na swoim miejscu.",
   "folderFiles": "Pliki",
   "moveHere": "Przenieś tutaj",
-  "moveIntoSelf": "Folderu nie można przenieść do niego samego"
+  "moveIntoSelf": "Folderu nie można przenieść do niego samego",
+  "editPage": "Edytuj stronę",
+  "arrangeDone": "Gotowe",
+  "menuGroupPage": "Strona",
+  "menuGroupOrganize": "Porządkuj",
+  "menuGroupShare": "Udostępnij",
+  "pageInside": "Zawartość"
 }

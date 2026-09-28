@@ -942,5 +942,11 @@
   "exportDxpackHint": "Um .dxpack contém estes módulos, suas pastas e todos os arquivos dentro delas. Importe-o no DraconDex para Windows e as mesmas pastas serão criadas no disco, com cada arquivo no lugar.",
   "folderFiles": "Arquivos",
   "moveHere": "Mover para cá",
-  "moveIntoSelf": "Uma pasta não pode ir para dentro de si mesma"
+  "moveIntoSelf": "Uma pasta não pode ir para dentro de si mesma",
+  "editPage": "Editar página",
+  "arrangeDone": "Concluído",
+  "menuGroupPage": "Página",
+  "menuGroupOrganize": "Organizar",
+  "menuGroupShare": "Compartilhar",
+  "pageInside": "Conteúdo"
 }

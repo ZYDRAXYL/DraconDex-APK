@@ -2839,4 +2839,22 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Không thể chuyển thư mục vào chính nó';
+
+  @override
+  String get editPage => 'Sửa trang';
+
+  @override
+  String get arrangeDone => 'Xong';
+
+  @override
+  String get menuGroupPage => 'Trang';
+
+  @override
+  String get menuGroupOrganize => 'Sắp xếp';
+
+  @override
+  String get menuGroupShare => 'Chia sẻ';
+
+  @override
+  String get pageInside => 'Bên trong';
 }

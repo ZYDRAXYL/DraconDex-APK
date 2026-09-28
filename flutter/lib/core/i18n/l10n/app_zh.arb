@@ -942,5 +942,11 @@
   "exportDxpackHint": ".dxpack 包含这些模块、它们的文件夹以及其中的每个文件。在 Windows 版 DraconDex 中导入后，会在磁盘上建立相同的文件夹，并把每个文件放到对应位置。",
   "folderFiles": "文件",
   "moveHere": "移到这里",
-  "moveIntoSelf": "文件夹不能移入自身"
+  "moveIntoSelf": "文件夹不能移入自身",
+  "editPage": "编辑页面",
+  "arrangeDone": "完成",
+  "menuGroupPage": "页面",
+  "menuGroupOrganize": "整理",
+  "menuGroupShare": "分享",
+  "pageInside": "内部"
 }

@@ -2836,4 +2836,22 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Een map kan niet in zichzelf worden geplaatst';
+
+  @override
+  String get editPage => 'Pagina bewerken';
+
+  @override
+  String get arrangeDone => 'Klaar';
+
+  @override
+  String get menuGroupPage => 'Pagina';
+
+  @override
+  String get menuGroupOrganize => 'Ordenen';
+
+  @override
+  String get menuGroupShare => 'Delen';
+
+  @override
+  String get pageInside => 'Inhoud';
 }

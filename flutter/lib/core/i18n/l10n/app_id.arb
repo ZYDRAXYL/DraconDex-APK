@@ -942,5 +942,11 @@
   "exportDxpackHint": "Sebuah .dxpack berisi modul-modul ini, foldernya, dan setiap berkas di dalamnya. Impor di DraconDex untuk Windows dan folder yang sama dibuat di disk, tiap berkas di tempatnya.",
   "folderFiles": "Berkas",
   "moveHere": "Pindahkan ke sini",
-  "moveIntoSelf": "Folder tidak bisa dipindahkan ke dalam dirinya sendiri"
+  "moveIntoSelf": "Folder tidak bisa dipindahkan ke dalam dirinya sendiri",
+  "editPage": "Edit halaman",
+  "arrangeDone": "Selesai",
+  "menuGroupPage": "Halaman",
+  "menuGroupOrganize": "Atur",
+  "menuGroupShare": "Bagikan",
+  "pageInside": "Isi"
 }

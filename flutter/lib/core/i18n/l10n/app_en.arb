@@ -942,5 +942,11 @@
   "exportDxpackHint": "A .dxpack holds these modules, their folders and every file inside them. Import it in DraconDex on Windows and the same folders are built on disk, with each file in its place.",
   "folderFiles": "Files",
   "moveHere": "Move here",
-  "moveIntoSelf": "A folder can't go inside itself"
+  "moveIntoSelf": "A folder can't go inside itself",
+  "editPage": "Edit page",
+  "arrangeDone": "Done",
+  "menuGroupPage": "Page",
+  "menuGroupOrganize": "Organize",
+  "menuGroupShare": "Share",
+  "pageInside": "Inside"
 }

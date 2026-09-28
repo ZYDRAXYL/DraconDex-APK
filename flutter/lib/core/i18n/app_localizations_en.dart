@@ -2839,4 +2839,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'A folder can\'t go inside itself';
+
+  @override
+  String get editPage => 'Edit page';
+
+  @override
+  String get arrangeDone => 'Done';
+
+  @override
+  String get menuGroupPage => 'Page';
+
+  @override
+  String get menuGroupOrganize => 'Organize';
+
+  @override
+  String get menuGroupShare => 'Share';
+
+  @override
+  String get pageInside => 'Inside';
 }

@@ -2839,4 +2839,22 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Folder tidak bisa dipindahkan ke dalam dirinya sendiri';
+
+  @override
+  String get editPage => 'Edit halaman';
+
+  @override
+  String get arrangeDone => 'Selesai';
+
+  @override
+  String get menuGroupPage => 'Halaman';
+
+  @override
+  String get menuGroupOrganize => 'Atur';
+
+  @override
+  String get menuGroupShare => 'Bagikan';
+
+  @override
+  String get pageInside => 'Isi';
 }

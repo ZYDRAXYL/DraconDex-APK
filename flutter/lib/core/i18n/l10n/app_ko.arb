@@ -942,5 +942,11 @@
   "exportDxpackHint": ".dxpack에는 이 모듈과 폴더, 그 안의 모든 파일이 담깁니다. Windows용 DraconDex에서 가져오면 같은 폴더 구조가 디스크에 만들어지고 각 파일이 제자리에 놓입니다.",
   "folderFiles": "파일",
   "moveHere": "여기로 이동",
-  "moveIntoSelf": "폴더를 자기 자신 안으로 옮길 수 없습니다"
+  "moveIntoSelf": "폴더를 자기 자신 안으로 옮길 수 없습니다",
+  "editPage": "페이지 편집",
+  "arrangeDone": "완료",
+  "menuGroupPage": "페이지",
+  "menuGroupOrganize": "정리",
+  "menuGroupShare": "공유",
+  "pageInside": "안에 있는 항목"
 }

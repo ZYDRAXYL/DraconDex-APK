@@ -28,6 +28,16 @@ class DdxThemeExt extends ThemeExtension<DdxThemeExt> {
   Color get raised => palette.raised;
   Color get hover => palette.hover;
 
+  /// Status colours for "needs attention" (a missing file, nearly full) and
+  /// "for your information" (a tip, "new") — APP docs/UX-LAYOUT.md §9. Each
+  /// reaches 4.5:1 as text on its own tone's surfaces. Local constants until
+  /// DraconDex-SDB publishes warn/info in tokens.g.dart; then read from there.
+  bool get _lightTone => palette.bg.computeLuminance() > 0.4;
+  Color get warn => _lightTone ? const Color(0xFFB45309) : const Color(0xFFF59E0B);
+  Color get info => _lightTone ? const Color(0xFF0369A1) : const Color(0xFF38BDF8);
+  Color get onWarn => _lightTone ? const Color(0xFFFFFFFF) : const Color(0xFF1A1200);
+  Color get onInfo => _lightTone ? const Color(0xFFFFFFFF) : const Color(0xFF03202E);
+
   // The iOS layer (C3): grouped-list separators, the translucent bars, the
   // search field fill, the tint. Derived per theme the same way on both apps.
   Color get iosSeparator => DdxIos.separator(palette);

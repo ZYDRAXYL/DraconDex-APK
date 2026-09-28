@@ -2836,4 +2836,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Bir klasör kendi içine taşınamaz';
+
+  @override
+  String get editPage => 'Sayfayı düzenle';
+
+  @override
+  String get arrangeDone => 'Bitti';
+
+  @override
+  String get menuGroupPage => 'Sayfa';
+
+  @override
+  String get menuGroupOrganize => 'Düzenle';
+
+  @override
+  String get menuGroupShare => 'Paylaş';
+
+  @override
+  String get pageInside => 'İçindekiler';
 }

@@ -2836,4 +2836,22 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Folderu nie można przenieść do niego samego';
+
+  @override
+  String get editPage => 'Edytuj stronę';
+
+  @override
+  String get arrangeDone => 'Gotowe';
+
+  @override
+  String get menuGroupPage => 'Strona';
+
+  @override
+  String get menuGroupOrganize => 'Porządkuj';
+
+  @override
+  String get menuGroupShare => 'Udostępnij';
+
+  @override
+  String get pageInside => 'Zawartość';
 }

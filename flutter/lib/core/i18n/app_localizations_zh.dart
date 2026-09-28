@@ -2839,4 +2839,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get moveIntoSelf => '文件夹不能移入自身';
+
+  @override
+  String get editPage => '编辑页面';
+
+  @override
+  String get arrangeDone => '完成';
+
+  @override
+  String get menuGroupPage => '页面';
+
+  @override
+  String get menuGroupOrganize => '整理';
+
+  @override
+  String get menuGroupShare => '分享';
+
+  @override
+  String get pageInside => '内部';
 }

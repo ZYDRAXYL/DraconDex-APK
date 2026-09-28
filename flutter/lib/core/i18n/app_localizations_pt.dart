@@ -2839,4 +2839,22 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Uma pasta não pode ir para dentro de si mesma';
+
+  @override
+  String get editPage => 'Editar página';
+
+  @override
+  String get arrangeDone => 'Concluído';
+
+  @override
+  String get menuGroupPage => 'Página';
+
+  @override
+  String get menuGroupOrganize => 'Organizar';
+
+  @override
+  String get menuGroupShare => 'Compartilhar';
+
+  @override
+  String get pageInside => 'Conteúdo';
 }

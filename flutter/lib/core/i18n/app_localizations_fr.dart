@@ -2839,4 +2839,22 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Un dossier ne peut pas aller dans lui-même';
+
+  @override
+  String get editPage => 'Modifier la page';
+
+  @override
+  String get arrangeDone => 'Terminé';
+
+  @override
+  String get menuGroupPage => 'Page';
+
+  @override
+  String get menuGroupOrganize => 'Organiser';
+
+  @override
+  String get menuGroupShare => 'Partager';
+
+  @override
+  String get pageInside => 'Contenu';
 }

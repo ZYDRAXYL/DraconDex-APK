@@ -2839,4 +2839,22 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'ย้ายโฟลเดอร์เข้าไปในตัวเองไม่ได้';
+
+  @override
+  String get editPage => 'แก้หน้า';
+
+  @override
+  String get arrangeDone => 'เสร็จ';
+
+  @override
+  String get menuGroupPage => 'หน้า';
+
+  @override
+  String get menuGroupOrganize => 'จัดระเบียบ';
+
+  @override
+  String get menuGroupShare => 'แชร์';
+
+  @override
+  String get pageInside => 'ข้างใน';
 }

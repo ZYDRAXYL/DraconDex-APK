@@ -2839,4 +2839,22 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Ein Ordner kann nicht in sich selbst verschoben werden';
+
+  @override
+  String get editPage => 'Seite bearbeiten';
+
+  @override
+  String get arrangeDone => 'Fertig';
+
+  @override
+  String get menuGroupPage => 'Seite';
+
+  @override
+  String get menuGroupOrganize => 'Ordnen';
+
+  @override
+  String get menuGroupShare => 'Teilen';
+
+  @override
+  String get pageInside => 'Inhalt';
 }

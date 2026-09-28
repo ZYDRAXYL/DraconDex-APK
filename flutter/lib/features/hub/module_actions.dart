@@ -45,6 +45,7 @@ List<RowAction> moduleRowActions(
       ),
     RowAction(
       label: module.pinned ? l10n.btnUnpin : l10n.btnPin,
+      quick: true,
       icon: module.pinned ? Icons.push_pin : Icons.push_pin_outlined,
       onTap: () async {
         final dao = ref.read(moduleDaoProvider).valueOrNull;
@@ -54,6 +55,7 @@ List<RowAction> moduleRowActions(
     ),
     RowAction(
       label: l10n.btnRename,
+      quick: true,
       icon: Icons.edit_outlined,
       onTap: () async {
         await showDialog(context: context, builder: (_) => ModuleDialog(nexusId: nexusId, existing: module));
@@ -65,23 +67,27 @@ List<RowAction> moduleRowActions(
     // desktop rebuilds on disk from a .dxpack.
     RowAction(
       label: l10n.moveTo,
+      quick: true,
       icon: Icons.drive_file_move_outline,
       onTap: () => moveModulesWithPicker(context, ref, [module]),
     ),
     if (!onOwnPage) ...[
       RowAction(
         label: l10n.pbLinkUp,
+      group: RowGroup.organize,
         icon: Icons.arrow_upward,
         onTap: () => _shift(ref, module, -1),
       ),
       RowAction(
         label: l10n.pbLinkDown,
+      group: RowGroup.organize,
         icon: Icons.arrow_downward,
         onTap: () => _shift(ref, module, 1),
       ),
       if (!inTree)
       RowAction(
         label: l10n.selectItems,
+      group: RowGroup.organize,
         icon: Icons.check_circle_outline,
         onTap: () => ref
             .read(moduleSelectionProvider(ModuleChildrenKey(nexusId, module.parentId)).notifier)
@@ -92,6 +98,7 @@ List<RowAction> moduleRowActions(
     if (module.kind == ModuleKind.collector)
       RowAction(
         label: l10n.bundleSaveMine,
+      group: RowGroup.organize,
         icon: Icons.inventory_2_outlined,
         onTap: () => showSaveBundleDialog(context, ref, module),
       ),
@@ -99,6 +106,7 @@ List<RowAction> moduleRowActions(
     // (APP docs/EXPORT-DECOR.md E8).
     RowAction(
       label: l10n.exportTitle,
+      quick: true,
       icon: Icons.ios_share,
       onTap: () => showExportSheet(context, ref, module, itemKey: itemKey, itemName: itemName),
     ),

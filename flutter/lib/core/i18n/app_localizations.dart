@@ -5790,6 +5790,42 @@ abstract class AppLocalizations {
   /// **A folder can't go inside itself**
   String get moveIntoSelf;
 
+  /// No description provided for @editPage.
+  ///
+  /// In en, this message translates to:
+  /// **Edit page**
+  String get editPage;
+
+  /// No description provided for @arrangeDone.
+  ///
+  /// In en, this message translates to:
+  /// **Done**
+  String get arrangeDone;
+
+  /// No description provided for @menuGroupPage.
+  ///
+  /// In en, this message translates to:
+  /// **Page**
+  String get menuGroupPage;
+
+  /// No description provided for @menuGroupOrganize.
+  ///
+  /// In en, this message translates to:
+  /// **Organize**
+  String get menuGroupOrganize;
+
+  /// No description provided for @menuGroupShare.
+  ///
+  /// In en, this message translates to:
+  /// **Share**
+  String get menuGroupShare;
+
+  /// No description provided for @pageInside.
+  ///
+  /// In en, this message translates to:
+  /// **Inside**
+  String get pageInside;
+
 }
 
 class _AppLocalizationsDelegate

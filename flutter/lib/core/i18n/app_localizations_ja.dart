@@ -2839,4 +2839,22 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'フォルダーを自分自身の中には移動できません';
+
+  @override
+  String get editPage => 'ページを編集';
+
+  @override
+  String get arrangeDone => '完了';
+
+  @override
+  String get menuGroupPage => 'ページ';
+
+  @override
+  String get menuGroupOrganize => '整理';
+
+  @override
+  String get menuGroupShare => '共有';
+
+  @override
+  String get pageInside => '中身';
 }

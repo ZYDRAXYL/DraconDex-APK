@@ -2839,4 +2839,22 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get moveIntoSelf => 'Папку нельзя переместить внутрь самой себя';
+
+  @override
+  String get editPage => 'Редактировать страницу';
+
+  @override
+  String get arrangeDone => 'Готово';
+
+  @override
+  String get menuGroupPage => 'Страница';
+
+  @override
+  String get menuGroupOrganize => 'Упорядочить';
+
+  @override
+  String get menuGroupShare => 'Поделиться';
+
+  @override
+  String get pageInside => 'Внутри';
 }
