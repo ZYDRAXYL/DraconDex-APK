@@ -2803,4 +2803,40 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get btnCreate => '创建';
+
+  @override
+  String get moveTo => '移动到…';
+
+  @override
+  String get moveToRoot => '顶层';
+
+  @override
+  String get moveNewFolder => '在此新建文件夹';
+
+  @override
+  String get moveDone => '已移动到 {name}';
+
+  @override
+  String get selectItems => '选择';
+
+  @override
+  String get selectedCount => '已选 {n} 项';
+
+  @override
+  String get exportDxpack => '导出为 .dxpack';
+
+  @override
+  String get exportDxpackD => '文件夹及其中的文件，用于桌面版';
+
+  @override
+  String get exportDxpackHint => '.dxpack 包含这些模块、它们的文件夹以及其中的每个文件。在 Windows 版 DraconDex 中导入后，会在磁盘上建立相同的文件夹，并把每个文件放到对应位置。';
+
+  @override
+  String get folderFiles => '文件';
+
+  @override
+  String get moveHere => '移到这里';
+
+  @override
+  String get moveIntoSelf => '文件夹不能移入自身';
 }

@@ -162,20 +162,76 @@ class ModuleDao {
     );
   }
 
-  /// Reparents [id] under [newParentId] (null = move to nexus root), placed
-  /// after existing siblings there. Caller must ensure newParentId isn't [id]
-  /// or one of its own descendants — see [isDescendant].
-  Future<void> moveModule(int id, {required int nexusRef, int? newParentId}) async {
+  /// Reparents [id] under [newParentId] (null = move to nexus root). With
+  /// [orderedSiblingIds] — the new parent's children in their new order,
+  /// [id] included — it also rewrites their display_order 0..n, one call for
+  /// a move and a reorder alike, the same contract as EXE db/module.js
+  /// moveModule(nx, id, parentId, orderedSiblingIds). Without it the module
+  /// lands after the siblings already there.
+  ///
+  /// Refused (a [ModuleParentError]) when [newParentId] is not a Collector or is [id]
+  /// itself or one of its descendants — a folder cannot go inside itself.
+  Future<void> moveModule(int id, {required int nexusRef, int? newParentId, List<int>? orderedSiblingIds}) async {
     await assertCollectorParent(db, newParentId);
-    final orderRows = await db.rawQuery(
-      'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM module WHERE nexus_ref=? AND parent_id IS ?',
-      [nexusRef, newParentId],
-    );
-    final nextOrder = Sqflite.firstIntValue(orderRows) ?? 0;
-    await db.rawUpdate(
-      "UPDATE module SET parent_id=?,display_order=?,update_at=datetime('now') WHERE id=?",
-      [newParentId, nextOrder, id],
-    );
+    if (newParentId != null && await isDescendant(id, newParentId)) {
+      throw const ModuleParentError('a module cannot move into its own subtree');
+    }
+    await db.transaction((txn) async {
+      if (orderedSiblingIds == null) {
+        final orderRows = await txn.rawQuery(
+          'SELECT COALESCE(MAX(display_order),-1)+1 AS next FROM module WHERE nexus_ref=? AND parent_id IS ? AND id<>?',
+          [nexusRef, newParentId, id],
+        );
+        final nextOrder = Sqflite.firstIntValue(orderRows) ?? 0;
+        await txn.rawUpdate(
+          "UPDATE module SET parent_id=?,display_order=?,update_at=datetime('now') WHERE id=?",
+          [newParentId, nextOrder, id],
+        );
+        return;
+      }
+      await txn.rawUpdate(
+        "UPDATE module SET parent_id=?,update_at=datetime('now') WHERE id=?",
+        [newParentId, id],
+      );
+      for (var i = 0; i < orderedSiblingIds.length; i++) {
+        await txn.rawUpdate(
+          'UPDATE module SET display_order=? WHERE id=? AND nexus_ref=? AND parent_id IS ?',
+          [i, orderedSiblingIds[i], nexusRef, newParentId],
+        );
+      }
+    });
+  }
+
+  /// Moves every module of [ids] under [newParentId], in the order given,
+  /// after what is already there. A module that cannot go there (the target
+  /// is inside it) is skipped and returned, so a multi-select move of a
+  /// folder together with its own child does what it can and says what not.
+  Future<List<int>> moveModules(List<int> ids, {required int nexusRef, int? newParentId}) async {
+    await assertCollectorParent(db, newParentId);
+    final skipped = <int>[];
+    for (final id in ids) {
+      if (newParentId != null && await isDescendant(id, newParentId)) {
+        skipped.add(id);
+        continue;
+      }
+      await moveModule(id, nexusRef: nexusRef, newParentId: newParentId);
+    }
+    return skipped;
+  }
+
+  /// Moves [id] one place up ([delta] -1) or down (+1) among its siblings,
+  /// in the order the list shows them (pinned first, then display_order).
+  Future<void> shiftModule(int id, int delta) async {
+    final m = await getModule(id);
+    if (m == null) return;
+    final siblings = [for (final s in await getModules(m.nexusRef, m.parentId)) s.id];
+    final at = siblings.indexOf(id);
+    final to = at + delta;
+    if (at < 0 || to < 0 || to >= siblings.length) return;
+    siblings
+      ..removeAt(at)
+      ..insert(to, id);
+    await moveModule(id, nexusRef: m.nexusRef, newParentId: m.parentId, orderedSiblingIds: siblings);
   }
 
   /// Whether [candidateAncestorId] is [id] itself or one of its descendants

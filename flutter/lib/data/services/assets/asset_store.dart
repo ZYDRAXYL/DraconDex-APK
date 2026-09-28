@@ -160,6 +160,29 @@ class AssetStore {
     });
   }
 
+  /// Files an asset into a module node, or back to the unfiled tray with
+  /// null — the one statement V5.md §2.3 promises a move costs (EXE
+  /// importdock.js setImportModule). A module of another Nexus files to the
+  /// tray instead, as there.
+  static Future<void> setModule(Database db, int id, int? moduleRef) async {
+    int? ref;
+    if (moduleRef != null) {
+      final ok = await db.rawQuery(
+          'SELECT m.id FROM module m JOIN import_file f ON f.nexus_ref=m.nexus_ref WHERE m.id=? AND f.id=?', [moduleRef, id]);
+      ref = ok.isEmpty ? null : moduleRef;
+    }
+    await db.rawUpdate('UPDATE import_file SET module_ref=? WHERE id=?', [ref, id]);
+  }
+
+  /// The assets filed directly under one module node — a folder's files.
+  static Future<List<Asset>> ofModule(DatabaseExecutor db, int moduleId) async => [
+        for (final r in await db.rawQuery(
+            'SELECT id, file_name, file_path, file_type, file_size, source_kind, proxy, module_ref FROM import_file '
+            'WHERE module_ref=? ORDER BY file_name COLLATE NOCASE',
+            [moduleId]))
+          Asset.fromRow(r),
+      ];
+
   static Future<void> rename(Database db, int id, String name) async {
     await db.rawUpdate('UPDATE import_file SET file_name=? WHERE id=?', [name, id]);
   }

@@ -2800,4 +2800,40 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get btnCreate => 'Oluştur';
+
+  @override
+  String get moveTo => 'Taşı…';
+
+  @override
+  String get moveToRoot => 'En üst düzey';
+
+  @override
+  String get moveNewFolder => 'Buraya yeni klasör';
+
+  @override
+  String get moveDone => '{name} konumuna taşındı';
+
+  @override
+  String get selectItems => 'Seç';
+
+  @override
+  String get selectedCount => '{n} seçildi';
+
+  @override
+  String get exportDxpack => '.dxpack olarak dışa aktar';
+
+  @override
+  String get exportDxpackD => 'Klasörler ve dosyaları, masaüstü uygulaması için';
+
+  @override
+  String get exportDxpackHint => 'Bir .dxpack bu modülleri, klasörlerini ve içlerindeki her dosyayı taşır. Windows\'taki DraconDex\'e aktarın; aynı klasörler diskte oluşturulur, her dosya yerine konur.';
+
+  @override
+  String get folderFiles => 'Dosyalar';
+
+  @override
+  String get moveHere => 'Buraya taşı';
+
+  @override
+  String get moveIntoSelf => 'Bir klasör kendi içine taşınamaz';
 }

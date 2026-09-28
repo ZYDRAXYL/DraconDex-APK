@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/widgets.dart' as pw;
 import 'package:sqflite/sqflite.dart';
 
+import '../asset_pack.dart';
 import '../mddx.dart';
 import 'doc_source.dart';
 import 'docx_export.dart';
@@ -19,7 +20,7 @@ import 'zip_writer.dart';
 /// docs/EXPORT-DECOR.md E8 on the phone). The Export sheet names a format;
 /// this reads the vault and hands back the file's bytes, which the sheet
 /// shares (or prints) — the same XFile.fromData path on Android and web.
-enum ExportFormat { pdf, docx, epub, xlsx, csv, html, md, mddx }
+enum ExportFormat { pdf, docx, epub, xlsx, csv, html, md, mddx, dxpack }
 
 /// The last choices, per module, in module_ui 'exportPrefs' — the keys EXE
 /// writes, so a vault opened on either side remembers the same thing.
@@ -215,6 +216,13 @@ class ExportService {
         final bytes = await Mddx.export(db, nexusId, moduleId);
         if (bytes == null) return const ExportOutcome.fail('empty');
         return ExportOutcome(bytes, '$base.mddx', 'application/json');
+
+      // The folders and their files, for the desktop's Locate folder
+      // (APP docs/ASSET-PACK.md).
+      case ExportFormat.dxpack:
+        final pack = await AssetPack.export(db, nexusId, moduleId: moduleId);
+        if (pack == null) return const ExportOutcome.fail('empty');
+        return ExportOutcome(pack.bytes, '$base.dxpack', 'application/zip', count: pack.files, missing: pack.missing);
 
       case ExportFormat.docx:
       case ExportFormat.epub:

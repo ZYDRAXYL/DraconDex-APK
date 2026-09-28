@@ -930,5 +930,17 @@
   "tplKindCount": "Szablony: {n}",
   "tplFieldsHead": "Pola",
   "btnApply": "Zastosuj",
-  "btnCreate": "Utwórz"
+  "btnCreate": "Utwórz",
+  "moveTo": "Przenieś do…",
+  "moveToRoot": "Najwyższy poziom",
+  "moveNewFolder": "Nowy folder tutaj",
+  "moveDone": "Przeniesiono do {name}",
+  "selectItems": "Zaznacz",
+  "selectedCount": "Zaznaczono: {n}",
+  "exportDxpack": "Eksportuj jako .dxpack",
+  "exportDxpackD": "Foldery i ich pliki, dla aplikacji na komputer",
+  "exportDxpackHint": "Plik .dxpack zawiera te moduły, ich foldery i każdy plik w środku. Zaimportuj go w DraconDex na Windows, a na dysku powstaną te same foldery, z każdym plikiem na swoim miejscu.",
+  "folderFiles": "Pliki",
+  "moveHere": "Przenieś tutaj",
+  "moveIntoSelf": "Folderu nie można przenieść do niego samego"
 }

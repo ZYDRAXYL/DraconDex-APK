@@ -930,5 +930,17 @@
   "tplKindCount": "Шаблонів: {n}",
   "tplFieldsHead": "Поля",
   "btnApply": "Застосувати",
-  "btnCreate": "Створити"
+  "btnCreate": "Створити",
+  "moveTo": "Перемістити до…",
+  "moveToRoot": "Верхній рівень",
+  "moveNewFolder": "Нова тека тут",
+  "moveDone": "Переміщено до {name}",
+  "selectItems": "Вибрати",
+  "selectedCount": "Вибрано: {n}",
+  "exportDxpack": "Експорт у .dxpack",
+  "exportDxpackD": "Теки та їхні файли — для настільного застосунку",
+  "exportDxpackHint": "Файл .dxpack містить ці модулі, їхні теки та всі файли всередині. Імпортуйте його в DraconDex для Windows — на диску зʼявляться ті самі теки, і кожен файл буде на своєму місці.",
+  "folderFiles": "Файли",
+  "moveHere": "Перемістити сюди",
+  "moveIntoSelf": "Теку не можна перемістити всередину неї самої"
 }

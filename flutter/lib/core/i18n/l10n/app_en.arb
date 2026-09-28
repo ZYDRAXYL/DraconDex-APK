@@ -930,5 +930,17 @@
   "tplKindCount": "{n} templates",
   "tplFieldsHead": "Fields",
   "btnApply": "Apply",
-  "btnCreate": "Create"
+  "btnCreate": "Create",
+  "moveTo": "Move to…",
+  "moveToRoot": "Top level",
+  "moveNewFolder": "New folder here",
+  "moveDone": "Moved to {name}",
+  "selectItems": "Select",
+  "selectedCount": "{n} selected",
+  "exportDxpack": "Export as .dxpack",
+  "exportDxpackD": "Folders and their files, for the desktop app",
+  "exportDxpackHint": "A .dxpack holds these modules, their folders and every file inside them. Import it in DraconDex on Windows and the same folders are built on disk, with each file in its place.",
+  "folderFiles": "Files",
+  "moveHere": "Move here",
+  "moveIntoSelf": "A folder can't go inside itself"
 }

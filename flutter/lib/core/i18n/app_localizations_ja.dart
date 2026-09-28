@@ -2803,4 +2803,40 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get btnCreate => '作成';
+
+  @override
+  String get moveTo => '移動…';
+
+  @override
+  String get moveToRoot => '最上位';
+
+  @override
+  String get moveNewFolder => 'ここに新しいフォルダー';
+
+  @override
+  String get moveDone => '{name} に移動しました';
+
+  @override
+  String get selectItems => '選択';
+
+  @override
+  String get selectedCount => '{n} 件選択';
+
+  @override
+  String get exportDxpack => '.dxpackで書き出す';
+
+  @override
+  String get exportDxpackD => 'フォルダーとその中のファイルを、デスクトップ版へ';
+
+  @override
+  String get exportDxpackHint => '.dxpackにはこれらのモジュールとフォルダー、その中のすべてのファイルが入ります。Windows版DraconDexでインポートすると、同じフォルダー構成がディスク上に作られ、各ファイルがその場所に置かれます。';
+
+  @override
+  String get folderFiles => 'ファイル';
+
+  @override
+  String get moveHere => 'ここに移動';
+
+  @override
+  String get moveIntoSelf => 'フォルダーを自分自身の中には移動できません';
 }

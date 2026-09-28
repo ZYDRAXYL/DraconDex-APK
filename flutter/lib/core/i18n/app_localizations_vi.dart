@@ -2803,4 +2803,40 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get btnCreate => 'Tạo';
+
+  @override
+  String get moveTo => 'Chuyển đến…';
+
+  @override
+  String get moveToRoot => 'Cấp cao nhất';
+
+  @override
+  String get moveNewFolder => 'Thư mục mới tại đây';
+
+  @override
+  String get moveDone => 'Đã chuyển đến {name}';
+
+  @override
+  String get selectItems => 'Chọn';
+
+  @override
+  String get selectedCount => 'Đã chọn {n}';
+
+  @override
+  String get exportDxpack => 'Xuất dạng .dxpack';
+
+  @override
+  String get exportDxpackD => 'Thư mục và tệp bên trong, cho ứng dụng máy tính';
+
+  @override
+  String get exportDxpackHint => 'Tệp .dxpack chứa các mô-đun này, thư mục của chúng và mọi tệp bên trong. Nhập vào DraconDex trên Windows, các thư mục giống hệt sẽ được tạo trên ổ đĩa, mỗi tệp đúng chỗ.';
+
+  @override
+  String get folderFiles => 'Tệp';
+
+  @override
+  String get moveHere => 'Chuyển đến đây';
+
+  @override
+  String get moveIntoSelf => 'Không thể chuyển thư mục vào chính nó';
 }

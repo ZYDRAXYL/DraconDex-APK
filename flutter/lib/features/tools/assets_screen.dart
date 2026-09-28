@@ -13,6 +13,7 @@ import '../../providers/navigation_providers.dart';
 import '../../widgets/confirm_dialog.dart';
 import '../../widgets/row_menu.dart';
 import '../page/views/view_common.dart';
+import 'folder_assets.dart';
 
 final assetsProvider = FutureProvider.autoDispose.family<List<Asset>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
@@ -210,6 +211,13 @@ class AssetsScreen extends ConsumerWidget {
                     await AssetStore.rename(db, a.id, n);
                     await refresh();
                   },
+                ),
+                // File it into a folder (V5.md §2.3) — what a .dxpack then
+                // carries to the desktop's Locate folder.
+                RowAction(
+                  label: l.moveTo,
+                  icon: Icons.drive_file_move_outline,
+                  onTap: () => moveAssetWithPicker(context, ref, nexusId, a),
                 ),
                 RowAction(
                   label: l.btnDelete,

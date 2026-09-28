@@ -930,5 +930,17 @@
   "tplKindCount": "{n}개",
   "tplFieldsHead": "필드",
   "btnApply": "적용",
-  "btnCreate": "생성"
+  "btnCreate": "생성",
+  "moveTo": "이동…",
+  "moveToRoot": "최상위",
+  "moveNewFolder": "여기에 새 폴더",
+  "moveDone": "{name}(으)로 이동했습니다",
+  "selectItems": "선택",
+  "selectedCount": "{n}개 선택됨",
+  "exportDxpack": ".dxpack로 내보내기",
+  "exportDxpackD": "폴더와 그 안의 파일을 데스크톱 앱으로",
+  "exportDxpackHint": ".dxpack에는 이 모듈과 폴더, 그 안의 모든 파일이 담깁니다. Windows용 DraconDex에서 가져오면 같은 폴더 구조가 디스크에 만들어지고 각 파일이 제자리에 놓입니다.",
+  "folderFiles": "파일",
+  "moveHere": "여기로 이동",
+  "moveIntoSelf": "폴더를 자기 자신 안으로 옮길 수 없습니다"
 }

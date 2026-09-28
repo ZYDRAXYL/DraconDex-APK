@@ -2803,4 +2803,40 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get btnCreate => 'Erstellen';
+
+  @override
+  String get moveTo => 'Verschieben nach…';
+
+  @override
+  String get moveToRoot => 'Oberste Ebene';
+
+  @override
+  String get moveNewFolder => 'Neuer Ordner hier';
+
+  @override
+  String get moveDone => 'Nach {name} verschoben';
+
+  @override
+  String get selectItems => 'Auswählen';
+
+  @override
+  String get selectedCount => '{n} ausgewählt';
+
+  @override
+  String get exportDxpack => 'Als .dxpack exportieren';
+
+  @override
+  String get exportDxpackD => 'Ordner samt Dateien, für die Desktop-App';
+
+  @override
+  String get exportDxpackHint => 'Ein .dxpack enthält diese Module, ihre Ordner und jede Datei darin. In DraconDex unter Windows importiert, entstehen dieselben Ordner auf der Festplatte, jede Datei an ihrem Platz.';
+
+  @override
+  String get folderFiles => 'Dateien';
+
+  @override
+  String get moveHere => 'Hierher verschieben';
+
+  @override
+  String get moveIntoSelf => 'Ein Ordner kann nicht in sich selbst verschoben werden';
 }

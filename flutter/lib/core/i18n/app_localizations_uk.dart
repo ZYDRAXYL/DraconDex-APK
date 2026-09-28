@@ -2800,4 +2800,40 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get btnCreate => 'Створити';
+
+  @override
+  String get moveTo => 'Перемістити до…';
+
+  @override
+  String get moveToRoot => 'Верхній рівень';
+
+  @override
+  String get moveNewFolder => 'Нова тека тут';
+
+  @override
+  String get moveDone => 'Переміщено до {name}';
+
+  @override
+  String get selectItems => 'Вибрати';
+
+  @override
+  String get selectedCount => 'Вибрано: {n}';
+
+  @override
+  String get exportDxpack => 'Експорт у .dxpack';
+
+  @override
+  String get exportDxpackD => 'Теки та їхні файли — для настільного застосунку';
+
+  @override
+  String get exportDxpackHint => 'Файл .dxpack містить ці модулі, їхні теки та всі файли всередині. Імпортуйте його в DraconDex для Windows — на диску зʼявляться ті самі теки, і кожен файл буде на своєму місці.';
+
+  @override
+  String get folderFiles => 'Файли';
+
+  @override
+  String get moveHere => 'Перемістити сюди';
+
+  @override
+  String get moveIntoSelf => 'Теку не можна перемістити всередину неї самої';
 }

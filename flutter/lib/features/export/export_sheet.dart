@@ -51,6 +51,7 @@ const _cards = [
   _Card(ExportFormat.html, 'HTML', Color(0xFF0E7490)),
   _Card(ExportFormat.md, 'MD', Color(0xFF475569)),
   _Card(ExportFormat.mddx, 'MDDX', Color(0xFF4338CA)),
+  _Card(ExportFormat.dxpack, 'DXPACK', Color(0xFFB45309)),
 ];
 
 class ExportSheet extends ConsumerStatefulWidget {
@@ -103,6 +104,7 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
     ExportFormat.html => l.htmlExport,
     ExportFormat.md => l.exportMarkdown,
     ExportFormat.mddx => l.mddxExport,
+    ExportFormat.dxpack => l.exportDxpack,
   };
 
   String _desc(AppLocalizations l, ExportFormat f) => switch (f) {
@@ -114,6 +116,7 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
     ExportFormat.html => l.exportHtmlPageD,
     ExportFormat.md => l.exportMdAnyD,
     ExportFormat.mddx => l.exportMddxD,
+    ExportFormat.dxpack => l.exportDxpackD,
   };
 
   String _why(AppLocalizations l, String key) => switch (key) {
@@ -128,6 +131,7 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
     ExportFormat.xlsx => l.exportXlsxHint,
     ExportFormat.html => l.exportHtmlPageHint,
     ExportFormat.mddx => l.exportMddxHint,
+    ExportFormat.dxpack => l.exportDxpackHint,
     ExportFormat.docx => l.exportDocxHint,
     ExportFormat.epub => l.exportEpubHint,
     ExportFormat.md => l.exportMdAnyHint,

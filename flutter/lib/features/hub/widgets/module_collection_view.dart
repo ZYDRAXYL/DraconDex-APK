@@ -6,11 +6,13 @@ import '../../../core/i18n/app_localizations.dart';
 import '../../../core/layout/breakpoints.dart';
 import '../../../data/models/module_model.dart';
 import '../../../providers/builder_view_provider.dart';
+import '../../../providers/module_provider.dart';
 import '../../../core/theme/ddx_theme.dart';
 import '../../../widgets/color_dot.dart';
 import '../../../widgets/grouped_section.dart';
 import '../../../widgets/row_menu.dart';
 import '../module_actions.dart';
+import 'module_drag.dart';
 
 /// The modules nested at one level of the tree, laid out the way the page's
 /// view-mode button says to. Every mode navigates the same way — only the
@@ -94,10 +96,14 @@ class ModuleTile extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     List<RowAction> actions() => moduleRowActions(context, ref, module);
     final ios = context.isIosStyle;
+    final sel = _Selection(ref, module);
     final tile = ListTile(
       dense: dense,
       visualDensity: dense ? VisualDensity.compact : null,
-      leading: ios
+      selected: sel.picked,
+      leading: sel.active
+          ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked)
+          : ios
           ? DdxIconSquare(icon: info.icon, color: _iconColor(context, module.colorCode))
           : module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: 20) : Icon(info.icon),
       title: Text(module.name, maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -112,10 +118,10 @@ class ModuleTile extends ConsumerWidget {
           RowMenuButton(actions: actions, title: module.name),
         ],
       ),
-      onTap: () => context.push('/hub/$nexusId/module/${module.id}'),
-      onLongPress: () => showRowMenu(context, actions(), title: module.name),
+      onTap: sel.active ? sel.toggle : () => context.push('/hub/$nexusId/module/${module.id}'),
+      onLongPress: sel.active ? sel.toggle : () => showRowMenu(context, actions(), title: module.name),
     );
-    if (!ios) return tile;
+    if (!ios || sel.active) return draggableModule(nexusId: nexusId, module: module, child: tile);
     // iOS: swipe left runs the row's destructive action — the same one its
     // menu offers, with the same confirmation and undo. The row stays put
     // until that action actually removes it.
@@ -137,9 +143,26 @@ class ModuleTile extends ConsumerWidget {
         }
         return false;
       },
-      child: tile,
+      child: draggableModule(nexusId: nexusId, module: module, child: tile),
     );
   }
+}
+
+/// One row's part in its level's select mode (moduleSelectionProvider).
+class _Selection {
+  final WidgetRef ref;
+  final ModuleChildrenKey key;
+  final Set<int> ids;
+  final int id;
+  _Selection(this.ref, ModuleModel module)
+      : key = ModuleChildrenKey(module.nexusRef, module.parentId),
+        id = module.id,
+        ids = ref.watch(moduleSelectionProvider(ModuleChildrenKey(module.nexusRef, module.parentId)));
+
+  bool get active => ids.isNotEmpty;
+  bool get picked => ids.contains(id);
+  void toggle() => ref.read(moduleSelectionProvider(key).notifier).state =
+      picked ? ({...ids}..remove(id)) : {...ids, id};
 }
 
 /// The module's own colour for its iOS icon square, or the accent.
@@ -160,13 +183,20 @@ class ModuleCard extends ConsumerWidget {
     final info = module.kindInfo;
     final childCount = module.childCount ?? 0;
     List<RowAction> actions() => moduleRowActions(context, ref, module);
+    final sel = _Selection(ref, module);
 
-    return Card(
+    return draggableModule(nexusId: nexusId, module: module, child: Card(
       clipBehavior: Clip.antiAlias,
       margin: EdgeInsets.zero,
+      shape: sel.picked
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(color: theme.colorScheme.primary, width: 2),
+            )
+          : null,
       child: InkWell(
-        onTap: () => context.push('/hub/$nexusId/module/${module.id}'),
-        onLongPress: () => showRowMenu(context, actions(), title: module.name),
+        onTap: sel.active ? sel.toggle : () => context.push('/hub/$nexusId/module/${module.id}'),
+        onLongPress: sel.active ? sel.toggle : () => showRowMenu(context, actions(), title: module.name),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(12, 4, 4, 12),
           child: Column(
@@ -174,7 +204,10 @@ class ModuleCard extends ConsumerWidget {
             children: [
               Row(
                 children: [
-                  module.colorCode != null
+                  sel.active
+                      ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked,
+                          size: 26, color: theme.colorScheme.primary)
+                      : module.colorCode != null
                       ? ColorDot(colorCode: module.colorCode, size: 26)
                       : Icon(info.icon, size: 26, color: theme.colorScheme.primary),
                   const Spacer(),
@@ -214,6 +247,6 @@ class ModuleCard extends ConsumerWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }

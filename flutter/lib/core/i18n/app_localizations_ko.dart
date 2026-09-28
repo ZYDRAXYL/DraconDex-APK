@@ -2803,4 +2803,40 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get btnCreate => '생성';
+
+  @override
+  String get moveTo => '이동…';
+
+  @override
+  String get moveToRoot => '최상위';
+
+  @override
+  String get moveNewFolder => '여기에 새 폴더';
+
+  @override
+  String get moveDone => '{name}(으)로 이동했습니다';
+
+  @override
+  String get selectItems => '선택';
+
+  @override
+  String get selectedCount => '{n}개 선택됨';
+
+  @override
+  String get exportDxpack => '.dxpack로 내보내기';
+
+  @override
+  String get exportDxpackD => '폴더와 그 안의 파일을 데스크톱 앱으로';
+
+  @override
+  String get exportDxpackHint => '.dxpack에는 이 모듈과 폴더, 그 안의 모든 파일이 담깁니다. Windows용 DraconDex에서 가져오면 같은 폴더 구조가 디스크에 만들어지고 각 파일이 제자리에 놓입니다.';
+
+  @override
+  String get folderFiles => '파일';
+
+  @override
+  String get moveHere => '여기로 이동';
+
+  @override
+  String get moveIntoSelf => '폴더를 자기 자신 안으로 옮길 수 없습니다';
 }

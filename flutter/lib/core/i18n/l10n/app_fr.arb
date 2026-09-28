@@ -930,5 +930,17 @@
   "tplKindCount": "{n} modèles",
   "tplFieldsHead": "Champs",
   "btnApply": "Appliquer",
-  "btnCreate": "Créer"
+  "btnCreate": "Créer",
+  "moveTo": "Déplacer vers…",
+  "moveToRoot": "Niveau supérieur",
+  "moveNewFolder": "Nouveau dossier ici",
+  "moveDone": "Déplacé vers {name}",
+  "selectItems": "Sélectionner",
+  "selectedCount": "{n} sélectionné(s)",
+  "exportDxpack": "Exporter en .dxpack",
+  "exportDxpackD": "Dossiers et leurs fichiers, pour l'app de bureau",
+  "exportDxpackHint": "Un .dxpack contient ces modules, leurs dossiers et chaque fichier qu'ils renferment. Importez-le dans DraconDex sous Windows : les mêmes dossiers sont créés sur le disque, chaque fichier à sa place.",
+  "folderFiles": "Fichiers",
+  "moveHere": "Déplacer ici",
+  "moveIntoSelf": "Un dossier ne peut pas aller dans lui-même"
 }

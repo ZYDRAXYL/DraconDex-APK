@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../core/i18n/app_localizations.dart';
 import '../../../core/layout/breakpoints.dart';
 import '../../../data/models/module_model.dart';
+import '../../../data/services/asset_pack.dart';
 import '../../../providers/builder_view_provider.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_provider.dart';
@@ -55,7 +57,7 @@ class NexusCollectionView extends StatelessWidget {
   }
 }
 
-/// Open, rename and delete, shared by both the row and the card.
+/// Open, rename, export and delete, shared by both the row and the card.
 List<RowAction> _nexusActions(BuildContext context, WidgetRef ref, NexusModel nexus) {
   final l10n = AppLocalizations.of(context)!;
   return [
@@ -69,6 +71,12 @@ List<RowAction> _nexusActions(BuildContext context, WidgetRef ref, NexusModel ne
         ref.invalidate(nexusProvider(nexus.id));
       },
     ),
+    // The whole Nexus, folders and files, for the desktop (ASSET-PACK.md).
+    RowAction(
+      label: l10n.exportDxpack,
+      icon: Icons.ios_share,
+      onTap: () => _exportPack(context, ref, nexus),
+    ),
     RowAction(
       label: l10n.btnDelete,
       icon: Icons.delete_outline,
@@ -76,6 +84,22 @@ List<RowAction> _nexusActions(BuildContext context, WidgetRef ref, NexusModel ne
       onTap: () => _deleteNexus(context, ref, nexus),
     ),
   ];
+}
+
+Future<void> _exportPack(BuildContext context, WidgetRef ref, NexusModel nexus) async {
+  final l10n = AppLocalizations.of(context)!;
+  final messenger = ScaffoldMessenger.of(context);
+  final db = await ref.read(databaseProvider.future);
+  final pack = await AssetPack.export(db, nexus.id);
+  if (pack == null) {
+    messenger.showSnackBar(SnackBar(content: Text(l10n.exportFailedMessage)));
+    return;
+  }
+  if (pack.missing > 0) {
+    messenger.showSnackBar(SnackBar(content: Text(l10n.exportMediaMissing.replaceAll('{n}', '${pack.missing}'))));
+  }
+  final name = '${dirNameOf(nexus.name)}.dxpack';
+  await Share.shareXFiles([XFile.fromData(pack.bytes, mimeType: 'application/zip', name: name)]);
 }
 
 Future<void> _deleteNexus(BuildContext context, WidgetRef ref, NexusModel nexus) async {

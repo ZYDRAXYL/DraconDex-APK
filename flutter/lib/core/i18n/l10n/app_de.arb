@@ -930,5 +930,17 @@
   "tplKindCount": "{n} Vorlagen",
   "tplFieldsHead": "Felder",
   "btnApply": "Übernehmen",
-  "btnCreate": "Erstellen"
+  "btnCreate": "Erstellen",
+  "moveTo": "Verschieben nach…",
+  "moveToRoot": "Oberste Ebene",
+  "moveNewFolder": "Neuer Ordner hier",
+  "moveDone": "Nach {name} verschoben",
+  "selectItems": "Auswählen",
+  "selectedCount": "{n} ausgewählt",
+  "exportDxpack": "Als .dxpack exportieren",
+  "exportDxpackD": "Ordner samt Dateien, für die Desktop-App",
+  "exportDxpackHint": "Ein .dxpack enthält diese Module, ihre Ordner und jede Datei darin. In DraconDex unter Windows importiert, entstehen dieselben Ordner auf der Festplatte, jede Datei an ihrem Platz.",
+  "folderFiles": "Dateien",
+  "moveHere": "Hierher verschieben",
+  "moveIntoSelf": "Ein Ordner kann nicht in sich selbst verschoben werden"
 }

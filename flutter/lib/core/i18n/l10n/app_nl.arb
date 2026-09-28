@@ -930,5 +930,17 @@
   "tplKindCount": "{n} sjablonen",
   "tplFieldsHead": "Velden",
   "btnApply": "Toepassen",
-  "btnCreate": "Aanmaken"
+  "btnCreate": "Aanmaken",
+  "moveTo": "Verplaatsen naar…",
+  "moveToRoot": "Hoogste niveau",
+  "moveNewFolder": "Nieuwe map hier",
+  "moveDone": "Verplaatst naar {name}",
+  "selectItems": "Selecteren",
+  "selectedCount": "{n} geselecteerd",
+  "exportDxpack": "Exporteren als .dxpack",
+  "exportDxpackD": "Mappen en hun bestanden, voor de desktop-app",
+  "exportDxpackHint": "Een .dxpack bevat deze modules, hun mappen en elk bestand erin. Importeer het in DraconDex voor Windows en dezelfde mappen worden op schijf aangemaakt, elk bestand op zijn plek.",
+  "folderFiles": "Bestanden",
+  "moveHere": "Hierheen verplaatsen",
+  "moveIntoSelf": "Een map kan niet in zichzelf worden geplaatst"
 }

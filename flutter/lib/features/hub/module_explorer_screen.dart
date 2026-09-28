@@ -16,6 +16,7 @@ import '../builder/view_mode_button.dart';
 import '../page/module_page.dart';
 import '../page/page_header.dart';
 import '../page/page_actions.dart';
+import '../tools/folder_assets.dart';
 import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
@@ -115,6 +116,11 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
     final nexus = nexusAsync.valueOrNull;
     final itemName = itemAsync?.valueOrNull;
     final viewMode = ref.watch(builderViewModeProvider);
+    // Select mode (APP docs/ASSET-PACK.md §1): rows toggle instead of open,
+    // and the bottom bar moves what is picked. Back leaves it first.
+    final selection = ref.watch(moduleSelectionProvider(_childrenKey));
+    final selecting = selection.isNotEmpty;
+    void endSelect() => ref.read(moduleSelectionProvider(_childrenKey).notifier).state = const {};
 
     _recordOpenPage(nexus, module, itemName);
     _closeIfMissing(moduleAsync, itemAsync);
@@ -127,7 +133,12 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
       if (itemKey != null) Crumb(label: itemName ?? '…', nexusId: nexusId, moduleId: moduleId, itemKey: itemKey),
     ];
 
-    return Scaffold(
+    return PopScope(
+      canPop: !selecting,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) endSelect();
+      },
+      child: Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -183,14 +194,37 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                             embedded: true,
                           ),
                   ),
+                // A folder's own files, under its sub-folders and modules.
+                if (itemKey == null && moduleId != null && module?.kind == ModuleKind.collector)
+                  FolderAssets(nexusId: nexusId, moduleId: moduleId!),
               ],
             ),
           ),
         ],
       ),
+      bottomNavigationBar: !selecting
+          ? null
+          : BottomAppBar(
+              child: Row(children: [
+                IconButton(tooltip: MaterialLocalizations.of(context).closeButtonTooltip, icon: const Icon(Icons.close), onPressed: endSelect),
+                Expanded(child: Text(l10n.selectedCount.replaceAll('{n}', '${selection.length}'))),
+                FilledButton.icon(
+                  icon: const Icon(Icons.drive_file_move_outline),
+                  label: Text(l10n.moveTo),
+                  onPressed: () async {
+                    final picked = [
+                      for (final m in childrenAsync.valueOrNull ?? const <ModuleModel>[])
+                        if (selection.contains(m.id)) m,
+                    ];
+                    await moveModulesWithPicker(context, ref, picked);
+                    if (mounted) endSelect();
+                  },
+                ),
+              ]),
+            ),
       // Only a Collector holds modules (v5, APP docs/V5.md §8.8): on any
       // other page "new module" would have nowhere valid to put one.
-      floatingActionButton: moduleId != null && module?.kind != ModuleKind.collector
+      floatingActionButton: selecting || (moduleId != null && module?.kind != ModuleKind.collector)
           ? null
           : FloatingActionButton(
         tooltip: l10n.newModuleTooltip,
@@ -201,6 +235,7 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
         },
         child: const Icon(Icons.add),
       ),
+    ),
     );
   }
 }

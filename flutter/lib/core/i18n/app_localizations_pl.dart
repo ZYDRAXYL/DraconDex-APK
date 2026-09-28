@@ -2800,4 +2800,40 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get btnCreate => 'Utwórz';
+
+  @override
+  String get moveTo => 'Przenieś do…';
+
+  @override
+  String get moveToRoot => 'Najwyższy poziom';
+
+  @override
+  String get moveNewFolder => 'Nowy folder tutaj';
+
+  @override
+  String get moveDone => 'Przeniesiono do {name}';
+
+  @override
+  String get selectItems => 'Zaznacz';
+
+  @override
+  String get selectedCount => 'Zaznaczono: {n}';
+
+  @override
+  String get exportDxpack => 'Eksportuj jako .dxpack';
+
+  @override
+  String get exportDxpackD => 'Foldery i ich pliki, dla aplikacji na komputer';
+
+  @override
+  String get exportDxpackHint => 'Plik .dxpack zawiera te moduły, ich foldery i każdy plik w środku. Zaimportuj go w DraconDex na Windows, a na dysku powstaną te same foldery, z każdym plikiem na swoim miejscu.';
+
+  @override
+  String get folderFiles => 'Pliki';
+
+  @override
+  String get moveHere => 'Przenieś tutaj';
+
+  @override
+  String get moveIntoSelf => 'Folderu nie można przenieść do niego samego';
 }

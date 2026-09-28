@@ -2800,4 +2800,40 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get btnCreate => 'Aanmaken';
+
+  @override
+  String get moveTo => 'Verplaatsen naar…';
+
+  @override
+  String get moveToRoot => 'Hoogste niveau';
+
+  @override
+  String get moveNewFolder => 'Nieuwe map hier';
+
+  @override
+  String get moveDone => 'Verplaatst naar {name}';
+
+  @override
+  String get selectItems => 'Selecteren';
+
+  @override
+  String get selectedCount => '{n} geselecteerd';
+
+  @override
+  String get exportDxpack => 'Exporteren als .dxpack';
+
+  @override
+  String get exportDxpackD => 'Mappen en hun bestanden, voor de desktop-app';
+
+  @override
+  String get exportDxpackHint => 'Een .dxpack bevat deze modules, hun mappen en elk bestand erin. Importeer het in DraconDex voor Windows en dezelfde mappen worden op schijf aangemaakt, elk bestand op zijn plek.';
+
+  @override
+  String get folderFiles => 'Bestanden';
+
+  @override
+  String get moveHere => 'Hierheen verplaatsen';
+
+  @override
+  String get moveIntoSelf => 'Een map kan niet in zichzelf worden geplaatst';
 }

@@ -930,5 +930,17 @@
   "tplKindCount": "{n} şablon",
   "tplFieldsHead": "Alanlar",
   "btnApply": "Uygula",
-  "btnCreate": "Oluştur"
+  "btnCreate": "Oluştur",
+  "moveTo": "Taşı…",
+  "moveToRoot": "En üst düzey",
+  "moveNewFolder": "Buraya yeni klasör",
+  "moveDone": "{name} konumuna taşındı",
+  "selectItems": "Seç",
+  "selectedCount": "{n} seçildi",
+  "exportDxpack": ".dxpack olarak dışa aktar",
+  "exportDxpackD": "Klasörler ve dosyaları, masaüstü uygulaması için",
+  "exportDxpackHint": "Bir .dxpack bu modülleri, klasörlerini ve içlerindeki her dosyayı taşır. Windows'taki DraconDex'e aktarın; aynı klasörler diskte oluşturulur, her dosya yerine konur.",
+  "folderFiles": "Dosyalar",
+  "moveHere": "Buraya taşı",
+  "moveIntoSelf": "Bir klasör kendi içine taşınamaz"
 }

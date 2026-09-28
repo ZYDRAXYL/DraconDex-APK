@@ -930,5 +930,17 @@
   "tplKindCount": "{n} plantillas",
   "tplFieldsHead": "Campos",
   "btnApply": "Aplicar",
-  "btnCreate": "Crear"
+  "btnCreate": "Crear",
+  "moveTo": "Mover a…",
+  "moveToRoot": "Nivel superior",
+  "moveNewFolder": "Nueva carpeta aquí",
+  "moveDone": "Movido a {name}",
+  "selectItems": "Seleccionar",
+  "selectedCount": "{n} seleccionados",
+  "exportDxpack": "Exportar como .dxpack",
+  "exportDxpackD": "Carpetas y sus archivos, para la app de escritorio",
+  "exportDxpackHint": "Un .dxpack contiene estos módulos, sus carpetas y cada archivo dentro de ellas. Impórtalo en DraconDex para Windows y se crearán las mismas carpetas en el disco, con cada archivo en su lugar.",
+  "folderFiles": "Archivos",
+  "moveHere": "Mover aquí",
+  "moveIntoSelf": "Una carpeta no puede ir dentro de sí misma"
 }

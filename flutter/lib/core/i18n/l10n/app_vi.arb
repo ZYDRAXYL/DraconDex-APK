@@ -930,5 +930,17 @@
   "tplKindCount": "{n} mẫu",
   "tplFieldsHead": "Trường",
   "btnApply": "Áp dụng",
-  "btnCreate": "Tạo"
+  "btnCreate": "Tạo",
+  "moveTo": "Chuyển đến…",
+  "moveToRoot": "Cấp cao nhất",
+  "moveNewFolder": "Thư mục mới tại đây",
+  "moveDone": "Đã chuyển đến {name}",
+  "selectItems": "Chọn",
+  "selectedCount": "Đã chọn {n}",
+  "exportDxpack": "Xuất dạng .dxpack",
+  "exportDxpackD": "Thư mục và tệp bên trong, cho ứng dụng máy tính",
+  "exportDxpackHint": "Tệp .dxpack chứa các mô-đun này, thư mục của chúng và mọi tệp bên trong. Nhập vào DraconDex trên Windows, các thư mục giống hệt sẽ được tạo trên ổ đĩa, mỗi tệp đúng chỗ.",
+  "folderFiles": "Tệp",
+  "moveHere": "Chuyển đến đây",
+  "moveIntoSelf": "Không thể chuyển thư mục vào chính nó"
 }

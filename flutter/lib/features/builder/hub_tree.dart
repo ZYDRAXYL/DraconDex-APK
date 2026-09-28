@@ -11,6 +11,7 @@ import '../../providers/shell_layout_provider.dart';
 import '../../widgets/color_dot.dart';
 import '../../widgets/row_menu.dart';
 import '../hub/module_actions.dart';
+import '../hub/widgets/module_drag.dart';
 import 'hub_location.dart';
 
 /// The nest itself: every Nexus, unfoldable into the module tree under it.
@@ -99,7 +100,8 @@ class _NexusNode extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _TreeRow(
+        // The Nexus's top level takes a dropped module too, out of any folder.
+        FolderDropTarget(nexusId: nexus.id, folderId: null, folderName: nexus.name, child: _TreeRow(
           depth: 0,
           expanded: expanded,
           hasChildren: true,
@@ -113,7 +115,7 @@ class _NexusNode extends ConsumerWidget {
             ref.read(hubTreeExpansionProvider.notifier).expand([key]);
             context.go('/hub/${nexus.id}');
           },
-        ),
+        )),
         if (expanded)
           _ChildLevel(nexusId: nexus.id, parentId: null, depth: 1, current: current),
       ],
@@ -174,12 +176,12 @@ class _ModuleNode extends ConsumerWidget {
     final expanded = ref.watch(hubTreeExpansionProvider).contains(key);
     final selected = current.nexusId == nexusId && current.moduleId == module.id;
     final hasChildren = (module.childCount ?? 0) > 0;
-    List<RowAction> actions() => moduleRowActions(context, ref, module);
+    List<RowAction> actions() => moduleRowActions(context, ref, module, inTree: true);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _TreeRow(
+        draggableModule(nexusId: nexusId, module: module, child: _TreeRow(
           depth: depth,
           expanded: expanded,
           hasChildren: hasChildren,
@@ -203,7 +205,7 @@ class _ModuleNode extends ConsumerWidget {
             if (hasChildren) ref.read(hubTreeExpansionProvider.notifier).expand([key]);
             context.go('/hub/$nexusId/module/${module.id}');
           },
-        ),
+        )),
         if (expanded && hasChildren)
           _ChildLevel(nexusId: nexusId, parentId: module.id, depth: depth + 1, current: current),
       ],

@@ -930,5 +930,17 @@
   "tplKindCount": "{n} 个",
   "tplFieldsHead": "字段",
   "btnApply": "应用",
-  "btnCreate": "创建"
+  "btnCreate": "创建",
+  "moveTo": "移动到…",
+  "moveToRoot": "顶层",
+  "moveNewFolder": "在此新建文件夹",
+  "moveDone": "已移动到 {name}",
+  "selectItems": "选择",
+  "selectedCount": "已选 {n} 项",
+  "exportDxpack": "导出为 .dxpack",
+  "exportDxpackD": "文件夹及其中的文件，用于桌面版",
+  "exportDxpackHint": ".dxpack 包含这些模块、它们的文件夹以及其中的每个文件。在 Windows 版 DraconDex 中导入后，会在磁盘上建立相同的文件夹，并把每个文件放到对应位置。",
+  "folderFiles": "文件",
+  "moveHere": "移到这里",
+  "moveIntoSelf": "文件夹不能移入自身"
 }
