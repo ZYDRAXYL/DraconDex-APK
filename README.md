@@ -100,4 +100,4 @@ intentional.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Created by LDKTC.

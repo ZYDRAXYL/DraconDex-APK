@@ -31,92 +31,95 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.moduleSettings)),
       body: ListView(
-        children: _iosGrouped(context, [
-          _SectionHeader(l10n.settingsAppearance),
-          const ThemePickerSection(),
-          ListTile(
-            title: Text(l10n.uiScaleLabel),
-            subtitle: Slider(
-              value: settings.uiScale,
-              min: 0.5,
-              max: 2.0,
-              divisions: 15,
-              label: '${(settings.uiScale * 100).round()}%',
-              onChanged: (v) => notifier.setUiScale(v),
+        children: [
+          ..._iosGrouped(context, [
+            _SectionHeader(l10n.settingsAppearance),
+            const ThemePickerSection(),
+            ListTile(
+              title: Text(l10n.uiScaleLabel),
+              subtitle: Slider(
+                value: settings.uiScale,
+                min: 0.5,
+                max: 2.0,
+                divisions: 15,
+                label: '${(settings.uiScale * 100).round()}%',
+                onChanged: (v) => notifier.setUiScale(v),
+              ),
             ),
-          ),
-          ListTile(
-            title: Text(l10n.moduleNameMode),
-            subtitle: Text(l10n.moduleNameModeHint),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-            child: SegmentedButton<bool>(
-              showSelectedIcon: false,
-              segments: [
-                ButtonSegment(value: true, label: Text(l10n.nameModeClassic)),
-                ButtonSegment(value: false, label: Text(l10n.nameModeUnique)),
-              ],
-              selected: {settings.classicNames},
-              onSelectionChanged: (v) => notifier.setClassicNames(v.first),
+            ListTile(
+              title: Text(l10n.moduleNameMode),
+              subtitle: Text(l10n.moduleNameModeHint),
             ),
-          ),
-          const Divider(),
-          _SectionHeader(l10n.languageLabel),
-          RadioGroup<String>(
-            groupValue: settings.locale.languageCode,
-            onChanged: (v) { if (v != null) notifier.setLocale(Locale(v)); },
-            child: Column(
-              children: _supportedLocales.entries.map((e) => RadioListTile<String>(
-                title: Text(e.value),
-                value: e.key,
-              )).toList(),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: SegmentedButton<bool>(
+                showSelectedIcon: false,
+                segments: [
+                  ButtonSegment(value: true, label: Text(l10n.nameModeClassic)),
+                  ButtonSegment(value: false, label: Text(l10n.nameModeUnique)),
+                ],
+                selected: {settings.classicNames},
+                onSelectionChanged: (v) => notifier.setClassicNames(v.first),
+              ),
             ),
-          ),
-          const Divider(),
-          _SectionHeader(l10n.settingsData),
-          ListTile(
-            leading: const Icon(Icons.upload),
-            title: Text(l10n.exportDbTitle),
-            subtitle: Text(l10n.exportDbSubtitle),
-            onTap: () => _export(context, l10n),
-          ),
-          ListTile(
-            leading: const Icon(Icons.download),
-            title: Text(l10n.importDbTitle),
-            subtitle: Text(l10n.importDbSubtitle),
-            onTap: () => _import(context, ref, l10n),
-          ),
-          ..._driveTiles(context, ref, l10n),
-          // Same spot as the Google sign-in above, deliberately: both answer
-          // "where does my data go besides this device?". Neither is
-          // platform-gated any more — both are plain https, so they work on
-          // Android and on the web/PWA build alike.
-          _supabaseTile(context, ref, l10n),
-          // Next to export/import and the cloud tiles because it answers the
-          // same question they do — "how does this leave the device?" — and
-          // differs only in needing no account and keeping nothing.
-          ListTile(
-            leading: const Icon(Icons.swap_horiz),
-            title: Text(l10n.transferTitle),
-            subtitle: Text(l10n.transferSubtitle),
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(builder: (_) => const TransferScreen()),
+            const Divider(),
+            _SectionHeader(l10n.languageLabel),
+            RadioGroup<String>(
+              groupValue: settings.locale.languageCode,
+              onChanged: (v) { if (v != null) notifier.setLocale(Locale(v)); },
+              child: Column(
+                children: _supportedLocales.entries.map((e) => RadioListTile<String>(
+                  title: Text(e.value),
+                  value: e.key,
+                )).toList(),
+              ),
             ),
-          ),
-          const Divider(),
-          _SectionHeader(l10n.settingsAbout),
-          ListTile(
-            title: Text(l10n.appName),
-            subtitle: Text('${l10n.nexusSubtitle} · v${ref.watch(appVersionProvider).valueOrNull ?? '…'}'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.system_update_alt),
-            title: Text(l10n.checkUpdatesTitle),
-            subtitle: Text(l10n.checkUpdatesSubtitle),
-            onTap: () => _checkForUpdates(context, ref, l10n),
-          ),
-        ]),
+            const Divider(),
+            _SectionHeader(l10n.settingsData),
+            ListTile(
+              leading: const Icon(Icons.upload),
+              title: Text(l10n.exportDbTitle),
+              subtitle: Text(l10n.exportDbSubtitle),
+              onTap: () => _export(context, l10n),
+            ),
+            ListTile(
+              leading: const Icon(Icons.download),
+              title: Text(l10n.importDbTitle),
+              subtitle: Text(l10n.importDbSubtitle),
+              onTap: () => _import(context, ref, l10n),
+            ),
+            ..._driveTiles(context, ref, l10n),
+            // Same spot as the Google sign-in above, deliberately: both answer
+            // "where does my data go besides this device?". Neither is
+            // platform-gated any more — both are plain https, so they work on
+            // Android and on the web/PWA build alike.
+            _supabaseTile(context, ref, l10n),
+            // Next to export/import and the cloud tiles because it answers the
+            // same question they do — "how does this leave the device?" — and
+            // differs only in needing no account and keeping nothing.
+            ListTile(
+              leading: const Icon(Icons.swap_horiz),
+              title: Text(l10n.transferTitle),
+              subtitle: Text(l10n.transferSubtitle),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (_) => const TransferScreen()),
+              ),
+            ),
+            const Divider(),
+            _SectionHeader(l10n.settingsAbout),
+            ListTile(
+              title: Text(l10n.appName),
+              subtitle: Text('${l10n.nexusSubtitle} · v${ref.watch(appVersionProvider).valueOrNull ?? '…'}'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.system_update_alt),
+              title: Text(l10n.checkUpdatesTitle),
+              subtitle: Text(l10n.checkUpdatesSubtitle),
+              onTap: () => _checkForUpdates(context, ref, l10n),
+            ),
+          ]),
+          const _CreditLine(),
+        ],
       ),
     );
   }
@@ -363,6 +366,25 @@ class _SectionHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
       child: Text(title, style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary)),
+    );
+  }
+}
+
+/// The credit line at the very bottom of Settings — quiet, theme-coloured,
+/// only seen by someone who scrolls all the way down.
+class _CreditLine extends StatelessWidget {
+  const _CreditLine();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+      child: Text(
+        'Created by LDKTC',
+        textAlign: TextAlign.center,
+        style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+      ),
     );
   }
 }
