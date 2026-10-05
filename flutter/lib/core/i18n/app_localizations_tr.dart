@@ -1599,13 +1599,58 @@ class AppLocalizationsTr extends AppLocalizations {
   String get guideAdd => 'Rehberi ekle';
 
   @override
-  String get mddxImport => 'Bir modül dosyası içe aktar (.mddx)';
+  String get mddxImport => 'Bir modül dosyası içe aktar (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => '.mddx olarak dışa aktar';
+  String get mddxExport => '.ddata + .dpage olarak dışa aktar';
 
   @override
   String get mddxNotModule => 'Bu dosya bir DraconDex modülü değil';
+
+  @override
+  String get pbHideTablet => 'Tablet';
+
+  @override
+  String get moduleFileNeedsData => '.dpage yalnızca sayfadır — .ddata dosyasını da birlikte seçin';
+
+  @override
+  String get pcDataTable => 'Veri tablosu';
+
+  @override
+  String get pcLinkText => 'Bağlantı metni';
+
+  @override
+  String get pcSearchBox => 'Arama kutusu';
+
+  @override
+  String get pcCategories => 'Bu sayfanın kategorileri';
+
+  @override
+  String get pcDataTablePick => '⚙ Seçenekler’den bir Classifier seçin';
+
+  @override
+  String get pcOptLead => 'Bağlantılardan önceki metin';
+
+  @override
+  String get pcOptFilter => 'Yalnızca şunu içeren satırlar';
+
+  @override
+  String get pcOptSortDir => 'Sıra';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Satır';
+
+  @override
+  String get pcOptScope => 'Şurada ara (boş = tüm Nexus)';
+
+  @override
+  String get leftSearchNone => 'Bulunamadı';
 
   @override
   String get kindCatStructure => 'Yapı';
@@ -1749,7 +1794,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get kindClassicDiviner => 'Rastgele tablo';
 
   @override
+  String get kindClassicPage => 'Sayfa';
+
+  @override
   String get kindDescDiviner => 'Rastgele tablolar ve zar atışları';
+
+  @override
+  String get kindDescPage => 'Kendi başına bir sayfa — başlıklar, metin, bağlantılar, arama kutusu ve diğer modüllerin görünümleri, satır ve sütunlarda. Kendisi veri tutmaz.';
 
   @override
   String get moduleNameMode => 'Modül adları';
@@ -1911,7 +1962,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get exportEpubHint => 'Bölüm başına bir dosya ve içindekiler; kitap sayfasının başlık kapağı kapak olur.';
 
   @override
-  String get exportMddxHint => 'Başka bir DraconDex kasasının içe aktarabileceği bir .mddx dosyası.';
+  String get exportMddxHint => 'Başka bir DraconDex kasasının birlikte içe aktardığı iki dosya: .ddata (verisi) ve .dpage (sayfası).';
 
   @override
   String get exportFormulaSkipped => 'Alınmayan formül alanları: {names}';

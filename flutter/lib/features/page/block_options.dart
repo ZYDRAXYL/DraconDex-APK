@@ -143,6 +143,19 @@ const Map<String, List<OptDef>> componentOptions = {
     OptDef('links', OptType.links, 'pbLinks', grouped: true),
     OptDef('start', OptType.select, 'pcOptStart', choices: ['open', 'closed'], choicePrefix: 'pbColl', defaultValue: 'open'),
   ],
+  // the site set (EXE components/site.js); a data table's fields and sort
+  // field are read as the desktop set them, not edited here
+  'core.linktext': [
+    OptDef('lead', OptType.text, 'pcOptLead', max: 200),
+    OptDef('links', OptType.links, 'pbLinks'),
+  ],
+  'core.datatable': [
+    OptDef('source', OptType.module, 'pcOptSource'),
+    OptDef('filter', OptType.text, 'pcOptFilter', max: 80),
+    OptDef('sortDir', OptType.select, 'pcOptSortDir', choices: ['asc', 'desc'], choicePrefix: 'pcSort', defaultValue: 'asc'),
+    OptDef('rows', OptType.number, 'pcOptRows', min: 1, max: 500, defaultValue: 25),
+  ],
+  'core.search': [OptDef('scope', OptType.module, 'pcOptScope')],
   'core.children': [
     OptDef('depth', OptType.number, 'pcOptDepth', min: 1, max: 3, defaultValue: 1),
     OptDef('layout', OptType.select, 'pcOptLayout', choices: ['list', 'tree', 'cards'], choicePrefix: 'pcKids', defaultValue: 'list'),

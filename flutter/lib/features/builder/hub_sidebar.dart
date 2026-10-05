@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/i18n/app_localizations.dart';
+import '../../providers/module_provider.dart';
 import '../../providers/shell_layout_provider.dart';
+import 'hub_location.dart';
 import 'hub_tree.dart';
 
 /// The tablet shell's hub panel — the Electron build's `#left-panel` on a
@@ -27,6 +29,10 @@ class HubSidebar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    // headed by the Nexus being worked in, as the desktop's Nest is (APP
+    // Procress 16 part 2); the tree below still holds every Nexus
+    final nexusId = HubLocation.parse(location).nexusId;
+    final nexusName = nexusId == null ? null : ref.watch(nexusProvider(nexusId)).valueOrNull?.name;
 
     return Material(
       color: theme.colorScheme.surface,
@@ -39,7 +45,7 @@ class HubSidebar extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _PanelHead(title: l10n.hubNestTitle, onClose: onClose),
+              _PanelHead(title: nexusName ?? l10n.hubNestTitle, onClose: onClose),
               Divider(height: 1, color: theme.dividerColor),
               Expanded(
                 child: SingleChildScrollView(

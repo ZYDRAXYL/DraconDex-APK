@@ -1602,13 +1602,58 @@ class AppLocalizationsRu extends AppLocalizations {
   String get guideAdd => 'Добавить руководство';
 
   @override
-  String get mddxImport => 'Импорт файла модуля (.mddx)';
+  String get mddxImport => 'Импорт файла модуля (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Экспорт в .mddx';
+  String get mddxExport => 'Экспорт в .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'Этот файл не является модулем DraconDex';
+
+  @override
+  String get pbHideTablet => 'Планшет';
+
+  @override
+  String get moduleFileNeedsData => '.dpage — это только страница: выберите вместе с ним его .ddata';
+
+  @override
+  String get pcDataTable => 'Таблица данных';
+
+  @override
+  String get pcLinkText => 'Текст-ссылка';
+
+  @override
+  String get pcSearchBox => 'Поле поиска';
+
+  @override
+  String get pcCategories => 'Категории этой страницы';
+
+  @override
+  String get pcDataTablePick => 'Выберите Classifier в ⚙ Параметрах';
+
+  @override
+  String get pcOptLead => 'Текст перед ссылками';
+
+  @override
+  String get pcOptFilter => 'Только строки с';
+
+  @override
+  String get pcOptSortDir => 'Порядок';
+
+  @override
+  String get pcSortAsc => 'А → Я';
+
+  @override
+  String get pcSortDesc => 'Я → А';
+
+  @override
+  String get pcOptRows => 'Строк';
+
+  @override
+  String get pcOptScope => 'Искать в (пусто = весь Nexus)';
+
+  @override
+  String get leftSearchNone => 'Ничего не найдено';
 
   @override
   String get kindCatStructure => 'Структура';
@@ -1752,7 +1797,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get kindClassicDiviner => 'Случайная таблица';
 
   @override
+  String get kindClassicPage => 'Страница';
+
+  @override
   String get kindDescDiviner => 'Случайные таблицы и броски костей';
+
+  @override
+  String get kindDescPage => 'Отдельная страница — заголовки, текст, ссылки, поле поиска и виды других модулей в строках и колонках. Своих данных не хранит.';
 
   @override
   String get moduleNameMode => 'Имена модулей';
@@ -1914,7 +1965,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get exportEpubHint => 'По файлу на главу и оглавление; обложка заголовка страницы книги станет обложкой.';
 
   @override
-  String get exportMddxHint => 'Файл .mddx, который импортирует другое хранилище DraconDex.';
+  String get exportMddxHint => 'Два файла — .ddata (данные) и .dpage (страница), — которые другое хранилище DraconDex импортирует вместе.';
 
   @override
   String get exportFormulaSkipped => 'Пропущены поля-формулы: {names}';

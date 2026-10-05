@@ -1599,13 +1599,58 @@ class AppLocalizationsIt extends AppLocalizations {
   String get guideAdd => 'Aggiungi la guida';
 
   @override
-  String get mddxImport => 'Importa un file modulo (.mddx)';
+  String get mddxImport => 'Importa un file modulo (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Esporta come .mddx';
+  String get mddxExport => 'Esporta come .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'Quel file non è un modulo DraconDex';
+
+  @override
+  String get pbHideTablet => 'Tablet';
+
+  @override
+  String get moduleFileNeedsData => 'Un .dpage è solo la pagina: scegli anche il suo .ddata';
+
+  @override
+  String get pcDataTable => 'Tabella dati';
+
+  @override
+  String get pcLinkText => 'Testo con link';
+
+  @override
+  String get pcSearchBox => 'Casella di ricerca';
+
+  @override
+  String get pcCategories => 'Categorie di questa pagina';
+
+  @override
+  String get pcDataTablePick => 'Scegli un Classifier in ⚙ Opzioni';
+
+  @override
+  String get pcOptLead => 'Testo prima dei link';
+
+  @override
+  String get pcOptFilter => 'Solo righe che contengono';
+
+  @override
+  String get pcOptSortDir => 'Ordine';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Righe';
+
+  @override
+  String get pcOptScope => 'Cerca in (vuoto = tutto il Nexus)';
+
+  @override
+  String get leftSearchNone => 'Nessun risultato';
 
   @override
   String get kindCatStructure => 'Struttura';
@@ -1749,7 +1794,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get kindClassicDiviner => 'Tabella casuale';
 
   @override
+  String get kindClassicPage => 'Pagina';
+
+  @override
   String get kindDescDiviner => 'Tabelle casuali e tiri di dado';
+
+  @override
+  String get kindDescPage => 'Una pagina a sé: titoli, testo, link, una casella di ricerca e viste di altri moduli, in righe e colonne. Non contiene dati.';
 
   @override
   String get moduleNameMode => 'Nomi dei moduli';
@@ -1911,7 +1962,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get exportEpubHint => 'Un file per capitolo con indice; la copertina del titolo della pagina del libro diventa la copertina.';
 
   @override
-  String get exportMddxHint => 'Un file .mddx che un altro vault DraconDex può importare.';
+  String get exportMddxHint => 'Due file — .ddata (i dati) e .dpage (la pagina) — che un altro vault DraconDex importa insieme.';
 
   @override
   String get exportFormulaSkipped => 'Campi formula omessi: {names}';

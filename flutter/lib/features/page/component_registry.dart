@@ -151,7 +151,8 @@ final Map<String, ComponentDef> components = {
 /// collector has none — it is its children — and every other kind gets
 /// Properties, its own view on the preset it was last left on, and Related.
 List<NewBlock> defaultPageLayout(ModuleKind kind, String? activeView) {
-  if (kind == ModuleKind.collector) return const [];
+  // a page is only what you put on it (EXE registry.js, Procress 16 part 3a)
+  if (kind == ModuleKind.collector || kind == ModuleKind.page) return const [];
   return [
     const NewBlock(component: 'core.properties'),
     NewBlock(component: kindViewId(kind), config: activeView == null || activeView.isEmpty ? null : {'preset': activeView}),

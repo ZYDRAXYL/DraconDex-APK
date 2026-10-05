@@ -1602,13 +1602,58 @@ class AppLocalizationsZh extends AppLocalizations {
   String get guideAdd => '添加指南';
 
   @override
-  String get mddxImport => '导入模块文件 (.mddx)';
+  String get mddxImport => '导入模块文件 (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => '导出为 .mddx';
+  String get mddxExport => '导出为 .ddata + .dpage';
 
   @override
   String get mddxNotModule => '该文件不是 DraconDex 模块';
+
+  @override
+  String get pbHideTablet => '平板';
+
+  @override
+  String get moduleFileNeedsData => '.dpage 只是页面——请同时选择它的 .ddata';
+
+  @override
+  String get pcDataTable => '数据表';
+
+  @override
+  String get pcLinkText => '链接文字';
+
+  @override
+  String get pcSearchBox => '搜索框';
+
+  @override
+  String get pcCategories => '本页分类';
+
+  @override
+  String get pcDataTablePick => '在 ⚙ 选项中选择一个 Classifier';
+
+  @override
+  String get pcOptLead => '链接前的文字';
+
+  @override
+  String get pcOptFilter => '仅含此文字的行';
+
+  @override
+  String get pcOptSortDir => '顺序';
+
+  @override
+  String get pcSortAsc => '升序';
+
+  @override
+  String get pcSortDesc => '降序';
+
+  @override
+  String get pcOptRows => '行数';
+
+  @override
+  String get pcOptScope => '搜索范围（空 = 整个 Nexus）';
+
+  @override
+  String get leftSearchNone => '未找到';
 
   @override
   String get kindCatStructure => '结构';
@@ -1752,7 +1797,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get kindClassicDiviner => '随机表';
 
   @override
+  String get kindClassicPage => '页面';
+
+  @override
   String get kindDescDiviner => '随机表与掷骰';
+
+  @override
+  String get kindDescPage => '独立的页面 — 用行和列排布标题、文字、链接、搜索框和其他模块的视图。本身不存数据。';
 
   @override
   String get moduleNameMode => '模块名称';
@@ -1914,7 +1965,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get exportEpubHint => '每章一个文件并附目录；书页标题封面即为封面。';
 
   @override
-  String get exportMddxHint => '另一个 DraconDex 库可导入的 .mddx 文件。';
+  String get exportMddxHint => '两个文件——.ddata（数据）和 .dpage（页面）——可一起导入另一个 DraconDex 库。';
 
   @override
   String get exportFormulaSkipped => '未包含的公式字段：{names}';

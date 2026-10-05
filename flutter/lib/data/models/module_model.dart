@@ -56,7 +56,10 @@ enum ModuleKind {
   sketcher,
   designer,
   // V5.md §11.5 — random tables and dice.
-  diviner;
+  diviner,
+  // APP Procress 16 part 3a: a page with no data of its own — it shows other
+  // modules' through its components (SDB vault.sql, EXE hub/kinds.js).
+  page;
 
   String get id => name;
 
@@ -130,6 +133,7 @@ String kindName(AppLocalizations l, ModuleKind k) => !KindNames.classic
         ModuleKind.sketcher => l.kindClassicSketcher,
         ModuleKind.designer => l.kindClassicDesigner,
         ModuleKind.diviner => l.kindClassicDiviner,
+        ModuleKind.page => l.kindClassicPage,
       };
 
 /// What a kind is for, in the UI language (EXE KIND_DESC_KEY).
@@ -149,6 +153,7 @@ String kindDesc(AppLocalizations l, ModuleKind k) => switch (k) {
       ModuleKind.sketcher => l.kindDescSketcher,
       ModuleKind.designer => l.kindDescDesigner,
       ModuleKind.diviner => l.kindDescDiviner,
+      ModuleKind.page => l.kindDescPage,
     };
 
 /// [label] and [description] are the unique English names, kept for logs
@@ -292,6 +297,14 @@ const Map<ModuleKind, ModuleKindInfo> moduleKindInfo = {
     label: 'Diviner',
     icon: Icons.casino_outlined,
     description: 'Random tables and dice rolls',
+    contentImplemented: true,
+  ),
+  ModuleKind.page: ModuleKindInfo(
+    kind: ModuleKind.page,
+    category: ModuleCategory.view,
+    label: 'Page',
+    icon: Icons.public,
+    description: 'A page of its own, laid out in rows and columns',
     contentImplemented: true,
   ),
 };

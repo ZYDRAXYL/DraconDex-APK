@@ -3315,13 +3315,13 @@ abstract class AppLocalizations {
   /// No description provided for @mddxImport.
   ///
   /// In en, this message translates to:
-  /// **'Import a module file (.mddx)'**
+  /// **'Import a module file (.ddata + .dpage / .mddx)'**
   String get mddxImport;
 
   /// No description provided for @mddxExport.
   ///
   /// In en, this message translates to:
-  /// **'Export as .mddx'**
+  /// **'Export as .ddata + .dpage'**
   String get mddxExport;
 
   /// No description provided for @mddxNotModule.
@@ -3329,6 +3329,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'That file is not a DraconDex module'**
   String get mddxNotModule;
+
+  /// No description provided for @pbHideTablet.
+  ///
+  /// In en, this message translates to:
+  /// **'Tablet'**
+  String get pbHideTablet;
+
+  /// No description provided for @moduleFileNeedsData.
+  ///
+  /// In en, this message translates to:
+  /// **'A .dpage is only the page — pick its .ddata with it'**
+  String get moduleFileNeedsData;
+
+  /// No description provided for @pcDataTable.
+  ///
+  /// In en, this message translates to:
+  /// **'Data table'**
+  String get pcDataTable;
+
+  /// No description provided for @pcLinkText.
+  ///
+  /// In en, this message translates to:
+  /// **'Link text'**
+  String get pcLinkText;
+
+  /// No description provided for @pcSearchBox.
+  ///
+  /// In en, this message translates to:
+  /// **'Search box'**
+  String get pcSearchBox;
+
+  /// No description provided for @pcCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories of this page'**
+  String get pcCategories;
+
+  /// No description provided for @pcDataTablePick.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a Classifier in ⚙ Options'**
+  String get pcDataTablePick;
+
+  /// No description provided for @pcOptLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Text before the links'**
+  String get pcOptLead;
+
+  /// No description provided for @pcOptFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Only rows containing'**
+  String get pcOptFilter;
+
+  /// No description provided for @pcOptSortDir.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get pcOptSortDir;
+
+  /// No description provided for @pcSortAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'A → Z'**
+  String get pcSortAsc;
+
+  /// No description provided for @pcSortDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Z → A'**
+  String get pcSortDesc;
+
+  /// No description provided for @pcOptRows.
+  ///
+  /// In en, this message translates to:
+  /// **'Rows'**
+  String get pcOptRows;
+
+  /// No description provided for @pcOptScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Search in (empty = the whole Nexus)'**
+  String get pcOptScope;
+
+  /// No description provided for @leftSearchNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found'**
+  String get leftSearchNone;
 
   /// No description provided for @kindCatStructure.
   ///
@@ -3612,11 +3702,23 @@ abstract class AppLocalizations {
   /// **'Random table'**
   String get kindClassicDiviner;
 
+  /// No description provided for @kindClassicPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Page'**
+  String get kindClassicPage;
+
   /// No description provided for @kindDescDiviner.
   ///
   /// In en, this message translates to:
   /// **'Random tables and dice rolls'**
   String get kindDescDiviner;
+
+  /// No description provided for @kindDescPage.
+  ///
+  /// In en, this message translates to:
+  /// **'A page of its own — headings, text, links, a search box and views of other modules, laid out in rows and columns. It holds no data itself.'**
+  String get kindDescPage;
 
   /// No description provided for @moduleNameMode.
   ///

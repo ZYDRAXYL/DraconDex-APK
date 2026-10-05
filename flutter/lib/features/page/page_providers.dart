@@ -36,7 +36,7 @@ class PageData {
 
   /// A columns block's children, per column.
   List<List<PageBlock>> columnsOf(PageBlock columns) {
-    final n = ((columns.config['n'] as num?)?.toInt() ?? 2).clamp(1, 3);
+    final n = rowWidths(columns.config)!.length;
     final out = List.generate(n, (_) => <PageBlock>[]);
     for (final b in blocks) {
       if (b.parentId == columns.id) out[b.column.clamp(0, n - 1)].add(b);

@@ -1602,13 +1602,58 @@ class AppLocalizationsId extends AppLocalizations {
   String get guideAdd => 'Tambah panduan';
 
   @override
-  String get mddxImport => 'Impor berkas modul (.mddx)';
+  String get mddxImport => 'Impor berkas modul (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Ekspor sebagai .mddx';
+  String get mddxExport => 'Ekspor sebagai .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'Berkas itu bukan modul DraconDex';
+
+  @override
+  String get pbHideTablet => 'Tablet';
+
+  @override
+  String get moduleFileNeedsData => '.dpage hanya halamannya — pilih juga .ddata-nya';
+
+  @override
+  String get pcDataTable => 'Tabel data';
+
+  @override
+  String get pcLinkText => 'Teks tautan';
+
+  @override
+  String get pcSearchBox => 'Kotak pencarian';
+
+  @override
+  String get pcCategories => 'Kategori halaman ini';
+
+  @override
+  String get pcDataTablePick => 'Pilih Classifier di ⚙ Opsi';
+
+  @override
+  String get pcOptLead => 'Teks sebelum tautan';
+
+  @override
+  String get pcOptFilter => 'Hanya baris berisi';
+
+  @override
+  String get pcOptSortDir => 'Urutan';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Jumlah baris';
+
+  @override
+  String get pcOptScope => 'Cari di (kosong = seluruh Nexus)';
+
+  @override
+  String get leftSearchNone => 'Tidak ditemukan';
 
   @override
   String get kindCatStructure => 'Struktur';
@@ -1752,7 +1797,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get kindClassicDiviner => 'Tabel acak';
 
   @override
+  String get kindClassicPage => 'Halaman';
+
+  @override
   String get kindDescDiviner => 'Tabel acak dan lempar dadu';
+
+  @override
+  String get kindDescPage => 'Halaman tersendiri — judul, teks, tautan, kotak pencarian, dan tampilan modul lain, diatur dalam baris dan kolom. Tidak menyimpan data sendiri.';
 
   @override
   String get moduleNameMode => 'Nama modul';
@@ -1914,7 +1965,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get exportEpubHint => 'Satu file per bab dengan daftar isi; sampul judul halaman buku menjadi sampulnya.';
 
   @override
-  String get exportMddxHint => 'File .mddx yang bisa diimpor vault DraconDex lain.';
+  String get exportMddxHint => 'Dua file — .ddata (datanya) dan .dpage (halamannya) — yang diimpor bersama oleh vault DraconDex lain.';
 
   @override
   String get exportFormulaSkipped => 'Field rumus tidak disertakan: {names}';

@@ -1599,13 +1599,58 @@ class AppLocalizationsNl extends AppLocalizations {
   String get guideAdd => 'De gids toevoegen';
 
   @override
-  String get mddxImport => 'Een modulebestand importeren (.mddx)';
+  String get mddxImport => 'Een modulebestand importeren (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Exporteren als .mddx';
+  String get mddxExport => 'Exporteren als .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'Dat bestand is geen DraconDex-module';
+
+  @override
+  String get pbHideTablet => 'Tablet';
+
+  @override
+  String get moduleFileNeedsData => 'Een .dpage is alleen de pagina — kies de bijbehorende .ddata erbij';
+
+  @override
+  String get pcDataTable => 'Gegevenstabel';
+
+  @override
+  String get pcLinkText => 'Linktekst';
+
+  @override
+  String get pcSearchBox => 'Zoekvak';
+
+  @override
+  String get pcCategories => 'Categorieën van deze pagina';
+
+  @override
+  String get pcDataTablePick => 'Kies een Classifier in ⚙ Opties';
+
+  @override
+  String get pcOptLead => 'Tekst vóór de links';
+
+  @override
+  String get pcOptFilter => 'Alleen rijen met';
+
+  @override
+  String get pcOptSortDir => 'Volgorde';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Rijen';
+
+  @override
+  String get pcOptScope => 'Zoeken in (leeg = hele Nexus)';
+
+  @override
+  String get leftSearchNone => 'Niets gevonden';
 
   @override
   String get kindCatStructure => 'Structuur';
@@ -1749,7 +1794,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get kindClassicDiviner => 'Willekeurige tabel';
 
   @override
+  String get kindClassicPage => 'Pagina';
+
+  @override
   String get kindDescDiviner => 'Willekeurige tabellen en dobbelworpen';
+
+  @override
+  String get kindDescPage => 'Een eigen pagina — koppen, tekst, links, een zoekvak en weergaven van andere modules, in rijen en kolommen. Bevat zelf geen gegevens.';
 
   @override
   String get moduleNameMode => 'Modulenamen';
@@ -1911,7 +1962,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get exportEpubHint => 'Eén bestand per hoofdstuk met inhoudsopgave; de titelomslag van de boekpagina wordt de omslag.';
 
   @override
-  String get exportMddxHint => 'Een .mddx-bestand dat een andere DraconDex-kluis kan importeren.';
+  String get exportMddxHint => 'Twee bestanden — .ddata (de gegevens) en .dpage (de pagina) — die een andere DraconDex-kluis samen importeert.';
 
   @override
   String get exportFormulaSkipped => 'Weggelaten formulevelden: {names}';

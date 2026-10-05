@@ -14,7 +14,7 @@ void main() {
     }
     expect(by[ModuleCategory.structure], ['collector']);
     // v5 (V5.md §3) folded viewer + connector into exhibitor.
-    expect((by[ModuleCategory.view]!..sort()), ['exhibitor', 'manager']);
+    expect((by[ModuleCategory.view]!..sort()), ['exhibitor', 'manager', 'page']);
     expect(by[ModuleCategory.data]!.length, 12);
     // Notes live in module.description, yet they are data (§9.1).
     expect(moduleKindInfo[ModuleKind.inspector]!.category, ModuleCategory.data);

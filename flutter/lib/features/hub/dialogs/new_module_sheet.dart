@@ -22,7 +22,7 @@ import 'artisan_sheet.dart';
 /// structure · view · data, and five sub-groups under data.
 const kindGroups = <(ModuleCategory, String?, List<ModuleKind>)>[
   (ModuleCategory.structure, null, [ModuleKind.collector]),
-  (ModuleCategory.view, null, [ModuleKind.manager, ModuleKind.exhibitor]),
+  (ModuleCategory.view, null, [ModuleKind.page, ModuleKind.manager, ModuleKind.exhibitor]),
   (ModuleCategory.data, 'notes', [ModuleKind.inspector, ModuleKind.drafter]),
   (ModuleCategory.data, 'data', [ModuleKind.classifier, ModuleKind.diviner]),
   (ModuleCategory.data, 'mapTime', [ModuleKind.locator, ModuleKind.chronicler, ModuleKind.wanderer]),
@@ -115,15 +115,16 @@ Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId
       refreshTree(ref, nexusId);
       router.push(RecentView.locationFor(nexusId, id));
     case 'mddx':
-      final res = await FilePicker.platform.pickFiles(withData: true);
-      final bytes = res?.files.firstOrNull?.bytes;
-      if (bytes == null) return;
-      final id = await Mddx.import(db, nexusId, parentId, bytes);
+      // a module is a .ddata + .dpage pair (or one older .mddx): pick both at once
+      final res = await FilePicker.platform.pickFiles(withData: true, allowMultiple: true);
+      final files = [for (final f in res?.files ?? const <PlatformFile>[]) if (f.bytes != null) (name: f.name, bytes: f.bytes!)];
+      if (files.isEmpty) return;
+      final id = await Mddx.import(db, nexusId, parentId, files);
       refreshTree(ref, nexusId);
       if (id != null) {
         router.push(RecentView.locationFor(nexusId, id));
       } else if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l.mddxNotModule)));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(Mddx.onlyPages(files) ? l.moduleFileNeedsData : l.mddxNotModule)));
       }
     case 'csv':
       router.push('/csv/$nexusId');

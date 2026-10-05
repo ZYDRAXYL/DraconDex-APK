@@ -349,8 +349,6 @@ Future<void> editPropSheet(BuildContext context, WidgetRef ref, ComponentCtx ctx
     await dao.setProp(ctx.page.module.id, ctx.itemKey, prop?.id, name.text.trim(), v, type: type);
     ref.invalidate(pageProvider(ctx.key));
   }
-  name.dispose();
-  value.dispose();
 }
 
 /// Deletes a block with an Undo in the snackbar rather than a confirm

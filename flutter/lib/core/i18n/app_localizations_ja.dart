@@ -1602,13 +1602,58 @@ class AppLocalizationsJa extends AppLocalizations {
   String get guideAdd => 'ガイドを追加';
 
   @override
-  String get mddxImport => 'モジュールファイルを取り込む (.mddx)';
+  String get mddxImport => 'モジュールファイルを取り込む (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => '.mddxで書き出す';
+  String get mddxExport => '.ddata + .dpageで書き出す';
 
   @override
   String get mddxNotModule => 'そのファイルはDraconDexのモジュールではありません';
+
+  @override
+  String get pbHideTablet => 'タブレット';
+
+  @override
+  String get moduleFileNeedsData => '.dpage はページだけです — 対の .ddata も一緒に選んでください';
+
+  @override
+  String get pcDataTable => 'データ表';
+
+  @override
+  String get pcLinkText => 'リンクテキスト';
+
+  @override
+  String get pcSearchBox => '検索ボックス';
+
+  @override
+  String get pcCategories => 'このページのカテゴリ';
+
+  @override
+  String get pcDataTablePick => '⚙ オプションで Classifier を選んでください';
+
+  @override
+  String get pcOptLead => 'リンクの前の文';
+
+  @override
+  String get pcOptFilter => '含む行だけ';
+
+  @override
+  String get pcOptSortDir => '順序';
+
+  @override
+  String get pcSortAsc => '昇順';
+
+  @override
+  String get pcSortDesc => '降順';
+
+  @override
+  String get pcOptRows => '行数';
+
+  @override
+  String get pcOptScope => '検索範囲（空 = Nexus 全体）';
+
+  @override
+  String get leftSearchNone => '見つかりません';
 
   @override
   String get kindCatStructure => '構造';
@@ -1752,7 +1797,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get kindClassicDiviner => 'ランダム表';
 
   @override
+  String get kindClassicPage => 'ページ';
+
+  @override
   String get kindDescDiviner => 'ランダム表とダイスロール';
+
+  @override
+  String get kindDescPage => '独立したページ — 見出し・本文・リンク・検索ボックス・他モジュールのビューを行と列に並べます。データ自体は持ちません。';
 
   @override
   String get moduleNameMode => 'モジュール名';
@@ -1914,7 +1965,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get exportEpubHint => '章ごとに1ファイル、目次付き。本のページのタイトルカバーが表紙になります。';
 
   @override
-  String get exportMddxHint => '別のDraconDexボールトで取り込める .mddx ファイル。';
+  String get exportMddxHint => '2つのファイル — .ddata（データ）と .dpage（ページ）— 別のDraconDexボールトで一緒に取り込めます。';
 
   @override
   String get exportFormulaSkipped => '除外した数式フィールド：{names}';

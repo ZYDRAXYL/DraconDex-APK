@@ -38,7 +38,7 @@ class ExportPreview extends StatelessWidget {
     ExportFormat.csv => _tree(context, '$title.csv', [title, ..._shown], plain: true),
     ExportFormat.html => _tree(context, '$title.zip', ['index.html', 'style.css', for (final n in _shown) '$n.html', 'img/']),
     ExportFormat.md => _tree(context, '$title.zip', [for (final n in _shown) '$n.md', 'assets/']),
-    ExportFormat.mddx => _tree(context, '$title.mddx', [kindLabel, ..._shown], plain: true),
+    ExportFormat.mddx => _tree(context, '$title.ddata + .dpage', [kindLabel, ..._shown], plain: true),
     ExportFormat.dxpack => _tree(context, '$title.dxpack', ['pack.json', 'snapshot.json', 'Assets/$title/']),
   };
 

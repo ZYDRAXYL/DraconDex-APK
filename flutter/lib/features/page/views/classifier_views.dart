@@ -563,7 +563,6 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
           ],
         ),
       );
-      c.dispose();
       if (v == null) return;
       if (f.type == 'number' && v.isNotEmpty && double.tryParse(v) == null) return;
       await _set(ref, moduleId, item.id, f.id, v);
@@ -656,9 +655,6 @@ Future<String?> _editDate(BuildContext context, String title, String raw) async 
     ),
   );
   final n = [for (final c in cs) int.tryParse(c.text.trim()) ?? 0];
-  for (final c in cs) {
-    c.dispose();
-  }
   if (ok == null) return null;
   // Day, month and year together, or nothing — a half date no reader could
   // parse back saves as empty (EXE saveClassifierAttrDate).
@@ -797,9 +793,6 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
       if (c.trim().isNotEmpty) c.trim(),
   ];
   final ex = expr.text.trim();
-  name.dispose();
-  choices.dispose();
-  expr.dispose();
   if (result == null) return;
   final db = await ref.read(databaseProvider.future);
   final dao = ClassifierDao(db);
@@ -890,9 +883,6 @@ class ClsLevelTable extends ConsumerWidget {
       ),
     );
     final values = {for (final e in ctl.entries) e.key: e.value.text.trim()};
-    for (final c in ctl.values) {
-      c.dispose();
-    }
     if (ok != true) return;
     final dao = await _dao(ref);
     for (final e in values.entries) {

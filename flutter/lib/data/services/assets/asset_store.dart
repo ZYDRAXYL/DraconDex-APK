@@ -118,7 +118,12 @@ class AssetStore {
     final ext = dot < 0 ? '' : fileName.substring(dot + 1).toLowerCase();
     final sha = sha256.convert(bytes).toString();
     final same = await db.rawQuery('SELECT id FROM import_file WHERE nexus_ref=? AND sha256=?', [nexusId, sha]);
-    if (same.isNotEmpty) return same.first['id'] as int;
+    if (same.isNotEmpty) {
+      final id = same.first['id'] as int;
+      // already here but unfiled: picked into a folder, it goes there
+      if (moduleRef != null) await db.rawUpdate('UPDATE import_file SET module_ref=? WHERE id=? AND module_ref IS NULL', [moduleRef, id]);
+      return id;
+    }
     final image = assetClass[ext] == 'image' && ext != 'svg';
     Uint8List? proxy;
     String? path;

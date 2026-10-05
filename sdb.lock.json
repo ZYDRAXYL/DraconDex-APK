@@ -3,17 +3,17 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "sdb-v2.0.10",
-    "version": "2.0.10"
+    "ref": "sdb-v2.1.0",
+    "version": "2.1.0"
   },
   "expect": {
-    "vaultSchemaVersion": 6,
+    "vaultSchemaVersion": 7,
     "supabaseSchemaVersion": 2
   },
   "vendored": {
     "flutter/lib/core/database/vault_schema.g.dart": {
       "artifact": "generated/flutter/vault_schema.g.dart",
-      "sha256": "51e4ca33897bd3f8907907ff46cc1f4793c68d8782db65b84eb8f208794f3d62"
+      "sha256": "e4f2e64bbddc6dc0f7fd4cc080a079a819577e74f757f6af3503041853790280"
     },
     "flutter/lib/data/services/supabase_schema.dart": {
       "artifact": "generated/flutter/supabase_schema.dart",
@@ -25,7 +25,7 @@
     },
     "flutter/lib/core/theme/tokens.g.dart": {
       "artifact": "generated/flutter/tokens.g.dart",
-      "sha256": "1e075cb1e9df962cfa25091171ef1cf3d06d290d1a089c954c7f1aad029c0545"
+      "sha256": "d1fda45c29634a4ef12d8f2a0f42bdb174f971201cb2666ac4571302df9cd8f0"
     },
     "flutter/assets/images/DraconDex-IconApp.png": {
       "artifact": "assets/flutter/DraconDex-IconApp.png",
@@ -73,7 +73,7 @@
     },
     "flutter/assets/templates/pages.json": {
       "artifact": "generated/templates/pages.json",
-      "sha256": "a4a1d84c2d1314b01af84b1ef9d552c08d4465017864969e693db0d68ee47b9a"
+      "sha256": "a1b113e0f95635cd167f3ae8473c1b194a759cebc432505a8af8ca8fe0120aef"
     },
     "flutter/test/fixtures/snapshot-v2.json": {
       "artifact": "fixtures/snapshot-v2.json",

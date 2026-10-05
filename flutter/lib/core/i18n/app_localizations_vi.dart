@@ -1602,13 +1602,58 @@ class AppLocalizationsVi extends AppLocalizations {
   String get guideAdd => 'Thêm hướng dẫn';
 
   @override
-  String get mddxImport => 'Nhập tệp mô-đun (.mddx)';
+  String get mddxImport => 'Nhập tệp mô-đun (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Xuất thành .mddx';
+  String get mddxExport => 'Xuất thành .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'Tệp đó không phải mô-đun DraconDex';
+
+  @override
+  String get pbHideTablet => 'Máy tính bảng';
+
+  @override
+  String get moduleFileNeedsData => '.dpage chỉ là trang — hãy chọn kèm tệp .ddata của nó';
+
+  @override
+  String get pcDataTable => 'Bảng dữ liệu';
+
+  @override
+  String get pcLinkText => 'Văn bản liên kết';
+
+  @override
+  String get pcSearchBox => 'Ô tìm kiếm';
+
+  @override
+  String get pcCategories => 'Danh mục của trang này';
+
+  @override
+  String get pcDataTablePick => 'Chọn một Classifier trong ⚙ Tùy chọn';
+
+  @override
+  String get pcOptLead => 'Chữ trước liên kết';
+
+  @override
+  String get pcOptFilter => 'Chỉ hàng chứa';
+
+  @override
+  String get pcOptSortDir => 'Thứ tự';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Số hàng';
+
+  @override
+  String get pcOptScope => 'Tìm trong (trống = cả Nexus)';
+
+  @override
+  String get leftSearchNone => 'Không tìm thấy';
 
   @override
   String get kindCatStructure => 'Cấu trúc';
@@ -1752,7 +1797,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get kindClassicDiviner => 'Bảng ngẫu nhiên';
 
   @override
+  String get kindClassicPage => 'Trang';
+
+  @override
   String get kindDescDiviner => 'Bảng ngẫu nhiên và gieo xúc xắc';
+
+  @override
+  String get kindDescPage => 'Một trang riêng — tiêu đề, văn bản, liên kết, ô tìm kiếm và chế độ xem của mô-đun khác, xếp theo hàng và cột. Bản thân không chứa dữ liệu.';
 
   @override
   String get moduleNameMode => 'Tên module';
@@ -1914,7 +1965,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get exportEpubHint => 'Mỗi chương một tệp kèm mục lục; ảnh bìa tiêu đề của trang sách thành bìa.';
 
   @override
-  String get exportMddxHint => 'Tệp .mddx mà vault DraconDex khác nhập được.';
+  String get exportMddxHint => 'Hai tệp — .ddata (dữ liệu) và .dpage (trang) — mà kho DraconDex khác nhập cùng nhau.';
 
   @override
   String get exportFormulaSkipped => 'Bỏ qua trường công thức: {names}';

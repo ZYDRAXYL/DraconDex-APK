@@ -648,7 +648,6 @@ Future<void> showSaveBundleDialog(BuildContext context, WidgetRef ref, ModuleMod
     ),
   );
   final name = c.text.trim();
-  c.dispose();
   if (ok != true) return;
   if (name.isEmpty) {
     messenger.showSnackBar(SnackBar(content: Text(l.nameRequired)));
