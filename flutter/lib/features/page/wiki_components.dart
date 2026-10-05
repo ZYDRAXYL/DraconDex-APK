@@ -15,6 +15,7 @@ import 'component_registry.dart';
 import 'links.dart';
 import 'module_page.dart';
 import 'page_providers.dart';
+import 'site_components.dart';
 
 /// The wiki components on the phone (Procress 14, APP docs/TEMPLATES.md §7;
 /// EXE renderer/page/components/wiki.js, wiki-more.js): link bars and cards,
@@ -31,6 +32,11 @@ final List<ComponentDef> wikiComponents = [
   ComponentDef(id: 'core.toggle', kind: null, label: (l) => l.pcToggle, build: (c, x) => _Toggle(ctx: x)),
   ComponentDef(id: 'core.navbox', kind: null, label: (l) => l.pcNavbox, build: (c, x) => _Navbox(ctx: x)),
   ComponentDef(id: 'core.children', kind: null, label: (l) => l.pcChildren, build: (c, x) => _Children(ctx: x)),
+  // the site set (Procress 16 part 3b, EXE components/site.js)
+  ComponentDef(id: 'core.linktext', kind: null, label: (l) => l.pcLinkText, build: (c, x) => _LinkText(ctx: x)),
+  ComponentDef(id: 'core.datatable', kind: null, label: (l) => l.pcDataTable, build: (c, x) => SiteDataTable(ctx: x)),
+  ComponentDef(id: 'core.search', kind: null, label: (l) => l.pcSearchBox, build: (c, x) => SiteSearch(ctx: x)),
+  ComponentDef(id: 'core.categories', kind: null, once: true, label: (l) => l.pcCategories, build: (c, x) => SiteCategories(ctx: x)),
 ];
 
 /// Each wiki component's icon in the add sheet.
@@ -44,6 +50,10 @@ const wikiIcons = {
   'core.references': Icons.format_list_numbered,
   'core.tabs': Icons.tab_outlined,
   'core.toggle': Icons.unfold_more,
+  'core.linktext': Icons.link,
+  'core.datatable': Icons.table_chart_outlined,
+  'core.search': Icons.search,
+  'core.categories': Icons.sell_outlined,
 };
 
 /// The containers: a block of these holds blocks, in slots (config.col).
@@ -86,6 +96,41 @@ InlineSpan _outSpan(Color c) => WidgetSpan(
 bool _here(ResolvedLink r, ComponentCtx ctx) =>
     (r.kind == LinkKind.module && r.moduleId == ctx.page.module.id && ctx.itemKey == null) ||
     (r.kind == LinkKind.item && r.key != null && r.key == ctx.itemKey);
+
+// ── link text ───────────────────────────────────────────────────────────
+// A sentence of links (EXE core.linktext): an optional lead, then the links
+// separated by commas; a target that is gone is dimmed, as in the link bar.
+
+class _LinkText extends ConsumerWidget {
+  final ComponentCtx ctx;
+  const _LinkText({required this.ctx});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final (links, index) = _links(ref, ctx);
+    if (links.isEmpty) return _emptyLinks(context, ref, ctx);
+    final lead = '${optValue(ctx.block, 'lead') ?? ''}'.trim();
+    final scheme = Theme.of(context).colorScheme;
+    return Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
+      if (lead.isNotEmpty) Text('$lead '),
+      for (var i = 0; i < links.length; i++)
+        () {
+          final r = resolveLink(links[i], index);
+          return InkWell(
+            onTap: () => followLink(context, ref, links[i], r, ctx.nexusId),
+            child: Text.rich(TextSpan(children: [
+              TextSpan(
+                text: linkLabel(links[i], r),
+                style: TextStyle(color: r.dangling ? scheme.error : scheme.primary, decoration: TextDecoration.underline),
+              ),
+              if (r.kind == LinkKind.url) _outSpan(scheme.onSurfaceVariant),
+              if (i < links.length - 1) const TextSpan(text: ', '),
+            ])),
+          );
+        }(),
+    ]);
+  }
+}
 
 // ── link bar ────────────────────────────────────────────────────────────
 class _LinkBar extends ConsumerWidget {

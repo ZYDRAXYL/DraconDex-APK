@@ -68,9 +68,10 @@ class AssetThumb extends StatelessWidget {
 
 /// Picks files from the device into the Nest; returns the new ids.
 /// [classes] limits the picker to those asset classes (a video block asks
-/// for 'video', a PDF block for 'pdf').
+/// for 'video', a PDF block for 'pdf'). [folderId] files them in that
+/// folder (a Collector) instead of the unfiled tray.
 Future<List<int>> addAssetsFromDevice(BuildContext context, WidgetRef ref, int nexusId,
-    {bool imagesOnly = false, Set<String>? classes}) async {
+    {bool imagesOnly = false, Set<String>? classes, int? folderId}) async {
   final l = AppLocalizations.of(context)!;
   final messenger = ScaffoldMessenger.of(context);
   final res = await FilePicker.platform.pickFiles(
@@ -85,7 +86,7 @@ Future<List<int>> addAssetsFromDevice(BuildContext context, WidgetRef ref, int n
   for (final f in res.files) {
     final bytes = f.bytes;
     if (bytes == null) continue;
-    final id = await AssetStore.addFile(db, nexusId, f.name, bytes);
+    final id = await AssetStore.addFile(db, nexusId, f.name, bytes, moduleRef: folderId);
     if (id == null) {
       messenger.showSnackBar(SnackBar(content: Text('${l.assetsTooBig}: ${f.name}')));
     } else {
@@ -94,6 +95,7 @@ Future<List<int>> addAssetsFromDevice(BuildContext context, WidgetRef ref, int n
   }
   ref.invalidate(assetsProvider(nexusId));
   ref.invalidate(nexusIndexProvider(nexusId));
+  if (folderId != null) ref.invalidate(moduleAssetsProvider(folderId));
   return ids;
 }
 

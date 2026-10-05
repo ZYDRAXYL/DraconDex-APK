@@ -130,7 +130,8 @@ Future<String?> askText(BuildContext context, String title, {String initial = ''
       ],
     ),
   );
-  c.dispose();
+  // not disposed: the dialog's TextField is still animating out right now,
+  // and a disposed controller there throws — a local one is just garbage
   return r == null || r.isEmpty ? null : r;
 }
 

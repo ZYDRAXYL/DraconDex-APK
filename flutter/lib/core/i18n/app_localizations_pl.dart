@@ -1599,13 +1599,58 @@ class AppLocalizationsPl extends AppLocalizations {
   String get guideAdd => 'Dodaj przewodnik';
 
   @override
-  String get mddxImport => 'Importuj plik modułu (.mddx)';
+  String get mddxImport => 'Importuj plik modułu (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Eksportuj jako .mddx';
+  String get mddxExport => 'Eksportuj jako .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'Ten plik nie jest modułem DraconDex';
+
+  @override
+  String get pbHideTablet => 'Tablet';
+
+  @override
+  String get moduleFileNeedsData => 'Plik .dpage to tylko strona — wybierz też jego .ddata';
+
+  @override
+  String get pcDataTable => 'Tabela danych';
+
+  @override
+  String get pcLinkText => 'Tekst z linkiem';
+
+  @override
+  String get pcSearchBox => 'Pole wyszukiwania';
+
+  @override
+  String get pcCategories => 'Kategorie tej strony';
+
+  @override
+  String get pcDataTablePick => 'Wybierz Classifier w ⚙ Opcjach';
+
+  @override
+  String get pcOptLead => 'Tekst przed linkami';
+
+  @override
+  String get pcOptFilter => 'Tylko wiersze z';
+
+  @override
+  String get pcOptSortDir => 'Kolejność';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Wiersze';
+
+  @override
+  String get pcOptScope => 'Szukaj w (puste = cały Nexus)';
+
+  @override
+  String get leftSearchNone => 'Nic nie znaleziono';
 
   @override
   String get kindCatStructure => 'Struktura';
@@ -1749,7 +1794,13 @@ class AppLocalizationsPl extends AppLocalizations {
   String get kindClassicDiviner => 'Tabela losowa';
 
   @override
+  String get kindClassicPage => 'Strona';
+
+  @override
   String get kindDescDiviner => 'Tabele losowe i rzuty kośćmi';
+
+  @override
+  String get kindDescPage => 'Osobna strona — nagłówki, tekst, linki, pole wyszukiwania i widoki innych modułów w wierszach i kolumnach. Sama nie przechowuje danych.';
 
   @override
   String get moduleNameMode => 'Nazwy modułów';
@@ -1911,7 +1962,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get exportEpubHint => 'Plik na rozdział ze spisem treści; okładka tytułu strony książki staje się okładką.';
 
   @override
-  String get exportMddxHint => 'Plik .mddx, który zaimportuje inny sejf DraconDex.';
+  String get exportMddxHint => 'Dwa pliki — .ddata (dane) i .dpage (strona) — które inny sejf DraconDex importuje razem.';
 
   @override
   String get exportFormulaSkipped => 'Pominięte pola formuł: {names}';

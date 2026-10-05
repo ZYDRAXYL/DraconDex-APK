@@ -1602,13 +1602,58 @@ class AppLocalizationsTh extends AppLocalizations {
   String get guideAdd => 'เพิ่มคู่มือ';
 
   @override
-  String get mddxImport => 'นำเข้าไฟล์โมดูล (.mddx)';
+  String get mddxImport => 'นำเข้าไฟล์โมดูล (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'ส่งออกเป็น .mddx';
+  String get mddxExport => 'ส่งออกเป็น .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'ไฟล์นี้ไม่ใช่โมดูล DraconDex';
+
+  @override
+  String get pbHideTablet => 'แท็บเล็ต';
+
+  @override
+  String get moduleFileNeedsData => '.dpage เป็นแค่หน้า — เลือก .ddata คู่กันมาด้วย';
+
+  @override
+  String get pcDataTable => 'ตารางข้อมูล';
+
+  @override
+  String get pcLinkText => 'ข้อความลิงก์';
+
+  @override
+  String get pcSearchBox => 'ช่องค้นหา';
+
+  @override
+  String get pcCategories => 'หมวดของหน้านี้';
+
+  @override
+  String get pcDataTablePick => 'เลือก Classifier ใน ⚙ ตัวเลือก';
+
+  @override
+  String get pcOptLead => 'ข้อความก่อนลิงก์';
+
+  @override
+  String get pcOptFilter => 'เฉพาะแถวที่มีคำ';
+
+  @override
+  String get pcOptSortDir => 'ลำดับ';
+
+  @override
+  String get pcSortAsc => 'น้อย → มาก';
+
+  @override
+  String get pcSortDesc => 'มาก → น้อย';
+
+  @override
+  String get pcOptRows => 'จำนวนแถว';
+
+  @override
+  String get pcOptScope => 'ค้นใน (ว่าง = ทั้ง Nexus)';
+
+  @override
+  String get leftSearchNone => 'ไม่พบ';
 
   @override
   String get kindCatStructure => 'โครงสร้าง';
@@ -1752,7 +1797,13 @@ class AppLocalizationsTh extends AppLocalizations {
   String get kindClassicDiviner => 'ตารางสุ่ม';
 
   @override
+  String get kindClassicPage => 'หน้า';
+
+  @override
   String get kindDescDiviner => 'ตารางสุ่มและทอยเต๋า';
+
+  @override
+  String get kindDescPage => 'หน้าของมันเอง — หัวข้อ ข้อความ ลิงก์ ช่องค้นหา และ view ของโมดูลอื่น จัดเป็นแถวและคอลัมน์ ตัวมันเองไม่เก็บข้อมูล';
 
   @override
   String get moduleNameMode => 'ชื่อโมดูล';
@@ -1914,7 +1965,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get exportEpubHint => 'บทละไฟล์พร้อมสารบัญ · ปกหัวเรื่องของหน้าหนังสือกลายเป็นปก';
 
   @override
-  String get exportMddxHint => 'ไฟล์ .mddx ที่ vault อื่นของ DraconDex นำเข้าได้';
+  String get exportMddxHint => 'สองไฟล์ — .ddata (ข้อมูล) และ .dpage (หน้า) — ที่ vault อื่นของ DraconDex นำเข้าพร้อมกันได้';
 
   @override
   String get exportFormulaSkipped => 'ไม่รวมฟิลด์สูตร : {names}';

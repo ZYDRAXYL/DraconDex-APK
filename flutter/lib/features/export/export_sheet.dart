@@ -50,7 +50,7 @@ const _cards = [
   _Card(ExportFormat.csv, 'CSV', Color(0xFF166534)),
   _Card(ExportFormat.html, 'HTML', Color(0xFF0E7490)),
   _Card(ExportFormat.md, 'MD', Color(0xFF475569)),
-  _Card(ExportFormat.mddx, 'MDDX', Color(0xFF4338CA)),
+  _Card(ExportFormat.mddx, 'DDATA', Color(0xFF4338CA)),
   _Card(ExportFormat.dxpack, 'DXPACK', Color(0xFFB45309)),
 ];
 
@@ -176,7 +176,9 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
     if (print) {
       await Printing.layoutPdf(onLayout: (_) async => r.bytes!, name: r.name);
     } else {
-      await Share.shareXFiles([XFile.fromData(r.bytes!, mimeType: r.mime, name: r.name)]);
+      await Share.shareXFiles([
+        for (final o in [r, ...r.also]) XFile.fromData(o.bytes!, mimeType: o.mime, name: o.name),
+      ]);
     }
   }
 

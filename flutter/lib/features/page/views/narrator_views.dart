@@ -196,7 +196,6 @@ Future<void> _addRoute(BuildContext context, WidgetRef ref, int moduleId, StoryD
     ),
   );
   final text = label.text.trim();
-  label.dispose();
   if (ok != true || from == null || to == null || from == to) return;
   final db = await ref.read(databaseProvider.future);
   await NarratorDao(db).addEdge(moduleRef: moduleId, fromRef: from!, toRef: to!, label: text.isEmpty ? null : text);

@@ -492,7 +492,6 @@ Future<void> showSaveTemplateDialog(BuildContext context, WidgetRef ref, ModuleM
       ],
     ),
   );
-  c.dispose();
   if (name == null) return;
   if (name.isEmpty) {
     messenger.showSnackBar(SnackBar(content: Text(l10n.nameRequired)));

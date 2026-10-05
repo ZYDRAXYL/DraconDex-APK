@@ -4,6 +4,7 @@ import 'core/i18n/app_localizations.dart';
 import 'core/providers/settings_provider.dart';
 import 'core/theme/app_theme.dart';
 import 'core/router/app_router.dart';
+import 'features/tools/share_inbox.dart';
 
 class DraconDexApp extends ConsumerWidget {
   const DraconDexApp({super.key});
@@ -36,7 +37,7 @@ class DraconDexApp extends ConsumerWidget {
           data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(settings.uiScale)),
           // Kind names are read from a static, so a Classic/Unique switch
           // has to rebuild everything under the router to show.
-          child: KeyedSubtree(key: ValueKey(settings.classicNames), child: child!),
+          child: KeyedSubtree(key: ValueKey(settings.classicNames), child: ShareInbox(child: child!)),
         );
       },
     );

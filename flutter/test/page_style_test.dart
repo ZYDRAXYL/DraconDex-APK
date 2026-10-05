@@ -197,4 +197,69 @@ void main() {
     expect(find.textContaining('Hidden twist', findRichText: true), findsOneWidget);
     await tester.pumpWidget(const SizedBox());
   });
+  // APP Procress 16 part 3b: a row's widths on the 12-slot grid, per page size
+  test("rowWidths: widths, n, and a frame's own (EXE pbColWidths)", () {
+    expect(rowWidths({}), [6, 6]);
+    expect(rowWidths({'n': 3}), [4, 4, 4]);
+    expect(rowWidths({'widths': [8, 4]}), [8, 4]);
+    expect(rowWidths({'widths': [3, 3, 3, 3]}), [3, 3, 3, 3], reason: 'more than 3 columns');
+    expect(rowWidths({'widths': [0, 12]}), [6, 6], reason: 'an invalid width falls back to n');
+    expect(rowWidths({'widths': [8, 4]}, 'tablet'), [8, 4], reason: 'a tablet shows the PC widths');
+    expect(rowWidths({'widths': [8, 4]}, 'phone'), isNull, reason: 'a phone stacks');
+    final by = {'widths': [8, 4], 'widthsBy': {'tablet': [6, 6], 'phone': [7, 5]}};
+    expect(rowWidths(by, 'tablet'), [6, 6]);
+    expect(rowWidths(by, 'phone'), [7, 5]);
+    expect(rowWidths({'widths': [8, 4], 'widthsBy': {'phone': [4, 4, 4]}}, 'phone'), isNull, reason: 'another column count is ignored');
+    expect([for (final w in const <double>[390, 560, 561, 1023, 1024]) pageFrameFor(w)], ['phone', 'phone', 'tablet', 'tablet', 'pc']);
+  });
+
+  testWidgets("a row lays out by the page's size; hideOn: tablet", (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final (db, mod) = (await tester.runAsync(() async {
+      final db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath);
+      for (final sql in vaultCreateStatements) {
+        await db.execute(sql);
+      }
+      final nx = await db.insert('nexus', {'name': 'World'});
+      final m = await ModuleDao(db).createModule(nexusRef: nx, name: 'Lore', kind: ModuleKind.drafter);
+      final dao = PageBlockDao(db);
+      final row = await dao.add(m, null, NewBlock(type: 'columns', config: {'widths': [8, 4]}));
+      await dao.add(m, null, NewBlock(type: 'heading', content: 'Left', parentId: row, config: {'col': 0}));
+      await dao.add(m, null, NewBlock(type: 'heading', content: 'Right', parentId: row, config: {'col': 1}));
+      await dao.add(m, null, NewBlock(type: 'text', content: 'Not on a tablet', config: {'style': {'hideOn': 'tablet'}}));
+      return (db, m);
+    }))!;
+    addTearDown(() => tester.runAsync(db.close));
+    addTearDown(tester.view.reset);
+    Future<void> at(double width) async {
+      tester.view.physicalSize = Size(width, 2000);
+      tester.view.devicePixelRatio = 1;
+      await tester.pumpWidget(ProviderScope(
+        overrides: [databaseProvider.overrideWith((ref) async => db)],
+        child: MaterialApp(
+          locale: const Locale('en'),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: Scaffold(body: SingleChildScrollView(child: ModulePage(moduleId: mod))),
+        ),
+      ));
+      for (var i = 0; i < 10; i++) {
+        await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 25)));
+        await tester.pump();
+      }
+    }
+
+    Rect box(String t) => tester.getRect(find.ancestor(of: find.text(t), matching: find.byType(Column)).first);
+    await at(1280);
+    expect(box('Left').top, box('Right').top, reason: 'side by side on a PC');
+    expect(box('Left').width / box('Right').width, closeTo(2, .05), reason: '8 / 4');
+    expect(find.textContaining('Not on a tablet', findRichText: true), findsOneWidget);
+    await at(800);
+    expect(box('Left').top, box('Right').top, reason: 'a tablet keeps the PC widths');
+    expect(find.textContaining('Not on a tablet', findRichText: true), findsNothing);
+    await at(390);
+    expect(box('Right').top, greaterThan(box('Left').top), reason: 'a phone stacks the columns, in order');
+    expect(find.textContaining('Not on a tablet', findRichText: true), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+  });
 }

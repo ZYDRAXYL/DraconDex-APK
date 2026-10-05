@@ -121,6 +121,9 @@ class ExportOutcome {
   final int count;
   final int pictures, missing, moreTimelines;
   final List<String> skipped;
+
+  /// Files that go with this one — a module's .dpage beside its .ddata.
+  final List<ExportOutcome> also;
   const ExportOutcome(
     this.bytes,
     this.name,
@@ -131,6 +134,7 @@ class ExportOutcome {
     this.missing = 0,
     this.moreTimelines = 0,
     this.skipped = const [],
+    this.also = const [],
   });
   const ExportOutcome.fail(this.code)
     : bytes = null,
@@ -140,6 +144,7 @@ class ExportOutcome {
       pictures = 0,
       missing = 0,
       moreTimelines = 0,
+      also = const [],
       skipped = const [];
   bool get ok => bytes != null;
 }
@@ -213,9 +218,10 @@ class ExportService {
         );
 
       case ExportFormat.mddx:
-        final bytes = await Mddx.export(db, nexusId, moduleId);
-        if (bytes == null) return const ExportOutcome.fail('empty');
-        return ExportOutcome(bytes, '$base.mddx', 'application/json');
+        final pair = await Mddx.export(db, nexusId, moduleId);
+        if (pair == null) return const ExportOutcome.fail('empty');
+        return ExportOutcome(pair.data, '$base.ddata', 'application/json',
+            also: [ExportOutcome(pair.page, '$base.dpage', 'application/json')]);
 
       // The folders and their files, for the desktop's Locate folder
       // (APP docs/ASSET-PACK.md).

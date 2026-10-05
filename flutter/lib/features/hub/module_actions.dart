@@ -12,6 +12,7 @@ import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../widgets/row_menu.dart';
 import '../export/export_sheet.dart';
+import '../tools/assets_screen.dart';
 import '../tools/trash_screen.dart';
 import 'dialogs/artisan_sheet.dart';
 import 'dialogs/module_dialog.dart';
@@ -94,6 +95,15 @@ List<RowAction> moduleRowActions(
             .state = {module.id},
       ),
     ],
+    // Files from the phone straight into this folder (APP Procress 16 part 2:
+    // the Nest is the asset tree) — shown on the folder's page under "Files".
+    if (module.kind == ModuleKind.collector)
+      RowAction(
+        label: l10n.assetsFromDevice,
+        group: RowGroup.organize,
+        icon: Icons.add_photo_alternate_outlined,
+        onTap: () => addAssetsFromDevice(context, ref, nexusId, folderId: module.id),
+      ),
     // A folder, as one of the user's own Artisan bundles (TEMPLATES.md §4.4).
     if (module.kind == ModuleKind.collector)
       RowAction(
@@ -102,7 +112,7 @@ List<RowAction> moduleRowActions(
         icon: Icons.inventory_2_outlined,
         onTap: () => showSaveBundleDialog(context, ref, module),
       ),
-    // Every way out — PDF, Word, EPUB, tables, web page, Markdown, .mddx
+    // Every way out — PDF, Word, EPUB, tables, web page, Markdown, .ddata + .dpage
     // (APP docs/EXPORT-DECOR.md E8).
     RowAction(
       label: l10n.exportTitle,

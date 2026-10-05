@@ -459,7 +459,6 @@ Future<void> addRelationDialog(BuildContext context, WidgetRef ref, ComponentCtx
     ),
   );
   final text = label.text.trim();
-  label.dispose();
   if (ok != true || from == null || to == null || from == to) return;
   final db = await ref.read(databaseProvider.future);
   await db.insert(

@@ -17,7 +17,7 @@ class BlockStyle {
     'align': ['left', 'center', 'right'],
     'density': ['comfy', 'compact'],
     'collapsible': ['off', 'open', 'closed'],
-    'hideOn': ['none', 'phone', 'desktop'],
+    'hideOn': ['none', 'phone', 'tablet', 'desktop'],
   };
   static const defaults = {
     'variant': 'plain', 'accent': 'accent', 'width': 'normal', 'align': 'left', //
@@ -122,9 +122,24 @@ List<Color> heroColors(Color acc) => [Color.lerp(acc, Colors.black, .40)!, Color
 Widget? headerIconOf(String icon, Color color) =>
     icon.startsWith('sym:') && icon.length > 4 ? Text(icon.substring(4), style: TextStyle(fontSize: 16, color: color)) : null;
 
-/// Below this width the page counts as a phone for `hideOn` — the desktop's
-/// 640px break.
-const double kHidePhoneWidth = 641;
+/// The page's size as the desktop's container queries read it (EXE
+/// css/page.css, APP Procress 16 part 3b): a phone up to 560 wide, a tablet
+/// up to 1023, then a PC. Column widths (`rowWidths`) and `hideOn` follow it.
+String pageFrameFor(double width) => width <= 560 ? 'phone' : (width <= 1023 ? 'tablet' : 'pc');
+
+/// The width the page itself has, set by ModulePage — on a tablet the rail and
+/// the hub panel take their share of the window. Without one (a sheet, a
+/// test), the window's.
+class PageFrameScope extends InheritedWidget {
+  final String frame;
+  const PageFrameScope({super.key, required this.frame, required super.child});
+
+  static String of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<PageFrameScope>()?.frame ?? pageFrameFor(MediaQuery.sizeOf(context).width);
+
+  @override
+  bool updateShouldNotify(PageFrameScope oldWidget) => oldWidget.frame != frame;
+}
 
 /// One block drawn in its style: the variant's ground, a header (with the
 /// fold when collapsible), alignment and density. [name] is the header's
@@ -152,8 +167,9 @@ class _StyledBlockState extends State<StyledBlock> {
   Widget build(BuildContext context) {
     final st = BlockStyle.of(widget.config);
     if (st.isPlain && st.hideOn == 'none') return widget.child;
-    final phone = MediaQuery.sizeOf(context).width < kHidePhoneWidth;
-    final hidden = !widget.isBody && ((st.hideOn == 'phone' && phone) || (st.hideOn == 'desktop' && !phone));
+    final frame = PageFrameScope.of(context);
+    // desktop = wider than a phone (EXE css/page.css)
+    final hidden = !widget.isBody && (st.hideOn == frame || (st.hideOn == 'desktop' && frame != 'phone'));
     if (hidden && !widget.arranging) return const SizedBox.shrink();
 
     final theme = Theme.of(context);

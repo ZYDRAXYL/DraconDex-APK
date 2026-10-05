@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:sqflite/sqflite.dart';
 
+import '../dao/page_block_dao.dart';
 import 'bundle_service.dart';
 
 /// Page templates on the phone — the port of EXE db/page-template.js (APP
@@ -280,7 +281,7 @@ class PageTemplateService {
       final mine = kids[r['id'] as int] ?? const [];
       if (r['block_type'] == 'columns' || mine.isNotEmpty) {
         final n = r['block_type'] == 'columns'
-            ? ((config?['n'] as num?)?.toInt() ?? 2).clamp(2, 3)
+            ? rowWidths(config ?? const {})!.length
             : mine.fold<int>(1, (m, k) => colOf(k) + 1 > m ? colOf(k) + 1 : m);
         final cols = List.generate(n, (_) => <Map<String, Object?>>[]);
         for (final k in mine) {

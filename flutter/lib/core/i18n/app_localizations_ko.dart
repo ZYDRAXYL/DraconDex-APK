@@ -1602,13 +1602,58 @@ class AppLocalizationsKo extends AppLocalizations {
   String get guideAdd => '가이드 추가';
 
   @override
-  String get mddxImport => '모듈 파일 가져오기 (.mddx)';
+  String get mddxImport => '모듈 파일 가져오기 (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => '.mddx로 내보내기';
+  String get mddxExport => '.ddata + .dpage로 내보내기';
 
   @override
   String get mddxNotModule => '그 파일은 DraconDex 모듈이 아닙니다';
+
+  @override
+  String get pbHideTablet => '태블릿';
+
+  @override
+  String get moduleFileNeedsData => '.dpage는 페이지뿐입니다 — 짝인 .ddata도 함께 선택하세요';
+
+  @override
+  String get pcDataTable => '데이터 표';
+
+  @override
+  String get pcLinkText => '링크 텍스트';
+
+  @override
+  String get pcSearchBox => '검색 상자';
+
+  @override
+  String get pcCategories => '이 페이지의 분류';
+
+  @override
+  String get pcDataTablePick => '⚙ 옵션에서 Classifier를 고르세요';
+
+  @override
+  String get pcOptLead => '링크 앞 문장';
+
+  @override
+  String get pcOptFilter => '포함한 행만';
+
+  @override
+  String get pcOptSortDir => '순서';
+
+  @override
+  String get pcSortAsc => '오름차순';
+
+  @override
+  String get pcSortDesc => '내림차순';
+
+  @override
+  String get pcOptRows => '행 수';
+
+  @override
+  String get pcOptScope => '검색 범위 (비우면 Nexus 전체)';
+
+  @override
+  String get leftSearchNone => '찾지 못했습니다';
 
   @override
   String get kindCatStructure => '구조';
@@ -1752,7 +1797,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kindClassicDiviner => '랜덤 표';
 
   @override
+  String get kindClassicPage => '페이지';
+
+  @override
   String get kindDescDiviner => '랜덤 표와 주사위 굴림';
+
+  @override
+  String get kindDescPage => '독립된 페이지 — 제목, 글, 링크, 검색 상자, 다른 모듈의 보기를 행과 열로 배치합니다. 데이터는 직접 갖지 않습니다.';
 
   @override
   String get moduleNameMode => '모듈 이름';
@@ -1914,7 +1965,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get exportEpubHint => '장마다 파일 하나와 목차, 책 페이지의 제목 표지가 표지가 됩니다.';
 
   @override
-  String get exportMddxHint => '다른 DraconDex 볼트에서 가져올 수 있는 .mddx 파일.';
+  String get exportMddxHint => '두 파일 — .ddata(데이터)와 .dpage(페이지) — 다른 DraconDex 볼트에서 함께 가져올 수 있습니다.';
 
   @override
   String get exportFormulaSkipped => '제외된 수식 필드: {names}';

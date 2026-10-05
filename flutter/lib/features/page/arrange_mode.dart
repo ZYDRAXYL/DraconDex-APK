@@ -103,7 +103,7 @@ String blockLabel(AppLocalizations l10n, PageBlock b, [ModuleModel? source]) {
     case 'image':
       return l10n.pbImage;
     case 'columns':
-      return '${l10n.pbColumns} · ${(b.config['n'] as num?)?.toInt() ?? 2}';
+      return '${l10n.pbColumns} · ${rowWidths(b.config)!.map((v) => (v / 12 * 100).round()).join(' / ')}';
     default:
       final def = components[b.component];
       final name = def?.label(l10n) ?? b.component ?? '?';
@@ -272,6 +272,7 @@ Future<void> showAddBlockSheet(
             for (final id in const [
               'core.linkbar', 'core.linkcard', 'core.hatnote', 'core.seealso', 'core.navbox', //
               'core.children', 'core.references', 'core.tabs', 'core.toggle',
+              'core.linktext', 'core.datatable', 'core.search', 'core.categories',
             ])
               if (!(components[id]!.once && onPage.contains(id)) && !(parent != null && containerComponents.contains(id)))
                 ListTile(
@@ -347,7 +348,7 @@ Future<ModuleModel?> _pickBorrowSource(BuildContext context, WidgetRef ref, Modu
 /// that holds none.
 List<String> slotLabels(AppLocalizations l10n, PageBlock b) {
   if (b.type == 'columns') {
-    final n = ((b.config['n'] as num?)?.toInt() ?? 2).clamp(1, 3);
+    final n = rowWidths(b.config)!.length;
     return [for (var c = 0; c < n; c++) '${l10n.pbColumn} ${c + 1}'];
   }
   if (b.component == 'core.tabs') return tabNames(l10n, optValue(b, 'tabs'));

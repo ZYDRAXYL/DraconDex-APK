@@ -19,11 +19,6 @@ import 'links.dart';
 import 'page_providers.dart';
 import 'wiki_components.dart';
 
-/// Below this width a `columns` block stacks its columns into one (APK-V3.md
-/// §10.4, §13 item 8): one layout for every screen, flowing with the width,
-/// so a page arranged on a desktop arrives whole on a phone.
-const double kColumnsMinWidth = 600;
-
 /// A page: the module's own (itemKey null) or an element's — a stack of
 /// blocks rendered top to bottom, in the order the desktop (or arrange mode
 /// here) put them. Sits inside the screen's own scroll view.
@@ -43,12 +38,17 @@ class ModulePage extends ConsumerWidget {
     final top = page.top;
     return FootnoteScope(
       footnotes: pageFootnotes(page),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          for (var i = 0; i < top.length; i++)
-            BlockView(page: page, block: top[i], itemKey: itemKey, wide: wide, isDuplicateOnce: _dupOnce(top, i)),
-        ],
+      child: LayoutBuilder(
+        builder: (context, c) => PageFrameScope(
+          frame: pageFrameFor(c.maxWidth),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              for (var i = 0; i < top.length; i++)
+                BlockView(page: page, block: top[i], itemKey: itemKey, wide: wide, isDuplicateOnce: _dupOnce(top, i)),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -154,20 +154,22 @@ class BlockView extends ConsumerWidget {
       case 'image':
         return pad(ImageBlock(block: block, nexusId: page.module.nexusRef));
       case 'columns':
+        // the widths the page's size asks for (EXE pbColWidths); none = a
+        // phone with no widths of its own: the columns stack, in order
         final cols = page.columnsOf(block);
-        return LayoutBuilder(builder: (context, c) {
-          final kids = [
-            for (final col in cols)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [for (final b in col) BlockView(page: page, block: b, itemKey: itemKey, wide: wide)],
-              ),
-          ];
-          if (c.maxWidth < kColumnsMinWidth) {
-            return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: kids);
-          }
-          return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [for (final k in kids) Expanded(child: k)]);
-        });
+        final w = rowWidths(block.config, PageFrameScope.of(context));
+        final kids = [
+          for (final col in cols)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [for (final b in col) BlockView(page: page, block: b, itemKey: itemKey, wide: wide)],
+            ),
+        ];
+        if (w == null) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: kids);
+        return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          // flex is whole: hundredths of a slot keep an Alt-dragged width
+          for (var i = 0; i < kids.length; i++) Expanded(flex: (w[i] * 100).round(), child: kids[i]),
+        ]);
       case 'component':
         return ComponentBlockView(page: page, block: block, itemKey: itemKey, wide: wide, isDuplicateOnce: isDuplicateOnce, inset: inset);
       default:

@@ -1602,13 +1602,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guideAdd => 'Add the guide';
 
   @override
-  String get mddxImport => 'Import a module file (.mddx)';
+  String get mddxImport => 'Import a module file (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Export as .mddx';
+  String get mddxExport => 'Export as .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'That file is not a DraconDex module';
+
+  @override
+  String get pbHideTablet => 'Tablet';
+
+  @override
+  String get moduleFileNeedsData => 'A .dpage is only the page — pick its .ddata with it';
+
+  @override
+  String get pcDataTable => 'Data table';
+
+  @override
+  String get pcLinkText => 'Link text';
+
+  @override
+  String get pcSearchBox => 'Search box';
+
+  @override
+  String get pcCategories => 'Categories of this page';
+
+  @override
+  String get pcDataTablePick => 'Choose a Classifier in ⚙ Options';
+
+  @override
+  String get pcOptLead => 'Text before the links';
+
+  @override
+  String get pcOptFilter => 'Only rows containing';
+
+  @override
+  String get pcOptSortDir => 'Order';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Rows';
+
+  @override
+  String get pcOptScope => 'Search in (empty = the whole Nexus)';
+
+  @override
+  String get leftSearchNone => 'Nothing found';
 
   @override
   String get kindCatStructure => 'Structure';
@@ -1752,7 +1797,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kindClassicDiviner => 'Random table';
 
   @override
+  String get kindClassicPage => 'Page';
+
+  @override
   String get kindDescDiviner => 'Random tables and dice rolls';
+
+  @override
+  String get kindDescPage => 'A page of its own — headings, text, links, a search box and views of other modules, laid out in rows and columns. It holds no data itself.';
 
   @override
   String get moduleNameMode => 'Module names';
@@ -1914,7 +1965,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exportEpubHint => 'One file per chapter with a contents list; the book page’s title cover becomes the cover.';
 
   @override
-  String get exportMddxHint => 'A .mddx file another DraconDex vault can import.';
+  String get exportMddxHint => 'Two files — .ddata (its data) and .dpage (its page) — that another DraconDex vault imports together.';
 
   @override
   String get exportFormulaSkipped => 'Formula fields left out: {names}';

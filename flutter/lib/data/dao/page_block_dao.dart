@@ -68,6 +68,32 @@ class PageBlock {
   String? get preset => config['preset'] as String?;
 }
 
+/// A row's column widths on the 12-slot grid — the desktop's pbColWidths
+/// (EXE renderer/page/blocks.js, APP Procress 16 part 3b). `config.widths`
+/// ([8, 4] = two thirds + a third), or a row saved before widths existed: `n`
+/// equal parts. [frame] 'tablet' / 'phone' read `config.widthsBy[frame]`
+/// (same column count); without one a tablet shows the PC widths and a phone
+/// stacks the columns — null.
+List<double>? rowWidths(Map<String, Object?> config, [String frame = 'pc']) {
+  List<double>? valid(Object? w) {
+    if (w is! List || w.isEmpty || w.length > 12) return null;
+    final out = <double>[];
+    for (final v in w) {
+      if (v is! num || v < 0.5 || v > 12) return null;
+      out.add(v.toDouble());
+    }
+    return out;
+  }
+
+  final n = ((config['n'] as num?)?.toInt() ?? 2).clamp(2, 3);
+  final base = valid(config['widths']) ?? List.filled(n, 12 / n);
+  if (frame == 'pc') return base;
+  final by = config['widthsBy'];
+  final own = by is Map ? valid(by[frame]) : null;
+  if (own != null && own.length == base.length) return own;
+  return frame == 'tablet' ? base : null;
+}
+
 /// Where a page's blocks came from: its own rows, the shared element layout
 /// (an element page not split off yet), or nowhere.
 enum PageSource { own, shared, none }

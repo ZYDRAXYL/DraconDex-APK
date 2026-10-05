@@ -120,8 +120,6 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
       ),
     );
     final n = name.text.trim(), dc = dice.text.trim();
-    name.dispose();
-    dice.dispose();
     if (ok == null) return;
     final dao = await _dao();
     if (ok == 'delete') {
@@ -172,9 +170,6 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
       await (await _dao()).updateEntry(e['id'] as int,
           text: text.text, lo: int.tryParse(lo.text.trim()), hi: int.tryParse(hi.text.trim()), weight: int.tryParse(weight.text.trim()));
       _refresh();
-    }
-    for (final c in [text, lo, hi, weight]) {
-      c.dispose();
     }
   }
 

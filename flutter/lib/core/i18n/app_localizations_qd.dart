@@ -1602,13 +1602,58 @@ class AppLocalizationsQd extends AppLocalizations {
   String get guideAdd => 'Add the lore-guide';
 
   @override
-  String get mddxImport => 'Bring in a module file (.mddx)';
+  String get mddxImport => 'Bring in a module file (.ddata + .dpage / .mddx)';
 
   @override
-  String get mddxExport => 'Send forth as .mddx';
+  String get mddxExport => 'Send forth as .ddata + .dpage';
 
   @override
   String get mddxNotModule => 'That file is nae a module';
+
+  @override
+  String get pbHideTablet => 'Slate Glasse';
+
+  @override
+  String get moduleFileNeedsData => 'A .dpage is but the page — take its .ddata withal';
+
+  @override
+  String get pcDataTable => 'Ledger of lore';
+
+  @override
+  String get pcLinkText => 'Link text';
+
+  @override
+  String get pcSearchBox => 'Seeking-box';
+
+  @override
+  String get pcCategories => 'Categories of this leaf';
+
+  @override
+  String get pcDataTablePick => 'Choose a Classifier in ⚙ Options';
+
+  @override
+  String get pcOptLead => 'Words afore the links';
+
+  @override
+  String get pcOptFilter => 'Only rows bearing';
+
+  @override
+  String get pcOptSortDir => 'Order';
+
+  @override
+  String get pcSortAsc => 'A → Z';
+
+  @override
+  String get pcSortDesc => 'Z → A';
+
+  @override
+  String get pcOptRows => 'Rows';
+
+  @override
+  String get pcOptScope => 'Seek within (empty = the whole Nexus)';
+
+  @override
+  String get leftSearchNone => 'Noght founde';
 
   @override
   String get kindCatStructure => 'Frame';
@@ -1752,7 +1797,13 @@ class AppLocalizationsQd extends AppLocalizations {
   String get kindClassicDiviner => 'Tabyl of Chaunce';
 
   @override
+  String get kindClassicPage => 'Page';
+
+  @override
   String get kindDescDiviner => 'Tablys of chaunce and ythe castyng of bonys';
+
+  @override
+  String get kindDescPage => 'A page of its own — headings, text, links, a search box and views of other modules, laid out in rows and columns. It holds no data itself.';
 
   @override
   String get moduleNameMode => 'Module names';
@@ -1914,7 +1965,7 @@ class AppLocalizationsQd extends AppLocalizations {
   String get exportEpubHint => 'A leafe for each chapter, and the tome’s face upon its front.';
 
   @override
-  String get exportMddxHint => 'A .mddx scrolle another hoard may take in.';
+  String get exportMddxHint => 'Two scrolles — .ddata (its lore) and .dpage (its page) — another hoard may take in together.';
 
   @override
   String get exportFormulaSkipped => 'Formulae left behinde: {names}';
