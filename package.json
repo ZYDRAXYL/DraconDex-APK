@@ -4,6 +4,7 @@
   "private": true,
   "description": "DraconDex for Android and iOS — Flutter front-end over the shared SQLite vault schema",
   "license": "MIT",
+  "author": "LDKTC",
   "repository": { "type": "git", "url": "https://github.com/ZYDRAXYL/DraconDex-APK.git" },
   "_comment": "This package.json exists ONLY so the chain tooling has a place to hang its scripts. The app's real version lives in flutter/pubspec.yaml (version: 3.0.0+16) and that is what the flutter-v* release tag follows — the number here mirrors it for reference and is not what gets built.",
   "scripts": {
