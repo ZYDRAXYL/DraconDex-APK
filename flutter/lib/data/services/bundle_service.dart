@@ -225,22 +225,30 @@ class BundleService {
               if (f['key'] != null) tplByKey['${f['key']}'] = tid;
               if (f['relTo'] is String) pendingFieldRel.add((tid, f['relTo'] as String, opts));
             }
-            var oo = 0;
-            for (final ob in _a(m['objects'])) {
-              if (ob is! Map) continue;
-              final oid = await d.insert('classifier_object', {
+            // The objects, then their values, each one batch: a CSV is up
+            // to 5,000 rows of them, one statement each before (Procress 19
+            // part 4). The batch answers the objects' ids in order.
+            final obs = [for (final ob in _a(m['objects'])) if (ob is Map) ob];
+            final ob1 = d.batch();
+            for (final (oo, ob) in obs.indexed) {
+              ob1.insert('classifier_object', {
                 'module_ref': id,
                 'name': _s(ob['name'], 200),
                 'note': ob['note'] == null ? null : _s(ob['note'], 20000),
-                'display_order': oo++,
+                'display_order': oo,
               });
+            }
+            final oids = obs.isEmpty ? const <Object?>[] : await ob1.commit();
+            final vals = d.batch();
+            for (final (i, ob) in obs.indexed) {
+              final oid = oids[i]! as int;
               if (ob['ref'] is String) objByRef[ob['ref'] as String] = oid;
               for (final e in (ob['values'] as Map? ?? const {}).entries) {
                 final tid = field('${e.key}');
                 if (tid == null) continue;
                 final v = e.value;
                 final val = v is List ? jsonEncode(v) : (v is bool ? (v ? '1' : '0') : _s(v));
-                await d.insert('classifier_attribute', {'object_ref': oid, 'template_ref': tid, 'attribute_value': val},
+                vals.insert('classifier_attribute', {'object_ref': oid, 'template_ref': tid, 'attribute_value': val},
                     conflictAlgorithm: ConflictAlgorithm.replace);
               }
               for (final e in (ob['links'] as Map? ?? const {}).entries) {
@@ -248,6 +256,7 @@ class BundleService {
                 if (tid != null) pendingLinks.add((oid, tid, _a(e.value)));
               }
             }
+            await vals.commit(noResult: true);
           case 'author':
             final cs = _a(m['chapters']);
             for (var i = 0; i < cs.length; i++) {

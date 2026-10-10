@@ -193,12 +193,14 @@ class ModuleDao {
         "UPDATE module SET parent_id=?,update_at=datetime('now') WHERE id=?",
         [newParentId, id],
       );
+      final b = txn.batch();
       for (var i = 0; i < orderedSiblingIds.length; i++) {
-        await txn.rawUpdate(
+        b.rawUpdate(
           'UPDATE module SET display_order=? WHERE id=? AND nexus_ref=? AND parent_id IS ?',
           [i, orderedSiblingIds[i], nexusRef, newParentId],
         );
       }
+      await b.commit(noResult: true);
     });
   }
 
@@ -209,13 +211,32 @@ class ModuleDao {
   Future<List<int>> moveModules(List<int> ids, {required int nexusRef, int? newParentId}) async {
     await assertCollectorParent(db, newParentId);
     final skipped = <int>[];
+    final todo = <int>[];
     for (final id in ids) {
       if (newParentId != null && await isDescendant(id, newParentId)) {
         skipped.add(id);
-        continue;
+      } else {
+        todo.add(id);
       }
-      await moveModule(id, nexusRef: nexusRef, newParentId: newParentId);
     }
+    if (todo.isEmpty) return skipped;
+    // One transaction and one batch for the lot (Procress 19 part 4), not a
+    // transaction per module: they go after what the target already holds
+    // (the moving ones aside), in the order given.
+    await db.transaction((txn) async {
+      final moving = todo.toSet();
+      var next = 0;
+      for (final r in await txn.rawQuery(
+          'SELECT id, display_order FROM module WHERE nexus_ref=? AND parent_id IS ?', [nexusRef, newParentId])) {
+        final o = (r['display_order'] as int?) ?? 0;
+        if (!moving.contains(r['id']) && o >= next) next = o + 1;
+      }
+      final b = txn.batch();
+      for (final (i, id) in todo.indexed) {
+        b.rawUpdate("UPDATE module SET parent_id=?,display_order=?,update_at=datetime('now') WHERE id=?", [newParentId, next + i, id]);
+      }
+      await b.commit(noResult: true);
+    });
     return skipped;
   }
 

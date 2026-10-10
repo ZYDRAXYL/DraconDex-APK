@@ -494,6 +494,29 @@ class VaultSnapshotService {
     // OUTSIDE any transaction — inside one it is a silent no-op, which is how
     // you end up with a file full of orphans that looks fine (docs/VAULTS.md).
     await db.transaction((txn) async {
+      // A section's rows go in one batch, not one statement each (Procress
+      // 19 part 4: 3,000 objects + 5,000 values were 8,000 round trips — on
+      // Android each one a platform-channel call). [insertAll] answers the
+      // new ids in order, for a section whose ids later rows map through;
+      // [insertEach] is for rows nothing reads back. Not for INSERT OR
+      // IGNORE rows whose id is read: a skipped row has no id to report.
+      Future<List<int>> insertAll(String sql, List<List<Object?>> rows) async {
+        if (rows.isEmpty) return const [];
+        final b = txn.batch();
+        for (final r in rows) {
+          b.rawInsert(sql, r);
+        }
+        return [for (final id in await b.commit()) id! as int];
+      }
+
+      Future<void> insertEach(String sql, Iterable<List<Object?>> rows) async {
+        final b = txn.batch();
+        for (final r in rows) {
+          b.rawInsert(sql, r);
+        }
+        await b.commit(noResult: true);
+      }
+
       if (wipe) {
         // module CASCADEs to every per-kind child, v3 map -> map_area ->
         // map_point and timeline -> timeline_event included.
@@ -557,50 +580,72 @@ class VaultSnapshotService {
       final allModules = arr(p['modules']);
       final inPayload = {for (final m in allModules) m['id']};
       bool isRoot(Map<String, Object?> m) => m['parentId'] == null || !inPayload.contains(m['parentId']);
+      // The order is the one-row-at-a-time order this always had (parents
+      // first, payload order within a pass), so the new ids come out the
+      // same; the rows go in as one batch with no parent, and the parents
+      // are set by a second one once every new id is known (Procress 19
+      // part 4). Handles this import already gave out are tracked here,
+      // since the table cannot see a row of the same batch — NOCASE folds
+      // ASCII only, and so does this.
+      final order = <Map<String, Object?>>[];
+      final placed = <Object?>{};
       var pending = allModules;
       while (pending.isNotEmpty) {
         final next = <Map<String, Object?>>[];
         var progressed = false;
         for (final m in pending) {
-          if (!isRoot(m) && !modMap.containsKey(m['parentId'])) {
+          if (!isRoot(m) && !placed.contains(m['parentId'])) {
             next.add(m);
             continue;
           }
-          final parentId = isRoot(m) ? reparentRootTo : modMap[m['parentId']];
-
-          // A handle is unique per Nexus and this one may already be taken.
-          // Dropping the clash to NULL keeps the module importable; throwing
-          // would abort the whole transaction over a cosmetic field, and
-          // renaming it would invent a handle the user never chose.
-          Object? handle = m['handle'];
-          if (handle != null) {
-            final clash = await txn.rawQuery(
-                'SELECT id FROM module WHERE nexus_ref=? AND handle=? COLLATE NOCASE', [nexusId, handle]);
-            if (clash.isNotEmpty) handle = null;
-          }
-          final kind = '${m['kind']}';
-          final legacy = ModuleKind.legacyIds[kind]?.id;
-          final id = await txn.rawInsert(
-            'INSERT INTO module (nexus_ref, parent_id, name, kind, icon, icon_color, color, '
-            'description, display_order, pinned, cat_type, handle, create_at, update_at) '
-            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,COALESCE(?,datetime('now')),COALESCE(?,datetime('now')))",
-            <Object?>[
-              nexusId, parentId, m['name'], legacy ?? kind, m['icon'],
-              colorId(m['iconColorCode']), colorId(m['colorCode']),
-              m['description'], m['displayOrder'] ?? 0, m['pinned'] ?? 0,
-              m['catType'], handle, m['createAt'], m['updateAt'],
-            ],
-          );
-          final oldId = m['id'];
-          if (oldId is int) {
-            modMap[oldId] = id;
-            if (legacy != null) legacyKind[oldId] = kind;
-          }
+          order.add(m);
+          if (m['id'] is int) placed.add(m['id']);
           progressed = true;
         }
         if (!progressed) break; // orphaned parentIds — drop the remainder
         pending = next;
       }
+      final takenHandles = <String>{};
+      String fold(String h) => h.replaceAllMapped(RegExp('[A-Z]'), (c) => c[0]!.toLowerCase());
+      final rows = <List<Object?>>[];
+      for (final m in order) {
+        // A handle is unique per Nexus and this one may already be taken.
+        // Dropping the clash to NULL keeps the module importable; throwing
+        // would abort the whole transaction over a cosmetic field, and
+        // renaming it would invent a handle the user never chose.
+        Object? handle = m['handle'];
+        if (handle != null) {
+          final clash = await txn.rawQuery(
+              'SELECT id FROM module WHERE nexus_ref=? AND handle=? COLLATE NOCASE', [nexusId, handle]);
+          if (clash.isNotEmpty || !takenHandles.add(fold('$handle'))) handle = null;
+        }
+        final kind = '${m['kind']}';
+        rows.add(<Object?>[
+          nexusId, isRoot(m) ? reparentRootTo : null, m['name'], ModuleKind.legacyIds[kind]?.id ?? kind, m['icon'],
+          colorId(m['iconColorCode']), colorId(m['colorCode']),
+          m['description'], m['displayOrder'] ?? 0, m['pinned'] ?? 0,
+          m['catType'], handle, m['createAt'], m['updateAt'],
+        ]);
+      }
+      final moduleIds = await insertAll(
+        'INSERT INTO module (nexus_ref, parent_id, name, kind, icon, icon_color, color, '
+        'description, display_order, pinned, cat_type, handle, create_at, update_at) '
+        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,COALESCE(?,datetime('now')),COALESCE(?,datetime('now')))",
+        rows,
+      );
+      for (final (i, m) in order.indexed) {
+        final oldId = m['id'];
+        if (oldId is int) {
+          modMap[oldId] = moduleIds[i];
+          final kind = '${m['kind']}';
+          if (ModuleKind.legacyIds[kind] != null) legacyKind[oldId] = kind;
+        }
+      }
+      final parents = txn.batch();
+      for (final (i, m) in order.indexed) {
+        if (!isRoot(m)) parents.rawUpdate('UPDATE module SET parent_id=? WHERE id=?', [modMap[m['parentId']], moduleIds[i]]);
+      }
+      await parents.commit(noResult: true);
       int? mod(Object? oldId) => oldId is int ? modMap[oldId] : null;
 
       // --- per-kind children, in dependency order -----------------------
@@ -623,14 +668,17 @@ class VaultSnapshotService {
 
       final cls = sect(p['classifier']);
       final cobjMap = <int, int>{};
-      for (final o in arr(cls['objects'])) {
-        final m = mod(o['moduleId']);
-        if (m == null) continue;
-        final id = await txn.rawInsert(
-            'INSERT INTO classifier_object (module_ref, name, color, note, display_order) VALUES (?,?,?,?,?)',
-            <Object?>[m, o['name'], colorId(o['colorCode']), o['note'], o['displayOrder'] ?? 0]);
+      final objects = [for (final o in arr(cls['objects'])) if (mod(o['moduleId']) != null) o];
+      final objectIds = await insertAll(
+        'INSERT INTO classifier_object (module_ref, name, color, note, display_order) VALUES (?,?,?,?,?)',
+        [
+          for (final o in objects)
+            <Object?>[mod(o['moduleId']), o['name'], colorId(o['colorCode']), o['note'], o['displayOrder'] ?? 0],
+        ],
+      );
+      for (final (i, o) in objects.indexed) {
         final oldId = o['id'];
-        if (oldId is int) cobjMap[oldId] = id;
+        if (oldId is int) cobjMap[oldId] = objectIds[i];
       }
       final ctplMap = <int, int>{};
       for (final t in arr(cls['templates'])) {
@@ -649,23 +697,23 @@ class VaultSnapshotService {
         final oldId = t['id'];
         if (oldId is int) ctplMap[oldId] = id;
       }
-      for (final a in arr(cls['attributes'])) {
-        final obj = cobjMap[a['objectId']];
-        final tpl = ctplMap[a['templateId']];
-        if (obj == null || tpl == null) continue;
-        await txn.rawInsert(
-            'INSERT OR IGNORE INTO classifier_attribute (object_ref, template_ref, attribute_value) VALUES (?,?,?)',
-            <Object?>[obj, tpl, a['value']]);
-      }
-      for (final l in arr(cls['levels'])) {
-        final obj = cobjMap[l['objectId']];
-        final tpl = ctplMap[l['templateId']];
-        if (obj == null || tpl == null) continue;
-        await txn.rawInsert(
-            'INSERT INTO classifier_level (object_ref, template_ref, level_label, condition_value, info_value, display_order) '
-            'VALUES (?,?,?,?,?,?)',
-            <Object?>[obj, tpl, l['levelLabel'], l['conditionValue'], l['infoValue'], l['displayOrder'] ?? 0]);
-      }
+      await insertEach(
+        'INSERT OR IGNORE INTO classifier_attribute (object_ref, template_ref, attribute_value) VALUES (?,?,?)',
+        [
+          for (final a in arr(cls['attributes']))
+            if ((cobjMap[a['objectId']], ctplMap[a['templateId']]) case (final int obj, final int tpl))
+              <Object?>[obj, tpl, a['value']],
+        ],
+      );
+      await insertEach(
+        'INSERT INTO classifier_level (object_ref, template_ref, level_label, condition_value, info_value, display_order) '
+        'VALUES (?,?,?,?,?,?)',
+        [
+          for (final l in arr(cls['levels']))
+            if ((cobjMap[l['objectId']], ctplMap[l['templateId']]) case (final int obj, final int tpl))
+              <Object?>[obj, tpl, l['levelLabel'], l['conditionValue'], l['infoValue'], l['displayOrder'] ?? 0],
+        ],
+      );
 
       final loc = sect(p['locator']);
       final mapMap = <int, int>{};
@@ -686,12 +734,10 @@ class VaultSnapshotService {
         final oldId = r['id'];
         if (oldId is int) areaMap[oldId] = id;
       }
-      for (final pt in arr(loc['points'])) {
-        final areaId = areaMap[pt['areaId']];
-        if (areaId == null) continue;
-        await txn.rawInsert('INSERT INTO map_point (area_id, point_order, x, y) VALUES (?,?,?,?)',
-            <Object?>[areaId, pt['order'] ?? 0, pt['x'], pt['y']]);
-      }
+      await insertEach('INSERT INTO map_point (area_id, point_order, x, y) VALUES (?,?,?,?)', [
+        for (final pt in arr(loc['points']))
+          if (areaMap[pt['areaId']] case final int areaId) <Object?>[areaId, pt['order'] ?? 0, pt['x'], pt['y']],
+      ]);
 
       final chr = sect(p['chronicler']);
       final tlMap = <int, int>{};
@@ -811,13 +857,10 @@ class VaultSnapshotService {
         final oldId = ses['id'];
         if (oldId is int) chssMap[oldId] = id;
       }
-      for (final msg in arr(cht['messages'])) {
-        final ses = chssMap[msg['sessionId']];
-        if (ses == null) continue;
-        await txn.rawInsert(
-            "INSERT INTO chat_message (session_ref, message, create_at) VALUES (?,?,COALESCE(?,datetime('now')))",
-            <Object?>[ses, msg['message'], msg['createAt']]);
-      }
+      await insertEach("INSERT INTO chat_message (session_ref, message, create_at) VALUES (?,?,COALESCE(?,datetime('now')))", [
+        for (final msg in arr(cht['messages']))
+          if (chssMap[msg['sessionId']] case final int ses) <Object?>[ses, msg['message'], msg['createAt']],
+      ]);
 
       final skt = sect(p['sketcher']);
       final pageMap = <int, int>{};
@@ -829,12 +872,10 @@ class VaultSnapshotService {
         final oldId = pg['id'];
         if (oldId is int) pageMap[oldId] = id;
       }
-      for (final st in arr(skt['strokes'])) {
-        final page = pageMap[st['pageId']];
-        if (page == null) continue;
-        await txn.rawInsert('INSERT INTO sketch_stroke (page_ref, color, width, points) VALUES (?,?,?,?)',
-            <Object?>[page, st['color'], st['width'] ?? 3, st['points']]);
-      }
+      await insertEach('INSERT INTO sketch_stroke (page_ref, color, width, points) VALUES (?,?,?,?)', [
+        for (final st in arr(skt['strokes']))
+          if (pageMap[st['pageId']] case final int page) <Object?>[page, st['color'], st['width'] ?? 3, st['points']],
+      ]);
 
       // Diviner (§11.5) — before the key maps, which need divtMap; an
       // entry's linker_key is remapped with the other deferred single keys.
@@ -969,6 +1010,7 @@ class VaultSnapshotService {
 
       var droppedRelations = 0;
       final relations = arr(p['relations']);
+      final relRows = <List<Object?>>[];
       for (final rel in relations) {
         final fk = remapEntityKey(rel['fromKey'], keyMaps);
         final tk = remapEntityKey(rel['toKey'], keyMaps);
@@ -984,14 +1026,15 @@ class VaultSnapshotService {
         }
         final validFrom = rel['validFrom'];
         final validTo = rel['validTo'];
-        await txn.rawInsert(
-            'INSERT OR IGNORE INTO entity_relation (nexus_ref, from_key, to_key, label, rel_type, directed, module_ref, valid_from, valid_to) '
-            'VALUES (?,?,?,?,?,?,?,?,?)',
-            <Object?>[
-              nexusId, fk, tk, rel['label'], rt, rel['directed'] == 0 ? 0 : 1, mod(rel['moduleId']),
-              validFrom is String ? dateMap[validFrom] : null, validTo is String ? dateMap[validTo] : null,
-            ]);
+        relRows.add(<Object?>[
+          nexusId, fk, tk, rel['label'], rt, rel['directed'] == 0 ? 0 : 1, mod(rel['moduleId']),
+          validFrom is String ? dateMap[validFrom] : null, validTo is String ? dateMap[validTo] : null,
+        ]);
       }
+      await insertEach(
+          'INSERT OR IGNORE INTO entity_relation (nexus_ref, from_key, to_key, label, rel_type, directed, module_ref, valid_from, valid_to) '
+          'VALUES (?,?,?,?,?,?,?,?,?)',
+          relRows);
 
       // Page blocks (§12): item_key / source_key are entity keys, so they
       // wait for every map. '*' (the shared element layout) is not a key. An
