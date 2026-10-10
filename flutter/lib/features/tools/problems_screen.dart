@@ -39,20 +39,34 @@ class ProblemsScreen extends ConsumerWidget {
         error: (e, _) => Center(child: Text('$e')),
         data: (ps) => ps.isEmpty
             ? Center(child: Text(l.problemsNone))
-            : ListView(children: [
-                for (final t in const ['link', 'empty', 'relation'])
-                  if (ps.where((p) => p.type == t).toList() case final rows when rows.isNotEmpty) ...[
-                    ListTile(title: Text('${title(t)} (${rows.length})', style: Theme.of(context).textTheme.titleSmall)),
-                    for (final p in rows)
-                      ListTile(
-                        dense: true,
-                        leading: Icon(icon(t), size: 20),
-                        title: Text(p.name),
-                        subtitle: Text(p.detail),
-                        onTap: p.key == null ? null : () => openKey(context, ref, p.key!),
-                      ),
-                  ],
-              ]),
+            : Builder(builder: (context) {
+                // each type's heading, then its rows — flattened so a vault
+                // with thousands of problems builds only what shows
+                final byType = {
+                  for (final t in const ['link', 'empty', 'relation'])
+                    if (ps.where((p) => p.type == t).toList() case final rows when rows.isNotEmpty) t: rows,
+                };
+                final lines = <(String, Problem?)>[
+                  for (final e in byType.entries) ...[(e.key, null), for (final p in e.value) (e.key, p)],
+                ];
+                return ListView.builder(
+                  itemCount: lines.length,
+                  itemBuilder: (context, i) {
+                    final (t, p) = lines[i];
+                    if (p == null) {
+                      return ListTile(
+                          title: Text('${title(t)} (${byType[t]!.length})', style: Theme.of(context).textTheme.titleSmall));
+                    }
+                    return ListTile(
+                      dense: true,
+                      leading: Icon(icon(t), size: 20),
+                      title: Text(p.name),
+                      subtitle: Text(p.detail),
+                      onTap: p.key == null ? null : () => openKey(context, ref, p.key!),
+                    );
+                  },
+                );
+              }),
       ),
     );
   }

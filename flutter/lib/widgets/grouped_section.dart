@@ -34,17 +34,57 @@ class DdxGroupedSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (header != null)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 6),
-              child: Text(header!.toUpperCase(),
-                  style: TextStyle(fontSize: DdxIos.sizeFootnote, color: ddx.textMuted, letterSpacing: 0)),
-            ),
+          if (header != null) _caption(context, header!),
           ClipRRect(
             borderRadius: BorderRadius.circular(DdxIos.radiusGroup),
             child: Material(color: ddx.palette.surface, child: Column(mainAxisSize: MainAxisSize.min, children: rows)),
           ),
         ],
+      ),
+    );
+  }
+
+  static Widget _caption(BuildContext context, String header) => Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 6),
+        child: Text(header.toUpperCase(),
+            style: TextStyle(fontSize: DdxIos.sizeFootnote, color: context.ddx.textMuted, letterSpacing: 0)),
+      );
+
+  /// The same card as a sliver of [itemCount] rows, built as they scroll in
+  /// (Procress 19 F5): each row draws its own slice of the card — the
+  /// first rounds the top corners, the last the bottom, every other row
+  /// starts with the separator.
+  static Widget sliver({
+    String? header,
+    required int itemCount,
+    required IndexedWidgetBuilder itemBuilder,
+    double separatorIndent = 16,
+  }) {
+    final lead = header == null ? 0 : 1;
+    return SliverPadding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 22),
+      sliver: SliverList.builder(
+        itemCount: itemCount + lead,
+        itemBuilder: (context, j) {
+          if (j < lead) return _caption(context, header!);
+          final i = j - lead;
+          final ddx = context.ddx;
+          const r = Radius.circular(DdxIos.radiusGroup);
+          return ClipRRect(
+            borderRadius: BorderRadius.vertical(top: i == 0 ? r : Radius.zero, bottom: i == itemCount - 1 ? r : Radius.zero),
+            child: Material(
+              color: ddx.palette.surface,
+              child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                if (i > 0)
+                  Padding(
+                    padding: EdgeInsets.only(left: separatorIndent),
+                    child: Container(height: DdxIos.sizeSeparatorWidth, color: ddx.iosSeparator),
+                  ),
+                itemBuilder(context, i),
+              ]),
+            ),
+          );
+        },
       ),
     );
   }

@@ -14,6 +14,7 @@ import '../../widgets/confirm_dialog.dart';
 import '../../widgets/row_menu.dart';
 import '../page/views/view_common.dart';
 import 'folder_assets.dart';
+import '../../widgets/sized_image.dart';
 
 final assetsProvider = FutureProvider.autoDispose.family<List<Asset>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
@@ -60,7 +61,7 @@ class AssetThumb extends StatelessWidget {
       width: size,
       height: size,
       child: asset.isImage && p != null
-          ? ClipRRect(borderRadius: BorderRadius.circular(6), child: Image.memory(p, fit: BoxFit.cover, gaplessPlayback: true))
+          ? ClipRRect(borderRadius: BorderRadius.circular(6), child: SizedImage(p, fit: BoxFit.cover, width: size, height: size, gaplessPlayback: true))
           : Icon(assetIcon(asset), size: size * 0.6),
     );
   }
@@ -115,11 +116,12 @@ Future<int?> pickAsset(BuildContext context, WidgetRef ref, int nexusId, {bool i
     isScrollControlled: true,
     builder: (s) => SizedBox(
       height: MediaQuery.of(s).size.height * 0.6,
-      child: ListView(children: [
-        ListTile(leading: const Icon(Icons.add_photo_alternate_outlined), title: Text(l.assetsFromDevice), onTap: () => Navigator.pop(s, -1)),
-        for (final a in list)
-          ListTile(leading: AssetThumb(asset: a, size: 40), title: Text(a.name), onTap: () => Navigator.pop(s, a.id)),
-      ]),
+      child: ListView.builder(
+        itemCount: list.length + 1,
+        itemBuilder: (s, i) => i == 0
+            ? ListTile(leading: const Icon(Icons.add_photo_alternate_outlined), title: Text(l.assetsFromDevice), onTap: () => Navigator.pop(s, -1))
+            : ListTile(leading: AssetThumb(asset: list[i - 1], size: 40), title: Text(list[i - 1].name), onTap: () => Navigator.pop(s, list[i - 1].id)),
+      ),
     ),
   );
   if (pick == -1 && context.mounted) {
@@ -189,14 +191,21 @@ class AssetsScreen extends ConsumerWidget {
       body: list.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('$e')),
-        data: (assets) => ListView(padding: const EdgeInsets.only(bottom: 88), children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-            child: Text(l.assetsNotice, style: theme.textTheme.bodySmall),
-          ),
-          if (assets.isEmpty) Padding(padding: const EdgeInsets.all(24), child: Center(child: Text(l.assetsNone))),
-          for (final a in assets)
-            ListTile(
+        // the notice (and "none"), then a row per file, built as they
+        // scroll in: a Nest of thousands decodes only the thumbs on screen
+        data: (assets) => ListView.builder(
+          padding: const EdgeInsets.only(bottom: 88),
+          itemCount: assets.isEmpty ? 2 : assets.length + 1,
+          itemBuilder: (context, i) {
+            if (i == 0) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+                child: Text(l.assetsNotice, style: theme.textTheme.bodySmall),
+              );
+            }
+            if (assets.isEmpty) return Padding(padding: const EdgeInsets.all(24), child: Center(child: Text(l.assetsNone)));
+            final a = assets[i - 1];
+            return ListTile(
               leading: AssetThumb(asset: a),
               title: Text(a.name, maxLines: 1, overflow: TextOverflow.ellipsis),
               subtitle: Text(a.isUrl ? a.path : '${a.type.toUpperCase()} · ${fileSize(a.size)}', maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -233,8 +242,9 @@ class AssetsScreen extends ConsumerWidget {
                   },
                 ),
               ]),
-            ),
-        ]),
+            );
+          },
+        ),
       ),
     );
   }

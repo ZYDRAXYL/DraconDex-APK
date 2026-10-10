@@ -66,13 +66,18 @@ class TrashScreen extends ConsumerWidget {
         error: (e, _) => Center(child: Text('$e')),
         data: (list) => list.isEmpty
             ? Center(child: Text(l.trashNothing, style: theme.textTheme.bodyMedium))
-            : ListView(children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-                  child: Text(l.trashNote, style: theme.textTheme.bodySmall),
-                ),
-                for (final t in list)
-                  ListTile(
+            // the note, then a row per batch, built as they scroll in
+            : ListView.builder(
+                itemCount: list.length + 1,
+                itemBuilder: (context, i) {
+                  if (i == 0) {
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+                      child: Text(l.trashNote, style: theme.textTheme.bodySmall),
+                    );
+                  }
+                  final t = list[i - 1];
+                  return ListTile(
                     leading: Icon(moduleKindInfo[ModuleKind.fromId(t.kind)]?.icon ?? Icons.folder_outlined),
                     title: Text(t.name),
                     subtitle: Text([
@@ -101,8 +106,9 @@ class TrashScreen extends ConsumerWidget {
                         },
                       ),
                     ]),
-                  ),
-              ]),
+                  );
+                },
+              ),
       ),
     );
   }

@@ -18,6 +18,7 @@ import 'core_components.dart';
 import 'links.dart';
 import 'page_providers.dart';
 import 'wiki_components.dart';
+import '../../widgets/sized_image.dart';
 
 /// A page: the module's own (itemKey null) or an element's — a stack of
 /// blocks rendered top to bottom, in the order the desktop (or arrange mode
@@ -404,7 +405,7 @@ class ImageBlock extends ConsumerWidget {
         if (bytes != null)
           GestureDetector(
             onLongPress: choose,
-            child: ClipRRect(borderRadius: BorderRadius.circular(8), child: Image.memory(bytes, fit: BoxFit.contain, gaplessPlayback: true)),
+            child: ClipRRect(borderRadius: BorderRadius.circular(8), child: SizedImage(bytes, fit: BoxFit.contain, gaplessPlayback: true)),
           )
         else
           Container(

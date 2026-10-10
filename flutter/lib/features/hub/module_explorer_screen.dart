@@ -163,37 +163,45 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
             ),
           ),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.only(bottom: 88),
-              children: [
+            // Slivers, so a folder's rows build as they scroll in (Procress
+            // 19 F5); everything else is one box each, as in a ListView.
+            child: CustomScrollView(
+              slivers: [
                 // The page: a stack of blocks (V5.md §12, APK-V3.md §10.4).
-                if (module != null && (itemKey != null || module.kind != ModuleKind.collector)) ...[
-                  // The title, laid out as the page says (C6); on iOS the
-                  // large title, under the breadcrumb bar (C3).
-                  PageHeader(module: module, itemKey: itemKey, title: itemKey != null ? (itemName ?? '') : module.name),
-                  ModulePage(moduleId: module.id, itemKey: itemKey),
-                ],
+                if (module != null && (itemKey != null || module.kind != ModuleKind.collector))
+                  SliverList.list(children: [
+                    // The title, laid out as the page says (C6); on iOS the
+                    // large title, under the breadcrumb bar (C3).
+                    PageHeader(module: module, itemKey: itemKey, title: itemKey != null ? (itemName ?? '') : module.name),
+                    ModulePage(moduleId: module.id, itemKey: itemKey),
+                  ]),
                 // A Collector IS its children, and so is a Nexus root.
                 if (itemKey == null && showsChildren(module))
-                  childrenAsync.when(
-                    loading: () => const Padding(
-                        padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator())),
-                    error: (e, s) => Center(child: Text('Error: $e')),
+                  ...childrenAsync.when(
+                    loading: () => const [
+                      SliverToBoxAdapter(
+                        child: Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator())),
+                      ),
+                    ],
+                    error: (e, s) => [SliverToBoxAdapter(child: Center(child: Text('Error: $e')))],
                     data: (children) => children.isEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.all(32),
-                            child: Text(
-                              l10n.emptyModuleMessage,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
-                                  ),
+                        ? [
+                            SliverToBoxAdapter(
+                              child: Padding(
+                                padding: const EdgeInsets.all(32),
+                                child: Text(
+                                  l10n.emptyModuleMessage,
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                                      ),
+                                ),
+                              ),
                             ),
-                          )
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
+                          ]
+                        : [
+                            SliverToBoxAdapter(
+                              child: Padding(
                                 padding: const EdgeInsets.fromLTRB(16, 8, 4, 0),
                                 child: Row(children: [
                                   Expanded(
@@ -205,18 +213,19 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                                   const ViewModeButton(),
                                 ]),
                               ),
-                              ModuleCollectionView(
-                                nexusId: nexusId,
-                                modules: children,
-                                mode: viewMode,
-                                embedded: true,
-                              ),
-                            ],
-                          ),
+                            ),
+                            ModuleCollectionView(
+                              nexusId: nexusId,
+                              modules: children,
+                              mode: viewMode,
+                              sliver: true,
+                            ),
+                          ],
                   ),
                 // A folder's own files, under its sub-folders and modules.
                 if (itemKey == null && moduleId != null && module?.kind == ModuleKind.collector)
-                  FolderAssets(nexusId: nexusId, moduleId: moduleId!),
+                  SliverToBoxAdapter(child: FolderAssets(nexusId: nexusId, moduleId: moduleId!)),
+                const SliverPadding(padding: EdgeInsets.only(bottom: 88)),
               ],
             ),
           ),

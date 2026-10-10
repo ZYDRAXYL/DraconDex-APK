@@ -13,6 +13,7 @@ import '../../data/services/assets/asset_files.dart';
 import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import 'page_providers.dart';
+import '../../widgets/sized_image.dart';
 
 /// A page's title layout (APP docs/REDESIGN.md C6) — the same module_ui row
 /// the desktop writes (EXE hub/page-head.js): "pageHead" for a module page,
@@ -147,7 +148,7 @@ class PageHeader extends ConsumerWidget {
                 child: SizedBox(
                   height: 150,
                   width: double.infinity,
-                  child: Image.memory(cover.bytes, fit: BoxFit.cover, gaplessPlayback: true),
+                  child: SizedImage(cover.bytes, fit: BoxFit.cover, gaplessPlayback: true),
                 ),
               ),
             ),
@@ -259,7 +260,7 @@ class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
                         selected: lay.cover == c.sha,
                         tooltip: c.name,
                         onTap: () => _save(lay.copyWith(cover: c.sha)),
-                        child: Image.memory(c.bytes, fit: BoxFit.cover, width: 96, height: 60, gaplessPlayback: true),
+                        child: SizedImage(c.bytes, fit: BoxFit.cover, width: 96, height: 60, gaplessPlayback: true),
                       ),
                   ],
                 ),

@@ -23,62 +23,59 @@ class ModuleCollectionView extends StatelessWidget {
   final List<ModuleModel> modules;
   final BuilderViewMode mode;
 
-  /// Inside a page's own scroll view: sizes to its rows and leaves the
-  /// scrolling to the page.
-  final bool embedded;
+  /// Inside a page's own CustomScrollView: a sliver, so a folder of
+  /// hundreds builds only the rows on screen (Procress 19 F5) — the page
+  /// does the scrolling.
+  final bool sliver;
 
   const ModuleCollectionView({
     super.key,
     required this.nexusId,
     required this.modules,
     required this.mode,
-    this.embedded = false,
+    this.sliver = false,
   });
 
   @override
   Widget build(BuildContext context) {
     switch (mode) {
       case BuilderViewMode.grid:
+        final delegate = SliverGridDelegateWithMaxCrossAxisExtent(
+          // Wider tiles on a tablet: the phone's 170 across an iPad reads
+          // as a phone screenshot scaled up rather than a tablet layout.
+          maxCrossAxisExtent: gridTileExtentFor(ddxLayoutOf(context)),
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 0.92,
+        );
+        Widget card(BuildContext _, int i) => ModuleCard(nexusId: nexusId, module: modules[i]);
+        if (sliver) {
+          return SliverPadding(
+            padding: const EdgeInsets.all(12),
+            sliver: SliverGrid.builder(gridDelegate: delegate, itemCount: modules.length, itemBuilder: card),
+          );
+        }
         return GridView.builder(
-          shrinkWrap: embedded,
-          physics: embedded ? const NeverScrollableScrollPhysics() : null,
           padding: const EdgeInsets.all(12),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            // Wider tiles on a tablet: the phone's 170 across an iPad reads
-            // as a phone screenshot scaled up rather than a tablet layout.
-            maxCrossAxisExtent: gridTileExtentFor(ddxLayoutOf(context)),
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            childAspectRatio: 0.92,
-          ),
+          gridDelegate: delegate,
           itemCount: modules.length,
-          itemBuilder: (_, i) => ModuleCard(nexusId: nexusId, module: modules[i]),
+          itemBuilder: card,
         );
       case BuilderViewMode.compact:
-        return ListView.builder(
-          shrinkWrap: embedded,
-          physics: embedded ? const NeverScrollableScrollPhysics() : null,
-          itemCount: modules.length,
-          itemBuilder: (_, i) => ModuleTile(nexusId: nexusId, module: modules[i], dense: true),
-        );
+        Widget tile(BuildContext _, int i) => ModuleTile(nexusId: nexusId, module: modules[i], dense: true);
+        if (sliver) return SliverList.builder(itemCount: modules.length, itemBuilder: tile);
+        return ListView.builder(itemCount: modules.length, itemBuilder: tile);
       case BuilderViewMode.list:
+        Widget tile(BuildContext _, int i) => ModuleTile(nexusId: nexusId, module: modules[i]);
         // iOS: one grouped inset card, separators past the icon square (C3).
         if (context.isIosStyle) {
-          final card = DdxGroupedSection(
-            separatorIndent: 58,
-            children: [for (final m in modules) ModuleTile(nexusId: nexusId, module: m)],
-          );
-          return embedded
-              ? Padding(padding: const EdgeInsets.only(top: 8), child: card)
-              : ListView(padding: const EdgeInsets.only(top: 8), children: [card]);
+          final card = DdxGroupedSection.sliver(separatorIndent: 58, itemCount: modules.length, itemBuilder: tile);
+          final list = SliverPadding(padding: const EdgeInsets.only(top: 8), sliver: card);
+          return sliver ? list : CustomScrollView(slivers: [list]);
         }
-        return ListView.separated(
-          shrinkWrap: embedded,
-          physics: embedded ? const NeverScrollableScrollPhysics() : null,
-          itemCount: modules.length,
-          separatorBuilder: (_, _) => const Divider(height: 1),
-          itemBuilder: (_, i) => ModuleTile(nexusId: nexusId, module: modules[i]),
-        );
+        Widget divider(BuildContext _, int i) => const Divider(height: 1);
+        if (sliver) return SliverList.separated(itemCount: modules.length, separatorBuilder: divider, itemBuilder: tile);
+        return ListView.separated(itemCount: modules.length, separatorBuilder: divider, itemBuilder: tile);
     }
   }
 }
@@ -149,20 +146,26 @@ class ModuleTile extends ConsumerWidget {
 }
 
 /// One row's part in its level's select mode (moduleSelectionProvider).
+/// A row watches only its own two bits, so ticking one row rebuilds that
+/// row (and every row only when select mode starts or ends), not the level.
 class _Selection {
   final WidgetRef ref;
   final ModuleChildrenKey key;
-  final Set<int> ids;
   final int id;
-  _Selection(this.ref, ModuleModel module)
-      : key = ModuleChildrenKey(module.nexusRef, module.parentId),
-        id = module.id,
-        ids = ref.watch(moduleSelectionProvider(ModuleChildrenKey(module.nexusRef, module.parentId)));
+  final bool active;
+  final bool picked;
+  _Selection._(this.ref, this.key, this.id, this.active, this.picked);
 
-  bool get active => ids.isNotEmpty;
-  bool get picked => ids.contains(id);
-  void toggle() => ref.read(moduleSelectionProvider(key).notifier).state =
-      picked ? ({...ids}..remove(id)) : {...ids, id};
+  factory _Selection(WidgetRef ref, ModuleModel module) {
+    final key = ModuleChildrenKey(module.nexusRef, module.parentId);
+    final p = moduleSelectionProvider(key);
+    return _Selection._(ref, key, module.id, ref.watch(p.select((s) => s.isNotEmpty)), ref.watch(p.select((s) => s.contains(module.id))));
+  }
+
+  void toggle() {
+    final n = ref.read(moduleSelectionProvider(key).notifier);
+    n.state = n.state.contains(id) ? ({...n.state}..remove(id)) : {...n.state, id};
+  }
 }
 
 /// The module's own colour for its iOS icon square, or the accent.
