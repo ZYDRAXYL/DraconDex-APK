@@ -164,8 +164,8 @@ class _RailBrand extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final asset = theme.brightness == Brightness.dark
-        ? 'assets/images/DraconDex-SymbolWhite.png'
-        : 'assets/images/DraconDex-SymbolBlack.png';
+        ? 'assets/images/DraconDex-SymbolWhite.webp'
+        : 'assets/images/DraconDex-SymbolBlack.webp';
     final logo = Image.asset(asset, width: 28, height: 28, fit: BoxFit.contain);
 
     return Padding(
