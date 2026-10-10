@@ -124,7 +124,7 @@ class PageHeader extends ConsumerWidget {
     final lay = ref.watch(pageHeadProvider(PageKey(module.id, itemKey))).valueOrNull ?? PageHeadLayout.empty;
     final cover = lay.cover == null
         ? null
-        : ref.watch(coverImagesProvider(module.nexusRef)).valueOrNull?.where((c) => c.sha == lay.cover).firstOrNull;
+        : ref.watch(coverImagesProvider(module.nexusRef).select((a) => a.valueOrNull?.where((c) => c.sha == lay.cover).firstOrNull));
     final align = switch (lay.align) { 'center' => TextAlign.center, 'right' => TextAlign.right, _ => TextAlign.left };
     final cross = switch (lay.align) {
       'center' => CrossAxisAlignment.center,

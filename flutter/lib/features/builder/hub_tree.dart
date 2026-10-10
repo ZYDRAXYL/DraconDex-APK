@@ -94,7 +94,8 @@ class _NexusNode extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final key = hubNodeKey(nexus.id, null);
-    final expanded = ref.watch(hubTreeExpansionProvider).contains(key);
+    // only this node's own bit: expanding another node does not rebuild it
+    final expanded = ref.watch(hubTreeExpansionProvider.select((s) => s.contains(key)));
     final selected = current.nexusId == nexus.id && current.moduleId == null;
 
     return Column(
@@ -173,7 +174,8 @@ class _ModuleNode extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final key = hubNodeKey(nexusId, module.id);
-    final expanded = ref.watch(hubTreeExpansionProvider).contains(key);
+    // only this node's own bit: expanding another node does not rebuild it
+    final expanded = ref.watch(hubTreeExpansionProvider.select((s) => s.contains(key)));
     final selected = current.nexusId == nexusId && current.moduleId == module.id;
     final hasChildren = (module.childCount ?? 0) > 0;
     List<RowAction> actions() => moduleRowActions(context, ref, module, inTree: true);

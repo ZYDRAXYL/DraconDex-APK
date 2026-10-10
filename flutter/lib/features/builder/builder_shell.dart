@@ -230,7 +230,7 @@ class BuilderNavibar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final openCount = ref.watch(recentViewsProvider).length;
+    final openCount = ref.watch(recentViewsProvider.select((v) => v.length));
     final here = HubLocation.parse(location);
     final atNest = location == '/' || (here.nexusId != null && here.moduleId == null);
     final atSearch = location == '/search';

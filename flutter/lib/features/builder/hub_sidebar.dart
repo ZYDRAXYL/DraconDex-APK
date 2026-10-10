@@ -32,7 +32,7 @@ class HubSidebar extends ConsumerWidget {
     // headed by the Nexus being worked in, as the desktop's Nest is (APP
     // Procress 16 part 2); the tree below still holds every Nexus
     final nexusId = HubLocation.parse(location).nexusId;
-    final nexusName = nexusId == null ? null : ref.watch(nexusProvider(nexusId)).valueOrNull?.name;
+    final nexusName = nexusId == null ? null : ref.watch(nexusProvider(nexusId).select((n) => n.valueOrNull?.name));
 
     return Material(
       color: theme.colorScheme.surface,
