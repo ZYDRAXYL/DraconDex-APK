@@ -25,7 +25,7 @@
     },
     "flutter/lib/core/theme/tokens.g.dart": {
       "artifact": "generated/flutter/tokens.g.dart",
-      "sha256": "d1fda45c29634a4ef12d8f2a0f42bdb174f971201cb2666ac4571302df9cd8f0"
+      "sha256": "238e54172776a5490da586aaf1c9d4ff1a7f4f8b8e01cfb01207e373f976a8d7"
     },
     "flutter/assets/images/DraconDex-IconApp.png": {
       "artifact": "assets/flutter/DraconDex-IconApp.png",
@@ -35,13 +35,25 @@
       "artifact": "assets/flutter/DraconDex-SymbolBlack.png",
       "sha256": "56f31ff7cc5db96f9714f9043e1d06aaed0f51bee35a7667d94d358c6436a8ea"
     },
+    "flutter/assets/images/DraconDex-SymbolBlack.webp": {
+      "artifact": "assets/flutter/DraconDex-SymbolBlack.webp",
+      "sha256": "f50d656c396dbf24b236f56bff5ba6d22a08147dde5ca9d9d4b5b40118fc23a0"
+    },
     "flutter/assets/images/DraconDex-SymbolColor.png": {
       "artifact": "assets/flutter/DraconDex-SymbolColor.png",
       "sha256": "3778c06dccc6c35fa0ba51abbc5d1c7a0a142194245bf54bdc8fa49d1ae8f46b"
     },
+    "flutter/assets/images/DraconDex-SymbolColor.webp": {
+      "artifact": "assets/flutter/DraconDex-SymbolColor.webp",
+      "sha256": "0dfed2651c73f64aac49b95e130672e68c1a99ecbddf87e9a44344b02be9816c"
+    },
     "flutter/assets/images/DraconDex-SymbolWhite.png": {
       "artifact": "assets/flutter/DraconDex-SymbolWhite.png",
       "sha256": "e01f6f20cc8da69c4c8ede1a2ef69a7bf6fd9d4e3a106578e520759b120a862f"
+    },
+    "flutter/assets/images/DraconDex-SymbolWhite.webp": {
+      "artifact": "assets/flutter/DraconDex-SymbolWhite.webp",
+      "sha256": "d0289ac16738bca370e5a071cb53424b5db53a53c3c987ad978ae8cf583890b9"
     },
     "flutter/assets/fonts/NotoSans-Bold.ttf": {
       "artifact": "assets/fonts/NotoSans-Bold.ttf",
