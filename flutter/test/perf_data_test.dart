@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -11,6 +12,8 @@ import 'package:dracondex/data/dao/module_dao.dart';
 import 'package:dracondex/data/dao/page_block_dao.dart';
 import 'package:dracondex/data/models/module_model.dart';
 import 'package:dracondex/data/services/vault_snapshot_service.dart';
+import 'package:dracondex/features/page/views/classifier_views.dart';
+import 'package:dracondex/providers/db_providers.dart';
 
 /// Procress 19 part 1 — the data-layer half of the APK's numbers, measured on
 /// the stress vault every app is measured on: `test/fixtures/stress-v2.json`,
@@ -118,7 +121,20 @@ void main() {
     var n = 0;
     final write = await time(() => cls.setValue(objectRef: items[1500].id, templateRef: age, value: 'v${n++}'), runs: 9);
     row('one value write (setValue + wiki reindex)', ms(write), '< 16 ms');
-    row('one value write + whole reload (today)', ms(write + whole), '(F3: what a keystroke pays)');
+    row('one value write + whole reload (before F3)', ms(write + whole), '(what a keystroke paid)');
+
+    // ── the same, through the providers the Classifier view watches (F3) ──
+    final c = ProviderContainer(overrides: [databaseProvider.overrideWith((ref) async => db)]);
+    addTearDown(c.dispose);
+    c.listen(clsDataProvider(clsId), (_, _) {});
+    sw = Stopwatch()..start();
+    await c.read(clsDataProvider(clsId).future);
+    row('Classifier: clsDataProvider first load', ms(sw.elapsedMicroseconds / 1000), '< 300 ms');
+    final viaProviders = await time(() async {
+      await c.read(clsValuesProvider(clsId).notifier).set(items[1500].id, age, 'p${n++}');
+      await c.read(clsDataProvider(clsId).future);
+    }, runs: 9);
+    row('one value write, patched in place (F3)', ms(viaProviders), '< 16 ms');
 
     // ── plans: which hot queries still SCAN a table that grows (F1) ───────
     Future<String> plan(String sql, List<Object?> args) async =>

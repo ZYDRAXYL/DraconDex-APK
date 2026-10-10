@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -187,25 +189,59 @@ class TileCard extends StatelessWidget {
   }
 }
 
+/// The tallest a list that can grow (a Classifier's 3,000 elements) stands
+/// inside a page's scroll view. Past it the list scrolls on its own and is
+/// built lazily, only the rows on screen (Procress 19 F2); a shorter list
+/// still sizes to its content. The page itself is one scroll view of
+/// blocks, so a lazy list has to be a bounded one inside it.
+double pageListCap(BuildContext context) => math.max(320, MediaQuery.sizeOf(context).height * 0.6);
+
 /// A grid that sizes to its content inside a page's scroll view.
 class PageGrid extends StatelessWidget {
-  final List<Widget> children;
+  final List<Widget>? children;
+  final int itemCount;
+  final IndexedWidgetBuilder? itemBuilder;
   final double maxExtent;
-  const PageGrid({super.key, required this.children, this.maxExtent = 200});
+  const PageGrid({super.key, required List<Widget> this.children, this.maxExtent = 200})
+      : itemCount = 0,
+        itemBuilder = null;
+
+  /// A grid of [itemCount] tiles that can grow: built lazily, up to
+  /// [pageListCap] tall.
+  const PageGrid.builder({super.key, required this.itemCount, required IndexedWidgetBuilder this.itemBuilder, this.maxExtent = 200})
+      : children = null;
 
   @override
-  Widget build(BuildContext context) => GridView(
+  Widget build(BuildContext context) {
+    const padding = EdgeInsets.symmetric(horizontal: 16, vertical: 8);
+    final delegate = SliverGridDelegateWithMaxCrossAxisExtent(
+      maxCrossAxisExtent: maxExtent,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 8,
+      mainAxisExtent: 110,
+    );
+    if (children != null) {
+      return GridView(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: maxExtent,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
-          mainAxisExtent: 110,
-        ),
-        children: children,
+        padding: padding,
+        gridDelegate: delegate,
+        children: children!,
       );
+    }
+    // shrink-wrapped under a cap: a short grid fits, a long one scrolls
+    // and builds only what shows
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: pageListCap(context)),
+      child: GridView.builder(
+        shrinkWrap: true,
+        padding: padding,
+        gridDelegate: delegate,
+        itemCount: itemCount,
+        itemBuilder: itemBuilder!,
+      ),
+    );
+  }
 }
 
 /// Picks one indexed entity of a Nexus: a searchable sheet over the same

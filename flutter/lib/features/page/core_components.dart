@@ -588,7 +588,9 @@ class ItemBody extends ConsumerWidget {
                     final db = await ref.read(databaseProvider.future);
                     await ClassifierDao(db).setValue(objectRef: data.id, templateRef: f.templateId, value: next);
                     await saved();
-                    if (data.classifierModule != null) ref.invalidate(clsDataProvider(data.classifierModule!));
+                    if (data.classifierModule != null) {
+                      ref.read(clsValuesProvider(data.classifierModule!).notifier).put(data.id, f.templateId, next);
+                    }
                   }
                 : null,
             child: Padding(
