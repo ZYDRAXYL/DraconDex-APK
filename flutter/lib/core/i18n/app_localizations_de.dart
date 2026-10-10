@@ -963,6 +963,24 @@ class AppLocalizationsDe extends AppLocalizations {
   String get transferErrBadPayload => 'Die empfangene Datei konnte nicht gelesen werden.';
 
   @override
+  String get transferSendKey => 'Sendeschlüssel';
+
+  @override
+  String get transferSendKeyHint => 'Frag die Person, die den Transferdienst betreibt, nach dem Schlüssel dieser Woche. Er ändert sich jeden Montag.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Dieser Dienst braucht den Sendeschlüssel dieser Woche, bevor er einen Nexus annimmt.';
+
+  @override
+  String get transferErrBadSendKey => 'Dieser Sendeschlüssel stimmt nicht – oder er ist von letzter Woche. Schlüssel ändern sich jeden Montag.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Zu viele falsche Sendeschlüssel von diesem Gerät. Warte 15 Minuten und versuche es erneut.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Senden ist auf diesem Transferdienst abgeschaltet (kein Sendeschlüssel eingerichtet).';
+
+  @override
   String get transferErrServer => 'Beim Übertragungsdienst ist ein Problem aufgetreten.';
 
   @override

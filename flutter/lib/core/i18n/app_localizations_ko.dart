@@ -963,6 +963,24 @@ class AppLocalizationsKo extends AppLocalizations {
   String get transferErrBadPayload => '받은 파일을 읽을 수 없습니다.';
 
   @override
+  String get transferSendKey => '전송 키';
+
+  @override
+  String get transferSendKeyHint => '이번 주 키는 전송 서비스 관리자에게 받으세요. 매주 월요일에 바뀝니다.';
+
+  @override
+  String get transferErrSendKeyRequired => '이 서비스는 Nexus를 받기 전에 이번 주 전송 키가 필요합니다.';
+
+  @override
+  String get transferErrBadSendKey => '전송 키가 올바르지 않습니다. 지난주 키일 수 있습니다. 키는 매주 월요일에 바뀝니다.';
+
+  @override
+  String get transferErrSendKeyLocked => '이 기기에서 잘못된 전송 키가 너무 많습니다. 15분 후 다시 시도하세요.';
+
+  @override
+  String get transferErrSendKeyUnavailable => '이 전송 서비스에서는 전송이 꺼져 있습니다(전송 키가 설정되지 않음).';
+
+  @override
   String get transferErrServer => '전송 서비스에 문제가 발생했습니다.';
 
   @override

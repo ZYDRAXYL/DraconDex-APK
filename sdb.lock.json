@@ -3,8 +3,8 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "sdb-v2.1.0",
-    "version": "2.1.0"
+    "ref": "claude/amazing-fermat-z240ex",
+    "version": "2.1.1"
   },
   "expect": {
     "vaultSchemaVersion": 7,
@@ -13,7 +13,7 @@
   "vendored": {
     "flutter/lib/core/database/vault_schema.g.dart": {
       "artifact": "generated/flutter/vault_schema.g.dart",
-      "sha256": "e4f2e64bbddc6dc0f7fd4cc080a079a819577e74f757f6af3503041853790280"
+      "sha256": "eaceb6cabee7991707c524a72fe86b7eda2b3445df14ff73a7d6f1f41e3fef1e"
     },
     "flutter/lib/data/services/supabase_schema.dart": {
       "artifact": "generated/flutter/supabase_schema.dart",
@@ -78,6 +78,10 @@
     "flutter/test/fixtures/snapshot-v2.json": {
       "artifact": "fixtures/snapshot-v2.json",
       "sha256": "468eee3ad95e58a56404b81d65d0eb7a0ff21292540ecb6ca534268103f0d9e2"
+    },
+    "flutter/test/fixtures/stress-v2.json": {
+      "artifact": "fixtures/stress-v2.json",
+      "sha256": "4e9d5190388af2d4c194cf29a6a3d28a9399af148d73cfa0d5c6d5624aa7d5d9"
     },
     "flutter/assets/templates/guide/en.json": {
       "artifact": "templates/guide/en.json",

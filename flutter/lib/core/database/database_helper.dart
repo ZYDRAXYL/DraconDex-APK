@@ -67,6 +67,15 @@ class DatabaseHelper {
 
     await step('schema upgrade', () => VaultUpgrade().run(db));
     await _migrateModuleAttributes(db);
+    // After every table-shaping step: an index on a column an upgrade has not
+    // added would fail, and a rebuilt table comes back without its indexes.
+    // Each is IF NOT EXISTS, so a vault that has them pays one lookup apiece
+    // (DraconDex-SDB vault.sql @indexes — Procress 19 part 2).
+    await step('indexes', () async {
+      for (final sql in vaultIndexStatements) {
+        await db.execute(sql);
+      }
+    });
     await step('legacy notes', () => LegacyNotes.migrateAll(db));
     await step('module parents', () => db.transaction((txn) => normalizeModuleParents(txn)));
     await _ensureDefaultNexus(db);

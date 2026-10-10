@@ -963,6 +963,24 @@ class AppLocalizationsTh extends AppLocalizations {
   String get transferErrBadPayload => 'อ่านไฟล์ที่รับมาไม่ได้';
 
   @override
+  String get transferSendKey => 'คีย์สำหรับส่ง';
+
+  @override
+  String get transferSendKeyHint => 'ขอคีย์ของสัปดาห์นี้จากผู้ดูแลบริการรับส่ง — คีย์เปลี่ยนทุกวันจันทร์';
+
+  @override
+  String get transferErrSendKeyRequired => 'บริการนี้ต้องใส่คีย์สำหรับส่งของสัปดาห์นี้ก่อนจึงจะรับ Nexus';
+
+  @override
+  String get transferErrBadSendKey => 'คีย์สำหรับส่งไม่ถูกต้อง — หรือเป็นคีย์ของสัปดาห์ที่แล้ว (คีย์เปลี่ยนทุกวันจันทร์)';
+
+  @override
+  String get transferErrSendKeyLocked => 'ใส่คีย์ผิดจากเครื่องนี้หลายครั้งเกินไป รอ 15 นาทีแล้วลองใหม่';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'บริการรับส่งนี้ปิดการส่งอยู่ (ยังไม่ได้ตั้งค่าคีย์สำหรับส่ง)';
+
+  @override
   String get transferErrServer => 'บริการรับส่งมีปัญหา';
 
   @override

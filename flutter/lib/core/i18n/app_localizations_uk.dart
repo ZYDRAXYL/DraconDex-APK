@@ -960,6 +960,24 @@ class AppLocalizationsUk extends AppLocalizations {
   String get transferErrBadPayload => 'Не вдалося прочитати отриманий файл.';
 
   @override
+  String get transferSendKey => 'Ключ надсилання';
+
+  @override
+  String get transferSendKeyHint => 'Дізнайтеся ключ цього тижня в адміністратора сервісу передавання. Він змінюється щопонеділка.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Цей сервіс потребує ключа надсилання цього тижня, перш ніж прийняти Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Ключ надсилання неправильний — або це ключ минулого тижня. Ключі змінюються щопонеділка.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Забагато неправильних ключів надсилання з цього пристрою. Зачекайте 15 хвилин і спробуйте знову.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Надсилання вимкнено на цьому сервісі передавання (ключ надсилання не налаштовано).';
+
+  @override
   String get transferErrServer => 'У службі передавання сталася помилка.';
 
   @override

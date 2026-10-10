@@ -963,6 +963,24 @@ class AppLocalizationsJa extends AppLocalizations {
   String get transferErrBadPayload => '受け取ったファイルを読み込めませんでした。';
 
   @override
+  String get transferSendKey => '送信キー';
+
+  @override
+  String get transferSendKeyHint => '今週のキーは転送サービスの管理者に確認してください。毎週月曜日に変わります。';
+
+  @override
+  String get transferErrSendKeyRequired => 'このサービスでは Nexus を送る前に今週の送信キーが必要です。';
+
+  @override
+  String get transferErrBadSendKey => '送信キーが正しくありません(先週のキーかもしれません)。キーは毎週月曜日に変わります。';
+
+  @override
+  String get transferErrSendKeyLocked => 'このデバイスから誤った送信キーが多すぎます。15 分待ってからやり直してください。';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'この転送サービスでは送信が無効になっています(送信キーが設定されていません)。';
+
+  @override
   String get transferErrServer => '転送サービスで問題が発生しました。';
 
   @override

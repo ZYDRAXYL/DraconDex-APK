@@ -960,6 +960,24 @@ class AppLocalizationsNl extends AppLocalizations {
   String get transferErrBadPayload => 'Het ontvangen bestand kon niet gelezen worden.';
 
   @override
+  String get transferSendKey => 'Verzendsleutel';
+
+  @override
+  String get transferSendKeyHint => 'Vraag de beheerder van de overdrachtsdienst om de sleutel van deze week. Die verandert elke maandag.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Deze dienst heeft de verzendsleutel van deze week nodig voordat hij een Nexus accepteert.';
+
+  @override
+  String get transferErrBadSendKey => 'Die verzendsleutel klopt niet, of het is die van vorige week. Sleutels veranderen elke maandag.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Te veel verkeerde verzendsleutels vanaf dit apparaat. Wacht 15 minuten en probeer het opnieuw.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Verzenden staat uit op deze overdrachtsdienst (er is geen verzendsleutel ingesteld).';
+
+  @override
   String get transferErrServer => 'De overdrachtsdienst had een probleem.';
 
   @override

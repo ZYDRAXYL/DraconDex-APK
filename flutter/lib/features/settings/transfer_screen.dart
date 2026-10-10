@@ -48,6 +48,10 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
   final _codeCtrl = TextEditingController();
   final _pinCtrl = TextEditingController();
   final _linkCtrl = TextEditingController();
+  // This week's send key. Held in memory for the life of the screen only — it
+  // is a shared secret that changes every Monday, so it is never persisted.
+  final _sendKeyCtrl = TextEditingController();
+  final _sendKeyFocus = FocusNode();
   bool _busy = false;
   TransferVerifyResult? _verified;
 
@@ -62,6 +66,8 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
     _codeCtrl.dispose();
     _pinCtrl.dispose();
     _linkCtrl.dispose();
+    _sendKeyCtrl.dispose();
+    _sendKeyFocus.dispose();
     super.dispose();
   }
 
@@ -80,6 +86,10 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
       case 'bad_key':      return l10n.transferErrBadKey;
       case 'qr_only':      return l10n.transferErrQrOnly;
       case 'bad_payload':  return l10n.transferErrBadPayload;
+      case 'send_key_required':    return l10n.transferErrSendKeyRequired;
+      case 'bad_send_key':         return l10n.transferErrBadSendKey;
+      case 'send_key_locked':      return l10n.transferErrSendKeyLocked;
+      case 'send_key_unavailable': return l10n.transferErrSendKeyUnavailable;
       default:             return l10n.transferErrServer;
     }
   }
@@ -159,6 +169,23 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
               subtitle: Text(l10n.transferAllowTypedHint),
             ),
             const SizedBox(height: 8),
+            TextField(
+              controller: _sendKeyCtrl,
+              focusNode: _sendKeyFocus,
+              textCapitalization: TextCapitalization.characters,
+              autocorrect: false,
+              enableSuggestions: false,
+              inputFormatters: [_SendKeyFormatter()],
+              decoration: InputDecoration(
+                labelText: l10n.transferSendKey,
+                hintText: 'XXXX-XXXX-XXXX',
+                helperText: l10n.transferSendKeyHint,
+                helperMaxLines: 3,
+                border: const OutlineInputBorder(),
+              ),
+              style: const TextStyle(fontFamily: 'monospace', fontSize: 18, letterSpacing: 2),
+            ),
+            const SizedBox(height: 12),
             if (_sendError != null) _errorBox(_sendError!),
             FilledButton.icon(
               onPressed: _sending ? null : () => _doSend(l10n, selected, nexuses),
@@ -187,6 +214,7 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
       final sent = await _service.send(
         snapshot: snapshot,
         name: name,
+        sendKey: _sendKeyCtrl.text,
         allowTypedCode: _allowTypedCode,
       );
       if (!mounted) return;
@@ -201,6 +229,7 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
         _sending = false;
         _sendError = _message(l10n, e.code);
       });
+      if (e.code == 'send_key_required' || e.code == 'bad_send_key') _sendKeyFocus.requestFocus();
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -541,4 +570,20 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
         ),
         child: Text(text, style: TextStyle(color: Theme.of(context).colorScheme.onErrorContainer)),
       );
+}
+
+/// XXXX-XXXX-XXXX as it is typed: upper case, Crockford characters only,
+/// hyphens every four. The service forgives the rest (I/L→1, O→0).
+class _SendKeyFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    final raw = newValue.text.toUpperCase().replaceAll(RegExp('[^0-9A-Z]'), '');
+    final clipped = raw.length > 12 ? raw.substring(0, 12) : raw;
+    final parts = <String>[];
+    for (var i = 0; i < clipped.length; i += 4) {
+      parts.add(clipped.substring(i, i + 4 > clipped.length ? clipped.length : i + 4));
+    }
+    final text = parts.join('-');
+    return TextEditingValue(text: text, selection: TextSelection.collapsed(offset: text.length));
+  }
 }

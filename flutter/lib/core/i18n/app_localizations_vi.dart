@@ -963,6 +963,24 @@ class AppLocalizationsVi extends AppLocalizations {
   String get transferErrBadPayload => 'Không đọc được tệp vừa nhận.';
 
   @override
+  String get transferSendKey => 'Khóa gửi';
+
+  @override
+  String get transferSendKeyHint => 'Hãy hỏi người quản lý dịch vụ truyền để lấy khóa của tuần này. Khóa đổi vào mỗi thứ Hai.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Dịch vụ này cần khóa gửi của tuần này trước khi nhận Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Khóa gửi không đúng — hoặc là khóa của tuần trước. Khóa đổi vào mỗi thứ Hai.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Thiết bị này đã nhập sai khóa gửi quá nhiều lần. Hãy đợi 15 phút rồi thử lại.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Dịch vụ truyền này đang tắt chức năng gửi (chưa cấu hình khóa gửi).';
+
+  @override
   String get transferErrServer => 'Dịch vụ chuyển gặp sự cố.';
 
   @override

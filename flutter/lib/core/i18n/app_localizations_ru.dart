@@ -963,6 +963,24 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transferErrBadPayload => 'Не удалось прочитать полученный файл.';
 
   @override
+  String get transferSendKey => 'Ключ отправки';
+
+  @override
+  String get transferSendKeyHint => 'Узнайте ключ этой недели у администратора сервиса передачи. Он меняется каждый понедельник.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Этому сервису нужен ключ отправки этой недели, прежде чем он примет Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Неверный ключ отправки — или это ключ прошлой недели. Ключи меняются каждый понедельник.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Слишком много неверных ключей отправки с этого устройства. Подождите 15 минут и попробуйте снова.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Отправка отключена на этом сервисе передачи (ключ отправки не настроен).';
+
+  @override
   String get transferErrServer => 'В службе передачи произошла ошибка.';
 
   @override

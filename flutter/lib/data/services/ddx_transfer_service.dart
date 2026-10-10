@@ -213,6 +213,7 @@ class DdxTransferService {
   Future<TransferSendResult> send({
     required Map<String, Object?> snapshot,
     required String name,
+    String sendKey = '',
     bool allowTypedCode = true,
     void Function(double progress)? onProgress,
   }) async {
@@ -220,11 +221,21 @@ class DdxTransferService {
     final plain = Uint8List.fromList(utf8.encode(jsonEncode(snapshot)));
     final body = gzip(plain);
 
-    final created = _decode(await _send(() => _client.post(
-          _uri('/api/create'),
-          headers: const {'content-type': 'application/json'},
-          body: jsonEncode({'sizeBytes': body.length}),
-        )));
+    // sendKey: this week's send key (DraconDex-TRX _lib/sendkey.mts). Always
+    // sent; a service with the gate off ignores it. `locked` from create means
+    // too many wrong KEYS from this device, not PINs — renamed so the screen
+    // says the right thing.
+    final Map<String, Object?> created;
+    try {
+      created = _decode(await _send(() => _client.post(
+            _uri('/api/create'),
+            headers: const {'content-type': 'application/json'},
+            body: jsonEncode({'sizeBytes': body.length, 'sendKey': sendKey}),
+          )));
+    } on DdxTransferException catch (e) {
+      if (e.code == 'locked') throw const DdxTransferException('send_key_locked');
+      rethrow;
+    }
 
     final transferId = '${created['transferId']}';
     final uploadToken = '${created['uploadToken']}';
