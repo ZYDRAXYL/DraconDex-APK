@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../../core/platform/background.dart';
 import 'assets/asset_store.dart';
 import 'export/zip_writer.dart';
 import 'vault_snapshot_service.dart';
@@ -55,6 +56,7 @@ class AssetPack {
     );
     final entries = <ZipEntry>[];
     final assets = <Map<String, Object?>>[];
+    final checks = <(Map<String, Object?>, Uint8List, String)>[]; // hashed in [_build]
     final used = <String>{};
     var missing = 0;
     for (final r in rows) {
@@ -63,7 +65,7 @@ class AssetPack {
       final a = Asset.fromRow(r);
       final bytes = await AssetStore.bytesOf(a);
       final sha = r['sha256'] as String?;
-      final quality = bytes == null ? 'none' : (sha != null && sha256.convert(bytes).toString() == sha ? 'full' : 'proxy');
+      final quality = bytes == null ? 'none' : 'proxy'; // 'full' once [_build] matches the hash
       String? zip;
       if (bytes != null) {
         final dir = folderOf(ref);
@@ -76,7 +78,7 @@ class AssetPack {
       } else {
         missing++;
       }
-      assets.add({
+      final asset = <String, Object?>{
         'id': a.id,
         'moduleId': ref,
         'name': a.name,
@@ -85,7 +87,9 @@ class AssetPack {
         'sha256': sha,
         'quality': quality,
         'zip': zip,
-      });
+      };
+      assets.add(asset);
+      if (bytes != null && sha != null) checks.add((asset, bytes, sha));
     }
 
     final pack = {
@@ -96,12 +100,24 @@ class AssetPack {
       'scope': {'moduleId': moduleId},
       'assets': assets,
     };
-    final bytes = writeZip([
+    // Hashing every file, the JSON and the zip are the slow part: off the UI
+    // isolate on a native build (Procress 19 part 4); the web runs it here.
+    final bytes = await inBackground(() => _build(pack, snapshot, entries, checks));
+    return AssetPackResult(bytes, files: entries.length, missing: missing);
+  }
+
+  /// A file whose bytes still hash to the sha256 it was added with is the
+  /// full file; otherwise only its proxy came along.
+  static Uint8List _build(Map<String, Object?> pack, Map<String, Object?> snapshot, List<ZipEntry> entries,
+      List<(Map<String, Object?>, Uint8List, String)> checks) {
+    for (final (asset, bytes, sha) in checks) {
+      if (sha256.convert(bytes).toString() == sha) asset['quality'] = 'full';
+    }
+    return writeZip([
       ZipEntry('pack.json', const JsonEncoder.withIndent(' ').convert(pack)),
       ZipEntry('snapshot.json', jsonEncode(snapshot)),
       ...entries,
     ]);
-    return AssetPackResult(bytes, files: entries.length, missing: missing);
   }
 }
 

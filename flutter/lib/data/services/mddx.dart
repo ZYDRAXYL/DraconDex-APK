@@ -1,9 +1,9 @@
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:sqflite/sqflite.dart';
 
 import 'vault_snapshot_service.dart';
+import 'snapshot_codec.dart';
 
 /// A module as files — the scoped snapshot EXE writes (db:exportModuleFile),
 /// so a file from either app opens in the other.
@@ -40,8 +40,8 @@ class Mddx {
     final payload = await VaultSnapshotService.serializeVault(db, nexusId, moduleIds: ids, appVersion: appVersion);
     if (payload == null) return null;
     final p = split(payload);
-    Uint8List enc(Object o) => Uint8List.fromList(utf8.encode(jsonEncode(o)));
-    return (data: enc(p.data), page: enc(p.page));
+    // encoded off the UI isolate (SnapshotCodec)
+    return (data: await SnapshotCodec.encode(p.data), page: await SnapshotCodec.encode(p.page));
   }
 
   /// Only pages picked: a `.dpage` has nothing to land on without its `.ddata`.
@@ -52,17 +52,14 @@ class Mddx {
   /// of the same name (or the one `.dpage` picked with it), or a `.mddx`.
   /// The new root module's id, or null when nothing picked is a module.
   static Future<int?> import(Database db, int nexusId, int? parentId, List<({String name, Uint8List bytes})> files) async {
-    Map<String, Object?>? decode(Uint8List b) {
-      try {
-        final v = jsonDecode(utf8.decode(b, allowMalformed: true));
-        return v is Map ? v.cast<String, Object?>() : null;
-      } on FormatException {
-        return null;
-      }
+    // decoded off the UI isolate (SnapshotCodec); not JSON = null
+    Future<Map<String, Object?>?> decode(Uint8List b) async {
+      final v = await SnapshotCodec.decode(b, allowMalformed: true);
+      return v is Map ? v.cast<String, Object?>() : null;
     }
 
     String base(String n) => (n.contains('.') ? n.substring(0, n.lastIndexOf('.')) : n).toLowerCase();
-    final read = [for (final f in files) (name: f.name, json: decode(f.bytes))];
+    final read = [for (final f in files) (name: f.name, json: await decode(f.bytes))];
     final pages = [for (final r in read) if (r.json?['file'] == 'dpage') r];
     final data = read.where((r) => r.json != null && r.json!['file'] != 'dpage' && r.json!['modules'] is List).firstOrNull;
     if (data == null) return null;

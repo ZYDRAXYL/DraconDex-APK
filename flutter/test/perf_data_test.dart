@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,6 +12,10 @@ import 'package:dracondex/data/dao/classifier_dao.dart';
 import 'package:dracondex/data/dao/module_dao.dart';
 import 'package:dracondex/data/dao/page_block_dao.dart';
 import 'package:dracondex/data/models/module_model.dart';
+import 'package:dracondex/data/services/bundle_service.dart';
+import 'package:dracondex/data/services/csv_import.dart';
+import 'package:dracondex/data/services/search_service.dart';
+import 'package:dracondex/data/services/snapshot_codec.dart';
 import 'package:dracondex/data/services/vault_snapshot_service.dart';
 import 'package:dracondex/features/page/views/classifier_views.dart';
 import 'package:dracondex/providers/db_providers.dart';
@@ -75,10 +80,15 @@ void main() {
     final fixture = jsonDecode(text) as Map<String, Object?>;
     final decode = sw.elapsedMilliseconds;
     sw = Stopwatch()..start();
+    final viaCodec = await SnapshotCodec.decode(Uint8List.fromList(utf8.encode(text)));
+    final decodeBg = sw.elapsedMilliseconds;
+    expect(viaCodec, fixture);
+    sw = Stopwatch()..start();
     final r = await VaultSnapshotService.applySnapshot(db, nexusId, fixture);
     expect(r.ok, isTrue, reason: r.code);
-    row('decode stress-v2.json (${(text.length / 1024).round()} KB)', '$decode ms', 'on the UI isolate today (F6)');
-    row('import snapshot (520 modules, 3,000 objects)', '${sw.elapsedMilliseconds} ms', '(F6)');
+    row('decode stress-v2.json (${(text.length / 1024).round()} KB), in place', '$decode ms', 'what the UI isolate paid');
+    row('  the same through SnapshotCodec (wall)', '$decodeBg ms', 'on a background isolate (part 4)');
+    row('import snapshot (520 modules, 3,000 objects)', '${sw.elapsedMilliseconds} ms', 'batched inserts (part 4)');
 
     final modules = ModuleDao(db);
     final cls = ClassifierDao(db);
@@ -135,6 +145,20 @@ void main() {
       await c.read(clsDataProvider(clsId).future);
     }, runs: 9);
     row('one value write, patched in place (F3)', ms(viaProviders), '< 16 ms');
+
+    // ── a CSV-sized Classifier through BundleService (part 4) ─────────────
+    final csv = CsvRead('utf-8', ['Name', 'Age', 'Note'],
+        [for (var i = 0; i < 3000; i++) ['Row $i', '$i', 'note $i']], const ['text', 'number', 'text'], false);
+    sw = Stopwatch()..start();
+    await BundleService.create(db, nexusId, null, CsvImport.spec('CSV', csv, const ['text', 'number', 'text']));
+    row('CSV import: 3,000 rows x 2 fields', '${sw.elapsedMilliseconds} ms', 'batched inserts (part 4)');
+
+    // ── search: the FTS index is built by the first 3-char query ─────────
+    final search = SearchService(db);
+    sw = Stopwatch()..start();
+    await search.content('Row 29');
+    row('search: first content query (builds FTS)', '${sw.elapsedMilliseconds} ms', search.usingFts ? 'trigram' : 'LIKE (no fts5)');
+    row('search: next query', ms(await time(() => search.content('note 12'))), '');
 
     // ── plans: which hot queries still SCAN a table that grows (F1) ───────
     Future<String> plan(String sql, List<Object?> args) async =>
