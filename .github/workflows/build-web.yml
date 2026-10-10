@@ -93,6 +93,12 @@ jobs:
         working-directory: flutter
         run: flutter build web --release --base-href /DraconDex-APP/
 
+      # Procress 19 part 8: main.dart.js may not grow more than 10 % past
+      # flutter/web-size-baseline.json unnoticed. Growing on purpose is one
+      # command in the same PR (node tools/web-size.mjs --update).
+      - name: main.dart.js size budget
+        run: node tools/web-size.mjs
+
       # Non-fatal for the same account-wide artifact-quota reason as the
       # two release workflows — but the trade here is different, so it is
       # spelled out separately. What this workflow is FOR is proving the web

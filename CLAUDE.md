@@ -48,7 +48,9 @@ copy `lib/` into PWA.** Forking it diverges five conditional-import families and
 ~100 Dart files, and every later fix has to be made twice.
 
 A change that only breaks the web target passes `flutter analyze` and the APK
-build. `build-web.yml` exists precisely to catch that — do not skip it.
+build. `build-web.yml` exists precisely to catch that — do not skip it. It also
+holds `main.dart.js` to `flutter/web-size-baseline.json` + 10 %
+(`node tools/web-size.mjs`); growing on purpose = `--update` in the same PR.
 
 ## The vendored files are not yours to edit
 

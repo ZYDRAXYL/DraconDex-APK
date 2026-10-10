@@ -74,6 +74,15 @@ void main() {
 
     String ms(double v) => '${v.toStringAsFixed(1)} ms';
 
+    // Procress 19 part 8: the numbers part 3-4 reached become ceilings, about
+    // three times what they measure on a Linux CI container, so CI noise
+    // passes and a regression to the old shape (row-by-row inserts, a full
+    // reload per keystroke, a table scan) fails.
+    final over = <String>[];
+    void budget(String what, num value, num max) {
+      if (value > max) over.add('$what: ${value.toStringAsFixed(1)} > $max');
+    }
+
     // ── import ───────────────────────────────────────────────────────────
     var sw = Stopwatch()..start();
     final text = File('test/fixtures/stress-v2.json').readAsStringSync();
@@ -89,6 +98,7 @@ void main() {
     row('decode stress-v2.json (${(text.length / 1024).round()} KB), in place', '$decode ms', 'what the UI isolate paid');
     row('  the same through SnapshotCodec (wall)', '$decodeBg ms', 'on a background isolate (part 4)');
     row('import snapshot (520 modules, 3,000 objects)', '${sw.elapsedMilliseconds} ms', 'batched inserts (part 4)');
+    budget('import snapshot', sw.elapsedMilliseconds, 1000); // was ~2,000 row by row
 
     final modules = ModuleDao(db);
     final cls = ClassifierDao(db);
@@ -101,11 +111,13 @@ void main() {
     // ── Nest ─────────────────────────────────────────────────────────────
     row('Nest: top level (21 rows)', ms(await time(() => modules.getModules(nexusId, null))), '< 16 ms');
     row('Nest: one folder (25 rows)', ms(await time(() => modules.getModules(nexusId, folder.id))), '< 16 ms');
-    row('Nest: all 20 folders expanded', ms(await time(() async {
+    final nestAll = await time(() async {
       for (final f in top.where((m) => m.kind == ModuleKind.collector)) {
         await modules.getModules(nexusId, f.id);
       }
-    })), '< 50 ms');
+    });
+    row('Nest: all 20 folders expanded', ms(nestAll), '< 50 ms');
+    budget('Nest: all 20 folders', nestAll, 50);
 
     // ── Classifier, the queries clsDataProvider runs ─────────────────────
     row('Classifier: fields', ms(await time(() => cls.getFields(clsId))));
@@ -140,11 +152,13 @@ void main() {
     sw = Stopwatch()..start();
     await c.read(clsDataProvider(clsId).future);
     row('Classifier: clsDataProvider first load', ms(sw.elapsedMicroseconds / 1000), '< 300 ms');
+    budget('clsDataProvider first load', sw.elapsedMicroseconds / 1000, 300);
     final viaProviders = await time(() async {
       await c.read(clsValuesProvider(clsId).notifier).set(items[1500].id, age, 'p${n++}');
       await c.read(clsDataProvider(clsId).future);
     }, runs: 9);
     row('one value write, patched in place (F3)', ms(viaProviders), '< 16 ms');
+    budget('one value write through the providers', viaProviders, 16); // was ~20 with a full reload
 
     // ── a CSV-sized Classifier through BundleService (part 4) ─────────────
     final csv = CsvRead('utf-8', ['Name', 'Age', 'Note'],
@@ -152,6 +166,7 @@ void main() {
     sw = Stopwatch()..start();
     await BundleService.create(db, nexusId, null, CsvImport.spec('CSV', csv, const ['text', 'number', 'text']));
     row('CSV import: 3,000 rows x 2 fields', '${sw.elapsedMilliseconds} ms', 'batched inserts (part 4)');
+    budget('CSV import', sw.elapsedMilliseconds, 1000); // was ~2,000 row by row
 
     // ── search: the FTS index is built by the first 3-char query ─────────
     final search = SearchService(db);
@@ -190,5 +205,6 @@ void main() {
     // F1 is done when none of the hot queries scans a table (SDB holds the
     // same queries to the same rule in test/indexes.test.mjs).
     expect(scans, 0);
+    expect(over, isEmpty, reason: 'over budget');
   }, timeout: const Timeout(Duration(minutes: 5)));
 }
