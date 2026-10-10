@@ -960,6 +960,24 @@ class AppLocalizationsTr extends AppLocalizations {
   String get transferErrBadPayload => 'Alınan dosya okunamadı.';
 
   @override
+  String get transferSendKey => 'Gönderim anahtarı';
+
+  @override
+  String get transferSendKeyHint => 'Bu haftanın anahtarını aktarım hizmetini yöneten kişiden isteyin. Her pazartesi değişir.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Bu hizmet bir Nexus kabul etmeden önce bu haftanın gönderim anahtarını ister.';
+
+  @override
+  String get transferErrBadSendKey => 'Bu gönderim anahtarı doğru değil ya da geçen haftaya ait. Anahtarlar her pazartesi değişir.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Bu cihazdan çok fazla yanlış gönderim anahtarı girildi. 15 dakika bekleyip yeniden deneyin.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Bu aktarım hizmetinde gönderim kapalı (gönderim anahtarı ayarlanmamış).';
+
+  @override
   String get transferErrServer => 'Aktarım hizmetinde bir sorun oluştu.';
 
   @override

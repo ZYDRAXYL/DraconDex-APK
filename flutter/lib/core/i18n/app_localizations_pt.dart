@@ -963,6 +963,24 @@ class AppLocalizationsPt extends AppLocalizations {
   String get transferErrBadPayload => 'Não foi possível ler o arquivo recebido.';
 
   @override
+  String get transferSendKey => 'Chave de envio';
+
+  @override
+  String get transferSendKeyHint => 'Peça a chave desta semana a quem administra o serviço de transferência. Ela muda toda segunda-feira.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Este serviço precisa da chave de envio desta semana para aceitar um Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Essa chave de envio não está correta, ou é a da semana passada. As chaves mudam toda segunda-feira.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Chaves de envio erradas demais neste dispositivo. Aguarde 15 minutos e tente de novo.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'O envio está desativado neste serviço de transferência (a chave de envio não foi configurada).';
+
+  @override
   String get transferErrServer => 'O serviço de transferência teve um problema.';
 
   @override

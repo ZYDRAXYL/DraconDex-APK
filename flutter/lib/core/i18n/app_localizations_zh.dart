@@ -963,6 +963,24 @@ class AppLocalizationsZh extends AppLocalizations {
   String get transferErrBadPayload => '无法读取收到的文件。';
 
   @override
+  String get transferSendKey => '发送密钥';
+
+  @override
+  String get transferSendKeyHint => '请向传输服务的管理员索取本周的密钥。密钥每周一更换。';
+
+  @override
+  String get transferErrSendKeyRequired => '此服务需要本周的发送密钥才能接收 Nexus。';
+
+  @override
+  String get transferErrBadSendKey => '发送密钥不正确——或者是上周的密钥。密钥每周一更换。';
+
+  @override
+  String get transferErrSendKeyLocked => '此设备输入错误的发送密钥次数过多。请等待 15 分钟后重试。';
+
+  @override
+  String get transferErrSendKeyUnavailable => '此传输服务已关闭发送(未配置发送密钥)。';
+
+  @override
   String get transferErrServer => '传输服务出现问题。';
 
   @override

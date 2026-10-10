@@ -960,6 +960,24 @@ class AppLocalizationsPl extends AppLocalizations {
   String get transferErrBadPayload => 'Nie udało się odczytać odebranego pliku.';
 
   @override
+  String get transferSendKey => 'Klucz wysyłania';
+
+  @override
+  String get transferSendKeyHint => 'Poproś administratora usługi przesyłania o klucz na ten tydzień. Zmienia się w każdy poniedziałek.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Ta usługa wymaga klucza wysyłania na ten tydzień, zanim przyjmie Nexusa.';
+
+  @override
+  String get transferErrBadSendKey => 'Ten klucz wysyłania jest nieprawidłowy albo pochodzi z zeszłego tygodnia. Klucze zmieniają się w każdy poniedziałek.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Zbyt wiele błędnych kluczy wysyłania z tego urządzenia. Odczekaj 15 minut i spróbuj ponownie.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Wysyłanie jest wyłączone w tej usłudze przesyłania (klucz wysyłania nie jest skonfigurowany).';
+
+  @override
   String get transferErrServer => 'Usługa przesyłania napotkała problem.';
 
   @override

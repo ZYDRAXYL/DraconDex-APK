@@ -2035,6 +2035,42 @@ abstract class AppLocalizations {
   /// **'The received file could not be read.'**
   String get transferErrBadPayload;
 
+  /// No description provided for @transferSendKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Send key'**
+  String get transferSendKey;
+
+  /// No description provided for @transferSendKeyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask whoever runs the transfer service for this week's key. It changes every Monday.'**
+  String get transferSendKeyHint;
+
+  /// No description provided for @transferErrSendKeyRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This service needs this week's send key before it will accept a Nexus.'**
+  String get transferErrSendKeyRequired;
+
+  /// No description provided for @transferErrBadSendKey.
+  ///
+  /// In en, this message translates to:
+  /// **'That send key is not right — or it is last week's. Keys change every Monday.'**
+  String get transferErrBadSendKey;
+
+  /// No description provided for @transferErrSendKeyLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many wrong send keys from this device. Wait 15 minutes and try again.'**
+  String get transferErrSendKeyLocked;
+
+  /// No description provided for @transferErrSendKeyUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending is switched off on this transfer service (its send key is not configured).'**
+  String get transferErrSendKeyUnavailable;
+
   /// No description provided for @transferErrServer.
   ///
   /// In en, this message translates to:

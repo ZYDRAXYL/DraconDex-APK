@@ -963,6 +963,24 @@ class AppLocalizationsQd extends AppLocalizations {
   String get transferErrBadPayload => 'Ythe resevyd thyng myghth noth be redde.';
 
   @override
+  String get transferSendKey => 'Sendynge keye';
+
+  @override
+  String get transferSendKeyHint => 'Aske ye keeper of ye transfer service for thys weke\'s keye. It chaungeth every Monenday.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Thys service wolde have thys weke\'s sendynge keye ere it taketh a Nexvs.';
+
+  @override
+  String get transferErrBadSendKey => 'That sendynge keye is noth ryght — or it be laste weke\'s. Keyes chaunge every Monenday.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Ouer many wronge keyes from thys devyce. Abyde fyftene mynutes and assaye agayne.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Sendynge is shutte on thys transfer service (its keye is noth sette).';
+
+  @override
   String get transferErrServer => 'Ythe beryng servyce faltryd.';
 
   @override

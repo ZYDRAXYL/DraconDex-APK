@@ -963,6 +963,24 @@ class AppLocalizationsId extends AppLocalizations {
   String get transferErrBadPayload => 'Berkas yang diterima tidak dapat dibaca.';
 
   @override
+  String get transferSendKey => 'Kunci kirim';
+
+  @override
+  String get transferSendKeyHint => 'Minta kunci minggu ini kepada pengelola layanan transfer. Kunci berganti setiap Senin.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Layanan ini memerlukan kunci kirim minggu ini sebelum menerima Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Kunci kirim itu salah — atau milik minggu lalu. Kunci berganti setiap Senin.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Terlalu banyak kunci kirim yang salah dari perangkat ini. Tunggu 15 menit lalu coba lagi.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Pengiriman dimatikan di layanan transfer ini (kunci kirimnya belum diatur).';
+
+  @override
   String get transferErrServer => 'Layanan transfer bermasalah.';
 
   @override

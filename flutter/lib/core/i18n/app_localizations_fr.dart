@@ -963,6 +963,24 @@ class AppLocalizationsFr extends AppLocalizations {
   String get transferErrBadPayload => 'Le fichier reçu n\'a pas pu être lu.';
 
   @override
+  String get transferSendKey => 'Clé d\'envoi';
+
+  @override
+  String get transferSendKeyHint => 'Demandez la clé de la semaine à la personne qui gère le service de transfert. Elle change chaque lundi.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Ce service exige la clé d\'envoi de la semaine avant d\'accepter un Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Cette clé d\'envoi n\'est pas la bonne, ou c\'est celle de la semaine dernière. Les clés changent chaque lundi.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Trop de clés d\'envoi erronées depuis cet appareil. Attendez 15 minutes puis réessayez.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'L\'envoi est désactivé sur ce service de transfert (sa clé d\'envoi n\'est pas configurée).';
+
+  @override
   String get transferErrServer => 'Le service de transfert a rencontré un problème.';
 
   @override
