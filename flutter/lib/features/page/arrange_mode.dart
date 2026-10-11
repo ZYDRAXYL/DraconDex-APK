@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/i18n/app_localizations.dart';
+import '../../core/theme/ddx_theme.dart';
 import '../../data/dao/page_block_dao.dart';
 import '../../data/models/module_model.dart';
 import '../../providers/db_providers.dart';
@@ -9,6 +10,8 @@ import 'component_registry.dart';
 import 'core_components.dart';
 import 'block_options.dart';
 import 'block_settings_sheet.dart';
+import 'block_style.dart';
+import 'page_strings.dart';
 import 'media_components.dart';
 import 'page_providers.dart';
 import 'wiki_components.dart';
@@ -134,6 +137,7 @@ class _ArrangeTile extends ConsumerWidget {
     final tile = ListTile(
       leading: ReorderableDragStartListener(index: index, child: const Icon(Icons.drag_indicator)),
       title: Text(blockLabel(l10n, block), maxLines: 1, overflow: TextOverflow.ellipsis),
+      subtitle: _LookSelect(pageKey: pageKey, block: block),
       trailing: _TileActions(pageKey: pageKey, block: block),
     );
     final slots = slotLabels(l10n, block);
@@ -175,6 +179,7 @@ class _ArrangeTile extends ConsumerWidget {
                           dense: true,
                           leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator, size: 18)),
                           title: Text(blockLabel(l10n, cols[c][i]), maxLines: 1, overflow: TextOverflow.ellipsis),
+                          subtitle: _LookSelect(pageKey: pageKey, block: cols[c][i]),
                           trailing: _TileActions(pageKey: pageKey, block: cols[c][i], small: true),
                         ),
                     ],
@@ -358,6 +363,46 @@ List<String> slotLabels(AppLocalizations l10n, PageBlock b) {
     return [t.isEmpty ? l10n.pcToggle : t];
   }
   return const [];
+}
+
+/// A block's look (plain, card, outline, tinted, hero) right on its arrange
+/// tile (Procress 24): the style setting changed most, two taps from the
+/// Nexus page — open the page, Edit page — instead of a third through ⚙.
+/// The rest of the style stays in the ⚙ sheet.
+class _LookSelect extends ConsumerWidget {
+  final PageKey pageKey;
+  final PageBlock block;
+  const _LookSelect({required this.pageKey, required this.block});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    return Row(children: [
+      Text('${l10n.pbStyleVariant} ', style: theme.textTheme.bodySmall?.copyWith(color: context.ddx.textMuted)),
+      Flexible(
+        child: DropdownButton<String>(
+          key: const ValueKey('block-look'),
+          value: BlockStyle.of(block.config).variant,
+          isDense: true,
+          isExpanded: true,
+          underline: const SizedBox.shrink(),
+          style: theme.textTheme.bodySmall,
+          items: [
+            for (final v in BlockStyle.values['variant']!)
+              DropdownMenuItem(value: v, child: Text(choiceText(l10n, 'pbVariant', v), overflow: TextOverflow.ellipsis)),
+          ],
+          onChanged: (v) async {
+            if (v == null) return;
+            final config = styleWith(block.config, 'variant', v);
+            final dao = await ref.read(pageBlockDaoProvider.future);
+            await dao.update(block.id, config: config, clear: {if (config.isEmpty) 'config'});
+            ref.invalidate(pageProvider(pageKey));
+          },
+        ),
+      ),
+    ]);
+  }
 }
 
 /// ⚙ and delete on an arrange tile.

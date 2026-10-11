@@ -60,11 +60,13 @@ class NexusCollectionView extends StatelessWidget {
   }
 }
 
-/// Open, rename, export and delete, shared by both the row and the card.
-List<RowAction> _nexusActions(BuildContext context, WidgetRef ref, NexusModel nexus) {
+/// Open, rename, export and delete, shared by the row, the card and — with
+/// [onOwnPage], which leaves "open" out and walks back to the Nexus list
+/// after a delete — the Nexus page's own ⋮.
+List<RowAction> nexusActions(BuildContext context, WidgetRef ref, NexusModel nexus, {bool onOwnPage = false}) {
   final l10n = AppLocalizations.of(context)!;
   return [
-    RowAction(label: l10n.rowOpen, icon: Icons.open_in_new, onTap: () => context.push('/hub/${nexus.id}')),
+    if (!onOwnPage) RowAction(label: l10n.rowOpen, icon: Icons.open_in_new, onTap: () => context.push('/hub/${nexus.id}')),
     RowAction(
       label: l10n.btnRename,
       icon: Icons.edit_outlined,
@@ -84,7 +86,7 @@ List<RowAction> _nexusActions(BuildContext context, WidgetRef ref, NexusModel ne
       label: l10n.btnDelete,
       icon: Icons.delete_outline,
       danger: true,
-      onTap: () => _deleteNexus(context, ref, nexus),
+      onTap: () => _deleteNexus(context, ref, nexus, onOwnPage: onOwnPage),
     ),
   ];
 }
@@ -105,8 +107,9 @@ Future<void> _exportPack(BuildContext context, WidgetRef ref, NexusModel nexus) 
   await Share.shareXFiles([XFile.fromData(pack.bytes, mimeType: 'application/zip', name: name)]);
 }
 
-Future<void> _deleteNexus(BuildContext context, WidgetRef ref, NexusModel nexus) async {
+Future<void> _deleteNexus(BuildContext context, WidgetRef ref, NexusModel nexus, {bool onOwnPage = false}) async {
   final l10n = AppLocalizations.of(context)!;
+  final router = GoRouter.of(context);
   final ok = await showConfirmDialog(
     context,
     title: '${l10n.confirmDeleteTitle}: "${nexus.name}"',
@@ -117,6 +120,7 @@ Future<void> _deleteNexus(BuildContext context, WidgetRef ref, NexusModel nexus)
   // Every open page inside this Nexus now points at nothing.
   await ref.read(recentViewsProvider.notifier).removeForNexus(nexus.id);
   ref.invalidate(nexusesProvider);
+  if (onOwnPage) router.go('/');
 }
 
 /// A Nexus as a list row: its colour, its name, its memo as the meta.
@@ -136,7 +140,7 @@ class _NexusRow extends ConsumerWidget {
           : Icon(Icons.workspaces_outlined, size: compact ? DdxSize.iconSm : DdxSize.iconMd),
       title: nexus.name,
       meta: compact ? null : nexus.memo,
-      actions: () => _nexusActions(context, ref, nexus),
+      actions: () => nexusActions(context, ref, nexus),
       onTap: () => context.push('/hub/${nexus.id}'),
     );
   }
@@ -151,7 +155,7 @@ class _NexusCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final hasMemo = nexus.memo != null && nexus.memo!.isNotEmpty;
-    List<RowAction> actions() => _nexusActions(context, ref, nexus);
+    List<RowAction> actions() => nexusActions(context, ref, nexus);
 
     return Card(
       clipBehavior: Clip.antiAlias,

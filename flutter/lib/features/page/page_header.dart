@@ -164,6 +164,41 @@ class PageHeader extends ConsumerWidget {
   }
 }
 
+/// The title's alignment as a control inside the page's ⋮ (Procress 24):
+/// the part of the title layout changed most, two taps from the Nexus page
+/// instead of three. Icon and cover stay in the full sheet ("Title layout…").
+class PageTitleAlignControl extends ConsumerWidget {
+  const PageTitleAlignControl({super.key, required this.pageKey});
+
+  final PageKey pageKey;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final lay = ref.watch(pageHeadProvider(pageKey)).valueOrNull ?? PageHeadLayout.empty;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Text(l10n.titleAlign, style: TextStyle(fontSize: 12, color: context.ddx.textMuted)),
+        ),
+        SegmentedButton<String>(
+          key: const ValueKey('page-title-align'),
+          segments: [
+            ButtonSegment(value: 'left', label: Text(l10n.alignLeft)),
+            ButtonSegment(value: 'center', label: Text(l10n.alignCenter)),
+            ButtonSegment(value: 'right', label: Text(l10n.alignRight)),
+          ],
+          selected: {lay.align},
+          showSelectedIcon: false,
+          onSelectionChanged: (s) => savePageHead(ref, pageKey, lay.copyWith(align: s.first)),
+        ),
+      ]),
+    );
+  }
+}
+
 /// "Title layout…" from the page's ⋮ — the sheet the desktop's popover is.
 Future<void> showPageLayoutSheet(BuildContext context, WidgetRef ref, ModuleModel module, String? itemKey) async {
   final key = PageKey(module.id, itemKey);

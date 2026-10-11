@@ -34,7 +34,20 @@ class TagsScreen extends ConsumerWidget {
             itemBuilder: (ctx, i) {
               final t = tags[i];
               return ListTile(
-                leading: ColorDot(colorCode: t.colorCode),
+                // The colour is a control on the row (Procress 24): the
+                // picker opens from here, not from inside the edit dialog,
+                // which made it a third tap.
+                leading: IconButton(
+                  key: const ValueKey('tag-color'),
+                  tooltip: l10n.labelColor,
+                  icon: ColorDot(colorCode: t.colorCode, size: 24),
+                  onPressed: () => showColorPicker(context, ref, currentColorCode: t.colorCode, onColorSelected: (c) {
+                    ref.read(hashtagDaoProvider).whenData((d) async {
+                      await d.updateHashtag(t.id, t.name, c.id);
+                      ref.invalidate(hashtagsProvider);
+                    });
+                  }),
+                ),
                 title: Text('#${t.name}'),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,

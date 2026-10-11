@@ -70,7 +70,12 @@ String? _groupTitle(AppLocalizations l, RowGroup g) => switch (g) {
 /// bottom. Same actions, same close-then-run order. The action sheet is
 /// translucent and blurred by design, so "Reduce transparency" (and high
 /// contrast) take the solid sheet instead.
-Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String? title}) async {
+///
+/// [header] is a control placed in the menu itself, above the actions — a
+/// setting used often enough that opening a second sheet for it would make
+/// it one tap too deep (APP docs/UX-LAYOUT.md §13, Procress 24). It changes
+/// its value in place; the menu stays open.
+Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String? title, Widget? header}) async {
   if (actions.isEmpty) return;
   if (_grouped(actions)) actions = groupedOrder(actions);
   if (context.isIosStyle && !context.glassOpaque) {
@@ -83,6 +88,7 @@ Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String?
       useRootNavigator: true,
       builder: (sheetContext) => CupertinoActionSheet(
         title: title == null ? null : Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: web),
+        message: header == null ? null : Material(type: MaterialType.transparency, child: header),
         actions: [
           for (final a in actions)
             CupertinoActionSheetAction(
@@ -123,6 +129,7 @@ Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String?
                   style: Theme.of(sheetContext).textTheme.titleMedium,
                 ),
               ),
+            if (header != null) ...[header, const Divider(height: 8)],
             if (_grouped(actions))
               ..._groupedChildren(sheetContext, actions)
             else
@@ -232,7 +239,10 @@ class RowMenuButton extends StatelessWidget {
   /// are shorter than one.
   final bool dense;
 
-  const RowMenuButton({super.key, required this.actions, this.title, this.iconSize = 20, this.dense = false});
+  /// A control shown in the menu above the actions (see [showRowMenu]).
+  final Widget? header;
+
+  const RowMenuButton({super.key, required this.actions, this.title, this.iconSize = 20, this.dense = false, this.header});
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +251,7 @@ class RowMenuButton extends StatelessWidget {
         message: AppLocalizations.of(context)!.rowMore,
         child: InkWell(
           borderRadius: BorderRadius.circular(4),
-          onTap: () => showRowMenu(context, actions(), title: title),
+          onTap: () => showRowMenu(context, actions(), title: title, header: header),
           child: Padding(
             padding: const EdgeInsets.all(2),
             child: Icon(Icons.more_vert, size: iconSize),
@@ -254,7 +264,7 @@ class RowMenuButton extends StatelessWidget {
       iconSize: iconSize,
       visualDensity: VisualDensity.compact,
       tooltip: AppLocalizations.of(context)!.rowMore,
-      onPressed: () => showRowMenu(context, actions(), title: title),
+      onPressed: () => showRowMenu(context, actions(), title: title, header: header),
     );
   }
 }

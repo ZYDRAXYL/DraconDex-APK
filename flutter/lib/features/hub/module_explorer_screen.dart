@@ -22,6 +22,7 @@ import '../tools/folder_assets.dart';
 import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
+import 'widgets/nexus_collection_view.dart';
 
 /// One page of the Hub, shown inside the Builder shell: the Nexus root
 /// (moduleId null), a single module's own page — its content area (if its
@@ -156,10 +157,24 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
               // are laid out is a choice about those rows, so it sits on their
               // own header below, and a page with none has no such choice.
               actions: [
+                // The Nexus root's own ⋮ (Procress 24): its name and the rest
+                // of the Nexus's menu two taps from here, not three by way
+                // of the Nexus list.
+                if (moduleId == null && nexus != null)
+                  RowMenuButton(
+                    iconSize: 24,
+                    title: nexus.name,
+                    actions: () => nexusActions(context, ref, nexus, onOwnPage: true),
+                  ),
                 if (module != null)
                   RowMenuButton(
                     iconSize: 24,
                     title: module.name,
+                    // the title's alignment right in the menu (§13): it was
+                    // a third tap, through "Title layout…"
+                    header: itemKey != null || module.kind != ModuleKind.collector
+                        ? PageTitleAlignControl(pageKey: PageKey(module.id, itemKey))
+                        : null,
                     actions: () => [
                       ...pageActions(context, ref, module, itemKey),
                       ...moduleRowActions(context, ref, module, onOwnPage: true, itemKey: itemKey, itemName: itemName),
