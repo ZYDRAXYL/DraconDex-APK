@@ -2986,4 +2986,25 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get assetGroupOther => '기타 파일';
+
+  @override
+  String get uiStyleLabel => 'UI 스타일';
+
+  @override
+  String get uiStyleStandard => '기본';
+
+  @override
+  String get uiStyleGlass => '글래스';
+
+  @override
+  String get reduceTransparency => '투명도 줄이기';
+
+  @override
+  String get reduceTransparencyHint => '유리 패널과 반투명 바를 불투명하게 표시합니다';
+
+  @override
+  String get glassBlurOff => '흐림 효과 꺼짐 — 이 기기에서는 너무 느리게 그려졌습니다';
+
+  @override
+  String get glassBlurRetry => '다시 시도';
 }

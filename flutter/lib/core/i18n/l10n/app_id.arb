@@ -991,5 +991,12 @@
   "assetGroupTrack": "Subtitel",
   "assetGroupModel": "Model 3D",
   "assetGroupUrl": "Tautan",
-  "assetGroupOther": "Berkas lain"
+  "assetGroupOther": "Berkas lain",
+  "uiStyleLabel": "Gaya tampilan",
+  "uiStyleStandard": "Standar",
+  "uiStyleGlass": "Kaca",
+  "reduceTransparency": "Kurangi transparansi",
+  "reduceTransparencyHint": "Panel kaca dan bilah tembus pandang menjadi padat",
+  "glassBlurOff": "Blur dimatikan — perangkat ini menggambarnya terlalu lambat",
+  "glassBlurRetry": "Coba lagi"
 }

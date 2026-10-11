@@ -2986,4 +2986,25 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Outros arquivos';
+
+  @override
+  String get uiStyleLabel => 'Estilo da interface';
+
+  @override
+  String get uiStyleStandard => 'Padrão';
+
+  @override
+  String get uiStyleGlass => 'Vidro';
+
+  @override
+  String get reduceTransparency => 'Reduzir transparência';
+
+  @override
+  String get reduceTransparencyHint => 'Painéis de vidro e barras translúcidas ficam opacos';
+
+  @override
+  String get glassBlurOff => 'Desfoque desativado: este aparelho o desenhava devagar demais';
+
+  @override
+  String get glassBlurRetry => 'Tentar de novo';
 }

@@ -991,5 +991,12 @@
   "assetGroupTrack": "คำบรรยาย",
   "assetGroupModel": "โมเดล 3 มิติ",
   "assetGroupUrl": "ลิงก์",
-  "assetGroupOther": "ไฟล์อื่น ๆ"
+  "assetGroupOther": "ไฟล์อื่น ๆ",
+  "uiStyleLabel": "สไตล์ UI",
+  "uiStyleStandard": "มาตรฐาน",
+  "uiStyleGlass": "กระจก",
+  "reduceTransparency": "ลดความโปร่งใส",
+  "reduceTransparencyHint": "แผงกระจกและแถบโปร่งใสจะกลายเป็นพื้นทึบ",
+  "glassBlurOff": "ปิดการเบลอแล้ว — เครื่องนี้วาดได้ช้าเกินไป",
+  "glassBlurRetry": "ลองอีกครั้ง"
 }

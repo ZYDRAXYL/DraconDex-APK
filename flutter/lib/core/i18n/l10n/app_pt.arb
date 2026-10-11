@@ -991,5 +991,12 @@
   "assetGroupTrack": "Legendas",
   "assetGroupModel": "Modelos 3D",
   "assetGroupUrl": "Links",
-  "assetGroupOther": "Outros arquivos"
+  "assetGroupOther": "Outros arquivos",
+  "uiStyleLabel": "Estilo da interface",
+  "uiStyleStandard": "Padrão",
+  "uiStyleGlass": "Vidro",
+  "reduceTransparency": "Reduzir transparência",
+  "reduceTransparencyHint": "Painéis de vidro e barras translúcidas ficam opacos",
+  "glassBlurOff": "Desfoque desativado: este aparelho o desenhava devagar demais",
+  "glassBlurRetry": "Tentar de novo"
 }

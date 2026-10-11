@@ -2986,4 +2986,25 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'その他のファイル';
+
+  @override
+  String get uiStyleLabel => 'UIスタイル';
+
+  @override
+  String get uiStyleStandard => '標準';
+
+  @override
+  String get uiStyleGlass => 'ガラス';
+
+  @override
+  String get reduceTransparency => '透明度を下げる';
+
+  @override
+  String get reduceTransparencyHint => 'ガラスのパネルと半透明のバーを不透明にします';
+
+  @override
+  String get glassBlurOff => 'ぼかしはオフです — この端末では描画が遅すぎました';
+
+  @override
+  String get glassBlurRetry => 'もう一度試す';
 }

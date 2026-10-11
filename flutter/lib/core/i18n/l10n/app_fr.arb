@@ -991,5 +991,12 @@
   "assetGroupTrack": "Sous-titres",
   "assetGroupModel": "Modèles 3D",
   "assetGroupUrl": "Liens",
-  "assetGroupOther": "Autres fichiers"
+  "assetGroupOther": "Autres fichiers",
+  "uiStyleLabel": "Style de l'interface",
+  "uiStyleStandard": "Standard",
+  "uiStyleGlass": "Verre",
+  "reduceTransparency": "Réduire la transparence",
+  "reduceTransparencyHint": "Les panneaux en verre et les barres translucides deviennent opaques",
+  "glassBlurOff": "Flou désactivé : cet appareil le dessinait trop lentement",
+  "glassBlurRetry": "Réessayer"
 }

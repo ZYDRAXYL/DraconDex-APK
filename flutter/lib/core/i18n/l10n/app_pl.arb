@@ -991,5 +991,12 @@
   "assetGroupTrack": "Napisy",
   "assetGroupModel": "Modele 3D",
   "assetGroupUrl": "Linki",
-  "assetGroupOther": "Inne pliki"
+  "assetGroupOther": "Inne pliki",
+  "uiStyleLabel": "Styl interfejsu",
+  "uiStyleStandard": "Standardowy",
+  "uiStyleGlass": "Szkło",
+  "reduceTransparency": "Zmniejsz przezroczystość",
+  "reduceTransparencyHint": "Szklane panele i półprzezroczyste paski stają się nieprzezroczyste",
+  "glassBlurOff": "Rozmycie wyłączone — to urządzenie rysowało je zbyt wolno",
+  "glassBlurRetry": "Spróbuj ponownie"
 }

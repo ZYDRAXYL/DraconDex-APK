@@ -2983,4 +2983,25 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Inne pliki';
+
+  @override
+  String get uiStyleLabel => 'Styl interfejsu';
+
+  @override
+  String get uiStyleStandard => 'Standardowy';
+
+  @override
+  String get uiStyleGlass => 'Szkło';
+
+  @override
+  String get reduceTransparency => 'Zmniejsz przezroczystość';
+
+  @override
+  String get reduceTransparencyHint => 'Szklane panele i półprzezroczyste paski stają się nieprzezroczyste';
+
+  @override
+  String get glassBlurOff => 'Rozmycie wyłączone — to urządzenie rysowało je zbyt wolno';
+
+  @override
+  String get glassBlurRetry => 'Spróbuj ponownie';
 }

@@ -2986,4 +2986,25 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Berkas lain';
+
+  @override
+  String get uiStyleLabel => 'Gaya tampilan';
+
+  @override
+  String get uiStyleStandard => 'Standar';
+
+  @override
+  String get uiStyleGlass => 'Kaca';
+
+  @override
+  String get reduceTransparency => 'Kurangi transparansi';
+
+  @override
+  String get reduceTransparencyHint => 'Panel kaca dan bilah tembus pandang menjadi padat';
+
+  @override
+  String get glassBlurOff => 'Blur dimatikan — perangkat ini menggambarnya terlalu lambat';
+
+  @override
+  String get glassBlurRetry => 'Coba lagi';
 }

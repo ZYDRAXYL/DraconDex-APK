@@ -991,5 +991,12 @@
   "assetGroupTrack": "Undertongues",
   "assetGroupModel": "Shaped wyrmstone",
   "assetGroupUrl": "Threads",
-  "assetGroupOther": "Othyr hoard"
+  "assetGroupOther": "Othyr hoard",
+  "uiStyleLabel": "Draav Vysth",
+  "uiStyleStandard": "Stoneform",
+  "uiStyleGlass": "Glazhyr",
+  "reduceTransparency": "Dim the glazhyr",
+  "reduceTransparencyHint": "Glazhyr panes and veiled bars turn solid as stone",
+  "glassBlurOff": "Blur slumbers — this hoard-engine drew it too slowly",
+  "glassBlurRetry": "Try anew"
 }

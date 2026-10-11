@@ -2983,4 +2983,25 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Altri file';
+
+  @override
+  String get uiStyleLabel => 'Stile interfaccia';
+
+  @override
+  String get uiStyleStandard => 'Standard';
+
+  @override
+  String get uiStyleGlass => 'Vetro';
+
+  @override
+  String get reduceTransparency => 'Riduci trasparenza';
+
+  @override
+  String get reduceTransparencyHint => 'I pannelli in vetro e le barre traslucide diventano opachi';
+
+  @override
+  String get glassBlurOff => 'Sfocatura disattivata: questo dispositivo la disegnava troppo lentamente';
+
+  @override
+  String get glassBlurRetry => 'Riprova';
 }

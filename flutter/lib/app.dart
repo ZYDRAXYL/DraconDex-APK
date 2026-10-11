@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/i18n/app_localizations.dart';
 import 'core/providers/settings_provider.dart';
 import 'core/theme/app_theme.dart';
+import 'core/theme/glass_probe.dart';
 import 'core/router/app_router.dart';
 import 'features/tools/share_inbox.dart';
 
@@ -13,7 +14,12 @@ class DraconDexApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
 
-    final themeData = AppTheme.forName(settings.theme);
+    final themeData = AppTheme.forName(
+      settings.theme,
+      glass: settings.glass,
+      reduceTransparency: settings.reduceTransparency,
+      glassBlurOff: settings.glassBlur == GlassBlur.off,
+    );
 
     return MaterialApp.router(
       title: 'DraconDex',
@@ -35,9 +41,19 @@ class DraconDexApp extends ConsumerWidget {
         // padding. MediaQuery.of(context) here is always current.
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(settings.uiScale)),
-          // Kind names are read from a static, so a Classic/Unique switch
-          // has to rebuild everything under the router to show.
-          child: KeyedSubtree(key: ValueKey(settings.classicNames), child: ShareInbox(child: child!)),
+          // Glass's low-spec check: measures only while the blur is actually
+          // drawn and nobody has measured it yet (Procress 23 part 3).
+          child: GlassFrameWatch(
+            active: settings.glass &&
+                settings.glassBlur == GlassBlur.unmeasured &&
+                !settings.reduceTransparency &&
+                !MediaQuery.highContrastOf(context),
+            onVerdict: (tooSlow) =>
+                ref.read(settingsProvider.notifier).setGlassBlur(tooSlow ? GlassBlur.off : GlassBlur.on),
+            // Kind names are read from a static, so a Classic/Unique switch
+            // has to rebuild everything under the router to show.
+            child: KeyedSubtree(key: ValueKey(settings.classicNames), child: ShareInbox(child: child!)),
+          ),
         );
       },
     );

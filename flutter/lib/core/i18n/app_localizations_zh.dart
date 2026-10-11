@@ -2986,4 +2986,25 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get assetGroupOther => '其他文件';
+
+  @override
+  String get uiStyleLabel => '界面风格';
+
+  @override
+  String get uiStyleStandard => '标准';
+
+  @override
+  String get uiStyleGlass => '玻璃';
+
+  @override
+  String get reduceTransparency => '降低透明度';
+
+  @override
+  String get reduceTransparencyHint => '玻璃面板和半透明栏变为不透明';
+
+  @override
+  String get glassBlurOff => '模糊已关闭 — 此设备绘制过慢';
+
+  @override
+  String get glassBlurRetry => '重试';
 }

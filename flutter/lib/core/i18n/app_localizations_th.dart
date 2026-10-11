@@ -2986,4 +2986,25 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'ไฟล์อื่น ๆ';
+
+  @override
+  String get uiStyleLabel => 'สไตล์ UI';
+
+  @override
+  String get uiStyleStandard => 'มาตรฐาน';
+
+  @override
+  String get uiStyleGlass => 'กระจก';
+
+  @override
+  String get reduceTransparency => 'ลดความโปร่งใส';
+
+  @override
+  String get reduceTransparencyHint => 'แผงกระจกและแถบโปร่งใสจะกลายเป็นพื้นทึบ';
+
+  @override
+  String get glassBlurOff => 'ปิดการเบลอแล้ว — เครื่องนี้วาดได้ช้าเกินไป';
+
+  @override
+  String get glassBlurRetry => 'ลองอีกครั้ง';
 }

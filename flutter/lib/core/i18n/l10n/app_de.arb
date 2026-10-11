@@ -991,5 +991,12 @@
   "assetGroupTrack": "Untertitel",
   "assetGroupModel": "3D-Modelle",
   "assetGroupUrl": "Links",
-  "assetGroupOther": "Andere Dateien"
+  "assetGroupOther": "Andere Dateien",
+  "uiStyleLabel": "UI-Stil",
+  "uiStyleStandard": "Standard",
+  "uiStyleGlass": "Glas",
+  "reduceTransparency": "Transparenz reduzieren",
+  "reduceTransparencyHint": "Glasflächen und durchscheinende Leisten werden deckend",
+  "glassBlurOff": "Unschärfe aus – dieses Gerät hat sie zu langsam gezeichnet",
+  "glassBlurRetry": "Erneut versuchen"
 }

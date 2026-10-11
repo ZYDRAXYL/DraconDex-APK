@@ -991,5 +991,12 @@
   "assetGroupTrack": "字幕",
   "assetGroupModel": "3D 模型",
   "assetGroupUrl": "链接",
-  "assetGroupOther": "其他文件"
+  "assetGroupOther": "其他文件",
+  "uiStyleLabel": "界面风格",
+  "uiStyleStandard": "标准",
+  "uiStyleGlass": "玻璃",
+  "reduceTransparency": "降低透明度",
+  "reduceTransparencyHint": "玻璃面板和半透明栏变为不透明",
+  "glassBlurOff": "模糊已关闭 — 此设备绘制过慢",
+  "glassBlurRetry": "重试"
 }

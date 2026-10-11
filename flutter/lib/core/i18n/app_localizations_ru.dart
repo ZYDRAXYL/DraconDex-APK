@@ -2986,4 +2986,25 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Другие файлы';
+
+  @override
+  String get uiStyleLabel => 'Стиль интерфейса';
+
+  @override
+  String get uiStyleStandard => 'Стандартный';
+
+  @override
+  String get uiStyleGlass => 'Стекло';
+
+  @override
+  String get reduceTransparency => 'Уменьшить прозрачность';
+
+  @override
+  String get reduceTransparencyHint => 'Стеклянные панели и полупрозрачные элементы становятся непрозрачными';
+
+  @override
+  String get glassBlurOff => 'Размытие отключено — устройство отрисовывало его слишком медленно';
+
+  @override
+  String get glassBlurRetry => 'Повторить';
 }

@@ -991,5 +991,12 @@
   "assetGroupTrack": "Ondertitels",
   "assetGroupModel": "3D-modellen",
   "assetGroupUrl": "Links",
-  "assetGroupOther": "Overige bestanden"
+  "assetGroupOther": "Overige bestanden",
+  "uiStyleLabel": "Interfacestijl",
+  "uiStyleStandard": "Standaard",
+  "uiStyleGlass": "Glas",
+  "reduceTransparency": "Transparantie verminderen",
+  "reduceTransparencyHint": "Glazen panelen en doorschijnende balken worden ondoorzichtig",
+  "glassBlurOff": "Vervaging uit — dit apparaat tekende die te traag",
+  "glassBlurRetry": "Opnieuw proberen"
 }

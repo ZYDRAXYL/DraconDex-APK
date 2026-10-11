@@ -991,5 +991,12 @@
   "assetGroupTrack": "字幕",
   "assetGroupModel": "3D モデル",
   "assetGroupUrl": "リンク",
-  "assetGroupOther": "その他のファイル"
+  "assetGroupOther": "その他のファイル",
+  "uiStyleLabel": "UIスタイル",
+  "uiStyleStandard": "標準",
+  "uiStyleGlass": "ガラス",
+  "reduceTransparency": "透明度を下げる",
+  "reduceTransparencyHint": "ガラスのパネルと半透明のバーを不透明にします",
+  "glassBlurOff": "ぼかしはオフです — この端末では描画が遅すぎました",
+  "glassBlurRetry": "もう一度試す"
 }

@@ -2986,4 +2986,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Other files';
+
+  @override
+  String get uiStyleLabel => 'UI style';
+
+  @override
+  String get uiStyleStandard => 'Standard';
+
+  @override
+  String get uiStyleGlass => 'Glass';
+
+  @override
+  String get reduceTransparency => 'Reduce transparency';
+
+  @override
+  String get reduceTransparencyHint => 'Glass panes and see-through bars become solid';
+
+  @override
+  String get glassBlurOff => 'Blur off — this device drew it too slowly';
+
+  @override
+  String get glassBlurRetry => 'Try again';
 }

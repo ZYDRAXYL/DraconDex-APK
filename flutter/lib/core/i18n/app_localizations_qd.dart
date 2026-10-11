@@ -2986,4 +2986,25 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Othyr hoard';
+
+  @override
+  String get uiStyleLabel => 'Draav Vysth';
+
+  @override
+  String get uiStyleStandard => 'Stoneform';
+
+  @override
+  String get uiStyleGlass => 'Glazhyr';
+
+  @override
+  String get reduceTransparency => 'Dim the glazhyr';
+
+  @override
+  String get reduceTransparencyHint => 'Glazhyr panes and veiled bars turn solid as stone';
+
+  @override
+  String get glassBlurOff => 'Blur slumbers — this hoard-engine drew it too slowly';
+
+  @override
+  String get glassBlurRetry => 'Try anew';
 }

@@ -991,5 +991,12 @@
   "assetGroupTrack": "Subtítulos",
   "assetGroupModel": "Modelos 3D",
   "assetGroupUrl": "Enlaces",
-  "assetGroupOther": "Otros archivos"
+  "assetGroupOther": "Otros archivos",
+  "uiStyleLabel": "Estilo de la interfaz",
+  "uiStyleStandard": "Estándar",
+  "uiStyleGlass": "Cristal",
+  "reduceTransparency": "Reducir transparencia",
+  "reduceTransparencyHint": "Los paneles de cristal y las barras translúcidas se vuelven opacos",
+  "glassBlurOff": "Desenfoque desactivado: este dispositivo lo dibujaba demasiado lento",
+  "glassBlurRetry": "Reintentar"
 }

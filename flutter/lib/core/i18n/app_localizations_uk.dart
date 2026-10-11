@@ -2983,4 +2983,25 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Інші файли';
+
+  @override
+  String get uiStyleLabel => 'Стиль інтерфейсу';
+
+  @override
+  String get uiStyleStandard => 'Стандартний';
+
+  @override
+  String get uiStyleGlass => 'Скло';
+
+  @override
+  String get reduceTransparency => 'Зменшити прозорість';
+
+  @override
+  String get reduceTransparencyHint => 'Скляні панелі та напівпрозорі елементи стають непрозорими';
+
+  @override
+  String get glassBlurOff => 'Розмиття вимкнено — пристрій малював його надто повільно';
+
+  @override
+  String get glassBlurRetry => 'Спробувати ще';
 }

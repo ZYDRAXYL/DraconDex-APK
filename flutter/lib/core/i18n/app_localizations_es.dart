@@ -2986,4 +2986,25 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Otros archivos';
+
+  @override
+  String get uiStyleLabel => 'Estilo de la interfaz';
+
+  @override
+  String get uiStyleStandard => 'Estándar';
+
+  @override
+  String get uiStyleGlass => 'Cristal';
+
+  @override
+  String get reduceTransparency => 'Reducir transparencia';
+
+  @override
+  String get reduceTransparencyHint => 'Los paneles de cristal y las barras translúcidas se vuelven opacos';
+
+  @override
+  String get glassBlurOff => 'Desenfoque desactivado: este dispositivo lo dibujaba demasiado lento';
+
+  @override
+  String get glassBlurRetry => 'Reintentar';
 }

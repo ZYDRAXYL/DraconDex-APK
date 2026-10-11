@@ -2983,4 +2983,25 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Diğer dosyalar';
+
+  @override
+  String get uiStyleLabel => 'Arayüz stili';
+
+  @override
+  String get uiStyleStandard => 'Standart';
+
+  @override
+  String get uiStyleGlass => 'Cam';
+
+  @override
+  String get reduceTransparency => 'Saydamlığı azalt';
+
+  @override
+  String get reduceTransparencyHint => 'Cam paneller ve yarı saydam çubuklar opak olur';
+
+  @override
+  String get glassBlurOff => 'Bulanıklık kapalı — bu cihaz onu çok yavaş çizdi';
+
+  @override
+  String get glassBlurRetry => 'Tekrar dene';
 }

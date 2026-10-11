@@ -6084,6 +6084,48 @@ abstract class AppLocalizations {
   /// **'Other files'**
   String get assetGroupOther;
 
+  /// No description provided for @uiStyleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'UI style'**
+  String get uiStyleLabel;
+
+  /// No description provided for @uiStyleStandard.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard'**
+  String get uiStyleStandard;
+
+  /// No description provided for @uiStyleGlass.
+  ///
+  /// In en, this message translates to:
+  /// **'Glass'**
+  String get uiStyleGlass;
+
+  /// No description provided for @reduceTransparency.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce transparency'**
+  String get reduceTransparency;
+
+  /// No description provided for @reduceTransparencyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Glass panes and see-through bars become solid'**
+  String get reduceTransparencyHint;
+
+  /// No description provided for @glassBlurOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Blur off — this device drew it too slowly'**
+  String get glassBlurOff;
+
+  /// No description provided for @glassBlurRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get glassBlurRetry;
+
 }
 
 class _AppLocalizationsDelegate

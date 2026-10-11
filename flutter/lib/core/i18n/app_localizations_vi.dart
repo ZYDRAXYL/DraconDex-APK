@@ -2986,4 +2986,25 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Tệp khác';
+
+  @override
+  String get uiStyleLabel => 'Kiểu giao diện';
+
+  @override
+  String get uiStyleStandard => 'Tiêu chuẩn';
+
+  @override
+  String get uiStyleGlass => 'Kính';
+
+  @override
+  String get reduceTransparency => 'Giảm độ trong suốt';
+
+  @override
+  String get reduceTransparencyHint => 'Các bảng kính và thanh trong suốt trở nên đặc';
+
+  @override
+  String get glassBlurOff => 'Đã tắt làm mờ — thiết bị này vẽ quá chậm';
+
+  @override
+  String get glassBlurRetry => 'Thử lại';
 }

@@ -2983,4 +2983,25 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get assetGroupOther => 'Overige bestanden';
+
+  @override
+  String get uiStyleLabel => 'Interfacestijl';
+
+  @override
+  String get uiStyleStandard => 'Standaard';
+
+  @override
+  String get uiStyleGlass => 'Glas';
+
+  @override
+  String get reduceTransparency => 'Transparantie verminderen';
+
+  @override
+  String get reduceTransparencyHint => 'Glazen panelen en doorschijnende balken worden ondoorzichtig';
+
+  @override
+  String get glassBlurOff => 'Vervaging uit — dit apparaat tekende die te traag';
+
+  @override
+  String get glassBlurRetry => 'Opnieuw proberen';
 }

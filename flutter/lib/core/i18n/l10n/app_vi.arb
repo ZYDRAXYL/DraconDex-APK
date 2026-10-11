@@ -991,5 +991,12 @@
   "assetGroupTrack": "Phụ đề",
   "assetGroupModel": "Mô hình 3D",
   "assetGroupUrl": "Liên kết",
-  "assetGroupOther": "Tệp khác"
+  "assetGroupOther": "Tệp khác",
+  "uiStyleLabel": "Kiểu giao diện",
+  "uiStyleStandard": "Tiêu chuẩn",
+  "uiStyleGlass": "Kính",
+  "reduceTransparency": "Giảm độ trong suốt",
+  "reduceTransparencyHint": "Các bảng kính và thanh trong suốt trở nên đặc",
+  "glassBlurOff": "Đã tắt làm mờ — thiết bị này vẽ quá chậm",
+  "glassBlurRetry": "Thử lại"
 }

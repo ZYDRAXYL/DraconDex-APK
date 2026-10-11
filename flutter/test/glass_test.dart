@@ -4,8 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:dracondex/core/i18n/app_localizations.dart';
+import 'package:dracondex/core/providers/settings_provider.dart';
 import 'package:dracondex/core/theme/app_theme.dart';
 import 'package:dracondex/core/theme/ddx_theme.dart';
+import 'package:dracondex/core/theme/glass_probe.dart';
 import 'package:dracondex/core/theme/tokens.g.dart' as tokens;
 import 'package:dracondex/features/builder/builder_shell.dart';
 import 'package:dracondex/widgets/ddx_glass.dart';
@@ -175,6 +177,23 @@ void main() {
   });
 
   group('low-spec fallback', () {
+    const fast = Duration(milliseconds: 8), slow = Duration(milliseconds: 30);
+
+    test('waits for 60 frames, then decides by the median', () {
+      final probe = GlassFrameProbe();
+      expect(probe.add(List.filled(59, fast)), isNull);
+      expect(probe.add([fast]), isFalse);
+      // decided once: later frames change nothing
+      expect(probe.add(List.filled(100, slow)), isFalse);
+      expect(GlassFrameProbe().add(List.filled(60, slow)), isTrue);
+    });
+
+    test('a burst of slow frames around turning Glass on does not decide it', () {
+      final probe = GlassFrameProbe();
+      expect(probe.add([...List.filled(20, slow), ...List.filled(40, fast)]), isFalse);
+      expect(GlassFrameProbe().add([...List.filled(31, slow), ...List.filled(29, fast)]), isTrue);
+    });
+
     testWidgets('blur off keeps the tint and drops the blur', (tester) async {
       final theme = AppTheme.forName('afterRain', glass: true, glassBlurOff: true);
       await show(tester, scene(theme));
@@ -184,6 +203,28 @@ void main() {
       final pane = tester.widget<DecoratedBox>(
           find.descendant(of: find.ancestor(of: find.text('Sheet body'), matching: find.byType(DdxGlass)).first, matching: find.byType(DecoratedBox)).first);
       expect((pane.decoration as BoxDecoration).color!.a, closeTo(tokens.DdxGlass.glassTintFor('afterRain'), 0.002));
+    });
+
+    test('the decision is persisted, and "try again" clears it', () async {
+      final c = ProviderContainer();
+      addTearDown(c.dispose);
+      c.read(settingsProvider);
+      await Future<void>.delayed(Duration.zero);
+      await c.read(settingsProvider.notifier).setUiStyle(UiStyle.glass);
+      await c.read(settingsProvider.notifier).setGlassBlur(GlassBlur.off);
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getString('glass_blur'), 'off');
+      expect(prefs.getString('ui_style'), 'glass');
+
+      final again = ProviderContainer();
+      addTearDown(again.dispose);
+      again.read(settingsProvider);
+      await Future<void>.delayed(Duration.zero);
+      expect(again.read(settingsProvider).glassBlur, GlassBlur.off);
+      expect(again.read(settingsProvider).uiStyle, UiStyle.glass);
+
+      await again.read(settingsProvider.notifier).setGlassBlur(GlassBlur.unmeasured);
+      expect(prefs.containsKey('glass_blur'), isFalse);
     });
   });
 }

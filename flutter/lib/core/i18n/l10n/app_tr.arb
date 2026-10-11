@@ -991,5 +991,12 @@
   "assetGroupTrack": "Altyazılar",
   "assetGroupModel": "3B modeller",
   "assetGroupUrl": "Bağlantılar",
-  "assetGroupOther": "Diğer dosyalar"
+  "assetGroupOther": "Diğer dosyalar",
+  "uiStyleLabel": "Arayüz stili",
+  "uiStyleStandard": "Standart",
+  "uiStyleGlass": "Cam",
+  "reduceTransparency": "Saydamlığı azalt",
+  "reduceTransparencyHint": "Cam paneller ve yarı saydam çubuklar opak olur",
+  "glassBlurOff": "Bulanıklık kapalı — bu cihaz onu çok yavaş çizdi",
+  "glassBlurRetry": "Tekrar dene"
 }

@@ -991,5 +991,12 @@
   "assetGroupTrack": "Субтитры",
   "assetGroupModel": "3D-модели",
   "assetGroupUrl": "Ссылки",
-  "assetGroupOther": "Другие файлы"
+  "assetGroupOther": "Другие файлы",
+  "uiStyleLabel": "Стиль интерфейса",
+  "uiStyleStandard": "Стандартный",
+  "uiStyleGlass": "Стекло",
+  "reduceTransparency": "Уменьшить прозрачность",
+  "reduceTransparencyHint": "Стеклянные панели и полупрозрачные элементы становятся непрозрачными",
+  "glassBlurOff": "Размытие отключено — устройство отрисовывало его слишком медленно",
+  "glassBlurRetry": "Повторить"
 }

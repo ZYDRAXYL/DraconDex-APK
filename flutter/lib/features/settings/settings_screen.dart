@@ -39,6 +39,41 @@ class SettingsScreen extends ConsumerWidget {
           if (context.isIosStyle) const SizedBox(height: DdxSpace.sp3),
           DdxListSection(title: l10n.settingsAppearance, collapsible: false, children: [
             const ThemePickerSection(),
+            // The UI style (Procress 23): how the chrome is drawn, over
+            // whichever theme is picked above — a style, not a palette.
+            DdxListTile(title: l10n.uiStyleLabel),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: SegmentedButton<UiStyle>(
+                key: const ValueKey('ui-style'),
+                showSelectedIcon: false,
+                segments: [
+                  ButtonSegment(value: UiStyle.standard, label: Text(l10n.uiStyleStandard)),
+                  ButtonSegment(value: UiStyle.glass, icon: const Icon(Icons.blur_on), label: Text(l10n.uiStyleGlass)),
+                ],
+                selected: {settings.uiStyle},
+                onSelectionChanged: (v) => notifier.setUiStyle(v.first),
+              ),
+            ),
+            if (settings.glass && settings.glassBlur == GlassBlur.off)
+              // a sentence the reader must see whole, so not a one-line row
+              ListTile(
+                leading: const Icon(Icons.blur_off),
+                title: Text(l10n.glassBlurOff),
+                trailing: TextButton(
+                  onPressed: () => notifier.setGlassBlur(GlassBlur.unmeasured),
+                  child: Text(l10n.glassBlurRetry),
+                ),
+              ),
+            // Always shown: it also makes the iPhone's translucent tab bar
+            // and action sheets solid, Glass or not.
+            SwitchListTile(
+              key: const ValueKey('reduce-transparency'),
+              title: Text(l10n.reduceTransparency),
+              subtitle: Text(l10n.reduceTransparencyHint),
+              value: settings.reduceTransparency,
+              onChanged: notifier.setReduceTransparency,
+            ),
             ListTile(
               title: Text(l10n.uiScaleLabel),
               subtitle: Slider(
