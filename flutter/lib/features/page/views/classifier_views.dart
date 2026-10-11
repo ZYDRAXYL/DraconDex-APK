@@ -879,12 +879,19 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
               initialValue: type,
+              // a phone-wide dialog leaves the longest type name too little
+              // room: fill the field and cut the name, never overflow
+              isExpanded: true,
               decoration: InputDecoration(labelText: l.clsFieldType),
               items: [
                 for (final t in ClassifierFieldModel.types)
                   DropdownMenuItem(
                     value: t,
-                    child: Row(children: [Icon(clsTypeIcon(t), size: 18), const SizedBox(width: 8), Text(clsTypeLabel(l, t))]),
+                    child: Row(children: [
+                      Icon(clsTypeIcon(t), size: 18),
+                      const SizedBox(width: 8),
+                      Flexible(child: Text(clsTypeLabel(l, t), overflow: TextOverflow.ellipsis)),
+                    ]),
                   ),
               ],
               onChanged: (v) => setLocal(() => type = v ?? type),
