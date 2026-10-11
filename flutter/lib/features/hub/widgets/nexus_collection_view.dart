@@ -5,6 +5,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../../core/i18n/app_localizations.dart';
 import '../../../core/layout/breakpoints.dart';
+import '../../../core/theme/tokens.g.dart';
 import '../../../data/models/module_model.dart';
 import '../../../data/services/asset_pack.dart';
 import '../../../providers/builder_view_provider.dart';
@@ -13,6 +14,7 @@ import '../../../providers/module_provider.dart';
 import '../../../providers/recent_views_provider.dart';
 import '../../../widgets/color_dot.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../../widgets/ddx_list.dart';
 import '../../../widgets/row_menu.dart';
 import '../dialogs/nexus_dialog.dart';
 
@@ -45,13 +47,13 @@ class NexusCollectionView extends StatelessWidget {
       case BuilderViewMode.compact:
         return ListView.builder(
           itemCount: nexuses.length,
-          itemBuilder: (_, i) => _NexusTile(nexus: nexuses[i], dense: true),
+          itemBuilder: (_, i) => _NexusRow(nexus: nexuses[i], density: DdxDensity.compact),
         );
       case BuilderViewMode.list:
         return ListView.separated(
           itemCount: nexuses.length,
           separatorBuilder: (_, _) => const Divider(height: 1),
-          itemBuilder: (_, i) => _NexusTile(nexus: nexuses[i]),
+          itemBuilder: (_, i) => _NexusRow(nexus: nexuses[i]),
         );
     }
   }
@@ -116,27 +118,25 @@ Future<void> _deleteNexus(BuildContext context, WidgetRef ref, NexusModel nexus)
   ref.invalidate(nexusesProvider);
 }
 
-class _NexusTile extends ConsumerWidget {
+/// A Nexus as a list row: its colour, its name, its memo as the meta.
+class _NexusRow extends ConsumerWidget {
   final NexusModel nexus;
-  final bool dense;
+  final DdxDensity density;
 
-  const _NexusTile({required this.nexus, this.dense = false});
+  const _NexusRow({required this.nexus, this.density = DdxDensity.comfortable});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hasMemo = nexus.memo != null && nexus.memo!.isNotEmpty;
-    List<RowAction> actions() => _nexusActions(context, ref, nexus);
-    return ListTile(
-      dense: dense,
-      visualDensity: dense ? VisualDensity.compact : null,
+    final compact = density == DdxDensity.compact;
+    return DdxListTile(
+      density: density,
       leading: nexus.colorCode != null
-          ? ColorDot(colorCode: nexus.colorCode, size: 20)
-          : const Icon(Icons.workspaces_outlined),
-      title: Text(nexus.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-      subtitle: !dense && hasMemo ? Text(nexus.memo!) : null,
-      trailing: RowMenuButton(actions: actions, title: nexus.name),
+          ? ColorDot(colorCode: nexus.colorCode, size: compact ? DdxSize.iconSm : DdxSize.iconMd)
+          : Icon(Icons.workspaces_outlined, size: compact ? DdxSize.iconSm : DdxSize.iconMd),
+      title: nexus.name,
+      meta: compact ? null : nexus.memo,
+      actions: () => _nexusActions(context, ref, nexus),
       onTap: () => context.push('/hub/${nexus.id}'),
-      onLongPress: () => showRowMenu(context, actions(), title: nexus.name),
     );
   }
 }

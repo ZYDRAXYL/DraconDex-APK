@@ -8,7 +8,9 @@ import '../../../data/models/module_model.dart';
 import '../../../providers/builder_view_provider.dart';
 import '../../../providers/module_provider.dart';
 import '../../../core/theme/ddx_theme.dart';
+import '../../../core/theme/tokens.g.dart';
 import '../../../widgets/color_dot.dart';
+import '../../../widgets/ddx_list.dart';
 import '../../../widgets/grouped_section.dart';
 import '../../../widgets/row_menu.dart';
 import '../module_actions.dart';
@@ -62,7 +64,7 @@ class ModuleCollectionView extends StatelessWidget {
           itemBuilder: card,
         );
       case BuilderViewMode.compact:
-        Widget tile(BuildContext _, int i) => ModuleTile(nexusId: nexusId, module: modules[i], dense: true);
+        Widget tile(BuildContext _, int i) => ModuleTile(nexusId: nexusId, module: modules[i], density: DdxDensity.compact);
         if (sliver) return SliverList.builder(itemCount: modules.length, itemBuilder: tile);
         return ListView.builder(itemCount: modules.length, itemBuilder: tile);
       case BuilderViewMode.list:
@@ -80,12 +82,14 @@ class ModuleCollectionView extends StatelessWidget {
   }
 }
 
+/// A module as a list row ([DdxListTile]) — with what a module row adds:
+/// select mode, dragging into a folder, and on iOS swipe-to-delete.
 class ModuleTile extends ConsumerWidget {
   final int nexusId;
   final ModuleModel module;
-  final bool dense;
+  final DdxDensity density;
 
-  const ModuleTile({super.key, required this.nexusId, required this.module, this.dense = false});
+  const ModuleTile({super.key, required this.nexusId, required this.module, this.density = DdxDensity.comfortable});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -93,30 +97,27 @@ class ModuleTile extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     List<RowAction> actions() => moduleRowActions(context, ref, module);
     final ios = context.isIosStyle;
+    final compact = density == DdxDensity.compact;
+    final iconSize = compact ? DdxSize.iconSm : DdxSize.iconMd;
     final sel = _Selection(ref, module);
-    final tile = ListTile(
-      dense: dense,
-      visualDensity: dense ? VisualDensity.compact : null,
+    final tile = DdxListTile(
+      density: density,
       selected: sel.picked,
       leading: sel.active
-          ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked)
-          : ios
+          ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked, size: iconSize)
+          : ios && !compact
           ? DdxIconSquare(icon: info.icon, color: _iconColor(context, module.colorCode))
-          : module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: 20) : Icon(info.icon),
-      title: Text(module.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-      subtitle: dense
+          : module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: iconSize) : Icon(info.icon, size: iconSize),
+      title: module.name,
+      meta: compact
           ? null
-          : Text(kindName(l10n, module.kind) +
-              (module.childCount != null && module.childCount! > 0 ? ' · ${module.childCount} ${l10n.moduleInside}' : '')),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (module.pinned) const Icon(Icons.push_pin, size: 16),
-          RowMenuButton(actions: actions, title: module.name),
-        ],
-      ),
+          : kindName(l10n, module.kind) +
+              (module.childCount != null && module.childCount! > 0 ? ' · ${module.childCount} ${l10n.moduleInside}' : ''),
+      trailing: [if (module.pinned) const Icon(Icons.push_pin, size: DdxSize.iconSm)],
+      actions: actions,
       onTap: sel.active ? sel.toggle : () => context.push('/hub/$nexusId/module/${module.id}'),
-      onLongPress: sel.active ? sel.toggle : () => showRowMenu(context, actions(), title: module.name),
+      // in select mode a long press ticks too; otherwise the row's menu
+      onLongPress: sel.active ? sel.toggle : null,
     );
     if (!ios || sel.active) return draggableModule(nexusId: nexusId, module: module, child: tile);
     // iOS: swipe left runs the row's destructive action — the same one its

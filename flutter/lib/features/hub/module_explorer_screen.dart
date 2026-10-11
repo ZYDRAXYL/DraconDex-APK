@@ -9,6 +9,7 @@ import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
+import '../../widgets/ddx_list.dart';
 import '../../widgets/hiding_app_bar.dart';
 import '../../widgets/row_menu.dart';
 import '../builder/breadcrumb_title.dart';
@@ -54,6 +55,11 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
   /// recolor so the open pages never show a stale label, but not on every
   /// unrelated rebuild.
   String? _recordedSignature;
+
+  /// The header over the rows (UX-LAYOUT §12.4): a filter, and an order —
+  /// null is the folder's own (pinned first, then as arranged).
+  String _filter = '';
+  DdxSort? _sort;
 
   int get nexusId => widget.nexusId;
   int? get moduleId => widget.moduleId;
@@ -184,43 +190,52 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                       ),
                     ],
                     error: (e, s) => [SliverToBoxAdapter(child: Center(child: Text('Error: $e')))],
-                    data: (children) => children.isEmpty
-                        ? [
-                            SliverToBoxAdapter(
-                              child: Padding(
-                                padding: const EdgeInsets.all(32),
-                                child: Text(
-                                  l10n.emptyModuleMessage,
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
-                                      ),
-                                ),
-                              ),
+                    data: (children) {
+                      if (children.isEmpty) {
+                        return [
+                          SliverToBoxAdapter(
+                            child: DdxEmptyState(
+                              icon: Icons.folder_open_outlined,
+                              message: l10n.emptyModuleMessage,
+                              actionLabel: l10n.newModuleTooltip,
+                              onAction: _newModule,
                             ),
-                          ]
-                        : [
-                            SliverToBoxAdapter(
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(16, 8, 4, 0),
-                                child: Row(children: [
-                                  Expanded(
-                                    child: Text(l10n.pageInside,
-                                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                              color: Theme.of(context).colorScheme.onSurfaceVariant,
-                                            )),
-                                  ),
-                                  const ViewModeButton(),
-                                ]),
-                              ),
-                            ),
-                            ModuleCollectionView(
-                              nexusId: nexusId,
-                              modules: children,
-                              mode: viewMode,
-                              sliver: true,
-                            ),
-                          ],
+                          ),
+                        ];
+                      }
+                      final shown = ddxSorted(
+                        [for (final m in children) if (ddxMatches(_filter, [m.name])) m],
+                        _sort,
+                        name: (m) => m.name,
+                        edited: (m) => m.updatedAt,
+                        created: (m) => m.createdAt,
+                        kind: (m) => kindName(l10n, m.kind),
+                      );
+                      return [
+                        SliverToBoxAdapter(
+                          child: DdxListHeader(
+                            count: shown.length,
+                            onFilterChanged: (v) => setState(() => _filter = v),
+                            sort: _sort,
+                            sorts: DdxSort.values,
+                            manualOrder: true,
+                            onSortChanged: (s) => setState(() => _sort = s),
+                            // how the rows are laid out is a choice about
+                            // them, so it sits on their header (§7.3)
+                            trailing: const [ViewModeButton()],
+                          ),
+                        ),
+                        if (shown.isEmpty)
+                          SliverToBoxAdapter(child: DdxEmptyState(icon: Icons.filter_list_off, message: l10n.listNoMatch))
+                        else
+                          ModuleCollectionView(
+                            nexusId: nexusId,
+                            modules: shown,
+                            mode: viewMode,
+                            sliver: true,
+                          ),
+                      ];
+                    },
                   ),
                 // A folder's own files, under its sub-folders and modules.
                 if (itemKey == null && moduleId != null && module?.kind == ModuleKind.collector)
@@ -278,13 +293,16 @@ extension on _ModuleExplorerScreenState {
     if (moduleId != null && module == null) return null; // still loading
     return FloatingActionButton(
       tooltip: l10n.newModuleTooltip,
-      onPressed: () async {
-        await showNewModuleSheet(context, ref, nexusId, moduleId);
-        ref.invalidate(moduleChildrenProvider(_childrenKey));
-        ref.invalidate(nexusIndexProvider(nexusId));
-      },
+      onPressed: _newModule,
       child: const Icon(Icons.add),
     );
+  }
+
+  /// A new module here — the FAB's action, and the empty folder's one button.
+  Future<void> _newModule() async {
+    await showNewModuleSheet(context, ref, nexusId, moduleId);
+    ref.invalidate(moduleChildrenProvider(_childrenKey));
+    ref.invalidate(nexusIndexProvider(nexusId));
   }
 }
 

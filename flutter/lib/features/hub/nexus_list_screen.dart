@@ -4,6 +4,7 @@ import '../../core/i18n/app_localizations.dart';
 import '../../providers/builder_view_provider.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/update_provider.dart';
+import '../../widgets/ddx_list.dart';
 import '../../widgets/large_title_layout.dart';
 import '../builder/view_mode_button.dart';
 import '../update/update_dialog.dart';
@@ -24,6 +25,8 @@ class NexusListScreen extends ConsumerStatefulWidget {
 
 class _NexusListScreenState extends ConsumerState<NexusListScreen> {
   bool _checkedForUpdate = false;
+  String _filter = '';
+  DdxSort _sort = DdxSort.name;
 
   @override
   void initState() {
@@ -41,11 +44,15 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
     await showDialog(context: context, builder: (_) => UpdateDialog(update: result.update!));
   }
 
+  Future<void> _newNexus() async {
+    await showDialog(context: context, builder: (_) => const NexusDialog());
+    ref.invalidate(nexusesProvider);
+  }
+
   @override
   Widget build(BuildContext context) {
     final nexusesAsync = ref.watch(nexusesProvider);
     final viewMode = ref.watch(builderViewModeProvider);
-    final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
     final list = nexusesAsync.when(
@@ -53,18 +60,33 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
         error: (e, s) => Center(child: Text('Error: $e')),
         data: (nexuses) {
           if (nexuses.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.workspaces_outlined, size: 64, color: theme.colorScheme.onSurface.withValues(alpha: 0.3)),
-                  const SizedBox(height: 16),
-                  Text(l10n.emptyNexusMessage, style: theme.textTheme.bodyMedium),
-                ],
-              ),
+            return DdxEmptyState(
+              icon: Icons.workspaces_outlined,
+              message: l10n.emptyNexusMessage,
+              actionLabel: l10n.newNexusTooltip,
+              onAction: _newNexus,
             );
           }
-          return NexusCollectionView(nexuses: nexuses, mode: viewMode);
+          final shown = ddxSorted(
+            [for (final n in nexuses) if (ddxMatches(_filter, [n.name, n.memo])) n],
+            _sort,
+            name: (n) => n.name,
+            edited: (n) => n.updatedAt,
+          );
+          return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            DdxListHeader(
+              count: shown.length,
+              onFilterChanged: (v) => setState(() => _filter = v),
+              sort: _sort,
+              sorts: const [DdxSort.name, DdxSort.edited],
+              onSortChanged: (s) => setState(() => _sort = s ?? DdxSort.name),
+            ),
+            Expanded(
+              child: shown.isEmpty
+                  ? DdxEmptyState(icon: Icons.filter_list_off, message: l10n.listNoMatch)
+                  : NexusCollectionView(nexuses: shown, mode: viewMode),
+            ),
+          ]);
         },
       );
 
@@ -79,10 +101,7 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: l10n.newNexusTooltip,
-        onPressed: () async {
-          await showDialog(context: context, builder: (_) => const NexusDialog());
-          ref.invalidate(nexusesProvider);
-        },
+        onPressed: _newNexus,
         child: const Icon(Icons.add),
       ),
     );
