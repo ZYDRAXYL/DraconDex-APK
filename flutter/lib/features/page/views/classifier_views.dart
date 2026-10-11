@@ -13,6 +13,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../providers/navigation_providers.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../../widgets/ddx_list.dart';
 import '../../../widgets/row_menu.dart';
 import '../component_registry.dart';
 import '../core_components.dart';
@@ -436,11 +437,12 @@ class _ClsListDetailState extends ConsumerState<_ClsListDetail> {
             itemCount: data.items.length,
             itemBuilder: (context, i) {
               final it = data.items[i];
-              return ListTile(
-                dense: true,
+              // a list in a panel: compact, its two first fields at the end
+              return DdxListTile(
+                density: DdxDensity.compact,
                 selected: it.id == sel.id,
-                title: Text(it.name, overflow: TextOverflow.ellipsis),
-                subtitle: sub(it).isEmpty ? null : Text(sub(it), maxLines: 1, overflow: TextOverflow.ellipsis),
+                title: it.name,
+                meta: sub(it).isEmpty ? null : sub(it),
                 onTap: () => setState(() => _selected = it.id),
                 onLongPress: () => _itemMenu(context, ref, ctx, it),
               );
@@ -564,11 +566,11 @@ class _ClsRelations extends ConsumerWidget {
           EmptyHint(l.clsNoRelations)
         else
           for (final r in data.relations)
-            ListTile(
-              dense: true,
-              leading: const Icon(Icons.east, size: 16),
-              title: Text('${data.names[r.from] ?? r.from}  →  ${data.names[r.to] ?? r.to}'),
-              subtitle: relLabel(r).isEmpty ? null : Text(relLabel(r)),
+            DdxListTile(
+              density: DdxDensity.compact,
+              icon: Icons.east,
+              title: '${data.names[r.from] ?? r.from}  →  ${data.names[r.to] ?? r.to}',
+              meta: relLabel(r).isEmpty ? null : relLabel(r),
               onTap: () => openKey(context, ref, r.to),
             ),
     ]);

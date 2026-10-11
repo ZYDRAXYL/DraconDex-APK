@@ -16,6 +16,8 @@ import '../../hub/content/narrator_content.dart';
 import '../component_registry.dart';
 import 'graph_view.dart';
 import 'node_canvas.dart';
+import '../../../widgets/ddx_list.dart';
+import '../../../core/theme/tokens.g.dart';
 import 'view_common.dart';
 
 /// The Narrator's four presets (EXE mod/narrator.js NARRATOR_VIEWS): board,
@@ -294,19 +296,22 @@ class _Routes extends ConsumerWidget {
     if (data.edges.isEmpty) return EmptyHint(l.narratorNoRoutes);
     return Column(children: [
       for (final e in data.edges)
-        ListTile(
-          dense: true,
-          title: Text('${data.nameOf(e.from)}  →  ${data.nameOf(e.to)}'),
-          subtitle: e.label?.isNotEmpty == true ? Text(e.label!) : null,
-          trailing: IconButton(
-            icon: const Icon(Icons.delete_outline, size: 18),
-            tooltip: l.btnDelete,
-            onPressed: () async {
-              final db = await ref.read(databaseProvider.future);
-              await NarratorDao(db).deleteEdge(e.id);
-              _refresh(ref, ctx.source.id);
-            },
-          ),
+        DdxListTile(
+          icon: Icons.alt_route,
+          title: '${data.nameOf(e.from)}  →  ${data.nameOf(e.to)}',
+          meta: e.label,
+          trailing: [
+            IconButton(
+              icon: const Icon(Icons.delete_outline, size: DdxSize.iconMd),
+              tooltip: l.btnDelete,
+              visualDensity: VisualDensity.compact,
+              onPressed: () async {
+                final db = await ref.read(databaseProvider.future);
+                await NarratorDao(db).deleteEdge(e.id);
+                _refresh(ref, ctx.source.id);
+              },
+            ),
+          ],
         ),
     ]);
   }

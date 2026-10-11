@@ -13,6 +13,7 @@ import '../../../widgets/row_menu.dart';
 import '../../hub/content/author_content.dart';
 import '../component_registry.dart';
 import '../core_components.dart';
+import '../../../widgets/ddx_list.dart';
 import 'view_common.dart';
 
 /// The Author's five presets (EXE mod/author.js AUTHOR_VIEWS): editor,
@@ -259,14 +260,12 @@ class _Outline extends ConsumerWidget {
       },
       children: [
         for (var i = 0; i < chapters.length; i++)
-          ListTile(
+          DdxListTile(
             key: ValueKey(chapters[i].id),
-            leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator)),
-            title: Text('${_no(chapters[i], i)}. ${chapters[i].name}'),
-            subtitle: chapters[i].synopsis?.isNotEmpty == true
-                ? Text(chapters[i].synopsis!, maxLines: 2, overflow: TextOverflow.ellipsis)
-                : null,
-            trailing: chapters[i].status == null ? null : Text(authorStatusLabel(AppLocalizations.of(context)!, chapters[i].status!)),
+            reorderIndex: i,
+            title: '${_no(chapters[i], i)}. ${chapters[i].name}',
+            meta: chapters[i].synopsis,
+            count: chapters[i].status == null ? null : authorStatusLabel(AppLocalizations.of(context)!, chapters[i].status!),
             onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'bchp_${chapters[i].id}'),
             onLongPress: () => _chapterMenu(context, ref, ctx, chapters[i]),
           ),
