@@ -15,7 +15,8 @@ import '../update/update_dialog.dart';
 import 'google_account_screen.dart';
 import 'supabase_setup_screen.dart';
 import '../../core/theme/ddx_theme.dart';
-import '../../widgets/grouped_section.dart';
+import '../../core/theme/tokens.g.dart';
+import '../../widgets/ddx_list.dart';
 import 'theme_picker.dart';
 import 'transfer_screen.dart';
 
@@ -30,10 +31,12 @@ class SettingsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.moduleSettings)),
+      // One DdxListSection per topic (UX-LAYOUT §12): on iPhone/iPad each is
+      // a grouped inset card (C3), elsewhere a header over plain rows.
       body: ListView(
         children: [
-          ..._iosGrouped(context, [
-            _SectionHeader(l10n.settingsAppearance),
+          if (context.isIosStyle) const SizedBox(height: DdxSpace.sp3),
+          DdxListSection(title: l10n.settingsAppearance, collapsible: false, children: [
             const ThemePickerSection(),
             ListTile(
               title: Text(l10n.uiScaleLabel),
@@ -46,10 +49,7 @@ class SettingsScreen extends ConsumerWidget {
                 onChanged: (v) => notifier.setUiScale(v),
               ),
             ),
-            ListTile(
-              title: Text(l10n.moduleNameMode),
-              subtitle: Text(l10n.moduleNameModeHint),
-            ),
+            DdxListTile(title: l10n.moduleNameMode, meta: l10n.moduleNameModeHint, metaMaxLines: 2),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
               child: SegmentedButton<bool>(
@@ -62,30 +62,35 @@ class SettingsScreen extends ConsumerWidget {
                 onSelectionChanged: (v) => notifier.setClassicNames(v.first),
               ),
             ),
-            const Divider(),
-            _SectionHeader(l10n.languageLabel),
-            RadioGroup<String>(
-              groupValue: settings.locale.languageCode,
-              onChanged: (v) { if (v != null) notifier.setLocale(Locale(v)); },
-              child: Column(
-                children: _supportedLocales.entries.map((e) => RadioListTile<String>(
-                  title: Text(e.value),
-                  value: e.key,
-                )).toList(),
-              ),
-            ),
-            const Divider(),
-            _SectionHeader(l10n.settingsData),
-            ListTile(
-              leading: const Icon(Icons.upload),
-              title: Text(l10n.exportDbTitle),
-              subtitle: Text(l10n.exportDbSubtitle),
+          ]),
+          RadioGroup<String>(
+            groupValue: settings.locale.languageCode,
+            onChanged: (v) { if (v != null) notifier.setLocale(Locale(v)); },
+            child: DdxListSection(title: l10n.languageLabel, collapsible: false, children: [
+              for (final e in _supportedLocales.entries)
+                DdxListTile(
+                  leading: Radio<String>(
+                    value: e.key,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.compact,
+                  ),
+                  title: e.value,
+                  selected: settings.locale.languageCode == e.key,
+                  onTap: () => notifier.setLocale(Locale(e.key)),
+                ),
+            ]),
+          ),
+          DdxListSection(title: l10n.settingsData, collapsible: false, children: [
+            DdxListTile(
+              icon: Icons.upload,
+              title: l10n.exportDbTitle,
+              meta: l10n.exportDbSubtitle,
               onTap: () => _export(context, l10n),
             ),
-            ListTile(
-              leading: const Icon(Icons.download),
-              title: Text(l10n.importDbTitle),
-              subtitle: Text(l10n.importDbSubtitle),
+            DdxListTile(
+              icon: Icons.download,
+              title: l10n.importDbTitle,
+              meta: l10n.importDbSubtitle,
               onTap: () => _import(context, ref, l10n),
             ),
             ..._driveTiles(context, ref, l10n),
@@ -97,24 +102,24 @@ class SettingsScreen extends ConsumerWidget {
             // Next to export/import and the cloud tiles because it answers the
             // same question they do — "how does this leave the device?" — and
             // differs only in needing no account and keeping nothing.
-            ListTile(
-              leading: const Icon(Icons.swap_horiz),
-              title: Text(l10n.transferTitle),
-              subtitle: Text(l10n.transferSubtitle),
+            DdxListTile(
+              icon: Icons.swap_horiz,
+              title: l10n.transferTitle,
+              meta: l10n.transferSubtitle,
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute<void>(builder: (_) => const TransferScreen()),
               ),
             ),
-            const Divider(),
-            _SectionHeader(l10n.settingsAbout),
-            ListTile(
-              title: Text(l10n.appName),
-              subtitle: Text('${l10n.nexusSubtitle} · v${ref.watch(appVersionProvider).valueOrNull ?? '…'}'),
+          ]),
+          DdxListSection(title: l10n.settingsAbout, collapsible: false, children: [
+            DdxListTile(
+              title: l10n.appName,
+              meta: '${l10n.nexusSubtitle} · v${ref.watch(appVersionProvider).valueOrNull ?? '…'}',
             ),
-            ListTile(
-              leading: const Icon(Icons.system_update_alt),
-              title: Text(l10n.checkUpdatesTitle),
-              subtitle: Text(l10n.checkUpdatesSubtitle),
+            DdxListTile(
+              icon: Icons.system_update_alt,
+              title: l10n.checkUpdatesTitle,
+              meta: l10n.checkUpdatesSubtitle,
               onTap: () => _checkForUpdates(context, ref, l10n),
             ),
           ]),
@@ -191,10 +196,10 @@ class SettingsScreen extends ConsumerWidget {
   /// without being tapped.
   Widget _supabaseTile(BuildContext context, WidgetRef ref, AppLocalizations l10n) {
     final url = ref.watch(supabaseUrlProvider).valueOrNull ?? '';
-    return ListTile(
-      leading: const Icon(Icons.dns_outlined),
-      title: Text(l10n.settingPageSupabase),
-      subtitle: Text(url.isEmpty ? l10n.sbNotConfigured : url),
+    return DdxListTile(
+      icon: Icons.dns_outlined,
+      title: l10n.settingPageSupabase,
+      meta: url.isEmpty ? l10n.sbNotConfigured : url,
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => const SupabaseSetupScreen()),
       ),
@@ -212,13 +217,11 @@ class SettingsScreen extends ConsumerWidget {
     final configured = config?.isConfigured ?? false;
 
     return [
-      ListTile(
-        leading: const Icon(Icons.account_circle_outlined),
-        title: Text(l10n.googleAccountTitle),
-        subtitle: Text(configured
-            ? googleConnectionLabel(l10n, connection)
-            : l10n.googleAccountNotConfigured),
-        trailing: const Icon(Icons.chevron_right),
+      DdxListTile(
+        icon: Icons.account_circle_outlined,
+        title: l10n.googleAccountTitle,
+        meta: configured ? googleConnectionLabel(l10n, connection) : l10n.googleAccountNotConfigured,
+        trailing: const [Icon(Icons.chevron_right, size: DdxSize.iconMd)],
         onTap: () async {
           await Navigator.of(context).push(
             MaterialPageRoute(builder: (_) => const GoogleAccountScreen()),
@@ -228,25 +231,25 @@ class SettingsScreen extends ConsumerWidget {
         },
       ),
       if (connection.connected) ...[
-        ListTile(
-          leading: const Icon(Icons.backup_outlined),
-          title: Text(l10n.driveBackupNow),
-          subtitle: DriveBackupService.databaseBackupSupported
-              ? Text(l10n.driveBackupTitle)
-              : Text(l10n.driveWebDatabaseNote),
+        DdxListTile(
+          icon: Icons.backup_outlined,
+          title: l10n.driveBackupNow,
+          // the browser's note is a sentence the reader must see whole
+          meta: DriveBackupService.databaseBackupSupported ? l10n.driveBackupTitle : l10n.driveWebDatabaseNote,
+          metaMaxLines: DriveBackupService.databaseBackupSupported ? 1 : 3,
           onTap: () => _driveBackup(context, ref, l10n),
         ),
         if (DriveBackupService.databaseBackupSupported)
-          ListTile(
-            leading: const Icon(Icons.restore_outlined),
-            title: Text(l10n.driveRestoreTitle),
-            subtitle: Text(l10n.driveRestoreSubtitle),
+          DdxListTile(
+            icon: Icons.restore_outlined,
+            title: l10n.driveRestoreTitle,
+            meta: l10n.driveRestoreSubtitle,
             onTap: () => _driveRestore(context, ref, l10n),
           ),
-        ListTile(
-          leading: const Icon(Icons.settings_backup_restore),
-          title: Text(l10n.driveRestoreSettingsTitle),
-          subtitle: Text(l10n.driveRestoreSettingsSubtitle),
+        DdxListTile(
+          icon: Icons.settings_backup_restore,
+          title: l10n.driveRestoreSettingsTitle,
+          meta: l10n.driveRestoreSettingsSubtitle,
           onTap: () => _driveRestoreSettings(context, ref, l10n),
         ),
       ],
@@ -330,44 +333,6 @@ class SettingsScreen extends ConsumerWidget {
     'tr': 'Türkçe',
     'qd': '🐉 Draconic',
   };
-}
-
-/// On iPhone/iPad the sections become grouped inset lists (APP
-/// docs/REDESIGN.md C3): each header starts a card, the dividers between
-/// sections go (the gap between cards says the same). Elsewhere, unchanged.
-List<Widget> _iosGrouped(BuildContext context, List<Widget> children) {
-  if (!context.isIosStyle) return children;
-  final out = <Widget>[];
-  String? header;
-  var rows = <Widget>[];
-  void flush() {
-    if (rows.isNotEmpty || header != null) out.add(DdxGroupedSection(header: header, children: rows));
-    rows = <Widget>[];
-  }
-  for (final w in children) {
-    if (w is Divider) continue;
-    if (w is _SectionHeader) {
-      flush();
-      header = w.title;
-      continue;
-    }
-    rows.add(w);
-  }
-  flush();
-  return [const SizedBox(height: 8), ...out];
-}
-
-class _SectionHeader extends StatelessWidget {
-  final String title;
-  const _SectionHeader(this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
-      child: Text(title, style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary)),
-    );
-  }
 }
 
 /// The credit line at the very bottom of Settings — quiet, theme-coloured,
