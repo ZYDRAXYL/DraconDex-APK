@@ -29,6 +29,7 @@ import 'views/classifier_views.dart';
 import 'views/sketcher_views.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_chip.dart';
+import '../../widgets/ddx_card.dart';
 
 /// Properties, Related, and an element page's body — the three components
 /// every page can hold (EXE renderer/page/blocks.js, item-page.js).
@@ -574,7 +575,7 @@ class ItemBody extends ConsumerWidget {
         if (data.sketchPage != null)
           ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 320),
-            child: Card(margin: const EdgeInsets.symmetric(vertical: 4), child: SketchThumb(pageId: data.sketchPage!)),
+            child: DdxCard(kind: DdxCardKind.preview, margin: const EdgeInsets.symmetric(vertical: 4), child: SketchThumb(pageId: data.sketchPage!)),
           ),
         for (final f in data.fields)
           InkWell(

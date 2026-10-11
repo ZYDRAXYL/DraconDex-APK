@@ -4,6 +4,7 @@ import '../../../data/models/module_model.dart';
 import '../../../data/models/viewer_model.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// The saved-filter editor, shared by Viewer and Connector exactly as the
 /// desktop shares openSavedFilterPopup between mod/viewer.js and
@@ -72,7 +73,7 @@ class _FilterEditorDialogState extends State<_FilterEditorDialog> {
                         style: theme.textTheme.labelMedium
                             ?.copyWith(color: theme.colorScheme.primary)),
                   ),
-                Card(
+                DdxCard(
                   margin: const EdgeInsets.symmetric(vertical: 4),
                   child: Padding(
                     padding: const EdgeInsets.all(8),

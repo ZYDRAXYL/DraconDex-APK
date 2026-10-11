@@ -16,6 +16,7 @@ import '../core_components.dart';
 import '../../../widgets/ddx_list.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// The Author's five presets (EXE mod/author.js AUTHOR_VIEWS): editor,
 /// board (the corkboard, author-board.js), outline, reading, book.
@@ -178,7 +179,8 @@ class _Board extends ConsumerWidget {
         ),
         children: [
           for (var i = 0; i < chapters.length; i++)
-            Card(
+            DdxCard(
+              kind: DdxCardKind.link,
               margin: EdgeInsets.zero,
               child: InkWell(
                 onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'bchp_${chapters[i].id}'),

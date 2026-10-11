@@ -17,6 +17,7 @@ import 'module_page.dart';
 import 'page_providers.dart';
 import 'site_components.dart';
 import '../../widgets/ddx_chip.dart';
+import '../../widgets/ddx_card.dart';
 
 /// The wiki components on the phone (Procress 14, APP docs/TEMPLATES.md §7;
 /// EXE renderer/page/components/wiki.js, wiki-more.js): link bars and cards,
@@ -215,9 +216,9 @@ class _LinkCards extends ConsumerWidget {
               if (layout == 'button') return FilledButton.tonal(onPressed: go, child: Text(title));
               return Opacity(
                 opacity: r.dangling ? .55 : 1,
-                child: Card(
+                child: DdxCard(
+                  kind: DdxCardKind.link,
                   margin: EdgeInsets.zero,
-                  clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: go,
                     child: Padding(
@@ -563,7 +564,8 @@ class _Children extends ConsumerWidget {
       for (final k in kids)
         SizedBox(
           width: 160,
-          child: Card(
+          child: DdxCard(
+            kind: DdxCardKind.link,
             margin: EdgeInsets.zero,
             child: InkWell(
               onTap: () => GoRouter.of(context).push(RecentView.locationFor(m.nexusRef, k.id)),

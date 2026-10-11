@@ -15,6 +15,7 @@ import 'page_strings.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_segmented.dart';
 import '../../widgets/ddx_chip.dart';
+import '../../widgets/ddx_card.dart';
 
 /// The ⚙ on a block while arranging — the phone's sheet for the desktop's
 /// popover (EXE renderer/page/style-pop.js, APP docs/TEMPLATES.md §6):
@@ -408,7 +409,7 @@ class _LinksEditor extends ConsumerWidget {
     void bad() => messenger.showSnackBar(SnackBar(content: Text(l10n.pbLinkBadUrl)));
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       for (var i = 0; i < links.length; i++)
-        Card(
+        DdxCard(
           margin: const EdgeInsets.only(bottom: 6),
           child: Padding(
             padding: const EdgeInsets.all(8),

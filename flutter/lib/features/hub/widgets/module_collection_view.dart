@@ -15,6 +15,7 @@ import '../../../widgets/grouped_section.dart';
 import '../../../widgets/row_menu.dart';
 import '../module_actions.dart';
 import 'module_drag.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// The modules nested at one level of the tree, laid out the way the page's
 /// view-mode button says to. Every mode navigates the same way — only the
@@ -189,15 +190,10 @@ class ModuleCard extends ConsumerWidget {
     List<RowAction> actions() => moduleRowActions(context, ref, module);
     final sel = _Selection(ref, module);
 
-    return draggableModule(nexusId: nexusId, module: module, child: Card(
-      clipBehavior: Clip.antiAlias,
+    return draggableModule(nexusId: nexusId, module: module, child: DdxCard(
+      kind: DdxCardKind.link,
       margin: EdgeInsets.zero,
-      shape: sel.picked
-          ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-              side: BorderSide(color: theme.colorScheme.primary, width: 2),
-            )
-          : null,
+      selected: sel.picked,
       child: InkWell(
         onTap: sel.active ? sel.toggle : () => context.push('/hub/$nexusId/module/${module.id}'),
         onLongPress: sel.active ? sel.toggle : () => showRowMenu(context, actions(), title: module.name),

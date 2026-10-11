@@ -17,6 +17,7 @@ import 'exhibitor_scene.dart';
 import 'graph_view.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// The Exhibitor's and the Manager's views: both are a saved filter over
 /// the Nexus index (module_ui filterDef, V5.md §8.9), drawn several ways
@@ -293,7 +294,8 @@ class _Board extends ConsumerWidget {
           count: g.$2.length,
           children: [
             for (final it in g.$2)
-              Card(
+              DdxCard(
+                kind: DdxCardKind.link,
                 margin: const EdgeInsets.only(bottom: 6),
                 child: ListTile(
                   dense: true,

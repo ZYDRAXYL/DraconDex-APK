@@ -11,6 +11,7 @@ import '../../../data/services/bundle_service.dart';
 import '../../../providers/db_providers.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// The Artisan sheet (APP docs/TEMPLATES.md §4; EXE hub/bundles.js): the
 /// bundles in three tabs — Classic, Genre (with the guide) and Mine, the
@@ -178,9 +179,9 @@ class _ArtisanSheetState extends State<_ArtisanSheet> with SingleTickerProviderS
                   },
           ),
         if (_groups[i] == 'genre')
-          Card(
+          DdxCard(
+            kind: DdxCardKind.link,
             margin: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: BorderSide(color: Theme.of(context).dividerColor)),
             child: InkWell(
               borderRadius: BorderRadius.circular(12),
               onTap: () async {
@@ -232,14 +233,10 @@ class _BundleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final spec = (bundle['spec'] as Map?) ?? const {};
     final desc = '${bundle['description'] ?? ''}';
-    final theme = Theme.of(context);
-    return Card(
+    return DdxCard(
+      kind: DdxCardKind.link,
       margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: selected ? theme.colorScheme.primary : theme.dividerColor, width: selected ? 2 : 1),
-      ),
+      selected: selected,
       child: InkWell(
         onTap: onTap,
         onLongPress: onDelete,
@@ -312,10 +309,9 @@ class _BundleDetailState extends State<_BundleDetail> {
           padding: const EdgeInsets.only(top: 14, bottom: 6),
           child: Text(t.toUpperCase(), style: TextStyle(fontSize: 11, letterSpacing: .5, color: context.ddx.textMuted, fontWeight: FontWeight.w600)),
         );
-    return Card(
+    return DdxCard(
+      kind: DdxCardKind.preview,
       margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: BorderSide(color: theme.dividerColor)),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Container(
           decoration: _cover(spec),

@@ -8,6 +8,7 @@ import '../../data/models/recent_view_model.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../widgets/color_dot.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_card.dart';
 
 /// The pages the user has open (APK V3, APP docs/APK-V3.md §10.2), drawn two
 /// ways from one list ([recentViewsProvider]):
@@ -145,13 +146,10 @@ class _PageCard extends ConsumerWidget {
     return Dismissible(
       key: ValueKey('dismiss-${view.key}'),
       onDismissed: (_) => close(),
-      child: Card(
+      child: DdxCard(
+        kind: DdxCardKind.link,
         margin: EdgeInsets.zero,
-        clipBehavior: Clip.antiAlias,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: current ? scheme.primary : theme.dividerColor, width: current ? 2 : 1),
-        ),
+        selected: current,
         child: InkWell(
           onTap: () {
             // Grab the router before popping — this card's context is gone by

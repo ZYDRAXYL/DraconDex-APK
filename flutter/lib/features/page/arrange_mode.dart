@@ -16,6 +16,7 @@ import 'media_components.dart';
 import 'page_providers.dart';
 import 'wiki_components.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_card.dart';
 
 /// Arrange mode on a phone (APK-V3.md §10.4 — the user chose a drag-to-
 /// reorder list): the page's top-level blocks as a reorderable list. A
@@ -141,9 +142,9 @@ class _ArrangeTile extends ConsumerWidget {
       trailing: _TileActions(pageKey: pageKey, block: block),
     );
     final slots = slotLabels(l10n, block);
-    if (slots.isEmpty) return Card(margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3), child: tile);
+    if (slots.isEmpty) return DdxCard(margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3), child: tile);
     final cols = [for (var c = 0; c < slots.length; c++) page.childrenOf(block, c)];
-    return Card(
+    return DdxCard(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

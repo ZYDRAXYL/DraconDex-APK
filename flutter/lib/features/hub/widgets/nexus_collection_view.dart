@@ -18,6 +18,7 @@ import '../../../widgets/ddx_list.dart';
 import '../../../widgets/row_menu.dart';
 import '../dialogs/nexus_dialog.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// The Builder's top level: every Nexus, laid out per the page's view mode.
 /// Its menu lives here rather than on the screen so the tile and the card
@@ -157,8 +158,8 @@ class _NexusCard extends ConsumerWidget {
     final hasMemo = nexus.memo != null && nexus.memo!.isNotEmpty;
     List<RowAction> actions() => nexusActions(context, ref, nexus);
 
-    return Card(
-      clipBehavior: Clip.antiAlias,
+    return DdxCard(
+      kind: DdxCardKind.link,
       margin: EdgeInsets.zero,
       child: InkWell(
         onTap: () => context.push('/hub/${nexus.id}'),

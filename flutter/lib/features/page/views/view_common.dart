@@ -14,6 +14,7 @@ import '../../../providers/navigation_providers.dart';
 import '../../../widgets/color_dot.dart';
 import '../../../widgets/ddx_list.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// Shared bits of the per-kind views.
 
@@ -143,9 +144,9 @@ class TileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Card(
+    return DdxCard(
+      kind: DdxCardKind.link,
       margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
         onLongPress: onLongPress,
