@@ -57,12 +57,14 @@ class DdxChip extends StatelessWidget {
     required bool selected,
     required ValueChanged<bool>? onSelected,
     IconData? icon,
+    Color? color,
     VoidCallback? onDeleted,
     DdxChipSize size = DdxChipSize.md,
   }) : this(
           key: key,
           label: label,
           kind: DdxChipKind.filter,
+          color: color,
           selected: selected,
           onSelected: onSelected,
           icon: icon,
@@ -97,7 +99,9 @@ class DdxChip extends StatelessWidget {
   final ValueChanged<bool>? onSelected;
   final VoidCallback? onDeleted;
 
-  /// A tag's own colour (user data). Ignored by the other kinds.
+  /// A colour that belongs to the subject — a tag's own colour (user data),
+  /// a module kind's colour — drawn as a dot before the label, never as the
+  /// label. A status chip's tone dot takes its place.
   final Color? color;
   final DdxTone tone;
   final int? count;
@@ -134,14 +138,13 @@ class DdxChip extends StatelessWidget {
     final iconSize = size == DdxChipSize.sm ? DdxSize.iconSm - 2 : DdxSize.iconSm;
 
     final Color? dot = switch (kind) {
-      DdxChipKind.tag => color,
       DdxChipKind.status => switch (tone) {
           DdxTone.accent => p.accent,
           DdxTone.success => p.success,
           DdxTone.danger => p.danger,
-          _ => null,
+          _ => color,
         },
-      _ => null,
+      _ => color,
     };
 
     final children = <Widget>[

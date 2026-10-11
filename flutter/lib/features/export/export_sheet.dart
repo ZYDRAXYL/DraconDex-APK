@@ -12,6 +12,7 @@ import '../../data/services/export/export_service.dart';
 import '../../providers/db_providers.dart';
 import 'export_preview.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_segmented.dart';
 
 /// "Export…" — every way out of the app for this page, as cards (Procress 14,
 /// APP docs/EXPORT-DECOR.md E8; the desktop's hub/export.js). A card that
@@ -283,18 +284,13 @@ class _ExportSheetState extends ConsumerState<ExportSheet> {
           children: [
             Text(l10n.exportScope.toUpperCase(), style: TextStyle(fontSize: 11, letterSpacing: .5, fontWeight: FontWeight.w600, color: muted)),
             const SizedBox(height: 6),
-            SegmentedButton<String>(
-              showSelectedIcon: false,
+            DdxSegmented<String>(
               // a two-line label ("This module and every element") grows the
               // segment instead of being clipped to M3's 40dp
-              style: SegmentedButton.styleFrom(
-                minimumSize: const Size(0, 48),
-                maximumSize: const Size(double.infinity, 72),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              ),
-              segments: [for (final (v, t) in opts) ButtonSegment(value: v, label: Text(t, maxLines: 2, textAlign: TextAlign.center))],
-              selected: {value},
-              onSelectionChanged: _busy ? null : (v) => setState(() => _p = set(v.first)),
+              multiline: true,
+              segments: [for (final (v, t) in opts) DdxSegment(value: v, label: t)],
+              selected: value,
+              onChanged: _busy ? null : (v) => setState(() => _p = set(v)),
             ),
           ],
         ),

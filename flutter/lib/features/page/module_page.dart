@@ -20,6 +20,7 @@ import 'page_providers.dart';
 import 'wiki_components.dart';
 import '../../widgets/sized_image.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_chip.dart';
 
 /// A page: the module's own (itemKey null) or an element's — a stack of
 /// blocks rendered top to bottom, in the order the desktop (or arrange mode
@@ -362,11 +363,7 @@ class CanvasFrame extends StatelessWidget {
                 Positioned(
                   right: 8,
                   bottom: 8,
-                  child: Chip(
-                    avatar: const Icon(Icons.open_in_full, size: 16),
-                    label: Text(l10n.pbOpenFullScreen),
-                    visualDensity: VisualDensity.compact,
-                  ),
+                  child: DdxChip.status(l10n.pbOpenFullScreen, icon: Icons.open_in_full, size: DdxChipSize.sm),
                 ),
               ],
             ),
@@ -454,10 +451,10 @@ class PresetChips extends StatelessWidget {
           for (final p in presets)
             Padding(
               padding: const EdgeInsets.only(right: 6),
-              child: ChoiceChip(
-                label: Text(presetLabel(l10n, p)),
+              child: DdxChip.filter(
+                presetLabel(l10n, p),
                 selected: p == current,
-                visualDensity: VisualDensity.compact,
+                size: DdxChipSize.sm,
                 onSelected: (_) => onPick(p),
               ),
             ),

@@ -8,6 +8,7 @@ import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// Locator kind: a map with drawable polygon areas.
 ///
@@ -198,13 +199,8 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: areas.length,
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
-                  itemBuilder: (ctx, i) => ChoiceChip(
-                    label: Text(
-                      areas[i].name?.isNotEmpty == true
-                          ? areas[i].name!
-                          : l10n.locatorUntitledArea,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  itemBuilder: (ctx, i) => DdxChip.filter(
+                    areas[i].name?.isNotEmpty == true ? areas[i].name! : l10n.locatorUntitledArea,
                     selected: _areaId == areas[i].id,
                     onSelected: (_) => setState(() => _areaId = areas[i].id),
                   ),
@@ -216,8 +212,8 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
                 spacing: 8,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  ChoiceChip(
-                    label: Text(_drawMode ? l10n.locatorToolDraw : l10n.locatorToolMove),
+                  DdxChip.filter(
+                    _drawMode ? l10n.locatorToolDraw : l10n.locatorToolMove,
                     selected: _drawMode,
                     // Tracing needs an area to put the vertices on.
                     onSelected:

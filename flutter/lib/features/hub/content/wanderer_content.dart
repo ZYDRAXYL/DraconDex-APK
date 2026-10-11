@@ -7,6 +7,7 @@ import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// Wanderer kind: timeline events pinned onto a map.
 ///
@@ -179,8 +180,8 @@ class _WandererContentState extends ConsumerState<WandererContent> {
                 children: [
                   Text(l10n.wandererPins, style: theme.textTheme.titleSmall),
                   const Spacer(),
-                  ChoiceChip(
-                    label: Text(_placeMode ? l10n.wandererPlacing : l10n.locatorToolMove),
+                  DdxChip.filter(
+                    _placeMode ? l10n.wandererPlacing : l10n.locatorToolMove,
                     selected: _placeMode,
                     onSelected: (_) => setState(() => _placeMode = !_placeMode),
                   ),

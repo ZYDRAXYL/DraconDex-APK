@@ -20,6 +20,7 @@ import 'block_options.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
 import 'views/view_common.dart';
+import '../../widgets/ddx_chip.dart';
 
 /// The site components on the phone (APP Procress 16 part 3b; EXE
 /// renderer/page/components/site.js): a Classifier as a table, a search box,
@@ -192,7 +193,7 @@ class SiteCategories extends ConsumerWidget {
     return Wrap(spacing: 6, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
       Text('${l.pcCategories}:', style: Theme.of(context).textTheme.bodySmall),
       // ponytail: a tag reads as a chip; the desktop's category pages have no phone screen yet
-      for (final t in tags) Chip(visualDensity: VisualDensity.compact, label: Text('#${t.name}')),
+      for (final t in tags) DdxChip.tag(t.name, size: DdxChipSize.sm),
       if (folder != null)
         ActionChip(
           visualDensity: VisualDensity.compact,

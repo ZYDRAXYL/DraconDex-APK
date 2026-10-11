@@ -16,6 +16,7 @@ import 'links.dart';
 import 'module_page.dart';
 import 'page_providers.dart';
 import 'site_components.dart';
+import '../../widgets/ddx_chip.dart';
 
 /// The wiki components on the phone (Procress 14, APP docs/TEMPLATES.md §7;
 /// EXE renderer/page/components/wiki.js, wiki-more.js): link bars and cards,
@@ -375,7 +376,7 @@ class _TabsState extends ConsumerState<_Tabs> {
               selected: i == on,
               button: true,
               child: switch (look) {
-                'pills' => ChoiceChip(label: Text(names[i]), selected: i == on, onSelected: (_) => setState(() => _on = i)),
+                'pills' => DdxChip.filter(names[i], selected: i == on, onSelected: (_) => setState(() => _on = i)),
                 'boxed' => InkWell(
                     onTap: () => setState(() => _on = i),
                     child: Container(

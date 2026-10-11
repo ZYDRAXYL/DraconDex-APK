@@ -12,6 +12,7 @@ import '../../providers/db_providers.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_chip.dart';
 
 /// A new module's first page: its kind's ★ template (the desktop's
 /// applyStartTemplate). A failure leaves the default layout, which the page
@@ -253,7 +254,7 @@ class _GalleryState extends ConsumerState<_Gallery> {
                   runSpacing: 6,
                   children: [
                     for (final f in fields)
-                      if (f is Map) Chip(label: Text('${f['name'] ?? ''}'), visualDensity: VisualDensity.compact),
+                      if (f is Map) DdxChip.status('${f['name'] ?? ''}', size: DdxChipSize.sm),
                   ],
                 ),
               ],
@@ -270,15 +271,10 @@ class _GalleryState extends ConsumerState<_Gallery> {
                 for (final k in _kinds)
                   Padding(
                     padding: const EdgeInsets.only(right: 6),
-                    child: ChoiceChip(
+                    child: DdxChip.filter(
+                      '${kindName(l10n, ModuleKind.fromId(k))} · ${l10n.tplKindCount.replaceAll('{n}', '${_listFor(k).length}')}',
                       selected: k == _kind.id,
-                      avatar: Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(color: kindColor[ModuleKind.fromId(k)] ?? muted, borderRadius: BorderRadius.circular(3)),
-                      ),
-                      label: Text('${kindName(l10n, ModuleKind.fromId(k))} · ${l10n.tplKindCount.replaceAll('{n}', '${_listFor(k).length}')}'),
-                      showCheckmark: false,
+                      color: kindColor[ModuleKind.fromId(k)] ?? muted,
                       onSelected: (_) {
                         setState(() {
                           _kind = ModuleKind.fromId(k);

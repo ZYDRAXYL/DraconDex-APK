@@ -7,6 +7,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// Scribe kind: chat-style notes. Sessions across the top, the selected
 /// session's transcript below, and a composer that appends to it.
@@ -105,8 +106,8 @@ class _ScribeContentState extends ConsumerState<ScribeContent> {
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
                   itemBuilder: (ctx, i) {
                     final s = sessions[i];
-                    return ChoiceChip(
-                      label: Text(s.name, overflow: TextOverflow.ellipsis),
+                    return DdxChip.filter(
+                      s.name,
                       selected: selected?.id == s.id,
                       onSelected: (_) => setState(() => _selectedId = s.id),
                     );

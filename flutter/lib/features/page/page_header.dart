@@ -15,6 +15,7 @@ import '../../providers/db_providers.dart';
 import 'page_providers.dart';
 import '../../widgets/sized_image.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_segmented.dart';
 
 /// A page's title layout (APP docs/REDESIGN.md C6) — the same module_ui row
 /// the desktop writes (EXE hub/page-head.js): "pageHead" for a module page,
@@ -183,16 +184,15 @@ class PageTitleAlignControl extends ConsumerWidget {
           padding: const EdgeInsets.only(bottom: 6),
           child: Text(l10n.titleAlign, style: TextStyle(fontSize: 12, color: context.ddx.textMuted)),
         ),
-        SegmentedButton<String>(
+        DdxSegmented<String>(
           key: const ValueKey('page-title-align'),
           segments: [
-            ButtonSegment(value: 'left', label: Text(l10n.alignLeft)),
-            ButtonSegment(value: 'center', label: Text(l10n.alignCenter)),
-            ButtonSegment(value: 'right', label: Text(l10n.alignRight)),
+            DdxSegment(value: 'left', label: l10n.alignLeft),
+            DdxSegment(value: 'center', label: l10n.alignCenter),
+            DdxSegment(value: 'right', label: l10n.alignRight),
           ],
-          selected: {lay.align},
-          showSelectedIcon: false,
-          onSelectionChanged: (s) => savePageHead(ref, pageKey, lay.copyWith(align: s.first)),
+          selected: lay.align,
+          onChanged: (v) => savePageHead(ref, pageKey, lay.copyWith(align: v)),
         ),
       ]),
     );
@@ -258,15 +258,14 @@ class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
           children: [
             Text(l10n.pageLayout, style: Theme.of(context).textTheme.titleMedium),
             label(l10n.titleAlign),
-            SegmentedButton<String>(
+            DdxSegmented<String>(
               segments: [
-                ButtonSegment(value: 'left', label: Text(l10n.alignLeft)),
-                ButtonSegment(value: 'center', label: Text(l10n.alignCenter)),
-                ButtonSegment(value: 'right', label: Text(l10n.alignRight)),
+                DdxSegment(value: 'left', label: l10n.alignLeft),
+                DdxSegment(value: 'center', label: l10n.alignCenter),
+                DdxSegment(value: 'right', label: l10n.alignRight),
               ],
-              selected: {lay.align},
-              showSelectedIcon: false,
-              onSelectionChanged: (s) => _save(lay.copyWith(align: s.first)),
+              selected: lay.align,
+              onChanged: (v) => _save(lay.copyWith(align: v)),
             ),
             label(l10n.pageIcon),
             TextField(

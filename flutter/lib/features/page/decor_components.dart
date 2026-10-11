@@ -14,6 +14,7 @@ import 'links.dart';
 import 'media_components.dart' show fileIdOf;
 import 'page_providers.dart';
 import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_chip.dart';
 
 /// Decoration on the phone (Procress 14, APP docs/EXPORT-DECOR.md D2; EXE
 /// renderer/page/components/decor.js): a banner, a gallery, a divider, a
@@ -264,10 +265,9 @@ class _IconRow extends ConsumerWidget {
     }
     return Wrap(spacing: 6, runSpacing: 6, children: [
       for (final (icon, label) in items)
-        Chip(
-          avatar: glyph(icon).isEmpty ? null : Text(glyph(icon), style: TextStyle(fontSize: size)),
-          label: Text(label.isEmpty ? glyph(icon) : label),
-          visualDensity: VisualDensity.compact,
+        DdxChip.status(
+          [if (glyph(icon).isNotEmpty) glyph(icon), if (label.isNotEmpty) label].join(' '),
+          size: DdxChipSize.sm,
         ),
     ]);
   }

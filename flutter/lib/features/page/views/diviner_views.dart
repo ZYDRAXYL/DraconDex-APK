@@ -13,6 +13,8 @@ import '../../../widgets/row_menu.dart';
 import '../component_registry.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_segmented.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// The Diviner's page (EXE mod/diviner.js): its tables, the open one's roll
 /// button and last result, its entries, and its roll history.
@@ -89,13 +91,13 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
                 decoration: InputDecoration(labelText: l.divDice, hintText: '1d20 · 2d6+1 · d%', helperText: l.divDiceHelp, errorText: error),
               ),
               const SizedBox(height: 8),
-              SegmentedButton<String>(
+              DdxSegmented<String>(
                 segments: [
-                  ButtonSegment(value: 'pick', label: Text(l.divModePick)),
-                  ButtonSegment(value: 'join', label: Text(l.divModeJoin)),
+                  DdxSegment(value: 'pick', label: l.divModePick),
+                  DdxSegment(value: 'join', label: l.divModeJoin),
                 ],
-                selected: {mode},
-                onSelectionChanged: (s) => setLocal(() => mode = s.first),
+                selected: mode,
+                onChanged: (v) => setLocal(() => mode = v),
               ),
             ]),
           ),
@@ -263,8 +265,8 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
             padding: const EdgeInsets.only(right: 6),
             child: GestureDetector(
               onLongPress: () => _tableDialog(tb),
-              child: ChoiceChip(
-                label: Text('${tb['name']}${tb['dice'] != null ? ' · ${tb['dice']}' : ''}'),
+              child: DdxChip.filter(
+                '${tb['name']}${tb['dice'] != null ? ' · ${tb['dice']}' : ''}',
                 selected: tb['id'] == d.selected,
                 onSelected: (_) => _select(tb['id'] as int),
               ),

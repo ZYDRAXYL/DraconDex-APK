@@ -3,6 +3,7 @@ import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/module_model.dart';
 import '../../../data/models/viewer_model.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// The saved-filter editor, shared by Viewer and Connector exactly as the
 /// desktop shares openSavedFilterPopup between mod/viewer.js and
@@ -213,9 +214,9 @@ class _RuleRow extends StatelessWidget {
               runSpacing: 4,
               children: [
                 for (final k in ModuleKind.values)
-                  FilterChip(
-                    label: Text(kindName(AppLocalizations.of(context)!, k),
-                        style: theme.textTheme.labelSmall),
+                  DdxChip.filter(
+                    kindName(AppLocalizations.of(context)!, k),
+                    size: DdxChipSize.sm,
                     selected: rule.values.contains(k.id),
                     onSelected: (on) {
                       final next = rule.values.toList();

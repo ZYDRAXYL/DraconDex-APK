@@ -8,6 +8,7 @@ import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// Author kind: a book made of chapters. The chapter list picks one; the
 /// editor below writes `book_chapter.chapter_content`.
@@ -135,8 +136,8 @@ class _AuthorContentState extends ConsumerState<AuthorContent> {
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
                   itemBuilder: (ctx, i) {
                     final c = chapters[i];
-                    return ChoiceChip(
-                      label: Text(c.name, overflow: TextOverflow.ellipsis),
+                    return DdxChip.filter(
+                      c.name,
                       selected: selected?.id == c.id,
                       onSelected: (_) => setState(() => _selectedId = c.id),
                     );

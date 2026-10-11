@@ -8,6 +8,7 @@ import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// Narrator kind: dialogue scenes, the script inside the selected one, and
 /// the routes leading out of it.
@@ -118,8 +119,8 @@ class _NarratorContentState extends ConsumerState<NarratorContent> {
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
                   itemBuilder: (ctx, i) {
                     final d = scenes[i];
-                    return ChoiceChip(
-                      label: Text(d.name, overflow: TextOverflow.ellipsis),
+                    return DdxChip.filter(
+                      d.name,
                       selected: selected?.id == d.id,
                       onSelected: (_) => setState(() => _selectedId = d.id),
                     );
@@ -302,11 +303,7 @@ class _Scene extends ConsumerWidget {
                                     ref.invalidate(talksProvider(scene.id));
                                   },
                                 )
-                              : Chip(
-                                  label: Text(t.rowType,
-                                      style: theme.textTheme.labelSmall),
-                                  visualDensity: VisualDensity.compact,
-                                ),
+                              : DdxChip.status(t.rowType, size: DdxChipSize.sm),
                         ),
                     ],
                   ),
@@ -334,9 +331,10 @@ class _Scene extends ConsumerWidget {
                     runSpacing: 6,
                     children: [
                       for (final e in edges)
-                        InputChip(
-                          label: Text(e.toName),
-                          avatar: const Icon(Icons.arrow_forward, size: 16),
+                        DdxChip(
+                          label: e.toName,
+                          kind: DdxChipKind.status,
+                          icon: Icons.arrow_forward,
                           onDeleted: () async {
                             final dao = ref.read(narratorDaoProvider).valueOrNull;
                             await dao?.deleteEdge(e.id);

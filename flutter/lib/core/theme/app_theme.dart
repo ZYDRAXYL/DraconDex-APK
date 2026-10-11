@@ -198,7 +198,7 @@ class AppTheme {
         style: ButtonStyle(
           side: WidgetStatePropertyAll(BorderSide(color: border)),
           backgroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? accent : raised),
-          foregroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? onAccent : t2),
+          foregroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? onAccent : t1),
           textStyle: const WidgetStatePropertyAll(TextStyle(fontFamily: 'NotoSans')),
         ),
       ),

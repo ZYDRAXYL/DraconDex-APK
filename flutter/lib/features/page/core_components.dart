@@ -28,6 +28,7 @@ import 'page_providers.dart';
 import 'views/classifier_views.dart';
 import 'views/sketcher_views.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_chip.dart';
 
 /// Properties, Related, and an element page's body — the three components
 /// every page can hold (EXE renderer/page/blocks.js, item-page.js).
@@ -387,11 +388,7 @@ class _TagRow extends ConsumerWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           for (final t in tags)
-            Chip(
-              visualDensity: VisualDensity.compact,
-              avatar: t.colorCode == null ? null : ColorDot(colorCode: t.colorCode, size: 10),
-              label: Text('#${t.name}'),
-            ),
+            DdxChip.tag(t.name, size: DdxChipSize.sm, color: t.colorCode == null ? null : hexToColor(t.colorCode!)),
           TextButton.icon(
             icon: const Icon(Icons.sell_outlined, size: 18),
             label: Text(AppLocalizations.of(context)!.pbTags),

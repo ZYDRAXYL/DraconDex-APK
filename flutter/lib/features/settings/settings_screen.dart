@@ -20,6 +20,7 @@ import '../../widgets/ddx_list.dart';
 import 'theme_picker.dart';
 import 'transfer_screen.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_segmented.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -44,15 +45,14 @@ class SettingsScreen extends ConsumerWidget {
             DdxListTile(title: l10n.uiStyleLabel),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-              child: SegmentedButton<UiStyle>(
+              child: DdxSegmented<UiStyle>(
                 key: const ValueKey('ui-style'),
-                showSelectedIcon: false,
                 segments: [
-                  ButtonSegment(value: UiStyle.standard, label: Text(l10n.uiStyleStandard)),
-                  ButtonSegment(value: UiStyle.glass, icon: const Icon(Icons.blur_on), label: Text(l10n.uiStyleGlass)),
+                  DdxSegment(value: UiStyle.standard, label: l10n.uiStyleStandard),
+                  DdxSegment(value: UiStyle.glass, icon: Icons.blur_on, label: l10n.uiStyleGlass),
                 ],
-                selected: {settings.uiStyle},
-                onSelectionChanged: (v) => notifier.setUiStyle(v.first),
+                selected: settings.uiStyle,
+                onChanged: notifier.setUiStyle,
               ),
             ),
             if (settings.glass && settings.glassBlur == GlassBlur.off)
@@ -88,14 +88,13 @@ class SettingsScreen extends ConsumerWidget {
             DdxListTile(title: l10n.moduleNameMode, meta: l10n.moduleNameModeHint, metaMaxLines: 2),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-              child: SegmentedButton<bool>(
-                showSelectedIcon: false,
+              child: DdxSegmented<bool>(
                 segments: [
-                  ButtonSegment(value: true, label: Text(l10n.nameModeClassic)),
-                  ButtonSegment(value: false, label: Text(l10n.nameModeUnique)),
+                  DdxSegment(value: true, label: l10n.nameModeClassic),
+                  DdxSegment(value: false, label: l10n.nameModeUnique),
                 ],
-                selected: {settings.classicNames},
-                onSelectionChanged: (v) => notifier.setClassicNames(v.first),
+                selected: settings.classicNames,
+                onChanged: notifier.setClassicNames,
               ),
             ),
           ]),

@@ -15,6 +15,7 @@ import '../component_registry.dart';
 import '../core_components.dart';
 import '../../../widgets/ddx_list.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// The Author's five presets (EXE mod/author.js AUTHOR_VIEWS): editor,
 /// board (the corkboard, author-board.js), outline, reading, book.
@@ -162,7 +163,7 @@ class _Board extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Wrap(spacing: 6, children: [
-            for (final (s, n) in counts) Chip(visualDensity: VisualDensity.compact, label: Text('${authorStatusLabel(l, s)} $n')),
+            for (final (s, n) in counts) DdxChip.count(authorStatusLabel(l, s), n, size: DdxChipSize.sm),
           ]),
         ),
       GridView(

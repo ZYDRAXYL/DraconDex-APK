@@ -20,6 +20,8 @@ import '../../../widgets/ddx_list.dart';
 import '../../../core/theme/tokens.g.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_segmented.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// The Narrator's four presets (EXE mod/narrator.js NARRATOR_VIEWS): board,
 /// routes, reader (script and play-test, narrator-logic.js), dialogue.
@@ -447,15 +449,14 @@ class _ReaderState extends ConsumerState<_Reader> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Align(
         alignment: AlignmentDirectional.centerStart,
-        child: SegmentedButton<bool>(
-          showSelectedIcon: false,
+        child: DdxSegmented<bool>(
           segments: [
-            ButtonSegment(value: false, label: Text(l.narScript), icon: const Icon(Icons.menu_book_outlined)),
-            ButtonSegment(value: true, label: Text(l.narPlayTest), icon: const Icon(Icons.play_arrow)),
+            DdxSegment(value: false, label: l.narScript, icon: Icons.menu_book_outlined),
+            DdxSegment(value: true, label: l.narPlayTest, icon: Icons.play_arrow),
           ],
-          selected: {_play},
-          onSelectionChanged: (s) {
-            setState(() => _play = s.first);
+          selected: _play,
+          onChanged: (v) {
+            setState(() => _play = v);
             if (_play) _start();
           },
         ),
@@ -557,7 +558,7 @@ class _ReaderState extends ConsumerState<_Reader> {
             icon: Badge(isLabelVisible: _changed.isNotEmpty, label: Text('${_changed.length}'), child: const Icon(Icons.tune, size: 18)),
             label: Text('${l.narVariables} (${_vars.length})'),
           ),
-          FilterChip(label: Text(l.narShowHidden), selected: _showHidden, onSelected: (v) => setState(() => _showHidden = v)),
+          DdxChip.filter(l.narShowHidden, selected: _showHidden, onSelected: (v) => setState(() => _showHidden = v)),
         ]),
         const Divider(),
         for (final line in _log)
