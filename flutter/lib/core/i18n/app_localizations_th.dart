@@ -2926,4 +2926,64 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get pageInside => 'ข้างใน';
+
+  @override
+  String get listFilterHint => 'กรอง';
+
+  @override
+  String get listSort => 'เรียง';
+
+  @override
+  String get listSortName => 'ชื่อ';
+
+  @override
+  String get listSortEdited => 'แก้ไขล่าสุด';
+
+  @override
+  String get listSortCreated => 'วันที่สร้าง';
+
+  @override
+  String get listSortKind => 'ชนิด';
+
+  @override
+  String get listSortManual => 'ตามที่จัดไว้';
+
+  @override
+  String get listCount => '{n} รายการ';
+
+  @override
+  String get listNoMatch => 'ไม่มีรายการที่ตรงกับตัวกรองนี้';
+
+  @override
+  String get listGroupToday => 'วันนี้';
+
+  @override
+  String get listGroupThisWeek => 'สัปดาห์นี้';
+
+  @override
+  String get listGroupOlder => 'เก่ากว่า';
+
+  @override
+  String get assetGroupImage => 'รูปภาพ';
+
+  @override
+  String get assetGroupAudio => 'เสียง';
+
+  @override
+  String get assetGroupVideo => 'วิดีโอ';
+
+  @override
+  String get assetGroupDoc => 'เอกสาร';
+
+  @override
+  String get assetGroupTrack => 'คำบรรยาย';
+
+  @override
+  String get assetGroupModel => 'โมเดล 3 มิติ';
+
+  @override
+  String get assetGroupUrl => 'ลิงก์';
+
+  @override
+  String get assetGroupOther => 'ไฟล์อื่น ๆ';
 }

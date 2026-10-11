@@ -2923,4 +2923,64 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get pageInside => 'Всередині';
+
+  @override
+  String get listFilterHint => 'Фільтр';
+
+  @override
+  String get listSort => 'Сортування';
+
+  @override
+  String get listSortName => 'Назва';
+
+  @override
+  String get listSortEdited => 'Останнє редагування';
+
+  @override
+  String get listSortCreated => 'Дата створення';
+
+  @override
+  String get listSortKind => 'Тип';
+
+  @override
+  String get listSortManual => 'Як упорядковано';
+
+  @override
+  String get listCount => 'Елементів: {n}';
+
+  @override
+  String get listNoMatch => 'Ніщо не відповідає цьому фільтру.';
+
+  @override
+  String get listGroupToday => 'Сьогодні';
+
+  @override
+  String get listGroupThisWeek => 'Цього тижня';
+
+  @override
+  String get listGroupOlder => 'Раніше';
+
+  @override
+  String get assetGroupImage => 'Зображення';
+
+  @override
+  String get assetGroupAudio => 'Аудіо';
+
+  @override
+  String get assetGroupVideo => 'Відео';
+
+  @override
+  String get assetGroupDoc => 'Документи';
+
+  @override
+  String get assetGroupTrack => 'Субтитри';
+
+  @override
+  String get assetGroupModel => '3D-моделі';
+
+  @override
+  String get assetGroupUrl => 'Посилання';
+
+  @override
+  String get assetGroupOther => 'Інші файли';
 }

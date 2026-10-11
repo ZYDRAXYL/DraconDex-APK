@@ -2926,4 +2926,64 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get pageInside => 'Withinne';
+
+  @override
+  String get listFilterHint => 'Sifteth';
+
+  @override
+  String get listSort => 'Ordeyne';
+
+  @override
+  String get listSortName => 'Nymm';
+
+  @override
+  String get listSortEdited => 'Last graven';
+
+  @override
+  String get listSortCreated => 'Forgeday';
+
+  @override
+  String get listSortKind => 'Kynde';
+
+  @override
+  String get listSortManual => 'As laid-thra';
+
+  @override
+  String get listCount => '{n} thyngs';
+
+  @override
+  String get listNoMatch => 'Naught answereth this sifting.';
+
+  @override
+  String get listGroupToday => 'Thys sun';
+
+  @override
+  String get listGroupThisWeek => 'Thys sennight';
+
+  @override
+  String get listGroupOlder => 'Elder';
+
+  @override
+  String get assetGroupImage => 'Glymmers';
+
+  @override
+  String get assetGroupAudio => 'Songs';
+
+  @override
+  String get assetGroupVideo => 'Movyng glymmers';
+
+  @override
+  String get assetGroupDoc => 'Scrolls';
+
+  @override
+  String get assetGroupTrack => 'Undertongues';
+
+  @override
+  String get assetGroupModel => 'Shaped wyrmstone';
+
+  @override
+  String get assetGroupUrl => 'Threads';
+
+  @override
+  String get assetGroupOther => 'Othyr hoard';
 }

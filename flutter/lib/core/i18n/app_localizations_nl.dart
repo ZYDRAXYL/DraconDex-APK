@@ -2923,4 +2923,64 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pageInside => 'Inhoud';
+
+  @override
+  String get listFilterHint => 'Filteren';
+
+  @override
+  String get listSort => 'Sorteren';
+
+  @override
+  String get listSortName => 'Naam';
+
+  @override
+  String get listSortEdited => 'Laatst bewerkt';
+
+  @override
+  String get listSortCreated => 'Gemaakt';
+
+  @override
+  String get listSortKind => 'Soort';
+
+  @override
+  String get listSortManual => 'Zoals geordend';
+
+  @override
+  String get listCount => '{n} items';
+
+  @override
+  String get listNoMatch => 'Niets komt overeen met dit filter.';
+
+  @override
+  String get listGroupToday => 'Vandaag';
+
+  @override
+  String get listGroupThisWeek => 'Deze week';
+
+  @override
+  String get listGroupOlder => 'Ouder';
+
+  @override
+  String get assetGroupImage => 'Afbeeldingen';
+
+  @override
+  String get assetGroupAudio => 'Audio';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Documenten';
+
+  @override
+  String get assetGroupTrack => 'Ondertitels';
+
+  @override
+  String get assetGroupModel => '3D-modellen';
+
+  @override
+  String get assetGroupUrl => 'Links';
+
+  @override
+  String get assetGroupOther => 'Overige bestanden';
 }

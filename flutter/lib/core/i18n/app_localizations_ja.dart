@@ -2926,4 +2926,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pageInside => '中身';
+
+  @override
+  String get listFilterHint => '絞り込み';
+
+  @override
+  String get listSort => '並べ替え';
+
+  @override
+  String get listSortName => '名前';
+
+  @override
+  String get listSortEdited => '最終編集';
+
+  @override
+  String get listSortCreated => '作成日';
+
+  @override
+  String get listSortKind => '種類';
+
+  @override
+  String get listSortManual => '配置順';
+
+  @override
+  String get listCount => '{n} 件';
+
+  @override
+  String get listNoMatch => 'この条件に一致するものはありません。';
+
+  @override
+  String get listGroupToday => '今日';
+
+  @override
+  String get listGroupThisWeek => '今週';
+
+  @override
+  String get listGroupOlder => 'それ以前';
+
+  @override
+  String get assetGroupImage => '画像';
+
+  @override
+  String get assetGroupAudio => '音声';
+
+  @override
+  String get assetGroupVideo => '動画';
+
+  @override
+  String get assetGroupDoc => 'ドキュメント';
+
+  @override
+  String get assetGroupTrack => '字幕';
+
+  @override
+  String get assetGroupModel => '3D モデル';
+
+  @override
+  String get assetGroupUrl => 'リンク';
+
+  @override
+  String get assetGroupOther => 'その他のファイル';
 }

@@ -2926,4 +2926,64 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get pageInside => 'Bên trong';
+
+  @override
+  String get listFilterHint => 'Lọc';
+
+  @override
+  String get listSort => 'Sắp xếp';
+
+  @override
+  String get listSortName => 'Tên';
+
+  @override
+  String get listSortEdited => 'Sửa gần nhất';
+
+  @override
+  String get listSortCreated => 'Ngày tạo';
+
+  @override
+  String get listSortKind => 'Loại';
+
+  @override
+  String get listSortManual => 'Theo thứ tự đã xếp';
+
+  @override
+  String get listCount => '{n} mục';
+
+  @override
+  String get listNoMatch => 'Không có mục nào khớp bộ lọc này.';
+
+  @override
+  String get listGroupToday => 'Hôm nay';
+
+  @override
+  String get listGroupThisWeek => 'Tuần này';
+
+  @override
+  String get listGroupOlder => 'Cũ hơn';
+
+  @override
+  String get assetGroupImage => 'Hình ảnh';
+
+  @override
+  String get assetGroupAudio => 'Âm thanh';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Tài liệu';
+
+  @override
+  String get assetGroupTrack => 'Phụ đề';
+
+  @override
+  String get assetGroupModel => 'Mô hình 3D';
+
+  @override
+  String get assetGroupUrl => 'Liên kết';
+
+  @override
+  String get assetGroupOther => 'Tệp khác';
 }

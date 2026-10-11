@@ -2926,4 +2926,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get pageInside => '内部';
+
+  @override
+  String get listFilterHint => '筛选';
+
+  @override
+  String get listSort => '排序';
+
+  @override
+  String get listSortName => '名称';
+
+  @override
+  String get listSortEdited => '最近编辑';
+
+  @override
+  String get listSortCreated => '创建时间';
+
+  @override
+  String get listSortKind => '类型';
+
+  @override
+  String get listSortManual => '按排列顺序';
+
+  @override
+  String get listCount => '{n} 项';
+
+  @override
+  String get listNoMatch => '没有符合此筛选条件的内容。';
+
+  @override
+  String get listGroupToday => '今天';
+
+  @override
+  String get listGroupThisWeek => '本周';
+
+  @override
+  String get listGroupOlder => '更早';
+
+  @override
+  String get assetGroupImage => '图片';
+
+  @override
+  String get assetGroupAudio => '音频';
+
+  @override
+  String get assetGroupVideo => '视频';
+
+  @override
+  String get assetGroupDoc => '文档';
+
+  @override
+  String get assetGroupTrack => '字幕';
+
+  @override
+  String get assetGroupModel => '3D 模型';
+
+  @override
+  String get assetGroupUrl => '链接';
+
+  @override
+  String get assetGroupOther => '其他文件';
 }

@@ -2923,4 +2923,64 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pageInside => 'İçindekiler';
+
+  @override
+  String get listFilterHint => 'Filtrele';
+
+  @override
+  String get listSort => 'Sırala';
+
+  @override
+  String get listSortName => 'Ad';
+
+  @override
+  String get listSortEdited => 'Son düzenleme';
+
+  @override
+  String get listSortCreated => 'Oluşturma';
+
+  @override
+  String get listSortKind => 'Tür';
+
+  @override
+  String get listSortManual => 'Düzenlendiği gibi';
+
+  @override
+  String get listCount => '{n} öğe';
+
+  @override
+  String get listNoMatch => 'Bu filtreyle eşleşen bir şey yok.';
+
+  @override
+  String get listGroupToday => 'Bugün';
+
+  @override
+  String get listGroupThisWeek => 'Bu hafta';
+
+  @override
+  String get listGroupOlder => 'Daha eski';
+
+  @override
+  String get assetGroupImage => 'Görseller';
+
+  @override
+  String get assetGroupAudio => 'Ses';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Belgeler';
+
+  @override
+  String get assetGroupTrack => 'Altyazılar';
+
+  @override
+  String get assetGroupModel => '3B modeller';
+
+  @override
+  String get assetGroupUrl => 'Bağlantılar';
+
+  @override
+  String get assetGroupOther => 'Diğer dosyalar';
 }

@@ -2926,4 +2926,64 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pageInside => 'Isi';
+
+  @override
+  String get listFilterHint => 'Saring';
+
+  @override
+  String get listSort => 'Urutkan';
+
+  @override
+  String get listSortName => 'Nama';
+
+  @override
+  String get listSortEdited => 'Terakhir diedit';
+
+  @override
+  String get listSortCreated => 'Dibuat';
+
+  @override
+  String get listSortKind => 'Jenis';
+
+  @override
+  String get listSortManual => 'Sesuai susunan';
+
+  @override
+  String get listCount => '{n} item';
+
+  @override
+  String get listNoMatch => 'Tidak ada yang cocok dengan saringan ini.';
+
+  @override
+  String get listGroupToday => 'Hari ini';
+
+  @override
+  String get listGroupThisWeek => 'Minggu ini';
+
+  @override
+  String get listGroupOlder => 'Lebih lama';
+
+  @override
+  String get assetGroupImage => 'Gambar';
+
+  @override
+  String get assetGroupAudio => 'Audio';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Dokumen';
+
+  @override
+  String get assetGroupTrack => 'Subtitel';
+
+  @override
+  String get assetGroupModel => 'Model 3D';
+
+  @override
+  String get assetGroupUrl => 'Tautan';
+
+  @override
+  String get assetGroupOther => 'Berkas lain';
 }

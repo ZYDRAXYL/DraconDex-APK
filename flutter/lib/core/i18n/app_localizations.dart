@@ -5964,6 +5964,126 @@ abstract class AppLocalizations {
   /// **Inside**
   String get pageInside;
 
+  /// No description provided for @listFilterHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get listFilterHint;
+
+  /// No description provided for @listSort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort'**
+  String get listSort;
+
+  /// No description provided for @listSortName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get listSortName;
+
+  /// No description provided for @listSortEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'Last edited'**
+  String get listSortEdited;
+
+  /// No description provided for @listSortCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get listSortCreated;
+
+  /// No description provided for @listSortKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Kind'**
+  String get listSortKind;
+
+  /// No description provided for @listSortManual.
+  ///
+  /// In en, this message translates to:
+  /// **'As arranged'**
+  String get listSortManual;
+
+  /// No description provided for @listCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} items'**
+  String get listCount;
+
+  /// No description provided for @listNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches this filter.'**
+  String get listNoMatch;
+
+  /// No description provided for @listGroupToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get listGroupToday;
+
+  /// No description provided for @listGroupThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get listGroupThisWeek;
+
+  /// No description provided for @listGroupOlder.
+  ///
+  /// In en, this message translates to:
+  /// **'Older'**
+  String get listGroupOlder;
+
+  /// No description provided for @assetGroupImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Images'**
+  String get assetGroupImage;
+
+  /// No description provided for @assetGroupAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio'**
+  String get assetGroupAudio;
+
+  /// No description provided for @assetGroupVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Video'**
+  String get assetGroupVideo;
+
+  /// No description provided for @assetGroupDoc.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents'**
+  String get assetGroupDoc;
+
+  /// No description provided for @assetGroupTrack.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtitles'**
+  String get assetGroupTrack;
+
+  /// No description provided for @assetGroupModel.
+  ///
+  /// In en, this message translates to:
+  /// **'3D models'**
+  String get assetGroupModel;
+
+  /// No description provided for @assetGroupUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Links'**
+  String get assetGroupUrl;
+
+  /// No description provided for @assetGroupOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other files'**
+  String get assetGroupOther;
+
 }
 
 class _AppLocalizationsDelegate

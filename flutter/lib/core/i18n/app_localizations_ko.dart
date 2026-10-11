@@ -2926,4 +2926,64 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get pageInside => '안에 있는 항목';
+
+  @override
+  String get listFilterHint => '필터';
+
+  @override
+  String get listSort => '정렬';
+
+  @override
+  String get listSortName => '이름';
+
+  @override
+  String get listSortEdited => '최근 편집';
+
+  @override
+  String get listSortCreated => '만든 날짜';
+
+  @override
+  String get listSortKind => '종류';
+
+  @override
+  String get listSortManual => '배치한 순서';
+
+  @override
+  String get listCount => '{n}개';
+
+  @override
+  String get listNoMatch => '이 필터와 일치하는 항목이 없습니다.';
+
+  @override
+  String get listGroupToday => '오늘';
+
+  @override
+  String get listGroupThisWeek => '이번 주';
+
+  @override
+  String get listGroupOlder => '이전';
+
+  @override
+  String get assetGroupImage => '이미지';
+
+  @override
+  String get assetGroupAudio => '오디오';
+
+  @override
+  String get assetGroupVideo => '동영상';
+
+  @override
+  String get assetGroupDoc => '문서';
+
+  @override
+  String get assetGroupTrack => '자막';
+
+  @override
+  String get assetGroupModel => '3D 모델';
+
+  @override
+  String get assetGroupUrl => '링크';
+
+  @override
+  String get assetGroupOther => '기타 파일';
 }
