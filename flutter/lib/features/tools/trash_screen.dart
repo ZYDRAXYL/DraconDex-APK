@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/i18n/app_localizations.dart';
+import '../../core/theme/tokens.g.dart';
 import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
 import '../../data/services/trash_service.dart';
@@ -10,6 +11,7 @@ import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../widgets/confirm_dialog.dart';
+import '../../widgets/ddx_list.dart';
 
 final trashProvider = FutureProvider.autoDispose.family<List<TrashEntry>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
@@ -35,13 +37,56 @@ Future<int?> restoreFromTrash(WidgetRef ref, int nexusId, int trashId) async {
 }
 
 /// The Trash (V5.md §11.4, EXE hub/trash.js): what was deleted, newest
-/// first — restore it, delete it for good, or empty the lot.
-class TrashScreen extends ConsumerWidget {
+/// first, grouped by when (today / this week / older, UX-LAYOUT §12.4) —
+/// restore it, delete it for good, or empty the lot.
+class TrashScreen extends ConsumerStatefulWidget {
   final int nexusId;
   const TrashScreen({super.key, required this.nexusId});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<TrashScreen> createState() => _TrashScreenState();
+}
+
+class _TrashScreenState extends ConsumerState<TrashScreen> {
+  String _filter = '';
+
+  int get nexusId => widget.nexusId;
+
+  Widget _row(BuildContext context, AppLocalizations l, TrashEntry t) => DdxListTile(
+        icon: moduleKindInfo[ModuleKind.fromId(t.kind)]?.icon ?? Icons.folder_outlined,
+        title: t.name,
+        meta: [
+          t.deletedAt,
+          if (t.moduleCount > 1) '${t.moduleCount} ${l.trashModules}',
+          if (t.parentName != null) '↑ ${t.parentName}',
+        ].join(' · '),
+        trailing: [
+          IconButton(
+            tooltip: l.trashRestore,
+            visualDensity: VisualDensity.compact,
+            icon: const Icon(Icons.restore, size: DdxSize.iconMd),
+            onPressed: () async {
+              final router = GoRouter.of(context);
+              final id = await restoreFromTrash(ref, nexusId, t.id);
+              if (id != null) router.push(RecentView.locationFor(nexusId, id));
+            },
+          ),
+          IconButton(
+            tooltip: l.btnDelete,
+            visualDensity: VisualDensity.compact,
+            icon: const Icon(Icons.delete_forever_outlined, size: DdxSize.iconMd),
+            onPressed: () async {
+              if (!await showConfirmDialog(context, title: l.confirmDeleteTitle, message: l.trashDeleteForever)) return;
+              final db = await ref.read(databaseProvider.future);
+              await TrashService.delete(db, nexusId, t.id);
+              ref.invalidate(trashProvider(nexusId));
+            },
+          ),
+        ],
+      );
+
+  @override
+  Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final items = ref.watch(trashProvider(nexusId));
@@ -64,51 +109,42 @@ class TrashScreen extends ConsumerWidget {
       body: items.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('$e')),
-        data: (list) => list.isEmpty
-            ? Center(child: Text(l.trashNothing, style: theme.textTheme.bodyMedium))
-            // the note, then a row per batch, built as they scroll in
-            : ListView.builder(
-                itemCount: list.length + 1,
-                itemBuilder: (context, i) {
-                  if (i == 0) {
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-                      child: Text(l.trashNote, style: theme.textTheme.bodySmall),
-                    );
-                  }
-                  final t = list[i - 1];
-                  return ListTile(
-                    leading: Icon(moduleKindInfo[ModuleKind.fromId(t.kind)]?.icon ?? Icons.folder_outlined),
-                    title: Text(t.name),
-                    subtitle: Text([
-                      t.deletedAt,
-                      if (t.moduleCount > 1) '${t.moduleCount} ${l.trashModules}',
-                      if (t.parentName != null) '↑ ${t.parentName}',
-                    ].join(' · ')),
-                    trailing: Row(mainAxisSize: MainAxisSize.min, children: [
-                      IconButton(
-                        tooltip: l.trashRestore,
-                        icon: const Icon(Icons.restore),
-                        onPressed: () async {
-                          final router = GoRouter.of(context);
-                          final id = await restoreFromTrash(ref, nexusId, t.id);
-                          if (id != null) router.push(RecentView.locationFor(nexusId, id));
-                        },
-                      ),
-                      IconButton(
-                        tooltip: l.btnDelete,
-                        icon: const Icon(Icons.delete_forever_outlined),
-                        onPressed: () async {
-                          if (!await showConfirmDialog(context, title: l.confirmDeleteTitle, message: l.trashDeleteForever)) return;
-                          final db = await ref.read(databaseProvider.future);
-                          await TrashService.delete(db, nexusId, t.id);
-                          ref.invalidate(trashProvider(nexusId));
-                        },
-                      ),
-                    ]),
-                  );
-                },
+        data: (list) {
+          if (list.isEmpty) return DdxEmptyState(icon: Icons.delete_outline, message: l.trashNothing);
+          final shown = [for (final t in list) if (ddxMatches(_filter, [t.name, t.parentName])) t];
+          // newest first already; each batch into its time group
+          final now = DateTime.now();
+          final firstDay = MaterialLocalizations.of(context).firstDayOfWeekIndex;
+          final groups = <DdxDateGroup, List<TrashEntry>>{for (final g in DdxDateGroup.values) g: []};
+          for (final t in shown) {
+            final when = ddxParseDbTime(t.deletedAt);
+            groups[when == null ? DdxDateGroup.older : ddxDateGroup(when, now, firstDayOfWeekIndex: firstDay)]!.add(t);
+          }
+          // the note, the list's header, then a group per time, its rows
+          // built as they scroll in
+          return CustomScrollView(slivers: [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+                child: Text(l.trashNote, style: theme.textTheme.bodySmall),
               ),
+            ),
+            SliverToBoxAdapter(
+              child: DdxListHeader(count: shown.length, onFilterChanged: (v) => setState(() => _filter = v)),
+            ),
+            if (shown.isEmpty)
+              SliverToBoxAdapter(child: DdxEmptyState(icon: Icons.filter_list_off, message: l.listNoMatch)),
+            for (final e in groups.entries)
+              if (e.value.isNotEmpty)
+                DdxListSection.sliver(
+                  storageId: 'trash-${e.key.name}',
+                  title: ddxDateGroupLabel(l, e.key),
+                  count: e.value.length,
+                  itemCount: e.value.length,
+                  itemBuilder: (context, i) => _row(context, l, e.value[i]),
+                ),
+          ]);
+        },
       ),
     );
   }

@@ -6,11 +6,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/i18n/app_localizations.dart';
 import '../../core/links/safe_launch.dart';
+import '../../core/theme/tokens.g.dart';
 import '../../data/services/assets/asset_open.dart';
 import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/navigation_providers.dart';
 import '../../widgets/confirm_dialog.dart';
+import '../../widgets/ddx_list.dart';
 import '../../widgets/row_menu.dart';
 import '../page/views/view_common.dart';
 import 'folder_assets.dart';
@@ -48,11 +50,13 @@ String fileSize(int b) => b < 1024
         ? '${(b / 1024).toStringAsFixed(0)} KB'
         : '${(b / 1024 / 1024).toStringAsFixed(1)} MB';
 
-/// A small square: the image's proxy, or its type's icon.
+/// A small square: the image's proxy, or its type's icon. One size in every
+/// list (UX-LAYOUT §12 part 3) — a control's height, so it sits inside a
+/// comfortable row.
 class AssetThumb extends StatelessWidget {
   final Asset asset;
   final double size;
-  const AssetThumb({super.key, required this.asset, this.size = 48});
+  const AssetThumb({super.key, required this.asset, this.size = DdxSize.ctlMd});
 
   @override
   Widget build(BuildContext context) {
@@ -119,8 +123,8 @@ Future<int?> pickAsset(BuildContext context, WidgetRef ref, int nexusId, {bool i
       child: ListView.builder(
         itemCount: list.length + 1,
         itemBuilder: (s, i) => i == 0
-            ? ListTile(leading: const Icon(Icons.add_photo_alternate_outlined), title: Text(l.assetsFromDevice), onTap: () => Navigator.pop(s, -1))
-            : ListTile(leading: AssetThumb(asset: list[i - 1], size: 40), title: Text(list[i - 1].name), onTap: () => Navigator.pop(s, list[i - 1].id)),
+            ? DdxListTile(icon: Icons.add_photo_alternate_outlined, title: l.assetsFromDevice, onTap: () => Navigator.pop(s, -1))
+            : DdxListTile(leading: AssetThumb(asset: list[i - 1]), title: list[i - 1].name, onTap: () => Navigator.pop(s, list[i - 1].id)),
       ),
     ),
   );
@@ -131,10 +135,40 @@ Future<int?> pickAsset(BuildContext context, WidgetRef ref, int nexusId, {bool i
   return pick;
 }
 
-/// The Asset Nest (V5.md §2, APK-V3.md §7): the Nexus's files and links.
-class AssetsScreen extends ConsumerWidget {
+/// The file-kind groups of the Asset Nest, in the order they show.
+const _assetGroups = ['image', 'audio', 'video', 'doc', 'track', 'model', 'url', ''];
+
+String _assetGroupLabel(AppLocalizations l, String cls) => switch (cls) {
+      'image' => l.assetGroupImage,
+      'audio' => l.assetGroupAudio,
+      'video' => l.assetGroupVideo,
+      'doc' => l.assetGroupDoc,
+      'track' => l.assetGroupTrack,
+      'model' => l.assetGroupModel,
+      'url' => l.assetGroupUrl,
+      _ => l.assetGroupOther,
+    };
+
+/// One file's row meta: the link, or its type and size.
+String assetMeta(Asset a) => a.isUrl ? a.path : '${a.type.toUpperCase()} · ${fileSize(a.size)}';
+
+/// The Asset Nest (V5.md §2, APK-V3.md §7): the Nexus's files and links,
+/// grouped by kind of file (UX-LAYOUT §12 part 3).
+class AssetsScreen extends ConsumerStatefulWidget {
   final int nexusId;
   const AssetsScreen({super.key, required this.nexusId});
+
+  @override
+  ConsumerState<AssetsScreen> createState() => _AssetsScreenState();
+}
+
+class _AssetsScreenState extends ConsumerState<AssetsScreen> {
+  String _filter = '';
+
+  /// Newest first — the order the Nest has always listed them in.
+  DdxSort _sort = DdxSort.created;
+
+  int get nexusId => widget.nexusId;
 
   Future<void> _open(BuildContext context, Asset a) async {
     if (a.isUrl) {
@@ -158,16 +192,52 @@ class AssetsScreen extends ConsumerWidget {
     if (!await openAssetExternally(a)) messenger.showSnackBar(SnackBar(content: Text(l.mediaOpenFailed)));
   }
 
+  Future<void> _refresh() async {
+    ref.invalidate(assetsProvider(nexusId));
+    ref.invalidate(nexusIndexProvider(nexusId));
+  }
+
+  List<RowAction> _actions(BuildContext context, Asset a) {
+    final l = AppLocalizations.of(context)!;
+    return [
+      RowAction(label: l.rowOpen, icon: Icons.open_in_new, onTap: () => _open(context, a)),
+      RowAction(
+        label: l.btnRename,
+        icon: Icons.edit_outlined,
+        onTap: () async {
+          final n = await askText(context, l.btnRename, initial: a.name, label: l.labelName);
+          if (n == null) return;
+          final db = await ref.read(databaseProvider.future);
+          await AssetStore.rename(db, a.id, n);
+          await _refresh();
+        },
+      ),
+      // File it into a folder (V5.md §2.3) — what a .dxpack then
+      // carries to the desktop's Locate folder.
+      RowAction(
+        label: l.moveTo,
+        icon: Icons.drive_file_move_outline,
+        onTap: () => moveAssetWithPicker(context, ref, nexusId, a),
+      ),
+      RowAction(
+        label: l.btnDelete,
+        icon: Icons.delete_outline,
+        danger: true,
+        onTap: () async {
+          if (!await showConfirmDialog(context, title: l.confirmDeleteTitle, message: l.confirmDeleteMessage)) return;
+          final db = await ref.read(databaseProvider.future);
+          await AssetStore.delete(db, a.id);
+          await _refresh();
+        },
+      ),
+    ];
+  }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final list = ref.watch(assetsProvider(nexusId));
-    Future<void> refresh() async {
-      ref.invalidate(assetsProvider(nexusId));
-      ref.invalidate(nexusIndexProvider(nexusId));
-    }
 
     return Scaffold(
       appBar: AppBar(title: Text(l.assetsTitle), actions: [
@@ -179,7 +249,7 @@ class AssetsScreen extends ConsumerWidget {
             if (url == null || !RegExp(r'^https?://', caseSensitive: false).hasMatch(url)) return;
             final db = await ref.read(databaseProvider.future);
             await AssetStore.addUrl(db, nexusId, url, null);
-            await refresh();
+            await _refresh();
           },
         ),
       ]),
@@ -191,60 +261,73 @@ class AssetsScreen extends ConsumerWidget {
       body: list.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('$e')),
-        // the notice (and "none"), then a row per file, built as they
-        // scroll in: a Nest of thousands decodes only the thumbs on screen
-        data: (assets) => ListView.builder(
-          padding: const EdgeInsets.only(bottom: 88),
-          itemCount: assets.isEmpty ? 2 : assets.length + 1,
-          itemBuilder: (context, i) {
-            if (i == 0) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-                child: Text(l.assetsNotice, style: theme.textTheme.bodySmall),
-              );
-            }
-            if (assets.isEmpty) return Padding(padding: const EdgeInsets.all(24), child: Center(child: Text(l.assetsNone)));
-            final a = assets[i - 1];
-            return ListTile(
-              leading: AssetThumb(asset: a),
-              title: Text(a.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-              subtitle: Text(a.isUrl ? a.path : '${a.type.toUpperCase()} · ${fileSize(a.size)}', maxLines: 1, overflow: TextOverflow.ellipsis),
-              onTap: () => _open(context, a),
-              onLongPress: () => showRowMenu(context, title: a.name, [
-                RowAction(label: l.rowOpen, icon: Icons.open_in_new, onTap: () => _open(context, a)),
-                RowAction(
-                  label: l.btnRename,
-                  icon: Icons.edit_outlined,
-                  onTap: () async {
-                    final n = await askText(context, l.btnRename, initial: a.name, label: l.labelName);
-                    if (n == null) return;
-                    final db = await ref.read(databaseProvider.future);
-                    await AssetStore.rename(db, a.id, n);
-                    await refresh();
+        data: (assets) {
+          final notice = SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+              child: Text(l.assetsNotice, style: theme.textTheme.bodySmall),
+            ),
+          );
+          if (assets.isEmpty) {
+            return CustomScrollView(slivers: [
+              notice,
+              SliverToBoxAdapter(
+                child: DdxEmptyState(
+                  icon: Icons.perm_media_outlined,
+                  message: l.assetsNone,
+                  actionLabel: l.assetsFromDevice,
+                  onAction: () => addAssetsFromDevice(context, ref, nexusId),
+                ),
+              ),
+            ]);
+          }
+          final shown = ddxSorted(
+            [for (final a in assets) if (ddxMatches(_filter, [a.name, a.type, if (a.isUrl) a.path])) a],
+            _sort,
+            name: (a) => a.name,
+            created: (a) => a.id.toString().padLeft(12, '0'),
+          );
+          final byKind = <String, List<Asset>>{for (final g in _assetGroups) g: []};
+          for (final a in shown) {
+            byKind[_assetGroups.contains(a.cls) ? a.cls! : '']!.add(a);
+          }
+          // the notice, the header, then a group per kind of file, its rows
+          // built as they scroll in: a Nest of thousands decodes only the
+          // thumbs on screen
+          return CustomScrollView(slivers: [
+            notice,
+            SliverToBoxAdapter(
+              child: DdxListHeader(
+                count: shown.length,
+                onFilterChanged: (v) => setState(() => _filter = v),
+                sort: _sort,
+                sorts: const [DdxSort.name, DdxSort.created],
+                onSortChanged: (s) => setState(() => _sort = s ?? DdxSort.created),
+              ),
+            ),
+            if (shown.isEmpty)
+              SliverToBoxAdapter(child: DdxEmptyState(icon: Icons.filter_list_off, message: l.listNoMatch)),
+            for (final e in byKind.entries)
+              if (e.value.isNotEmpty)
+                DdxListSection.sliver(
+                  storageId: 'assets-${e.key}',
+                  title: _assetGroupLabel(l, e.key),
+                  count: e.value.length,
+                  itemCount: e.value.length,
+                  itemBuilder: (context, i) {
+                    final a = e.value[i];
+                    return DdxListTile(
+                      leading: AssetThumb(asset: a),
+                      title: a.name,
+                      meta: assetMeta(a),
+                      actions: () => _actions(context, a),
+                      onTap: () => _open(context, a),
+                    );
                   },
                 ),
-                // File it into a folder (V5.md §2.3) — what a .dxpack then
-                // carries to the desktop's Locate folder.
-                RowAction(
-                  label: l.moveTo,
-                  icon: Icons.drive_file_move_outline,
-                  onTap: () => moveAssetWithPicker(context, ref, nexusId, a),
-                ),
-                RowAction(
-                  label: l.btnDelete,
-                  icon: Icons.delete_outline,
-                  danger: true,
-                  onTap: () async {
-                    if (!await showConfirmDialog(context, title: l.confirmDeleteTitle, message: l.confirmDeleteMessage)) return;
-                    final db = await ref.read(databaseProvider.future);
-                    await AssetStore.delete(db, a.id);
-                    await refresh();
-                  },
-                ),
-              ]),
-            );
-          },
-        ),
+            const SliverPadding(padding: EdgeInsets.only(bottom: 88)),
+          ]);
+        },
       ),
     );
   }
