@@ -78,6 +78,28 @@ class DdxThemeExt extends ThemeExtension<DdxThemeExt> {
   Color get raised => palette.raised;
   Color get hover => palette.hover;
 
+  /// Text on an accent fill — a selected filter chip, a selected segment.
+  /// The palette's own on-accent when it names one; otherwise white while
+  /// white reaches 4.5:1, and black when it does not. Seven palettes leave
+  /// on-accent implied, and white on their accent lands at 4.2–4.47:1 —
+  /// under every one of those accents black reads above 4.5.
+  Color get onAccent => palette.onAccent ?? betterInk(palette.accent);
+
+  /// White when it reaches 4.5:1 on [fill]; else [DdxInk.inkDark] when that
+  /// does; else black (always ≥ 4.5 where white falls short).
+  static Color betterInk(Color fill) {
+    const white = Color(0xFFFFFFFF);
+    if (contrast(white, fill) >= 4.5) return white;
+    if (contrast(DdxInk.inkDark, fill) >= 4.5) return DdxInk.inkDark;
+    return const Color(0xFF000000);
+  }
+
+  /// WCAG 2 contrast ratio of two opaque colours.
+  static double contrast(Color a, Color b) {
+    final la = a.computeLuminance(), lb = b.computeLuminance();
+    return la > lb ? (la + 0.05) / (lb + 0.05) : (lb + 0.05) / (la + 0.05);
+  }
+
   /// Status colours for "needs attention" (a missing file, nearly full) and
   /// "for your information" (a tip, "new") — APP docs/UX-LAYOUT.md §9. Each
   /// reaches 4.5:1 as text on its own tone's surfaces. Local constants until
