@@ -10,6 +10,7 @@ import '../builder/view_mode_button.dart';
 import '../update/update_dialog.dart';
 import 'dialogs/nexus_dialog.dart';
 import 'widgets/nexus_collection_view.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// The Builder's home screen: a drill-down explorer, like a phone's
 /// file-manager app. Each Nexus is a top-level "drive"; tapping one opens its
@@ -41,11 +42,11 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
     _checkedForUpdate = true;
     final result = await ref.read(updateCheckProvider.future);
     if (!mounted || !result.available || result.dismissed || result.update == null) return;
-    await showDialog(context: context, builder: (_) => UpdateDialog(update: result.update!));
+    await showDdxDialog(context: context, builder: (_) => UpdateDialog(update: result.update!));
   }
 
   Future<void> _newNexus() async {
-    await showDialog(context: context, builder: (_) => const NexusDialog());
+    await showDdxDialog(context: context, builder: (_) => const NexusDialog());
     ref.invalidate(nexusesProvider);
   }
 

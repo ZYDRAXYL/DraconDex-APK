@@ -14,6 +14,7 @@ import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import 'page_providers.dart';
 import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// A page's title layout (APP docs/REDESIGN.md C6) — the same module_ui row
 /// the desktop writes (EXE hub/page-head.js): "pageHead" for a module page,
@@ -166,7 +167,7 @@ class PageHeader extends ConsumerWidget {
 /// "Title layout…" from the page's ⋮ — the sheet the desktop's popover is.
 Future<void> showPageLayoutSheet(BuildContext context, WidgetRef ref, ModuleModel module, String? itemKey) async {
   final key = PageKey(module.id, itemKey);
-  await showModalBottomSheet<void>(
+  await showDdxSheet<void>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,

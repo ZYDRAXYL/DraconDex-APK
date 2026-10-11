@@ -12,6 +12,7 @@ import '../../data/services/bundle_service.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../providers/shell_layout_provider.dart';
+import '../../widgets/ddx_glass.dart';
 import '../hub/dialogs/new_module_sheet.dart';
 import 'builder_rail.dart';
 import 'hub_location.dart';
@@ -276,21 +277,34 @@ class BuilderNavibar extends ConsumerWidget {
           ],
         ),
       );
+    if (context.isGlassStyle) {
+      // Glass (Procress 23): a pane over the theme's backdrop, its hairline
+      // on the edge that meets the page.
+      return DdxGlass(
+        edge: DdxGlassEdge.top,
+        backdrop: true,
+        child: Material(
+          type: MaterialType.transparency,
+          child: Padding(padding: const EdgeInsets.only(top: 4), child: row),
+        ),
+      );
+    }
     if (context.isIosStyle) {
       // The Apple tab bar (C3): translucent over the page, blurred, a hairline
-      // on top — the same five destinations.
+      // on top — the same five destinations. "Reduce transparency" and high
+      // contrast make it solid, the same as they do a glass pane.
       final ddx = context.ddx;
-      return ClipRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: ddx.iosBar,
-              border: Border(top: BorderSide(color: ddx.iosSeparator, width: 0.5)),
-            ),
-            child: Padding(padding: const EdgeInsets.only(top: 4), child: row),
-          ),
+      final opaque = context.glassOpaque;
+      final bar = DecoratedBox(
+        decoration: BoxDecoration(
+          color: opaque ? Color.alphaBlend(ddx.iosBar, ddx.palette.bg) : ddx.iosBar,
+          border: Border(top: BorderSide(color: ddx.iosSeparator, width: 0.5)),
         ),
+        child: Padding(padding: const EdgeInsets.only(top: 4), child: row),
+      );
+      if (opaque) return bar;
+      return ClipRect(
+        child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20), child: bar),
       );
     }
     return BottomAppBar(padding: EdgeInsets.zero, child: row);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/navigation_providers.dart';
+import 'ddx_glass.dart';
 
 /// An app bar that steps aside while the user scrolls down and comes back on
 /// the way up (APK V3 focus, APP docs/APK-V3.md §10.5, §13 item 18) — the
@@ -10,7 +11,8 @@ import '../providers/navigation_providers.dart';
 /// It sits at the top of the screen's BODY rather than in `Scaffold.appBar`,
 /// because a Scaffold lays its app bar out at the height the bar asks for
 /// up front and cannot animate it away. Hidden, it leaves the status bar's
-/// height behind so the page does not slide under the clock.
+/// height behind so the page does not slide under the clock. On the Glass
+/// style it is a glass bar ([DdxGlassBar]).
 class HidingAppBar extends ConsumerWidget {
   final PreferredSizeWidget appBar;
 
@@ -24,7 +26,7 @@ class HidingAppBar extends ConsumerWidget {
       curve: Curves.easeOut,
       alignment: Alignment.bottomCenter,
       child: visible
-          ? appBar
+          ? DdxGlassBar(child: appBar)
           : SizedBox(width: double.infinity, height: MediaQuery.paddingOf(context).top),
     );
   }

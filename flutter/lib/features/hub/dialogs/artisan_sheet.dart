@@ -10,6 +10,7 @@ import '../../../data/models/module_model.dart';
 import '../../../data/services/bundle_service.dart';
 import '../../../providers/db_providers.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The Artisan sheet (APP docs/TEMPLATES.md §4; EXE hub/bundles.js): the
 /// bundles in three tabs — Classic, Genre (with the guide) and Mine, the
@@ -26,7 +27,7 @@ Future<Map<String, dynamic>?> pickArtisanBundle(BuildContext context, WidgetRef 
     tab = (await SharedPreferences.getInstance()).getInt(_tabKey)?.clamp(0, 2) ?? 1;
   } catch (_) {}
   if (!context.mounted) return null;
-  final picked = await showModalBottomSheet<(Map<String, dynamic>, bool)>(
+  final picked = await showDdxSheet<(Map<String, dynamic>, bool)>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -39,7 +40,7 @@ Future<Map<String, dynamic>?> pickArtisanBundle(BuildContext context, WidgetRef 
   if (picked == null || !context.mounted) return null;
   final (spec, adjustFirst) = picked;
   if (!adjustFirst) return spec;
-  return showModalBottomSheet<Map<String, dynamic>>(
+  return showDdxSheet<Map<String, dynamic>>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -619,7 +620,7 @@ Future<void> showSaveBundleDialog(BuildContext context, WidgetRef ref, ModuleMod
   final messenger = ScaffoldMessenger.of(context);
   final c = TextEditingController(text: folder.name);
   var samples = false;
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, set) => AlertDialog(

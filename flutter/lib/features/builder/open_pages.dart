@@ -7,6 +7,7 @@ import '../../data/models/module_model.dart';
 import '../../data/models/recent_view_model.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../widgets/color_dot.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// The pages the user has open (APK V3, APP docs/APK-V3.md §10.2), drawn two
 /// ways from one list ([recentViewsProvider]):
@@ -46,7 +47,7 @@ void closeOpenPage(WidgetRef ref, GoRouter router, RecentView view, {required bo
 
 /// The phone's card switcher. [currentLocation] marks the page on screen.
 Future<void> showOpenPagesSheet(BuildContext context, {required String currentLocation}) {
-  return showModalBottomSheet<void>(
+  return showDdxSheet<void>(
     context: context,
     // Over the Navibar, not under it: the shell's own navigator sits
     // above the bar, so a sheet opened on it would be cut off by it.

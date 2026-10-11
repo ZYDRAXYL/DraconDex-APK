@@ -19,6 +19,7 @@ import '../../core/theme/tokens.g.dart';
 import '../../widgets/ddx_list.dart';
 import 'theme_picker.dart';
 import 'transfer_screen.dart';
+import '../../widgets/ddx_glass.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -30,7 +31,7 @@ class SettingsScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.moduleSettings)),
+      appBar: DdxGlassBar(child: AppBar(title: Text(l10n.moduleSettings))),
       // One DdxListSection per topic (UX-LAYOUT §12): on iPhone/iPad each is
       // a grouped inset card (C3), elsewhere a header over plain rows.
       body: ListView(
@@ -134,7 +135,7 @@ class SettingsScreen extends ConsumerWidget {
     final result = await ref.read(updateCheckProvider.future);
     if (!context.mounted) return;
     if (result.available && result.update != null) {
-      await showDialog(context: context, builder: (_) => UpdateDialog(update: result.update!));
+      await showDdxDialog(context: context, builder: (_) => UpdateDialog(update: result.update!));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('${l10n.upToDateMessage} (v${result.current})')),

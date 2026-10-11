@@ -23,12 +23,20 @@ class AppTheme {
   /// them the same in every language.
   static String label(String name) => name.isEmpty ? name : name[0].toUpperCase() + name.substring(1);
 
-  static ThemeData forName(String name) {
+  /// [glass], [reduceTransparency] and [glassBlurOff] are the UI style's
+  /// settings (Procress 23); they ride on [DdxThemeExt] and change nothing
+  /// else here — the glass is drawn where it is used (widgets/ddx_glass.dart).
+  static ThemeData forName(String name, {bool glass = false, bool reduceTransparency = false, bool glassBlurOff = false}) {
     final key = exists(name) ? name : fallback;
     final p = ddxPalettes[key]!;
     return _build(
-      name: key,
-      palette: p,
+      ext: DdxThemeExt(
+        name: key,
+        palette: p,
+        glass: glass,
+        reduceTransparency: reduceTransparency,
+        glassBlurOff: glassBlurOff,
+      ),
       bg: p.bg,
       surface: p.surface,
       raised: p.raised,
@@ -51,8 +59,7 @@ class AppTheme {
   static bool isLight(Color c) => c.computeLuminance() > 0.179;
 
   static ThemeData _build({
-    required String name,
-    required DdxPalette palette,
+    required DdxThemeExt ext,
     required Color bg,
     required Color surface,
     required Color raised,
@@ -91,7 +98,7 @@ class AppTheme {
 
     return ThemeData(
       colorScheme: colorScheme,
-      extensions: [DdxThemeExt(name: name, palette: palette)],
+      extensions: [ext],
       scaffoldBackgroundColor: bg,
       cardColor: surface,
       dividerColor: border,

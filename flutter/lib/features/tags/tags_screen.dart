@@ -8,6 +8,7 @@ import '../../providers/hashtag_provider.dart';
 import '../../widgets/color_dot.dart';
 import '../../widgets/color_picker_widget.dart';
 import '../../widgets/confirm_dialog.dart';
+import '../../widgets/ddx_glass.dart';
 
 class TagsScreen extends ConsumerWidget {
   const TagsScreen({super.key});
@@ -17,9 +18,9 @@ class TagsScreen extends ConsumerWidget {
     final tagsAsync = ref.watch(hashtagsProvider);
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.hashtagsTitle)),
+      appBar: DdxGlassBar(child: AppBar(title: Text(l10n.hashtagsTitle))),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => showDialog(context: context, builder: (_) => const _TagFormDialog())
+        onPressed: () => showDdxDialog(context: context, builder: (_) => const _TagFormDialog())
             .then((_) => ref.invalidate(hashtagsProvider)),
         child: const Icon(Icons.add),
       ),
@@ -40,7 +41,7 @@ class TagsScreen extends ConsumerWidget {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.edit),
-                      onPressed: () => showDialog(context: context, builder: (_) => _TagFormDialog(existing: t))
+                      onPressed: () => showDdxDialog(context: context, builder: (_) => _TagFormDialog(existing: t))
                           .then((_) => ref.invalidate(hashtagsProvider)),
                     ),
                     IconButton(

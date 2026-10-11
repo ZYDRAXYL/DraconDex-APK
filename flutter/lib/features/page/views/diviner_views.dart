@@ -12,6 +12,7 @@ import '../../../widgets/markdown_view.dart';
 import '../../../widgets/row_menu.dart';
 import '../component_registry.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The Diviner's page (EXE mod/diviner.js): its tables, the open one's roll
 /// button and last result, its entries, and its roll history.
@@ -75,7 +76,7 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
     final dice = TextEditingController(text: t?['dice'] as String? ?? '');
     var mode = t?['mode'] as String? ?? 'pick';
     String? error;
-    final ok = await showDialog<String>(
+    final ok = await showDdxDialog<String>(
       context: context,
       builder: (d) => StatefulBuilder(
         builder: (d, setLocal) => AlertDialog(
@@ -143,7 +144,7 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
     final lo = TextEditingController(text: '${e['range_lo'] ?? ''}');
     final hi = TextEditingController(text: '${e['range_hi'] ?? ''}');
     final weight = TextEditingController(text: '${e['weight'] ?? 1}');
-    final ok = await showDialog<bool>(
+    final ok = await showDdxDialog<bool>(
       context: context,
       builder: (dc) => AlertDialog(
         title: Text(l.btnEdit),
@@ -186,7 +187,7 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
           final tables = await dao.tablesInNexus(widget.ctx.nexusId);
           final blocked = <int>{for (final t in tables) if (await dao.wouldCycle(tableId, t['id'] as int)) t['id'] as int};
           if (!mounted) return;
-          final pick = await showDialog<int>(
+          final pick = await showDdxDialog<int>(
             context: context,
             builder: (dc) => SimpleDialog(title: Text(l.divRollsTable), children: [
               for (final t in tables)

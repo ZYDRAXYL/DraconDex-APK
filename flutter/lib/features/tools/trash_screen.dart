@@ -12,6 +12,7 @@ import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../widgets/confirm_dialog.dart';
 import '../../widgets/ddx_list.dart';
+import '../../widgets/ddx_glass.dart';
 
 final trashProvider = FutureProvider.autoDispose.family<List<TrashEntry>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
@@ -91,7 +92,7 @@ class _TrashScreenState extends ConsumerState<TrashScreen> {
     final theme = Theme.of(context);
     final items = ref.watch(trashProvider(nexusId));
     return Scaffold(
-      appBar: AppBar(
+      appBar: DdxGlassBar(child: AppBar(
         title: Text(l.trashTitle),
         actions: [
           if (items.valueOrNull?.isNotEmpty == true)
@@ -105,7 +106,7 @@ class _TrashScreenState extends ConsumerState<TrashScreen> {
               child: Text(l.trashEmptyAll),
             ),
         ],
-      ),
+      )),
       body: items.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('$e')),

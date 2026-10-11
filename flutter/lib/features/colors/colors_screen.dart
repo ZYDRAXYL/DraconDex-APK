@@ -6,6 +6,7 @@ import '../../providers/color_provider.dart';
 import '../../providers/db_providers.dart';
 import '../../widgets/color_dot.dart';
 import '../../widgets/confirm_dialog.dart';
+import '../../widgets/ddx_glass.dart';
 
 class ColorsScreen extends ConsumerWidget {
   const ColorsScreen({super.key});
@@ -15,7 +16,7 @@ class ColorsScreen extends ConsumerWidget {
     final colorsAsync = ref.watch(colorsProvider);
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.colorPaletteTitle)),
+      appBar: DdxGlassBar(child: AppBar(title: Text(l10n.colorPaletteTitle))),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddColorDialog(context, ref, l10n),
         child: const Icon(Icons.add),
@@ -65,7 +66,7 @@ class ColorsScreen extends ConsumerWidget {
 
   void _showAddColorDialog(BuildContext context, WidgetRef ref, AppLocalizations l10n) {
     Color picked = Colors.blue;
-    showDialog(
+    showDdxDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.addColorTitle),

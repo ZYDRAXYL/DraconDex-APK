@@ -7,6 +7,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Chronicler kind: the module's timeline, in chronological order.
 ///
@@ -47,7 +48,7 @@ class _Events extends ConsumerWidget {
   const _Events({required this.timelineId, this.module});
 
   Future<void> _edit(BuildContext context, WidgetRef ref, {TimelineEventModel? existing}) async {
-    final result = await showDialog<_EventDraft>(
+    final result = await showDdxDialog<_EventDraft>(
       context: context,
       builder: (ctx) => _EventDialog(existing: existing),
     );

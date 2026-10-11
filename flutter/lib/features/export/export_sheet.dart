@@ -11,6 +11,7 @@ import '../../data/services/export/doc_source.dart';
 import '../../data/services/export/export_service.dart';
 import '../../providers/db_providers.dart';
 import 'export_preview.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// "Export…" — every way out of the app for this page, as cards (Procress 14,
 /// APP docs/EXPORT-DECOR.md E8; the desktop's hub/export.js). A card that
@@ -22,7 +23,7 @@ Future<void> showExportSheet(BuildContext context, WidgetRef ref, ModuleModel mo
   final prefs = await ExportPrefs.load(db, module.id);
   final name = itemName ?? (itemKey == null ? null : await EntityKinds.nameOf(db, itemKey));
   if (!context.mounted) return;
-  await showModalBottomSheet<void>(
+  await showDdxSheet<void>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,

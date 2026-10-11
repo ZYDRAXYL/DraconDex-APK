@@ -10,6 +10,7 @@ import '../../data/dao/module_dao.dart';
 import '../../data/services/vault_snapshot_service.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// Settings → Data → DDX Transfer. The Flutter twin of the Electron app's
 /// Setting → App data → Transfer page.
@@ -104,7 +105,7 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(
+      appBar: DdxGlassBar(child: AppBar(
         title: Text(l10n.transferTitle),
         bottom: TabBar(
           controller: _tabs,
@@ -113,7 +114,7 @@ class _TransferScreenState extends ConsumerState<TransferScreen>
             Tab(text: l10n.transferTabReceive),
           ],
         ),
-      ),
+      )),
       body: TabBarView(
         controller: _tabs,
         children: [_sendTab(l10n), _receiveTab(l10n)],

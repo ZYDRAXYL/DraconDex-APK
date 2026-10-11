@@ -5,6 +5,8 @@ import '../data/models/color_model.dart';
 import '../providers/color_provider.dart';
 import '../providers/db_providers.dart';
 import 'color_dot.dart';
+import 'ddx_glass.dart';
+import '../core/theme/ddx_theme.dart';
 
 class ColorPickerSheet extends ConsumerStatefulWidget {
   final String? currentColorCode;
@@ -33,12 +35,8 @@ class _ColorPickerSheetState extends ConsumerState<ColorPickerSheet> {
       expand: false,
       initialChildSize: 0.6,
       maxChildSize: 0.9,
-      builder: (ctx, scroll) => Container(
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        ),
-        child: Column(
+      builder: (ctx, scroll) {
+        final body = Column(
           children: [
             Container(
               width: 40,
@@ -94,8 +92,23 @@ class _ColorPickerSheetState extends ConsumerState<ColorPickerSheet> {
               ),
             ),
           ],
-        ),
-      ),
+        );
+        // Glass (Procress 23): the sheet draws its own pane, so it is the pane.
+        if (context.isGlassStyle) {
+          return DdxGlass(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+            shadow: true,
+            child: Material(type: MaterialType.transparency, child: body),
+          );
+        }
+        return Container(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+          ),
+          child: body,
+        );
+      },
     );
   }
 
@@ -147,6 +160,7 @@ Future<void> showColorPicker(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+    barrierColor: glassBarrierColor(context),
     builder: (_) => ColorPickerSheet(
       currentColorCode: currentColorCode,
       onColorSelected: onColorSelected,

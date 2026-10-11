@@ -6,6 +6,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Wanderer kind: timeline events pinned onto a map.
 ///
@@ -46,7 +47,7 @@ class _WandererContentState extends ConsumerState<WandererContent> {
     final controller = TextEditingController(text: pin.label ?? '');
     var eventRef = pin.eventRef;
 
-    final action = await showDialog<String>(
+    final action = await showDdxDialog<String>(
       context: context,
       builder: (ctx) => StatefulBuilder(
         builder: (ctx, setLocal) => AlertDialog(

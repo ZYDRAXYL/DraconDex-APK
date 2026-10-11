@@ -19,6 +19,7 @@ import '../component_registry.dart';
 import '../core_components.dart';
 import 'graph_view.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The Classifier's four presets (EXE mod/classifier.js CLASSIFIER_VIEWS):
 /// table, list·detail, relations, grid — one loader, one typed editor.
@@ -665,7 +666,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
     ClassifierFieldModel f, ClsData data) async {
   if (f.isLevelled) {
     // A levelled value is its rows: edit them in a sheet over the table.
-    await showModalBottomSheet<void>(
+    await showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,
@@ -695,7 +696,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
     case 'number':
     case 'url':
       final c = TextEditingController(text: raw);
-      final v = await showDialog<String>(
+      final v = await showDdxDialog<String>(
         context: context,
         builder: (d) => AlertDialog(
           title: Text(f.description),
@@ -718,7 +719,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
       final v = await _editDate(context, f.description, raw);
       if (v != null) await _set(ref, moduleId, item.id, f.id, v);
     case 'select':
-      final v = await showDialog<String>(
+      final v = await showDdxDialog<String>(
         context: context,
         builder: (d) => SimpleDialog(title: Text(f.description), children: [
           SimpleDialogOption(onPressed: () => Navigator.pop(d, ''), child: const Text('—')),
@@ -735,7 +736,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
       if (v != null) await _set(ref, moduleId, item.id, f.id, v);
     case 'multi':
       final picked = {...multiValue(raw)};
-      final ok = await showDialog<bool>(
+      final ok = await showDdxDialog<bool>(
         context: context,
         builder: (d) => StatefulBuilder(
           builder: (d, setLocal) => AlertDialog(
@@ -780,7 +781,7 @@ Future<String?> _editDate(BuildContext context, String title, String raw) async 
     for (final n in [v?.d, v?.m, v?.y, v?.h, v?.mi]) TextEditingController(text: n == null ? '' : '$n'),
   ];
   final labels = [l.dateDay, l.dateMonth, l.dateYear, l.dateHour, l.dateMinute];
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => AlertDialog(
       title: Text(title),
@@ -812,7 +813,7 @@ Future<String?> _editDate(BuildContext context, String title, String raw) async 
 
 Future<void> _editRelations(
     BuildContext context, WidgetRef ref, int moduleId, int nexus, ClassifierItemModel item, ClassifierFieldModel f) async {
-  await showModalBottomSheet<void>(
+  await showDdxSheet<void>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -867,7 +868,7 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
   final expr = TextEditingController(text: f?.opts['expr'] as String? ?? '');
   var type = f?.type ?? 'text';
   var levelable = f?.levelable ?? false, hasCondition = f?.hasCondition ?? false;
-  final result = await showDialog<String>(
+  final result = await showDdxDialog<String>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, setLocal) => AlertDialog(
@@ -1005,7 +1006,7 @@ class ClsLevelTable extends ConsumerWidget {
     final l = AppLocalizations.of(context)!;
     final cols = field.levelColumns;
     final ctl = {for (final c in cols) c: TextEditingController(text: row?[c] ?? '')};
-    final ok = await showDialog<bool>(
+    final ok = await showDdxDialog<bool>(
       context: context,
       builder: (d) => AlertDialog(
         title: Text(field.description),

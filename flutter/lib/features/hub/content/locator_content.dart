@@ -7,6 +7,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Locator kind: a map with drawable polygon areas.
 ///
@@ -92,7 +93,7 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
   Future<void> _renameArea(MapAreaModel a) async {
     final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: a.name ?? '');
-    final name = await showDialog<String>(
+    final name = await showDdxDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.btnRename),

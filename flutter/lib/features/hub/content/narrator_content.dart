@@ -7,6 +7,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Narrator kind: dialogue scenes, the script inside the selected one, and
 /// the routes leading out of it.
@@ -32,7 +33,7 @@ class _NarratorContentState extends ConsumerState<NarratorContent> {
   Future<String?> _askText(String title, {String initial = ''}) async {
     final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: initial);
-    return showDialog<String>(
+    return showDdxDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(title),
@@ -159,7 +160,7 @@ class _Scene extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final speaker = TextEditingController();
     final sentence = TextEditingController();
-    final ok = await showDialog<bool>(
+    final ok = await showDdxDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.narratorNewLine),
@@ -203,7 +204,7 @@ class _Scene extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final others = allScenes.where((d) => d.id != scene.id).toList();
     if (others.isEmpty) return;
-    final target = await showDialog<int>(
+    final target = await showDdxDialog<int>(
       context: context,
       builder: (ctx) => SimpleDialog(
         title: Text(l10n.narratorLeadsTo),

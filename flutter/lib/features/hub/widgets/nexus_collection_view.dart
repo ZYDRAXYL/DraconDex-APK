@@ -17,6 +17,7 @@ import '../../../widgets/confirm_dialog.dart';
 import '../../../widgets/ddx_list.dart';
 import '../../../widgets/row_menu.dart';
 import '../dialogs/nexus_dialog.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The Builder's top level: every Nexus, laid out per the page's view mode.
 /// Its menu lives here rather than on the screen so the tile and the card
@@ -68,7 +69,7 @@ List<RowAction> _nexusActions(BuildContext context, WidgetRef ref, NexusModel ne
       label: l10n.btnRename,
       icon: Icons.edit_outlined,
       onTap: () async {
-        await showDialog(context: context, builder: (_) => NexusDialog(existing: nexus));
+        await showDdxDialog(context: context, builder: (_) => NexusDialog(existing: nexus));
         ref.invalidate(nexusesProvider);
         ref.invalidate(nexusProvider(nexus.id));
       },

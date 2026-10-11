@@ -19,6 +19,7 @@ import 'node_canvas.dart';
 import '../../../widgets/ddx_list.dart';
 import '../../../core/theme/tokens.g.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The Narrator's four presets (EXE mod/narrator.js NARRATOR_VIEWS): board,
 /// routes, reader (script and play-test, narrator-logic.js), dialogue.
@@ -171,7 +172,7 @@ Future<void> _addRoute(BuildContext context, WidgetRef ref, int moduleId, StoryD
   final l = AppLocalizations.of(context)!;
   int? to;
   final label = TextEditingController();
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, setLocal) {
@@ -416,7 +417,7 @@ class _ReaderState extends ConsumerState<_Reader> {
 
   void _showVars() {
     final l = AppLocalizations.of(context)!;
-    showModalBottomSheet<void>(
+    showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,

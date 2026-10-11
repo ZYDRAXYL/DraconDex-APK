@@ -12,6 +12,7 @@ import 'block_settings_sheet.dart';
 import 'media_components.dart';
 import 'page_providers.dart';
 import 'wiki_components.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// Arrange mode on a phone (APK-V3.md §10.4 — the user chose a drag-to-
 /// reorder list): the page's top-level blocks as a reorderable list. A
@@ -236,7 +237,7 @@ Future<void> showAddBlockSheet(
     ref.invalidate(pageProvider(pageKey));
   }
 
-  final picked = await showModalBottomSheet<Future<void> Function()>(
+  final picked = await showDdxSheet<Future<void> Function()>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -317,7 +318,7 @@ Future<ModuleModel?> _pickBorrowSource(BuildContext context, WidgetRef ref, Modu
       if (components[kindViewId(ModuleKind.fromId(r['kind'] as String))]?.borrow ?? false) ModuleModel.fromMap(r),
   ];
   if (!context.mounted) return null;
-  return showModalBottomSheet<ModuleModel>(
+  return showDdxSheet<ModuleModel>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,

@@ -16,6 +16,7 @@ import '../module_page.dart';
 import 'exhibitor_scene.dart';
 import 'graph_view.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The Exhibitor's and the Manager's views: both are a saved filter over
 /// the Nexus index (module_ui filterDef, V5.md §8.9), drawn several ways
@@ -420,7 +421,7 @@ Future<void> addRelationDialog(BuildContext context, WidgetRef ref, ComponentCtx
   if (items.length < 2) return;
   final label = TextEditingController();
   var directed = true;
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, setLocal) {

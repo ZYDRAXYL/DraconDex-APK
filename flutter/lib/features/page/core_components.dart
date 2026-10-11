@@ -27,6 +27,7 @@ import 'component_registry.dart';
 import 'page_providers.dart';
 import 'views/classifier_views.dart';
 import 'views/sketcher_views.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// Properties, Related, and an element page's body — the three components
 /// every page can hold (EXE renderer/page/blocks.js, item-page.js).
@@ -102,7 +103,7 @@ class TextSourceEditor extends ConsumerWidget {
 Future<String?> editTextSheet(BuildContext context,
     {required String title, required String initial, required int nexusId, bool singleLine = false}) {
   final controller = TextEditingController(text: initial);
-  return showModalBottomSheet<String>(
+  return showDdxSheet<String>(
     context: context,
     useRootNavigator: true,
     isScrollControlled: true,
@@ -303,7 +304,7 @@ Future<void> editPropSheet(BuildContext context, WidgetRef ref, ComponentCtx ctx
   final name = TextEditingController(text: prop?.propName ?? '');
   final value = TextEditingController(text: prop?.content ?? '');
   var type = prop?.propType ?? 'text';
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (dialog) => StatefulBuilder(
       builder: (dialog, setState) => AlertDialog(
@@ -408,7 +409,7 @@ class _TagRow extends ConsumerWidget {
     final all = await HashtagDao(db).getHashtags();
     final on = {for (final t in current) t.id};
     if (!context.mounted) return;
-    await showModalBottomSheet<void>(
+    await showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,

@@ -14,6 +14,7 @@ import 'graph_view.dart';
 import 'node_canvas.dart';
 import 'sketcher_views.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The Designer's three presets (EXE mod/designer.js DESIGNER_VIEWS):
 /// canvas, outline, matrix — and its comic pages (designer-comic.js): a
@@ -62,7 +63,7 @@ class _DesignerViewState extends ConsumerState<DesignerView> {
 
   Future<void> _add(List<DesignNodeModel> nodes) async {
     final l = AppLocalizations.of(context)!;
-    final shape = await showModalBottomSheet<String>(
+    final shape = await showDdxSheet<String>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,

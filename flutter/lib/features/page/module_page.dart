@@ -19,6 +19,7 @@ import 'links.dart';
 import 'page_providers.dart';
 import 'wiki_components.dart';
 import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// A page: the module's own (itemKey null) or an element's — a stack of
 /// blocks rendered top to bottom, in the order the desktop (or arrange mode
@@ -309,7 +310,7 @@ class CanvasFrame extends StatelessWidget {
     Navigator.of(context, rootNavigator: true).push(MaterialPageRoute<void>(
       fullscreenDialog: true,
       builder: (ctx) => Scaffold(
-        appBar: AppBar(title: Text(title)),
+        appBar: DdxGlassBar(child: AppBar(title: Text(title))),
         body: SafeArea(child: fullScreen?.call(ctx) ?? SingleChildScrollView(child: child)),
       ),
     ));

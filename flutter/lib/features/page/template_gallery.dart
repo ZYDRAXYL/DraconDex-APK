@@ -11,6 +11,7 @@ import '../../widgets/confirm_dialog.dart';
 import '../../providers/db_providers.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// A new module's first page: its kind's ★ template (the desktop's
 /// applyStartTemplate). A failure leaves the default layout, which the page
@@ -62,7 +63,7 @@ Future<TemplatePick?> pickPageTemplate(BuildContext context, WidgetRef ref, {req
   final locale = Localizations.localeOf(context).languageCode;
   final all = await PageTemplateService.templates(locale);
   if (!context.mounted) return null;
-  final r = await showModalBottomSheet<Object>(
+  final r = await showDdxSheet<Object>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -472,7 +473,7 @@ Future<void> showSaveTemplateDialog(BuildContext context, WidgetRef ref, ModuleM
   final l10n = AppLocalizations.of(context)!;
   final messenger = ScaffoldMessenger.of(context);
   final c = TextEditingController(text: module.name);
-  final name = await showDialog<String>(
+  final name = await showDdxDialog<String>(
     context: context,
     builder: (d) => AlertDialog(
       title: Text(l10n.tplSave.replaceAll('…', '')),

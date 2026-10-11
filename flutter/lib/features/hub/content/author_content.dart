@@ -7,6 +7,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Author kind: a book made of chapters. The chapter list picks one; the
 /// editor below writes `book_chapter.chapter_content`.
@@ -41,7 +42,7 @@ class _AuthorContentState extends ConsumerState<AuthorContent> {
   Future<void> _rename(ChapterModel c) async {
     final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: c.name);
-    final name = await showDialog<String>(
+    final name = await showDdxDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.btnRename),

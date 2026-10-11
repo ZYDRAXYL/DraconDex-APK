@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/module_model.dart';
 import '../../../data/models/viewer_model.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// The saved-filter editor, shared by Viewer and Connector exactly as the
 /// desktop shares openSavedFilterPopup between mod/viewer.js and
@@ -14,7 +15,7 @@ Future<FilterDef?> showFilterEditor(
   required FilterDef initial,
   required List<IndexedItem> modules,
 }) {
-  return showDialog<FilterDef>(
+  return showDdxDialog<FilterDef>(
     context: context,
     builder: (ctx) => _FilterEditorDialog(initial: initial, modules: modules),
   );

@@ -10,10 +10,23 @@ import 'tokens.g.dart';
 /// C3, C4, C5). The values come from tokens.g.dart, generated in
 /// DraconDex-SDB from the same design/tokens.json EXE's CSS comes from.
 ///
+/// The Glass UI style rides here too (APP Plan.md Procress 23): whether it
+/// is on, how it should draw on this device, and its values for the active
+/// theme — the same `DdxGlass` tokens EXE's CSS gets.
+///
 /// Read it with `context.ddx`.
 @immutable
 class DdxThemeExt extends ThemeExtension<DdxThemeExt> {
-  const DdxThemeExt({required this.name, required this.palette, this.radius = 8, this.radiusSmall = 4, this.radiusLarge = 12});
+  const DdxThemeExt({
+    required this.name,
+    required this.palette,
+    this.radius = 8,
+    this.radiusSmall = 4,
+    this.radiusLarge = 12,
+    this.glass = false,
+    this.reduceTransparency = false,
+    this.glassBlurOff = false,
+  });
 
   /// The theme's key in [ddxPalettes] (midnight, atDusk, …).
   final String name;
@@ -21,6 +34,43 @@ class DdxThemeExt extends ThemeExtension<DdxThemeExt> {
   final double radius;
   final double radiusSmall;
   final double radiusLarge;
+
+  /// The Glass UI style is on: the bars and the floating layers draw as
+  /// `DdxGlass` panes (widgets/ddx_glass.dart). Page content never does.
+  final bool glass;
+
+  /// The app's "Reduce transparency" switch: a glass pane is drawn as the
+  /// same surface, opaque. `context.glassOpaque` adds the OS's high contrast.
+  final bool reduceTransparency;
+
+  /// This device drew the blur too slowly (core/theme/glass_probe.dart): the
+  /// panes keep their tint and drop the blur.
+  final bool glassBlurOff;
+
+  // Glass values for this theme (tokens.g.dart, `platform.glass` in
+  // DraconDex-SDB design/tokens.json).
+
+  /// The blur's standard deviation — CSS `blur(24px)` names the same number.
+  double get glassBlur => DdxGlass.glassBlur;
+
+  /// The share of `surface` a pane keeps over the backdrop: the token, raised
+  /// for the themes whose text would otherwise fall under 4.5:1 on the worst
+  /// backdrop (SDB's generator computes those, nothing here is hand-kept).
+  double get glassTint => DdxGlass.glassTintFor(name);
+
+  /// A pane's colour: `surface` at [glassTint].
+  Color get glassSurface => palette.surface.withValues(alpha: glassTint);
+
+  /// The hairline round a pane.
+  Color get glassStroke => DdxGlass.glassStroke(palette);
+
+  /// A floating pane's lift (a sheet); docked bars have none.
+  List<BoxShadow> get glassShadow => DdxGlass.glassShadow;
+
+  /// The two ends of the gradient behind the glass — the theme's bg, and bg
+  /// a third of the way to its accent.
+  Color get glassBackdropFrom => DdxGlass.glassBackdropFrom(palette);
+  Color get glassBackdropTo => DdxGlass.glassBackdropTo(palette);
 
   /// Muted TEXT — t3 lifted until it reaches 4.5:1 on bg, surface and
   /// raised. Borders and dividers keep [DdxPalette.t3].
@@ -46,25 +96,42 @@ class DdxThemeExt extends ThemeExtension<DdxThemeExt> {
   Color get iosTint => DdxIos.tint(palette);
 
   @override
-  DdxThemeExt copyWith({String? name, DdxPalette? palette, double? radius, double? radiusSmall, double? radiusLarge}) => DdxThemeExt(
+  DdxThemeExt copyWith({
+    String? name,
+    DdxPalette? palette,
+    double? radius,
+    double? radiusSmall,
+    double? radiusLarge,
+    bool? glass,
+    bool? reduceTransparency,
+    bool? glassBlurOff,
+  }) =>
+      DdxThemeExt(
         name: name ?? this.name,
         palette: palette ?? this.palette,
         radius: radius ?? this.radius,
         radiusSmall: radiusSmall ?? this.radiusSmall,
         radiusLarge: radiusLarge ?? this.radiusLarge,
+        glass: glass ?? this.glass,
+        reduceTransparency: reduceTransparency ?? this.reduceTransparency,
+        glassBlurOff: glassBlurOff ?? this.glassBlurOff,
       );
 
   /// A theme change snaps the palette (a half-way palette is not a theme
-  /// anyone chose) and eases only the shape.
+  /// anyone chose) and the style switches, and eases only the shape.
   @override
   DdxThemeExt lerp(ThemeExtension<DdxThemeExt>? other, double t) {
     if (other is! DdxThemeExt) return this;
+    final self = t < 0.5;
     return DdxThemeExt(
-      name: t < 0.5 ? name : other.name,
-      palette: t < 0.5 ? palette : other.palette,
+      name: self ? name : other.name,
+      palette: self ? palette : other.palette,
       radius: lerpDouble(radius, other.radius, t)!,
       radiusSmall: lerpDouble(radiusSmall, other.radiusSmall, t)!,
       radiusLarge: lerpDouble(radiusLarge, other.radiusLarge, t)!,
+      glass: self ? glass : other.glass,
+      reduceTransparency: self ? reduceTransparency : other.reduceTransparency,
+      glassBlurOff: self ? glassBlurOff : other.glassBlurOff,
     );
   }
 }
@@ -77,4 +144,13 @@ extension DdxThemeContext on BuildContext {
 
   /// True on iPhone/iPad — the Apple-app layer (C3). Android keeps Material 3.
   bool get isIosStyle => Theme.of(this).platform == TargetPlatform.iOS;
+
+  /// The Glass UI style is on (Procress 23). Independent of [isIosStyle]:
+  /// an iPhone on Glass keeps its large titles and grouped lists.
+  bool get isGlassStyle => ddx.glass;
+
+  /// Glass drawn as plain, opaque surface: the app's "Reduce transparency"
+  /// switch, or the OS asking for high contrast. Not a cheaper glass — no
+  /// translucency and no blur at all.
+  bool get glassOpaque => ddx.reduceTransparency || (MediaQuery.maybeHighContrastOf(this) ?? false);
 }

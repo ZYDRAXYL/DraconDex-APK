@@ -12,6 +12,7 @@ import '../tools/assets_screen.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
 import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// The media blocks on the phone (Procress 14, APP docs/MEDIA-EMBED.md): the
 /// desktop's `core.video`, `core.audio`, `core.pdf`, `core.model3d` and
@@ -119,7 +120,7 @@ class MediaBlock extends ConsumerWidget {
       if (bytes == null || !context.mounted) return;
       await Navigator.of(context, rootNavigator: true).push(MaterialPageRoute<void>(
         builder: (c) => Scaffold(
-          appBar: AppBar(title: Text(a.name)),
+          appBar: DdxGlassBar(child: AppBar(title: Text(a.name))),
           body: InteractiveViewer(maxScale: 6, child: Center(child: Image.memory(bytes))),
         ),
       ));

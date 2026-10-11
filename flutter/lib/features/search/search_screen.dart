@@ -11,6 +11,7 @@ import '../../providers/module_provider.dart';
 import '../../widgets/ddx_list.dart';
 import '../builder/open_pages.dart';
 import '../hub/dialogs/nexus_dialog.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// The one search field of APK V3 (APP docs/APK-V3.md §9.2, §13 item 14):
 /// results in three groups — things (names of modules and elements), content
@@ -84,7 +85,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   List<_Command> _commands(AppLocalizations l10n) => [
         _Command(l10n.newNexusTooltip, Icons.add_circle_outline, (context) async {
-          await showDialog(context: context, builder: (_) => const NexusDialog());
+          await showDdxDialog(context: context, builder: (_) => const NexusDialog());
           ref.invalidate(nexusesProvider);
           if (context.mounted) context.go('/');
         }),
@@ -107,7 +108,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final nothing = q.isNotEmpty && !stale && !_busy && _things.isEmpty && _content.isEmpty && commands.isEmpty;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: DdxGlassBar(child: AppBar(
         titleSpacing: 0,
         title: TextField(
           controller: _controller,
@@ -130,7 +131,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           onChanged: _onChanged,
           onSubmitted: _run,
         ),
-      ),
+      )),
       // Three groups, each with its count and folding (UX-LAYOUT §12.4),
       // their rows built as they scroll in.
       body: CustomScrollView(

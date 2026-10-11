@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../core/i18n/app_localizations.dart';
 import '../core/theme/ddx_theme.dart';
+import 'ddx_glass.dart';
 
 /// Which section of a grouped menu an entry sits in (APP docs/UX-LAYOUT.md
 /// §7.2). [none] is the default, and a menu whose entries are all [none] and
@@ -66,11 +67,13 @@ String? _groupTitle(AppLocalizations l, RowGroup g) => switch (g) {
 ///
 /// On iPhone/iPad it is an action sheet instead — the Apple-app layer (APP
 /// docs/REDESIGN.md C3): destructive actions in red, Cancel apart at the
-/// bottom. Same actions, same close-then-run order.
+/// bottom. Same actions, same close-then-run order. The action sheet is
+/// translucent and blurred by design, so "Reduce transparency" (and high
+/// contrast) take the solid sheet instead.
 Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String? title}) async {
   if (actions.isEmpty) return;
   if (_grouped(actions)) actions = groupedOrder(actions);
-  if (context.isIosStyle) {
+  if (context.isIosStyle && !context.glassOpaque) {
     // Cupertino draws in SF, which an iPhone has but the web build (the PWA
     // on Safari) does not bundle — there it would fall back to a font
     // fetched from the network, i.e. nothing offline. Use the app's own.
@@ -97,7 +100,7 @@ Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String?
     picked?.onTap();
     return;
   }
-  final picked = await showModalBottomSheet<RowAction>(
+  final picked = await showDdxSheet<RowAction>(
     context: context,
     // Over the Navibar, not under it: the shell's own navigator sits
     // above the bar, so a sheet opened on it would be cut off by it.

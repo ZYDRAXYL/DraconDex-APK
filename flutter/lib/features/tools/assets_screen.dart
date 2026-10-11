@@ -17,6 +17,7 @@ import '../../widgets/row_menu.dart';
 import '../page/views/view_common.dart';
 import 'folder_assets.dart';
 import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_glass.dart';
 
 final assetsProvider = FutureProvider.autoDispose.family<List<Asset>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
@@ -113,7 +114,7 @@ Future<int?> pickAsset(BuildContext context, WidgetRef ref, int nexusId, {bool i
       if ((!imagesOnly || a.isImage) && (classes == null || a.isOf(classes))) a,
   ];
   if (!context.mounted) return null;
-  final pick = await showModalBottomSheet<int>(
+  final pick = await showDdxSheet<int>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -180,7 +181,7 @@ class _AssetsScreenState extends ConsumerState<AssetsScreen> {
       if (bytes == null || !context.mounted) return;
       await Navigator.of(context).push(MaterialPageRoute<void>(
         builder: (c) => Scaffold(
-          appBar: AppBar(title: Text(a.name)),
+          appBar: DdxGlassBar(child: AppBar(title: Text(a.name))),
           body: InteractiveViewer(maxScale: 6, child: Center(child: Image.memory(bytes))),
         ),
       ));
@@ -240,7 +241,7 @@ class _AssetsScreenState extends ConsumerState<AssetsScreen> {
     final list = ref.watch(assetsProvider(nexusId));
 
     return Scaffold(
-      appBar: AppBar(title: Text(l.assetsTitle), actions: [
+      appBar: DdxGlassBar(child: AppBar(title: Text(l.assetsTitle), actions: [
         IconButton(
           tooltip: l.assetsAddUrl,
           icon: const Icon(Icons.add_link),
@@ -252,7 +253,7 @@ class _AssetsScreenState extends ConsumerState<AssetsScreen> {
             await _refresh();
           },
         ),
-      ]),
+      ])),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => addAssetsFromDevice(context, ref, nexusId),
         icon: const Icon(Icons.add),

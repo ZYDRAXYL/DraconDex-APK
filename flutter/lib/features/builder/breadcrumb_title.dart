@@ -10,6 +10,7 @@ import '../../data/services/search_service.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../widgets/color_dot.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// One segment of the breadcrumb: the Nexus, a module, or an element.
 class Crumb {
@@ -110,7 +111,7 @@ class BreadcrumbTitle extends StatelessWidget {
   }
 
   void _showHiddenSheet(BuildContext context, List<Crumb> hidden) {
-    showModalBottomSheet<void>(
+    showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,
@@ -163,7 +164,7 @@ void _goFromSheet(BuildContext sheetContext, String location) {
 /// What is inside [crumb]: child modules, and for a module its elements. An
 /// element segment lists its siblings — the module's other elements.
 Future<void> showCrumbChildrenSheet(BuildContext context, Crumb crumb, {required bool isCurrent}) {
-  return showModalBottomSheet<void>(
+  return showDdxSheet<void>(
     context: context,
     // Over the Navibar, not under it: the shell's own navigator sits
     // above the bar, so a sheet opened on it would be cut off by it.
@@ -256,7 +257,7 @@ class _CrumbChildrenSheet extends ConsumerWidget {
 /// "Go to": type a name, a path or `@handle`; the vault index of [nexusId]
 /// is matched loosely as the user types, and Enter takes the best match.
 Future<void> showGoToSheet(BuildContext context, {required int nexusId, String initial = ''}) {
-  return showModalBottomSheet<void>(
+  return showDdxSheet<void>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,

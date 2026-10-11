@@ -13,6 +13,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/navigation_providers.dart';
 import '../../../widgets/color_dot.dart';
 import '../../../widgets/ddx_list.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Shared bits of the per-kind views.
 
@@ -99,7 +100,7 @@ void openElement(BuildContext context, int nexusId, int moduleId, String key) =>
 /// Asks for one line of text; null when cancelled or empty.
 Future<String?> askText(BuildContext context, String title, {String initial = '', String? label}) async {
   final c = TextEditingController(text: initial);
-  final r = await showDialog<String>(
+  final r = await showDdxDialog<String>(
     context: context,
     builder: (d) => AlertDialog(
       title: Text(title),
@@ -234,7 +235,7 @@ Future<IndexedItem?> pickEntity(BuildContext context, WidgetRef ref, int nexusId
   final all = await ref.read(nexusIndexProvider(nexusId).future);
   final rows = [for (final it in all) if (where == null || where(it)) it];
   if (!context.mounted) return null;
-  return showModalBottomSheet<IndexedItem>(
+  return showDdxSheet<IndexedItem>(
     context: context,
     useRootNavigator: true,
     isScrollControlled: true,

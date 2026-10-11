@@ -7,6 +7,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_provider.dart';
 import '../../../providers/navigation_providers.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Where a move lands: a Collector, or the top level ([parentId] null —
 /// for an asset that is the unfiled tray).
@@ -27,7 +28,7 @@ Future<MoveTarget?> showMoveToSheet(
   Set<int> moving = const {},
   int? startAt,
 }) {
-  return showModalBottomSheet<MoveTarget>(
+  return showDdxSheet<MoveTarget>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,

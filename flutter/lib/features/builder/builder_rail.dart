@@ -4,9 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/i18n/app_localizations.dart';
 import '../../core/layout/breakpoints.dart';
+import '../../core/theme/ddx_theme.dart';
 import '../../data/models/module_model.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/shell_layout_provider.dart';
+import '../../widgets/ddx_glass.dart';
 import '../../widgets/row_menu.dart';
 import 'builder_shell.dart';
 import 'hub_location.dart';
@@ -51,14 +53,18 @@ class BuilderRail extends ConsumerWidget {
 
     // Material, not a bare Container: every row below is an InkWell, and ink
     // splashes need a Material of their own to land on once this panel paints
-    // its own surface colour over the Scaffold's.
-    return Material(
-      color: theme.colorScheme.surface,
+    // its own surface colour over the Scaffold's. On Glass the pane is the
+    // surface and the hairline (Procress 23), and the Material goes clear.
+    final glass = context.isGlassStyle;
+    final rail = Material(
+      color: glass ? Colors.transparent : theme.colorScheme.surface,
       child: Container(
         width: extended ? kRailExtendedWidth : kRailWidth,
-        decoration: BoxDecoration(
-          border: Border(right: BorderSide(color: theme.dividerColor)),
-        ),
+        decoration: glass
+            ? null
+            : BoxDecoration(
+                border: Border(right: BorderSide(color: theme.dividerColor)),
+              ),
         child: SafeArea(
           right: false,
           // The rail runs the full height of the window, so it — not the
@@ -148,6 +154,7 @@ class BuilderRail extends ConsumerWidget {
         ),
       ),
     );
+    return glass ? DdxGlass(edge: DdxGlassEdge.end, backdrop: true, child: rail) : rail;
   }
 }
 

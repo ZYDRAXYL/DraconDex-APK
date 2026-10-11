@@ -12,6 +12,7 @@ import 'links.dart';
 import 'module_page.dart';
 import 'page_providers.dart';
 import 'page_strings.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// The ⚙ on a block while arranging — the phone's sheet for the desktop's
 /// popover (EXE renderer/page/style-pop.js, APP docs/TEMPLATES.md §6):
@@ -20,7 +21,7 @@ import 'page_strings.dart';
 /// saved as it is made; Reset clears the open tab, and "Use on every block
 /// of this kind" copies the style to the page's other blocks of the kind
 /// (anchor and header title stay per block).
-Future<void> showBlockSettings(BuildContext context, WidgetRef ref, PageKey pageKey, int blockId) => showModalBottomSheet<void>(
+Future<void> showBlockSettings(BuildContext context, WidgetRef ref, PageKey pageKey, int blockId) => showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,
