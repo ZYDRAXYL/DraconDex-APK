@@ -20,6 +20,7 @@ import '../core_components.dart';
 import 'graph_view.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Classifier's four presets (EXE mod/classifier.js CLASSIFIER_VIEWS):
 /// table, list·detail, relations, grid — one loader, one typed editor.
@@ -207,12 +208,12 @@ class ClassifierView extends ConsumerWidget {
     }
 
     final bar = ViewBar(actions: [
-      IconButton(
+      DdxIconButton(
+        icon: Icons.view_column_outlined,
         tooltip: l.classifierNewField,
-        icon: const Icon(Icons.view_column_outlined),
         onPressed: () => editClsField(context, ref, m.id, null),
       ),
-      IconButton(tooltip: l.classifierNewItem, icon: const Icon(Icons.add), onPressed: add),
+      DdxIconButton(icon: Icons.add, tooltip: l.classifierNewItem, onPressed: add),
     ]);
     final body = data.items.isEmpty
         ? KindEmptyState(module: m, note: l.classifierNoItems, startLabel: l.classifierNewItem, onStart: add)
@@ -416,9 +417,10 @@ class _ClsListDetailState extends ConsumerState<_ClsListDetail> {
               key: ValueKey(it.id),
               title: Text(it.name, overflow: TextOverflow.ellipsis),
               subtitle: sub(it).isEmpty ? null : Text(sub(it), maxLines: 1, overflow: TextOverflow.ellipsis),
-              trailing: IconButton(
-                icon: const Icon(Icons.open_in_new, size: 18),
+              trailing: DdxIconButton(
+                icon: Icons.open_in_new,
                 tooltip: l.rowOpen,
+                size: DdxIconSize.sm,
                 onPressed: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${it.id}'),
               ),
               childrenPadding: const EdgeInsets.only(bottom: 8),
@@ -455,9 +457,10 @@ class _ClsListDetailState extends ConsumerState<_ClsListDetail> {
           child: ListView(children: [
             ListTile(
               title: Text(sel.name, style: Theme.of(context).textTheme.titleMedium),
-              trailing: IconButton(
-                icon: const Icon(Icons.open_in_new, size: 18),
+              trailing: DdxIconButton(
+                icon: Icons.open_in_new,
                 tooltip: l.rowOpen,
+                size: DdxIconSize.sm,
                 onPressed: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${sel.id}'),
               ),
             ),
@@ -831,9 +834,10 @@ Future<void> _editRelations(
             ListTile(
               dense: true,
               title: Text(data?.names[r.to] ?? r.to),
-              trailing: IconButton(
-                icon: const Icon(Icons.close, size: 18),
+              trailing: DdxIconButton(
+                icon: Icons.close,
                 tooltip: l.btnDelete,
+                size: DdxIconSize.sm,
                 onPressed: () async {
                   final db = await ref.read(databaseProvider.future);
                   await ClassifierDao(db).deleteRelation(r.id);

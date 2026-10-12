@@ -8,6 +8,7 @@ import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// Scribe kind: chat-style notes. Sessions across the top, the selected
 /// session's transcript below, and a composer that appends to it.
@@ -191,9 +192,10 @@ class _TranscriptState extends ConsumerState<_Transcript> {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.delete_outline,
                 tooltip: l10n.btnDelete,
-                icon: const Icon(Icons.delete_outline, size: 18),
+                size: DdxIconSize.sm,
                 onPressed: widget.onDeleteSession,
               ),
             ],
@@ -251,9 +253,10 @@ class _TranscriptState extends ConsumerState<_Transcript> {
                   onSubmitted: (_) => _send(),
                 ),
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.send,
                 tooltip: l10n.btnAdd,
-                icon: const Icon(Icons.send, size: 20),
+                size: DdxIconSize.md,
                 onPressed: _send,
               ),
             ],

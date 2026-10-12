@@ -6,6 +6,7 @@ import '../../providers/module_provider.dart';
 import '../../providers/shell_layout_provider.dart';
 import 'hub_location.dart';
 import 'hub_tree.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// The tablet shell's hub panel — the Electron build's `#left-panel` on a
 /// touch screen: the whole Nexus nest as one tree you can walk without
@@ -112,9 +113,10 @@ class _PanelHead extends StatelessWidget {
             ),
           ),
           if (onClose != null)
-            IconButton(
-              icon: const Icon(Icons.chevron_left, size: 20),
+            DdxIconButton(
+              icon: Icons.chevron_left,
               tooltip: AppLocalizations.of(context)!.hubPanelHide,
+              size: DdxIconSize.md,
               onPressed: onClose,
             ),
         ],

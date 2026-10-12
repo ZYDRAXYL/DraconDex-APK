@@ -9,6 +9,7 @@ import '../../widgets/color_dot.dart';
 import '../../widgets/color_picker_widget.dart';
 import '../../widgets/confirm_dialog.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 class TagsScreen extends ConsumerWidget {
   const TagsScreen({super.key});
@@ -52,13 +53,15 @@ class TagsScreen extends ConsumerWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.edit),
+                    DdxIconButton(
+                      icon: Icons.edit,
+                      tooltip: l10n.btnEdit,
                       onPressed: () => showDdxDialog(context: context, builder: (_) => _TagFormDialog(existing: t))
                           .then((_) => ref.invalidate(hashtagsProvider)),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.delete),
+                    DdxIconButton(
+                      icon: Icons.delete,
+                      tooltip: l10n.btnDelete,
                       onPressed: () => showConfirmDialog(ctx, title: l10n.deleteHashtagConfirmTitle).then((ok) {
                         if (ok) {
                           ref.read(hashtagDaoProvider).whenData((d) async {

@@ -18,6 +18,7 @@ import '../page/views/view_common.dart';
 import 'folder_assets.dart';
 import '../../widgets/sized_image.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 final assetsProvider = FutureProvider.autoDispose.family<List<Asset>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
@@ -242,9 +243,9 @@ class _AssetsScreenState extends ConsumerState<AssetsScreen> {
 
     return Scaffold(
       appBar: DdxGlassBar(child: AppBar(title: Text(l.assetsTitle), actions: [
-        IconButton(
+        DdxIconButton(
+          icon: Icons.add_link,
           tooltip: l.assetsAddUrl,
-          icon: const Icon(Icons.add_link),
           onPressed: () async {
             final url = await askText(context, l.assetsAddUrl, label: 'https://…');
             if (url == null || !RegExp(r'^https?://', caseSensitive: false).hasMatch(url)) return;

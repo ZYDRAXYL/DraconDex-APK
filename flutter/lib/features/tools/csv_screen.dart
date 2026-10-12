@@ -11,6 +11,7 @@ import '../../providers/db_providers.dart';
 import '../hub/dialogs/new_module_sheet.dart';
 import '../page/views/classifier_views.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// CSV → Classifier (V5.md §11.10, EXE hub/csv-import.js): pick a file, see
 /// every column's guessed type and change it (or skip the column), then one
@@ -77,7 +78,7 @@ class _CsvScreenState extends ConsumerState<CsvScreen> {
     final c = _csv;
     return Scaffold(
       appBar: DdxGlassBar(child: AppBar(title: Text(l.csvImportTitle), actions: [
-        IconButton(tooltip: l.csvPick, icon: const Icon(Icons.file_open_outlined), onPressed: _pick),
+        DdxIconButton(icon: Icons.file_open_outlined, tooltip: l.csvPick, onPressed: _pick),
       ])),
       floatingActionButton: c == null ? null : FloatingActionButton.extended(onPressed: _create, icon: const Icon(Icons.check), label: Text(l.csvCreate)),
       body: c == null

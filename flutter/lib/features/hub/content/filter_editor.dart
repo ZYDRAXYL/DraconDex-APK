@@ -5,6 +5,7 @@ import '../../../data/models/viewer_model.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The saved-filter editor, shared by Viewer and Connector exactly as the
 /// desktop shares openSavedFilterPopup between mod/viewer.js and
@@ -195,9 +196,10 @@ class _RuleRow extends StatelessWidget {
                           field: rule.field, op: o, value: rule.value)),
                 ),
               const Spacer(),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.close,
                 tooltip: l10n.btnDelete,
-                icon: const Icon(Icons.close, size: 16),
+                size: DdxIconSize.sm,
                 onPressed: onRemove,
               ),
             ],

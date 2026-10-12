@@ -12,6 +12,7 @@ import '../../widgets/ddx_list.dart';
 import '../builder/open_pages.dart';
 import '../hub/dialogs/nexus_dialog.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// The one search field of APK V3 (APP docs/APK-V3.md §9.2, §13 item 14):
 /// results in three groups — things (names of modules and elements), content
@@ -119,8 +120,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             border: InputBorder.none,
             suffixIcon: _controller.text.isEmpty
                 ? null
-                : IconButton(
-                    icon: const Icon(Icons.clear),
+                : DdxIconButton(
+                    icon: Icons.clear,
                     tooltip: l10n.btnClose,
                     onPressed: () {
                       _controller.clear();

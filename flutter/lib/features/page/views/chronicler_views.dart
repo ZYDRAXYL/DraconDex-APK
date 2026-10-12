@@ -14,6 +14,7 @@ import '../../hub/content/chronicler_content.dart';
 import '../component_registry.dart';
 import 'graph_view.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Chronicler's four presets (EXE mod/chronicler.js CHRONICLER_VIEWS):
 /// oneline, downline, compare, calendar. Positions are minutes since the
@@ -347,9 +348,9 @@ class _CalendarState extends State<_Calendar> {
     final lead = weekdays.isEmpty ? 0 : calCycleSlot(spec, 'week', calDayIndex(spec, _y, _m, 1));
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        IconButton(icon: const Icon(Icons.chevron_left), onPressed: () => _step(-1)),
+        DdxIconButton(icon: Icons.chevron_left, tooltip: MaterialLocalizations.of(context).previousPageTooltip, onPressed: () => _step(-1)),
         Flexible(child: Text('${calMonthLabel(spec, _m - 1)} $_y', style: theme.textTheme.titleMedium, overflow: TextOverflow.ellipsis)),
-        IconButton(icon: const Icon(Icons.chevron_right), onPressed: () => _step(1)),
+        DdxIconButton(icon: Icons.chevron_right, tooltip: MaterialLocalizations.of(context).nextPageTooltip, onPressed: () => _step(1)),
       ]),
       if (weekdays.isNotEmpty)
         Padding(

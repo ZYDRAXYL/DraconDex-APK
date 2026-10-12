@@ -8,6 +8,7 @@ import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// Chronicler kind: the module's timeline, in chronological order.
 ///
@@ -158,9 +159,10 @@ class _Events extends ConsumerWidget {
                         style: theme.textTheme.bodySmall,
                       ),
                       onTap: () => _edit(context, ref, existing: e),
-                      trailing: IconButton(
+                      trailing: DdxIconButton(
+                        icon: Icons.delete_outline,
                         tooltip: l10n.btnDelete,
-                        icon: const Icon(Icons.delete_outline, size: 18),
+                        size: DdxIconSize.sm,
                         onPressed: () => _delete(context, ref, e),
                       ),
                     ),

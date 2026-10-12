@@ -15,6 +15,7 @@ import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_segmented.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Diviner's page (EXE mod/diviner.js): its tables, the open one's roll
 /// button and last result, its entries, and its roll history.
@@ -296,11 +297,11 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
             label: Text(l.divRoll),
           ),
           const SizedBox(width: 8),
-          IconButton(tooltip: l.btnEdit, icon: const Icon(Icons.tune), onPressed: () => _tableDialog(t)),
+          DdxIconButton(icon: Icons.tune, tooltip: l.btnEdit, onPressed: () => _tableDialog(t)),
           // The table's own page (V5.md §12.4): its notes, properties and links.
-          IconButton(
+          DdxIconButton(
+            icon: Icons.open_in_new,
             tooltip: l.rowOpen,
-            icon: const Icon(Icons.open_in_new),
             onPressed: () => openElement(context, widget.ctx.nexusId, _id, 'divt_${t['id']}'),
           ),
           const Spacer(),
@@ -320,9 +321,9 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
           ),
         ),
       ViewBar(title: l.divEntries, actions: [
-        IconButton(
+        DdxIconButton(
+          icon: Icons.add,
           tooltip: l.btnAdd,
-          icon: const Icon(Icons.add),
           onPressed: () async {
             await (await _dao()).createEntry(t['id'] as int);
             _refresh();
@@ -358,9 +359,9 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
         ),
       ViewBar(title: l.divHistory, actions: [
         if (d.rolls.isNotEmpty)
-          IconButton(
+          DdxIconButton(
+            icon: Icons.delete_sweep_outlined,
             tooltip: l.btnClear,
-            icon: const Icon(Icons.delete_sweep_outlined),
             onPressed: () async {
               await (await _dao()).clearRolls(t['id'] as int);
               _refresh();

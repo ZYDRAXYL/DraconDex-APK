@@ -18,6 +18,7 @@ import 'graph_view.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Exhibitor's and the Manager's views: both are a saved filter over
 /// the Nexus index (module_ui filterDef, V5.md §8.9), drawn several ways
@@ -120,9 +121,9 @@ class SelectionView extends ConsumerWidget {
             title: data.def.isEmpty ? null : '${data.items.length}',
             actions: [
               if (exhibitor && ctx.preset != 'scene')
-                IconButton(
+                DdxIconButton(
+                  icon: Icons.add_link,
                   tooltip: l.connectorAddRelation,
-                  icon: const Icon(Icons.add_link),
                   onPressed: () => addRelationDialog(context, ref, ctx, data.items),
                 ),
               if (ctx.preset == 'board')
@@ -401,9 +402,10 @@ class _Edges extends ConsumerWidget {
           title: Text('${data.nameOf(r.from)}  ${r.directed ? '→' : '—'}  ${data.nameOf(r.to)}'),
           subtitle: r.label.isEmpty ? null : Text(r.label),
           onTap: () => openKey(context, ref, r.to),
-          trailing: IconButton(
-            icon: const Icon(Icons.delete_outline, size: 18),
+          trailing: DdxIconButton(
+            icon: Icons.delete_outline,
             tooltip: l.btnDelete,
+            size: DdxIconSize.sm,
             onPressed: () async {
               if (!await showConfirmDialog(context, title: l.confirmDeleteTitle, message: l.confirmDeleteMessage)) return;
               final db = await ref.read(databaseProvider.future);

@@ -150,9 +150,9 @@ class _DesignerViewState extends ConsumerState<DesignerView> {
           label: Text(l.designerLinkCancel),
         ),
       if (comic && widget.ctx.preset != 'matrix') ...[
-        IconButton(
+        DdxIconButton(
+          icon: Icons.format_list_numbered,
           tooltip: l.dgNumberByPosition,
-          icon: const Icon(Icons.format_list_numbered),
           onPressed: () async {
             await (await _dao()).renumberReadOrder(_id);
             _refresh();

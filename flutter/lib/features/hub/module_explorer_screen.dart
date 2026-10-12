@@ -23,6 +23,7 @@ import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
 import 'widgets/nexus_collection_view.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// One page of the Hub, shown inside the Builder shell: the Nexus root
 /// (moduleId null), a single module's own page — its content area (if its
@@ -265,7 +266,7 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
           ? null
           : BottomAppBar(
               child: Row(children: [
-                IconButton(tooltip: MaterialLocalizations.of(context).closeButtonTooltip, icon: const Icon(Icons.close), onPressed: endSelect),
+                DdxIconButton(icon: Icons.close, tooltip: MaterialLocalizations.of(context).closeButtonTooltip, onPressed: endSelect),
                 Expanded(child: Text(l10n.selectedCount.replaceAll('{n}', '${selection.length}'))),
                 FilledButton.icon(
                   icon: const Icon(Icons.drive_file_move_outline),

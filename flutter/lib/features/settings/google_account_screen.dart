@@ -7,6 +7,7 @@ import '../../data/services/drive_backup_service.dart';
 import '../../data/services/google_auth_service.dart';
 import '../../providers/drive_provider.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// Settings → Google account. The Flutter/PWA twin of the Electron app's
 /// Setting → User → Account page: enter the OAuth client from your own
@@ -252,9 +253,10 @@ class _RedirectUriBox extends StatelessWidget {
             Expanded(
               child: SelectableText(uri, style: theme.textTheme.bodySmall),
             ),
-            IconButton(
+            DdxIconButton(
+              icon: Icons.copy,
               tooltip: l10n.sbCopied,
-              icon: const Icon(Icons.copy, size: 18),
+              size: DdxIconSize.sm,
               onPressed: () async {
                 await Clipboard.setData(ClipboardData(text: uri));
                 onCopied();

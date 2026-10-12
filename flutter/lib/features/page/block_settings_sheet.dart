@@ -16,6 +16,7 @@ import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_segmented.dart';
 import '../../widgets/ddx_chip.dart';
 import '../../widgets/ddx_card.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// The ⚙ on a block while arranging — the phone's sheet for the desktop's
 /// popover (EXE renderer/page/style-pop.js, APP docs/TEMPLATES.md §6):
@@ -268,7 +269,7 @@ class _BlockSettingsSheetState extends ConsumerState<BlockSettingsSheet> {
                 },
                 child: Text(l10n.pbChooseFile),
               ),
-              if (v != null) IconButton(tooltip: l10n.btnDelete, icon: const Icon(Icons.close), onPressed: () => set(d.key, null)),
+              if (v != null) DdxIconButton(icon: Icons.close, tooltip: l10n.btnDelete, onPressed: () => set(d.key, null)),
             ]),
           ]);
         case OptType.images:
@@ -374,7 +375,7 @@ class _ListEditor extends StatelessWidget {
                 onDone: (v) async => onChanged([...values]..[i] = v.trim()),
               ),
             ),
-            IconButton(tooltip: l10n.btnDelete, icon: const Icon(Icons.close), onPressed: () => onChanged([...values]..removeAt(i))),
+            DdxIconButton(icon: Icons.close, tooltip: l10n.btnDelete, onPressed: () => onChanged([...values]..removeAt(i))),
           ]),
         ),
       if (values.length < max)
@@ -445,17 +446,17 @@ class _LinksEditor extends ConsumerWidget {
                 ),
               ],
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                IconButton(
+                DdxIconButton(
+                  icon: Icons.arrow_upward,
                   tooltip: l10n.pbLinkUp,
-                  icon: const Icon(Icons.arrow_upward),
                   onPressed: i == 0 ? null : () => onChanged([...links]..insert(i - 1, links[i])..removeAt(i + 1)),
                 ),
-                IconButton(
+                DdxIconButton(
+                  icon: Icons.arrow_downward,
                   tooltip: l10n.pbLinkDown,
-                  icon: const Icon(Icons.arrow_downward),
                   onPressed: i == links.length - 1 ? null : () => onChanged([...links]..insert(i + 2, links[i])..removeAt(i)),
                 ),
-                IconButton(tooltip: l10n.btnDelete, icon: const Icon(Icons.close), onPressed: () => onChanged([...links]..removeAt(i))),
+                DdxIconButton(icon: Icons.close, tooltip: l10n.btnDelete, onPressed: () => onChanged([...links]..removeAt(i))),
               ]),
             ]),
           ),

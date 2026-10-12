@@ -9,6 +9,7 @@ import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// Narrator kind: dialogue scenes, the script inside the selected one, and
 /// the routes leading out of it.
@@ -242,9 +243,10 @@ class _Scene extends ConsumerWidget {
                 child: Text(scene.name,
                     style: theme.textTheme.titleMedium, overflow: TextOverflow.ellipsis),
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.delete_outline,
                 tooltip: l10n.btnDelete,
-                icon: const Icon(Icons.delete_outline, size: 18),
+                size: DdxIconSize.sm,
                 onPressed: () async {
                   final ok = await showConfirmDialog(
                     context,
@@ -294,9 +296,10 @@ class _Scene extends ConsumerWidget {
                           // Non-talk rows are authored on the desktop; show
                           // them but do not offer to edit them as talk.
                           trailing: t.isPlainTalk
-                              ? IconButton(
+                              ? DdxIconButton(
+                                  icon: Icons.close,
                                   tooltip: l10n.btnDelete,
-                                  icon: const Icon(Icons.close, size: 16),
+                                  size: DdxIconSize.sm,
                                   onPressed: () async {
                                     final dao = ref.read(narratorDaoProvider).valueOrNull;
                                     await dao?.deleteTalk(t.id);

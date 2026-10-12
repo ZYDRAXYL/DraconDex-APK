@@ -17,6 +17,7 @@ import '../../../widgets/ddx_list.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Author's five presets (EXE mod/author.js AUTHOR_VIEWS): editor,
 /// board (the corkboard, author-board.js), outline, reading, book.
@@ -72,7 +73,7 @@ class AuthorView extends ConsumerWidget {
     }
 
     final bar = ViewBar(actions: [
-      IconButton(tooltip: l.authorNewChapter, icon: const Icon(Icons.add), onPressed: add),
+      DdxIconButton(icon: Icons.add, tooltip: l.authorNewChapter, onPressed: add),
     ]);
     if (chapters.isEmpty) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.authorNoChapters, startLabel: l.authorNewChapter, onStart: add)]);
     final body = switch (ctx.preset) {

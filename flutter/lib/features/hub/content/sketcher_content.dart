@@ -8,6 +8,7 @@ import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// Sketcher kind: freehand drawing pages.
 ///
@@ -184,9 +185,10 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
                 selected: _width == w,
                 onSelected: (_) => setState(() => _width = w),
               ),
-            IconButton(
+            DdxIconButton(
+              icon: Icons.undo,
               tooltip: l10n.sketcherUndo,
-              icon: const Icon(Icons.undo, size: 20),
+              size: DdxIconSize.md,
               onPressed: () async {
                 final dao = ref.read(sketcherDaoProvider).valueOrNull;
                 if (dao == null) return;
@@ -196,9 +198,10 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
                 ref.invalidate(sketchStrokesProvider(page.id));
               },
             ),
-            IconButton(
+            DdxIconButton(
+              icon: Icons.delete_outline,
               tooltip: l10n.sketcherClear,
-              icon: const Icon(Icons.delete_outline, size: 20),
+              size: DdxIconSize.md,
               onPressed: () async {
                 final ok = await showConfirmDialog(
                   context,

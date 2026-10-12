@@ -17,6 +17,7 @@ import 'graph_view.dart';
 import 'node_canvas.dart';
 import 'selection_views.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Exhibitor's scene (EXE mod/exhibitor-scene.js): the one canvas whose
 /// node positions are real rows (exhibit_node). A phone sees it as a
@@ -239,9 +240,9 @@ class _ExhibitorSceneState extends ConsumerState<ExhibitorScene> {
     final edges = widget.data.among(keyed.keys.toSet());
 
     final tools = Row(children: [
-      IconButton(tooltip: l.exhAddElement, icon: const Icon(Icons.add_box_outlined), onPressed: () => _add('entity', world)),
-      IconButton(tooltip: l.exhAddNote, icon: const Icon(Icons.sticky_note_2_outlined), onPressed: () => _add('note', world)),
-      IconButton(tooltip: l.exhAddGroup, icon: const Icon(Icons.crop_square), onPressed: () => _add('group', world)),
+      DdxIconButton(icon: Icons.add_box_outlined, tooltip: l.exhAddElement, onPressed: () => _add('entity', world)),
+      DdxIconButton(icon: Icons.sticky_note_2_outlined, tooltip: l.exhAddNote, onPressed: () => _add('note', world)),
+      DdxIconButton(icon: Icons.crop_square, tooltip: l.exhAddGroup, onPressed: () => _add('group', world)),
     ]);
 
     Widget nodeWidget(ExhNode n) {

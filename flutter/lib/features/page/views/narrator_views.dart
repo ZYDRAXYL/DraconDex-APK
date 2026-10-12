@@ -22,6 +22,7 @@ import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_segmented.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Narrator's four presets (EXE mod/narrator.js NARRATOR_VIEWS): board,
 /// routes, reader (script and play-test, narrator-logic.js), dialogue.
@@ -150,12 +151,12 @@ class NarratorView extends ConsumerWidget {
 
     final bar = ViewBar(actions: [
       if (ctx.preset == 'routes' || ctx.preset == 'board')
-        IconButton(
+        DdxIconButton(
+          icon: Icons.alt_route,
           tooltip: l.narAddRoute,
-          icon: const Icon(Icons.alt_route),
           onPressed: data.dialogues.length < 2 ? null : () => _addRoute(context, ref, id, data),
         ),
-      IconButton(tooltip: l.narratorNewScene, icon: const Icon(Icons.add), onPressed: add),
+      DdxIconButton(icon: Icons.add, tooltip: l.narratorNewScene, onPressed: add),
     ]);
     if (data.dialogues.isEmpty) {
       return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.narratorNoScenes, startLabel: l.narratorNewScene, onStart: add)]);

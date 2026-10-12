@@ -7,6 +7,7 @@ import '../../providers/db_providers.dart';
 import '../../widgets/ddx_list.dart';
 import '../page/views/view_common.dart';
 import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 final problemsProvider = FutureProvider.autoDispose.family<List<Problem>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
@@ -43,7 +44,11 @@ class _ProblemsScreenState extends ConsumerState<ProblemsScreen> {
         };
     return Scaffold(
       appBar: DdxGlassBar(child: AppBar(title: Text(l.problemsTitle), actions: [
-        IconButton(icon: const Icon(Icons.refresh), onPressed: () => ref.invalidate(problemsProvider(nexusId))),
+        DdxIconButton(
+          icon: Icons.refresh,
+          tooltip: MaterialLocalizations.of(context).refreshIndicatorSemanticLabel,
+          onPressed: () => ref.invalidate(problemsProvider(nexusId)),
+        ),
       ])),
       body: list.when(
         loading: () => const Center(child: CircularProgressIndicator()),

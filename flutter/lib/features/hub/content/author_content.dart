@@ -9,6 +9,7 @@ import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// Author kind: a book made of chapters. The chapter list picks one; the
 /// editor below writes `book_chapter.chapter_content`.
@@ -222,14 +223,16 @@ class _ChapterEditorState extends ConsumerState<_ChapterEditor> {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.edit_outlined,
                 tooltip: l10n.btnRename,
-                icon: const Icon(Icons.edit_outlined, size: 18),
+                size: DdxIconSize.sm,
                 onPressed: widget.onRename,
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.delete_outline,
                 tooltip: l10n.btnDelete,
-                icon: const Icon(Icons.delete_outline, size: 18),
+                size: DdxIconSize.sm,
                 onPressed: widget.onDelete,
               ),
             ],
