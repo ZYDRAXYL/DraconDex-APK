@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../providers/builder_view_provider.dart';
 import '../../providers/module_provider.dart';
@@ -8,7 +9,7 @@ import '../../widgets/ddx_list.dart';
 import '../../widgets/large_title_layout.dart';
 import '../builder/view_mode_button.dart';
 import '../update/update_dialog.dart';
-import 'dialogs/nexus_dialog.dart';
+import 'new_nexus_screen.dart';
 import 'widgets/nexus_collection_view.dart';
 import '../../widgets/ddx_glass.dart';
 
@@ -45,10 +46,8 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
     await showDdxDialog(context: context, builder: (_) => UpdateDialog(update: result.update!));
   }
 
-  Future<void> _newNexus() async {
-    await showDdxDialog(context: context, builder: (_) => const NexusDialog());
-    ref.invalidate(nexusesProvider);
-  }
+  // Step 1 of New Nexus, the template picker, full-screen (Procress 25)
+  void _newNexus() => context.push(NewNexusScreen.route);
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/builder/builder_shell.dart';
 import '../../features/hub/nexus_list_screen.dart';
 import '../../features/hub/module_explorer_screen.dart';
+import '../../features/hub/new_nexus_screen.dart';
 import '../../features/search/search_screen.dart';
 import '../../features/tags/tags_screen.dart';
 import '../../features/colors/colors_screen.dart';
@@ -63,6 +64,10 @@ final appRouter = GoRouter(
           builder: (ctx, state) => const SearchScreen(),
         ),
       ],
+    ),
+    GoRoute(
+      path: NewNexusScreen.route,
+      builder: (ctx, state) => const NewNexusScreen(),
     ),
     GoRoute(
       path: '/settings',

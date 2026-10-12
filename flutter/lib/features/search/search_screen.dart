@@ -7,10 +7,9 @@ import 'package:go_router/go_router.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../data/services/search_service.dart';
 import '../../providers/db_providers.dart';
-import '../../providers/module_provider.dart';
 import '../../widgets/ddx_list.dart';
 import '../builder/open_pages.dart';
-import '../hub/dialogs/nexus_dialog.dart';
+import '../hub/new_nexus_screen.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_icon_button.dart';
 
@@ -86,9 +85,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   List<_Command> _commands(AppLocalizations l10n) => [
         _Command(l10n.newNexusTooltip, Icons.add_circle_outline, (context) async {
-          await showDdxDialog(context: context, builder: (_) => const NexusDialog());
-          ref.invalidate(nexusesProvider);
-          if (context.mounted) context.go('/');
+          context.push(NewNexusScreen.route);
         }),
         _Command(l10n.openPagesTitle, Icons.filter_none,
             (context) => showOpenPagesSheet(context, currentLocation: '/search')),

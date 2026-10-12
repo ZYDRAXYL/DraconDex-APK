@@ -57,6 +57,11 @@ import 'package:dracondex/providers/update_provider.dart';
 /// | this Nexus's name            | 3      | 2     |
 /// | tag colour                   | 3      | 2     |
 ///
+/// And one path that starts on the home screen, not the Nexus page, with a
+/// limit of 3 (Procress 25, UX-LAYOUT.md §14.6): a Nexus from a template —
+/// New → the template's card → Create Nexus (its name is already filled in).
+/// Before: New → open "Start with" → pick → Save, 4 taps.
+///
 /// Not on APK, so not here: module icon/colour, a Nexus's colour and Locate
 /// folder, workspace style, rail buttons, startup, packages, per-area font
 /// size, custom themes.
@@ -96,7 +101,7 @@ void main() {
     }
   }
 
-  Future<void> openNexusPage(WidgetTester tester) async {
+  Future<void> openNexusPage(WidgetTester tester, {String? at}) async {
     await seed(tester);
     tester.view.physicalSize = const Size(390 * 3, 844 * 3);
     tester.view.devicePixelRatio = 3;
@@ -109,9 +114,9 @@ void main() {
       ],
       child: const DraconDexApp(),
     ));
-    appRouter.go('/hub/$nexus');
+    appRouter.go(at ?? '/hub/$nexus');
     await settle(tester);
-    expect(find.text('World'), findsWidgets, reason: 'on the Nexus page');
+    expect(find.text('World'), findsWidgets, reason: at == null ? 'on the Nexus page' : 'on the home screen');
   }
 
   // ── where to tap ────────────────────────────────────────────────────────
@@ -180,4 +185,31 @@ void main() {
       (t) => depth(t, path: [pageMenu, () => text('Rename')], control: inDialog(find.text('Rename Nexus'))));
   testWidgets('tag colour',
       (t) => depth(t, path: [() => text('More'), () => text('Tags')], control: () => find.byKey(const ValueKey('tag-color'))));
+
+  testWidgets('a Nexus from a template (from home, ≤ 3)', (t) async {
+    await openNexusPage(t, at: '/');
+    final path = [
+      () => tip('New Nexus'),
+      () => text('Fantasy novel'),
+      () => find.descendant(of: find.byType(BottomSheet), matching: find.widgetWithText(FilledButton, 'Create Nexus')).hitTestable(),
+    ];
+    for (final (i, step) in path.indexed) {
+      final target = step();
+      expect(target, findsWidgets, reason: 'step ${i + 1} of the path is gone');
+      await t.tap(target.first);
+      await settle(t);
+      expect(find.byType(BottomSheet).evaluate().length, lessThanOrEqualTo(1), reason: 'a sheet over a sheet');
+    }
+    // the template is hundreds of statements, each answered on another isolate
+    for (var i = 0; i < 4000 && !appRouter.routerDelegate.currentConfiguration.uri.path.startsWith('/hub/'); i++) {
+      await t.runAsync(() => Future<void>.delayed(Duration.zero));
+      await t.pump(const Duration(milliseconds: 1));
+    }
+    await settle(t);
+    expect(appRouter.routerDelegate.currentConfiguration.uri.path, isNot('/hub/$nexus'));
+    expect(appRouter.routerDelegate.currentConfiguration.uri.path, startsWith('/hub/'), reason: 'the new Nexus is open');
+    expect(path.length, lessThanOrEqualTo(3), reason: 'deeper than 3 taps');
+    await t.pumpWidget(const SizedBox());
+    await t.runAsync(db.close);
+  });
 }

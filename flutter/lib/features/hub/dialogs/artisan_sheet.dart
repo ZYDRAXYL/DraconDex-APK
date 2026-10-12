@@ -159,7 +159,7 @@ class _ArtisanSheetState extends State<_ArtisanSheet> with SingleTickerProviderS
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 260, mainAxisExtent: 150, mainAxisSpacing: 10, crossAxisSpacing: 10),
       children: [
         for (final b in bundles)
-          _BundleCard(
+          BundleCard(
             bundle: b,
             selected: identical(b, sel),
             onTap: () => setState(() {
@@ -223,12 +223,12 @@ Decoration _cover(Map spec) {
 
 IconData _iconOf(Map spec) => moduleKindInfo[_kindsOf(spec).firstOrNull]?.icon ?? Icons.folder_outlined;
 
-class _BundleCard extends StatelessWidget {
+class BundleCard extends StatelessWidget {
   final Map<String, dynamic> bundle;
   final bool selected;
   final VoidCallback onTap;
   final VoidCallback? onDelete;
-  const _BundleCard({required this.bundle, required this.selected, required this.onTap, this.onDelete});
+  const BundleCard({super.key, required this.bundle, required this.selected, required this.onTap, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
