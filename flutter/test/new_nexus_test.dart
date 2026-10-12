@@ -166,6 +166,11 @@ void main() {
     final id = nx.first['id'] as int;
     expect(await rows(tester, 'SELECT id FROM module WHERE nexus_ref=?', [id]), isEmpty);
     expect(find.text('Nexus created, but the template could not be added'), findsOneWidget);
+    // on the new Nexus's page, where it floats clear of the FAB instead of
+    // over it (it used to land on the shell's Scaffold and cover it)
+    final bar = tester.getRect(find.byType(SnackBar));
+    final fab = tester.getRect(find.byType(FloatingActionButton).first);
+    expect(bar.overlaps(fab), isFalse, reason: 'the snack bar covers the FAB');
 
     var applied = 0;
     NewNexusScreen.applySpec = (d, id, spec) async {

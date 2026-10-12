@@ -39,6 +39,15 @@ import 'shell_sheets.dart';
 /// Screens keep their own Scaffold (app bar, FAB) in both shapes; this one
 /// only adds the chrome around them.
 class BuilderShell extends ConsumerStatefulWidget {
+  /// The messenger of the pages inside the shell. Their own Scaffold (the one
+  /// with the FAB) is nested in the shell's, and a messenger shows a snack bar
+  /// only on the outermost Scaffold it serves — the shell's, where it covered
+  /// the page's FAB instead of lifting it. With a messenger of their own
+  /// between the two, the page's Scaffold shows it and moves the FAB up.
+  /// Code that outlives its page (New Nexus, once it has opened the new one)
+  /// shows its snack bar here.
+  static final messengerKey = GlobalKey<ScaffoldMessengerState>();
+
   final Widget child;
 
   /// Current router path, handed down from the ShellRoute builder's own
@@ -88,6 +97,7 @@ class _BuilderShellState extends ConsumerState<BuilderShell> {
 
   @override
   Widget build(BuildContext context) {
+    final page = ScaffoldMessenger(key: BuilderShell.messengerKey, child: widget.child);
     if (ddxLayoutOf(context).hasRail) {
       // A tablet keeps its chrome. Bars a phone-shaped window hid — before a
       // rotation or a Split View resize made it this one — come back.
@@ -96,11 +106,11 @@ class _BuilderShellState extends ConsumerState<BuilderShell> {
           if (mounted) ref.read(chromeVisibleProvider.notifier).state = true;
         });
       }
-      return _RailShell(location: widget.location, child: widget.child);
+      return _RailShell(location: widget.location, child: page);
     }
     final visible = ref.watch(chromeVisibleProvider);
     return Scaffold(
-      body: NotificationListener<ScrollNotification>(onNotification: _onScroll, child: widget.child),
+      body: NotificationListener<ScrollNotification>(onNotification: _onScroll, child: page),
       bottomNavigationBar: AnimatedSize(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,

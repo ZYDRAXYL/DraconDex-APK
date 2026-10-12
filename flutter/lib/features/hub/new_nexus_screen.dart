@@ -17,6 +17,7 @@ import '../../widgets/ddx_card.dart';
 import '../../widgets/ddx_field.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_segmented.dart';
+import '../builder/builder_shell.dart';
 import 'dialogs/artisan_sheet.dart';
 
 /// Where "New Nexus" goes (APP Plan.md Procress 25 part 5, docs/UX-LAYOUT.md
@@ -219,7 +220,8 @@ class _NewNexusScreenState extends ConsumerState<NewNexusScreen> {
       if (bundle != null) () async => {...((bundle['spec'] as Map?) ?? const {}).cast<String, dynamic>(), 'name': bundle['name'], 'icon': ?bundle['icon']},
       if (req.appDocs) () => BundleService.loadGuide(locale),
     ];
-    Future<void> run() async {
+    /// Builds what is still pending; true when something failed.
+    Future<bool> run() async {
       final failed = <Future<Map<String, dynamic>> Function()>[];
       for (final step in pending) {
         try {
@@ -235,17 +237,28 @@ class _NewNexusScreenState extends ConsumerState<NewNexusScreen> {
       container.invalidate(moduleChildrenProvider);
       container.invalidate(nexusIndexProvider(id));
       container.invalidate(pinnedModulesProvider(id));
-      if (failed.isNotEmpty) {
-        messenger.showSnackBar(SnackBar(
-          content: Text(l.nexusTemplateFailed),
-          duration: const Duration(seconds: 10),
-          action: SnackBarAction(label: l.btnRetry, onPressed: () => run()),
-        ));
-      }
+      return failed.isNotEmpty;
     }
 
-    await run();
+    // Shown on the new Nexus's page — its own messenger, so the snack bar
+    // lifts that page's FAB (BuilderShell.messengerKey).
+    void offerRetry() => (BuilderShell.messengerKey.currentState ?? messenger).showSnackBar(SnackBar(
+          content: Text(l.nexusTemplateFailed),
+          duration: const Duration(seconds: 10),
+          action: SnackBarAction(
+            label: l.btnRetry,
+            onPressed: () async {
+              if (await run()) offerRetry();
+            },
+          ),
+        ));
+
+    final failed = await run();
     router.go('/hub/$id');
+    if (failed) {
+      await WidgetsBinding.instance.endOfFrame;
+      offerRetry();
+    }
   }
 }
 
