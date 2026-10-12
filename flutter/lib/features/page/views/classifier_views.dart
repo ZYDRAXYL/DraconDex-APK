@@ -21,6 +21,7 @@ import 'graph_view.dart';
 import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Classifier's four presets (EXE mod/classifier.js CLASSIFIER_VIEWS):
 /// table, list·detail, relations, grid — one loader, one typed editor.
@@ -703,7 +704,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
         context: context,
         builder: (d) => AlertDialog(
           title: Text(f.description),
-          content: TextField(
+          content: DdxField(
             controller: c,
             autofocus: true,
             keyboardType: f.type == 'number' ? const TextInputType.numberWithOptions(decimal: true, signed: true) : TextInputType.url,
@@ -792,10 +793,10 @@ Future<String?> _editDate(BuildContext context, String title, String raw) async 
         for (var i = 0; i < 5; i++)
           SizedBox(
             width: i == 2 ? 88 : 56,
-            child: TextField(
+            child: DdxField(
               controller: cs[i],
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: labels[i], isDense: true),
+              label: labels[i],
             ),
           ),
       ]),
@@ -879,7 +880,7 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
         title: Text(f == null ? l.classifierNewField : l.clsEditField),
         content: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            TextField(controller: name, autofocus: f == null, decoration: InputDecoration(labelText: l.labelName)),
+            DdxField(controller: name, autofocus: f == null, label: l.labelName),
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
               initialValue: type,
@@ -911,7 +912,7 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
             ],
             if (type == 'formula') ...[
               const SizedBox(height: 12),
-              TextField(controller: expr, decoration: InputDecoration(labelText: l.clsTypeFormula, hintText: l.clsFormulaHint)),
+              DdxField(controller: expr, label: l.clsTypeFormula, hint: l.clsFormulaHint),
             ],
             ExpansionTile(
               tilePadding: EdgeInsets.zero,
@@ -1026,12 +1027,12 @@ class ClsLevelTable extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               for (final c in cols)
-                TextField(
+                DdxField(
                   controller: ctl[c],
                   autofocus: c == cols.first,
                   minLines: 1,
                   maxLines: c == 'info_value' ? 5 : 1,
-                  decoration: InputDecoration(labelText: columnLabel(l, c)),
+                  label: columnLabel(l, c),
                 ),
             ],
           ),

@@ -23,6 +23,7 @@ import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_segmented.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Narrator's four presets (EXE mod/narrator.js NARRATOR_VIEWS): board,
 /// routes, reader (script and play-test, narrator-logic.js), dialogue.
@@ -191,7 +192,7 @@ Future<void> _addRoute(BuildContext context, WidgetRef ref, int moduleId, StoryD
           content: Column(mainAxisSize: MainAxisSize.min, children: [
             pick(from, l.connectorFrom, (x) => from = x),
             pick(to, l.narratorLeadsTo, (x) => to = x),
-            TextField(controller: label, decoration: InputDecoration(labelText: l.connectorLabel)),
+            DdxField(controller: label, label: l.connectorLabel),
           ]),
           actions: [
             TextButton(onPressed: () => Navigator.pop(d), child: Text(l.btnCancel)),

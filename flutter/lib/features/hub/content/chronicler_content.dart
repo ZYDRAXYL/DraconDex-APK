@@ -9,6 +9,7 @@ import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Chronicler kind: the module's timeline, in chronological order.
 ///
@@ -245,10 +246,10 @@ class _EventDialogState extends State<_EventDialog> {
 
   Widget _num(TextEditingController c, String label) => SizedBox(
         width: 72,
-        child: TextField(
+        child: DdxField(
           controller: c,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(labelText: label, isDense: true),
+          label: label,
         ),
       );
 
@@ -262,10 +263,10 @@ class _EventDialogState extends State<_EventDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
+            DdxField(
               controller: _name,
               autofocus: true,
-              decoration: InputDecoration(labelText: l10n.labelName),
+              label: l10n.labelName,
             ),
             const SizedBox(height: 12),
             Text(l10n.chroniclerStart, style: Theme.of(context).textTheme.labelMedium),

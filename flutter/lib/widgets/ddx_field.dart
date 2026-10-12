@@ -39,6 +39,8 @@ class DdxField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.suffixText,
+    this.prefixText,
+    this.autocorrect = true,
   });
 
   final TextEditingController? controller;
@@ -69,6 +71,8 @@ class DdxField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String? suffixText;
+  final String? prefixText;
+  final bool autocorrect;
 
   static double heightOf(DdxFieldSize s) => switch (s) {
         DdxFieldSize.sm => DdxSize.ctlSm,
@@ -98,6 +102,7 @@ class DdxField extends StatelessWidget {
       minLines: minLines,
       maxLength: maxLength,
       obscureText: obscureText,
+      autocorrect: autocorrect,
       inputFormatters: inputFormatters,
       style: TextStyle(color: enabled ? ddx.palette.t1 : ddx.textMuted),
       decoration: InputDecoration(
@@ -114,6 +119,7 @@ class DdxField extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         suffixText: suffixText,
+        prefixText: prefixText,
         // read-only reads as a value, not as a box waiting for input
         fillColor: readOnly || !enabled ? ddx.palette.surface : null,
       ),

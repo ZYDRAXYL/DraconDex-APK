@@ -13,6 +13,7 @@ import 'component_registry.dart';
 import 'page_providers.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_chip.dart';
+import '../../widgets/ddx_field.dart';
 
 /// A new module's first page: its kind's ★ template (the desktop's
 /// applyStartTemplate). A failure leaves the default layout, which the page
@@ -474,10 +475,10 @@ Future<void> showSaveTemplateDialog(BuildContext context, WidgetRef ref, ModuleM
     builder: (d) => AlertDialog(
       title: Text(l10n.tplSave.replaceAll('…', '')),
       content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        TextField(
+        DdxField(
           controller: c,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.nameField),
+          label: l10n.nameField,
           onSubmitted: (v) => Navigator.pop(d, v.trim()),
         ),
         const SizedBox(height: 10),

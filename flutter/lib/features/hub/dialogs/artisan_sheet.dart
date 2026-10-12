@@ -12,6 +12,7 @@ import '../../../providers/db_providers.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Artisan sheet (APP docs/TEMPLATES.md §4; EXE hub/bundles.js): the
 /// bundles in three tabs — Classic, Genre (with the guide) and Mine, the
@@ -552,7 +553,7 @@ class _AdjustSheetState extends State<_AdjustSheet> {
               child: ListView(shrinkWrap: true, padding: const EdgeInsets.fromLTRB(20, 0, 20, 8), children: [
                 Text('${widget.spec['name'] ?? ''} · ${l.bundleAdjust}', style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 12),
-                TextField(controller: _name, decoration: InputDecoration(labelText: l.bundleProjectName)),
+                DdxField(controller: _name, label: l.bundleProjectName),
                 if (_hasSamples)
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
@@ -587,7 +588,7 @@ class _AdjustSheetState extends State<_AdjustSheet> {
         Checkbox(value: on, onChanged: (v) => setState(() => v == true ? _keep.add(i) : _keep.remove(i))),
         Icon(moduleKindInfo[ModuleKind.fromId('${m['kind']}')]!.icon, size: 18, color: context.ddx.textMuted),
         const SizedBox(width: 8),
-        Expanded(child: TextField(controller: _names[i], enabled: on, decoration: const InputDecoration(isDense: true))),
+        Expanded(child: DdxField(controller: _names[i], enabled: on)),
       ]),
       if (on && fields.isNotEmpty)
         Padding(
@@ -600,7 +601,7 @@ class _AdjustSheetState extends State<_AdjustSheet> {
               for (final (k, f) in fields.indexed)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 6),
-                  child: TextField(controller: _field(i, k, '${f['name'] ?? ''}'), decoration: const InputDecoration(isDense: true)),
+                  child: DdxField(controller: _field(i, k, '${f['name'] ?? ''}')),
                 ),
             ],
           ),
@@ -622,7 +623,7 @@ Future<void> showSaveBundleDialog(BuildContext context, WidgetRef ref, ModuleMod
       builder: (d, set) => AlertDialog(
         title: Text(l.bundleSaveMine.replaceAll('…', '')),
         content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          TextField(controller: c, autofocus: true, decoration: InputDecoration(labelText: l.nameField)),
+          DdxField(controller: c, autofocus: true, label: l.nameField),
           const SizedBox(height: 12),
           DropdownButtonFormField<bool>(
             initialValue: samples,

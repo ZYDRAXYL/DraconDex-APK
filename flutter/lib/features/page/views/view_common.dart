@@ -15,6 +15,7 @@ import '../../../widgets/color_dot.dart';
 import '../../../widgets/ddx_list.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Shared bits of the per-kind views.
 
@@ -105,10 +106,10 @@ Future<String?> askText(BuildContext context, String title, {String initial = ''
     context: context,
     builder: (d) => AlertDialog(
       title: Text(title),
-      content: TextField(
+      content: DdxField(
         controller: c,
         autofocus: true,
-        decoration: InputDecoration(labelText: label),
+        label: label,
         onSubmitted: (v) => Navigator.pop(d, v.trim()),
       ),
       actions: [
@@ -278,9 +279,10 @@ class _EntityPickerState extends State<_EntityPicker> {
               ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: TextField(
+              child: DdxField(
                 autofocus: true,
-                decoration: InputDecoration(prefixIcon: const Icon(Icons.search), hintText: l10n.labelSearch, isDense: true),
+                prefixIcon: const Icon(Icons.search),
+                hint: l10n.labelSearch,
                 onChanged: (v) => setState(() => _q = v),
               ),
             ),

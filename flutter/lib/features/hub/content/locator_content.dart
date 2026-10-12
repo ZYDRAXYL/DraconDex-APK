@@ -10,6 +10,7 @@ import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Locator kind: a map with drawable polygon areas.
 ///
@@ -99,10 +100,10 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.btnRename),
-        content: TextField(
+        content: DdxField(
           controller: controller,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.labelName),
+          label: l10n.labelName,
           onSubmitted: (v) => Navigator.of(ctx).pop(v.trim()),
         ),
         actions: [

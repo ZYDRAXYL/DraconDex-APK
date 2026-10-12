@@ -10,6 +10,7 @@ import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Narrator kind: dialogue scenes, the script inside the selected one, and
 /// the routes leading out of it.
@@ -39,10 +40,10 @@ class _NarratorContentState extends ConsumerState<NarratorContent> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(title),
-        content: TextField(
+        content: DdxField(
           controller: controller,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.labelName),
+          label: l10n.labelName,
           onSubmitted: (v) => Navigator.of(ctx).pop(v.trim()),
         ),
         actions: [
@@ -169,10 +170,10 @@ class _Scene extends ConsumerWidget {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TextField(
+            DdxField(
               controller: speaker,
               autofocus: true,
-              decoration: InputDecoration(labelText: l10n.narratorSpeaker),
+              label: l10n.narratorSpeaker,
             ),
             const SizedBox(height: 8),
             TextField(

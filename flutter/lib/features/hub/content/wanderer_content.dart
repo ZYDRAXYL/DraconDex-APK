@@ -8,6 +8,7 @@ import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Wanderer kind: timeline events pinned onto a map.
 ///
@@ -59,10 +60,10 @@ class _WandererContentState extends ConsumerState<WandererContent> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextField(
+                DdxField(
                   controller: controller,
                   autofocus: true,
-                  decoration: InputDecoration(labelText: l10n.wandererLabel),
+                  label: l10n.wandererLabel,
                 ),
                 const SizedBox(height: 12),
                 Text(l10n.wandererLinkedEvent,

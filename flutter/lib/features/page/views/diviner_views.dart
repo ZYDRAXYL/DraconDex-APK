@@ -16,6 +16,7 @@ import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_segmented.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Diviner's page (EXE mod/diviner.js): its tables, the open one's roll
 /// button and last result, its entries, and its roll history.
@@ -86,10 +87,13 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
           title: Text(t == null ? l.divNewTable : l.btnEdit),
           content: SingleChildScrollView(
             child: Column(mainAxisSize: MainAxisSize.min, children: [
-              TextField(controller: name, autofocus: t == null, decoration: InputDecoration(labelText: l.labelName)),
-              TextField(
+              DdxField(controller: name, autofocus: t == null, label: l.labelName),
+              DdxField(
                 controller: dice,
-                decoration: InputDecoration(labelText: l.divDice, hintText: '1d20 · 2d6+1 · d%', helperText: l.divDiceHelp, errorText: error),
+                label: l.divDice,
+                hint: '1d20 · 2d6+1 · d%',
+                helper: l.divDiceHelp,
+                errorText: error,
               ),
               const SizedBox(height: 8),
               DdxSegmented<String>(
@@ -153,15 +157,15 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
         title: Text(l.btnEdit),
         content: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            TextField(controller: text, autofocus: true, maxLines: 3, minLines: 1, decoration: InputDecoration(labelText: l.divEntryText)),
+            DdxField(controller: text, autofocus: true, maxLines: 3, minLines: 1, label: l.divEntryText),
             if (dice)
               Row(children: [
-                Expanded(child: TextField(controller: lo, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: l.divFrom))),
+                Expanded(child: DdxField(controller: lo, keyboardType: TextInputType.number, label: l.divFrom)),
                 const SizedBox(width: 12),
-                Expanded(child: TextField(controller: hi, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: l.divTo))),
+                Expanded(child: DdxField(controller: hi, keyboardType: TextInputType.number, label: l.divTo)),
               ])
             else
-              TextField(controller: weight, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: l.divWeight)),
+              DdxField(controller: weight, keyboardType: TextInputType.number, label: l.divWeight),
           ]),
         ),
         actions: [
@@ -249,8 +253,9 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
       child: Row(children: [
         Expanded(
-          child: TextField(
-            decoration: InputDecoration(isDense: true, hintText: l.divQuickRoll, prefixIcon: const Icon(Icons.casino_outlined, size: 18)),
+          child: DdxField(
+            hint: l.divQuickRoll,
+            prefixIcon: const Icon(Icons.casino_outlined, size: 18),
             onSubmitted: (v) => setState(() => _quick = rollDice(v)?.text ?? l.divBadDice),
           ),
         ),

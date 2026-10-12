@@ -19,6 +19,7 @@ import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_card.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Exhibitor's and the Manager's views: both are a saved filter over
 /// the Nexus index (module_ui filterDef, V5.md §8.9), drawn several ways
@@ -446,7 +447,7 @@ Future<void> addRelationDialog(BuildContext context, WidgetRef ref, ComponentCtx
             child: Column(mainAxisSize: MainAxisSize.min, children: [
               pick(from, l.connectorFrom, (x) => from = x),
               pick(to, l.connectorTo, (x) => to = x),
-              TextField(controller: label, decoration: InputDecoration(labelText: l.connectorLabel)),
+              DdxField(controller: label, label: l.connectorLabel),
               SwitchListTile(
                 contentPadding: EdgeInsets.zero,
                 title: Text(l.relDirected),

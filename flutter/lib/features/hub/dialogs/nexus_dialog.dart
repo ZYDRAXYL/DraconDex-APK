@@ -4,6 +4,7 @@ import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/module_model.dart';
 import '../../../data/services/bundle_service.dart';
 import '../../../providers/db_providers.dart';
+import '../../../widgets/ddx_field.dart';
 
 class NexusDialog extends ConsumerStatefulWidget {
   final NexusModel? existing;
@@ -44,9 +45,9 @@ class _NexusDialogState extends ConsumerState<NexusDialog> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextField(controller: _name, autofocus: true, decoration: InputDecoration(labelText: '${l10n.labelName} *')),
+          DdxField(controller: _name, autofocus: true, label: '${l10n.labelName} *'),
           const SizedBox(height: 12),
-          TextField(controller: _memo, decoration: InputDecoration(labelText: l10n.labelMemo), maxLines: 2),
+          DdxField(controller: _memo, label: l10n.labelMemo, maxLines: 2),
           if (widget.existing == null) ...[
             const SizedBox(height: 12),
             FutureBuilder<List<Map<String, dynamic>>>(

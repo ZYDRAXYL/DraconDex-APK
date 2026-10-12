@@ -10,6 +10,7 @@ import '../../page/views/view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Author kind: a book made of chapters. The chapter list picks one; the
 /// editor below writes `book_chapter.chapter_content`.
@@ -48,10 +49,10 @@ class _AuthorContentState extends ConsumerState<AuthorContent> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.btnRename),
-        content: TextField(
+        content: DdxField(
           controller: controller,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.labelName),
+          label: l10n.labelName,
           onSubmitted: (v) => Navigator.of(ctx).pop(v.trim()),
         ),
         actions: [

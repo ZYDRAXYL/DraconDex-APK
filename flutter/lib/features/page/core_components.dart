@@ -30,6 +30,7 @@ import 'views/sketcher_views.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_chip.dart';
 import '../../widgets/ddx_card.dart';
+import '../../widgets/ddx_field.dart';
 
 /// Properties, Related, and an element page's body — the three components
 /// every page can hold (EXE renderer/page/blocks.js, item-page.js).
@@ -315,7 +316,7 @@ Future<void> editPropSheet(BuildContext context, WidgetRef ref, ComponentCtx ctx
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextField(controller: name, autofocus: prop == null, decoration: InputDecoration(labelText: l10n.pbPropName)),
+              DdxField(controller: name, autofocus: prop == null, label: l10n.pbPropName),
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 initialValue: type,
@@ -327,14 +328,14 @@ Future<void> editPropSheet(BuildContext context, WidgetRef ref, ComponentCtx ctx
               if (type == 'textarea')
                 WikiTextField(controller: value, nexusId: ctx.nexusId, minLines: 3, maxLines: 8)
               else if (type != 'checkbox')
-                TextField(
+                DdxField(
                   controller: value,
                   keyboardType: type == 'number'
                       ? TextInputType.number
                       : type == 'url'
                           ? TextInputType.url
                           : TextInputType.text,
-                  decoration: InputDecoration(hintText: type == 'date' ? 'YYYY-MM-DD' : null),
+                  hint: type == 'date' ? 'YYYY-MM-DD' : null,
                 ),
             ],
           ),

@@ -10,6 +10,7 @@ import '../../widgets/color_picker_widget.dart';
 import '../../widgets/confirm_dialog.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_icon_button.dart';
+import '../../widgets/ddx_field.dart';
 
 class TagsScreen extends ConsumerWidget {
   const TagsScreen({super.key});
@@ -114,9 +115,10 @@ class _TagFormDialogState extends ConsumerState<_TagFormDialog> {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TextField(
+          DdxField(
             controller: _name,
-            decoration: InputDecoration(labelText: l10n.tagNameLabel, prefixText: '#'),
+            label: l10n.tagNameLabel,
+            prefixText: '#',
           ),
           const SizedBox(height: 12),
           Row(children: [

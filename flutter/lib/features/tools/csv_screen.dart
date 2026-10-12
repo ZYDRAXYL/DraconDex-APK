@@ -12,6 +12,7 @@ import '../hub/dialogs/new_module_sheet.dart';
 import '../page/views/classifier_views.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_icon_button.dart';
+import '../../widgets/ddx_field.dart';
 
 /// CSV → Classifier (V5.md §11.10, EXE hub/csv-import.js): pick a file, see
 /// every column's guessed type and change it (or skip the column), then one
@@ -90,7 +91,7 @@ class _CsvScreenState extends ConsumerState<CsvScreen> {
               ]),
             )
           : ListView(padding: const EdgeInsets.fromLTRB(16, 12, 16, 96), children: [
-              TextField(controller: _name, decoration: InputDecoration(labelText: '${l.labelName} *')),
+              DdxField(controller: _name, label: '${l.labelName} *'),
               const SizedBox(height: 8),
               Text('${c.rows.length} · ${c.encoding}${c.truncated ? ' · ${l.csvTruncated}' : ''}', style: theme.textTheme.bodySmall),
               const SizedBox(height: 8),
