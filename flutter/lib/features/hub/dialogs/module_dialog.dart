@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/models/module_model.dart';
 import '../../../providers/db_providers.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Renames a module (kind is fixed once created). A new module starts in
 /// the grouped kind sheet (new_module_sheet.dart); the create path here is
@@ -46,7 +47,7 @@ class _ModuleDialogState extends ConsumerState<ModuleDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(controller: _name, autofocus: true, decoration: InputDecoration(labelText: '${l10n.labelName} *')),
+            DdxField(controller: _name, autofocus: true, label: '${l10n.labelName} *'),
           ],
         ),
       ),

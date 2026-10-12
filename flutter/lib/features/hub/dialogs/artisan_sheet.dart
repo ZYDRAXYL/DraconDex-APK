@@ -10,6 +10,9 @@ import '../../../data/models/module_model.dart';
 import '../../../data/services/bundle_service.dart';
 import '../../../providers/db_providers.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Artisan sheet (APP docs/TEMPLATES.md §4; EXE hub/bundles.js): the
 /// bundles in three tabs — Classic, Genre (with the guide) and Mine, the
@@ -26,7 +29,7 @@ Future<Map<String, dynamic>?> pickArtisanBundle(BuildContext context, WidgetRef 
     tab = (await SharedPreferences.getInstance()).getInt(_tabKey)?.clamp(0, 2) ?? 1;
   } catch (_) {}
   if (!context.mounted) return null;
-  final picked = await showModalBottomSheet<(Map<String, dynamic>, bool)>(
+  final picked = await showDdxSheet<(Map<String, dynamic>, bool)>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -39,7 +42,7 @@ Future<Map<String, dynamic>?> pickArtisanBundle(BuildContext context, WidgetRef 
   if (picked == null || !context.mounted) return null;
   final (spec, adjustFirst) = picked;
   if (!adjustFirst) return spec;
-  return showModalBottomSheet<Map<String, dynamic>>(
+  return showDdxSheet<Map<String, dynamic>>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -156,7 +159,7 @@ class _ArtisanSheetState extends State<_ArtisanSheet> with SingleTickerProviderS
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 260, mainAxisExtent: 150, mainAxisSpacing: 10, crossAxisSpacing: 10),
       children: [
         for (final b in bundles)
-          _BundleCard(
+          BundleCard(
             bundle: b,
             selected: identical(b, sel),
             onTap: () => setState(() {
@@ -177,9 +180,9 @@ class _ArtisanSheetState extends State<_ArtisanSheet> with SingleTickerProviderS
                   },
           ),
         if (_groups[i] == 'genre')
-          Card(
+          DdxCard(
+            kind: DdxCardKind.link,
             margin: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: BorderSide(color: Theme.of(context).dividerColor)),
             child: InkWell(
               borderRadius: BorderRadius.circular(12),
               onTap: () async {
@@ -220,25 +223,21 @@ Decoration _cover(Map spec) {
 
 IconData _iconOf(Map spec) => moduleKindInfo[_kindsOf(spec).firstOrNull]?.icon ?? Icons.folder_outlined;
 
-class _BundleCard extends StatelessWidget {
+class BundleCard extends StatelessWidget {
   final Map<String, dynamic> bundle;
   final bool selected;
   final VoidCallback onTap;
   final VoidCallback? onDelete;
-  const _BundleCard({required this.bundle, required this.selected, required this.onTap, this.onDelete});
+  const BundleCard({super.key, required this.bundle, required this.selected, required this.onTap, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
     final spec = (bundle['spec'] as Map?) ?? const {};
     final desc = '${bundle['description'] ?? ''}';
-    final theme = Theme.of(context);
-    return Card(
+    return DdxCard(
+      kind: DdxCardKind.link,
       margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: selected ? theme.colorScheme.primary : theme.dividerColor, width: selected ? 2 : 1),
-      ),
+      selected: selected,
       child: InkWell(
         onTap: onTap,
         onLongPress: onDelete,
@@ -311,10 +310,9 @@ class _BundleDetailState extends State<_BundleDetail> {
           padding: const EdgeInsets.only(top: 14, bottom: 6),
           child: Text(t.toUpperCase(), style: TextStyle(fontSize: 11, letterSpacing: .5, color: context.ddx.textMuted, fontWeight: FontWeight.w600)),
         );
-    return Card(
+    return DdxCard(
+      kind: DdxCardKind.preview,
       margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: BorderSide(color: theme.dividerColor)),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Container(
           decoration: _cover(spec),
@@ -555,7 +553,7 @@ class _AdjustSheetState extends State<_AdjustSheet> {
               child: ListView(shrinkWrap: true, padding: const EdgeInsets.fromLTRB(20, 0, 20, 8), children: [
                 Text('${widget.spec['name'] ?? ''} · ${l.bundleAdjust}', style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 12),
-                TextField(controller: _name, decoration: InputDecoration(labelText: l.bundleProjectName)),
+                DdxField(controller: _name, label: l.bundleProjectName),
                 if (_hasSamples)
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
@@ -590,7 +588,7 @@ class _AdjustSheetState extends State<_AdjustSheet> {
         Checkbox(value: on, onChanged: (v) => setState(() => v == true ? _keep.add(i) : _keep.remove(i))),
         Icon(moduleKindInfo[ModuleKind.fromId('${m['kind']}')]!.icon, size: 18, color: context.ddx.textMuted),
         const SizedBox(width: 8),
-        Expanded(child: TextField(controller: _names[i], enabled: on, decoration: const InputDecoration(isDense: true))),
+        Expanded(child: DdxField(controller: _names[i], enabled: on)),
       ]),
       if (on && fields.isNotEmpty)
         Padding(
@@ -603,7 +601,7 @@ class _AdjustSheetState extends State<_AdjustSheet> {
               for (final (k, f) in fields.indexed)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 6),
-                  child: TextField(controller: _field(i, k, '${f['name'] ?? ''}'), decoration: const InputDecoration(isDense: true)),
+                  child: DdxField(controller: _field(i, k, '${f['name'] ?? ''}')),
                 ),
             ],
           ),
@@ -619,13 +617,13 @@ Future<void> showSaveBundleDialog(BuildContext context, WidgetRef ref, ModuleMod
   final messenger = ScaffoldMessenger.of(context);
   final c = TextEditingController(text: folder.name);
   var samples = false;
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, set) => AlertDialog(
         title: Text(l.bundleSaveMine.replaceAll('…', '')),
         content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          TextField(controller: c, autofocus: true, decoration: InputDecoration(labelText: l.nameField)),
+          DdxField(controller: c, autofocus: true, label: l.nameField),
           const SizedBox(height: 12),
           DropdownButtonFormField<bool>(
             initialValue: samples,

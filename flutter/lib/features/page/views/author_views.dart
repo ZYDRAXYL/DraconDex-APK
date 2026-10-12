@@ -13,7 +13,11 @@ import '../../../widgets/row_menu.dart';
 import '../../hub/content/author_content.dart';
 import '../component_registry.dart';
 import '../core_components.dart';
+import '../../../widgets/ddx_list.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Author's five presets (EXE mod/author.js AUTHOR_VIEWS): editor,
 /// board (the corkboard, author-board.js), outline, reading, book.
@@ -69,7 +73,7 @@ class AuthorView extends ConsumerWidget {
     }
 
     final bar = ViewBar(actions: [
-      IconButton(tooltip: l.authorNewChapter, icon: const Icon(Icons.add), onPressed: add),
+      DdxIconButton(icon: Icons.add, tooltip: l.authorNewChapter, onPressed: add),
     ]);
     if (chapters.isEmpty) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.authorNoChapters, startLabel: l.authorNewChapter, onStart: add)]);
     final body = switch (ctx.preset) {
@@ -161,7 +165,7 @@ class _Board extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Wrap(spacing: 6, children: [
-            for (final (s, n) in counts) Chip(visualDensity: VisualDensity.compact, label: Text('${authorStatusLabel(l, s)} $n')),
+            for (final (s, n) in counts) DdxChip.count(authorStatusLabel(l, s), n, size: DdxChipSize.sm),
           ]),
         ),
       GridView(
@@ -176,7 +180,8 @@ class _Board extends ConsumerWidget {
         ),
         children: [
           for (var i = 0; i < chapters.length; i++)
-            Card(
+            DdxCard(
+              kind: DdxCardKind.link,
               margin: EdgeInsets.zero,
               child: InkWell(
                 onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'bchp_${chapters[i].id}'),
@@ -259,14 +264,12 @@ class _Outline extends ConsumerWidget {
       },
       children: [
         for (var i = 0; i < chapters.length; i++)
-          ListTile(
+          DdxListTile(
             key: ValueKey(chapters[i].id),
-            leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator)),
-            title: Text('${_no(chapters[i], i)}. ${chapters[i].name}'),
-            subtitle: chapters[i].synopsis?.isNotEmpty == true
-                ? Text(chapters[i].synopsis!, maxLines: 2, overflow: TextOverflow.ellipsis)
-                : null,
-            trailing: chapters[i].status == null ? null : Text(authorStatusLabel(AppLocalizations.of(context)!, chapters[i].status!)),
+            reorderIndex: i,
+            title: '${_no(chapters[i], i)}. ${chapters[i].name}',
+            meta: chapters[i].synopsis,
+            count: chapters[i].status == null ? null : authorStatusLabel(AppLocalizations.of(context)!, chapters[i].status!),
             onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'bchp_${chapters[i].id}'),
             onLongPress: () => _chapterMenu(context, ref, ctx, chapters[i]),
           ),

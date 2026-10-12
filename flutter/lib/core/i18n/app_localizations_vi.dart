@@ -963,6 +963,24 @@ class AppLocalizationsVi extends AppLocalizations {
   String get transferErrBadPayload => 'Không đọc được tệp vừa nhận.';
 
   @override
+  String get transferSendKey => 'Khóa gửi';
+
+  @override
+  String get transferSendKeyHint => 'Hãy hỏi người quản lý dịch vụ truyền để lấy khóa của tuần này. Khóa đổi vào mỗi thứ Hai.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Dịch vụ này cần khóa gửi của tuần này trước khi nhận Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Khóa gửi không đúng — hoặc là khóa của tuần trước. Khóa đổi vào mỗi thứ Hai.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Thiết bị này đã nhập sai khóa gửi quá nhiều lần. Hãy đợi 15 phút rồi thử lại.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Dịch vụ truyền này đang tắt chức năng gửi (chưa cấu hình khóa gửi).';
+
+  @override
   String get transferErrServer => 'Dịch vụ chuyển gặp sự cố.';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get pageInside => 'Bên trong';
+
+  @override
+  String get listFilterHint => 'Lọc';
+
+  @override
+  String get listSort => 'Sắp xếp';
+
+  @override
+  String get listSortName => 'Tên';
+
+  @override
+  String get listSortEdited => 'Sửa gần nhất';
+
+  @override
+  String get listSortCreated => 'Ngày tạo';
+
+  @override
+  String get listSortKind => 'Loại';
+
+  @override
+  String get listSortManual => 'Theo thứ tự đã xếp';
+
+  @override
+  String get listCount => '{n} mục';
+
+  @override
+  String get listNoMatch => 'Không có mục nào khớp bộ lọc này.';
+
+  @override
+  String get listGroupToday => 'Hôm nay';
+
+  @override
+  String get listGroupThisWeek => 'Tuần này';
+
+  @override
+  String get listGroupOlder => 'Cũ hơn';
+
+  @override
+  String get assetGroupImage => 'Hình ảnh';
+
+  @override
+  String get assetGroupAudio => 'Âm thanh';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Tài liệu';
+
+  @override
+  String get assetGroupTrack => 'Phụ đề';
+
+  @override
+  String get assetGroupModel => 'Mô hình 3D';
+
+  @override
+  String get assetGroupUrl => 'Liên kết';
+
+  @override
+  String get assetGroupOther => 'Tệp khác';
+
+  @override
+  String get uiStyleLabel => 'Kiểu giao diện';
+
+  @override
+  String get uiStyleStandard => 'Tiêu chuẩn';
+
+  @override
+  String get uiStyleGlass => 'Kính';
+
+  @override
+  String get reduceTransparency => 'Giảm độ trong suốt';
+
+  @override
+  String get reduceTransparencyHint => 'Các bảng kính và thanh trong suốt trở nên đặc';
+
+  @override
+  String get glassBlurOff => 'Đã tắt làm mờ — thiết bị này vẽ quá chậm';
+
+  @override
+  String get glassBlurRetry => 'Thử lại';
+
+  @override
+  String get nexusPickTemplate => 'Chọn template';
+
+  @override
+  String get nexusTemplateBlank => 'Trống';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Nexus trống — tự thêm module';
+
+  @override
+  String get nexusCreateAppDocs => 'Tạo App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Hướng dẫn trong app, trong thư mục riêng';
+
+  @override
+  String get nexusNameTaken => 'Đã có Nexus trùng tên này';
+
+  @override
+  String get nexusTemplateFailed => 'Đã tạo Nexus nhưng không thêm được template';
+
+  @override
+  String get btnRetry => 'Thử lại';
+
+  @override
+  String get btnCreateNexus => 'Tạo Nexus';
 }

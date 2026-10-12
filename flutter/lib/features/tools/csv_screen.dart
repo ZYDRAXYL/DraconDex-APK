@@ -10,6 +10,9 @@ import '../../data/services/csv_import.dart';
 import '../../providers/db_providers.dart';
 import '../hub/dialogs/new_module_sheet.dart';
 import '../page/views/classifier_views.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
+import '../../widgets/ddx_field.dart';
 
 /// CSV → Classifier (V5.md §11.10, EXE hub/csv-import.js): pick a file, see
 /// every column's guessed type and change it (or skip the column), then one
@@ -75,9 +78,9 @@ class _CsvScreenState extends ConsumerState<CsvScreen> {
     final theme = Theme.of(context);
     final c = _csv;
     return Scaffold(
-      appBar: AppBar(title: Text(l.csvImportTitle), actions: [
-        IconButton(tooltip: l.csvPick, icon: const Icon(Icons.file_open_outlined), onPressed: _pick),
-      ]),
+      appBar: DdxGlassBar(child: AppBar(title: Text(l.csvImportTitle), actions: [
+        DdxIconButton(icon: Icons.file_open_outlined, tooltip: l.csvPick, onPressed: _pick),
+      ])),
       floatingActionButton: c == null ? null : FloatingActionButton.extended(onPressed: _create, icon: const Icon(Icons.check), label: Text(l.csvCreate)),
       body: c == null
           ? Center(
@@ -88,7 +91,7 @@ class _CsvScreenState extends ConsumerState<CsvScreen> {
               ]),
             )
           : ListView(padding: const EdgeInsets.fromLTRB(16, 12, 16, 96), children: [
-              TextField(controller: _name, decoration: InputDecoration(labelText: '${l.labelName} *')),
+              DdxField(controller: _name, label: '${l.labelName} *'),
               const SizedBox(height: 8),
               Text('${c.rows.length} · ${c.encoding}${c.truncated ? ' · ${l.csvTruncated}' : ''}', style: theme.textTheme.bodySmall),
               const SizedBox(height: 8),

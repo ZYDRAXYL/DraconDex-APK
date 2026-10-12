@@ -963,6 +963,24 @@ class AppLocalizationsZh extends AppLocalizations {
   String get transferErrBadPayload => '无法读取收到的文件。';
 
   @override
+  String get transferSendKey => '发送密钥';
+
+  @override
+  String get transferSendKeyHint => '请向传输服务的管理员索取本周的密钥。密钥每周一更换。';
+
+  @override
+  String get transferErrSendKeyRequired => '此服务需要本周的发送密钥才能接收 Nexus。';
+
+  @override
+  String get transferErrBadSendKey => '发送密钥不正确——或者是上周的密钥。密钥每周一更换。';
+
+  @override
+  String get transferErrSendKeyLocked => '此设备输入错误的发送密钥次数过多。请等待 15 分钟后重试。';
+
+  @override
+  String get transferErrSendKeyUnavailable => '此传输服务已关闭发送(未配置发送密钥)。';
+
+  @override
   String get transferErrServer => '传输服务出现问题。';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get pageInside => '内部';
+
+  @override
+  String get listFilterHint => '筛选';
+
+  @override
+  String get listSort => '排序';
+
+  @override
+  String get listSortName => '名称';
+
+  @override
+  String get listSortEdited => '最近编辑';
+
+  @override
+  String get listSortCreated => '创建时间';
+
+  @override
+  String get listSortKind => '类型';
+
+  @override
+  String get listSortManual => '按排列顺序';
+
+  @override
+  String get listCount => '{n} 项';
+
+  @override
+  String get listNoMatch => '没有符合此筛选条件的内容。';
+
+  @override
+  String get listGroupToday => '今天';
+
+  @override
+  String get listGroupThisWeek => '本周';
+
+  @override
+  String get listGroupOlder => '更早';
+
+  @override
+  String get assetGroupImage => '图片';
+
+  @override
+  String get assetGroupAudio => '音频';
+
+  @override
+  String get assetGroupVideo => '视频';
+
+  @override
+  String get assetGroupDoc => '文档';
+
+  @override
+  String get assetGroupTrack => '字幕';
+
+  @override
+  String get assetGroupModel => '3D 模型';
+
+  @override
+  String get assetGroupUrl => '链接';
+
+  @override
+  String get assetGroupOther => '其他文件';
+
+  @override
+  String get uiStyleLabel => '界面风格';
+
+  @override
+  String get uiStyleStandard => '标准';
+
+  @override
+  String get uiStyleGlass => '玻璃';
+
+  @override
+  String get reduceTransparency => '降低透明度';
+
+  @override
+  String get reduceTransparencyHint => '玻璃面板和半透明栏变为不透明';
+
+  @override
+  String get glassBlurOff => '模糊已关闭 — 此设备绘制过慢';
+
+  @override
+  String get glassBlurRetry => '重试';
+
+  @override
+  String get nexusPickTemplate => '选择模板';
+
+  @override
+  String get nexusTemplateBlank => '空白';
+
+  @override
+  String get nexusTemplateBlankDesc => '空的 Nexus — 自行添加模块';
+
+  @override
+  String get nexusCreateAppDocs => '创建 App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => '应用内指南，放在单独的文件夹中';
+
+  @override
+  String get nexusNameTaken => '已存在同名的 Nexus';
+
+  @override
+  String get nexusTemplateFailed => '已创建 Nexus，但未能添加模板';
+
+  @override
+  String get btnRetry => '重试';
+
+  @override
+  String get btnCreateNexus => '创建 Nexus';
 }

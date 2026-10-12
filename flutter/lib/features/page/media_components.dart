@@ -11,6 +11,8 @@ import '../../data/services/export/doc_source.dart' show sniffImage;
 import '../tools/assets_screen.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
+import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// The media blocks on the phone (Procress 14, APP docs/MEDIA-EMBED.md): the
 /// desktop's `core.video`, `core.audio`, `core.pdf`, `core.model3d` and
@@ -118,7 +120,7 @@ class MediaBlock extends ConsumerWidget {
       if (bytes == null || !context.mounted) return;
       await Navigator.of(context, rootNavigator: true).push(MaterialPageRoute<void>(
         builder: (c) => Scaffold(
-          appBar: AppBar(title: Text(a.name)),
+          appBar: DdxGlassBar(child: AppBar(title: Text(a.name))),
           body: InteractiveViewer(maxScale: 6, child: Center(child: Image.memory(bytes))),
         ),
       ));
@@ -164,7 +166,7 @@ class MediaBlock extends ConsumerWidget {
               child: SizedBox.square(
                 dimension: 72,
                 child: cover != null
-                    ? Image.memory(cover, fit: BoxFit.cover)
+                    ? SizedImage(cover, fit: BoxFit.cover)
                     : ColoredBox(color: Theme.of(context).colorScheme.surfaceContainerHighest, child: const Icon(Icons.music_note, size: 32)),
               ),
             ),
@@ -251,7 +253,7 @@ class _Poster extends StatelessWidget {
           onTap: onTap,
           child: Stack(fit: StackFit.expand, children: [
             if (poster != null)
-              Image.memory(poster!, fit: BoxFit.cover, gaplessPlayback: true)
+              SizedImage(poster!, fit: BoxFit.cover, gaplessPlayback: true)
             else
               Center(child: Icon(assetIcon(asset), size: compact ? 28 : 48, color: scheme.onSurfaceVariant)),
             // on a picture only: with no poster the class icon already says it

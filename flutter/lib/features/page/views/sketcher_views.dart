@@ -16,7 +16,10 @@ import '../../../widgets/row_menu.dart';
 import '../../hub/content/sketcher_content.dart';
 import '../component_registry.dart';
 import '../kind_views.dart';
+import '../../../widgets/ddx_list.dart';
+import '../../../core/theme/tokens.g.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Sketcher's four presets (EXE mod/sketcher.js SKETCHER_VIEWS): canvas,
 /// pages, gallery, export (a page as a PNG, shared).
@@ -115,7 +118,7 @@ class SketcherView extends ConsumerWidget {
     }
 
     final bar = ViewBar(actions: [
-      IconButton(tooltip: l.sketcherNewPage, icon: const Icon(Icons.add), onPressed: add),
+      DdxIconButton(icon: Icons.add, tooltip: l.sketcherNewPage, onPressed: add),
     ]);
     if (pages.isEmpty) return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.sketcherNoPages, startLabel: l.sketcherNewPage, onStart: add)]);
     final body = switch (ctx.preset) {
@@ -179,11 +182,12 @@ class _Pages extends ConsumerWidget {
       },
       children: [
         for (var i = 0; i < pages.length; i++)
-          ListTile(
+          DdxListTile(
             key: ValueKey(pages[i].id),
-            leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator)),
-            title: Text('${i + 1}. ${pages[i].name}'),
-            trailing: SizedBox(width: 64, height: 44, child: SketchThumb(pageId: pages[i].id)),
+            reorderIndex: i,
+            title: '${i + 1}. ${pages[i].name}',
+            // the page's thumbnail, a control's height so it sits in the row
+            trailing: [SizedBox(width: DdxSize.ctlMd * 1.5, height: DdxSize.ctlMd, child: SketchThumb(pageId: pages[i].id))],
             onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'skpg_${pages[i].id}'),
             onLongPress: () => _pageMenu(context, ref, ctx, pages[i]),
           ),

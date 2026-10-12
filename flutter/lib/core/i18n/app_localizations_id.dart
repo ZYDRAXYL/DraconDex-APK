@@ -963,6 +963,24 @@ class AppLocalizationsId extends AppLocalizations {
   String get transferErrBadPayload => 'Berkas yang diterima tidak dapat dibaca.';
 
   @override
+  String get transferSendKey => 'Kunci kirim';
+
+  @override
+  String get transferSendKeyHint => 'Minta kunci minggu ini kepada pengelola layanan transfer. Kunci berganti setiap Senin.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Layanan ini memerlukan kunci kirim minggu ini sebelum menerima Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Kunci kirim itu salah — atau milik minggu lalu. Kunci berganti setiap Senin.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Terlalu banyak kunci kirim yang salah dari perangkat ini. Tunggu 15 menit lalu coba lagi.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Pengiriman dimatikan di layanan transfer ini (kunci kirimnya belum diatur).';
+
+  @override
   String get transferErrServer => 'Layanan transfer bermasalah.';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pageInside => 'Isi';
+
+  @override
+  String get listFilterHint => 'Saring';
+
+  @override
+  String get listSort => 'Urutkan';
+
+  @override
+  String get listSortName => 'Nama';
+
+  @override
+  String get listSortEdited => 'Terakhir diedit';
+
+  @override
+  String get listSortCreated => 'Dibuat';
+
+  @override
+  String get listSortKind => 'Jenis';
+
+  @override
+  String get listSortManual => 'Sesuai susunan';
+
+  @override
+  String get listCount => '{n} item';
+
+  @override
+  String get listNoMatch => 'Tidak ada yang cocok dengan saringan ini.';
+
+  @override
+  String get listGroupToday => 'Hari ini';
+
+  @override
+  String get listGroupThisWeek => 'Minggu ini';
+
+  @override
+  String get listGroupOlder => 'Lebih lama';
+
+  @override
+  String get assetGroupImage => 'Gambar';
+
+  @override
+  String get assetGroupAudio => 'Audio';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Dokumen';
+
+  @override
+  String get assetGroupTrack => 'Subtitel';
+
+  @override
+  String get assetGroupModel => 'Model 3D';
+
+  @override
+  String get assetGroupUrl => 'Tautan';
+
+  @override
+  String get assetGroupOther => 'Berkas lain';
+
+  @override
+  String get uiStyleLabel => 'Gaya tampilan';
+
+  @override
+  String get uiStyleStandard => 'Standar';
+
+  @override
+  String get uiStyleGlass => 'Kaca';
+
+  @override
+  String get reduceTransparency => 'Kurangi transparansi';
+
+  @override
+  String get reduceTransparencyHint => 'Panel kaca dan bilah tembus pandang menjadi padat';
+
+  @override
+  String get glassBlurOff => 'Blur dimatikan — perangkat ini menggambarnya terlalu lambat';
+
+  @override
+  String get glassBlurRetry => 'Coba lagi';
+
+  @override
+  String get nexusPickTemplate => 'Pilih template';
+
+  @override
+  String get nexusTemplateBlank => 'Kosong';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Nexus kosong — tambahkan modul sendiri';
+
+  @override
+  String get nexusCreateAppDocs => 'Buat App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Panduan di dalam aplikasi, di foldernya sendiri';
+
+  @override
+  String get nexusNameTaken => 'Nexus dengan nama ini sudah ada';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus dibuat, tetapi template gagal ditambahkan';
+
+  @override
+  String get btnRetry => 'Coba lagi';
+
+  @override
+  String get btnCreateNexus => 'Buat Nexus';
 }

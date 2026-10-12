@@ -12,6 +12,7 @@ import '../../providers/navigation_providers.dart';
 import '../hub/widgets/move_to_sheet.dart';
 import 'assets_screen.dart';
 import 'folder_assets.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// "Share → DraconDex" on Android (APP Procress 16 part 2): files another app
 /// shares wait in MainActivity.kt until this takes them, asks which Nexus and
@@ -53,7 +54,7 @@ class _ShareInboxState extends ConsumerState<ShareInbox> {
 
     final nexusId = nexuses.length == 1
         ? nexuses.single.id
-        : await showModalBottomSheet<int>(
+        : await showDdxSheet<int>(
             context: ctx,
             showDragHandle: true,
             builder: (s) => ListView(shrinkWrap: true, children: [

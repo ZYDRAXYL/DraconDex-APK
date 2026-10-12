@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'danger_button.dart';
+import 'ddx_glass.dart';
 
 Future<bool> showConfirmDialog(BuildContext context, {String? title, String? message}) async {
-  final result = await showDialog<bool>(
+  final result = await showDdxDialog<bool>(
     context: context,
     builder: (ctx) => AlertDialog(
       title: Text(title ?? 'Confirm'),

@@ -12,6 +12,11 @@ import 'links.dart';
 import 'module_page.dart';
 import 'page_providers.dart';
 import 'page_strings.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_segmented.dart';
+import '../../widgets/ddx_chip.dart';
+import '../../widgets/ddx_card.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// The ⚙ on a block while arranging — the phone's sheet for the desktop's
 /// popover (EXE renderer/page/style-pop.js, APP docs/TEMPLATES.md §6):
@@ -20,7 +25,7 @@ import 'page_strings.dart';
 /// saved as it is made; Reset clears the open tab, and "Use on every block
 /// of this kind" copies the style to the page's other blocks of the kind
 /// (anchor and header title stay per block).
-Future<void> showBlockSettings(BuildContext context, WidgetRef ref, PageKey pageKey, int blockId) => showModalBottomSheet<void>(
+Future<void> showBlockSettings(BuildContext context, WidgetRef ref, PageKey pageKey, int blockId) => showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,
@@ -99,11 +104,10 @@ class _BlockSettingsSheetState extends ConsumerState<BlockSettingsSheet> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: SegmentedButton<int>(
-              segments: [ButtonSegment(value: 0, label: Text(l10n.pbStyle)), ButtonSegment(value: 1, label: Text(l10n.pbOptions))],
-              selected: {_tab},
-              showSelectedIcon: false,
-              onSelectionChanged: (s) => setState(() => _tab = s.first),
+            child: DdxSegmented<int>(
+              segments: [DdxSegment(value: 0, label: l10n.pbStyle), DdxSegment(value: 1, label: l10n.pbOptions)],
+              selected: _tab,
+              onChanged: (v) => setState(() => _tab = v),
             ),
           ),
           Flexible(
@@ -139,8 +143,8 @@ class _BlockSettingsSheetState extends ConsumerState<BlockSettingsSheet> {
       final vals = key == 'hideOn' && b.component == 'item.body' ? const ['none'] : BlockStyle.values[key]!;
       return Wrap(spacing: 6, runSpacing: 6, children: [
         for (final v in vals)
-          ChoiceChip(
-            label: Text(choiceText(l10n, prefix, v)),
+          DdxChip.filter(
+            choiceText(l10n, prefix, v),
             selected: st[key] == v,
             onSelected: (_) => _save(b, styleWith(b.config, key, v)),
           ),
@@ -225,8 +229,8 @@ class _BlockSettingsSheetState extends ConsumerState<BlockSettingsSheet> {
             h(label),
             Wrap(spacing: 6, runSpacing: 6, children: [
               for (final c in d.choices)
-                ChoiceChip(
-                  label: Text(d.choicePrefix.isEmpty ? c : choiceText(l10n, d.choicePrefix, c)),
+                DdxChip.filter(
+                  d.choicePrefix.isEmpty ? c : choiceText(l10n, d.choicePrefix, c),
                   selected: '$v' == c,
                   onSelected: (_) => set(d.key, c == d.defaultValue ? null : c),
                 ),
@@ -265,7 +269,7 @@ class _BlockSettingsSheetState extends ConsumerState<BlockSettingsSheet> {
                 },
                 child: Text(l10n.pbChooseFile),
               ),
-              if (v != null) IconButton(tooltip: l10n.btnDelete, icon: const Icon(Icons.close), onPressed: () => set(d.key, null)),
+              if (v != null) DdxIconButton(icon: Icons.close, tooltip: l10n.btnDelete, onPressed: () => set(d.key, null)),
             ]),
           ]);
         case OptType.images:
@@ -273,7 +277,7 @@ class _BlockSettingsSheetState extends ConsumerState<BlockSettingsSheet> {
           out.addAll([
             h('$label · ${list.length}'),
             Wrap(spacing: 6, children: [
-              for (final r in list) InputChip(label: Text(r), onDeleted: () => set(d.key, [...list]..remove(r))),
+              for (final r in list) DdxChip(label: r, kind: DdxChipKind.status, onDeleted: () => set(d.key, [...list]..remove(r))),
               ActionChip(
                 avatar: const Icon(Icons.add, size: 18),
                 label: Text(l10n.pcAddFile),
@@ -371,7 +375,7 @@ class _ListEditor extends StatelessWidget {
                 onDone: (v) async => onChanged([...values]..[i] = v.trim()),
               ),
             ),
-            IconButton(tooltip: l10n.btnDelete, icon: const Icon(Icons.close), onPressed: () => onChanged([...values]..removeAt(i))),
+            DdxIconButton(icon: Icons.close, tooltip: l10n.btnDelete, onPressed: () => onChanged([...values]..removeAt(i))),
           ]),
         ),
       if (values.length < max)
@@ -406,7 +410,7 @@ class _LinksEditor extends ConsumerWidget {
     void bad() => messenger.showSnackBar(SnackBar(content: Text(l10n.pbLinkBadUrl)));
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       for (var i = 0; i < links.length; i++)
-        Card(
+        DdxCard(
           margin: const EdgeInsets.only(bottom: 6),
           child: Padding(
             padding: const EdgeInsets.all(8),
@@ -442,17 +446,17 @@ class _LinksEditor extends ConsumerWidget {
                 ),
               ],
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                IconButton(
+                DdxIconButton(
+                  icon: Icons.arrow_upward,
                   tooltip: l10n.pbLinkUp,
-                  icon: const Icon(Icons.arrow_upward),
                   onPressed: i == 0 ? null : () => onChanged([...links]..insert(i - 1, links[i])..removeAt(i + 1)),
                 ),
-                IconButton(
+                DdxIconButton(
+                  icon: Icons.arrow_downward,
                   tooltip: l10n.pbLinkDown,
-                  icon: const Icon(Icons.arrow_downward),
                   onPressed: i == links.length - 1 ? null : () => onChanged([...links]..insert(i + 2, links[i])..removeAt(i)),
                 ),
-                IconButton(tooltip: l10n.btnDelete, icon: const Icon(Icons.close), onPressed: () => onChanged([...links]..removeAt(i))),
+                DdxIconButton(icon: Icons.close, tooltip: l10n.btnDelete, onPressed: () => onChanged([...links]..removeAt(i))),
               ]),
             ]),
           ),

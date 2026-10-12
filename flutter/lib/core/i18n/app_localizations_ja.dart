@@ -963,6 +963,24 @@ class AppLocalizationsJa extends AppLocalizations {
   String get transferErrBadPayload => '受け取ったファイルを読み込めませんでした。';
 
   @override
+  String get transferSendKey => '送信キー';
+
+  @override
+  String get transferSendKeyHint => '今週のキーは転送サービスの管理者に確認してください。毎週月曜日に変わります。';
+
+  @override
+  String get transferErrSendKeyRequired => 'このサービスでは Nexus を送る前に今週の送信キーが必要です。';
+
+  @override
+  String get transferErrBadSendKey => '送信キーが正しくありません(先週のキーかもしれません)。キーは毎週月曜日に変わります。';
+
+  @override
+  String get transferErrSendKeyLocked => 'このデバイスから誤った送信キーが多すぎます。15 分待ってからやり直してください。';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'この転送サービスでは送信が無効になっています(送信キーが設定されていません)。';
+
+  @override
   String get transferErrServer => '転送サービスで問題が発生しました。';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pageInside => '中身';
+
+  @override
+  String get listFilterHint => '絞り込み';
+
+  @override
+  String get listSort => '並べ替え';
+
+  @override
+  String get listSortName => '名前';
+
+  @override
+  String get listSortEdited => '最終編集';
+
+  @override
+  String get listSortCreated => '作成日';
+
+  @override
+  String get listSortKind => '種類';
+
+  @override
+  String get listSortManual => '配置順';
+
+  @override
+  String get listCount => '{n} 件';
+
+  @override
+  String get listNoMatch => 'この条件に一致するものはありません。';
+
+  @override
+  String get listGroupToday => '今日';
+
+  @override
+  String get listGroupThisWeek => '今週';
+
+  @override
+  String get listGroupOlder => 'それ以前';
+
+  @override
+  String get assetGroupImage => '画像';
+
+  @override
+  String get assetGroupAudio => '音声';
+
+  @override
+  String get assetGroupVideo => '動画';
+
+  @override
+  String get assetGroupDoc => 'ドキュメント';
+
+  @override
+  String get assetGroupTrack => '字幕';
+
+  @override
+  String get assetGroupModel => '3D モデル';
+
+  @override
+  String get assetGroupUrl => 'リンク';
+
+  @override
+  String get assetGroupOther => 'その他のファイル';
+
+  @override
+  String get uiStyleLabel => 'UIスタイル';
+
+  @override
+  String get uiStyleStandard => '標準';
+
+  @override
+  String get uiStyleGlass => 'ガラス';
+
+  @override
+  String get reduceTransparency => '透明度を下げる';
+
+  @override
+  String get reduceTransparencyHint => 'ガラスのパネルと半透明のバーを不透明にします';
+
+  @override
+  String get glassBlurOff => 'ぼかしはオフです — この端末では描画が遅すぎました';
+
+  @override
+  String get glassBlurRetry => 'もう一度試す';
+
+  @override
+  String get nexusPickTemplate => 'テンプレートを選ぶ';
+
+  @override
+  String get nexusTemplateBlank => '空白';
+
+  @override
+  String get nexusTemplateBlankDesc => '空のNexus — モジュールは自分で追加';
+
+  @override
+  String get nexusCreateAppDocs => 'App Docs を作成';
+
+  @override
+  String get nexusCreateAppDocsHint => 'アプリ内ガイド（専用フォルダー）';
+
+  @override
+  String get nexusNameTaken => 'この名前のNexusはすでにあります';
+
+  @override
+  String get nexusTemplateFailed => 'Nexusは作成しましたが、テンプレートを追加できませんでした';
+
+  @override
+  String get btnRetry => '再試行';
+
+  @override
+  String get btnCreateNexus => 'Nexusを作成';
 }

@@ -13,6 +13,8 @@ import 'component_registry.dart';
 import 'links.dart';
 import 'media_components.dart' show fileIdOf;
 import 'page_providers.dart';
+import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_chip.dart';
 
 /// Decoration on the phone (Procress 14, APP docs/EXPORT-DECOR.md D2; EXE
 /// renderer/page/components/decor.js): a banner, a gallery, a divider, a
@@ -97,7 +99,7 @@ class _Banner extends ConsumerWidget {
       child: SizedBox(
         height: h,
         child: Stack(fit: StackFit.expand, children: [
-          if (bytes != null) Image.memory(bytes, fit: BoxFit.cover, alignment: focusOf(optValue(ctx.block, 'focus')), gaplessPlayback: true)
+          if (bytes != null) SizedImage(bytes, fit: BoxFit.cover, alignment: focusOf(optValue(ctx.block, 'focus')), gaplessPlayback: true)
           else ColoredBox(color: Theme.of(context).colorScheme.surfaceContainerHighest),
           if (title.isNotEmpty || sub.isNotEmpty)
             DecoratedBox(
@@ -158,7 +160,7 @@ class _Gallery extends ConsumerWidget {
               child: SizedBox(
                 width: w,
                 height: w,
-                child: _imageOr(_pic(ref, ids[i]), (b) => Image.memory(b, fit: BoxFit.cover, gaplessPlayback: true),
+                child: _imageOr(_pic(ref, ids[i]), (b) => SizedImage(b, fit: BoxFit.cover, gaplessPlayback: true),
                     ColoredBox(color: Theme.of(context).colorScheme.surfaceContainerHighest)),
               ),
             ),
@@ -221,7 +223,7 @@ class DecorDivider extends ConsumerWidget {
         if (b != null) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(6),
-            child: SizedBox(height: 36, width: double.infinity, child: Image.memory(b, fit: BoxFit.cover, alignment: focusOf(opts('focus')))),
+            child: SizedBox(height: 36, width: double.infinity, child: SizedImage(b, fit: BoxFit.cover, alignment: focusOf(opts('focus')))),
           );
         }
         return Divider(color: color);
@@ -263,10 +265,9 @@ class _IconRow extends ConsumerWidget {
     }
     return Wrap(spacing: 6, runSpacing: 6, children: [
       for (final (icon, label) in items)
-        Chip(
-          avatar: glyph(icon).isEmpty ? null : Text(glyph(icon), style: TextStyle(fontSize: size)),
-          label: Text(label.isEmpty ? glyph(icon) : label),
-          visualDensity: VisualDensity.compact,
+        DdxChip.status(
+          [if (glyph(icon).isNotEmpty) glyph(icon), if (label.isNotEmpty) label].join(' '),
+          size: DdxChipSize.sm,
         ),
     ]);
   }
@@ -304,8 +305,8 @@ class _Figure extends ConsumerWidget {
                 child: b == null
                     ? AspectRatio(aspectRatio: 4 / 3, child: ColoredBox(color: Theme.of(context).colorScheme.surfaceContainerHighest))
                     : cover
-                        ? AspectRatio(aspectRatio: 4 / 3, child: Image.memory(b, fit: BoxFit.cover, alignment: focusOf(optValue(ctx.block, 'focus'))))
-                        : Image.memory(b, fit: BoxFit.contain, gaplessPlayback: true),
+                        ? AspectRatio(aspectRatio: 4 / 3, child: SizedImage(b, fit: BoxFit.cover, alignment: focusOf(optValue(ctx.block, 'focus'))))
+                        : SizedImage(b, fit: BoxFit.contain, gaplessPlayback: true),
               ),
             ),
             if (caption.isNotEmpty)

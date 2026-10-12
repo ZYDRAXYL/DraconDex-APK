@@ -963,6 +963,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transferErrBadPayload => 'The received file could not be read.';
 
   @override
+  String get transferSendKey => 'Send key';
+
+  @override
+  String get transferSendKeyHint => 'Ask whoever runs the transfer service for this week\'s key. It changes every Monday.';
+
+  @override
+  String get transferErrSendKeyRequired => 'This service needs this week\'s send key before it will accept a Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'That send key is not right — or it is last week\'s. Keys change every Monday.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Too many wrong send keys from this device. Wait 15 minutes and try again.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Sending is switched off on this transfer service (its send key is not configured).';
+
+  @override
   String get transferErrServer => 'The transfer service had a problem.';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pageInside => 'Inside';
+
+  @override
+  String get listFilterHint => 'Filter';
+
+  @override
+  String get listSort => 'Sort';
+
+  @override
+  String get listSortName => 'Name';
+
+  @override
+  String get listSortEdited => 'Last edited';
+
+  @override
+  String get listSortCreated => 'Created';
+
+  @override
+  String get listSortKind => 'Kind';
+
+  @override
+  String get listSortManual => 'As arranged';
+
+  @override
+  String get listCount => '{n} items';
+
+  @override
+  String get listNoMatch => 'Nothing matches this filter.';
+
+  @override
+  String get listGroupToday => 'Today';
+
+  @override
+  String get listGroupThisWeek => 'This week';
+
+  @override
+  String get listGroupOlder => 'Older';
+
+  @override
+  String get assetGroupImage => 'Images';
+
+  @override
+  String get assetGroupAudio => 'Audio';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Documents';
+
+  @override
+  String get assetGroupTrack => 'Subtitles';
+
+  @override
+  String get assetGroupModel => '3D models';
+
+  @override
+  String get assetGroupUrl => 'Links';
+
+  @override
+  String get assetGroupOther => 'Other files';
+
+  @override
+  String get uiStyleLabel => 'UI style';
+
+  @override
+  String get uiStyleStandard => 'Standard';
+
+  @override
+  String get uiStyleGlass => 'Glass';
+
+  @override
+  String get reduceTransparency => 'Reduce transparency';
+
+  @override
+  String get reduceTransparencyHint => 'Glass panes and see-through bars become solid';
+
+  @override
+  String get glassBlurOff => 'Blur off — this device drew it too slowly';
+
+  @override
+  String get glassBlurRetry => 'Try again';
+
+  @override
+  String get nexusPickTemplate => 'Choose a template';
+
+  @override
+  String get nexusTemplateBlank => 'Blank';
+
+  @override
+  String get nexusTemplateBlankDesc => 'An empty Nexus — add modules yourself';
+
+  @override
+  String get nexusCreateAppDocs => 'Create App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'The in-app guide, in a folder of its own';
+
+  @override
+  String get nexusNameTaken => 'A Nexus with this name already exists';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus created, but the template could not be added';
+
+  @override
+  String get btnRetry => 'Retry';
+
+  @override
+  String get btnCreateNexus => 'Create Nexus';
 }

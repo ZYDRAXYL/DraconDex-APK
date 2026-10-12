@@ -3,8 +3,8 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "sdb-v2.1.0",
-    "version": "2.1.0"
+    "ref": "main",
+    "version": "2.1.1"
   },
   "expect": {
     "vaultSchemaVersion": 7,
@@ -13,7 +13,7 @@
   "vendored": {
     "flutter/lib/core/database/vault_schema.g.dart": {
       "artifact": "generated/flutter/vault_schema.g.dart",
-      "sha256": "e4f2e64bbddc6dc0f7fd4cc080a079a819577e74f757f6af3503041853790280"
+      "sha256": "eaceb6cabee7991707c524a72fe86b7eda2b3445df14ff73a7d6f1f41e3fef1e"
     },
     "flutter/lib/data/services/supabase_schema.dart": {
       "artifact": "generated/flutter/supabase_schema.dart",
@@ -25,7 +25,7 @@
     },
     "flutter/lib/core/theme/tokens.g.dart": {
       "artifact": "generated/flutter/tokens.g.dart",
-      "sha256": "d1fda45c29634a4ef12d8f2a0f42bdb174f971201cb2666ac4571302df9cd8f0"
+      "sha256": "9e440614cf3a50d92073359bdf6453bb4759cff266e81bde11ef3670b1f66784"
     },
     "flutter/assets/images/DraconDex-IconApp.png": {
       "artifact": "assets/flutter/DraconDex-IconApp.png",
@@ -35,13 +35,25 @@
       "artifact": "assets/flutter/DraconDex-SymbolBlack.png",
       "sha256": "56f31ff7cc5db96f9714f9043e1d06aaed0f51bee35a7667d94d358c6436a8ea"
     },
+    "flutter/assets/images/DraconDex-SymbolBlack.webp": {
+      "artifact": "assets/flutter/DraconDex-SymbolBlack.webp",
+      "sha256": "f50d656c396dbf24b236f56bff5ba6d22a08147dde5ca9d9d4b5b40118fc23a0"
+    },
     "flutter/assets/images/DraconDex-SymbolColor.png": {
       "artifact": "assets/flutter/DraconDex-SymbolColor.png",
       "sha256": "3778c06dccc6c35fa0ba51abbc5d1c7a0a142194245bf54bdc8fa49d1ae8f46b"
     },
+    "flutter/assets/images/DraconDex-SymbolColor.webp": {
+      "artifact": "assets/flutter/DraconDex-SymbolColor.webp",
+      "sha256": "0dfed2651c73f64aac49b95e130672e68c1a99ecbddf87e9a44344b02be9816c"
+    },
     "flutter/assets/images/DraconDex-SymbolWhite.png": {
       "artifact": "assets/flutter/DraconDex-SymbolWhite.png",
       "sha256": "e01f6f20cc8da69c4c8ede1a2ef69a7bf6fd9d4e3a106578e520759b120a862f"
+    },
+    "flutter/assets/images/DraconDex-SymbolWhite.webp": {
+      "artifact": "assets/flutter/DraconDex-SymbolWhite.webp",
+      "sha256": "d0289ac16738bca370e5a071cb53424b5db53a53c3c987ad978ae8cf583890b9"
     },
     "flutter/assets/fonts/NotoSans-Bold.ttf": {
       "artifact": "assets/fonts/NotoSans-Bold.ttf",
@@ -78,6 +90,10 @@
     "flutter/test/fixtures/snapshot-v2.json": {
       "artifact": "fixtures/snapshot-v2.json",
       "sha256": "468eee3ad95e58a56404b81d65d0eb7a0ff21292540ecb6ca534268103f0d9e2"
+    },
+    "flutter/test/fixtures/stress-v2.json": {
+      "artifact": "fixtures/stress-v2.json",
+      "sha256": "4e9d5190388af2d4c194cf29a6a3d28a9399af148d73cfa0d5c6d5624aa7d5d9"
     },
     "flutter/assets/templates/guide/en.json": {
       "artifact": "templates/guide/en.json",

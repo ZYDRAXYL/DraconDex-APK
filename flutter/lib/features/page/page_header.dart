@@ -13,6 +13,9 @@ import '../../data/services/assets/asset_files.dart';
 import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import 'page_providers.dart';
+import '../../widgets/sized_image.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_segmented.dart';
 
 /// A page's title layout (APP docs/REDESIGN.md C6) — the same module_ui row
 /// the desktop writes (EXE hub/page-head.js): "pageHead" for a module page,
@@ -123,7 +126,7 @@ class PageHeader extends ConsumerWidget {
     final lay = ref.watch(pageHeadProvider(PageKey(module.id, itemKey))).valueOrNull ?? PageHeadLayout.empty;
     final cover = lay.cover == null
         ? null
-        : ref.watch(coverImagesProvider(module.nexusRef)).valueOrNull?.where((c) => c.sha == lay.cover).firstOrNull;
+        : ref.watch(coverImagesProvider(module.nexusRef).select((a) => a.valueOrNull?.where((c) => c.sha == lay.cover).firstOrNull));
     final align = switch (lay.align) { 'center' => TextAlign.center, 'right' => TextAlign.right, _ => TextAlign.left };
     final cross = switch (lay.align) {
       'center' => CrossAxisAlignment.center,
@@ -147,7 +150,7 @@ class PageHeader extends ConsumerWidget {
                 child: SizedBox(
                   height: 150,
                   width: double.infinity,
-                  child: Image.memory(cover.bytes, fit: BoxFit.cover, gaplessPlayback: true),
+                  child: SizedImage(cover.bytes, fit: BoxFit.cover, gaplessPlayback: true),
                 ),
               ),
             ),
@@ -162,10 +165,44 @@ class PageHeader extends ConsumerWidget {
   }
 }
 
+/// The title's alignment as a control inside the page's ⋮ (Procress 24):
+/// the part of the title layout changed most, two taps from the Nexus page
+/// instead of three. Icon and cover stay in the full sheet ("Title layout…").
+class PageTitleAlignControl extends ConsumerWidget {
+  const PageTitleAlignControl({super.key, required this.pageKey});
+
+  final PageKey pageKey;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final lay = ref.watch(pageHeadProvider(pageKey)).valueOrNull ?? PageHeadLayout.empty;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Text(l10n.titleAlign, style: TextStyle(fontSize: 12, color: context.ddx.textMuted)),
+        ),
+        DdxSegmented<String>(
+          key: const ValueKey('page-title-align'),
+          segments: [
+            DdxSegment(value: 'left', label: l10n.alignLeft),
+            DdxSegment(value: 'center', label: l10n.alignCenter),
+            DdxSegment(value: 'right', label: l10n.alignRight),
+          ],
+          selected: lay.align,
+          onChanged: (v) => savePageHead(ref, pageKey, lay.copyWith(align: v)),
+        ),
+      ]),
+    );
+  }
+}
+
 /// "Title layout…" from the page's ⋮ — the sheet the desktop's popover is.
 Future<void> showPageLayoutSheet(BuildContext context, WidgetRef ref, ModuleModel module, String? itemKey) async {
   final key = PageKey(module.id, itemKey);
-  await showModalBottomSheet<void>(
+  await showDdxSheet<void>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -221,15 +258,14 @@ class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
           children: [
             Text(l10n.pageLayout, style: Theme.of(context).textTheme.titleMedium),
             label(l10n.titleAlign),
-            SegmentedButton<String>(
+            DdxSegmented<String>(
               segments: [
-                ButtonSegment(value: 'left', label: Text(l10n.alignLeft)),
-                ButtonSegment(value: 'center', label: Text(l10n.alignCenter)),
-                ButtonSegment(value: 'right', label: Text(l10n.alignRight)),
+                DdxSegment(value: 'left', label: l10n.alignLeft),
+                DdxSegment(value: 'center', label: l10n.alignCenter),
+                DdxSegment(value: 'right', label: l10n.alignRight),
               ],
-              selected: {lay.align},
-              showSelectedIcon: false,
-              onSelectionChanged: (s) => _save(lay.copyWith(align: s.first)),
+              selected: lay.align,
+              onChanged: (v) => _save(lay.copyWith(align: v)),
             ),
             label(l10n.pageIcon),
             TextField(
@@ -259,7 +295,7 @@ class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
                         selected: lay.cover == c.sha,
                         tooltip: c.name,
                         onTap: () => _save(lay.copyWith(cover: c.sha)),
-                        child: Image.memory(c.bytes, fit: BoxFit.cover, width: 96, height: 60, gaplessPlayback: true),
+                        child: SizedImage(c.bytes, fit: BoxFit.cover, width: 96, height: 60, gaplessPlayback: true),
                       ),
                   ],
                 ),

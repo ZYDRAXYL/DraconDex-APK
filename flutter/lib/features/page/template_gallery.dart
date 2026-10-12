@@ -11,6 +11,9 @@ import '../../widgets/confirm_dialog.dart';
 import '../../providers/db_providers.dart';
 import 'component_registry.dart';
 import 'page_providers.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_chip.dart';
+import '../../widgets/ddx_field.dart';
 
 /// A new module's first page: its kind's ★ template (the desktop's
 /// applyStartTemplate). A failure leaves the default layout, which the page
@@ -62,7 +65,7 @@ Future<TemplatePick?> pickPageTemplate(BuildContext context, WidgetRef ref, {req
   final locale = Localizations.localeOf(context).languageCode;
   final all = await PageTemplateService.templates(locale);
   if (!context.mounted) return null;
-  final r = await showModalBottomSheet<Object>(
+  final r = await showDdxSheet<Object>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -252,7 +255,7 @@ class _GalleryState extends ConsumerState<_Gallery> {
                   runSpacing: 6,
                   children: [
                     for (final f in fields)
-                      if (f is Map) Chip(label: Text('${f['name'] ?? ''}'), visualDensity: VisualDensity.compact),
+                      if (f is Map) DdxChip.status('${f['name'] ?? ''}', size: DdxChipSize.sm),
                   ],
                 ),
               ],
@@ -269,15 +272,10 @@ class _GalleryState extends ConsumerState<_Gallery> {
                 for (final k in _kinds)
                   Padding(
                     padding: const EdgeInsets.only(right: 6),
-                    child: ChoiceChip(
+                    child: DdxChip.filter(
+                      '${kindName(l10n, ModuleKind.fromId(k))} · ${l10n.tplKindCount.replaceAll('{n}', '${_listFor(k).length}')}',
                       selected: k == _kind.id,
-                      avatar: Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(color: kindColor[ModuleKind.fromId(k)] ?? muted, borderRadius: BorderRadius.circular(3)),
-                      ),
-                      label: Text('${kindName(l10n, ModuleKind.fromId(k))} · ${l10n.tplKindCount.replaceAll('{n}', '${_listFor(k).length}')}'),
-                      showCheckmark: false,
+                      color: kindColor[ModuleKind.fromId(k)] ?? muted,
                       onSelected: (_) {
                         setState(() {
                           _kind = ModuleKind.fromId(k);
@@ -472,15 +470,15 @@ Future<void> showSaveTemplateDialog(BuildContext context, WidgetRef ref, ModuleM
   final l10n = AppLocalizations.of(context)!;
   final messenger = ScaffoldMessenger.of(context);
   final c = TextEditingController(text: module.name);
-  final name = await showDialog<String>(
+  final name = await showDdxDialog<String>(
     context: context,
     builder: (d) => AlertDialog(
       title: Text(l10n.tplSave.replaceAll('…', '')),
       content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        TextField(
+        DdxField(
           controller: c,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.nameField),
+          label: l10n.nameField,
           onSubmitted: (v) => Navigator.pop(d, v.trim()),
         ),
         const SizedBox(height: 10),

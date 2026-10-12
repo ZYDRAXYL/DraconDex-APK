@@ -17,6 +17,8 @@ import '../../../providers/navigation_providers.dart';
 import '../../page/template_gallery.dart';
 import '../../page/views/view_common.dart';
 import 'artisan_sheet.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The kind picker's groups (V5.md §9.5, EXE hub/kinds.js KIND_GROUPS):
 /// structure · view · data, and five sub-groups under data.
@@ -74,7 +76,7 @@ Future<void> createFromTemplate(BuildContext context, WidgetRef ref, int nexusId
 Future<void> showNewModuleSheet(BuildContext context, WidgetRef ref, int nexusId, int? parentId) async {
   final router = GoRouter.of(context);
   final locale = Localizations.localeOf(context).languageCode;
-  final picked = await showModalBottomSheet<Object>(
+  final picked = await showDdxSheet<Object>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -216,9 +218,10 @@ class _KindSheetState extends State<_KindSheet> {
         child: Column(children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: TextField(
+            child: DdxField(
               autofocus: true,
-              decoration: InputDecoration(prefixIcon: const Icon(Icons.search), hintText: l.labelSearch, isDense: true),
+              prefixIcon: const Icon(Icons.search),
+              hint: l.labelSearch,
               onChanged: (v) => setState(() => _q = v),
             ),
           ),

@@ -7,6 +7,8 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// Sketcher kind: freehand drawing pages.
 ///
@@ -127,8 +129,8 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: pages.length,
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
-                  itemBuilder: (ctx, i) => ChoiceChip(
-                    label: Text(pages[i].name, overflow: TextOverflow.ellipsis),
+                  itemBuilder: (ctx, i) => DdxChip.filter(
+                    pages[i].name,
                     selected: page?.id == pages[i].id,
                     onSelected: (_) => setState(() {
                       _pageId = pages[i].id;
@@ -156,8 +158,8 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
           runSpacing: 4,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            ChoiceChip(
-              label: Text(_drawMode ? l10n.sketcherDraw : l10n.sketcherPan),
+            DdxChip.filter(
+              _drawMode ? l10n.sketcherDraw : l10n.sketcherPan,
               selected: _drawMode,
               onSelected: (_) => setState(() => _drawMode = !_drawMode),
             ),
@@ -178,14 +180,15 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
                 ),
               ),
             for (final w in kSketchWidths)
-              ChoiceChip(
-                label: Text('${w.toInt()}'),
+              DdxChip.filter(
+                '${w.toInt()}',
                 selected: _width == w,
                 onSelected: (_) => setState(() => _width = w),
               ),
-            IconButton(
+            DdxIconButton(
+              icon: Icons.undo,
               tooltip: l10n.sketcherUndo,
-              icon: const Icon(Icons.undo, size: 20),
+              size: DdxIconSize.md,
               onPressed: () async {
                 final dao = ref.read(sketcherDaoProvider).valueOrNull;
                 if (dao == null) return;
@@ -195,9 +198,10 @@ class _SketcherContentState extends ConsumerState<SketcherContent> {
                 ref.invalidate(sketchStrokesProvider(page.id));
               },
             ),
-            IconButton(
+            DdxIconButton(
+              icon: Icons.delete_outline,
               tooltip: l10n.sketcherClear,
-              icon: const Icon(Icons.delete_outline, size: 20),
+              size: DdxIconSize.md,
               onPressed: () async {
                 final ok = await showConfirmDialog(
                   context,

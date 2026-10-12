@@ -960,6 +960,24 @@ class AppLocalizationsNl extends AppLocalizations {
   String get transferErrBadPayload => 'Het ontvangen bestand kon niet gelezen worden.';
 
   @override
+  String get transferSendKey => 'Verzendsleutel';
+
+  @override
+  String get transferSendKeyHint => 'Vraag de beheerder van de overdrachtsdienst om de sleutel van deze week. Die verandert elke maandag.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Deze dienst heeft de verzendsleutel van deze week nodig voordat hij een Nexus accepteert.';
+
+  @override
+  String get transferErrBadSendKey => 'Die verzendsleutel klopt niet, of het is die van vorige week. Sleutels veranderen elke maandag.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Te veel verkeerde verzendsleutels vanaf dit apparaat. Wacht 15 minuten en probeer het opnieuw.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Verzenden staat uit op deze overdrachtsdienst (er is geen verzendsleutel ingesteld).';
+
+  @override
   String get transferErrServer => 'De overdrachtsdienst had een probleem.';
 
   @override
@@ -2905,4 +2923,112 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pageInside => 'Inhoud';
+
+  @override
+  String get listFilterHint => 'Filteren';
+
+  @override
+  String get listSort => 'Sorteren';
+
+  @override
+  String get listSortName => 'Naam';
+
+  @override
+  String get listSortEdited => 'Laatst bewerkt';
+
+  @override
+  String get listSortCreated => 'Gemaakt';
+
+  @override
+  String get listSortKind => 'Soort';
+
+  @override
+  String get listSortManual => 'Zoals geordend';
+
+  @override
+  String get listCount => '{n} items';
+
+  @override
+  String get listNoMatch => 'Niets komt overeen met dit filter.';
+
+  @override
+  String get listGroupToday => 'Vandaag';
+
+  @override
+  String get listGroupThisWeek => 'Deze week';
+
+  @override
+  String get listGroupOlder => 'Ouder';
+
+  @override
+  String get assetGroupImage => 'Afbeeldingen';
+
+  @override
+  String get assetGroupAudio => 'Audio';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Documenten';
+
+  @override
+  String get assetGroupTrack => 'Ondertitels';
+
+  @override
+  String get assetGroupModel => '3D-modellen';
+
+  @override
+  String get assetGroupUrl => 'Links';
+
+  @override
+  String get assetGroupOther => 'Overige bestanden';
+
+  @override
+  String get uiStyleLabel => 'Interfacestijl';
+
+  @override
+  String get uiStyleStandard => 'Standaard';
+
+  @override
+  String get uiStyleGlass => 'Glas';
+
+  @override
+  String get reduceTransparency => 'Transparantie verminderen';
+
+  @override
+  String get reduceTransparencyHint => 'Glazen panelen en doorschijnende balken worden ondoorzichtig';
+
+  @override
+  String get glassBlurOff => 'Vervaging uit — dit apparaat tekende die te traag';
+
+  @override
+  String get glassBlurRetry => 'Opnieuw proberen';
+
+  @override
+  String get nexusPickTemplate => 'Kies een sjabloon';
+
+  @override
+  String get nexusTemplateBlank => 'Leeg';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Een lege Nexus — voeg zelf modules toe';
+
+  @override
+  String get nexusCreateAppDocs => 'App Docs aanmaken';
+
+  @override
+  String get nexusCreateAppDocsHint => 'De gids in de app, in een eigen map';
+
+  @override
+  String get nexusNameTaken => 'Er bestaat al een Nexus met deze naam';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus aangemaakt, maar het sjabloon kon niet worden toegevoegd';
+
+  @override
+  String get btnRetry => 'Opnieuw';
+
+  @override
+  String get btnCreateNexus => 'Nexus aanmaken';
 }

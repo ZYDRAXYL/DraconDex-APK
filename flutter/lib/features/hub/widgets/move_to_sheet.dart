@@ -7,6 +7,7 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_provider.dart';
 import '../../../providers/navigation_providers.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
 
 /// Where a move lands: a Collector, or the top level ([parentId] null —
 /// for an asset that is the unfiled tray).
@@ -27,7 +28,7 @@ Future<MoveTarget?> showMoveToSheet(
   Set<int> moving = const {},
   int? startAt,
 }) {
-  return showModalBottomSheet<MoveTarget>(
+  return showDdxSheet<MoveTarget>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -128,21 +129,27 @@ class _MoveToSheetState extends ConsumerState<_MoveToSheet> {
                 error: (e, _) => Center(child: Text('$e')),
                 data: (list) {
                   final folders = [for (final m in list) if (m.kind == ModuleKind.collector) m];
-                  return ListView(children: [
-                    for (final f in folders)
-                      ListTile(
+                  // the folders, then "new folder" — built as they scroll in
+                  return ListView.builder(
+                    itemCount: folders.length + 1,
+                    itemBuilder: (context, i) {
+                      if (i == folders.length) {
+                        return ListTile(
+                          leading: const Icon(Icons.create_new_folder_outlined),
+                          title: Text(l10n.moveNewFolder),
+                          onTap: _newFolder,
+                        );
+                      }
+                      final f = folders[i];
+                      return ListTile(
                         enabled: !widget.moving.contains(f.id),
                         leading: const Icon(Icons.folder_outlined),
                         title: Text(f.name, maxLines: 1, overflow: TextOverflow.ellipsis),
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () => setState(() => _path.add(f)),
-                      ),
-                    ListTile(
-                      leading: const Icon(Icons.create_new_folder_outlined),
-                      title: Text(l10n.moveNewFolder),
-                      onTap: _newFolder,
-                    ),
-                  ]);
+                      );
+                    },
+                  );
                 },
               ),
             ),

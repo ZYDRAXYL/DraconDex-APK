@@ -17,6 +17,7 @@ import '../tools/trash_screen.dart';
 import 'dialogs/artisan_sheet.dart';
 import 'dialogs/module_dialog.dart';
 import 'widgets/move_to_sheet.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// A module's menu — one list for every place a module is a row (a tile, a
 /// card, a hub-tree row) and for its own page's ⋮, so the two ways in
@@ -59,7 +60,7 @@ List<RowAction> moduleRowActions(
       quick: true,
       icon: Icons.edit_outlined,
       onTap: () async {
-        await showDialog(context: context, builder: (_) => ModuleDialog(nexusId: nexusId, existing: module));
+        await showDdxDialog(context: context, builder: (_) => ModuleDialog(nexusId: nexusId, existing: module));
         _refreshModule(ref, module);
       },
     ),

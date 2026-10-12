@@ -12,6 +12,7 @@ import '../data/services/entity_location.dart';
 import '../data/services/wiki_service.dart';
 import '../providers/db_providers.dart';
 import '../providers/navigation_providers.dart';
+import 'ddx_glass.dart';
 
 /// Footnotes across one page (APP docs/TEMPLATES.md §7.4; EXE markdown.js
 /// mdFootnotes, blocks.js pbFootnoteCtx): `[^id]` is numbered by where it is
@@ -229,7 +230,7 @@ Future<void> openWikiLink(BuildContext context, WidgetRef ref, String name, int 
   }
   if (!context.mounted) return;
   final label = name.replaceFirst(RegExp(r'^\w+:'), '');
-  final create = await showDialog<bool>(
+  final create = await showDdxDialog<bool>(
     context: context,
     builder: (dialogContext) => AlertDialog(
       title: Text(label),
@@ -258,7 +259,7 @@ Future<void> showLinkPreview(BuildContext context, WidgetRef ref, String name, i
   final snippet = key == null ? '' : await linkPreviewText(db, key);
   if (!context.mounted) return;
   final theme = Theme.of(context);
-  await showModalBottomSheet<void>(
+  await showDdxSheet<void>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,

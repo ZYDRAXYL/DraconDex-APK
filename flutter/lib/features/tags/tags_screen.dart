@@ -8,6 +8,9 @@ import '../../providers/hashtag_provider.dart';
 import '../../widgets/color_dot.dart';
 import '../../widgets/color_picker_widget.dart';
 import '../../widgets/confirm_dialog.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
+import '../../widgets/ddx_field.dart';
 
 class TagsScreen extends ConsumerWidget {
   const TagsScreen({super.key});
@@ -17,9 +20,9 @@ class TagsScreen extends ConsumerWidget {
     final tagsAsync = ref.watch(hashtagsProvider);
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.hashtagsTitle)),
+      appBar: DdxGlassBar(child: AppBar(title: Text(l10n.hashtagsTitle))),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => showDialog(context: context, builder: (_) => const _TagFormDialog())
+        onPressed: () => showDdxDialog(context: context, builder: (_) => const _TagFormDialog())
             .then((_) => ref.invalidate(hashtagsProvider)),
         child: const Icon(Icons.add),
       ),
@@ -33,18 +36,33 @@ class TagsScreen extends ConsumerWidget {
             itemBuilder: (ctx, i) {
               final t = tags[i];
               return ListTile(
-                leading: ColorDot(colorCode: t.colorCode),
+                // The colour is a control on the row (Procress 24): the
+                // picker opens from here, not from inside the edit dialog,
+                // which made it a third tap.
+                leading: IconButton(
+                  key: const ValueKey('tag-color'),
+                  tooltip: l10n.labelColor,
+                  icon: ColorDot(colorCode: t.colorCode, size: 24),
+                  onPressed: () => showColorPicker(context, ref, currentColorCode: t.colorCode, onColorSelected: (c) {
+                    ref.read(hashtagDaoProvider).whenData((d) async {
+                      await d.updateHashtag(t.id, t.name, c.id);
+                      ref.invalidate(hashtagsProvider);
+                    });
+                  }),
+                ),
                 title: Text('#${t.name}'),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.edit),
-                      onPressed: () => showDialog(context: context, builder: (_) => _TagFormDialog(existing: t))
+                    DdxIconButton(
+                      icon: Icons.edit,
+                      tooltip: l10n.btnEdit,
+                      onPressed: () => showDdxDialog(context: context, builder: (_) => _TagFormDialog(existing: t))
                           .then((_) => ref.invalidate(hashtagsProvider)),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.delete),
+                    DdxIconButton(
+                      icon: Icons.delete,
+                      tooltip: l10n.btnDelete,
                       onPressed: () => showConfirmDialog(ctx, title: l10n.deleteHashtagConfirmTitle).then((ok) {
                         if (ok) {
                           ref.read(hashtagDaoProvider).whenData((d) async {
@@ -97,9 +115,10 @@ class _TagFormDialogState extends ConsumerState<_TagFormDialog> {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TextField(
+          DdxField(
             controller: _name,
-            decoration: InputDecoration(labelText: l10n.tagNameLabel, prefixText: '#'),
+            label: l10n.tagNameLabel,
+            prefixText: '#',
           ),
           const SizedBox(height: 12),
           Row(children: [

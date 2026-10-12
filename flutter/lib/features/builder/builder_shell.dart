@@ -12,6 +12,7 @@ import '../../data/services/bundle_service.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../providers/shell_layout_provider.dart';
+import '../../widgets/ddx_glass.dart';
 import '../hub/dialogs/new_module_sheet.dart';
 import 'builder_rail.dart';
 import 'hub_location.dart';
@@ -38,6 +39,15 @@ import 'shell_sheets.dart';
 /// Screens keep their own Scaffold (app bar, FAB) in both shapes; this one
 /// only adds the chrome around them.
 class BuilderShell extends ConsumerStatefulWidget {
+  /// The messenger of the pages inside the shell. Their own Scaffold (the one
+  /// with the FAB) is nested in the shell's, and a messenger shows a snack bar
+  /// only on the outermost Scaffold it serves — the shell's, where it covered
+  /// the page's FAB instead of lifting it. With a messenger of their own
+  /// between the two, the page's Scaffold shows it and moves the FAB up.
+  /// Code that outlives its page (New Nexus, once it has opened the new one)
+  /// shows its snack bar here.
+  static final messengerKey = GlobalKey<ScaffoldMessengerState>();
+
   final Widget child;
 
   /// Current router path, handed down from the ShellRoute builder's own
@@ -87,6 +97,7 @@ class _BuilderShellState extends ConsumerState<BuilderShell> {
 
   @override
   Widget build(BuildContext context) {
+    final page = ScaffoldMessenger(key: BuilderShell.messengerKey, child: widget.child);
     if (ddxLayoutOf(context).hasRail) {
       // A tablet keeps its chrome. Bars a phone-shaped window hid — before a
       // rotation or a Split View resize made it this one — come back.
@@ -95,11 +106,11 @@ class _BuilderShellState extends ConsumerState<BuilderShell> {
           if (mounted) ref.read(chromeVisibleProvider.notifier).state = true;
         });
       }
-      return _RailShell(location: widget.location, child: widget.child);
+      return _RailShell(location: widget.location, child: page);
     }
     final visible = ref.watch(chromeVisibleProvider);
     return Scaffold(
-      body: NotificationListener<ScrollNotification>(onNotification: _onScroll, child: widget.child),
+      body: NotificationListener<ScrollNotification>(onNotification: _onScroll, child: page),
       bottomNavigationBar: AnimatedSize(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,
@@ -230,7 +241,7 @@ class BuilderNavibar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final openCount = ref.watch(recentViewsProvider).length;
+    final openCount = ref.watch(recentViewsProvider.select((v) => v.length));
     final here = HubLocation.parse(location);
     final atNest = location == '/' || (here.nexusId != null && here.moduleId == null);
     final atSearch = location == '/search';
@@ -276,21 +287,34 @@ class BuilderNavibar extends ConsumerWidget {
           ],
         ),
       );
+    if (context.isGlassStyle) {
+      // Glass (Procress 23): a pane over the theme's backdrop, its hairline
+      // on the edge that meets the page.
+      return DdxGlass(
+        edge: DdxGlassEdge.top,
+        backdrop: true,
+        child: Material(
+          type: MaterialType.transparency,
+          child: Padding(padding: const EdgeInsets.only(top: 4), child: row),
+        ),
+      );
+    }
     if (context.isIosStyle) {
       // The Apple tab bar (C3): translucent over the page, blurred, a hairline
-      // on top — the same five destinations.
+      // on top — the same five destinations. "Reduce transparency" and high
+      // contrast make it solid, the same as they do a glass pane.
       final ddx = context.ddx;
-      return ClipRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: ddx.iosBar,
-              border: Border(top: BorderSide(color: ddx.iosSeparator, width: 0.5)),
-            ),
-            child: Padding(padding: const EdgeInsets.only(top: 4), child: row),
-          ),
+      final opaque = context.glassOpaque;
+      final bar = DecoratedBox(
+        decoration: BoxDecoration(
+          color: opaque ? Color.alphaBlend(ddx.iosBar, ddx.palette.bg) : ddx.iosBar,
+          border: Border(top: BorderSide(color: ddx.iosSeparator, width: 0.5)),
         ),
+        child: Padding(padding: const EdgeInsets.only(top: 4), child: row),
+      );
+      if (opaque) return bar;
+      return ClipRect(
+        child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20), child: bar),
       );
     }
     return BottomAppBar(padding: EdgeInsets.zero, child: row);

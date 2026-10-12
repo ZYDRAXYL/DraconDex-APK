@@ -4,6 +4,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../core/entity/entity_kinds.dart';
 import 'vault_snapshot_service.dart';
+import 'snapshot_codec.dart';
 
 class TrashEntry {
   final int id;
@@ -76,7 +77,8 @@ class TrashService {
       final p = await db.rawQuery("SELECT id FROM module WHERE id=? AND kind='collector'", [row['parent_ref']]);
       parent = p.isEmpty ? null : p.first['id'] as int;
     }
-    final payload = jsonDecode(row['payload'] as String) as Map<String, dynamic>;
+    // decoded off the UI isolate (SnapshotCodec): a big module's snapshot
+    final payload = (await SnapshotCodec.decodeText(row['payload'] as String)) as Map<String, dynamic>;
     final r = await VaultSnapshotService.importModuleSnapshot(db, nexusId, parent, payload);
     if (!r.ok) return null;
     final saved = jsonDecode(row['relations'] as String? ?? '{}');

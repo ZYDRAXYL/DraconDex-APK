@@ -9,6 +9,7 @@ import '../../providers/db_providers.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/navigation_providers.dart';
 import '../../providers/recent_views_provider.dart';
+import '../../widgets/ddx_list.dart';
 import '../../widgets/hiding_app_bar.dart';
 import '../../widgets/row_menu.dart';
 import '../builder/breadcrumb_title.dart';
@@ -21,6 +22,8 @@ import '../tools/folder_assets.dart';
 import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
 import 'widgets/module_collection_view.dart';
+import 'widgets/nexus_collection_view.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// One page of the Hub, shown inside the Builder shell: the Nexus root
 /// (moduleId null), a single module's own page — its content area (if its
@@ -54,6 +57,11 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
   /// recolor so the open pages never show a stale label, but not on every
   /// unrelated rebuild.
   String? _recordedSignature;
+
+  /// The header over the rows (UX-LAYOUT §12.4): a filter, and an order —
+  /// null is the folder's own (pinned first, then as arranged).
+  String _filter = '';
+  DdxSort? _sort;
 
   int get nexusId => widget.nexusId;
   int? get moduleId => widget.moduleId;
@@ -150,10 +158,24 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
               // are laid out is a choice about those rows, so it sits on their
               // own header below, and a page with none has no such choice.
               actions: [
+                // The Nexus root's own ⋮ (Procress 24): its name and the rest
+                // of the Nexus's menu two taps from here, not three by way
+                // of the Nexus list.
+                if (moduleId == null && nexus != null)
+                  RowMenuButton(
+                    iconSize: 24,
+                    title: nexus.name,
+                    actions: () => nexusActions(context, ref, nexus, onOwnPage: true),
+                  ),
                 if (module != null)
                   RowMenuButton(
                     iconSize: 24,
                     title: module.name,
+                    // the title's alignment right in the menu (§13): it was
+                    // a third tap, through "Title layout…"
+                    header: itemKey != null || module.kind != ModuleKind.collector
+                        ? PageTitleAlignControl(pageKey: PageKey(module.id, itemKey))
+                        : null,
                     actions: () => [
                       ...pageActions(context, ref, module, itemKey),
                       ...moduleRowActions(context, ref, module, onOwnPage: true, itemKey: itemKey, itemName: itemName),
@@ -163,61 +185,87 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
             ),
           ),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.only(bottom: 88),
-              children: [
+            // The bar above already sits under the status bar; without this
+            // every ListView on the page (the Classifier's table) pads itself
+            // by the status bar's height again — a blank band on a phone
+            // with a notch.
+            child: MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            // Slivers, so a folder's rows build as they scroll in (Procress
+            // 19 F5); everything else is one box each, as in a ListView.
+            child: CustomScrollView(
+              slivers: [
                 // The page: a stack of blocks (V5.md §12, APK-V3.md §10.4).
-                if (module != null && (itemKey != null || module.kind != ModuleKind.collector)) ...[
-                  // The title, laid out as the page says (C6); on iOS the
-                  // large title, under the breadcrumb bar (C3).
-                  PageHeader(module: module, itemKey: itemKey, title: itemKey != null ? (itemName ?? '') : module.name),
-                  ModulePage(moduleId: module.id, itemKey: itemKey),
-                ],
+                if (module != null && (itemKey != null || module.kind != ModuleKind.collector))
+                  SliverList.list(children: [
+                    // The title, laid out as the page says (C6); on iOS the
+                    // large title, under the breadcrumb bar (C3).
+                    PageHeader(module: module, itemKey: itemKey, title: itemKey != null ? (itemName ?? '') : module.name),
+                    ModulePage(moduleId: module.id, itemKey: itemKey),
+                  ]),
                 // A Collector IS its children, and so is a Nexus root.
                 if (itemKey == null && showsChildren(module))
-                  childrenAsync.when(
-                    loading: () => const Padding(
-                        padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator())),
-                    error: (e, s) => Center(child: Text('Error: $e')),
-                    data: (children) => children.isEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.all(32),
-                            child: Text(
-                              l10n.emptyModuleMessage,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
-                                  ),
+                  ...childrenAsync.when(
+                    loading: () => const [
+                      SliverToBoxAdapter(
+                        child: Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator())),
+                      ),
+                    ],
+                    error: (e, s) => [SliverToBoxAdapter(child: Center(child: Text('Error: $e')))],
+                    data: (children) {
+                      if (children.isEmpty) {
+                        return [
+                          SliverToBoxAdapter(
+                            child: DdxEmptyState(
+                              icon: Icons.folder_open_outlined,
+                              message: l10n.emptyModuleMessage,
+                              actionLabel: l10n.newModuleTooltip,
+                              onAction: _newModule,
                             ),
-                          )
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(16, 8, 4, 0),
-                                child: Row(children: [
-                                  Expanded(
-                                    child: Text(l10n.pageInside,
-                                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                              color: Theme.of(context).colorScheme.onSurfaceVariant,
-                                            )),
-                                  ),
-                                  const ViewModeButton(),
-                                ]),
-                              ),
-                              ModuleCollectionView(
-                                nexusId: nexusId,
-                                modules: children,
-                                mode: viewMode,
-                                embedded: true,
-                              ),
-                            ],
                           ),
+                        ];
+                      }
+                      final shown = ddxSorted(
+                        [for (final m in children) if (ddxMatches(_filter, [m.name])) m],
+                        _sort,
+                        name: (m) => m.name,
+                        edited: (m) => m.updatedAt,
+                        created: (m) => m.createdAt,
+                        kind: (m) => kindName(l10n, m.kind),
+                      );
+                      return [
+                        SliverToBoxAdapter(
+                          child: DdxListHeader(
+                            count: shown.length,
+                            onFilterChanged: (v) => setState(() => _filter = v),
+                            sort: _sort,
+                            sorts: DdxSort.values,
+                            manualOrder: true,
+                            onSortChanged: (s) => setState(() => _sort = s),
+                            // how the rows are laid out is a choice about
+                            // them, so it sits on their header (§7.3)
+                            trailing: const [ViewModeButton()],
+                          ),
+                        ),
+                        if (shown.isEmpty)
+                          SliverToBoxAdapter(child: DdxEmptyState(icon: Icons.filter_list_off, message: l10n.listNoMatch))
+                        else
+                          ModuleCollectionView(
+                            nexusId: nexusId,
+                            modules: shown,
+                            mode: viewMode,
+                            sliver: true,
+                          ),
+                      ];
+                    },
                   ),
                 // A folder's own files, under its sub-folders and modules.
                 if (itemKey == null && moduleId != null && module?.kind == ModuleKind.collector)
-                  FolderAssets(nexusId: nexusId, moduleId: moduleId!),
+                  SliverToBoxAdapter(child: FolderAssets(nexusId: nexusId, moduleId: moduleId!)),
+                const SliverPadding(padding: EdgeInsets.only(bottom: 88)),
               ],
+            ),
             ),
           ),
         ],
@@ -226,7 +274,7 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
           ? null
           : BottomAppBar(
               child: Row(children: [
-                IconButton(tooltip: MaterialLocalizations.of(context).closeButtonTooltip, icon: const Icon(Icons.close), onPressed: endSelect),
+                DdxIconButton(icon: Icons.close, tooltip: MaterialLocalizations.of(context).closeButtonTooltip, onPressed: endSelect),
                 Expanded(child: Text(l10n.selectedCount.replaceAll('{n}', '${selection.length}'))),
                 FilledButton.icon(
                   icon: const Icon(Icons.drive_file_move_outline),
@@ -269,13 +317,16 @@ extension on _ModuleExplorerScreenState {
     if (moduleId != null && module == null) return null; // still loading
     return FloatingActionButton(
       tooltip: l10n.newModuleTooltip,
-      onPressed: () async {
-        await showNewModuleSheet(context, ref, nexusId, moduleId);
-        ref.invalidate(moduleChildrenProvider(_childrenKey));
-        ref.invalidate(nexusIndexProvider(nexusId));
-      },
+      onPressed: _newModule,
       child: const Icon(Icons.add),
     );
+  }
+
+  /// A new module here — the FAB's action, and the empty folder's one button.
+  Future<void> _newModule() async {
+    await showNewModuleSheet(context, ref, nexusId, moduleId);
+    ref.invalidate(moduleChildrenProvider(_childrenKey));
+    ref.invalidate(nexusIndexProvider(nexusId));
   }
 }
 

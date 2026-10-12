@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../core/i18n/app_localizations.dart';
 import '../core/theme/ddx_theme.dart';
+import 'ddx_popover.dart';
 
 /// Which section of a grouped menu an entry sits in (APP docs/UX-LAYOUT.md
 /// §7.2). [none] is the default, and a menu whose entries are all [none] and
@@ -66,11 +67,18 @@ String? _groupTitle(AppLocalizations l, RowGroup g) => switch (g) {
 ///
 /// On iPhone/iPad it is an action sheet instead — the Apple-app layer (APP
 /// docs/REDESIGN.md C3): destructive actions in red, Cancel apart at the
-/// bottom. Same actions, same close-then-run order.
-Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String? title}) async {
+/// bottom. Same actions, same close-then-run order. The action sheet is
+/// translucent and blurred by design, so "Reduce transparency" (and high
+/// contrast) take the solid sheet instead.
+///
+/// [header] is a control placed in the menu itself, above the actions — a
+/// setting used often enough that opening a second sheet for it would make
+/// it one tap too deep (APP docs/UX-LAYOUT.md §13, Procress 24). It changes
+/// its value in place; the menu stays open.
+Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String? title, Widget? header}) async {
   if (actions.isEmpty) return;
   if (_grouped(actions)) actions = groupedOrder(actions);
-  if (context.isIosStyle) {
+  if (context.isIosStyle && !context.glassOpaque) {
     // Cupertino draws in SF, which an iPhone has but the web build (the PWA
     // on Safari) does not bundle — there it would fall back to a font
     // fetched from the network, i.e. nothing offline. Use the app's own.
@@ -80,6 +88,7 @@ Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String?
       useRootNavigator: true,
       builder: (sheetContext) => CupertinoActionSheet(
         title: title == null ? null : Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: web),
+        message: header == null ? null : Material(type: MaterialType.transparency, child: header),
         actions: [
           for (final a in actions)
             CupertinoActionSheetAction(
@@ -97,12 +106,15 @@ Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String?
     picked?.onTap();
     return;
   }
-  final picked = await showModalBottomSheet<RowAction>(
+  // A sheet on a phone, a menu beside the row on a tablet or wider — and a
+  // dialog when the row is already inside a sheet (never sheet over sheet).
+  final picked = await showDdxPopover<RowAction>(
     context: context,
     // Over the Navibar, not under it: the shell's own navigator sits
     // above the bar, so a sheet opened on it would be cut off by it.
     useRootNavigator: true,
-    showDragHandle: true,
+    width: 320,
+    semanticLabel: title,
     builder: (sheetContext) => SafeArea(
       top: false,
       child: SingleChildScrollView(
@@ -120,6 +132,7 @@ Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String?
                   style: Theme.of(sheetContext).textTheme.titleMedium,
                 ),
               ),
+            if (header != null) ...[header, const Divider(height: 8)],
             if (_grouped(actions))
               ..._groupedChildren(sheetContext, actions)
             else
@@ -229,7 +242,10 @@ class RowMenuButton extends StatelessWidget {
   /// are shorter than one.
   final bool dense;
 
-  const RowMenuButton({super.key, required this.actions, this.title, this.iconSize = 20, this.dense = false});
+  /// A control shown in the menu above the actions (see [showRowMenu]).
+  final Widget? header;
+
+  const RowMenuButton({super.key, required this.actions, this.title, this.iconSize = 20, this.dense = false, this.header});
 
   @override
   Widget build(BuildContext context) {
@@ -238,7 +254,7 @@ class RowMenuButton extends StatelessWidget {
         message: AppLocalizations.of(context)!.rowMore,
         child: InkWell(
           borderRadius: BorderRadius.circular(4),
-          onTap: () => showRowMenu(context, actions(), title: title),
+          onTap: () => showRowMenu(context, actions(), title: title, header: header),
           child: Padding(
             padding: const EdgeInsets.all(2),
             child: Icon(Icons.more_vert, size: iconSize),
@@ -251,7 +267,7 @@ class RowMenuButton extends StatelessWidget {
       iconSize: iconSize,
       visualDensity: VisualDensity.compact,
       tooltip: AppLocalizations.of(context)!.rowMore,
-      onPressed: () => showRowMenu(context, actions(), title: title),
+      onPressed: () => showRowMenu(context, actions(), title: title, header: header),
     );
   }
 }

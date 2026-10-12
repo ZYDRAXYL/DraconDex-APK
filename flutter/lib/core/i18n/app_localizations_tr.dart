@@ -960,6 +960,24 @@ class AppLocalizationsTr extends AppLocalizations {
   String get transferErrBadPayload => 'Alınan dosya okunamadı.';
 
   @override
+  String get transferSendKey => 'Gönderim anahtarı';
+
+  @override
+  String get transferSendKeyHint => 'Bu haftanın anahtarını aktarım hizmetini yöneten kişiden isteyin. Her pazartesi değişir.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Bu hizmet bir Nexus kabul etmeden önce bu haftanın gönderim anahtarını ister.';
+
+  @override
+  String get transferErrBadSendKey => 'Bu gönderim anahtarı doğru değil ya da geçen haftaya ait. Anahtarlar her pazartesi değişir.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Bu cihazdan çok fazla yanlış gönderim anahtarı girildi. 15 dakika bekleyip yeniden deneyin.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Bu aktarım hizmetinde gönderim kapalı (gönderim anahtarı ayarlanmamış).';
+
+  @override
   String get transferErrServer => 'Aktarım hizmetinde bir sorun oluştu.';
 
   @override
@@ -2905,4 +2923,112 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pageInside => 'İçindekiler';
+
+  @override
+  String get listFilterHint => 'Filtrele';
+
+  @override
+  String get listSort => 'Sırala';
+
+  @override
+  String get listSortName => 'Ad';
+
+  @override
+  String get listSortEdited => 'Son düzenleme';
+
+  @override
+  String get listSortCreated => 'Oluşturma';
+
+  @override
+  String get listSortKind => 'Tür';
+
+  @override
+  String get listSortManual => 'Düzenlendiği gibi';
+
+  @override
+  String get listCount => '{n} öğe';
+
+  @override
+  String get listNoMatch => 'Bu filtreyle eşleşen bir şey yok.';
+
+  @override
+  String get listGroupToday => 'Bugün';
+
+  @override
+  String get listGroupThisWeek => 'Bu hafta';
+
+  @override
+  String get listGroupOlder => 'Daha eski';
+
+  @override
+  String get assetGroupImage => 'Görseller';
+
+  @override
+  String get assetGroupAudio => 'Ses';
+
+  @override
+  String get assetGroupVideo => 'Video';
+
+  @override
+  String get assetGroupDoc => 'Belgeler';
+
+  @override
+  String get assetGroupTrack => 'Altyazılar';
+
+  @override
+  String get assetGroupModel => '3B modeller';
+
+  @override
+  String get assetGroupUrl => 'Bağlantılar';
+
+  @override
+  String get assetGroupOther => 'Diğer dosyalar';
+
+  @override
+  String get uiStyleLabel => 'Arayüz stili';
+
+  @override
+  String get uiStyleStandard => 'Standart';
+
+  @override
+  String get uiStyleGlass => 'Cam';
+
+  @override
+  String get reduceTransparency => 'Saydamlığı azalt';
+
+  @override
+  String get reduceTransparencyHint => 'Cam paneller ve yarı saydam çubuklar opak olur';
+
+  @override
+  String get glassBlurOff => 'Bulanıklık kapalı — bu cihaz onu çok yavaş çizdi';
+
+  @override
+  String get glassBlurRetry => 'Tekrar dene';
+
+  @override
+  String get nexusPickTemplate => 'Bir şablon seçin';
+
+  @override
+  String get nexusTemplateBlank => 'Boş';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Boş bir Nexus — modülleri kendin ekle';
+
+  @override
+  String get nexusCreateAppDocs => 'App Docs oluştur';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Uygulama içi rehber, kendi klasöründe';
+
+  @override
+  String get nexusNameTaken => 'Bu adda bir Nexus zaten var';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus oluşturuldu ama şablon eklenemedi';
+
+  @override
+  String get btnRetry => 'Tekrar dene';
+
+  @override
+  String get btnCreateNexus => 'Nexus\'u oluştur';
 }

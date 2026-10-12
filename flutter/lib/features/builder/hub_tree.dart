@@ -5,10 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/i18n/app_localizations.dart';
+import '../../core/theme/ddx_theme.dart';
+import '../../core/theme/tokens.g.dart';
 import '../../data/models/module_model.dart';
 import '../../providers/module_provider.dart';
 import '../../providers/shell_layout_provider.dart';
 import '../../widgets/color_dot.dart';
+import '../../widgets/ddx_list.dart';
 import '../../widgets/row_menu.dart';
 import '../hub/module_actions.dart';
 import '../hub/widgets/module_drag.dart';
@@ -94,23 +97,25 @@ class _NexusNode extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final key = hubNodeKey(nexus.id, null);
-    final expanded = ref.watch(hubTreeExpansionProvider).contains(key);
+    // only this node's own bit: expanding another node does not rebuild it
+    final expanded = ref.watch(hubTreeExpansionProvider.select((s) => s.contains(key)));
     final selected = current.nexusId == nexus.id && current.moduleId == null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         // The Nexus's top level takes a dropped module too, out of any folder.
-        FolderDropTarget(nexusId: nexus.id, folderId: null, folderName: nexus.name, child: _TreeRow(
-          depth: 0,
-          expanded: expanded,
-          hasChildren: true,
+        FolderDropTarget(nexusId: nexus.id, folderId: null, folderName: nexus.name, child: DdxListTile(
+          density: DdxDensity.compact,
           selected: selected,
-          leading: nexus.colorCode != null
-              ? ColorDot(colorCode: nexus.colorCode, size: 16)
-              : const Icon(Icons.workspaces_outlined, size: 16),
-          label: nexus.name,
-          onToggle: () => ref.read(hubTreeExpansionProvider.notifier).toggle(key),
+          leading: _Twisty(
+            expanded: expanded,
+            onToggle: () => ref.read(hubTreeExpansionProvider.notifier).toggle(key),
+            child: nexus.colorCode != null
+                ? ColorDot(colorCode: nexus.colorCode, size: DdxSize.iconSm)
+                : const Icon(Icons.workspaces_outlined, size: DdxSize.iconSm),
+          ),
+          title: nexus.name,
           onTap: () {
             ref.read(hubTreeExpansionProvider.notifier).expand([key]);
             context.go('/hub/${nexus.id}');
@@ -173,7 +178,8 @@ class _ModuleNode extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final key = hubNodeKey(nexusId, module.id);
-    final expanded = ref.watch(hubTreeExpansionProvider).contains(key);
+    // only this node's own bit: expanding another node does not rebuild it
+    final expanded = ref.watch(hubTreeExpansionProvider.select((s) => s.contains(key)));
     final selected = current.nexusId == nexusId && current.moduleId == module.id;
     final hasChildren = (module.childCount ?? 0) > 0;
     List<RowAction> actions() => moduleRowActions(context, ref, module, inTree: true);
@@ -181,26 +187,22 @@ class _ModuleNode extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        draggableModule(nexusId: nexusId, module: module, child: _TreeRow(
-          depth: depth,
-          expanded: expanded,
-          hasChildren: hasChildren,
+        draggableModule(nexusId: nexusId, module: module, child: DdxListTile(
+          density: DdxDensity.compact,
+          // Indent stops growing past eight levels: a deeper nest would
+          // otherwise push the name off the edge of a narrow panel entirely.
+          indent: math.min(depth, 8) * DdxSpace.sp6,
           selected: selected,
-          leading: module.colorCode != null
-              ? ColorDot(colorCode: module.colorCode, size: 16)
-              : Icon(module.kindInfo.icon, size: 16),
-          label: module.name,
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (module.pinned) const Icon(Icons.push_pin, size: 13),
-              RowMenuButton(actions: actions, title: module.name, iconSize: 16, dense: true),
-            ],
+          leading: _Twisty(
+            expanded: expanded,
+            onToggle: hasChildren ? () => ref.read(hubTreeExpansionProvider.notifier).toggle(key) : null,
+            child: module.colorCode != null
+                ? ColorDot(colorCode: module.colorCode, size: DdxSize.iconSm)
+                : Icon(module.kindInfo.icon, size: DdxSize.iconSm),
           ),
-          onLongPress: () => showRowMenu(context, actions(), title: module.name),
-          onToggle: hasChildren
-              ? () => ref.read(hubTreeExpansionProvider.notifier).toggle(key)
-              : null,
+          title: module.name,
+          trailing: [if (module.pinned) const Icon(Icons.push_pin, size: DdxSize.iconSm)],
+          actions: actions,
           onTap: () {
             if (hasChildren) ref.read(hubTreeExpansionProvider.notifier).expand([key]);
             context.go('/hub/$nexusId/module/${module.id}');
@@ -213,89 +215,33 @@ class _ModuleNode extends ConsumerWidget {
   }
 }
 
-/// One row of the tree at any depth — the twisty, the icon and the name, with
-/// the same left accent bar the desktop build marks an open item with.
-class _TreeRow extends StatelessWidget {
-  final int depth;
+/// A tree row's leading: the twisty (empty space on a leaf, so names line
+/// up), then the row's own icon.
+class _Twisty extends StatelessWidget {
   final bool expanded;
-  final bool hasChildren;
-  final bool selected;
-  final Widget leading;
-  final String label;
-  final Widget? trailing;
   final VoidCallback? onToggle;
-  final VoidCallback onTap;
-  final VoidCallback? onLongPress;
+  final Widget child;
 
-  const _TreeRow({
-    required this.depth,
-    required this.expanded,
-    required this.hasChildren,
-    required this.selected,
-    required this.leading,
-    required this.label,
-    required this.onTap,
-    this.trailing,
-    this.onToggle,
-    this.onLongPress,
-  });
+  const _Twisty({required this.expanded, required this.onToggle, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final scheme = theme.colorScheme;
-
-    return InkWell(
-      onTap: onTap,
-      onLongPress: onLongPress,
-      child: Container(
-        decoration: selected
-            ? BoxDecoration(
-                color: scheme.primary.withValues(alpha: 0.12),
-                border: Border(left: BorderSide(color: scheme.primary, width: 3)),
-              )
-            : null,
-        // Indent stops growing past eight levels: a deeper nest would other-
-        // wise push the name off the edge of a narrow panel entirely.
-        padding: EdgeInsets.only(
-          left: 6.0 + math.min(depth, 8) * 14,
-          right: 8,
-          top: 5,
-          bottom: 5,
-        ),
-        child: Row(
-          children: [
-            SizedBox(
-              width: 22,
-              child: hasChildren
-                  ? InkWell(
-                      onTap: onToggle,
-                      borderRadius: BorderRadius.circular(4),
-                      child: Icon(
-                        expanded ? Icons.expand_more : Icons.chevron_right,
-                        size: 18,
-                        color: scheme.onSurface.withValues(alpha: 0.6),
-                      ),
-                    )
-                  : null,
-            ),
-            leading,
-            const SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: selected ? scheme.primary : scheme.onSurface,
-                  fontWeight: selected ? FontWeight.w600 : null,
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      SizedBox(
+        width: DdxSize.ctlSm,
+        child: onToggle == null
+            ? null
+            : InkWell(
+                onTap: onToggle,
+                borderRadius: BorderRadius.circular(DdxRadius.rs),
+                child: Icon(
+                  expanded ? Icons.expand_more : Icons.chevron_right,
+                  size: DdxSize.iconMd,
+                  color: context.ddx.textMuted,
                 ),
               ),
-            ),
-            if (trailing != null) trailing!,
-          ],
-        ),
       ),
-    );
+      child,
+    ]);
   }
 }

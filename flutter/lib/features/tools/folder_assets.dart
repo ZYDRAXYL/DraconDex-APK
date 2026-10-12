@@ -5,6 +5,7 @@ import '../../core/i18n/app_localizations.dart';
 import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import '../../providers/navigation_providers.dart';
+import '../../widgets/ddx_list.dart';
 import '../../widgets/row_menu.dart';
 import '../hub/widgets/move_to_sheet.dart';
 import 'assets_screen.dart';
@@ -43,21 +44,17 @@ class FolderAssets extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final list = ref.watch(moduleAssetsProvider(moduleId)).valueOrNull ?? const <Asset>[];
     if (list.isEmpty) return const SizedBox.shrink();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return DdxListSection(
+      storageId: 'folder-files',
+      title: l10n.folderFiles,
+      count: list.length,
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
-          child: Text(l10n.folderFiles, style: Theme.of(context).textTheme.titleSmall),
-        ),
         for (final a in list)
-          ListTile(
-            leading: AssetThumb(asset: a, size: 40),
-            title: Text(a.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-            subtitle: Text(a.isUrl ? a.path : '${a.type.toUpperCase()} · ${fileSize(a.size)}',
-                maxLines: 1, overflow: TextOverflow.ellipsis),
-            trailing: RowMenuButton(title: a.name, actions: () => _actions(context, ref, a)),
-            onLongPress: () => showRowMenu(context, _actions(context, ref, a), title: a.name),
+          DdxListTile(
+            leading: AssetThumb(asset: a),
+            title: a.name,
+            meta: assetMeta(a),
+            actions: () => _actions(context, ref, a),
           ),
       ],
     );

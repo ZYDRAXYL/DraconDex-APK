@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../data/services/supabase_setup_service.dart';
 import '../../providers/supabase_provider.dart';
+import '../../widgets/ddx_glass.dart';
 
 /// Settings → Cloud → Supabase project. The Flutter/PWA twin of the Electron
 /// app's Setting → App Data → Supabase Project page: paste your own project's
@@ -149,7 +150,7 @@ class _SupabaseSetupScreenState extends ConsumerState<SupabaseSetupScreen> {
 
   Future<void> _clear() async {
     final l10n = AppLocalizations.of(context)!;
-    final confirmed = await showDialog<bool>(
+    final confirmed = await showDdxDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         content: Text(l10n.sbClearConfirm),
@@ -176,7 +177,7 @@ class _SupabaseSetupScreenState extends ConsumerState<SupabaseSetupScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.settingPageSupabase)),
+      appBar: DdxGlassBar(child: AppBar(title: Text(l10n.settingPageSupabase))),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : ListView(

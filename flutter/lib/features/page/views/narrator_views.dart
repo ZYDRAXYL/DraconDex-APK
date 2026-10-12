@@ -16,7 +16,14 @@ import '../../hub/content/narrator_content.dart';
 import '../component_registry.dart';
 import 'graph_view.dart';
 import 'node_canvas.dart';
+import '../../../widgets/ddx_list.dart';
+import '../../../core/theme/tokens.g.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_segmented.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Narrator's four presets (EXE mod/narrator.js NARRATOR_VIEWS): board,
 /// routes, reader (script and play-test, narrator-logic.js), dialogue.
@@ -145,12 +152,12 @@ class NarratorView extends ConsumerWidget {
 
     final bar = ViewBar(actions: [
       if (ctx.preset == 'routes' || ctx.preset == 'board')
-        IconButton(
+        DdxIconButton(
+          icon: Icons.alt_route,
           tooltip: l.narAddRoute,
-          icon: const Icon(Icons.alt_route),
           onPressed: data.dialogues.length < 2 ? null : () => _addRoute(context, ref, id, data),
         ),
-      IconButton(tooltip: l.narratorNewScene, icon: const Icon(Icons.add), onPressed: add),
+      DdxIconButton(icon: Icons.add, tooltip: l.narratorNewScene, onPressed: add),
     ]);
     if (data.dialogues.isEmpty) {
       return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [bar, KindEmptyState(module: ctx.source, note: l.narratorNoScenes, startLabel: l.narratorNewScene, onStart: add)]);
@@ -169,7 +176,7 @@ Future<void> _addRoute(BuildContext context, WidgetRef ref, int moduleId, StoryD
   final l = AppLocalizations.of(context)!;
   int? to;
   final label = TextEditingController();
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, setLocal) {
@@ -185,7 +192,7 @@ Future<void> _addRoute(BuildContext context, WidgetRef ref, int moduleId, StoryD
           content: Column(mainAxisSize: MainAxisSize.min, children: [
             pick(from, l.connectorFrom, (x) => from = x),
             pick(to, l.narratorLeadsTo, (x) => to = x),
-            TextField(controller: label, decoration: InputDecoration(labelText: l.connectorLabel)),
+            DdxField(controller: label, label: l.connectorLabel),
           ]),
           actions: [
             TextButton(onPressed: () => Navigator.pop(d), child: Text(l.btnCancel)),
@@ -294,19 +301,22 @@ class _Routes extends ConsumerWidget {
     if (data.edges.isEmpty) return EmptyHint(l.narratorNoRoutes);
     return Column(children: [
       for (final e in data.edges)
-        ListTile(
-          dense: true,
-          title: Text('${data.nameOf(e.from)}  →  ${data.nameOf(e.to)}'),
-          subtitle: e.label?.isNotEmpty == true ? Text(e.label!) : null,
-          trailing: IconButton(
-            icon: const Icon(Icons.delete_outline, size: 18),
-            tooltip: l.btnDelete,
-            onPressed: () async {
-              final db = await ref.read(databaseProvider.future);
-              await NarratorDao(db).deleteEdge(e.id);
-              _refresh(ref, ctx.source.id);
-            },
-          ),
+        DdxListTile(
+          icon: Icons.alt_route,
+          title: '${data.nameOf(e.from)}  →  ${data.nameOf(e.to)}',
+          meta: e.label,
+          trailing: [
+            IconButton(
+              icon: const Icon(Icons.delete_outline, size: DdxSize.iconMd),
+              tooltip: l.btnDelete,
+              visualDensity: VisualDensity.compact,
+              onPressed: () async {
+                final db = await ref.read(databaseProvider.future);
+                await NarratorDao(db).deleteEdge(e.id);
+                _refresh(ref, ctx.source.id);
+              },
+            ),
+          ],
         ),
     ]);
   }
@@ -411,7 +421,7 @@ class _ReaderState extends ConsumerState<_Reader> {
 
   void _showVars() {
     final l = AppLocalizations.of(context)!;
-    showModalBottomSheet<void>(
+    showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,
@@ -441,15 +451,14 @@ class _ReaderState extends ConsumerState<_Reader> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Align(
         alignment: AlignmentDirectional.centerStart,
-        child: SegmentedButton<bool>(
-          showSelectedIcon: false,
+        child: DdxSegmented<bool>(
           segments: [
-            ButtonSegment(value: false, label: Text(l.narScript), icon: const Icon(Icons.menu_book_outlined)),
-            ButtonSegment(value: true, label: Text(l.narPlayTest), icon: const Icon(Icons.play_arrow)),
+            DdxSegment(value: false, label: l.narScript, icon: Icons.menu_book_outlined),
+            DdxSegment(value: true, label: l.narPlayTest, icon: Icons.play_arrow),
           ],
-          selected: {_play},
-          onSelectionChanged: (s) {
-            setState(() => _play = s.first);
+          selected: _play,
+          onChanged: (v) {
+            setState(() => _play = v);
             if (_play) _start();
           },
         ),
@@ -551,7 +560,7 @@ class _ReaderState extends ConsumerState<_Reader> {
             icon: Badge(isLabelVisible: _changed.isNotEmpty, label: Text('${_changed.length}'), child: const Icon(Icons.tune, size: 18)),
             label: Text('${l.narVariables} (${_vars.length})'),
           ),
-          FilterChip(label: Text(l.narShowHidden), selected: _showHidden, onSelected: (v) => setState(() => _showHidden = v)),
+          DdxChip.filter(l.narShowHidden, selected: _showHidden, onSelected: (v) => setState(() => _showHidden = v)),
         ]),
         const Divider(),
         for (final line in _log)

@@ -98,7 +98,14 @@ flutter:
   generate: false
 
   assets:
-    - assets/images/
+    # Listed one by one, not the whole folder: assets/images/ also holds the
+    # 1024 px Symbol PNG masters vendored from DraconDex-SDB (1.4 MB each),
+    # which the app never draws. The rail draws the 128 px WebP copies
+    # (Procress 19 part 7); a folder entry would ship the masters too.
+    - assets/images/DraconDex-IconApp.png
+    - assets/images/DraconDex-SymbolWhite.webp
+    - assets/images/DraconDex-SymbolBlack.webp
+    - assets/images/DraconDex-SymbolColor.webp
     # Vendored from DraconDex-SDB templates/ (Procress 12 part 0): the genre
     # bundles and the TH/EN guide. Read by APK V3's template picker.
     - assets/templates/

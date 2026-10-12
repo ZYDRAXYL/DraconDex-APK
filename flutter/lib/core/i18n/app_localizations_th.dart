@@ -963,6 +963,24 @@ class AppLocalizationsTh extends AppLocalizations {
   String get transferErrBadPayload => 'อ่านไฟล์ที่รับมาไม่ได้';
 
   @override
+  String get transferSendKey => 'คีย์สำหรับส่ง';
+
+  @override
+  String get transferSendKeyHint => 'ขอคีย์ของสัปดาห์นี้จากผู้ดูแลบริการรับส่ง — คีย์เปลี่ยนทุกวันจันทร์';
+
+  @override
+  String get transferErrSendKeyRequired => 'บริการนี้ต้องใส่คีย์สำหรับส่งของสัปดาห์นี้ก่อนจึงจะรับ Nexus';
+
+  @override
+  String get transferErrBadSendKey => 'คีย์สำหรับส่งไม่ถูกต้อง — หรือเป็นคีย์ของสัปดาห์ที่แล้ว (คีย์เปลี่ยนทุกวันจันทร์)';
+
+  @override
+  String get transferErrSendKeyLocked => 'ใส่คีย์ผิดจากเครื่องนี้หลายครั้งเกินไป รอ 15 นาทีแล้วลองใหม่';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'บริการรับส่งนี้ปิดการส่งอยู่ (ยังไม่ได้ตั้งค่าคีย์สำหรับส่ง)';
+
+  @override
   String get transferErrServer => 'บริการรับส่งมีปัญหา';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get pageInside => 'ข้างใน';
+
+  @override
+  String get listFilterHint => 'กรอง';
+
+  @override
+  String get listSort => 'เรียง';
+
+  @override
+  String get listSortName => 'ชื่อ';
+
+  @override
+  String get listSortEdited => 'แก้ไขล่าสุด';
+
+  @override
+  String get listSortCreated => 'วันที่สร้าง';
+
+  @override
+  String get listSortKind => 'ชนิด';
+
+  @override
+  String get listSortManual => 'ตามที่จัดไว้';
+
+  @override
+  String get listCount => '{n} รายการ';
+
+  @override
+  String get listNoMatch => 'ไม่มีรายการที่ตรงกับตัวกรองนี้';
+
+  @override
+  String get listGroupToday => 'วันนี้';
+
+  @override
+  String get listGroupThisWeek => 'สัปดาห์นี้';
+
+  @override
+  String get listGroupOlder => 'เก่ากว่า';
+
+  @override
+  String get assetGroupImage => 'รูปภาพ';
+
+  @override
+  String get assetGroupAudio => 'เสียง';
+
+  @override
+  String get assetGroupVideo => 'วิดีโอ';
+
+  @override
+  String get assetGroupDoc => 'เอกสาร';
+
+  @override
+  String get assetGroupTrack => 'คำบรรยาย';
+
+  @override
+  String get assetGroupModel => 'โมเดล 3 มิติ';
+
+  @override
+  String get assetGroupUrl => 'ลิงก์';
+
+  @override
+  String get assetGroupOther => 'ไฟล์อื่น ๆ';
+
+  @override
+  String get uiStyleLabel => 'สไตล์ UI';
+
+  @override
+  String get uiStyleStandard => 'มาตรฐาน';
+
+  @override
+  String get uiStyleGlass => 'กระจก';
+
+  @override
+  String get reduceTransparency => 'ลดความโปร่งใส';
+
+  @override
+  String get reduceTransparencyHint => 'แผงกระจกและแถบโปร่งใสจะกลายเป็นพื้นทึบ';
+
+  @override
+  String get glassBlurOff => 'ปิดการเบลอแล้ว — เครื่องนี้วาดได้ช้าเกินไป';
+
+  @override
+  String get glassBlurRetry => 'ลองอีกครั้ง';
+
+  @override
+  String get nexusPickTemplate => 'เลือก template';
+
+  @override
+  String get nexusTemplateBlank => 'ว่างเปล่า';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Nexus ว่าง — เพิ่มโมดูลเอง';
+
+  @override
+  String get nexusCreateAppDocs => 'สร้าง App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'คู่มือในแอป อยู่ในโฟลเดอร์แยก';
+
+  @override
+  String get nexusNameTaken => 'มี Nexus ชื่อนี้อยู่แล้ว';
+
+  @override
+  String get nexusTemplateFailed => 'สร้าง Nexus แล้ว แต่ใส่ template ไม่สำเร็จ';
+
+  @override
+  String get btnRetry => 'ลองอีกครั้ง';
+
+  @override
+  String get btnCreateNexus => 'สร้าง Nexus';
 }

@@ -24,7 +24,7 @@ class _ThemePickerSectionState extends ConsumerState<ThemePickerSection> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final current = ref.watch(settingsProvider).theme;
+    final current = ref.watch(settingsProvider.select((s) => s.theme));
     final names = AppTheme.names;
     final shown = _all ? names : {...names.take(3), current}.toList();
     return Padding(

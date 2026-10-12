@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
 import 'package:cryptography/cryptography.dart';
+import 'snapshot_codec.dart';
 import 'package:http/http.dart' as http;
 
 /// DDX Transfer — hand a whole Nexus to another device through the service in
@@ -213,18 +214,30 @@ class DdxTransferService {
   Future<TransferSendResult> send({
     required Map<String, Object?> snapshot,
     required String name,
+    String sendKey = '',
     bool allowTypedCode = true,
     void Function(double progress)? onProgress,
   }) async {
     final key = newKey();
-    final plain = Uint8List.fromList(utf8.encode(jsonEncode(snapshot)));
-    final body = gzip(plain);
+    // JSON + gzip off the UI isolate (SnapshotCodec): the same bytes gzip()
+    // makes, built where they do not hold up a frame
+    final (plainBytes: plainBytes, bytes: body) = await SnapshotCodec.encodeSized(snapshot, gzipped: true);
 
-    final created = _decode(await _send(() => _client.post(
-          _uri('/api/create'),
-          headers: const {'content-type': 'application/json'},
-          body: jsonEncode({'sizeBytes': body.length}),
-        )));
+    // sendKey: this week's send key (DraconDex-TRX _lib/sendkey.mts). Always
+    // sent; a service with the gate off ignores it. `locked` from create means
+    // too many wrong KEYS from this device, not PINs — renamed so the screen
+    // says the right thing.
+    final Map<String, Object?> created;
+    try {
+      created = _decode(await _send(() => _client.post(
+            _uri('/api/create'),
+            headers: const {'content-type': 'application/json'},
+            body: jsonEncode({'sizeBytes': body.length, 'sendKey': sendKey}),
+          )));
+    } on DdxTransferException catch (e) {
+      if (e.code == 'locked') throw const DdxTransferException('send_key_locked');
+      rethrow;
+    }
 
     final transferId = '${created['transferId']}';
     final uploadToken = '${created['uploadToken']}';
@@ -256,7 +269,7 @@ class DdxTransferService {
     final manifest = <String, Object?>{
       'v': 1,
       'name': name,
-      'sizeBytes': plain.length,
+      'sizeBytes': plainBytes,
       'compression': 'gzip',
       'createdAt': DateTime.now().millisecondsSinceEpoch,
       'source': 'apk',
@@ -389,21 +402,22 @@ class DdxTransferService {
     TransferVerifyResult session, {
     void Function(double progress)? onProgress,
   }) async {
-    final parts = <int>[];
+    final parts = BytesBuilder(copy: false);
     for (var i = 0; i < session.chunkCount; i++) {
       final res = await _send(() => _client.get(
             _uri('/api/chunk/${session.transferId}/$i'),
             headers: {'authorization': 'Bearer ${session.receiptToken}'},
           ));
       if (res.statusCode >= 400) _decode(res);
-      parts.addAll(await openChunk(session.key, res.bodyBytes));
+      parts.add(await openChunk(session.key, res.bodyBytes));
       onProgress?.call((i + 1) / session.chunkCount);
     }
 
     Map<String, Object?> payload;
     try {
-      final raw = session.compression == 'gzip' ? gunzip(parts) : Uint8List.fromList(parts);
-      payload = (jsonDecode(utf8.decode(raw)) as Map).cast<String, Object?>();
+      // gunzip + JSON off the UI isolate (SnapshotCodec)
+      payload = ((await SnapshotCodec.decode(parts.takeBytes(), gzipped: session.compression == 'gzip')) as Map)
+          .cast<String, Object?>();
     } catch (_) {
       throw const DdxTransferException('bad_payload');
     }

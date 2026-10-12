@@ -27,6 +27,10 @@ import 'component_registry.dart';
 import 'page_providers.dart';
 import 'views/classifier_views.dart';
 import 'views/sketcher_views.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_chip.dart';
+import '../../widgets/ddx_card.dart';
+import '../../widgets/ddx_field.dart';
 
 /// Properties, Related, and an element page's body — the three components
 /// every page can hold (EXE renderer/page/blocks.js, item-page.js).
@@ -102,7 +106,7 @@ class TextSourceEditor extends ConsumerWidget {
 Future<String?> editTextSheet(BuildContext context,
     {required String title, required String initial, required int nexusId, bool singleLine = false}) {
   final controller = TextEditingController(text: initial);
-  return showModalBottomSheet<String>(
+  return showDdxSheet<String>(
     context: context,
     useRootNavigator: true,
     isScrollControlled: true,
@@ -303,7 +307,7 @@ Future<void> editPropSheet(BuildContext context, WidgetRef ref, ComponentCtx ctx
   final name = TextEditingController(text: prop?.propName ?? '');
   final value = TextEditingController(text: prop?.content ?? '');
   var type = prop?.propType ?? 'text';
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (dialog) => StatefulBuilder(
       builder: (dialog, setState) => AlertDialog(
@@ -312,7 +316,7 @@ Future<void> editPropSheet(BuildContext context, WidgetRef ref, ComponentCtx ctx
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextField(controller: name, autofocus: prop == null, decoration: InputDecoration(labelText: l10n.pbPropName)),
+              DdxField(controller: name, autofocus: prop == null, label: l10n.pbPropName),
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 initialValue: type,
@@ -324,14 +328,14 @@ Future<void> editPropSheet(BuildContext context, WidgetRef ref, ComponentCtx ctx
               if (type == 'textarea')
                 WikiTextField(controller: value, nexusId: ctx.nexusId, minLines: 3, maxLines: 8)
               else if (type != 'checkbox')
-                TextField(
+                DdxField(
                   controller: value,
                   keyboardType: type == 'number'
                       ? TextInputType.number
                       : type == 'url'
                           ? TextInputType.url
                           : TextInputType.text,
-                  decoration: InputDecoration(hintText: type == 'date' ? 'YYYY-MM-DD' : null),
+                  hint: type == 'date' ? 'YYYY-MM-DD' : null,
                 ),
             ],
           ),
@@ -386,11 +390,7 @@ class _TagRow extends ConsumerWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           for (final t in tags)
-            Chip(
-              visualDensity: VisualDensity.compact,
-              avatar: t.colorCode == null ? null : ColorDot(colorCode: t.colorCode, size: 10),
-              label: Text('#${t.name}'),
-            ),
+            DdxChip.tag(t.name, size: DdxChipSize.sm, color: t.colorCode == null ? null : hexToColor(t.colorCode!)),
           TextButton.icon(
             icon: const Icon(Icons.sell_outlined, size: 18),
             label: Text(AppLocalizations.of(context)!.pbTags),
@@ -408,7 +408,7 @@ class _TagRow extends ConsumerWidget {
     final all = await HashtagDao(db).getHashtags();
     final on = {for (final t in current) t.id};
     if (!context.mounted) return;
-    await showModalBottomSheet<void>(
+    await showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,
@@ -576,7 +576,7 @@ class ItemBody extends ConsumerWidget {
         if (data.sketchPage != null)
           ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 320),
-            child: Card(margin: const EdgeInsets.symmetric(vertical: 4), child: SketchThumb(pageId: data.sketchPage!)),
+            child: DdxCard(kind: DdxCardKind.preview, margin: const EdgeInsets.symmetric(vertical: 4), child: SketchThumb(pageId: data.sketchPage!)),
           ),
         for (final f in data.fields)
           InkWell(
@@ -588,7 +588,9 @@ class ItemBody extends ConsumerWidget {
                     final db = await ref.read(databaseProvider.future);
                     await ClassifierDao(db).setValue(objectRef: data.id, templateRef: f.templateId, value: next);
                     await saved();
-                    if (data.classifierModule != null) ref.invalidate(clsDataProvider(data.classifierModule!));
+                    if (data.classifierModule != null) {
+                      ref.read(clsValuesProvider(data.classifierModule!).notifier).put(data.id, f.templateId, next);
+                    }
                   }
                 : null,
             child: Padding(

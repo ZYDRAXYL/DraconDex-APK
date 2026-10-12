@@ -963,6 +963,24 @@ class AppLocalizationsPt extends AppLocalizations {
   String get transferErrBadPayload => 'Não foi possível ler o arquivo recebido.';
 
   @override
+  String get transferSendKey => 'Chave de envio';
+
+  @override
+  String get transferSendKeyHint => 'Peça a chave desta semana a quem administra o serviço de transferência. Ela muda toda segunda-feira.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Este serviço precisa da chave de envio desta semana para aceitar um Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Essa chave de envio não está correta, ou é a da semana passada. As chaves mudam toda segunda-feira.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Chaves de envio erradas demais neste dispositivo. Aguarde 15 minutos e tente de novo.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'O envio está desativado neste serviço de transferência (a chave de envio não foi configurada).';
+
+  @override
   String get transferErrServer => 'O serviço de transferência teve um problema.';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get pageInside => 'Conteúdo';
+
+  @override
+  String get listFilterHint => 'Filtrar';
+
+  @override
+  String get listSort => 'Ordenar';
+
+  @override
+  String get listSortName => 'Nome';
+
+  @override
+  String get listSortEdited => 'Última edição';
+
+  @override
+  String get listSortCreated => 'Criação';
+
+  @override
+  String get listSortKind => 'Tipo';
+
+  @override
+  String get listSortManual => 'Como organizado';
+
+  @override
+  String get listCount => '{n} itens';
+
+  @override
+  String get listNoMatch => 'Nada corresponde a este filtro.';
+
+  @override
+  String get listGroupToday => 'Hoje';
+
+  @override
+  String get listGroupThisWeek => 'Esta semana';
+
+  @override
+  String get listGroupOlder => 'Mais antigos';
+
+  @override
+  String get assetGroupImage => 'Imagens';
+
+  @override
+  String get assetGroupAudio => 'Áudio';
+
+  @override
+  String get assetGroupVideo => 'Vídeo';
+
+  @override
+  String get assetGroupDoc => 'Documentos';
+
+  @override
+  String get assetGroupTrack => 'Legendas';
+
+  @override
+  String get assetGroupModel => 'Modelos 3D';
+
+  @override
+  String get assetGroupUrl => 'Links';
+
+  @override
+  String get assetGroupOther => 'Outros arquivos';
+
+  @override
+  String get uiStyleLabel => 'Estilo da interface';
+
+  @override
+  String get uiStyleStandard => 'Padrão';
+
+  @override
+  String get uiStyleGlass => 'Vidro';
+
+  @override
+  String get reduceTransparency => 'Reduzir transparência';
+
+  @override
+  String get reduceTransparencyHint => 'Painéis de vidro e barras translúcidas ficam opacos';
+
+  @override
+  String get glassBlurOff => 'Desfoque desativado: este aparelho o desenhava devagar demais';
+
+  @override
+  String get glassBlurRetry => 'Tentar de novo';
+
+  @override
+  String get nexusPickTemplate => 'Escolha um modelo';
+
+  @override
+  String get nexusTemplateBlank => 'Em branco';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Um Nexus vazio — adicione os módulos você mesmo';
+
+  @override
+  String get nexusCreateAppDocs => 'Criar App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'O guia do app, numa pasta própria';
+
+  @override
+  String get nexusNameTaken => 'Já existe um Nexus com este nome';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus criado, mas não foi possível adicionar o modelo';
+
+  @override
+  String get btnRetry => 'Tentar de novo';
+
+  @override
+  String get btnCreateNexus => 'Criar Nexus';
 }

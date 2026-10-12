@@ -1,9 +1,10 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/i18n/app_localizations.dart';
-import '../../../core/theme/ddx_theme.dart';
 import '../../../data/models/module_model.dart';
 import '../../../data/models/recent_view_model.dart';
 import '../../../data/models/viewer_model.dart';
@@ -11,6 +12,10 @@ import '../../../data/services/entity_location.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/navigation_providers.dart';
 import '../../../widgets/color_dot.dart';
+import '../../../widgets/ddx_list.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Shared bits of the per-kind views.
 
@@ -31,11 +36,12 @@ class EmptyHint extends StatelessWidget {
 }
 
 /// A kind's empty page — the desktop's kindEmptyStateHtml (EXE
-/// hub/kind-page.js), the component contract's empty state (APP
-/// docs/redesign/COMPONENTS.md): the kind's icon in the module's colour, the
-/// module's name, what the kind is for, a line about this page's state, and
-/// ONE primary action. [EmptyHint] stays for the smaller empties inside a
-/// view that already has content (no messages in a session, no routes).
+/// hub/kind-page.js) on the app's one empty state, [DdxEmptyState] (APP
+/// docs/UX-LAYOUT.md §12.5): the kind's icon in the module's colour, the
+/// module's name, what the kind is for, this page's state line ([note]) and
+/// ONE primary action. [EmptyHint] stays for the smaller empties
+/// inside a view that already has content (no messages in a session, no
+/// routes).
 class KindEmptyState extends StatelessWidget {
   final ModuleModel module;
   final String? note;
@@ -46,35 +52,17 @@ class KindEmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
     final info = moduleKindInfo[module.kind]!;
     final code = module.colorCode;
-    final color = code != null && RegExp(r'^#?[0-9a-fA-F]{6}$').hasMatch(code) ? hexToColor(code) : theme.colorScheme.primary;
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 460),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(info.icon, size: 40, color: color),
-              const SizedBox(height: 10),
-              Text(module.name, textAlign: TextAlign.center, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
-              const SizedBox(height: 4),
-              Text(kindDesc(l, module.kind), textAlign: TextAlign.center, style: theme.textTheme.bodyMedium),
-              if (note != null) ...[
-                const SizedBox(height: 6),
-                Text(note!, textAlign: TextAlign.center, style: theme.textTheme.bodySmall?.copyWith(color: context.ddx.textMuted)),
-              ],
-              if (onStart != null && startLabel != null) ...[
-                const SizedBox(height: 16),
-                FilledButton.icon(onPressed: onStart, icon: const Icon(Icons.add, size: 18), label: Text(startLabel!)),
-              ],
-            ],
-          ),
-        ),
-      ),
+    final color = code != null && RegExp(r'^#?[0-9a-fA-F]{6}$').hasMatch(code) ? hexToColor(code) : Theme.of(context).colorScheme.primary;
+    return DdxEmptyState(
+      icon: info.icon,
+      iconColor: color,
+      title: module.name,
+      message: kindDesc(l, module.kind),
+      note: note,
+      actionLabel: startLabel,
+      onAction: onStart,
     );
   }
 }
@@ -114,14 +102,14 @@ void openElement(BuildContext context, int nexusId, int moduleId, String key) =>
 /// Asks for one line of text; null when cancelled or empty.
 Future<String?> askText(BuildContext context, String title, {String initial = '', String? label}) async {
   final c = TextEditingController(text: initial);
-  final r = await showDialog<String>(
+  final r = await showDdxDialog<String>(
     context: context,
     builder: (d) => AlertDialog(
       title: Text(title),
-      content: TextField(
+      content: DdxField(
         controller: c,
         autofocus: true,
-        decoration: InputDecoration(labelText: label),
+        label: label,
         onSubmitted: (v) => Navigator.pop(d, v.trim()),
       ),
       actions: [
@@ -157,9 +145,9 @@ class TileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Card(
+    return DdxCard(
+      kind: DdxCardKind.link,
       margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
         onLongPress: onLongPress,
@@ -187,25 +175,59 @@ class TileCard extends StatelessWidget {
   }
 }
 
+/// The tallest a list that can grow (a Classifier's 3,000 elements) stands
+/// inside a page's scroll view. Past it the list scrolls on its own and is
+/// built lazily, only the rows on screen (Procress 19 F2); a shorter list
+/// still sizes to its content. The page itself is one scroll view of
+/// blocks, so a lazy list has to be a bounded one inside it.
+double pageListCap(BuildContext context) => math.max(320, MediaQuery.sizeOf(context).height * 0.6);
+
 /// A grid that sizes to its content inside a page's scroll view.
 class PageGrid extends StatelessWidget {
-  final List<Widget> children;
+  final List<Widget>? children;
+  final int itemCount;
+  final IndexedWidgetBuilder? itemBuilder;
   final double maxExtent;
-  const PageGrid({super.key, required this.children, this.maxExtent = 200});
+  const PageGrid({super.key, required List<Widget> this.children, this.maxExtent = 200})
+      : itemCount = 0,
+        itemBuilder = null;
+
+  /// A grid of [itemCount] tiles that can grow: built lazily, up to
+  /// [pageListCap] tall.
+  const PageGrid.builder({super.key, required this.itemCount, required IndexedWidgetBuilder this.itemBuilder, this.maxExtent = 200})
+      : children = null;
 
   @override
-  Widget build(BuildContext context) => GridView(
+  Widget build(BuildContext context) {
+    const padding = EdgeInsets.symmetric(horizontal: 16, vertical: 8);
+    final delegate = SliverGridDelegateWithMaxCrossAxisExtent(
+      maxCrossAxisExtent: maxExtent,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 8,
+      mainAxisExtent: 110,
+    );
+    if (children != null) {
+      return GridView(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: maxExtent,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
-          mainAxisExtent: 110,
-        ),
-        children: children,
+        padding: padding,
+        gridDelegate: delegate,
+        children: children!,
       );
+    }
+    // shrink-wrapped under a cap: a short grid fits, a long one scrolls
+    // and builds only what shows
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: pageListCap(context)),
+      child: GridView.builder(
+        shrinkWrap: true,
+        padding: padding,
+        gridDelegate: delegate,
+        itemCount: itemCount,
+        itemBuilder: itemBuilder!,
+      ),
+    );
+  }
 }
 
 /// Picks one indexed entity of a Nexus: a searchable sheet over the same
@@ -215,7 +237,7 @@ Future<IndexedItem?> pickEntity(BuildContext context, WidgetRef ref, int nexusId
   final all = await ref.read(nexusIndexProvider(nexusId).future);
   final rows = [for (final it in all) if (where == null || where(it)) it];
   if (!context.mounted) return null;
-  return showModalBottomSheet<IndexedItem>(
+  return showDdxSheet<IndexedItem>(
     context: context,
     useRootNavigator: true,
     isScrollControlled: true,
@@ -257,9 +279,10 @@ class _EntityPickerState extends State<_EntityPicker> {
               ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: TextField(
+              child: DdxField(
                 autofocus: true,
-                decoration: InputDecoration(prefixIcon: const Icon(Icons.search), hintText: l10n.labelSearch, isDense: true),
+                prefixIcon: const Icon(Icons.search),
+                hint: l10n.labelSearch,
                 onChanged: (v) => setState(() => _q = v),
               ),
             ),

@@ -960,6 +960,24 @@ class AppLocalizationsUk extends AppLocalizations {
   String get transferErrBadPayload => 'Не вдалося прочитати отриманий файл.';
 
   @override
+  String get transferSendKey => 'Ключ надсилання';
+
+  @override
+  String get transferSendKeyHint => 'Дізнайтеся ключ цього тижня в адміністратора сервісу передавання. Він змінюється щопонеділка.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Цей сервіс потребує ключа надсилання цього тижня, перш ніж прийняти Nexus.';
+
+  @override
+  String get transferErrBadSendKey => 'Ключ надсилання неправильний — або це ключ минулого тижня. Ключі змінюються щопонеділка.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Забагато неправильних ключів надсилання з цього пристрою. Зачекайте 15 хвилин і спробуйте знову.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Надсилання вимкнено на цьому сервісі передавання (ключ надсилання не налаштовано).';
+
+  @override
   String get transferErrServer => 'У службі передавання сталася помилка.';
 
   @override
@@ -2905,4 +2923,112 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get pageInside => 'Всередині';
+
+  @override
+  String get listFilterHint => 'Фільтр';
+
+  @override
+  String get listSort => 'Сортування';
+
+  @override
+  String get listSortName => 'Назва';
+
+  @override
+  String get listSortEdited => 'Останнє редагування';
+
+  @override
+  String get listSortCreated => 'Дата створення';
+
+  @override
+  String get listSortKind => 'Тип';
+
+  @override
+  String get listSortManual => 'Як упорядковано';
+
+  @override
+  String get listCount => 'Елементів: {n}';
+
+  @override
+  String get listNoMatch => 'Ніщо не відповідає цьому фільтру.';
+
+  @override
+  String get listGroupToday => 'Сьогодні';
+
+  @override
+  String get listGroupThisWeek => 'Цього тижня';
+
+  @override
+  String get listGroupOlder => 'Раніше';
+
+  @override
+  String get assetGroupImage => 'Зображення';
+
+  @override
+  String get assetGroupAudio => 'Аудіо';
+
+  @override
+  String get assetGroupVideo => 'Відео';
+
+  @override
+  String get assetGroupDoc => 'Документи';
+
+  @override
+  String get assetGroupTrack => 'Субтитри';
+
+  @override
+  String get assetGroupModel => '3D-моделі';
+
+  @override
+  String get assetGroupUrl => 'Посилання';
+
+  @override
+  String get assetGroupOther => 'Інші файли';
+
+  @override
+  String get uiStyleLabel => 'Стиль інтерфейсу';
+
+  @override
+  String get uiStyleStandard => 'Стандартний';
+
+  @override
+  String get uiStyleGlass => 'Скло';
+
+  @override
+  String get reduceTransparency => 'Зменшити прозорість';
+
+  @override
+  String get reduceTransparencyHint => 'Скляні панелі та напівпрозорі елементи стають непрозорими';
+
+  @override
+  String get glassBlurOff => 'Розмиття вимкнено — пристрій малював його надто повільно';
+
+  @override
+  String get glassBlurRetry => 'Спробувати ще';
+
+  @override
+  String get nexusPickTemplate => 'Оберіть шаблон';
+
+  @override
+  String get nexusTemplateBlank => 'Порожній';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Порожній Nexus — модулі додасте самі';
+
+  @override
+  String get nexusCreateAppDocs => 'Створити App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Вбудований посібник, в окремій теці';
+
+  @override
+  String get nexusNameTaken => 'Nexus з такою назвою вже є';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus створено, але шаблон додати не вдалося';
+
+  @override
+  String get btnRetry => 'Повторити';
+
+  @override
+  String get btnCreateNexus => 'Створити Nexus';
 }

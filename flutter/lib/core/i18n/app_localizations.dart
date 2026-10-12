@@ -2035,6 +2035,42 @@ abstract class AppLocalizations {
   /// **'The received file could not be read.'**
   String get transferErrBadPayload;
 
+  /// No description provided for @transferSendKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Send key'**
+  String get transferSendKey;
+
+  /// No description provided for @transferSendKeyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask whoever runs the transfer service for this week's key. It changes every Monday.'**
+  String get transferSendKeyHint;
+
+  /// No description provided for @transferErrSendKeyRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This service needs this week's send key before it will accept a Nexus.'**
+  String get transferErrSendKeyRequired;
+
+  /// No description provided for @transferErrBadSendKey.
+  ///
+  /// In en, this message translates to:
+  /// **'That send key is not right — or it is last week's. Keys change every Monday.'**
+  String get transferErrBadSendKey;
+
+  /// No description provided for @transferErrSendKeyLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many wrong send keys from this device. Wait 15 minutes and try again.'**
+  String get transferErrSendKeyLocked;
+
+  /// No description provided for @transferErrSendKeyUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending is switched off on this transfer service (its send key is not configured).'**
+  String get transferErrSendKeyUnavailable;
+
   /// No description provided for @transferErrServer.
   ///
   /// In en, this message translates to:
@@ -5927,6 +5963,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **Inside**
   String get pageInside;
+
+  /// No description provided for @listFilterHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get listFilterHint;
+
+  /// No description provided for @listSort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort'**
+  String get listSort;
+
+  /// No description provided for @listSortName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get listSortName;
+
+  /// No description provided for @listSortEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'Last edited'**
+  String get listSortEdited;
+
+  /// No description provided for @listSortCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get listSortCreated;
+
+  /// No description provided for @listSortKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Kind'**
+  String get listSortKind;
+
+  /// No description provided for @listSortManual.
+  ///
+  /// In en, this message translates to:
+  /// **'As arranged'**
+  String get listSortManual;
+
+  /// No description provided for @listCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} items'**
+  String get listCount;
+
+  /// No description provided for @listNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches this filter.'**
+  String get listNoMatch;
+
+  /// No description provided for @listGroupToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get listGroupToday;
+
+  /// No description provided for @listGroupThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get listGroupThisWeek;
+
+  /// No description provided for @listGroupOlder.
+  ///
+  /// In en, this message translates to:
+  /// **'Older'**
+  String get listGroupOlder;
+
+  /// No description provided for @assetGroupImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Images'**
+  String get assetGroupImage;
+
+  /// No description provided for @assetGroupAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio'**
+  String get assetGroupAudio;
+
+  /// No description provided for @assetGroupVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Video'**
+  String get assetGroupVideo;
+
+  /// No description provided for @assetGroupDoc.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents'**
+  String get assetGroupDoc;
+
+  /// No description provided for @assetGroupTrack.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtitles'**
+  String get assetGroupTrack;
+
+  /// No description provided for @assetGroupModel.
+  ///
+  /// In en, this message translates to:
+  /// **'3D models'**
+  String get assetGroupModel;
+
+  /// No description provided for @assetGroupUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Links'**
+  String get assetGroupUrl;
+
+  /// No description provided for @assetGroupOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other files'**
+  String get assetGroupOther;
+
+  /// No description provided for @uiStyleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'UI style'**
+  String get uiStyleLabel;
+
+  /// No description provided for @uiStyleStandard.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard'**
+  String get uiStyleStandard;
+
+  /// No description provided for @uiStyleGlass.
+  ///
+  /// In en, this message translates to:
+  /// **'Glass'**
+  String get uiStyleGlass;
+
+  /// No description provided for @reduceTransparency.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce transparency'**
+  String get reduceTransparency;
+
+  /// No description provided for @reduceTransparencyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Glass panes and see-through bars become solid'**
+  String get reduceTransparencyHint;
+
+  /// No description provided for @glassBlurOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Blur off — this device drew it too slowly'**
+  String get glassBlurOff;
+
+  /// No description provided for @glassBlurRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get glassBlurRetry;
+
+  /// No description provided for @nexusPickTemplate.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a template'**
+  String get nexusPickTemplate;
+
+  /// No description provided for @nexusTemplateBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Blank'**
+  String get nexusTemplateBlank;
+
+  /// No description provided for @nexusTemplateBlankDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'An empty Nexus — add modules yourself'**
+  String get nexusTemplateBlankDesc;
+
+  /// No description provided for @nexusCreateAppDocs.
+  ///
+  /// In en, this message translates to:
+  /// **'Create App Docs'**
+  String get nexusCreateAppDocs;
+
+  /// No description provided for @nexusCreateAppDocsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The in-app guide, in a folder of its own'**
+  String get nexusCreateAppDocsHint;
+
+  /// No description provided for @nexusNameTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'A Nexus with this name already exists'**
+  String get nexusNameTaken;
+
+  /// No description provided for @nexusTemplateFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Nexus created, but the template could not be added'**
+  String get nexusTemplateFailed;
+
+  /// No description provided for @btnRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get btnRetry;
+
+  /// No description provided for @btnCreateNexus.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Nexus'**
+  String get btnCreateNexus;
 
 }
 

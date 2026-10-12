@@ -25,6 +25,7 @@ import 'core_components.dart';
 import 'links.dart';
 import 'page_providers.dart';
 import 'views/view_common.dart';
+import '../../widgets/ddx_card.dart';
 
 /// The page components a template names that read their module's data —
 /// the phone's port of EXE renderer/page/components/core.js, kinds.js and
@@ -1004,7 +1005,8 @@ final _dashboard = (
       for (final (r, n) in rows)
         SizedBox(
           width: 150,
-          child: Card(
+          child: DdxCard(
+            kind: DdxCardKind.link,
             margin: EdgeInsets.zero,
             child: InkWell(
               onTap: () => _openModule(context, ctx, r['id'] as int),

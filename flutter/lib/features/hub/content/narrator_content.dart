@@ -7,6 +7,10 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Narrator kind: dialogue scenes, the script inside the selected one, and
 /// the routes leading out of it.
@@ -32,14 +36,14 @@ class _NarratorContentState extends ConsumerState<NarratorContent> {
   Future<String?> _askText(String title, {String initial = ''}) async {
     final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: initial);
-    return showDialog<String>(
+    return showDdxDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(title),
-        content: TextField(
+        content: DdxField(
           controller: controller,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.labelName),
+          label: l10n.labelName,
           onSubmitted: (v) => Navigator.of(ctx).pop(v.trim()),
         ),
         actions: [
@@ -117,8 +121,8 @@ class _NarratorContentState extends ConsumerState<NarratorContent> {
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
                   itemBuilder: (ctx, i) {
                     final d = scenes[i];
-                    return ChoiceChip(
-                      label: Text(d.name, overflow: TextOverflow.ellipsis),
+                    return DdxChip.filter(
+                      d.name,
                       selected: selected?.id == d.id,
                       onSelected: (_) => setState(() => _selectedId = d.id),
                     );
@@ -159,17 +163,17 @@ class _Scene extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final speaker = TextEditingController();
     final sentence = TextEditingController();
-    final ok = await showDialog<bool>(
+    final ok = await showDdxDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.narratorNewLine),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TextField(
+            DdxField(
               controller: speaker,
               autofocus: true,
-              decoration: InputDecoration(labelText: l10n.narratorSpeaker),
+              label: l10n.narratorSpeaker,
             ),
             const SizedBox(height: 8),
             TextField(
@@ -203,7 +207,7 @@ class _Scene extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final others = allScenes.where((d) => d.id != scene.id).toList();
     if (others.isEmpty) return;
-    final target = await showDialog<int>(
+    final target = await showDdxDialog<int>(
       context: context,
       builder: (ctx) => SimpleDialog(
         title: Text(l10n.narratorLeadsTo),
@@ -240,9 +244,10 @@ class _Scene extends ConsumerWidget {
                 child: Text(scene.name,
                     style: theme.textTheme.titleMedium, overflow: TextOverflow.ellipsis),
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.delete_outline,
                 tooltip: l10n.btnDelete,
-                icon: const Icon(Icons.delete_outline, size: 18),
+                size: DdxIconSize.sm,
                 onPressed: () async {
                   final ok = await showConfirmDialog(
                     context,
@@ -292,20 +297,17 @@ class _Scene extends ConsumerWidget {
                           // Non-talk rows are authored on the desktop; show
                           // them but do not offer to edit them as talk.
                           trailing: t.isPlainTalk
-                              ? IconButton(
+                              ? DdxIconButton(
+                                  icon: Icons.close,
                                   tooltip: l10n.btnDelete,
-                                  icon: const Icon(Icons.close, size: 16),
+                                  size: DdxIconSize.sm,
                                   onPressed: () async {
                                     final dao = ref.read(narratorDaoProvider).valueOrNull;
                                     await dao?.deleteTalk(t.id);
                                     ref.invalidate(talksProvider(scene.id));
                                   },
                                 )
-                              : Chip(
-                                  label: Text(t.rowType,
-                                      style: theme.textTheme.labelSmall),
-                                  visualDensity: VisualDensity.compact,
-                                ),
+                              : DdxChip.status(t.rowType, size: DdxChipSize.sm),
                         ),
                     ],
                   ),
@@ -333,9 +335,10 @@ class _Scene extends ConsumerWidget {
                     runSpacing: 6,
                     children: [
                       for (final e in edges)
-                        InputChip(
-                          label: Text(e.toName),
-                          avatar: const Icon(Icons.arrow_forward, size: 16),
+                        DdxChip(
+                          label: e.toName,
+                          kind: DdxChipKind.status,
+                          icon: Icons.arrow_forward,
                           onDeleted: () async {
                             final dao = ref.read(narratorDaoProvider).valueOrNull;
                             await dao?.deleteEdge(e.id);

@@ -8,11 +8,14 @@ import '../../../data/models/module_model.dart';
 import '../../../providers/builder_view_provider.dart';
 import '../../../providers/module_provider.dart';
 import '../../../core/theme/ddx_theme.dart';
+import '../../../core/theme/tokens.g.dart';
 import '../../../widgets/color_dot.dart';
+import '../../../widgets/ddx_list.dart';
 import '../../../widgets/grouped_section.dart';
 import '../../../widgets/row_menu.dart';
 import '../module_actions.dart';
 import 'module_drag.dart';
+import '../../../widgets/ddx_card.dart';
 
 /// The modules nested at one level of the tree, laid out the way the page's
 /// view-mode button says to. Every mode navigates the same way — only the
@@ -23,72 +26,71 @@ class ModuleCollectionView extends StatelessWidget {
   final List<ModuleModel> modules;
   final BuilderViewMode mode;
 
-  /// Inside a page's own scroll view: sizes to its rows and leaves the
-  /// scrolling to the page.
-  final bool embedded;
+  /// Inside a page's own CustomScrollView: a sliver, so a folder of
+  /// hundreds builds only the rows on screen (Procress 19 F5) — the page
+  /// does the scrolling.
+  final bool sliver;
 
   const ModuleCollectionView({
     super.key,
     required this.nexusId,
     required this.modules,
     required this.mode,
-    this.embedded = false,
+    this.sliver = false,
   });
 
   @override
   Widget build(BuildContext context) {
     switch (mode) {
       case BuilderViewMode.grid:
+        final delegate = SliverGridDelegateWithMaxCrossAxisExtent(
+          // Wider tiles on a tablet: the phone's 170 across an iPad reads
+          // as a phone screenshot scaled up rather than a tablet layout.
+          maxCrossAxisExtent: gridTileExtentFor(ddxLayoutOf(context)),
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 0.92,
+        );
+        Widget card(BuildContext _, int i) => ModuleCard(nexusId: nexusId, module: modules[i]);
+        if (sliver) {
+          return SliverPadding(
+            padding: const EdgeInsets.all(12),
+            sliver: SliverGrid.builder(gridDelegate: delegate, itemCount: modules.length, itemBuilder: card),
+          );
+        }
         return GridView.builder(
-          shrinkWrap: embedded,
-          physics: embedded ? const NeverScrollableScrollPhysics() : null,
           padding: const EdgeInsets.all(12),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            // Wider tiles on a tablet: the phone's 170 across an iPad reads
-            // as a phone screenshot scaled up rather than a tablet layout.
-            maxCrossAxisExtent: gridTileExtentFor(ddxLayoutOf(context)),
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            childAspectRatio: 0.92,
-          ),
+          gridDelegate: delegate,
           itemCount: modules.length,
-          itemBuilder: (_, i) => ModuleCard(nexusId: nexusId, module: modules[i]),
+          itemBuilder: card,
         );
       case BuilderViewMode.compact:
-        return ListView.builder(
-          shrinkWrap: embedded,
-          physics: embedded ? const NeverScrollableScrollPhysics() : null,
-          itemCount: modules.length,
-          itemBuilder: (_, i) => ModuleTile(nexusId: nexusId, module: modules[i], dense: true),
-        );
+        Widget tile(BuildContext _, int i) => ModuleTile(nexusId: nexusId, module: modules[i], density: DdxDensity.compact);
+        if (sliver) return SliverList.builder(itemCount: modules.length, itemBuilder: tile);
+        return ListView.builder(itemCount: modules.length, itemBuilder: tile);
       case BuilderViewMode.list:
+        Widget tile(BuildContext _, int i) => ModuleTile(nexusId: nexusId, module: modules[i]);
         // iOS: one grouped inset card, separators past the icon square (C3).
         if (context.isIosStyle) {
-          final card = DdxGroupedSection(
-            separatorIndent: 58,
-            children: [for (final m in modules) ModuleTile(nexusId: nexusId, module: m)],
-          );
-          return embedded
-              ? Padding(padding: const EdgeInsets.only(top: 8), child: card)
-              : ListView(padding: const EdgeInsets.only(top: 8), children: [card]);
+          final card = DdxGroupedSection.sliver(separatorIndent: 58, itemCount: modules.length, itemBuilder: tile);
+          final list = SliverPadding(padding: const EdgeInsets.only(top: 8), sliver: card);
+          return sliver ? list : CustomScrollView(slivers: [list]);
         }
-        return ListView.separated(
-          shrinkWrap: embedded,
-          physics: embedded ? const NeverScrollableScrollPhysics() : null,
-          itemCount: modules.length,
-          separatorBuilder: (_, _) => const Divider(height: 1),
-          itemBuilder: (_, i) => ModuleTile(nexusId: nexusId, module: modules[i]),
-        );
+        Widget divider(BuildContext _, int i) => const Divider(height: 1);
+        if (sliver) return SliverList.separated(itemCount: modules.length, separatorBuilder: divider, itemBuilder: tile);
+        return ListView.separated(itemCount: modules.length, separatorBuilder: divider, itemBuilder: tile);
     }
   }
 }
 
+/// A module as a list row ([DdxListTile]) — with what a module row adds:
+/// select mode, dragging into a folder, and on iOS swipe-to-delete.
 class ModuleTile extends ConsumerWidget {
   final int nexusId;
   final ModuleModel module;
-  final bool dense;
+  final DdxDensity density;
 
-  const ModuleTile({super.key, required this.nexusId, required this.module, this.dense = false});
+  const ModuleTile({super.key, required this.nexusId, required this.module, this.density = DdxDensity.comfortable});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -96,30 +98,27 @@ class ModuleTile extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     List<RowAction> actions() => moduleRowActions(context, ref, module);
     final ios = context.isIosStyle;
+    final compact = density == DdxDensity.compact;
+    final iconSize = compact ? DdxSize.iconSm : DdxSize.iconMd;
     final sel = _Selection(ref, module);
-    final tile = ListTile(
-      dense: dense,
-      visualDensity: dense ? VisualDensity.compact : null,
+    final tile = DdxListTile(
+      density: density,
       selected: sel.picked,
       leading: sel.active
-          ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked)
-          : ios
+          ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked, size: iconSize)
+          : ios && !compact
           ? DdxIconSquare(icon: info.icon, color: _iconColor(context, module.colorCode))
-          : module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: 20) : Icon(info.icon),
-      title: Text(module.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-      subtitle: dense
+          : module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: iconSize) : Icon(info.icon, size: iconSize),
+      title: module.name,
+      meta: compact
           ? null
-          : Text(kindName(l10n, module.kind) +
-              (module.childCount != null && module.childCount! > 0 ? ' · ${module.childCount} ${l10n.moduleInside}' : '')),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (module.pinned) const Icon(Icons.push_pin, size: 16),
-          RowMenuButton(actions: actions, title: module.name),
-        ],
-      ),
+          : kindName(l10n, module.kind) +
+              (module.childCount != null && module.childCount! > 0 ? ' · ${module.childCount} ${l10n.moduleInside}' : ''),
+      trailing: [if (module.pinned) const Icon(Icons.push_pin, size: DdxSize.iconSm)],
+      actions: actions,
       onTap: sel.active ? sel.toggle : () => context.push('/hub/$nexusId/module/${module.id}'),
-      onLongPress: sel.active ? sel.toggle : () => showRowMenu(context, actions(), title: module.name),
+      // in select mode a long press ticks too; otherwise the row's menu
+      onLongPress: sel.active ? sel.toggle : null,
     );
     if (!ios || sel.active) return draggableModule(nexusId: nexusId, module: module, child: tile);
     // iOS: swipe left runs the row's destructive action — the same one its
@@ -149,20 +148,26 @@ class ModuleTile extends ConsumerWidget {
 }
 
 /// One row's part in its level's select mode (moduleSelectionProvider).
+/// A row watches only its own two bits, so ticking one row rebuilds that
+/// row (and every row only when select mode starts or ends), not the level.
 class _Selection {
   final WidgetRef ref;
   final ModuleChildrenKey key;
-  final Set<int> ids;
   final int id;
-  _Selection(this.ref, ModuleModel module)
-      : key = ModuleChildrenKey(module.nexusRef, module.parentId),
-        id = module.id,
-        ids = ref.watch(moduleSelectionProvider(ModuleChildrenKey(module.nexusRef, module.parentId)));
+  final bool active;
+  final bool picked;
+  _Selection._(this.ref, this.key, this.id, this.active, this.picked);
 
-  bool get active => ids.isNotEmpty;
-  bool get picked => ids.contains(id);
-  void toggle() => ref.read(moduleSelectionProvider(key).notifier).state =
-      picked ? ({...ids}..remove(id)) : {...ids, id};
+  factory _Selection(WidgetRef ref, ModuleModel module) {
+    final key = ModuleChildrenKey(module.nexusRef, module.parentId);
+    final p = moduleSelectionProvider(key);
+    return _Selection._(ref, key, module.id, ref.watch(p.select((s) => s.isNotEmpty)), ref.watch(p.select((s) => s.contains(module.id))));
+  }
+
+  void toggle() {
+    final n = ref.read(moduleSelectionProvider(key).notifier);
+    n.state = n.state.contains(id) ? ({...n.state}..remove(id)) : {...n.state, id};
+  }
 }
 
 /// The module's own colour for its iOS icon square, or the accent.
@@ -185,15 +190,10 @@ class ModuleCard extends ConsumerWidget {
     List<RowAction> actions() => moduleRowActions(context, ref, module);
     final sel = _Selection(ref, module);
 
-    return draggableModule(nexusId: nexusId, module: module, child: Card(
-      clipBehavior: Clip.antiAlias,
+    return draggableModule(nexusId: nexusId, module: module, child: DdxCard(
+      kind: DdxCardKind.link,
       margin: EdgeInsets.zero,
-      shape: sel.picked
-          ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-              side: BorderSide(color: theme.colorScheme.primary, width: 2),
-            )
-          : null,
+      selected: sel.picked,
       child: InkWell(
         onTap: sel.active ? sel.toggle : () => context.push('/hub/$nexusId/module/${module.id}'),
         onLongPress: sel.active ? sel.toggle : () => showRowMenu(context, actions(), title: module.name),

@@ -7,6 +7,9 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Chronicler kind: the module's timeline, in chronological order.
 ///
@@ -47,7 +50,7 @@ class _Events extends ConsumerWidget {
   const _Events({required this.timelineId, this.module});
 
   Future<void> _edit(BuildContext context, WidgetRef ref, {TimelineEventModel? existing}) async {
-    final result = await showDialog<_EventDraft>(
+    final result = await showDdxDialog<_EventDraft>(
       context: context,
       builder: (ctx) => _EventDialog(existing: existing),
     );
@@ -157,9 +160,10 @@ class _Events extends ConsumerWidget {
                         style: theme.textTheme.bodySmall,
                       ),
                       onTap: () => _edit(context, ref, existing: e),
-                      trailing: IconButton(
+                      trailing: DdxIconButton(
+                        icon: Icons.delete_outline,
                         tooltip: l10n.btnDelete,
-                        icon: const Icon(Icons.delete_outline, size: 18),
+                        size: DdxIconSize.sm,
                         onPressed: () => _delete(context, ref, e),
                       ),
                     ),
@@ -242,10 +246,10 @@ class _EventDialogState extends State<_EventDialog> {
 
   Widget _num(TextEditingController c, String label) => SizedBox(
         width: 72,
-        child: TextField(
+        child: DdxField(
           controller: c,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(labelText: label, isDense: true),
+          label: label,
         ),
       );
 
@@ -259,10 +263,10 @@ class _EventDialogState extends State<_EventDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
+            DdxField(
               controller: _name,
               autofocus: true,
-              decoration: InputDecoration(labelText: l10n.labelName),
+              label: l10n.labelName,
             ),
             const SizedBox(height: 12),
             Text(l10n.chroniclerStart, style: Theme.of(context).textTheme.labelMedium),

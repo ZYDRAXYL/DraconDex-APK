@@ -4,21 +4,33 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../data/services/problems_service.dart';
 import '../../providers/db_providers.dart';
+import '../../widgets/ddx_list.dart';
 import '../page/views/view_common.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 final problemsProvider = FutureProvider.autoDispose.family<List<Problem>, int>((ref, nexusId) async {
   final db = await ref.watch(databaseProvider.future);
   return ProblemsService.list(db, nexusId);
 });
 
-/// Problems (EXE hub/problems.js): grouped by type; a row opens its place.
-class ProblemsScreen extends ConsumerWidget {
+/// Problems (EXE hub/problems.js): grouped by type, each group with its
+/// count and folding (UX-LAYOUT §12.4); a row opens its place.
+class ProblemsScreen extends ConsumerStatefulWidget {
   final int nexusId;
   const ProblemsScreen({super.key, required this.nexusId});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProblemsScreen> createState() => _ProblemsScreenState();
+}
+
+class _ProblemsScreenState extends ConsumerState<ProblemsScreen> {
+  String _filter = '';
+
+  @override
+  Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
+    final nexusId = widget.nexusId;
     final list = ref.watch(problemsProvider(nexusId));
     String title(String t) => switch (t) {
           'link' => l.problemsLinks,
@@ -31,28 +43,49 @@ class ProblemsScreen extends ConsumerWidget {
           _ => Icons.share_outlined,
         };
     return Scaffold(
-      appBar: AppBar(title: Text(l.problemsTitle), actions: [
-        IconButton(icon: const Icon(Icons.refresh), onPressed: () => ref.invalidate(problemsProvider(nexusId))),
-      ]),
+      appBar: DdxGlassBar(child: AppBar(title: Text(l.problemsTitle), actions: [
+        DdxIconButton(
+          icon: Icons.refresh,
+          tooltip: MaterialLocalizations.of(context).refreshIndicatorSemanticLabel,
+          onPressed: () => ref.invalidate(problemsProvider(nexusId)),
+        ),
+      ])),
       body: list.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('$e')),
-        data: (ps) => ps.isEmpty
-            ? Center(child: Text(l.problemsNone))
-            : ListView(children: [
-                for (final t in const ['link', 'empty', 'relation'])
-                  if (ps.where((p) => p.type == t).toList() case final rows when rows.isNotEmpty) ...[
-                    ListTile(title: Text('${title(t)} (${rows.length})', style: Theme.of(context).textTheme.titleSmall)),
-                    for (final p in rows)
-                      ListTile(
-                        dense: true,
-                        leading: Icon(icon(t), size: 20),
-                        title: Text(p.name),
-                        subtitle: Text(p.detail),
-                        onTap: p.key == null ? null : () => openKey(context, ref, p.key!),
-                      ),
-                  ],
-              ]),
+        data: (ps) {
+          if (ps.isEmpty) return DdxEmptyState(icon: Icons.check_circle_outline, message: l.problemsNone);
+          final shown = [for (final p in ps) if (ddxMatches(_filter, [p.name, p.detail])) p];
+          // each type's group, its rows built as they scroll in — a vault
+          // with thousands of problems builds only what shows
+          final byType = {
+            for (final t in const ['link', 'empty', 'relation'])
+              if (shown.where((p) => p.type == t).toList() case final rows when rows.isNotEmpty) t: rows,
+          };
+          return CustomScrollView(slivers: [
+            SliverToBoxAdapter(
+              child: DdxListHeader(count: shown.length, onFilterChanged: (v) => setState(() => _filter = v)),
+            ),
+            if (shown.isEmpty)
+              SliverToBoxAdapter(child: DdxEmptyState(icon: Icons.filter_list_off, message: l.listNoMatch)),
+            for (final e in byType.entries)
+              DdxListSection.sliver(
+                storageId: 'problems-${e.key}',
+                title: title(e.key),
+                count: e.value.length,
+                itemCount: e.value.length,
+                itemBuilder: (context, i) {
+                  final p = e.value[i];
+                  return DdxListTile(
+                    icon: icon(e.key),
+                    title: p.name,
+                    meta: p.detail,
+                    onTap: p.key == null ? null : () => openKey(context, ref, p.key!),
+                  );
+                },
+              ),
+          ]);
+        },
       ),
     );
   }

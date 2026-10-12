@@ -7,6 +7,10 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Author kind: a book made of chapters. The chapter list picks one; the
 /// editor below writes `book_chapter.chapter_content`.
@@ -41,14 +45,14 @@ class _AuthorContentState extends ConsumerState<AuthorContent> {
   Future<void> _rename(ChapterModel c) async {
     final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: c.name);
-    final name = await showDialog<String>(
+    final name = await showDdxDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.btnRename),
-        content: TextField(
+        content: DdxField(
           controller: controller,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.labelName),
+          label: l10n.labelName,
           onSubmitted: (v) => Navigator.of(ctx).pop(v.trim()),
         ),
         actions: [
@@ -134,8 +138,8 @@ class _AuthorContentState extends ConsumerState<AuthorContent> {
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
                   itemBuilder: (ctx, i) {
                     final c = chapters[i];
-                    return ChoiceChip(
-                      label: Text(c.name, overflow: TextOverflow.ellipsis),
+                    return DdxChip.filter(
+                      c.name,
                       selected: selected?.id == c.id,
                       onSelected: (_) => setState(() => _selectedId = c.id),
                     );
@@ -220,14 +224,16 @@ class _ChapterEditorState extends ConsumerState<_ChapterEditor> {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.edit_outlined,
                 tooltip: l10n.btnRename,
-                icon: const Icon(Icons.edit_outlined, size: 18),
+                size: DdxIconSize.sm,
                 onPressed: widget.onRename,
               ),
-              IconButton(
+              DdxIconButton(
+                icon: Icons.delete_outline,
                 tooltip: l10n.btnDelete,
-                icon: const Icon(Icons.delete_outline, size: 18),
+                size: DdxIconSize.sm,
                 onPressed: widget.onDelete,
               ),
             ],

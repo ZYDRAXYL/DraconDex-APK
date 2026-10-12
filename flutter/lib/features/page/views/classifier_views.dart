@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,11 +13,15 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../providers/navigation_providers.dart';
 import '../../../widgets/confirm_dialog.dart';
+import '../../../widgets/ddx_list.dart';
 import '../../../widgets/row_menu.dart';
 import '../component_registry.dart';
 import '../core_components.dart';
 import 'graph_view.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Classifier's four presets (EXE mod/classifier.js CLASSIFIER_VIEWS):
 /// table, list·detail, relations, grid — one loader, one typed editor.
@@ -77,12 +82,49 @@ class ClsData {
   }
 }
 
-final clsDataProvider = FutureProvider.autoDispose.family<ClsData, int>((ref, moduleId) async {
+// The Classifier's data comes in five parts, each its own provider, so one
+// edit re-reads only what it changed (Procress 19 F3): a value updates its
+// one cell in place, a relation re-reads the relations, a level row the
+// levels. [clsDataProvider] only puts the parts together — no SQL of its own.
+
+final clsFieldsProvider = FutureProvider.autoDispose.family<List<ClassifierFieldModel>, int>((ref, moduleId) async {
+  return ClassifierDao(await ref.watch(databaseProvider.future)).getFields(moduleId);
+});
+
+final clsItemsProvider = FutureProvider.autoDispose.family<List<ClassifierItemModel>, int>((ref, moduleId) async {
+  return ClassifierDao(await ref.watch(databaseProvider.future)).getItems(moduleId);
+});
+
+/// {object: {field: value}} of the whole module. [ClsValues.set] writes one
+/// value and patches that cell; nothing is re-read.
+class ClsValues extends AutoDisposeFamilyAsyncNotifier<Map<int, Map<int, String?>>, int> {
+  @override
+  Future<Map<int, Map<int, String?>>> build(int arg) async =>
+      ClassifierDao(await ref.watch(databaseProvider.future)).getModuleValues(arg);
+
+  Future<void> set(int item, int field, String? value) async {
+    final db = await ref.read(databaseProvider.future);
+    await ClassifierDao(db).setValue(objectRef: item, templateRef: field, value: value);
+    put(item, field, value);
+  }
+
+  /// The cell after a write someone else already made.
+  void put(int item, int field, String? value) {
+    final now = state.valueOrNull;
+    if (now == null) return ref.invalidateSelf();
+    state = AsyncData({...now, item: {...?now[item], field: value}});
+  }
+}
+
+final clsValuesProvider =
+    AsyncNotifierProvider.autoDispose.family<ClsValues, Map<int, Map<int, String?>>, int>(ClsValues.new);
+
+/// The relations out of the module's elements, and the names of whatever
+/// they point at outside it — the Nexus index is read only when one does.
+final clsRelationsProvider =
+    FutureProvider.autoDispose.family<({List<ClsRelation> rels, Map<String, String> names}), int>((ref, moduleId) async {
   final db = await ref.watch(databaseProvider.future);
-  final dao = ClassifierDao(db);
-  final fields = await dao.getFields(moduleId);
-  final items = await dao.getItems(moduleId);
-  final values = await dao.getModuleValues(moduleId);
+  final items = ref.watch(clsItemsProvider(moduleId).future);
   final rows = await db.rawQuery(
     "SELECT r.id, r.from_key, r.to_key, r.label, r.rel_type FROM entity_relation r "
     "JOIN classifier_object o ON r.from_key='cobj_'||o.id WHERE o.module_ref=? ORDER BY r.id",
@@ -93,20 +135,56 @@ final clsDataProvider = FutureProvider.autoDispose.family<ClsData, int>((ref, mo
       ClsRelation(r['id'] as int, r['from_key'] as String, r['to_key'] as String, r['label'] as String?,
           r['rel_type'] as String?),
   ];
-  final names = <String, String>{for (final i in items) 'cobj_${i.id}': i.name};
-  final nexus = await db.rawQuery('SELECT nexus_ref FROM module WHERE id=?', [moduleId]);
-  if (nexus.isNotEmpty && rels.any((r) => !names.containsKey(r.to))) {
-    for (final it in await ref.watch(nexusIndexProvider(nexus.first['nexus_ref'] as int).future)) {
-      names[it.key] = it.name;
+  final own = {for (final i in await items) 'cobj_${i.id}'};
+  final names = <String, String>{};
+  if (rels.any((r) => !own.contains(r.to))) {
+    final nexus = await db.rawQuery('SELECT nexus_ref FROM module WHERE id=?', [moduleId]);
+    if (nexus.isNotEmpty) {
+      for (final it in await ref.watch(nexusIndexProvider(nexus.first['nexus_ref'] as int).future)) {
+        names[it.key] = it.name;
+      }
     }
   }
-  final levels = fields.any((f) => f.isLevelled) ? await dao.getModuleLevels(moduleId) : const <int, Map<int, List<ClassifierLevelModel>>>{};
-  return ClsData(fields, items, values, rels, names, levels);
+  return (rels: rels, names: names);
 });
 
-void _refresh(WidgetRef ref, int moduleId) {
-  ref.invalidate(clsDataProvider(moduleId));
+/// The levelled fields' rows — none read when no field is levelled.
+final clsLevelsProvider =
+    FutureProvider.autoDispose.family<Map<int, Map<int, List<ClassifierLevelModel>>>, int>((ref, moduleId) async {
+  final db = await ref.watch(databaseProvider.future);
+  final fields = await ref.watch(clsFieldsProvider(moduleId).future);
+  if (!fields.any((f) => f.isLevelled)) return const {};
+  return ClassifierDao(db).getModuleLevels(moduleId);
+});
+
+final clsDataProvider = FutureProvider.autoDispose.family<ClsData, int>((ref, moduleId) async {
+  // every part asked for before any is awaited
+  final fields = ref.watch(clsFieldsProvider(moduleId).future);
+  final items = ref.watch(clsItemsProvider(moduleId).future);
+  final values = ref.watch(clsValuesProvider(moduleId).future);
+  final rels = ref.watch(clsRelationsProvider(moduleId).future);
+  final levels = ref.watch(clsLevelsProvider(moduleId).future);
+  final its = await items, r = await rels;
+  final names = <String, String>{...r.names, for (final i in its) 'cobj_${i.id}': i.name};
+  return ClsData(await fields, its, await values, r.rels, names, await levels);
+});
+
+/// Re-reads every part — after a change to a field or the set of elements,
+/// which every part may depend on.
+void refreshCls(WidgetRef ref, int moduleId) {
+  ref.invalidate(clsFieldsProvider(moduleId));
+  ref.invalidate(clsItemsProvider(moduleId));
+  ref.invalidate(clsValuesProvider(moduleId));
+  ref.invalidate(clsRelationsProvider(moduleId));
+  ref.invalidate(clsLevelsProvider(moduleId));
   ref.invalidate(classifierFieldsProvider(moduleId));
+  ref.invalidate(classifierItemsProvider(moduleId));
+}
+
+/// After an element was added or renamed: its list (and, through it, the
+/// relations' names); its values and levels are untouched.
+void _refreshItems(WidgetRef ref, int moduleId) {
+  ref.invalidate(clsItemsProvider(moduleId));
   ref.invalidate(classifierItemsProvider(moduleId));
 }
 
@@ -126,17 +204,17 @@ class ClassifierView extends ConsumerWidget {
       if (name == null) return;
       final db = await ref.read(databaseProvider.future);
       await ClassifierDao(db).createItem(moduleRef: m.id, name: name);
-      _refresh(ref, m.id);
+      _refreshItems(ref, m.id);
       ref.invalidate(nexusIndexProvider(m.nexusRef));
     }
 
     final bar = ViewBar(actions: [
-      IconButton(
+      DdxIconButton(
+        icon: Icons.view_column_outlined,
         tooltip: l.classifierNewField,
-        icon: const Icon(Icons.view_column_outlined),
         onPressed: () => editClsField(context, ref, m.id, null),
       ),
-      IconButton(tooltip: l.classifierNewItem, icon: const Icon(Icons.add), onPressed: add),
+      DdxIconButton(icon: Icons.add, tooltip: l.classifierNewItem, onPressed: add),
     ]);
     final body = data.items.isEmpty
         ? KindEmptyState(module: m, note: l.classifierNoItems, startLabel: l.classifierNewItem, onStart: add)
@@ -165,7 +243,7 @@ void _itemMenu(BuildContext context, WidgetRef ref, ComponentCtx ctx, Classifier
         if (name == null) return;
         final db = await ref.read(databaseProvider.future);
         await ClassifierDao(db).updateItem(item.id, name: name, note: item.note);
-        _refresh(ref, ctx.source.id);
+        _refreshItems(ref, ctx.source.id);
         ref.invalidate(nexusIndexProvider(ctx.nexusId));
       },
     ),
@@ -177,7 +255,7 @@ void _itemMenu(BuildContext context, WidgetRef ref, ComponentCtx ctx, Classifier
         if (!await showConfirmDialog(context, title: l.confirmDeleteTitle, message: l.confirmDeleteMessage)) return;
         final db = await ref.read(databaseProvider.future);
         await ClassifierDao(db).deleteItem(item.id);
-        _refresh(ref, ctx.source.id);
+        refreshCls(ref, ctx.source.id);
         ref.invalidate(nexusIndexProvider(ctx.nexusId));
       },
     ),
@@ -186,59 +264,118 @@ void _itemMenu(BuildContext context, WidgetRef ref, ComponentCtx ctx, Classifier
 
 // ── table ────────────────────────────────────────────────────────────────
 
-class _ClsTable extends ConsumerWidget {
+class _ClsTable extends ConsumerStatefulWidget {
   final ComponentCtx ctx;
   final ClsData data;
   const _ClsTable({required this.ctx, required this.data});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_ClsTable> createState() => _ClsTableState();
+}
+
+/// A header row over rows built lazily at one fixed height: a DataTable
+/// builds (and measures) every row, 3,000 of them for a 3,000-element
+/// Classifier (Procress 19 F2). Columns are fixed widths by type, so a row
+/// never needs its neighbours to lay out.
+class _ClsTableState extends ConsumerState<_ClsTable> {
+  static const _headH = 40.0, _rowH = 48.0, _nameW = 180.0, _gap = 20.0;
+  final _rows = ScrollController();
+
+  static double _width(ClassifierFieldModel f) => switch (f.type) {
+        'checkbox' => 72,
+        'number' || 'formula' || 'date' => 120,
+        'textarea' => 240,
+        _ => 180,
+      };
+
+  @override
+  void dispose() {
+    _rows.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final ctx = widget.ctx, data = widget.data;
+    final line = BorderSide(color: theme.dividerColor, width: 0.5);
+    Widget cell(double w, Widget child, {bool end = false}) => SizedBox(
+          width: w + _gap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: _gap / 2),
+            child: Align(alignment: end ? Alignment.centerRight : Alignment.centerLeft, child: child),
+          ),
+        );
+    bool numeric(ClassifierFieldModel f) => f.type == 'number' || f.type == 'formula';
+    final width = _nameW + _gap + [for (final f in data.fields) _width(f) + _gap].fold(0.0, (a, b) => a + b);
+    final height = math.min(_headH + 1 + data.items.length * _rowH, pageListCap(context));
+    final header = SizedBox(
+      height: _headH,
+      child: Row(children: [
+        cell(_nameW, Text(l.labelName, style: theme.textTheme.labelLarge)),
+        for (final f in data.fields)
+          InkWell(
+            onTap: () => editClsField(context, ref, ctx.source.id, f),
+            child: cell(
+              _width(f),
+              end: numeric(f),
+              Row(mainAxisSize: MainAxisSize.min, children: [
+                Icon(clsTypeIcon(f.type), size: 14),
+                const SizedBox(width: 4),
+                Flexible(child: Text(f.description, overflow: TextOverflow.ellipsis, style: theme.textTheme.labelLarge)),
+              ]),
+            ),
+          ),
+      ]),
+    );
+    Widget row(BuildContext context, int i) {
+      final item = data.items[i];
+      return DecoratedBox(
+        decoration: BoxDecoration(border: Border(bottom: line)),
+        child: Row(children: [
+          InkWell(
+            onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${item.id}'),
+            onLongPress: () => _itemMenu(context, ref, ctx, item),
+            child: cell(
+              _nameW,
+              Text(item.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w600)),
+            ),
+          ),
+          for (final f in data.fields)
+            InkWell(
+              onTap: f.type == 'formula' ? null : () => editClsValue(context, ref, ctx.source.id, item, f, data),
+              child: cell(
+                _width(f),
+                end: numeric(f),
+                Text(data.text(item, f, l), maxLines: 2, overflow: TextOverflow.ellipsis),
+              ),
+            ),
+        ]),
+      );
+    }
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: DataTable(
-        headingRowHeight: 40,
-        dataRowMinHeight: 40,
-        dataRowMaxHeight: 64,
-        columnSpacing: 20,
-        columns: [
-          DataColumn(label: Text(l.labelName, style: theme.textTheme.labelLarge)),
-          for (final f in data.fields)
-            DataColumn(
-              numeric: f.type == 'number' || f.type == 'formula',
-              label: InkWell(
-                onTap: () => editClsField(context, ref, ctx.source.id, f),
-                child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  Icon(clsTypeIcon(f.type), size: 14),
-                  const SizedBox(width: 4),
-                  Text(f.description, style: theme.textTheme.labelLarge),
-                ]),
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          header,
+          Divider(height: 1, thickness: 1, color: theme.dividerColor),
+          Expanded(
+            child: Scrollbar(
+              controller: _rows,
+              child: ListView.builder(
+                controller: _rows,
+                itemExtent: _rowH,
+                itemCount: data.items.length,
+                itemBuilder: row,
               ),
             ),
-        ],
-        rows: [
-          for (final item in data.items)
-            DataRow(cells: [
-              DataCell(
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 180),
-                  child: Text(item.name, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w600)),
-                ),
-                onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${item.id}'),
-                onLongPress: () => _itemMenu(context, ref, ctx, item),
-              ),
-              for (final f in data.fields)
-                DataCell(
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 220),
-                    child: Text(data.text(item, f, l), maxLines: 2, overflow: TextOverflow.ellipsis),
-                  ),
-                  onTap: f.type == 'formula' ? null : () => editClsValue(context, ref, ctx.source.id, item, f, data),
-                ),
-            ]),
-        ],
+          ),
+        ]),
       ),
     );
   }
@@ -269,21 +406,30 @@ class _ClsListDetailState extends ConsumerState<_ClsListDetail> {
         ].join(' · ');
     if (!ctx.wide) {
       // A phone: each element opens in place; its page is one tap further.
-      return Column(children: [
-        for (final it in data.items)
-          ExpansionTile(
-            key: ValueKey(it.id),
-            title: Text(it.name, overflow: TextOverflow.ellipsis),
-            subtitle: sub(it).isEmpty ? null : Text(sub(it), maxLines: 1, overflow: TextOverflow.ellipsis),
-            trailing: IconButton(
-              icon: const Icon(Icons.open_in_new, size: 18),
-              tooltip: l.rowOpen,
-              onPressed: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${it.id}'),
-            ),
-            childrenPadding: const EdgeInsets.only(bottom: 8),
-            children: [ClsItemFields(moduleId: ctx.source.id, itemId: it.id)],
-          ),
-      ]);
+      // Built lazily, up to pageListCap tall (F2).
+      return ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: pageListCap(context)),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: data.items.length,
+          itemBuilder: (context, i) {
+            final it = data.items[i];
+            return ExpansionTile(
+              key: ValueKey(it.id),
+              title: Text(it.name, overflow: TextOverflow.ellipsis),
+              subtitle: sub(it).isEmpty ? null : Text(sub(it), maxLines: 1, overflow: TextOverflow.ellipsis),
+              trailing: DdxIconButton(
+                icon: Icons.open_in_new,
+                tooltip: l.rowOpen,
+                size: DdxIconSize.sm,
+                onPressed: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${it.id}'),
+              ),
+              childrenPadding: const EdgeInsets.only(bottom: 8),
+              children: [ClsItemFields(moduleId: ctx.source.id, itemId: it.id)],
+            );
+          },
+        ),
+      );
     }
     final sel = data.items.where((i) => i.id == _selected).firstOrNull ?? data.items.first;
     return SizedBox(
@@ -291,26 +437,31 @@ class _ClsListDetailState extends ConsumerState<_ClsListDetail> {
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(
           width: 260,
-          child: ListView(children: [
-            for (final it in data.items)
-              ListTile(
-                dense: true,
+          child: ListView.builder(
+            itemCount: data.items.length,
+            itemBuilder: (context, i) {
+              final it = data.items[i];
+              // a list in a panel: compact, its two first fields at the end
+              return DdxListTile(
+                density: DdxDensity.compact,
                 selected: it.id == sel.id,
-                title: Text(it.name, overflow: TextOverflow.ellipsis),
-                subtitle: sub(it).isEmpty ? null : Text(sub(it), maxLines: 1, overflow: TextOverflow.ellipsis),
+                title: it.name,
+                meta: sub(it).isEmpty ? null : sub(it),
                 onTap: () => setState(() => _selected = it.id),
                 onLongPress: () => _itemMenu(context, ref, ctx, it),
-              ),
-          ]),
+              );
+            },
+          ),
         ),
         const VerticalDivider(width: 1),
         Expanded(
           child: ListView(children: [
             ListTile(
               title: Text(sel.name, style: Theme.of(context).textTheme.titleMedium),
-              trailing: IconButton(
-                icon: const Icon(Icons.open_in_new, size: 18),
+              trailing: DdxIconButton(
+                icon: Icons.open_in_new,
                 tooltip: l.rowOpen,
+                size: DdxIconSize.sm,
                 onPressed: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${sel.id}'),
               ),
             ),
@@ -420,11 +571,11 @@ class _ClsRelations extends ConsumerWidget {
           EmptyHint(l.clsNoRelations)
         else
           for (final r in data.relations)
-            ListTile(
-              dense: true,
-              leading: const Icon(Icons.east, size: 16),
-              title: Text('${data.names[r.from] ?? r.from}  →  ${data.names[r.to] ?? r.to}'),
-              subtitle: relLabel(r).isEmpty ? null : Text(relLabel(r)),
+            DdxListTile(
+              density: DdxDensity.compact,
+              icon: Icons.east,
+              title: '${data.names[r.from] ?? r.from}  →  ${data.names[r.to] ?? r.to}',
+              meta: relLabel(r).isEmpty ? null : relLabel(r),
               onTap: () => openKey(context, ref, r.to),
             ),
     ]);
@@ -441,9 +592,11 @@ class _ClsGrid extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context)!;
-    return PageGrid(children: [
-      for (final it in data.items)
-        TileCard(
+    return PageGrid.builder(
+      itemCount: data.items.length,
+      itemBuilder: (context, i) {
+        final it = data.items[i];
+        return TileCard(
           leading: Icon(Icons.circle, size: 10, color: hexColor(it.colorCode) ?? Theme.of(context).colorScheme.primary),
           title: it.name,
           subtitle: [
@@ -452,8 +605,9 @@ class _ClsGrid extends ConsumerWidget {
           ].join('\n'),
           onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${it.id}'),
           onLongPress: () => _itemMenu(context, ref, ctx, it),
-        ),
-    ]);
+        );
+      },
+    );
   }
 }
 
@@ -486,9 +640,8 @@ String clsTypeLabel(AppLocalizations l, String type) => switch (type) {
     };
 
 Future<void> _set(WidgetRef ref, int moduleId, int item, int field, String? value) async {
-  final db = await ref.read(databaseProvider.future);
-  await ClassifierDao(db).setValue(objectRef: item, templateRef: field, value: value);
-  _refresh(ref, moduleId);
+  // one cell, patched in place: the table is not re-read (F3)
+  await ref.read(clsValuesProvider(moduleId).notifier).set(item, field, value);
   ref.invalidate(classifierValuesProvider(item));
 }
 
@@ -517,7 +670,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
     ClassifierFieldModel f, ClsData data) async {
   if (f.isLevelled) {
     // A levelled value is its rows: edit them in a sheet over the table.
-    await showModalBottomSheet<void>(
+    await showDdxSheet<void>(
       context: context,
       useRootNavigator: true,
       showDragHandle: true,
@@ -547,11 +700,11 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
     case 'number':
     case 'url':
       final c = TextEditingController(text: raw);
-      final v = await showDialog<String>(
+      final v = await showDdxDialog<String>(
         context: context,
         builder: (d) => AlertDialog(
           title: Text(f.description),
-          content: TextField(
+          content: DdxField(
             controller: c,
             autofocus: true,
             keyboardType: f.type == 'number' ? const TextInputType.numberWithOptions(decimal: true, signed: true) : TextInputType.url,
@@ -570,7 +723,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
       final v = await _editDate(context, f.description, raw);
       if (v != null) await _set(ref, moduleId, item.id, f.id, v);
     case 'select':
-      final v = await showDialog<String>(
+      final v = await showDdxDialog<String>(
         context: context,
         builder: (d) => SimpleDialog(title: Text(f.description), children: [
           SimpleDialogOption(onPressed: () => Navigator.pop(d, ''), child: const Text('—')),
@@ -587,7 +740,7 @@ Future<void> editClsValue(BuildContext context, WidgetRef ref, int moduleId, Cla
       if (v != null) await _set(ref, moduleId, item.id, f.id, v);
     case 'multi':
       final picked = {...multiValue(raw)};
-      final ok = await showDialog<bool>(
+      final ok = await showDdxDialog<bool>(
         context: context,
         builder: (d) => StatefulBuilder(
           builder: (d, setLocal) => AlertDialog(
@@ -632,7 +785,7 @@ Future<String?> _editDate(BuildContext context, String title, String raw) async 
     for (final n in [v?.d, v?.m, v?.y, v?.h, v?.mi]) TextEditingController(text: n == null ? '' : '$n'),
   ];
   final labels = [l.dateDay, l.dateMonth, l.dateYear, l.dateHour, l.dateMinute];
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => AlertDialog(
       title: Text(title),
@@ -640,10 +793,10 @@ Future<String?> _editDate(BuildContext context, String title, String raw) async 
         for (var i = 0; i < 5; i++)
           SizedBox(
             width: i == 2 ? 88 : 56,
-            child: TextField(
+            child: DdxField(
               controller: cs[i],
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: labels[i], isDense: true),
+              label: labels[i],
             ),
           ),
       ]),
@@ -664,7 +817,7 @@ Future<String?> _editDate(BuildContext context, String title, String raw) async 
 
 Future<void> _editRelations(
     BuildContext context, WidgetRef ref, int moduleId, int nexus, ClassifierItemModel item, ClassifierFieldModel f) async {
-  await showModalBottomSheet<void>(
+  await showDdxSheet<void>(
     context: context,
     useRootNavigator: true,
     showDragHandle: true,
@@ -682,13 +835,14 @@ Future<void> _editRelations(
             ListTile(
               dense: true,
               title: Text(data?.names[r.to] ?? r.to),
-              trailing: IconButton(
-                icon: const Icon(Icons.close, size: 18),
+              trailing: DdxIconButton(
+                icon: Icons.close,
                 tooltip: l.btnDelete,
+                size: DdxIconSize.sm,
                 onPressed: () async {
                   final db = await ref.read(databaseProvider.future);
                   await ClassifierDao(db).deleteRelation(r.id);
-                  _refresh(ref, moduleId);
+                  ref.invalidate(clsRelationsProvider(moduleId));
                 },
               ),
             ),
@@ -700,7 +854,7 @@ Future<void> _editRelations(
               if (picked == null) return;
               final db = await ref.read(databaseProvider.future);
               await ClassifierDao(db).addFieldRelation(item.id, f.id, picked.key);
-              _refresh(ref, moduleId);
+              ref.invalidate(clsRelationsProvider(moduleId));
             },
           ),
           const SizedBox(height: 8),
@@ -719,23 +873,30 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
   final expr = TextEditingController(text: f?.opts['expr'] as String? ?? '');
   var type = f?.type ?? 'text';
   var levelable = f?.levelable ?? false, hasCondition = f?.hasCondition ?? false;
-  final result = await showDialog<String>(
+  final result = await showDdxDialog<String>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, setLocal) => AlertDialog(
         title: Text(f == null ? l.classifierNewField : l.clsEditField),
         content: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            TextField(controller: name, autofocus: f == null, decoration: InputDecoration(labelText: l.labelName)),
+            DdxField(controller: name, autofocus: f == null, label: l.labelName),
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
               initialValue: type,
+              // a phone-wide dialog leaves the longest type name too little
+              // room: fill the field and cut the name, never overflow
+              isExpanded: true,
               decoration: InputDecoration(labelText: l.clsFieldType),
               items: [
                 for (final t in ClassifierFieldModel.types)
                   DropdownMenuItem(
                     value: t,
-                    child: Row(children: [Icon(clsTypeIcon(t), size: 18), const SizedBox(width: 8), Text(clsTypeLabel(l, t))]),
+                    child: Row(children: [
+                      Icon(clsTypeIcon(t), size: 18),
+                      const SizedBox(width: 8),
+                      Flexible(child: Text(clsTypeLabel(l, t), overflow: TextOverflow.ellipsis)),
+                    ]),
                   ),
               ],
               onChanged: (v) => setLocal(() => type = v ?? type),
@@ -751,7 +912,7 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
             ],
             if (type == 'formula') ...[
               const SizedBox(height: 12),
-              TextField(controller: expr, decoration: InputDecoration(labelText: l.clsTypeFormula, hintText: l.clsFormulaHint)),
+              DdxField(controller: expr, label: l.clsTypeFormula, hint: l.clsFormulaHint),
             ],
             ExpansionTile(
               tilePadding: EdgeInsets.zero,
@@ -814,7 +975,7 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
       await dao.updateField(f.id, description: n, type: type, options: options, levelable: levelable, hasCondition: hasCondition);
     }
   }
-  _refresh(ref, moduleId);
+  refreshCls(ref, moduleId);
 }
 
 // ── level & condition rows ───────────────────────────────────────────────
@@ -839,7 +1000,7 @@ class ClsLevelTable extends ConsumerWidget {
   Future<ClassifierDao> _dao(WidgetRef ref) async => ClassifierDao(await ref.read(databaseProvider.future));
 
   void _done(WidgetRef ref) {
-    _refresh(ref, moduleId);
+    ref.invalidate(clsLevelsProvider(moduleId));
     ref.invalidate(classifierValuesProvider(itemId));
   }
 
@@ -857,7 +1018,7 @@ class ClsLevelTable extends ConsumerWidget {
     final l = AppLocalizations.of(context)!;
     final cols = field.levelColumns;
     final ctl = {for (final c in cols) c: TextEditingController(text: row?[c] ?? '')};
-    final ok = await showDialog<bool>(
+    final ok = await showDdxDialog<bool>(
       context: context,
       builder: (d) => AlertDialog(
         title: Text(field.description),
@@ -866,12 +1027,12 @@ class ClsLevelTable extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               for (final c in cols)
-                TextField(
+                DdxField(
                   controller: ctl[c],
                   autofocus: c == cols.first,
                   minLines: 1,
                   maxLines: c == 'info_value' ? 5 : 1,
-                  decoration: InputDecoration(labelText: columnLabel(l, c)),
+                  label: columnLabel(l, c),
                 ),
             ],
           ),

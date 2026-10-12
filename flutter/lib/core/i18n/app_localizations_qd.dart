@@ -963,6 +963,24 @@ class AppLocalizationsQd extends AppLocalizations {
   String get transferErrBadPayload => 'Ythe resevyd thyng myghth noth be redde.';
 
   @override
+  String get transferSendKey => 'Sendynge keye';
+
+  @override
+  String get transferSendKeyHint => 'Aske ye keeper of ye transfer service for thys weke\'s keye. It chaungeth every Monenday.';
+
+  @override
+  String get transferErrSendKeyRequired => 'Thys service wolde have thys weke\'s sendynge keye ere it taketh a Nexvs.';
+
+  @override
+  String get transferErrBadSendKey => 'That sendynge keye is noth ryght — or it be laste weke\'s. Keyes chaunge every Monenday.';
+
+  @override
+  String get transferErrSendKeyLocked => 'Ouer many wronge keyes from thys devyce. Abyde fyftene mynutes and assaye agayne.';
+
+  @override
+  String get transferErrSendKeyUnavailable => 'Sendynge is shutte on thys transfer service (its keye is noth sette).';
+
+  @override
   String get transferErrServer => 'Ythe beryng servyce faltryd.';
 
   @override
@@ -2908,4 +2926,112 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get pageInside => 'Withinne';
+
+  @override
+  String get listFilterHint => 'Sifteth';
+
+  @override
+  String get listSort => 'Ordeyne';
+
+  @override
+  String get listSortName => 'Nymm';
+
+  @override
+  String get listSortEdited => 'Last graven';
+
+  @override
+  String get listSortCreated => 'Forgeday';
+
+  @override
+  String get listSortKind => 'Kynde';
+
+  @override
+  String get listSortManual => 'As laid-thra';
+
+  @override
+  String get listCount => '{n} thyngs';
+
+  @override
+  String get listNoMatch => 'Naught answereth this sifting.';
+
+  @override
+  String get listGroupToday => 'Thys sun';
+
+  @override
+  String get listGroupThisWeek => 'Thys sennight';
+
+  @override
+  String get listGroupOlder => 'Elder';
+
+  @override
+  String get assetGroupImage => 'Glymmers';
+
+  @override
+  String get assetGroupAudio => 'Songs';
+
+  @override
+  String get assetGroupVideo => 'Movyng glymmers';
+
+  @override
+  String get assetGroupDoc => 'Scrolls';
+
+  @override
+  String get assetGroupTrack => 'Undertongues';
+
+  @override
+  String get assetGroupModel => 'Shaped wyrmstone';
+
+  @override
+  String get assetGroupUrl => 'Threads';
+
+  @override
+  String get assetGroupOther => 'Othyr hoard';
+
+  @override
+  String get uiStyleLabel => 'Draav Vysth';
+
+  @override
+  String get uiStyleStandard => 'Stoneform';
+
+  @override
+  String get uiStyleGlass => 'Glazhyr';
+
+  @override
+  String get reduceTransparency => 'Dim the glazhyr';
+
+  @override
+  String get reduceTransparencyHint => 'Glazhyr panes and veiled bars turn solid as stone';
+
+  @override
+  String get glassBlurOff => 'Blur slumbers — this hoard-engine drew it too slowly';
+
+  @override
+  String get glassBlurRetry => 'Try anew';
+
+  @override
+  String get nexusPickTemplate => 'Choose thy pattern';
+
+  @override
+  String get nexusTemplateBlank => 'Unwritten';
+
+  @override
+  String get nexusTemplateBlankDesc => 'An empty Nexus — raise thy modules by thine own hand';
+
+  @override
+  String get nexusCreateAppDocs => 'Raise the App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'The guide within, in a chamber of its own';
+
+  @override
+  String get nexusNameTaken => 'A Nexus of this name already stands';
+
+  @override
+  String get nexusTemplateFailed => 'The Nexus stands, yet the pattern would not take';
+
+  @override
+  String get btnRetry => 'Try anew';
+
+  @override
+  String get btnCreateNexus => 'Raise the Nexus';
 }

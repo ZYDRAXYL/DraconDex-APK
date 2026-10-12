@@ -16,6 +16,10 @@ import '../module_page.dart';
 import 'exhibitor_scene.dart';
 import 'graph_view.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Exhibitor's and the Manager's views: both are a saved filter over
 /// the Nexus index (module_ui filterDef, V5.md §8.9), drawn several ways
@@ -118,9 +122,9 @@ class SelectionView extends ConsumerWidget {
             title: data.def.isEmpty ? null : '${data.items.length}',
             actions: [
               if (exhibitor && ctx.preset != 'scene')
-                IconButton(
+                DdxIconButton(
+                  icon: Icons.add_link,
                   tooltip: l.connectorAddRelation,
-                  icon: const Icon(Icons.add_link),
                   onPressed: () => addRelationDialog(context, ref, ctx, data.items),
                 ),
               if (ctx.preset == 'board')
@@ -292,7 +296,8 @@ class _Board extends ConsumerWidget {
           count: g.$2.length,
           children: [
             for (final it in g.$2)
-              Card(
+              DdxCard(
+                kind: DdxCardKind.link,
                 margin: const EdgeInsets.only(bottom: 6),
                 child: ListTile(
                   dense: true,
@@ -398,9 +403,10 @@ class _Edges extends ConsumerWidget {
           title: Text('${data.nameOf(r.from)}  ${r.directed ? '→' : '—'}  ${data.nameOf(r.to)}'),
           subtitle: r.label.isEmpty ? null : Text(r.label),
           onTap: () => openKey(context, ref, r.to),
-          trailing: IconButton(
-            icon: const Icon(Icons.delete_outline, size: 18),
+          trailing: DdxIconButton(
+            icon: Icons.delete_outline,
             tooltip: l.btnDelete,
+            size: DdxIconSize.sm,
             onPressed: () async {
               if (!await showConfirmDialog(context, title: l.confirmDeleteTitle, message: l.confirmDeleteMessage)) return;
               final db = await ref.read(databaseProvider.future);
@@ -420,7 +426,7 @@ Future<void> addRelationDialog(BuildContext context, WidgetRef ref, ComponentCtx
   if (items.length < 2) return;
   final label = TextEditingController();
   var directed = true;
-  final ok = await showDialog<bool>(
+  final ok = await showDdxDialog<bool>(
     context: context,
     builder: (d) => StatefulBuilder(
       builder: (d, setLocal) {
@@ -441,7 +447,7 @@ Future<void> addRelationDialog(BuildContext context, WidgetRef ref, ComponentCtx
             child: Column(mainAxisSize: MainAxisSize.min, children: [
               pick(from, l.connectorFrom, (x) => from = x),
               pick(to, l.connectorTo, (x) => to = x),
-              TextField(controller: label, decoration: InputDecoration(labelText: l.connectorLabel)),
+              DdxField(controller: label, label: l.connectorLabel),
               SwitchListTile(
                 contentPadding: EdgeInsets.zero,
                 title: Text(l.relDirected),

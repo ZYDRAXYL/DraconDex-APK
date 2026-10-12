@@ -12,6 +12,11 @@ import '../../../widgets/markdown_view.dart';
 import '../../../widgets/row_menu.dart';
 import '../component_registry.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_segmented.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// The Diviner's page (EXE mod/diviner.js): its tables, the open one's roll
 /// button and last result, its entries, and its roll history.
@@ -75,26 +80,29 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
     final dice = TextEditingController(text: t?['dice'] as String? ?? '');
     var mode = t?['mode'] as String? ?? 'pick';
     String? error;
-    final ok = await showDialog<String>(
+    final ok = await showDdxDialog<String>(
       context: context,
       builder: (d) => StatefulBuilder(
         builder: (d, setLocal) => AlertDialog(
           title: Text(t == null ? l.divNewTable : l.btnEdit),
           content: SingleChildScrollView(
             child: Column(mainAxisSize: MainAxisSize.min, children: [
-              TextField(controller: name, autofocus: t == null, decoration: InputDecoration(labelText: l.labelName)),
-              TextField(
+              DdxField(controller: name, autofocus: t == null, label: l.labelName),
+              DdxField(
                 controller: dice,
-                decoration: InputDecoration(labelText: l.divDice, hintText: '1d20 · 2d6+1 · d%', helperText: l.divDiceHelp, errorText: error),
+                label: l.divDice,
+                hint: '1d20 · 2d6+1 · d%',
+                helper: l.divDiceHelp,
+                errorText: error,
               ),
               const SizedBox(height: 8),
-              SegmentedButton<String>(
+              DdxSegmented<String>(
                 segments: [
-                  ButtonSegment(value: 'pick', label: Text(l.divModePick)),
-                  ButtonSegment(value: 'join', label: Text(l.divModeJoin)),
+                  DdxSegment(value: 'pick', label: l.divModePick),
+                  DdxSegment(value: 'join', label: l.divModeJoin),
                 ],
-                selected: {mode},
-                onSelectionChanged: (s) => setLocal(() => mode = s.first),
+                selected: mode,
+                onChanged: (v) => setLocal(() => mode = v),
               ),
             ]),
           ),
@@ -143,21 +151,21 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
     final lo = TextEditingController(text: '${e['range_lo'] ?? ''}');
     final hi = TextEditingController(text: '${e['range_hi'] ?? ''}');
     final weight = TextEditingController(text: '${e['weight'] ?? 1}');
-    final ok = await showDialog<bool>(
+    final ok = await showDdxDialog<bool>(
       context: context,
       builder: (dc) => AlertDialog(
         title: Text(l.btnEdit),
         content: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            TextField(controller: text, autofocus: true, maxLines: 3, minLines: 1, decoration: InputDecoration(labelText: l.divEntryText)),
+            DdxField(controller: text, autofocus: true, maxLines: 3, minLines: 1, label: l.divEntryText),
             if (dice)
               Row(children: [
-                Expanded(child: TextField(controller: lo, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: l.divFrom))),
+                Expanded(child: DdxField(controller: lo, keyboardType: TextInputType.number, label: l.divFrom)),
                 const SizedBox(width: 12),
-                Expanded(child: TextField(controller: hi, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: l.divTo))),
+                Expanded(child: DdxField(controller: hi, keyboardType: TextInputType.number, label: l.divTo)),
               ])
             else
-              TextField(controller: weight, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: l.divWeight)),
+              DdxField(controller: weight, keyboardType: TextInputType.number, label: l.divWeight),
           ]),
         ),
         actions: [
@@ -186,7 +194,7 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
           final tables = await dao.tablesInNexus(widget.ctx.nexusId);
           final blocked = <int>{for (final t in tables) if (await dao.wouldCycle(tableId, t['id'] as int)) t['id'] as int};
           if (!mounted) return;
-          final pick = await showDialog<int>(
+          final pick = await showDdxDialog<int>(
             context: context,
             builder: (dc) => SimpleDialog(title: Text(l.divRollsTable), children: [
               for (final t in tables)
@@ -245,8 +253,9 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
       child: Row(children: [
         Expanded(
-          child: TextField(
-            decoration: InputDecoration(isDense: true, hintText: l.divQuickRoll, prefixIcon: const Icon(Icons.casino_outlined, size: 18)),
+          child: DdxField(
+            hint: l.divQuickRoll,
+            prefixIcon: const Icon(Icons.casino_outlined, size: 18),
             onSubmitted: (v) => setState(() => _quick = rollDice(v)?.text ?? l.divBadDice),
           ),
         ),
@@ -262,8 +271,8 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
             padding: const EdgeInsets.only(right: 6),
             child: GestureDetector(
               onLongPress: () => _tableDialog(tb),
-              child: ChoiceChip(
-                label: Text('${tb['name']}${tb['dice'] != null ? ' · ${tb['dice']}' : ''}'),
+              child: DdxChip.filter(
+                '${tb['name']}${tb['dice'] != null ? ' · ${tb['dice']}' : ''}',
                 selected: tb['id'] == d.selected,
                 onSelected: (_) => _select(tb['id'] as int),
               ),
@@ -293,11 +302,11 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
             label: Text(l.divRoll),
           ),
           const SizedBox(width: 8),
-          IconButton(tooltip: l.btnEdit, icon: const Icon(Icons.tune), onPressed: () => _tableDialog(t)),
+          DdxIconButton(icon: Icons.tune, tooltip: l.btnEdit, onPressed: () => _tableDialog(t)),
           // The table's own page (V5.md §12.4): its notes, properties and links.
-          IconButton(
+          DdxIconButton(
+            icon: Icons.open_in_new,
             tooltip: l.rowOpen,
-            icon: const Icon(Icons.open_in_new),
             onPressed: () => openElement(context, widget.ctx.nexusId, _id, 'divt_${t['id']}'),
           ),
           const Spacer(),
@@ -317,9 +326,9 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
           ),
         ),
       ViewBar(title: l.divEntries, actions: [
-        IconButton(
+        DdxIconButton(
+          icon: Icons.add,
           tooltip: l.btnAdd,
-          icon: const Icon(Icons.add),
           onPressed: () async {
             await (await _dao()).createEntry(t['id'] as int);
             _refresh();
@@ -355,9 +364,9 @@ class _DivinerViewState extends ConsumerState<DivinerView> {
         ),
       ViewBar(title: l.divHistory, actions: [
         if (d.rolls.isNotEmpty)
-          IconButton(
+          DdxIconButton(
+            icon: Icons.delete_sweep_outlined,
             tooltip: l.btnClear,
-            icon: const Icon(Icons.delete_sweep_outlined),
             onPressed: () async {
               await (await _dao()).clearRolls(t['id'] as int);
               _refresh();

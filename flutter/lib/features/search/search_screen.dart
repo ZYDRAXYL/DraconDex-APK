@@ -7,9 +7,11 @@ import 'package:go_router/go_router.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../data/services/search_service.dart';
 import '../../providers/db_providers.dart';
-import '../../providers/module_provider.dart';
+import '../../widgets/ddx_list.dart';
 import '../builder/open_pages.dart';
-import '../hub/dialogs/nexus_dialog.dart';
+import '../hub/new_nexus_screen.dart';
+import '../../widgets/ddx_glass.dart';
+import '../../widgets/ddx_icon_button.dart';
 
 /// The one search field of APK V3 (APP docs/APK-V3.md §9.2, §13 item 14):
 /// results in three groups — things (names of modules and elements), content
@@ -83,9 +85,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   List<_Command> _commands(AppLocalizations l10n) => [
         _Command(l10n.newNexusTooltip, Icons.add_circle_outline, (context) async {
-          await showDialog(context: context, builder: (_) => const NexusDialog());
-          ref.invalidate(nexusesProvider);
-          if (context.mounted) context.go('/');
+          context.push(NewNexusScreen.route);
         }),
         _Command(l10n.openPagesTitle, Icons.filter_none,
             (context) => showOpenPagesSheet(context, currentLocation: '/search')),
@@ -98,7 +98,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
     final q = _controller.text.trim().toLowerCase();
     final commands = q.isEmpty
         ? const <_Command>[]
@@ -107,7 +106,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final nothing = q.isNotEmpty && !stale && !_busy && _things.isEmpty && _content.isEmpty && commands.isEmpty;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: DdxGlassBar(child: AppBar(
         titleSpacing: 0,
         title: TextField(
           controller: _controller,
@@ -118,8 +117,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             border: InputBorder.none,
             suffixIcon: _controller.text.isEmpty
                 ? null
-                : IconButton(
-                    icon: const Icon(Icons.clear),
+                : DdxIconButton(
+                    icon: Icons.clear,
                     tooltip: l10n.btnClose,
                     onPressed: () {
                       _controller.clear();
@@ -130,77 +129,56 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           onChanged: _onChanged,
           onSubmitted: _run,
         ),
-      ),
-      body: ListView(
-        children: [
-          if (_busy) const LinearProgressIndicator(minHeight: 2),
-          if (nothing)
-            Padding(
-              padding: const EdgeInsets.all(32),
-              child: Text(
-                l10n.searchEmpty,
-                textAlign: TextAlign.center,
-                style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurface.withValues(alpha: 0.55)),
+      )),
+      // Three groups, each with its count and folding (UX-LAYOUT §12.4),
+      // their rows built as they scroll in.
+      body: CustomScrollView(
+        slivers: [
+          if (_busy) const SliverToBoxAdapter(child: LinearProgressIndicator(minHeight: 2)),
+          if (nothing) SliverToBoxAdapter(child: DdxEmptyState(icon: Icons.search_off, message: l10n.searchEmpty)),
+          if (_things.isNotEmpty)
+            DdxListSection.sliver(
+              storageId: 'search-things',
+              title: l10n.searchThings,
+              count: _things.length,
+              itemCount: _things.length,
+              itemBuilder: (context, i) => _hitRow(context, _things[i]),
+            ),
+          if (_content.isNotEmpty)
+            DdxListSection.sliver(
+              storageId: 'search-content',
+              title: l10n.searchContent,
+              count: _content.length,
+              itemCount: _content.length,
+              itemBuilder: (context, i) => _hitRow(context, _content[i], showSnippet: true),
+            ),
+          if (commands.isNotEmpty)
+            DdxListSection.sliver(
+              storageId: 'search-commands',
+              title: l10n.searchCommands,
+              count: commands.length,
+              itemCount: commands.length,
+              itemBuilder: (context, i) => DdxListTile(
+                icon: commands[i].icon,
+                title: commands[i].label,
+                onTap: () => commands[i].run(context),
               ),
             ),
-          if (_things.isNotEmpty) ...[
-            _GroupHeader(label: l10n.searchThings),
-            for (final h in _things) _HitTile(hit: h),
-          ],
-          if (_content.isNotEmpty) ...[
-            _GroupHeader(label: l10n.searchContent),
-            for (final h in _content) _HitTile(hit: h, showSnippet: true),
-          ],
-          if (commands.isNotEmpty) ...[
-            _GroupHeader(label: l10n.searchCommands),
-            for (final c in commands)
-              ListTile(
-                leading: Icon(c.icon),
-                title: Text(c.label),
-                onTap: () => c.run(context),
-              ),
-          ],
         ],
       ),
     );
   }
 }
 
-class _GroupHeader extends StatelessWidget {
-  final String label;
-
-  const _GroupHeader({required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
-      child: Text(
-        label.toUpperCase(),
-        style: theme.textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold, letterSpacing: 0.8, color: theme.colorScheme.primary),
-      ),
-    );
-  }
-}
-
-class _HitTile extends StatelessWidget {
-  final SearchHit hit;
-  final bool showSnippet;
-
-  const _HitTile({required this.hit, this.showSnippet = false});
-
-  @override
-  Widget build(BuildContext context) {
-    final where = hit.isModule ? null : hit.moduleName;
-    final subtitle = showSnippet && hit.snippet != null && hit.snippet!.isNotEmpty
-        ? [?where, hit.snippet!].join(' · ')
-        : where;
-    return ListTile(
-      leading: Icon(hit.isModule ? Icons.folder_outlined : Icons.article_outlined),
-      title: Text(hit.title.isEmpty ? '—' : hit.title, maxLines: 1, overflow: TextOverflow.ellipsis),
-      subtitle: subtitle == null ? null : Text(subtitle, maxLines: 2, overflow: TextOverflow.ellipsis),
-      onTap: () => context.push(hit.location),
-    );
-  }
+/// A result: what it is, its name, and where it is (plus the matching text,
+/// for a content hit).
+Widget _hitRow(BuildContext context, SearchHit hit, {bool showSnippet = false}) {
+  final where = hit.isModule ? null : hit.moduleName;
+  final meta = showSnippet && hit.snippet != null && hit.snippet!.isNotEmpty ? [?where, hit.snippet!].join(' · ') : where;
+  return DdxListTile(
+    icon: hit.isModule ? Icons.folder_outlined : Icons.article_outlined,
+    title: hit.title.isEmpty ? '—' : hit.title,
+    meta: meta,
+    onTap: () => context.push(hit.location),
+  );
 }

@@ -7,6 +7,10 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Locator kind: a map with drawable polygon areas.
 ///
@@ -92,14 +96,14 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
   Future<void> _renameArea(MapAreaModel a) async {
     final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: a.name ?? '');
-    final name = await showDialog<String>(
+    final name = await showDdxDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(l10n.btnRename),
-        content: TextField(
+        content: DdxField(
           controller: controller,
           autofocus: true,
-          decoration: InputDecoration(labelText: l10n.labelName),
+          label: l10n.labelName,
           onSubmitted: (v) => Navigator.of(ctx).pop(v.trim()),
         ),
         actions: [
@@ -197,13 +201,8 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: areas.length,
                   separatorBuilder: (_, _) => const SizedBox(width: 6),
-                  itemBuilder: (ctx, i) => ChoiceChip(
-                    label: Text(
-                      areas[i].name?.isNotEmpty == true
-                          ? areas[i].name!
-                          : l10n.locatorUntitledArea,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  itemBuilder: (ctx, i) => DdxChip.filter(
+                    areas[i].name?.isNotEmpty == true ? areas[i].name! : l10n.locatorUntitledArea,
                     selected: _areaId == areas[i].id,
                     onSelected: (_) => setState(() => _areaId = areas[i].id),
                   ),
@@ -215,17 +214,18 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
                 spacing: 8,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  ChoiceChip(
-                    label: Text(_drawMode ? l10n.locatorToolDraw : l10n.locatorToolMove),
+                  DdxChip.filter(
+                    _drawMode ? l10n.locatorToolDraw : l10n.locatorToolMove,
                     selected: _drawMode,
                     // Tracing needs an area to put the vertices on.
                     onSelected:
                         selected == null ? null : (_) => setState(() => _drawMode = !_drawMode),
                   ),
                   if (selected != null) ...[
-                    IconButton(
+                    DdxIconButton(
+                      icon: Icons.undo,
                       tooltip: l10n.locatorUndoPoint,
-                      icon: const Icon(Icons.undo, size: 20),
+                      size: DdxIconSize.md,
                       onPressed: () async {
                         final dao = ref.read(locatorDaoProvider).valueOrNull;
                         if (dao == null) return;
@@ -235,14 +235,16 @@ class _MapBoardState extends ConsumerState<_MapBoard> {
                         ref.invalidate(mapAreasProvider(widget.mapId));
                       },
                     ),
-                    IconButton(
+                    DdxIconButton(
+                      icon: Icons.edit_outlined,
                       tooltip: l10n.btnRename,
-                      icon: const Icon(Icons.edit_outlined, size: 20),
+                      size: DdxIconSize.md,
                       onPressed: () => _renameArea(selected),
                     ),
-                    IconButton(
+                    DdxIconButton(
+                      icon: Icons.delete_outline,
                       tooltip: l10n.btnDelete,
-                      icon: const Icon(Icons.delete_outline, size: 20),
+                      size: DdxIconSize.md,
                       onPressed: () => _deleteArea(selected),
                     ),
                   ],

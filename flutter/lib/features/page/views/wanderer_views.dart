@@ -10,6 +10,8 @@ import '../component_registry.dart';
 import 'graph_view.dart';
 import '../kind_views.dart';
 import 'view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Wanderer's three presets (EXE mod/wanderer.js WANDERER_VIEWS): map
 /// (its pins), area (the referenced Locator's areas and which pins stand in
@@ -135,9 +137,10 @@ class WandererView extends ConsumerWidget {
                 ListTile(
                   dense: true,
                   title: Text(p.label),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.close, size: 18),
+                  trailing: DdxIconButton(
+                    icon: Icons.close,
                     tooltip: l.btnDelete,
+                    size: DdxIconSize.sm,
                     onPressed: () => setArea(p.id, null),
                   ),
                 ),
@@ -147,7 +150,7 @@ class WandererView extends ConsumerWidget {
                   leading: const Icon(Icons.add),
                   title: Text(l.wndAddPin),
                   onTap: () async {
-                    final pick = await showDialog<int>(
+                    final pick = await showDdxDialog<int>(
                       context: context,
                       builder: (dc) => SimpleDialog(title: Text(name), children: [
                         for (final p in d.pins.where((p) => p.areaRef != aid))

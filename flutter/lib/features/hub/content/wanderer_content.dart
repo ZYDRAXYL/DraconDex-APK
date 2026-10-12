@@ -6,6 +6,9 @@ import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../widgets/confirm_dialog.dart';
 import '../../page/views/view_common.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_field.dart';
 
 /// Wanderer kind: timeline events pinned onto a map.
 ///
@@ -46,7 +49,7 @@ class _WandererContentState extends ConsumerState<WandererContent> {
     final controller = TextEditingController(text: pin.label ?? '');
     var eventRef = pin.eventRef;
 
-    final action = await showDialog<String>(
+    final action = await showDdxDialog<String>(
       context: context,
       builder: (ctx) => StatefulBuilder(
         builder: (ctx, setLocal) => AlertDialog(
@@ -57,10 +60,10 @@ class _WandererContentState extends ConsumerState<WandererContent> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextField(
+                DdxField(
                   controller: controller,
                   autofocus: true,
-                  decoration: InputDecoration(labelText: l10n.wandererLabel),
+                  label: l10n.wandererLabel,
                 ),
                 const SizedBox(height: 12),
                 Text(l10n.wandererLinkedEvent,
@@ -178,8 +181,8 @@ class _WandererContentState extends ConsumerState<WandererContent> {
                 children: [
                   Text(l10n.wandererPins, style: theme.textTheme.titleSmall),
                   const Spacer(),
-                  ChoiceChip(
-                    label: Text(_placeMode ? l10n.wandererPlacing : l10n.locatorToolMove),
+                  DdxChip.filter(
+                    _placeMode ? l10n.wandererPlacing : l10n.locatorToolMove,
                     selected: _placeMode,
                     onSelected: (_) => setState(() => _placeMode = !_placeMode),
                   ),
