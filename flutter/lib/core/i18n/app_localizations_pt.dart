@@ -3007,4 +3007,31 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Tentar de novo';
+
+  @override
+  String get nexusPickTemplate => 'Escolha um modelo';
+
+  @override
+  String get nexusTemplateBlank => 'Em branco';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Um Nexus vazio — adicione os módulos você mesmo';
+
+  @override
+  String get nexusCreateAppDocs => 'Criar App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'O guia do app, numa pasta própria';
+
+  @override
+  String get nexusNameTaken => 'Já existe um Nexus com este nome';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus criado, mas não foi possível adicionar o modelo';
+
+  @override
+  String get btnRetry => 'Tentar de novo';
+
+  @override
+  String get btnCreateNexus => 'Criar Nexus';
 }

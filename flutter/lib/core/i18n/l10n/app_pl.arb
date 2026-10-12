@@ -998,5 +998,14 @@
   "reduceTransparency": "Zmniejsz przezroczystość",
   "reduceTransparencyHint": "Szklane panele i półprzezroczyste paski stają się nieprzezroczyste",
   "glassBlurOff": "Rozmycie wyłączone — to urządzenie rysowało je zbyt wolno",
-  "glassBlurRetry": "Spróbuj ponownie"
+  "glassBlurRetry": "Spróbuj ponownie",
+  "nexusPickTemplate": "Wybierz szablon",
+  "nexusTemplateBlank": "Pusty",
+  "nexusTemplateBlankDesc": "Pusty Nexus — moduły dodasz sam",
+  "nexusCreateAppDocs": "Utwórz App Docs",
+  "nexusCreateAppDocsHint": "Przewodnik w aplikacji, we własnym folderze",
+  "nexusNameTaken": "Nexus o tej nazwie już istnieje",
+  "nexusTemplateFailed": "Utworzono Nexus, ale nie udało się dodać szablonu",
+  "btnRetry": "Ponów",
+  "btnCreateNexus": "Utwórz Nexus"
 }

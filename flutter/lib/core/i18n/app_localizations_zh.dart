@@ -3007,4 +3007,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get glassBlurRetry => '重试';
+
+  @override
+  String get nexusPickTemplate => '选择模板';
+
+  @override
+  String get nexusTemplateBlank => '空白';
+
+  @override
+  String get nexusTemplateBlankDesc => '空的 Nexus — 自行添加模块';
+
+  @override
+  String get nexusCreateAppDocs => '创建 App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => '应用内指南，放在单独的文件夹中';
+
+  @override
+  String get nexusNameTaken => '已存在同名的 Nexus';
+
+  @override
+  String get nexusTemplateFailed => '已创建 Nexus，但未能添加模板';
+
+  @override
+  String get btnRetry => '重试';
+
+  @override
+  String get btnCreateNexus => '创建 Nexus';
 }

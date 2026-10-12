@@ -3007,4 +3007,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'もう一度試す';
+
+  @override
+  String get nexusPickTemplate => 'テンプレートを選ぶ';
+
+  @override
+  String get nexusTemplateBlank => '空白';
+
+  @override
+  String get nexusTemplateBlankDesc => '空のNexus — モジュールは自分で追加';
+
+  @override
+  String get nexusCreateAppDocs => 'App Docs を作成';
+
+  @override
+  String get nexusCreateAppDocsHint => 'アプリ内ガイド（専用フォルダー）';
+
+  @override
+  String get nexusNameTaken => 'この名前のNexusはすでにあります';
+
+  @override
+  String get nexusTemplateFailed => 'Nexusは作成しましたが、テンプレートを追加できませんでした';
+
+  @override
+  String get btnRetry => '再試行';
+
+  @override
+  String get btnCreateNexus => 'Nexusを作成';
 }

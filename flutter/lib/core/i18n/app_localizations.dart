@@ -6126,6 +6126,60 @@ abstract class AppLocalizations {
   /// **'Try again'**
   String get glassBlurRetry;
 
+  /// No description provided for @nexusPickTemplate.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a template'**
+  String get nexusPickTemplate;
+
+  /// No description provided for @nexusTemplateBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Blank'**
+  String get nexusTemplateBlank;
+
+  /// No description provided for @nexusTemplateBlankDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'An empty Nexus — add modules yourself'**
+  String get nexusTemplateBlankDesc;
+
+  /// No description provided for @nexusCreateAppDocs.
+  ///
+  /// In en, this message translates to:
+  /// **'Create App Docs'**
+  String get nexusCreateAppDocs;
+
+  /// No description provided for @nexusCreateAppDocsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The in-app guide, in a folder of its own'**
+  String get nexusCreateAppDocsHint;
+
+  /// No description provided for @nexusNameTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'A Nexus with this name already exists'**
+  String get nexusNameTaken;
+
+  /// No description provided for @nexusTemplateFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Nexus created, but the template could not be added'**
+  String get nexusTemplateFailed;
+
+  /// No description provided for @btnRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get btnRetry;
+
+  /// No description provided for @btnCreateNexus.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Nexus'**
+  String get btnCreateNexus;
+
 }
 
 class _AppLocalizationsDelegate

@@ -3007,4 +3007,31 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'ลองอีกครั้ง';
+
+  @override
+  String get nexusPickTemplate => 'เลือก template';
+
+  @override
+  String get nexusTemplateBlank => 'ว่างเปล่า';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Nexus ว่าง — เพิ่มโมดูลเอง';
+
+  @override
+  String get nexusCreateAppDocs => 'สร้าง App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'คู่มือในแอป อยู่ในโฟลเดอร์แยก';
+
+  @override
+  String get nexusNameTaken => 'มี Nexus ชื่อนี้อยู่แล้ว';
+
+  @override
+  String get nexusTemplateFailed => 'สร้าง Nexus แล้ว แต่ใส่ template ไม่สำเร็จ';
+
+  @override
+  String get btnRetry => 'ลองอีกครั้ง';
+
+  @override
+  String get btnCreateNexus => 'สร้าง Nexus';
 }

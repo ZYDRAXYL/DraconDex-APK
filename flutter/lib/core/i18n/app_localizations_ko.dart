@@ -3007,4 +3007,31 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get glassBlurRetry => '다시 시도';
+
+  @override
+  String get nexusPickTemplate => '템플릿 선택';
+
+  @override
+  String get nexusTemplateBlank => '빈 Nexus';
+
+  @override
+  String get nexusTemplateBlankDesc => '빈 Nexus — 모듈은 직접 추가';
+
+  @override
+  String get nexusCreateAppDocs => 'App Docs 만들기';
+
+  @override
+  String get nexusCreateAppDocsHint => '앱 안내서, 별도 폴더에';
+
+  @override
+  String get nexusNameTaken => '같은 이름의 Nexus가 이미 있습니다';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus는 만들었지만 템플릿을 추가하지 못했습니다';
+
+  @override
+  String get btnRetry => '다시 시도';
+
+  @override
+  String get btnCreateNexus => 'Nexus 만들기';
 }

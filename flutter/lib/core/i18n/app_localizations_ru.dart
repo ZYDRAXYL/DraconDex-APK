@@ -3007,4 +3007,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Повторить';
+
+  @override
+  String get nexusPickTemplate => 'Выберите шаблон';
+
+  @override
+  String get nexusTemplateBlank => 'Пустой';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Пустой Nexus — модули добавите сами';
+
+  @override
+  String get nexusCreateAppDocs => 'Создать App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Встроенное руководство, в отдельной папке';
+
+  @override
+  String get nexusNameTaken => 'Nexus с таким именем уже есть';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus создан, но шаблон добавить не удалось';
+
+  @override
+  String get btnRetry => 'Повторить';
+
+  @override
+  String get btnCreateNexus => 'Создать Nexus';
 }

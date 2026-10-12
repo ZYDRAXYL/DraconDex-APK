@@ -998,5 +998,14 @@
   "reduceTransparency": "Reduce transparency",
   "reduceTransparencyHint": "Glass panes and see-through bars become solid",
   "glassBlurOff": "Blur off — this device drew it too slowly",
-  "glassBlurRetry": "Try again"
+  "glassBlurRetry": "Try again",
+  "nexusPickTemplate": "Choose a template",
+  "nexusTemplateBlank": "Blank",
+  "nexusTemplateBlankDesc": "An empty Nexus — add modules yourself",
+  "nexusCreateAppDocs": "Create App Docs",
+  "nexusCreateAppDocsHint": "The in-app guide, in a folder of its own",
+  "nexusNameTaken": "A Nexus with this name already exists",
+  "nexusTemplateFailed": "Nexus created, but the template could not be added",
+  "btnRetry": "Retry",
+  "btnCreateNexus": "Create Nexus"
 }

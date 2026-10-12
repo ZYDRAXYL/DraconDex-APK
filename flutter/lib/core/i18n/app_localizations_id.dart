@@ -3007,4 +3007,31 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Coba lagi';
+
+  @override
+  String get nexusPickTemplate => 'Pilih template';
+
+  @override
+  String get nexusTemplateBlank => 'Kosong';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Nexus kosong — tambahkan modul sendiri';
+
+  @override
+  String get nexusCreateAppDocs => 'Buat App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Panduan di dalam aplikasi, di foldernya sendiri';
+
+  @override
+  String get nexusNameTaken => 'Nexus dengan nama ini sudah ada';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus dibuat, tetapi template gagal ditambahkan';
+
+  @override
+  String get btnRetry => 'Coba lagi';
+
+  @override
+  String get btnCreateNexus => 'Buat Nexus';
 }

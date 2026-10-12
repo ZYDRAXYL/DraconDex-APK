@@ -998,5 +998,14 @@
   "reduceTransparency": "투명도 줄이기",
   "reduceTransparencyHint": "유리 패널과 반투명 바를 불투명하게 표시합니다",
   "glassBlurOff": "흐림 효과 꺼짐 — 이 기기에서는 너무 느리게 그려졌습니다",
-  "glassBlurRetry": "다시 시도"
+  "glassBlurRetry": "다시 시도",
+  "nexusPickTemplate": "템플릿 선택",
+  "nexusTemplateBlank": "빈 Nexus",
+  "nexusTemplateBlankDesc": "빈 Nexus — 모듈은 직접 추가",
+  "nexusCreateAppDocs": "App Docs 만들기",
+  "nexusCreateAppDocsHint": "앱 안내서, 별도 폴더에",
+  "nexusNameTaken": "같은 이름의 Nexus가 이미 있습니다",
+  "nexusTemplateFailed": "Nexus는 만들었지만 템플릿을 추가하지 못했습니다",
+  "btnRetry": "다시 시도",
+  "btnCreateNexus": "Nexus 만들기"
 }

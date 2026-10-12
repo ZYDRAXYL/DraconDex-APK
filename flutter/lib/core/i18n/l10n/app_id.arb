@@ -998,5 +998,14 @@
   "reduceTransparency": "Kurangi transparansi",
   "reduceTransparencyHint": "Panel kaca dan bilah tembus pandang menjadi padat",
   "glassBlurOff": "Blur dimatikan — perangkat ini menggambarnya terlalu lambat",
-  "glassBlurRetry": "Coba lagi"
+  "glassBlurRetry": "Coba lagi",
+  "nexusPickTemplate": "Pilih template",
+  "nexusTemplateBlank": "Kosong",
+  "nexusTemplateBlankDesc": "Nexus kosong — tambahkan modul sendiri",
+  "nexusCreateAppDocs": "Buat App Docs",
+  "nexusCreateAppDocsHint": "Panduan di dalam aplikasi, di foldernya sendiri",
+  "nexusNameTaken": "Nexus dengan nama ini sudah ada",
+  "nexusTemplateFailed": "Nexus dibuat, tetapi template gagal ditambahkan",
+  "btnRetry": "Coba lagi",
+  "btnCreateNexus": "Buat Nexus"
 }

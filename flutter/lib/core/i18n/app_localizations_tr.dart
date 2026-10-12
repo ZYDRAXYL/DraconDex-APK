@@ -3004,4 +3004,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Tekrar dene';
+
+  @override
+  String get nexusPickTemplate => 'Bir şablon seçin';
+
+  @override
+  String get nexusTemplateBlank => 'Boş';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Boş bir Nexus — modülleri kendin ekle';
+
+  @override
+  String get nexusCreateAppDocs => 'App Docs oluştur';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Uygulama içi rehber, kendi klasöründe';
+
+  @override
+  String get nexusNameTaken => 'Bu adda bir Nexus zaten var';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus oluşturuldu ama şablon eklenemedi';
+
+  @override
+  String get btnRetry => 'Tekrar dene';
+
+  @override
+  String get btnCreateNexus => 'Nexus\'u oluştur';
 }

@@ -998,5 +998,14 @@
   "reduceTransparency": "Giảm độ trong suốt",
   "reduceTransparencyHint": "Các bảng kính và thanh trong suốt trở nên đặc",
   "glassBlurOff": "Đã tắt làm mờ — thiết bị này vẽ quá chậm",
-  "glassBlurRetry": "Thử lại"
+  "glassBlurRetry": "Thử lại",
+  "nexusPickTemplate": "Chọn template",
+  "nexusTemplateBlank": "Trống",
+  "nexusTemplateBlankDesc": "Nexus trống — tự thêm module",
+  "nexusCreateAppDocs": "Tạo App Docs",
+  "nexusCreateAppDocsHint": "Hướng dẫn trong app, trong thư mục riêng",
+  "nexusNameTaken": "Đã có Nexus trùng tên này",
+  "nexusTemplateFailed": "Đã tạo Nexus nhưng không thêm được template",
+  "btnRetry": "Thử lại",
+  "btnCreateNexus": "Tạo Nexus"
 }

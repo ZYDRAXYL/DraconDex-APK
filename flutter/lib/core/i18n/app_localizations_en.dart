@@ -3007,4 +3007,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Try again';
+
+  @override
+  String get nexusPickTemplate => 'Choose a template';
+
+  @override
+  String get nexusTemplateBlank => 'Blank';
+
+  @override
+  String get nexusTemplateBlankDesc => 'An empty Nexus — add modules yourself';
+
+  @override
+  String get nexusCreateAppDocs => 'Create App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'The in-app guide, in a folder of its own';
+
+  @override
+  String get nexusNameTaken => 'A Nexus with this name already exists';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus created, but the template could not be added';
+
+  @override
+  String get btnRetry => 'Retry';
+
+  @override
+  String get btnCreateNexus => 'Create Nexus';
 }

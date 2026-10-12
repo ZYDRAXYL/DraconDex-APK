@@ -998,5 +998,14 @@
   "reduceTransparency": "ลดความโปร่งใส",
   "reduceTransparencyHint": "แผงกระจกและแถบโปร่งใสจะกลายเป็นพื้นทึบ",
   "glassBlurOff": "ปิดการเบลอแล้ว — เครื่องนี้วาดได้ช้าเกินไป",
-  "glassBlurRetry": "ลองอีกครั้ง"
+  "glassBlurRetry": "ลองอีกครั้ง",
+  "nexusPickTemplate": "เลือก template",
+  "nexusTemplateBlank": "ว่างเปล่า",
+  "nexusTemplateBlankDesc": "Nexus ว่าง — เพิ่มโมดูลเอง",
+  "nexusCreateAppDocs": "สร้าง App Docs",
+  "nexusCreateAppDocsHint": "คู่มือในแอป อยู่ในโฟลเดอร์แยก",
+  "nexusNameTaken": "มี Nexus ชื่อนี้อยู่แล้ว",
+  "nexusTemplateFailed": "สร้าง Nexus แล้ว แต่ใส่ template ไม่สำเร็จ",
+  "btnRetry": "ลองอีกครั้ง",
+  "btnCreateNexus": "สร้าง Nexus"
 }

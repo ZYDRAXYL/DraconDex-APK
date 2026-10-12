@@ -3007,4 +3007,31 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Thử lại';
+
+  @override
+  String get nexusPickTemplate => 'Chọn template';
+
+  @override
+  String get nexusTemplateBlank => 'Trống';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Nexus trống — tự thêm module';
+
+  @override
+  String get nexusCreateAppDocs => 'Tạo App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'Hướng dẫn trong app, trong thư mục riêng';
+
+  @override
+  String get nexusNameTaken => 'Đã có Nexus trùng tên này';
+
+  @override
+  String get nexusTemplateFailed => 'Đã tạo Nexus nhưng không thêm được template';
+
+  @override
+  String get btnRetry => 'Thử lại';
+
+  @override
+  String get btnCreateNexus => 'Tạo Nexus';
 }

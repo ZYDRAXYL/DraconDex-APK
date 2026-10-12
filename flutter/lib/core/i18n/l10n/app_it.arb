@@ -998,5 +998,14 @@
   "reduceTransparency": "Riduci trasparenza",
   "reduceTransparencyHint": "I pannelli in vetro e le barre traslucide diventano opachi",
   "glassBlurOff": "Sfocatura disattivata: questo dispositivo la disegnava troppo lentamente",
-  "glassBlurRetry": "Riprova"
+  "glassBlurRetry": "Riprova",
+  "nexusPickTemplate": "Scegli un modello",
+  "nexusTemplateBlank": "Vuoto",
+  "nexusTemplateBlankDesc": "Un Nexus vuoto: aggiungi tu i moduli",
+  "nexusCreateAppDocs": "Crea App Docs",
+  "nexusCreateAppDocsHint": "La guida dell'app, in una cartella a parte",
+  "nexusNameTaken": "Esiste già un Nexus con questo nome",
+  "nexusTemplateFailed": "Nexus creato, ma non è stato possibile aggiungere il modello",
+  "btnRetry": "Riprova",
+  "btnCreateNexus": "Crea Nexus"
 }

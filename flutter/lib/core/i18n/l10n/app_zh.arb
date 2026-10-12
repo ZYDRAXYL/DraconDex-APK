@@ -998,5 +998,14 @@
   "reduceTransparency": "降低透明度",
   "reduceTransparencyHint": "玻璃面板和半透明栏变为不透明",
   "glassBlurOff": "模糊已关闭 — 此设备绘制过慢",
-  "glassBlurRetry": "重试"
+  "glassBlurRetry": "重试",
+  "nexusPickTemplate": "选择模板",
+  "nexusTemplateBlank": "空白",
+  "nexusTemplateBlankDesc": "空的 Nexus — 自行添加模块",
+  "nexusCreateAppDocs": "创建 App Docs",
+  "nexusCreateAppDocsHint": "应用内指南，放在单独的文件夹中",
+  "nexusNameTaken": "已存在同名的 Nexus",
+  "nexusTemplateFailed": "已创建 Nexus，但未能添加模板",
+  "btnRetry": "重试",
+  "btnCreateNexus": "创建 Nexus"
 }

@@ -3007,4 +3007,31 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Try anew';
+
+  @override
+  String get nexusPickTemplate => 'Choose thy pattern';
+
+  @override
+  String get nexusTemplateBlank => 'Unwritten';
+
+  @override
+  String get nexusTemplateBlankDesc => 'An empty Nexus — raise thy modules by thine own hand';
+
+  @override
+  String get nexusCreateAppDocs => 'Raise the App Docs';
+
+  @override
+  String get nexusCreateAppDocsHint => 'The guide within, in a chamber of its own';
+
+  @override
+  String get nexusNameTaken => 'A Nexus of this name already stands';
+
+  @override
+  String get nexusTemplateFailed => 'The Nexus stands, yet the pattern would not take';
+
+  @override
+  String get btnRetry => 'Try anew';
+
+  @override
+  String get btnCreateNexus => 'Raise the Nexus';
 }

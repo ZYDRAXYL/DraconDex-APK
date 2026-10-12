@@ -998,5 +998,14 @@
   "reduceTransparency": "Dim the glazhyr",
   "reduceTransparencyHint": "Glazhyr panes and veiled bars turn solid as stone",
   "glassBlurOff": "Blur slumbers — this hoard-engine drew it too slowly",
-  "glassBlurRetry": "Try anew"
+  "glassBlurRetry": "Try anew",
+  "nexusPickTemplate": "Choose thy pattern",
+  "nexusTemplateBlank": "Unwritten",
+  "nexusTemplateBlankDesc": "An empty Nexus — raise thy modules by thine own hand",
+  "nexusCreateAppDocs": "Raise the App Docs",
+  "nexusCreateAppDocsHint": "The guide within, in a chamber of its own",
+  "nexusNameTaken": "A Nexus of this name already stands",
+  "nexusTemplateFailed": "The Nexus stands, yet the pattern would not take",
+  "btnRetry": "Try anew",
+  "btnCreateNexus": "Raise the Nexus"
 }

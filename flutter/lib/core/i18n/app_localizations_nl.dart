@@ -3004,4 +3004,31 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get glassBlurRetry => 'Opnieuw proberen';
+
+  @override
+  String get nexusPickTemplate => 'Kies een sjabloon';
+
+  @override
+  String get nexusTemplateBlank => 'Leeg';
+
+  @override
+  String get nexusTemplateBlankDesc => 'Een lege Nexus — voeg zelf modules toe';
+
+  @override
+  String get nexusCreateAppDocs => 'App Docs aanmaken';
+
+  @override
+  String get nexusCreateAppDocsHint => 'De gids in de app, in een eigen map';
+
+  @override
+  String get nexusNameTaken => 'Er bestaat al een Nexus met deze naam';
+
+  @override
+  String get nexusTemplateFailed => 'Nexus aangemaakt, maar het sjabloon kon niet worden toegevoegd';
+
+  @override
+  String get btnRetry => 'Opnieuw';
+
+  @override
+  String get btnCreateNexus => 'Nexus aanmaken';
 }

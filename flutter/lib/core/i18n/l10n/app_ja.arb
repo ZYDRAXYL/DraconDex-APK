@@ -998,5 +998,14 @@
   "reduceTransparency": "透明度を下げる",
   "reduceTransparencyHint": "ガラスのパネルと半透明のバーを不透明にします",
   "glassBlurOff": "ぼかしはオフです — この端末では描画が遅すぎました",
-  "glassBlurRetry": "もう一度試す"
+  "glassBlurRetry": "もう一度試す",
+  "nexusPickTemplate": "テンプレートを選ぶ",
+  "nexusTemplateBlank": "空白",
+  "nexusTemplateBlankDesc": "空のNexus — モジュールは自分で追加",
+  "nexusCreateAppDocs": "App Docs を作成",
+  "nexusCreateAppDocsHint": "アプリ内ガイド（専用フォルダー）",
+  "nexusNameTaken": "この名前のNexusはすでにあります",
+  "nexusTemplateFailed": "Nexusは作成しましたが、テンプレートを追加できませんでした",
+  "btnRetry": "再試行",
+  "btnCreateNexus": "Nexusを作成"
 }

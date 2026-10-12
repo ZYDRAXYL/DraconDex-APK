@@ -998,5 +998,14 @@
   "reduceTransparency": "Saydamlığı azalt",
   "reduceTransparencyHint": "Cam paneller ve yarı saydam çubuklar opak olur",
   "glassBlurOff": "Bulanıklık kapalı — bu cihaz onu çok yavaş çizdi",
-  "glassBlurRetry": "Tekrar dene"
+  "glassBlurRetry": "Tekrar dene",
+  "nexusPickTemplate": "Bir şablon seçin",
+  "nexusTemplateBlank": "Boş",
+  "nexusTemplateBlankDesc": "Boş bir Nexus — modülleri kendin ekle",
+  "nexusCreateAppDocs": "App Docs oluştur",
+  "nexusCreateAppDocsHint": "Uygulama içi rehber, kendi klasöründe",
+  "nexusNameTaken": "Bu adda bir Nexus zaten var",
+  "nexusTemplateFailed": "Nexus oluşturuldu ama şablon eklenemedi",
+  "btnRetry": "Tekrar dene",
+  "btnCreateNexus": "Nexus'u oluştur"
 }

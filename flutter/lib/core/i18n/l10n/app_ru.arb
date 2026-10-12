@@ -998,5 +998,14 @@
   "reduceTransparency": "Уменьшить прозрачность",
   "reduceTransparencyHint": "Стеклянные панели и полупрозрачные элементы становятся непрозрачными",
   "glassBlurOff": "Размытие отключено — устройство отрисовывало его слишком медленно",
-  "glassBlurRetry": "Повторить"
+  "glassBlurRetry": "Повторить",
+  "nexusPickTemplate": "Выберите шаблон",
+  "nexusTemplateBlank": "Пустой",
+  "nexusTemplateBlankDesc": "Пустой Nexus — модули добавите сами",
+  "nexusCreateAppDocs": "Создать App Docs",
+  "nexusCreateAppDocsHint": "Встроенное руководство, в отдельной папке",
+  "nexusNameTaken": "Nexus с таким именем уже есть",
+  "nexusTemplateFailed": "Nexus создан, но шаблон добавить не удалось",
+  "btnRetry": "Повторить",
+  "btnCreateNexus": "Создать Nexus"
 }

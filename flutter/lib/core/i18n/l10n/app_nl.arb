@@ -998,5 +998,14 @@
   "reduceTransparency": "Transparantie verminderen",
   "reduceTransparencyHint": "Glazen panelen en doorschijnende balken worden ondoorzichtig",
   "glassBlurOff": "Vervaging uit — dit apparaat tekende die te traag",
-  "glassBlurRetry": "Opnieuw proberen"
+  "glassBlurRetry": "Opnieuw proberen",
+  "nexusPickTemplate": "Kies een sjabloon",
+  "nexusTemplateBlank": "Leeg",
+  "nexusTemplateBlankDesc": "Een lege Nexus — voeg zelf modules toe",
+  "nexusCreateAppDocs": "App Docs aanmaken",
+  "nexusCreateAppDocsHint": "De gids in de app, in een eigen map",
+  "nexusNameTaken": "Er bestaat al een Nexus met deze naam",
+  "nexusTemplateFailed": "Nexus aangemaakt, maar het sjabloon kon niet worden toegevoegd",
+  "btnRetry": "Opnieuw",
+  "btnCreateNexus": "Nexus aanmaken"
 }
