@@ -34,10 +34,13 @@ class _LargeTitleLayoutState extends State<LargeTitleLayout> {
 
   @override
   Widget build(BuildContext context) {
+    // The bar takes the status bar's height; the body is below it, so a
+    // ListView in it must not pad itself by that height a second time.
+    final body = MediaQuery.removePadding(context: context, removeTop: true, child: widget.body);
     if (!context.isIosStyle) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [HidingAppBar(appBar: widget.appBar(true)), Expanded(child: widget.body)],
+        children: [HidingAppBar(appBar: widget.appBar(true)), Expanded(child: body)],
       );
     }
     return Column(
@@ -58,7 +61,7 @@ class _LargeTitleLayoutState extends State<LargeTitleLayout> {
                       style: const TextStyle(fontSize: DdxIos.sizeLargeTitle, fontWeight: FontWeight.w700, height: 1.2)),
                 ),
         ),
-        Expanded(child: NotificationListener<ScrollNotification>(onNotification: _onScroll, child: widget.body)),
+        Expanded(child: NotificationListener<ScrollNotification>(onNotification: _onScroll, child: body)),
       ],
     );
   }

@@ -185,6 +185,13 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
             ),
           ),
           Expanded(
+            // The bar above already sits under the status bar; without this
+            // every ListView on the page (the Classifier's table) pads itself
+            // by the status bar's height again — a blank band on a phone
+            // with a notch.
+            child: MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
             // Slivers, so a folder's rows build as they scroll in (Procress
             // 19 F5); everything else is one box each, as in a ListView.
             child: CustomScrollView(
@@ -258,6 +265,7 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                   SliverToBoxAdapter(child: FolderAssets(nexusId: nexusId, moduleId: moduleId!)),
                 const SliverPadding(padding: EdgeInsets.only(bottom: 88)),
               ],
+            ),
             ),
           ),
         ],
