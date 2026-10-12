@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../core/i18n/app_localizations.dart';
 import '../core/theme/ddx_theme.dart';
-import 'ddx_glass.dart';
+import 'ddx_popover.dart';
 
 /// Which section of a grouped menu an entry sits in (APP docs/UX-LAYOUT.md
 /// §7.2). [none] is the default, and a menu whose entries are all [none] and
@@ -106,12 +106,15 @@ Future<void> showRowMenu(BuildContext context, List<RowAction> actions, {String?
     picked?.onTap();
     return;
   }
-  final picked = await showDdxSheet<RowAction>(
+  // A sheet on a phone, a menu beside the row on a tablet or wider — and a
+  // dialog when the row is already inside a sheet (never sheet over sheet).
+  final picked = await showDdxPopover<RowAction>(
     context: context,
     // Over the Navibar, not under it: the shell's own navigator sits
     // above the bar, so a sheet opened on it would be cut off by it.
     useRootNavigator: true,
-    showDragHandle: true,
+    width: 320,
+    semanticLabel: title,
     builder: (sheetContext) => SafeArea(
       top: false,
       child: SingleChildScrollView(

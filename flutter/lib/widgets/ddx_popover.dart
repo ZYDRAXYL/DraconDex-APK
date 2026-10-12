@@ -42,11 +42,13 @@ Future<T?> showDdxPopover<T>({
   double width = 280,
   double maxHeight = 440,
   String? semanticLabel,
+  bool useRootNavigator = false,
 }) {
   switch (ddxPopoverModeOf(context)) {
     case DdxPopoverMode.sheet:
       return showDdxSheet<T>(
         context: context,
+        useRootNavigator: useRootNavigator,
         isScrollControlled: true,
         showDragHandle: true,
         builder: (ctx) => SafeArea(
@@ -59,15 +61,16 @@ Future<T?> showDdxPopover<T>({
     case DdxPopoverMode.dialog:
       return showDdxDialog<T>(
         context: context,
+        useRootNavigator: useRootNavigator,
         builder: (ctx) => Dialog(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: width, maxHeight: maxHeight),
-            child: builder(ctx),
+            child: Padding(padding: const EdgeInsets.symmetric(vertical: DdxSpace.sp3), child: builder(ctx)),
           ),
         ),
       );
     case DdxPopoverMode.anchored:
-      final navigator = Navigator.of(context);
+      final navigator = Navigator.of(context, rootNavigator: useRootNavigator);
       final overlay = navigator.overlay!.context.findRenderObject()! as RenderBox;
       Rect anchor;
       if (anchorRect != null) {
@@ -174,7 +177,12 @@ class _DdxPopoverRoute<T> extends PopupRoute<T> {
           namesRoute: true,
           explicitChildNodes: true,
           label: semanticLabel,
-          child: _DdxPopoverPane(child: Builder(builder: builder)),
+          child: _DdxPopoverPane(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: DdxSpace.sp3),
+              child: Builder(builder: builder),
+            ),
+          ),
         ),
       ),
     );
@@ -201,13 +209,19 @@ class DdxPopoverLayout extends SingleChildLayoutDelegate {
   final double gap;
   final double margin;
 
+  /// Below this much room on both sides (an anchor that is most of the
+  /// screen — a whole view, a tall card) the popover centres on the anchor
+  /// instead of squeezing into a sliver beside it.
+  static const double minRoom = 160;
+
   double _below(Size size) => size.height - safe.bottom - margin - (anchor.bottom + gap);
   double _above(Size size) => anchor.top - gap - (safe.top + margin);
+  bool _centred(Size size) => math.max(_below(size), _above(size)) < minRoom;
 
   @override
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
     final size = constraints.biggest;
-    final room = math.max(_below(size), _above(size));
+    final room = _centred(size) ? size.height - safe.vertical - 2 * margin : math.max(_below(size), _above(size));
     return BoxConstraints(
       maxWidth: math.max(0, math.min(width, size.width - 2 * margin)),
       maxHeight: math.max(0, math.min(maxHeight, room)),
@@ -216,6 +230,16 @@ class DdxPopoverLayout extends SingleChildLayoutDelegate {
 
   @override
   Offset getPositionForChild(Size size, Size childSize) {
+    if (_centred(size)) {
+      final cx = (anchor.center.dx - childSize.width / 2)
+          .clamp(margin, math.max(margin, size.width - margin - childSize.width))
+          .toDouble();
+      final top = safe.top + margin;
+      final cy = (anchor.center.dy - childSize.height / 2)
+          .clamp(top, math.max(top, size.height - safe.bottom - margin - childSize.height))
+          .toDouble();
+      return Offset(cx, cy);
+    }
     final fitsBelow = childSize.height <= _below(size);
     final y = fitsBelow || _below(size) >= _above(size) ? anchor.bottom + gap : anchor.top - gap - childSize.height;
     final x = anchor.left.clamp(margin, math.max(margin, size.width - margin - childSize.width)).toDouble();

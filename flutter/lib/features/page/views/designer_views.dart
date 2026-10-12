@@ -14,7 +14,8 @@ import 'graph_view.dart';
 import 'node_canvas.dart';
 import 'sketcher_views.dart';
 import 'view_common.dart';
-import '../../../widgets/ddx_glass.dart';
+import '../../../widgets/ddx_popover.dart';
+import '../../../widgets/ddx_icon_button.dart';
 
 /// The Designer's three presets (EXE mod/designer.js DESIGNER_VIEWS):
 /// canvas, outline, matrix — and its comic pages (designer-comic.js): a
@@ -61,14 +62,15 @@ class _DesignerViewState extends ConsumerState<DesignerView> {
 
   Future<DesignerDao> _dao() async => DesignerDao(await ref.read(databaseProvider.future));
 
-  Future<void> _add(List<DesignNodeModel> nodes) async {
+  /// [anchor] is the button that asked — the shape list opens beside it on
+  /// a tablet, as a sheet on a phone.
+  Future<void> _add(List<DesignNodeModel> nodes, [BuildContext? anchor]) async {
     final l = AppLocalizations.of(context)!;
-    final shape = await showDdxSheet<String>(
-      context: context,
+    final shape = await showDdxPopover<String>(
+      context: anchor ?? context,
       useRootNavigator: true,
-      showDragHandle: true,
-      builder: (s) => SafeArea(
-        child: Wrap(children: [
+      builder: (s) => SingleChildScrollView(
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
           for (final sh in _addShapes)
             ListTile(
               leading: Text(_glyph[sh]!, style: const TextStyle(fontSize: 20)),
@@ -163,7 +165,7 @@ class _DesignerViewState extends ConsumerState<DesignerView> {
           onPressed: () => setState(() => _showOrder = !_showOrder),
         ),
       ],
-      IconButton(tooltip: l.designerNewNode, icon: const Icon(Icons.add), onPressed: () => _add(nodes)),
+      Builder(builder: (b) => DdxIconButton(tooltip: l.designerNewNode, icon: Icons.add, onPressed: () => _add(nodes, b))),
     ]);
     final Widget body;
     if (nodes.isEmpty) {
