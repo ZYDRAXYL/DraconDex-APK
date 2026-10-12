@@ -51,3 +51,6 @@ app.*.map.json
 # hand-authored or safely fabricated outside a real Dart toolchain run.
 /web/sqlite3.wasm
 /web/sqflite_sw.js
+
+# Screenshots rendered by test_shots/ (not committed)
+/tmp-shots/
