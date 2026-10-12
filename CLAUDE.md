@@ -29,6 +29,10 @@ Where it differs from the desktop:
   `scribe_content.dart` — and legacy notes migrate into modules via
   `legacy_notes.dart`.)
 
+Before building new UI, check `docs/COMPONENTS.md` in DraconDex-APP (the component registry; EXE ↔ APK).
+The APK side lives in `flutter/lib/widgets/ddx_*.dart`; `test/ui_inventory_test.dart` holds the count of raw
+Material widgets left outside them and fails if one grows.
+
 ## This tree also builds the PWA — do not fork it
 
 `flutter/lib/` serves **both** Android/iOS and the browser, splitting by platform
