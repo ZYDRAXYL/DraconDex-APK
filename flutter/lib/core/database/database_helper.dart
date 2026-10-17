@@ -50,9 +50,7 @@ class DatabaseHelper {
   // migration. onCreate already ran this once for a fresh install; running
   // it again here is a harmless no-op (CREATE TABLE IF NOT EXISTS).
   Future<void> _onOpen(Database db) async {
-    for (final sql in vaultCreateStatements) {
-      await db.execute(sql);
-    }
+    await VaultUpgrade.createTables(db);
     // Each step below is idempotent and cheap once done. A failure is
     // logged and the app still opens — the same trade EXE's migrations
     // make: an old table left as it was still reads, a vault that will not
@@ -72,8 +70,8 @@ class DatabaseHelper {
     // Each is IF NOT EXISTS, so a vault that has them pays one lookup apiece
     // (DraconDex-SDB vault.sql @indexes — Procress 19 part 2).
     await step('indexes', () async {
-      for (final sql in vaultIndexStatements) {
-        await db.execute(sql);
+      for (final e in await VaultUpgrade.createIndexes(db)) {
+        debugPrint('vault open: index failed: $e');
       }
     });
     await step('legacy notes', () => LegacyNotes.migrateAll(db));
@@ -136,9 +134,7 @@ class DatabaseHelper {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    for (final sql in vaultCreateStatements) {
-      await db.execute(sql);
-    }
+    await VaultUpgrade.createTables(db);
     await _seedDefaultColors(db);
     await _runMigrations(db);
   }

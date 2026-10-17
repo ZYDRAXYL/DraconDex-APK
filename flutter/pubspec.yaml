@@ -90,6 +90,11 @@ dev_dependencies:
   # port's other half lives in electron/src/db/sync.js, and the two drifting
   # apart is the failure this guards.
   sqflite_common_ffi: ^2.3.3
+  # Device timings (Procress 19 part 1): test_driver/perf_app.dart is the
+  # app target, test_driver/perf_test.dart the host side that traces frames.
+  flutter_driver:
+    sdk: flutter
+  test: ^1.31.0
 
 # generate is off because the custom "qd" (Draconic) locale is rejected by
 # newer gen-l10n validation; the generated files in lib/core/i18n are committed.

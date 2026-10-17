@@ -102,22 +102,63 @@ class VaultUpgrade {
   static Future<List<String>> _columns(DatabaseExecutor db, String table) async =>
       [for (final r in await db.rawQuery('PRAGMA table_info($table)')) r['name'] as String];
 
-  static Future<String?> _storedSql(DatabaseExecutor db, String table) async {
-    final r = await db.rawQuery("SELECT sql FROM sqlite_master WHERE type='table' AND name=?", [table]);
-    return r.isEmpty ? null : r.first['sql'] as String?;
+  /// Every vendored table, `IF NOT EXISTS`, in one batch: on Android each
+  /// statement on its own is a platform-channel round trip, and this runs on
+  /// every open (Procress 19 F13 — 114 of them cost ~1.5 s on an emulator).
+  static Future<void> createTables(DatabaseExecutor db) async {
+    final b = db.batch();
+    for (final sql in vaultCreateStatements) {
+      b.execute(sql);
+    }
+    await b.commit(noResult: true);
+  }
+
+  /// SDB's indexes, the same way. One that fails (a column an upgrade has not
+  /// added) is reported and the rest still land, as the old loop could not.
+  static Future<List<String>> createIndexes(DatabaseExecutor db) async {
+    final b = db.batch();
+    for (final sql in vaultIndexStatements) {
+      b.execute(sql);
+    }
+    final r = await b.commit(continueOnError: true);
+    return [
+      for (var i = 0; i < r.length; i++)
+        if (r[i] is DatabaseException) '${vaultIndexStatements[i]}: ${r[i]}',
+    ];
+  }
+
+  /// Table → its columns, for every table at once. Table-valued pragmas are
+  /// SQLite 3.16+; Android 7 (minSdk 24) ships 3.9, so it asks table by table.
+  static Future<Map<String, Set<String>>> _allColumns(DatabaseExecutor db, Iterable<String> tables) async {
+    try {
+      final out = <String, Set<String>>{};
+      for (final r in await db.rawQuery(
+          "SELECT m.name AS t, p.name AS c FROM sqlite_master m, pragma_table_info(m.name) p WHERE m.type='table'")) {
+        (out[r['t']! as String] ??= {}).add(r['c']! as String);
+      }
+      return out;
+    } catch (_) {
+      return {for (final t in tables) t: (await _columns(db, t)).toSet()};
+    }
   }
 
   Future<void> run(Database db) async {
     log.clear();
     final rebuild = <String>{};
-    for (final table in vendored.keys) {
-      final stored = await _storedSql(db, table);
-      if (stored == null) continue; // IF NOT EXISTS makes it
-      if (await _needsRebuild(table, stored)) {
+    // the stored DDL and the columns of every table in two queries, not two
+    // per table (F13)
+    final stored = {
+      for (final r in await db.rawQuery("SELECT name, sql FROM sqlite_master WHERE type='table'"))
+        r['name']! as String: r['sql'] as String?,
+    };
+    final present = [for (final t in vendored.keys) if (stored[t] != null) t]; // IF NOT EXISTS makes the rest
+    final columns = await _allColumns(db, present);
+    for (final table in present) {
+      if (await _needsRebuild(table, stored[table]!)) {
         rebuild.add(table);
         continue;
       }
-      final have = (await _columns(db, table)).toSet();
+      final have = columns[table] ?? (await _columns(db, table)).toSet();
       final defs = columnDefs(table);
       for (final e in defs.entries) {
         if (have.contains(e.key)) continue;

@@ -30,7 +30,7 @@ import 'package:dracondex/providers/db_providers.dart';
 /// through the app's own DAOs, on sqflite_common_ffi — the same SQLite the
 /// desktop build of the app uses. What it cannot: frame times and the
 /// platform-channel cost of Android's sqflite. Those are
-/// `integration_test/perf_test.dart`, on an emulator or a device.
+/// `test_driver/perf_test.dart`, on an emulator or a device.
 ///
 /// Prints a table; asserts only the budgets Procress 19 part 8 set. Run alone:
 ///   flutter test test/perf_data_test.dart
