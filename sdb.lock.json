@@ -3,8 +3,8 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "main",
-    "version": "2.1.1"
+    "ref": "sdb-v2.1.2",
+    "version": "2.1.2"
   },
   "expect": {
     "vaultSchemaVersion": 7,
@@ -54,6 +54,10 @@
     "flutter/assets/images/DraconDex-SymbolWhite.webp": {
       "artifact": "assets/flutter/DraconDex-SymbolWhite.webp",
       "sha256": "d0289ac16738bca370e5a071cb53424b5db53a53c3c987ad978ae8cf583890b9"
+    },
+    "flutter/assets/images/DraconDex_Color.webp": {
+      "artifact": "assets/flutter/DraconDex_Color.webp",
+      "sha256": "26489dc09de668deaf0ffc4278a525dac7969a4f4e835606738e32acbd53ca5b"
     },
     "flutter/assets/fonts/NotoSans-Bold.ttf": {
       "artifact": "assets/fonts/NotoSans-Bold.ttf",

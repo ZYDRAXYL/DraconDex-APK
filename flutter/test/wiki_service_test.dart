@@ -145,4 +145,28 @@ void main() {
     expect(WikiTextField.openLinkBefore('[[', 2), '');
     expect(WikiTextField.openLinkBefore('a [[b|c', 7), isNull);
   });
+
+  // Procress 26 part 4: the desktop's module links, read the same way here.
+  test('[[obj:Module/Object]]: parse, label, resolve, a folder settles a clash', () async {
+    final p = WikiPath.parse('obj:Stats/"HP/MP"')!;
+    expect([p.ns, p.modules, p.object], ['obj', ['Stats'], 'HP/MP']);
+    expect(WikiPath.parse('obj:Aria'), isNull, reason: 'a legacy Director link stays legacy');
+    expect(WikiService.parse('[[mod:Book 1/Cast/Aria]] [[obj:Cast/Aria|her]]').map((m) => m.label), ['Aria', 'her']);
+
+    final db = await openVault();
+    final nx = await db.insert('nexus', {'name': 'W'});
+    final dao = ModuleDao(db);
+    final b1 = await dao.createModule(nexusRef: nx, name: 'Book 1', kind: ModuleKind.collector);
+    final b2 = await dao.createModule(nexusRef: nx, name: 'Book 2', kind: ModuleKind.collector);
+    final c1 = await dao.createModule(nexusRef: nx, parentId: b1, name: 'Cast', kind: ModuleKind.classifier);
+    final c2 = await dao.createModule(nexusRef: nx, parentId: b2, name: 'Cast', kind: ModuleKind.classifier);
+    final a1 = await ClassifierDao(db).createItem(moduleRef: c1, name: 'Aria');
+    await ClassifierDao(db).createItem(moduleRef: c2, name: 'Aria');
+    final bram = await ClassifierDao(db).createItem(moduleRef: c2, name: 'Bram');
+    expect(await WikiService.resolveName(db, 'obj:Cast/Bram', nx), 'cobj_$bram');
+    expect(await WikiService.resolveName(db, 'mod:Cast/Bram', nx), 'cobj_$bram');
+    expect(await WikiService.resolveName(db, 'obj:Cast/Aria', nx), isNull, reason: 'two Arias: ambiguous');
+    expect(await WikiService.resolveName(db, 'obj:book 1/Cast/aria', nx), 'cobj_$a1');
+    expect(await WikiService.resolveName(db, 'obj:Book 3/Cast/Aria', nx), isNull);
+  });
 }

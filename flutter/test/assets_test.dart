@@ -24,10 +24,9 @@ void main() {
   test('image assets are bundled', () async {
     final icon = await rootBundle.load('assets/images/DraconDex-IconApp.png');
     expect(icon.lengthInBytes, greaterThan(0));
-    // The rail logo: the small WebP copies, not the 1.4 MB masters.
-    for (final tone in ['White', 'Black']) {
-      final logo = await rootBundle.load('assets/images/DraconDex-Symbol$tone.webp');
-      expect(logo.lengthInBytes, inInclusiveRange(1, 64 * 1024));
-    }
+    // The rail logo (Procress 26: DraconDex_Color on every theme): the small
+    // WebP copy, not the 1.8 MB master.
+    final logo = await rootBundle.load('assets/images/DraconDex_Color.webp');
+    expect(logo.lengthInBytes, inInclusiveRange(1, 64 * 1024));
   });
 }

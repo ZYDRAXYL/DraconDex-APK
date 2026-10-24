@@ -159,9 +159,8 @@ class BuilderRail extends ConsumerWidget {
 }
 
 /// The app mark at the top of the rail, which doubles as "back to the Nexus
-/// list" exactly like the desktop rail's logo button. Light themes get the
-/// black symbol, dark ones the white — the same swap the Electron CSS makes
-/// per theme.
+/// list" exactly like the desktop rail's logo button. One logo for every
+/// theme, DraconDex_Color, as on the desktop (Procress 26).
 class _RailBrand extends StatelessWidget {
   final bool extended;
 
@@ -170,10 +169,8 @@ class _RailBrand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final asset = theme.brightness == Brightness.dark
-        ? 'assets/images/DraconDex-SymbolWhite.webp'
-        : 'assets/images/DraconDex-SymbolBlack.webp';
-    final logo = Image.asset(asset, width: 28, height: 28, fit: BoxFit.contain);
+    final logo = Image.asset('assets/images/DraconDex_Color.webp',
+        width: 28, height: 28, fit: BoxFit.contain);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 4),

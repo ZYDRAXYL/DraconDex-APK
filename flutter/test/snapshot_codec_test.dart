@@ -21,7 +21,10 @@ void main() {
 
     final sized = await SnapshotCodec.encodeSized(value, gzipped: true);
     expect(sized.plainBytes, plain.length);
-    expect(sized.bytes, DdxTransferService.gzip(plain), reason: 'the bytes the transfer always sent');
+    // Bytes 4-7 of a gzip header are MTIME, the second it was written: two
+    // calls either side of a second boundary differ there and nowhere else.
+    Uint8List noMtime(List<int> b) => Uint8List.fromList(b)..fillRange(4, 8, 0);
+    expect(noMtime(sized.bytes), noMtime(DdxTransferService.gzip(plain)), reason: 'the bytes the transfer always sent');
     expect(await SnapshotCodec.decode(sized.bytes, gzipped: true), value);
     expect(await SnapshotCodec.decodeText(jsonEncode(value)), value);
   });
