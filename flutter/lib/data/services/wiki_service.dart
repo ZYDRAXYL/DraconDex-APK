@@ -15,7 +15,45 @@ class WikiLinkMatch {
 
   const WikiLinkMatch(this.start, this.end, this.name, this.alias);
 
-  String get label => alias ?? name.replaceFirst(RegExp(r'^\w+:'), '');
+  String get label => alias ?? WikiPath.parse(name)?.object ?? name.replaceFirst(RegExp(r'^\w+:'), '');
+}
+
+/// Procress 26 part 4: `[[obj:Module/Object]]` / `[[mod:Module/Object]]` — a
+/// Classifier object named through its module (EXE src/db/wiki.js
+/// parseWikiPath: keep in sync). Segments split on `/`; one wrapped in `"…"`
+/// may hold `/` itself. Folders before the module are written only when two
+/// modules share its name. Without a `/` an `obj:` link is the legacy one.
+/// Both index to the object; on the desktop `mod:` opens its module instead.
+class WikiPath {
+  final String ns;
+  final List<String> modules;
+  final String object;
+
+  const WikiPath(this.ns, this.modules, this.object);
+
+  static WikiPath? parse(String text) {
+    final m = RegExp(r'^(obj|mod):(.+)$', caseSensitive: false).firstMatch(text.trim());
+    if (m == null) return null;
+    final segs = <String>[];
+    var cur = StringBuffer();
+    var inQ = false;
+    for (final ch in m.group(2)!.split('')) {
+      if (ch == '"' && (inQ || cur.toString().trim().isEmpty)) inQ = !inQ;
+      if (ch == '/' && !inQ) {
+        segs.add(cur.toString());
+        cur = StringBuffer();
+        continue;
+      }
+      cur.write(ch);
+    }
+    segs.add(cur.toString());
+    final names = [for (final s in segs) _unquote(s.trim())];
+    if (names.length < 2 || names.any((s) => s.isEmpty)) return null;
+    return WikiPath(m.group(1)!.toLowerCase(), names.sublist(0, names.length - 1), names.last);
+  }
+
+  static String _unquote(String t) =>
+      t.length >= 2 && t.startsWith('"') && t.endsWith('"') ? t.substring(1, t.length - 1).trim() : t;
 }
 
 /// A text field that can hold `[[links]]` — one per source-key prefix, the
@@ -99,10 +137,13 @@ class WikiService {
     final memoKey = '$nexusId::${name.toLowerCase()}';
     if (memo != null && memo.containsKey(memoKey)) return memo[memoKey];
     String? out;
+    final path = WikiPath.parse(name);
     final forced = RegExp(r'^(\w+):(.+)$').firstMatch(name);
     final forcedNs = forced?.group(1)!.toLowerCase();
     final forcedResolver = forcedNs == null ? null : resolvers.where((r) => r.$1 == forcedNs).firstOrNull;
-    if (forcedResolver != null) {
+    if (path != null) {
+      out = await _resolvePath(db, path, nexusId);
+    } else if (forcedResolver != null) {
       final id = await _run(db, forcedResolver.$2, forced!.group(2)!.trim(), nexusId);
       out = id == null ? null : '${forcedResolver.$1}_$id';
     } else {
@@ -116,6 +157,32 @@ class WikiService {
     }
     memo?[memoKey] = out;
     return out;
+  }
+
+  /// The one object a [WikiPath] names: modules called like its last module
+  /// segment whose parents match the folders before it, holding an object of
+  /// that name. None, or several (ambiguous), → null.
+  static Future<String?> _resolvePath(DatabaseExecutor db, WikiPath p, int? nx) async {
+    final mods = await db.rawQuery(
+        'SELECT id, parent_id FROM module WHERE (? IS NULL OR nexus_ref=?) AND name=? COLLATE NOCASE', [nx, nx, p.modules.last]);
+    final hits = <int>[];
+    for (final m in mods) {
+      if (!await _parentsFit(db, m['parent_id'] as int?, p.modules.sublist(0, p.modules.length - 1))) continue;
+      final o = await db.rawQuery('SELECT id FROM classifier_object WHERE module_ref=? AND name=? COLLATE NOCASE', [m['id'], p.object]);
+      if (o.isNotEmpty) hits.add(o.first['id'] as int);
+    }
+    return hits.length == 1 ? 'cobj_${hits.first}' : null;
+  }
+
+  static Future<bool> _parentsFit(DatabaseExecutor db, int? parentId, List<String> folders) async {
+    var pid = parentId;
+    for (final seg in folders.reversed) {
+      if (pid == null) return false;
+      final r = (await db.rawQuery('SELECT name, parent_id FROM module WHERE id=?', [pid])).firstOrNull;
+      if (r == null || (r['name'] as String? ?? '').toLowerCase() != seg.toLowerCase()) return false;
+      pid = r['parent_id'] as int?;
+    }
+    return true;
   }
 
   static Future<int?> _run(DatabaseExecutor db, String sql, String name, int? nx) async {
@@ -335,7 +402,7 @@ class WikiService {
   static Future<int> resolveDangling(DatabaseExecutor db, String name, int? nexusId) async {
     final rows = await db.rawQuery(
         'SELECT id, target_text FROM wiki_link WHERE target_key IS NULL AND (? IS NULL OR nexus_ref=?)', [nexusId, nexusId]);
-    String bare(String s) => s.replaceFirst(RegExp(r'^\w+:'), '').trim().toLowerCase();
+    String bare(String s) => (WikiPath.parse(s)?.object ?? s.replaceFirst(RegExp(r'^\w+:'), '')).trim().toLowerCase();
     final wanted = name.trim().toLowerCase();
     var n = 0;
     for (final r in rows) {
