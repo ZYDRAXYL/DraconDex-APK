@@ -97,6 +97,27 @@ class WikiService {
   /// Keep in step with EXE `WIKILINK_RE` (db/wiki.js) and `MD_WIKILINK_RE`.
   static final linkRe = RegExp(r'\[\[([^\[\]|]+?)(?:\|([^\[\]]+?))?\]\]');
 
+  /// Procress 27 part 1: [text] as a reader sees it — every link as its name
+  /// alone (`|alias`, else the object of `[[obj:Module/Object]]`, else the
+  /// name), the EXE markdown.js mdWikiLinkHtml label. Each part says whether
+  /// it was a link, so a view can highlight it.
+  static List<(String, bool)> displayParts(String text) {
+    final out = <(String, bool)>[];
+    var at = 0;
+    for (final m in linkRe.allMatches(text)) {
+      if (m.start > at) out.add((text.substring(at, m.start), false));
+      final name = m.group(1)!.trim();
+      final alias = m.group(2)?.trim();
+      out.add(((alias != null && alias.isNotEmpty) ? alias : WikiPath.parse(name)?.object ?? name, true));
+      at = m.end;
+    }
+    if (at < text.length) out.add((text.substring(at), false));
+    return out;
+  }
+
+  static String displayText(String text) =>
+      text.contains('[[') ? displayParts(text).map((p) => p.$1).join() : text;
+
   static List<WikiLinkMatch> parse(String text) => [
         for (final m in linkRe.allMatches(text))
           if (m.group(1)!.trim().isNotEmpty) WikiLinkMatch(m.start, m.end, m.group(1)!.trim(), m.group(2)?.trim()),

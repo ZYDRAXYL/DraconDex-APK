@@ -140,7 +140,7 @@ class DdxListTile extends StatelessWidget {
       lead = Row(mainAxisSize: MainAxisSize.min, children: [
         ReorderableDragStartListener(
           index: reorderIndex!,
-          child: Icon(Icons.drag_indicator, size: DdxSize.iconMd, color: ddx.textMuted),
+          child: Icon(Icons.menu, size: DdxSize.iconMd, color: ddx.textMuted),
         ),
         if (lead != null) ...[const SizedBox(width: DdxSpace.sp3), lead],
       ]);
