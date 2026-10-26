@@ -36,6 +36,13 @@ void main() {
     expect(WikiService.parse('[[note:Old]]').single.label, 'Old');
   });
 
+  test('Procress 27: a link reads as its name — alias, else the object, else the name', () {
+    expect(WikiService.displayText('see [[obj:Characters/Aria]] and [[Harbor|the port]] or [[Mira]]'),
+        'see Aria and the port or Mira');
+    expect(WikiService.displayText('no links'), 'no links');
+    expect(WikiService.displayParts('a [[obj:M/"HP/MP"]]'), [('a ', false), ('HP/MP', true)]);
+  });
+
   test('resolution order: a module beats an object of the same name; ns: forces one', () async {
     final db = await openVault();
     final nx = await db.insert('nexus', {'name': 'W'});

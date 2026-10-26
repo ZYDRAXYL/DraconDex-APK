@@ -136,7 +136,7 @@ class _ArrangeTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final tile = ListTile(
-      leading: ReorderableDragStartListener(index: index, child: const Icon(Icons.drag_indicator)),
+      leading: ReorderableDragStartListener(index: index, child: const Icon(Icons.menu)),
       title: Text(blockLabel(l10n, block), maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: _LookSelect(pageKey: pageKey, block: block),
       trailing: _TileActions(pageKey: pageKey, block: block),
@@ -178,7 +178,7 @@ class _ArrangeTile extends ConsumerWidget {
                         ListTile(
                           key: ValueKey(cols[c][i].id),
                           dense: true,
-                          leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator, size: 18)),
+                          leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.menu, size: 18)),
                           title: Text(blockLabel(l10n, cols[c][i]), maxLines: 1, overflow: TextOverflow.ellipsis),
                           subtitle: _LookSelect(pageKey: pageKey, block: cols[c][i]),
                           trailing: _TileActions(pageKey: pageKey, block: cols[c][i], small: true),

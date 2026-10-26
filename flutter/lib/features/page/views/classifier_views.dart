@@ -9,6 +9,7 @@ import '../../../core/links/safe_launch.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/dao/classifier_dao.dart';
 import '../../../data/models/classifier_model.dart';
+import '../../../data/services/wiki_service.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../providers/navigation_providers.dart';
@@ -77,6 +78,7 @@ class ClsData {
           final r = Formula.valueOf(f.formulaField, [for (final x in fields) x.formulaField], valuesOf(item.id));
           return r.ok ? r.text : '⚠';
         }(),
+      'text' || 'textarea' => WikiService.displayText(raw), // Procress 27: [[links]] read as names
       _ => raw,
     };
   }
@@ -539,7 +541,19 @@ class ClsItemFields extends ConsumerWidget {
       );
     }
     final t = data.text(item, f, l);
-    return Text(t.isEmpty ? '—' : t, maxLines: f.type == 'textarea' ? 6 : 2, overflow: TextOverflow.ellipsis);
+    final raw = data.valuesOf(item.id)[f.id] ?? '';
+    final lines = f.type == 'textarea' ? 6 : 2;
+    if ((f.type == 'text' || f.type == 'textarea') && raw.contains('[[')) {
+      // Procress 27 part 1: a link shows as its name, highlighted; a tap
+      // still edits the raw [[…]] text, as everywhere else on this row.
+      final link = TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline);
+      return Text.rich(
+        TextSpan(children: [for (final (part, isLink) in WikiService.displayParts(raw)) TextSpan(text: part, style: isLink ? link : null)]),
+        maxLines: lines,
+        overflow: TextOverflow.ellipsis,
+      );
+    }
+    return Text(t.isEmpty ? '—' : t, maxLines: lines, overflow: TextOverflow.ellipsis);
   }
 }
 
@@ -1092,7 +1106,7 @@ class ClsLevelTable extends ConsumerWidget {
                     key: ValueKey(r.id),
                     dense: true,
                     contentPadding: EdgeInsets.zero,
-                    leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_indicator, size: 20)),
+                    leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.menu, size: 20)),
                     title: Text.rich(
                       TextSpan(
                         children: [
