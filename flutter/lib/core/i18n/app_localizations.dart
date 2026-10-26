@@ -6180,6 +6180,78 @@ abstract class AppLocalizations {
   /// **'Create Nexus'**
   String get btnCreateNexus;
 
+
+  /// No description provided for @clsLevelableHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Each object keeps a table of values, one row per level.'**
+  String get clsLevelableHint;
+
+  /// No description provided for @clsConditionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The value holds only while its condition is met.'**
+  String get clsConditionHint;
+
+  /// No description provided for @pageLinksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked modules'**
+  String get pageLinksTitle;
+
+  /// No description provided for @pageLinksNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Not linked to another module yet — search above to link one.'**
+  String get pageLinksNone;
+
+  /// No description provided for @pageLinkSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Link a module…'**
+  String get pageLinkSearch;
+
+  /// No description provided for @pageLinkDirect.
+  ///
+  /// In en, this message translates to:
+  /// **'linked'**
+  String get pageLinkDirect;
+
+  /// No description provided for @pageLinkViaWiki.
+  ///
+  /// In en, this message translates to:
+  /// **'from a [[link]]'**
+  String get pageLinkViaWiki;
+
+  /// No description provided for @pageLinkRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlink'**
+  String get pageLinkRemove;
+
+  /// No description provided for @auPovNoLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Link a Classifier to this book to choose a point of view from its characters.'**
+  String get auPovNoLink;
+
+  /// No description provided for @auPart.
+  ///
+  /// In en, this message translates to:
+  /// **'Part'**
+  String get auPart;
+
+  /// No description provided for @auPartAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Part divider'**
+  String get auPartAdd;
+
+  /// No description provided for @auPartPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Part name or a note (optional)'**
+  String get auPartPlaceholder;
 }
 
 class _AppLocalizationsDelegate

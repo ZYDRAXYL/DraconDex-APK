@@ -3031,4 +3031,40 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Nexus\'u oluştur';
+
+  @override
+  String get clsLevelableHint => 'Her nesne, seviye başına bir satırlık bir değer tablosu tutar.';
+
+  @override
+  String get clsConditionHint => 'Değer yalnızca koşulu sağlandığı sürece geçerlidir.';
+
+  @override
+  String get pageLinksTitle => 'Bağlı modüller';
+
+  @override
+  String get pageLinksNone => 'Henüz başka bir modüle bağlı değil — bağlamak için yukarıda arayın.';
+
+  @override
+  String get pageLinkSearch => 'Modül bağla…';
+
+  @override
+  String get pageLinkDirect => 'bağlı';
+
+  @override
+  String get pageLinkViaWiki => 'bir [[bağlantı]]dan';
+
+  @override
+  String get pageLinkRemove => 'Bağlantıyı kaldır';
+
+  @override
+  String get auPovNoLink => 'Bakış açısını karakterlerinden seçmek için bu kitaba bir Classifier bağlayın.';
+
+  @override
+  String get auPart => 'Bölüm';
+
+  @override
+  String get auPartAdd => 'Bölüm ayırıcı';
+
+  @override
+  String get auPartPlaceholder => 'Bölüm adı ya da not (isteğe bağlı)';
 }

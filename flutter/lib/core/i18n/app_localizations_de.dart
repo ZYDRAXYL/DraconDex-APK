@@ -3034,4 +3034,40 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Nexus anlegen';
+
+  @override
+  String get clsLevelableHint => 'Jedes Objekt führt eine Wertetabelle, eine Zeile pro Stufe.';
+
+  @override
+  String get clsConditionHint => 'Der Wert gilt nur, solange seine Bedingung erfüllt ist.';
+
+  @override
+  String get pageLinksTitle => 'Verknüpfte Module';
+
+  @override
+  String get pageLinksNone => 'Noch mit keinem Modul verknüpft — oben suchen, um eins zu verknüpfen.';
+
+  @override
+  String get pageLinkSearch => 'Modul verknüpfen…';
+
+  @override
+  String get pageLinkDirect => 'verknüpft';
+
+  @override
+  String get pageLinkViaWiki => 'aus einem [[Link]]';
+
+  @override
+  String get pageLinkRemove => 'Verknüpfung lösen';
+
+  @override
+  String get auPovNoLink => 'Verknüpfe einen Classifier mit diesem Buch, um eine Erzählperspektive aus seinen Figuren zu wählen.';
+
+  @override
+  String get auPart => 'Teil';
+
+  @override
+  String get auPartAdd => 'Teil-Trenner';
+
+  @override
+  String get auPartPlaceholder => 'Name des Teils oder Notiz (optional)';
 }

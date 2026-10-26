@@ -68,7 +68,9 @@ void main() {
       final l = PageHeadLayout.parse('{"align":"center","cover":"$sha","icon":"🐉"}');
       expect(l.align, 'center');
       expect(l.cover, sha);
-      expect(l.icon, '🐉');
+      expect(l.showIcon, isTrue, reason: 'an older emoji reads as "show the icon" (Procress 28 part 2)');
+      expect(PageHeadLayout.parse('{"align":"left","showIcon":true}').showIcon, isTrue);
+      expect(PageHeadLayout.parse('{"align":"left"}').showIcon, isFalse);
       for (final raw in [null, '', '   ', 'not json', '[]', '{"align":"diagonal","cover":"x"}']) {
         final d = PageHeadLayout.parse(raw);
         expect(d.align, 'left', reason: '$raw');
@@ -79,6 +81,8 @@ void main() {
     test('the default is stored as empty, like EXE', () {
       expect(PageHeadLayout.empty.encode(), '');
       expect(const PageHeadLayout(align: 'right').encode(), contains('"right"'));
+      expect(const PageHeadLayout(showIcon: true).encode(), contains('"showIcon":true'));
+      expect(const PageHeadLayout(showIcon: true).encode(), isNot(contains('"icon"')), reason: 'no emoji written any more');
       expect(pageHeadKey(null), 'pageHead');
       expect(pageHeadKey('cobj_12'), 'pageHead:cobj_12');
     });

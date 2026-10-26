@@ -18,6 +18,7 @@ import '../page/module_page.dart';
 import '../page/page_header.dart';
 import '../page/page_providers.dart';
 import '../page/page_actions.dart';
+import '../page/linked_modules_sheet.dart';
 import '../tools/folder_assets.dart';
 import 'dialogs/new_module_sheet.dart';
 import 'module_actions.dart';
@@ -166,6 +167,14 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                     iconSize: 24,
                     title: nexus.name,
                     actions: () => nexusActions(context, ref, nexus, onOwnPage: true),
+                  ),
+                // Procress 28 part 2: every module page links to other modules from its head
+                if (module != null && itemKey == null && module.kind != ModuleKind.collector)
+                  DdxIconButton(
+                    key: const ValueKey('page-links'),
+                    icon: Icons.link,
+                    tooltip: AppLocalizations.of(context)!.pageLinksTitle,
+                    onPressed: () => showLinkedModulesSheet(context, module),
                   ),
                 if (module != null)
                   RowMenuButton(

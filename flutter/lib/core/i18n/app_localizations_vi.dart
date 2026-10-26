@@ -3034,4 +3034,40 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Tạo Nexus';
+
+  @override
+  String get clsLevelableHint => 'Mỗi đối tượng giữ một bảng giá trị, mỗi cấp một hàng.';
+
+  @override
+  String get clsConditionHint => 'Giá trị chỉ có hiệu lực khi điều kiện được đáp ứng.';
+
+  @override
+  String get pageLinksTitle => 'Mô-đun đã liên kết';
+
+  @override
+  String get pageLinksNone => 'Chưa liên kết với mô-đun nào — tìm ở trên để liên kết.';
+
+  @override
+  String get pageLinkSearch => 'Liên kết mô-đun…';
+
+  @override
+  String get pageLinkDirect => 'đã liên kết';
+
+  @override
+  String get pageLinkViaWiki => 'từ một [[liên kết]]';
+
+  @override
+  String get pageLinkRemove => 'Bỏ liên kết';
+
+  @override
+  String get auPovNoLink => 'Liên kết một Classifier với cuốn sách này để chọn người kể từ các nhân vật của nó.';
+
+  @override
+  String get auPart => 'Phần';
+
+  @override
+  String get auPartAdd => 'Đường chia phần';
+
+  @override
+  String get auPartPlaceholder => 'Tên phần hoặc ghi chú (tùy chọn)';
 }

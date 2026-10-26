@@ -3034,4 +3034,40 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Buat Nexus';
+
+  @override
+  String get clsLevelableHint => 'Setiap objek menyimpan tabel nilai, satu baris per level.';
+
+  @override
+  String get clsConditionHint => 'Nilai berlaku hanya selama kondisinya terpenuhi.';
+
+  @override
+  String get pageLinksTitle => 'Modul tertaut';
+
+  @override
+  String get pageLinksNone => 'Belum tertaut ke modul lain — cari di atas untuk menautkan.';
+
+  @override
+  String get pageLinkSearch => 'Tautkan modul…';
+
+  @override
+  String get pageLinkDirect => 'ditautkan';
+
+  @override
+  String get pageLinkViaWiki => 'dari [[tautan]]';
+
+  @override
+  String get pageLinkRemove => 'Lepas tautan';
+
+  @override
+  String get auPovNoLink => 'Tautkan Classifier ke buku ini untuk memilih sudut pandang dari karakternya.';
+
+  @override
+  String get auPart => 'Bagian';
+
+  @override
+  String get auPartAdd => 'Pemisah bagian';
+
+  @override
+  String get auPartPlaceholder => 'Nama bagian atau catatan (opsional)';
 }

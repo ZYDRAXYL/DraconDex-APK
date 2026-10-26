@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Esiste già un Nexus con questo nome",
   "nexusTemplateFailed": "Nexus creato, ma non è stato possibile aggiungere il modello",
   "btnRetry": "Riprova",
-  "btnCreateNexus": "Crea Nexus"
+  "btnCreateNexus": "Crea Nexus",
+  "clsLevelableHint": "Ogni oggetto tiene una tabella di valori, una riga per livello.",
+  "clsConditionHint": "Il valore vale solo finché la sua condizione è soddisfatta.",
+  "pageLinksTitle": "Moduli collegati",
+  "pageLinksNone": "Non ancora collegato ad altri moduli: cerca sopra per collegarne uno.",
+  "pageLinkSearch": "Collega un modulo…",
+  "pageLinkDirect": "collegato",
+  "pageLinkViaWiki": "da un [[link]]",
+  "pageLinkRemove": "Scollega",
+  "auPovNoLink": "Collega un Classifier a questo libro per scegliere il punto di vista tra i suoi personaggi.",
+  "auPart": "Parte",
+  "auPartAdd": "Divisore di parte",
+  "auPartPlaceholder": "Nome della parte o una nota (facoltativo)"
 }

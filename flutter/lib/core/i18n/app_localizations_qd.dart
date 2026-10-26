@@ -3034,4 +3034,40 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Raise the Nexus';
+
+  @override
+  String get clsLevelableHint => 'Ech thyng kepeth a table of valewes, oon rowe for ech degree.';
+
+  @override
+  String get clsConditionHint => 'The valewe holdeth oonly whil its condicioun is y-met.';
+
+  @override
+  String get pageLinksTitle => 'Modulys y-lynked';
+
+  @override
+  String get pageLinksNone => 'Nat yet y-lynked to anothir modul — seke above to lynke oon.';
+
+  @override
+  String get pageLinkSearch => 'Lynke a modul…';
+
+  @override
+  String get pageLinkDirect => 'y-lynked';
+
+  @override
+  String get pageLinkViaWiki => 'fro a [[lynke]]';
+
+  @override
+  String get pageLinkRemove => 'Unlynke';
+
+  @override
+  String get auPovNoLink => 'Lynke a Classifier to this boke to chese a poynt of view fro hise folk.';
+
+  @override
+  String get auPart => 'Partie';
+
+  @override
+  String get auPartAdd => 'Partie dividour';
+
+  @override
+  String get auPartPlaceholder => 'Name of the partie or a note (if ye wol)';
 }

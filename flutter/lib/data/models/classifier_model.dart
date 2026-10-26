@@ -116,6 +116,9 @@ class ClassifierItemModel {
   final String? colorCode;
   final int order;
 
+  /// `svg:` / `sym:` / `img:` as the desktop stores it (core/icon_refs.dart).
+  final String? icon;
+
   const ClassifierItemModel({
     required this.id,
     required this.moduleRef,
@@ -123,6 +126,7 @@ class ClassifierItemModel {
     this.note,
     this.colorCode,
     this.order = 0,
+    this.icon,
   });
 
   factory ClassifierItemModel.fromMap(Map<String, dynamic> m) => ClassifierItemModel(
@@ -132,5 +136,6 @@ class ClassifierItemModel {
         note: m['note'] as String?,
         colorCode: m['color_code'] as String?,
         order: m['display_order'] as int? ?? 0,
+        icon: m['icon'] as String?,
       );
 }

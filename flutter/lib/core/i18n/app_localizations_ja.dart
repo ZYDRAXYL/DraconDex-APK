@@ -3034,4 +3034,40 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Nexusを作成';
+
+  @override
+  String get clsLevelableHint => '各オブジェクトがレベルごとに 1 行の値の表を持ちます。';
+
+  @override
+  String get clsConditionHint => '条件を満たしている間だけ値が有効です。';
+
+  @override
+  String get pageLinksTitle => 'リンクしたモジュール';
+
+  @override
+  String get pageLinksNone => 'まだ他のモジュールとリンクしていません — 上で検索してリンクします。';
+
+  @override
+  String get pageLinkSearch => 'モジュールをリンク…';
+
+  @override
+  String get pageLinkDirect => 'リンク済み';
+
+  @override
+  String get pageLinkViaWiki => '[[リンク]] から';
+
+  @override
+  String get pageLinkRemove => 'リンク解除';
+
+  @override
+  String get auPovNoLink => 'この本に Classifier をリンクすると、その登場人物から視点を選べます。';
+
+  @override
+  String get auPart => '部';
+
+  @override
+  String get auPartAdd => '部の区切り';
+
+  @override
+  String get auPartPlaceholder => '部の名前やメモ（任意）';
 }

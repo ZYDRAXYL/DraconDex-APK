@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "この名前のNexusはすでにあります",
   "nexusTemplateFailed": "Nexusは作成しましたが、テンプレートを追加できませんでした",
   "btnRetry": "再試行",
-  "btnCreateNexus": "Nexusを作成"
+  "btnCreateNexus": "Nexusを作成",
+  "clsLevelableHint": "各オブジェクトがレベルごとに 1 行の値の表を持ちます。",
+  "clsConditionHint": "条件を満たしている間だけ値が有効です。",
+  "pageLinksTitle": "リンクしたモジュール",
+  "pageLinksNone": "まだ他のモジュールとリンクしていません — 上で検索してリンクします。",
+  "pageLinkSearch": "モジュールをリンク…",
+  "pageLinkDirect": "リンク済み",
+  "pageLinkViaWiki": "[[リンク]] から",
+  "pageLinkRemove": "リンク解除",
+  "auPovNoLink": "この本に Classifier をリンクすると、その登場人物から視点を選べます。",
+  "auPart": "部",
+  "auPartAdd": "部の区切り",
+  "auPartPlaceholder": "部の名前やメモ（任意）"
 }

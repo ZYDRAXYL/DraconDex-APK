@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "A Nexus of this name already stands",
   "nexusTemplateFailed": "The Nexus stands, yet the pattern would not take",
   "btnRetry": "Try anew",
-  "btnCreateNexus": "Raise the Nexus"
+  "btnCreateNexus": "Raise the Nexus",
+  "clsLevelableHint": "Ech thyng kepeth a table of valewes, oon rowe for ech degree.",
+  "clsConditionHint": "The valewe holdeth oonly whil its condicioun is y-met.",
+  "pageLinksTitle": "Modulys y-lynked",
+  "pageLinksNone": "Nat yet y-lynked to anothir modul — seke above to lynke oon.",
+  "pageLinkSearch": "Lynke a modul…",
+  "pageLinkDirect": "y-lynked",
+  "pageLinkViaWiki": "fro a [[lynke]]",
+  "pageLinkRemove": "Unlynke",
+  "auPovNoLink": "Lynke a Classifier to this boke to chese a poynt of view fro hise folk.",
+  "auPart": "Partie",
+  "auPartAdd": "Partie dividour",
+  "auPartPlaceholder": "Name of the partie or a note (if ye wol)"
 }

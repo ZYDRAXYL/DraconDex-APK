@@ -3034,4 +3034,40 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Создать Nexus';
+
+  @override
+  String get clsLevelableHint => 'У каждого объекта таблица значений — по строке на уровень.';
+
+  @override
+  String get clsConditionHint => 'Значение действует, только пока выполнено условие.';
+
+  @override
+  String get pageLinksTitle => 'Связанные модули';
+
+  @override
+  String get pageLinksNone => 'Пока не связан с другими модулями — найдите модуль выше, чтобы связать.';
+
+  @override
+  String get pageLinkSearch => 'Связать модуль…';
+
+  @override
+  String get pageLinkDirect => 'связан';
+
+  @override
+  String get pageLinkViaWiki => 'из [[ссылки]]';
+
+  @override
+  String get pageLinkRemove => 'Отвязать';
+
+  @override
+  String get auPovNoLink => 'Свяжите с книгой Classifier, чтобы выбрать рассказчика из его персонажей.';
+
+  @override
+  String get auPart => 'Часть';
+
+  @override
+  String get auPartAdd => 'Разделитель части';
+
+  @override
+  String get auPartPlaceholder => 'Название части или заметка (необязательно)';
 }
