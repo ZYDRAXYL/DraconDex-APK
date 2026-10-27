@@ -3070,4 +3070,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Название части или заметка (необязательно)';
+
+  @override
+  String get viewModeDetails => 'Таблица';
+
+  @override
+  String get folderColKind => 'Тип';
+
+  @override
+  String get folderColItems => 'Элементы';
+
+  @override
+  String get folderColUpdated => 'Изменено';
 }

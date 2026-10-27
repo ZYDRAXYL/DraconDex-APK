@@ -1019,5 +1019,9 @@
   "auPovNoLink": "Verknüpfe einen Classifier mit diesem Buch, um eine Erzählperspektive aus seinen Figuren zu wählen.",
   "auPart": "Teil",
   "auPartAdd": "Teil-Trenner",
-  "auPartPlaceholder": "Name des Teils oder Notiz (optional)"
+  "auPartPlaceholder": "Name des Teils oder Notiz (optional)",
+  "viewModeDetails": "Details",
+  "folderColKind": "Art",
+  "folderColItems": "Einträge",
+  "folderColUpdated": "Geändert"
 }

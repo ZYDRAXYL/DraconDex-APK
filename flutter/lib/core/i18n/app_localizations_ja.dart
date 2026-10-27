@@ -3070,4 +3070,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => '部の名前やメモ（任意）';
+
+  @override
+  String get viewModeDetails => '詳細';
+
+  @override
+  String get folderColKind => '種類';
+
+  @override
+  String get folderColItems => '項目';
+
+  @override
+  String get folderColUpdated => '更新日時';
 }

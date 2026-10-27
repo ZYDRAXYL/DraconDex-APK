@@ -3067,4 +3067,16 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Naam van het deel of een notitie (optioneel)';
+
+  @override
+  String get viewModeDetails => 'Details';
+
+  @override
+  String get folderColKind => 'Soort';
+
+  @override
+  String get folderColItems => 'Items';
+
+  @override
+  String get folderColUpdated => 'Gewijzigd';
 }

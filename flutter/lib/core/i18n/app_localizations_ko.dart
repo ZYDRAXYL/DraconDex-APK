@@ -3070,4 +3070,16 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => '부 이름이나 메모(선택)';
+
+  @override
+  String get viewModeDetails => '자세히';
+
+  @override
+  String get folderColKind => '종류';
+
+  @override
+  String get folderColItems => '항목';
+
+  @override
+  String get folderColUpdated => '수정한 날짜';
 }

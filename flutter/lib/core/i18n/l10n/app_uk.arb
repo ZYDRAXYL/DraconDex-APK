@@ -1019,5 +1019,9 @@
   "auPovNoLink": "Пов’яжіть із книгою Classifier, щоб вибрати оповідача з його персонажів.",
   "auPart": "Частина",
   "auPartAdd": "Роздільник частини",
-  "auPartPlaceholder": "Назва частини або нотатка (необов’язково)"
+  "auPartPlaceholder": "Назва частини або нотатка (необов’язково)",
+  "viewModeDetails": "Таблиця",
+  "folderColKind": "Тип",
+  "folderColItems": "Елементи",
+  "folderColUpdated": "Змінено"
 }

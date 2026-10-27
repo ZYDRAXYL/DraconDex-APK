@@ -1019,5 +1019,9 @@
   "auPovNoLink": "Collega un Classifier a questo libro per scegliere il punto di vista tra i suoi personaggi.",
   "auPart": "Parte",
   "auPartAdd": "Divisore di parte",
-  "auPartPlaceholder": "Nome della parte o una nota (facoltativo)"
+  "auPartPlaceholder": "Nome della parte o una nota (facoltativo)",
+  "viewModeDetails": "Dettagli",
+  "folderColKind": "Tipo",
+  "folderColItems": "Elementi",
+  "folderColUpdated": "Modificato"
 }

@@ -52,6 +52,7 @@ class NexusCollectionView extends StatelessWidget {
           itemBuilder: (_, i) => _NexusRow(nexus: nexuses[i], density: DdxDensity.compact),
         );
       case BuilderViewMode.list:
+      case BuilderViewMode.details: // a Nexus has no kind or item count to set out in columns
         return ListView.separated(
           itemCount: nexuses.length,
           separatorBuilder: (_, _) => const Divider(height: 1),

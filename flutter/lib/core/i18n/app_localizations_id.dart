@@ -3070,4 +3070,16 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Nama bagian atau catatan (opsional)';
+
+  @override
+  String get viewModeDetails => 'Detail';
+
+  @override
+  String get folderColKind => 'Jenis';
+
+  @override
+  String get folderColItems => 'Item';
+
+  @override
+  String get folderColUpdated => 'Diubah';
 }

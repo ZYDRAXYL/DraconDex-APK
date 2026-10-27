@@ -3070,4 +3070,16 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Name of the partie or a note (if ye wol)';
+
+  @override
+  String get viewModeDetails => 'Particulers';
+
+  @override
+  String get folderColKind => 'Kynde';
+
+  @override
+  String get folderColItems => 'Thynges';
+
+  @override
+  String get folderColUpdated => 'Amended';
 }

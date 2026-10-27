@@ -6252,6 +6252,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Part name or a note (optional)'**
   String get auPartPlaceholder;
+
+  /// No description provided for @viewModeDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get viewModeDetails;
+
+  /// No description provided for @folderColKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Kind'**
+  String get folderColKind;
+
+  /// No description provided for @folderColItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get folderColItems;
+
+  /// No description provided for @folderColUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get folderColUpdated;
 }
 
 class _AppLocalizationsDelegate

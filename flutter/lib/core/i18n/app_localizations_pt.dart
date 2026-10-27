@@ -3070,4 +3070,16 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Nome da parte ou uma nota (opcional)';
+
+  @override
+  String get viewModeDetails => 'Detalhes';
+
+  @override
+  String get folderColKind => 'Tipo';
+
+  @override
+  String get folderColItems => 'Itens';
+
+  @override
+  String get folderColUpdated => 'Modificado';
 }

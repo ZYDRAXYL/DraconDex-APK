@@ -3070,4 +3070,16 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'ชื่อภาค หรือโน้ต (ไม่บังคับ)';
+
+  @override
+  String get viewModeDetails => 'รายละเอียด';
+
+  @override
+  String get folderColKind => 'ชนิด';
+
+  @override
+  String get folderColItems => 'จำนวน';
+
+  @override
+  String get folderColUpdated => 'แก้ล่าสุด';
 }

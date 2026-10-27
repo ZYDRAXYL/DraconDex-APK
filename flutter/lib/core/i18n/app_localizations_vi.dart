@@ -3070,4 +3070,16 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Tên phần hoặc ghi chú (tùy chọn)';
+
+  @override
+  String get viewModeDetails => 'Chi tiết';
+
+  @override
+  String get folderColKind => 'Loại';
+
+  @override
+  String get folderColItems => 'Mục';
+
+  @override
+  String get folderColUpdated => 'Ngày sửa';
 }

@@ -1019,5 +1019,9 @@
   "auPovNoLink": "Liên kết một Classifier với cuốn sách này để chọn người kể từ các nhân vật của nó.",
   "auPart": "Phần",
   "auPartAdd": "Đường chia phần",
-  "auPartPlaceholder": "Tên phần hoặc ghi chú (tùy chọn)"
+  "auPartPlaceholder": "Tên phần hoặc ghi chú (tùy chọn)",
+  "viewModeDetails": "Chi tiết",
+  "folderColKind": "Loại",
+  "folderColItems": "Mục",
+  "folderColUpdated": "Ngày sửa"
 }

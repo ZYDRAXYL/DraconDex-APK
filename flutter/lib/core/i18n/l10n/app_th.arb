@@ -1019,5 +1019,9 @@
   "auPovNoLink": "ลิงก์ Classifier กับเล่มนี้ก่อน แล้วจึงเลือกผู้เล่าจากตัวละครในนั้นได้",
   "auPart": "ภาค",
   "auPartAdd": "เส้นแบ่งภาค",
-  "auPartPlaceholder": "ชื่อภาค หรือโน้ต (ไม่บังคับ)"
+  "auPartPlaceholder": "ชื่อภาค หรือโน้ต (ไม่บังคับ)",
+  "viewModeDetails": "รายละเอียด",
+  "folderColKind": "ชนิด",
+  "folderColItems": "จำนวน",
+  "folderColUpdated": "แก้ล่าสุด"
 }

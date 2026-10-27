@@ -1019,5 +1019,9 @@
   "auPovNoLink": "Lynke a Classifier to this boke to chese a poynt of view fro hise folk.",
   "auPart": "Partie",
   "auPartAdd": "Partie dividour",
-  "auPartPlaceholder": "Name of the partie or a note (if ye wol)"
+  "auPartPlaceholder": "Name of the partie or a note (if ye wol)",
+  "viewModeDetails": "Particulers",
+  "folderColKind": "Kynde",
+  "folderColItems": "Thynges",
+  "folderColUpdated": "Amended"
 }

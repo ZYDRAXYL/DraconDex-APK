@@ -3067,4 +3067,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Bölüm adı ya da not (isteğe bağlı)';
+
+  @override
+  String get viewModeDetails => 'Ayrıntılar';
+
+  @override
+  String get folderColKind => 'Tür';
+
+  @override
+  String get folderColItems => 'Öğeler';
+
+  @override
+  String get folderColUpdated => 'Değiştirilme';
 }

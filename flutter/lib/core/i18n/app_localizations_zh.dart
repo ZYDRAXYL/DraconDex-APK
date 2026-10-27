@@ -3070,4 +3070,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => '部分名称或备注（可选）';
+
+  @override
+  String get viewModeDetails => '详细信息';
+
+  @override
+  String get folderColKind => '类型';
+
+  @override
+  String get folderColItems => '项目数';
+
+  @override
+  String get folderColUpdated => '更新时间';
 }

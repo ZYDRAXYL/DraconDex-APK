@@ -65,6 +65,12 @@ class ModuleCollectionView extends StatelessWidget {
           itemCount: modules.length,
           itemBuilder: card,
         );
+      case BuilderViewMode.details:
+        // Procress 29 part 7: a header, then one row per module — the
+        // list's own sort (its header above) orders them
+        Widget row(BuildContext _, int i) => i == 0 ? const _DetailsHeader() : _DetailsRow(nexusId: nexusId, module: modules[i - 1]);
+        if (sliver) return SliverList.builder(itemCount: modules.length + 1, itemBuilder: row);
+        return ListView.builder(itemCount: modules.length + 1, itemBuilder: row);
       case BuilderViewMode.compact:
         Widget tile(BuildContext _, int i) => ModuleTile(nexusId: nexusId, module: modules[i], density: DdxDensity.compact);
         if (sliver) return SliverList.builder(itemCount: modules.length, itemBuilder: tile);
@@ -252,6 +258,65 @@ class ModuleCard extends ConsumerWidget {
             ],
           ),
         ),
+      ),
+    ));
+  }
+}
+
+// ── Details (Procress 29 part 7) ───────────────────────────────────────────
+// Name · kind · updated · items, the desktop folder page's details view.
+const _detailsFlex = [5, 3, 3, 2];
+
+class _DetailsHeader extends StatelessWidget {
+  const _DetailsHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final st = Theme.of(context).textTheme.labelMedium?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant);
+    final cols = [l.listSortName, l.folderColKind, l.folderColUpdated, l.folderColItems];
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 6),
+      child: Row(children: [
+        for (var i = 0; i < cols.length; i++)
+          Expanded(flex: _detailsFlex[i], child: Text(cols[i], style: st, textAlign: i == 3 ? TextAlign.end : TextAlign.start)),
+      ]),
+    );
+  }
+}
+
+class _DetailsRow extends ConsumerWidget {
+  final int nexusId;
+  final ModuleModel module;
+  const _DetailsRow({required this.nexusId, required this.module});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final sel = _Selection(ref, module);
+    final dim = theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant);
+    final updated = module.updatedAt.length >= 16 ? module.updatedAt.substring(0, 16).replaceFirst('T', ' ') : module.updatedAt;
+    return draggableModule(nexusId: nexusId, module: module, child: InkWell(
+      onTap: sel.active ? sel.toggle : () => context.push('/hub/$nexusId/module/${module.id}'),
+      onLongPress: sel.active ? sel.toggle : () => showRowMenu(context, moduleRowActions(context, ref, module), title: module.name),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        decoration: BoxDecoration(
+          color: sel.picked ? theme.colorScheme.primaryContainer.withValues(alpha: 0.4) : null,
+          border: Border(bottom: BorderSide(color: theme.dividerColor)),
+        ),
+        child: Row(children: [
+          Expanded(flex: _detailsFlex[0], child: Row(children: [
+            DdxRefIcon(module.icon, size: DdxSize.iconSm, fallback: module.kindInfo.icon,
+                color: _iconColor(context, module.iconColorCode ?? module.colorCode)),
+            const SizedBox(width: 8),
+            Expanded(child: Text(module.name, maxLines: 1, overflow: TextOverflow.ellipsis)),
+          ])),
+          Expanded(flex: _detailsFlex[1], child: Text(kindName(l, module.kind), style: dim, maxLines: 1, overflow: TextOverflow.ellipsis)),
+          Expanded(flex: _detailsFlex[2], child: Text(updated, style: dim, maxLines: 1)),
+          Expanded(flex: _detailsFlex[3], child: Text('${module.childCount ?? ''}', style: dim, textAlign: TextAlign.end)),
+        ]),
       ),
     ));
   }

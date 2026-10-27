@@ -1019,5 +1019,9 @@
   "auPovNoLink": "Koppel een Classifier aan dit boek om een vertelperspectief uit zijn personages te kiezen.",
   "auPart": "Deel",
   "auPartAdd": "Deelscheiding",
-  "auPartPlaceholder": "Naam van het deel of een notitie (optioneel)"
+  "auPartPlaceholder": "Naam van het deel of een notitie (optioneel)",
+  "viewModeDetails": "Details",
+  "folderColKind": "Soort",
+  "folderColItems": "Items",
+  "folderColUpdated": "Gewijzigd"
 }

@@ -3070,4 +3070,16 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Name des Teils oder Notiz (optional)';
+
+  @override
+  String get viewModeDetails => 'Details';
+
+  @override
+  String get folderColKind => 'Art';
+
+  @override
+  String get folderColItems => 'Einträge';
+
+  @override
+  String get folderColUpdated => 'Geändert';
 }

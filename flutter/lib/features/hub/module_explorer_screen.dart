@@ -125,7 +125,9 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
     final module = moduleAsync?.valueOrNull;
     final nexus = nexusAsync.valueOrNull;
     final itemName = itemAsync?.valueOrNull;
-    final viewMode = ref.watch(builderViewModeProvider);
+    // a folder's own view first (shared with the desktop), else the app's
+    final BuilderViewMode? ownView = moduleId == null ? null : ref.watch(folderViewProvider(moduleId!)).valueOrNull;
+    final BuilderViewMode viewMode = ownView ?? ref.watch(builderViewModeProvider);
     // Select mode (APP docs/ASSET-PACK.md §1): rows toggle instead of open,
     // and the bottom bar moves what is picked. Back leaves it first.
     final selection = ref.watch(moduleSelectionProvider(_childrenKey));
@@ -254,7 +256,7 @@ class _ModuleExplorerScreenState extends ConsumerState<ModuleExplorerScreen> {
                             onSortChanged: (s) => setState(() => _sort = s),
                             // how the rows are laid out is a choice about
                             // them, so it sits on their header (§7.3)
-                            trailing: const [ViewModeButton()],
+                            trailing: [ViewModeButton(folderId: moduleId)],
                           ),
                         ),
                         if (shown.isEmpty)

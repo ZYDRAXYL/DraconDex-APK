@@ -1019,5 +1019,9 @@
   "auPovNoLink": "Свяжите с книгой Classifier, чтобы выбрать рассказчика из его персонажей.",
   "auPart": "Часть",
   "auPartAdd": "Разделитель части",
-  "auPartPlaceholder": "Название части или заметка (необязательно)"
+  "auPartPlaceholder": "Название части или заметка (необязательно)",
+  "viewModeDetails": "Таблица",
+  "folderColKind": "Тип",
+  "folderColItems": "Элементы",
+  "folderColUpdated": "Изменено"
 }

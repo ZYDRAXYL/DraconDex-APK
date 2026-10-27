@@ -3067,4 +3067,16 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Назва частини або нотатка (необов’язково)';
+
+  @override
+  String get viewModeDetails => 'Таблиця';
+
+  @override
+  String get folderColKind => 'Тип';
+
+  @override
+  String get folderColItems => 'Елементи';
+
+  @override
+  String get folderColUpdated => 'Змінено';
 }
