@@ -1,7 +1,7 @@
 name: dracondex
 description: "DraconDex - Novel data management app"
 publish_to: 'none'
-version: 3.4.1+32
+version: 3.5.0+33
 
 environment:
   sdk: ^3.12.2
