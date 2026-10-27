@@ -14,6 +14,7 @@ import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import 'page_providers.dart';
 import 'views/graph_view.dart' show hexColor;
+import '../../widgets/ddx_ref_icon.dart';
 import '../../widgets/sized_image.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_segmented.dart';
@@ -159,8 +160,8 @@ class PageHeader extends ConsumerWidget {
           if (lay.showIcon)
             Padding(
               padding: const EdgeInsets.only(bottom: 4),
-              child: Icon(moduleKindInfo[module.kind]?.icon ?? Icons.folder_outlined,
-                  size: 40, color: hexColor(module.colorCode) ?? Theme.of(context).colorScheme.primary),
+              child: DdxRefIcon(module.icon, size: 40, fallback: moduleKindInfo[module.kind]?.icon ?? Icons.folder_outlined,
+                  color: hexColor(module.iconColorCode ?? module.colorCode) ?? Theme.of(context).colorScheme.primary),
             ),
           SizedBox(
             width: double.infinity,

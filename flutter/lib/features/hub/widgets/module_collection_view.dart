@@ -16,6 +16,7 @@ import '../../../widgets/row_menu.dart';
 import '../module_actions.dart';
 import 'module_drag.dart';
 import '../../../widgets/ddx_card.dart';
+import '../../../widgets/ddx_ref_icon.dart';
 
 /// The modules nested at one level of the tree, laid out the way the page's
 /// view-mode button says to. Every mode navigates the same way — only the
@@ -106,6 +107,9 @@ class ModuleTile extends ConsumerWidget {
       selected: sel.picked,
       leading: sel.active
           ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked, size: iconSize)
+          // Procress 29 part 7: the module's own icon, as the desktop set it
+          : DdxRefIcon.draws(module.icon)
+          ? DdxRefIcon(module.icon, size: iconSize, color: _iconColor(context, module.iconColorCode ?? module.colorCode), fallback: info.icon)
           : ios && !compact
           ? DdxIconSquare(icon: info.icon, color: _iconColor(context, module.colorCode))
           : module.colorCode != null ? ColorDot(colorCode: module.colorCode, size: iconSize) : Icon(info.icon, size: iconSize),
@@ -207,6 +211,8 @@ class ModuleCard extends ConsumerWidget {
                   sel.active
                       ? Icon(sel.picked ? Icons.check_circle : Icons.radio_button_unchecked,
                           size: 26, color: theme.colorScheme.primary)
+                      : DdxRefIcon.draws(module.icon)
+                      ? DdxRefIcon(module.icon, size: 26, color: _iconColor(context, module.iconColorCode ?? module.colorCode), fallback: info.icon)
                       : module.colorCode != null
                       ? ColorDot(colorCode: module.colorCode, size: 26)
                       : Icon(info.icon, size: 26, color: theme.colorScheme.primary),

@@ -79,6 +79,7 @@ dependencies:
   open_filex: ^4.7.0
   pdf: ^3.12.0
   printing: ^5.14.3
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -109,6 +110,9 @@ flutter:
     # bundles and the TH/EN guide. Read by APK V3's template picker.
     - assets/templates/
     - assets/templates/guide/
+    # Procress 29 part 7: the open icon sets (Lucide · Phosphor · Tabler) an
+    # icon chosen on the desktop may come from — tools/icon-sets.mjs.
+    - assets/icon-sets/
 
   fonts:
     - family: NotoSans
