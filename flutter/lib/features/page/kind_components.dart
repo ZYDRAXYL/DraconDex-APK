@@ -103,6 +103,13 @@ final _fillProvider = FutureProvider.autoDispose.family<Object?, _FillKey>((ref,
   return k.load(db, k.ctx);
 });
 
+// Procress 29 part 3/7: what each block last drew. A page reload reads
+// again under a new key (its PageData changed), and drawing a 48 px
+// placeholder meanwhile shrank the page under the reader — the scroll was
+// clamped back up and the block flashed. The last data stays on screen until
+// the new read lands. Bounded by the blocks of the pages opened this session.
+final _lastFill = <String, Object?>{};
+
 class _Filled extends ConsumerWidget {
   final ComponentCtx ctx;
   final _Load load;
@@ -112,9 +119,14 @@ class _Filled extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
+    // the component too: the same data shape is all a draw may be handed
+    final last = '${ctx.block.component}|${ctx.block.id}|${ctx.source.id}|${ctx.itemKey}';
     return ref.watch(_fillProvider(_FillKey(ctx, load))).when(
-          data: (d) => draw(context, ref, ctx, d),
-          loading: () => const SizedBox(height: 48),
+          data: (d) {
+            _lastFill[last] = d;
+            return draw(context, ref, ctx, d);
+          },
+          loading: () => _lastFill.containsKey(last) ? draw(context, ref, ctx, _lastFill[last]) : const SizedBox(height: 48),
           // a read that fails leaves a quiet line, not a broken page
           error: (e, _) => _empty(context, l10n.pcLoadFailed),
         );

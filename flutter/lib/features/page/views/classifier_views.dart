@@ -28,6 +28,9 @@ import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_icon_button.dart';
 import '../../../widgets/ddx_field.dart';
 import '../../../widgets/ddx_chip.dart';
+import '../../../widgets/ddx_ref_icon.dart';
+import '../../../widgets/color_dot.dart';
+import '../icon_picker.dart';
 
 /// The Classifier's four presets (EXE mod/classifier.js CLASSIFIER_VIEWS):
 /// table, list·detail, relations, grid — one loader, one typed editor.
@@ -341,13 +344,16 @@ class _ClsTableState extends ConsumerState<_ClsTable> {
       return DecoratedBox(
         decoration: BoxDecoration(border: Border(bottom: line)),
         child: Row(children: [
-          InkWell(
-            onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'cobj_${item.id}'),
+          // Procress 29 part 7: the dot (or the element's icon) opens the
+          // icon & colour chooser; one tap on the name renames it in place.
+          // The element itself opens from its menu (long press).
+          GestureDetector(
             onLongPress: () => _itemMenu(context, ref, ctx, item),
-            child: cell(
-              _nameW,
-              Text(item.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w600)),
-            ),
+            child: cell(_nameW, Row(children: [
+              ClsLookButton(nexusId: ctx.nexusId, moduleId: ctx.source.id, item: item),
+              const SizedBox(width: 6),
+              Expanded(child: ClsNameCell(moduleId: ctx.source.id, item: item)),
+            ])),
           ),
           for (final f in data.fields)
             InkWell(
@@ -423,6 +429,7 @@ class _ClsListDetailState extends ConsumerState<_ClsListDetail> {
             final it = data.items[i];
             return ExpansionTile(
               key: ValueKey(it.id),
+              leading: ClsLookButton(nexusId: ctx.nexusId, moduleId: ctx.source.id, item: it),
               title: Text(it.name, overflow: TextOverflow.ellipsis),
               subtitle: sub(it).isEmpty ? null : Text(sub(it), maxLines: 1, overflow: TextOverflow.ellipsis),
               trailing: DdxIconButton(
@@ -464,7 +471,8 @@ class _ClsListDetailState extends ConsumerState<_ClsListDetail> {
         Expanded(
           child: ListView(children: [
             ListTile(
-              title: Text(sel.name, style: Theme.of(context).textTheme.titleMedium),
+              leading: ClsLookButton(nexusId: ctx.nexusId, moduleId: ctx.source.id, item: sel),
+              title: ClsNameCell(key: ValueKey('name-${sel.id}'), moduleId: ctx.source.id, item: sel, style: Theme.of(context).textTheme.titleMedium),
               trailing: DdxIconButton(
                 icon: Icons.open_in_new,
                 tooltip: l.rowOpen,
@@ -1259,6 +1267,113 @@ class ClsLevelTable extends ConsumerWidget {
             ),
         ],
       ),
+    );
+  }
+}
+
+// ── Procress 29 part 7: an element's look and name, edited where they are ──
+/// The element's icon (or its colour dot) — a tap opens the icon & colour
+/// chooser, which saves each pick at once and only the half that was picked.
+class ClsLookButton extends ConsumerWidget {
+  final int nexusId;
+  final int moduleId;
+  final ClassifierItemModel item;
+  const ClsLookButton({super.key, required this.nexusId, required this.moduleId, required this.item});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = AppLocalizations.of(context)!;
+    final color = hexColor(item.colorCode) ?? Theme.of(context).colorScheme.primary;
+    return Tooltip(
+      message: l.clsColorIcon,
+      child: InkWell(
+        key: ValueKey('cls-look-${item.id}'),
+        customBorder: const CircleBorder(),
+        onTap: () => showIconPicker(
+          context,
+          nexusId: nexusId,
+          icon: item.icon,
+          colorCode: item.colorCode,
+          onIcon: (icon) async {
+            final db = await ref.read(databaseProvider.future);
+            await ClassifierDao(db).setItemIcon(item.id, icon);
+            _refreshItems(ref, moduleId);
+          },
+          onColor: (c) async {
+            final db = await ref.read(databaseProvider.future);
+            await ClassifierDao(db).setItemColor(item.id, c.id);
+            _refreshItems(ref, moduleId);
+          },
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: DdxRefIcon.draws(item.icon)
+              ? DdxRefIcon(item.icon, size: 18, color: color)
+              : ColorDot(colorCode: item.colorCode, size: 12),
+        ),
+      ),
+    );
+  }
+}
+
+/// The element's name; one tap and it is a box in the same place (EXE
+/// classifierNameCellHtml). Enter or leaving it saves, an empty name keeps
+/// the old one.
+class ClsNameCell extends ConsumerStatefulWidget {
+  final int moduleId;
+  final ClassifierItemModel item;
+  final TextStyle? style;
+  const ClsNameCell({super.key, required this.moduleId, required this.item, this.style});
+
+  @override
+  ConsumerState<ClsNameCell> createState() => _ClsNameCellState();
+}
+
+class _ClsNameCellState extends ConsumerState<ClsNameCell> {
+  bool _editing = false;
+  final _focus = FocusNode();
+  late final _ctl = TextEditingController(text: widget.item.name);
+
+  @override
+  void initState() {
+    super.initState();
+    _focus.addListener(() { if (!_focus.hasFocus && _editing) _save(); });
+  }
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    _ctl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _save() async {
+    final name = _ctl.text.trim();
+    setState(() => _editing = false);
+    if (name.isEmpty || name == widget.item.name) { _ctl.text = widget.item.name; return; }
+    final db = await ref.read(databaseProvider.future);
+    await ClassifierDao(db).updateItem(widget.item.id, name: name, note: widget.item.note);
+    _refreshItems(ref, widget.moduleId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_editing) {
+      return DdxField(
+        key: ValueKey('cls-name-edit-${widget.item.id}'),
+        controller: _ctl,
+        focusNode: _focus,
+        autofocus: true,
+        size: DdxFieldSize.sm,
+        textInputAction: TextInputAction.done,
+        onSubmitted: (_) => _focus.unfocus(),
+      );
+    }
+    return InkWell(
+      key: ValueKey('cls-name-${widget.item.id}'),
+      onTap: () { _ctl.text = widget.item.name; setState(() => _editing = true); },
+      child: Text(widget.item.name, maxLines: 1, overflow: TextOverflow.ellipsis,
+          style: widget.style ?? const TextStyle(fontWeight: FontWeight.w600)),
     );
   }
 }

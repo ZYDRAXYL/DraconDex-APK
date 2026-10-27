@@ -30,6 +30,7 @@ void main() {
     (BuilderViewMode.list, true),
     (BuilderViewMode.compact, false),
     (BuilderViewMode.grid, false),
+    (BuilderViewMode.details, false), // Procress 29 part 7
   ]) {
     testWidgets('${mode.name}${ios ? ' (iOS)' : ''} builds only what shows', (tester) async {
       await tester.binding.setSurfaceSize(const Size(390, 820));
@@ -56,4 +57,14 @@ void main() {
       expect(built, lessThan(60), reason: '$built of $n rows built');
     });
   }
+
+  test('Procress 29: a folder view reads and writes the desktop\'s folderView names', () {
+    expect({for (final m in BuilderViewMode.values) m: m.folderView},
+        {BuilderViewMode.grid: 'large', BuilderViewMode.compact: 'small', BuilderViewMode.list: 'list', BuilderViewMode.details: 'details'});
+    for (final m in BuilderViewMode.values) {
+      expect(BuilderViewMode.fromFolderView(m.folderView), m);
+    }
+    expect(BuilderViewMode.fromFolderView('tiles'), isNull);
+    expect(BuilderViewMode.fromFolderView(null), isNull);
+  });
 }

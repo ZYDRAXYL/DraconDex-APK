@@ -146,6 +146,13 @@ class ClassifierDao {
     return id;
   }
 
+  /// Procress 29 part 7: the element's icon or its colour — one at a time,
+  /// so picking one never rewrites the other (EXE saveClsObjectIconLive).
+  Future<void> setItemIcon(int id, String? icon) =>
+      db.rawUpdate("UPDATE classifier_object SET icon=?, update_at=datetime('now') WHERE id=?", [icon, id]);
+  Future<void> setItemColor(int id, int? colorId) =>
+      db.rawUpdate("UPDATE classifier_object SET color=?, update_at=datetime('now') WHERE id=?", [colorId, id]);
+
   Future<void> updateItem(int id, {required String name, String? note}) async {
     final old = await db.rawQuery(
         'SELECT o.name, m.nexus_ref FROM classifier_object o JOIN module m ON o.module_ref=m.id WHERE o.id=?', [id]);

@@ -3070,4 +3070,37 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Name of the partie or a note (if ye wol)';
+
+  @override
+  String get viewModeDetails => 'Particulers';
+
+  @override
+  String get folderColKind => 'Kynde';
+
+  @override
+  String get folderColItems => 'Thynges';
+
+  @override
+  String get folderColUpdated => 'Amended';
+
+  @override
+  String get clsColorIcon => 'Hewe and ymage';
+
+  @override
+  String get iconCustom => 'Ymage of thyne owne';
+
+  @override
+  String get iconCustomText => 'Lettre or emoji';
+
+  @override
+  String get iconUploadedHere => 'Brought into this Nexus';
+
+  @override
+  String get colorCustom => 'A hewe of thyne owne';
+
+  @override
+  String get iconNone => 'No ymage';
+
+  @override
+  String get iconUse => 'Use';
 }

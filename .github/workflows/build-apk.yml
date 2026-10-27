@@ -292,6 +292,8 @@ jobs:
           exit "$fail"
 
       - name: Collect release assets
+        env:
+          UPDATE_SIGNING_KEY: ${{ secrets.UPDATE_SIGNING_KEY }}
         run: |
           set -euo pipefail
           version='${{ steps.meta.outputs.version }}'
@@ -308,6 +310,15 @@ jobs:
             cp "$f" "$dist/DraconDex-$version-${base#app-}.apk"
           done
           ( cd "$dist" && sha256sum * > checksums-sha256.txt )
+          # Procress 29 part 7: sign the checksums with the project's Ed25519 key
+          # (the same secret and format DraconDex-EXE signs with) — the app checks
+          # it before it installs. No secret = not signed, said once; the app then
+          # checks the SHA-256 only.
+          if [ -n "${UPDATE_SIGNING_KEY:-}" ]; then
+            node -e "const c=require('crypto'),fs=require('fs');const k=c.createPrivateKey({key:Buffer.from(process.env.UPDATE_SIGNING_KEY,'base64'),format:'der',type:'pkcs8'});const f=process.argv[1];const s=c.sign(null,fs.readFileSync(f),k);if(!c.verify(null,fs.readFileSync(f),c.createPublicKey(k),s))process.exit(1);fs.writeFileSync(f+'.sig',s.toString('base64')+'\\n')" "$dist/checksums-sha256.txt"
+          else
+            echo "::notice::UPDATE_SIGNING_KEY is not set — the checksums are not signed."
+          fi
           ls -lh "$dist" | tee -a "$GITHUB_STEP_SUMMARY"
 
       # Non-fatal on purpose. GitHub Actions artifact storage is an

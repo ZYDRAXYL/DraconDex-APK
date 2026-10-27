@@ -3067,4 +3067,37 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Bölüm adı ya da not (isteğe bağlı)';
+
+  @override
+  String get viewModeDetails => 'Ayrıntılar';
+
+  @override
+  String get folderColKind => 'Tür';
+
+  @override
+  String get folderColItems => 'Öğeler';
+
+  @override
+  String get folderColUpdated => 'Değiştirilme';
+
+  @override
+  String get clsColorIcon => 'Renk ve simge';
+
+  @override
+  String get iconCustom => 'Özel simge';
+
+  @override
+  String get iconCustomText => 'Harf veya emoji';
+
+  @override
+  String get iconUploadedHere => 'Bu Nexus\'a yüklenenler';
+
+  @override
+  String get colorCustom => 'Özel renk';
+
+  @override
+  String get iconNone => 'Simge yok';
+
+  @override
+  String get iconUse => 'Kullan';
 }

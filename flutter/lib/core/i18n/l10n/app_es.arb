@@ -1019,5 +1019,16 @@
   "auPovNoLink": "Vincula un Classifier a este libro para elegir el punto de vista entre sus personajes.",
   "auPart": "Parte",
   "auPartAdd": "Separador de parte",
-  "auPartPlaceholder": "Nombre de la parte o una nota (opcional)"
+  "auPartPlaceholder": "Nombre de la parte o una nota (opcional)",
+  "viewModeDetails": "Detalles",
+  "folderColKind": "Tipo",
+  "folderColItems": "Elementos",
+  "folderColUpdated": "Modificado",
+  "clsColorIcon": "Color e icono",
+  "iconCustom": "Icono personalizado",
+  "iconCustomText": "Letra o emoji",
+  "iconUploadedHere": "Subidos en este Nexus",
+  "colorCustom": "Color personalizado",
+  "iconNone": "Sin icono",
+  "iconUse": "Usar"
 }

@@ -3070,4 +3070,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Part name or a note (optional)';
+
+  @override
+  String get viewModeDetails => 'Details';
+
+  @override
+  String get folderColKind => 'Kind';
+
+  @override
+  String get folderColItems => 'Items';
+
+  @override
+  String get folderColUpdated => 'Updated';
+
+  @override
+  String get clsColorIcon => 'Colour & icon';
+
+  @override
+  String get iconCustom => 'Custom icon';
+
+  @override
+  String get iconCustomText => 'Letter or emoji';
+
+  @override
+  String get iconUploadedHere => 'Uploaded in this Nexus';
+
+  @override
+  String get colorCustom => 'A colour of your own';
+
+  @override
+  String get iconNone => 'No icon';
+
+  @override
+  String get iconUse => 'Use';
 }

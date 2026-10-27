@@ -3070,4 +3070,37 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => '部の名前やメモ（任意）';
+
+  @override
+  String get viewModeDetails => '詳細';
+
+  @override
+  String get folderColKind => '種類';
+
+  @override
+  String get folderColItems => '項目';
+
+  @override
+  String get folderColUpdated => '更新日時';
+
+  @override
+  String get clsColorIcon => '色とアイコン';
+
+  @override
+  String get iconCustom => 'カスタムアイコン';
+
+  @override
+  String get iconCustomText => '文字・絵文字';
+
+  @override
+  String get iconUploadedHere => 'このNexusでアップロード済み';
+
+  @override
+  String get colorCustom => 'カスタムカラー';
+
+  @override
+  String get iconNone => 'アイコンなし';
+
+  @override
+  String get iconUse => '使う';
 }

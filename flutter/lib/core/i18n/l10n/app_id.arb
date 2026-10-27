@@ -1019,5 +1019,16 @@
   "auPovNoLink": "Tautkan Classifier ke buku ini untuk memilih sudut pandang dari karakternya.",
   "auPart": "Bagian",
   "auPartAdd": "Pemisah bagian",
-  "auPartPlaceholder": "Nama bagian atau catatan (opsional)"
+  "auPartPlaceholder": "Nama bagian atau catatan (opsional)",
+  "viewModeDetails": "Detail",
+  "folderColKind": "Jenis",
+  "folderColItems": "Item",
+  "folderColUpdated": "Diubah",
+  "clsColorIcon": "Warna & ikon",
+  "iconCustom": "Ikon sendiri",
+  "iconCustomText": "Huruf atau emoji",
+  "iconUploadedHere": "Diunggah di Nexus ini",
+  "colorCustom": "Warna sendiri",
+  "iconNone": "Tanpa ikon",
+  "iconUse": "Pakai"
 }

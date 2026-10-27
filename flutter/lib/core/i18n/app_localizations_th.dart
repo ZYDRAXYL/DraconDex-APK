@@ -3070,4 +3070,37 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'ชื่อภาค หรือโน้ต (ไม่บังคับ)';
+
+  @override
+  String get viewModeDetails => 'รายละเอียด';
+
+  @override
+  String get folderColKind => 'ชนิด';
+
+  @override
+  String get folderColItems => 'จำนวน';
+
+  @override
+  String get folderColUpdated => 'แก้ล่าสุด';
+
+  @override
+  String get clsColorIcon => 'สีและไอคอน';
+
+  @override
+  String get iconCustom => 'ไอคอน กำหนดเอง';
+
+  @override
+  String get iconCustomText => 'ตัวอักษร / อีโมจิ';
+
+  @override
+  String get iconUploadedHere => 'ที่อัปโหลดไว้ใน Nexus นี้';
+
+  @override
+  String get colorCustom => 'สีกำหนดเอง';
+
+  @override
+  String get iconNone => 'ไม่มีไอคอน';
+
+  @override
+  String get iconUse => 'ใช้';
 }

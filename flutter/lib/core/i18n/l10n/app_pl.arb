@@ -1019,5 +1019,16 @@
   "auPovNoLink": "Połącz Classifier z tą książką, aby wybrać narratora spośród jego postaci.",
   "auPart": "Część",
   "auPartAdd": "Separator części",
-  "auPartPlaceholder": "Nazwa części lub notatka (opcjonalnie)"
+  "auPartPlaceholder": "Nazwa części lub notatka (opcjonalnie)",
+  "viewModeDetails": "Szczegóły",
+  "folderColKind": "Rodzaj",
+  "folderColItems": "Elementy",
+  "folderColUpdated": "Zmodyfikowano",
+  "clsColorIcon": "Kolor i ikona",
+  "iconCustom": "Własna ikona",
+  "iconCustomText": "Litera lub emoji",
+  "iconUploadedHere": "Przesłane w tym Nexusie",
+  "colorCustom": "Własny kolor",
+  "iconNone": "Brak ikony",
+  "iconUse": "Użyj"
 }

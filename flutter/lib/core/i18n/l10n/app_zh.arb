@@ -1019,5 +1019,16 @@
   "auPovNoLink": "先为本书链接一个 Classifier，才能从其中的角色选择视角。",
   "auPart": "部分",
   "auPartAdd": "部分分隔线",
-  "auPartPlaceholder": "部分名称或备注（可选）"
+  "auPartPlaceholder": "部分名称或备注（可选）",
+  "viewModeDetails": "详细信息",
+  "folderColKind": "类型",
+  "folderColItems": "项目数",
+  "folderColUpdated": "更新时间",
+  "clsColorIcon": "颜色和图标",
+  "iconCustom": "自定义图标",
+  "iconCustomText": "文字或表情",
+  "iconUploadedHere": "此 Nexus 中已上传",
+  "colorCustom": "自定义颜色",
+  "iconNone": "无图标",
+  "iconUse": "使用"
 }

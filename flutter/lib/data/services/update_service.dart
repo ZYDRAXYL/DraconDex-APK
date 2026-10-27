@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cryptography/cryptography.dart';
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +13,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// system install prompt. That download/install code lives in a separate,
 /// conditionally-compiled file (not this one) because it needs dart:io's
 /// File, which is unavailable on the web build this class is also used by.
+class UpdateSignatureException implements Exception {
+  const UpdateSignatureException();
+  @override
+  String toString() => 'The release is not signed by this project — not installed.';
+}
+
 class UpdateAsset {
   final String name;
   final String downloadUrl;
@@ -262,17 +269,66 @@ class UpdateService {
   /// available (no checksums asset, fetch failed, file not listed) — the
   /// caller treats that as "cannot verify", not as "verification failed",
   /// so a GitHub hiccup does not block an otherwise fine install.
+  ///
+  /// Procress 29 part 7: once [updatePublicKey] is set, the checksums file
+  /// must carry this project's Ed25519 signature (checksums-sha256.txt.sig,
+  /// the same key the desktop checks) — a missing or wrong one throws
+  /// [UpdateSignatureException]: the mirror alone must not be able to hand
+  /// out a different APK.
   static Future<String?> fetchExpectedSha256(UpdateInfo info, UpdateAsset asset) async {
     final sums = checksumsAsset(info);
-    if (sums == null) return null;
+    if (sums == null) {
+      if (updatePublicKey.isNotEmpty) throw const UpdateSignatureException();
+      return null;
+    }
+    String text;
     try {
       final res = await http
           .get(Uri.parse(sums.downloadUrl), headers: {'User-Agent': 'DraconDex/${info.version}'})
           .timeout(const Duration(seconds: 10));
-      if (res.statusCode != 200) return null;
-      return expectedSha256(res.body, asset.name);
+      if (res.statusCode != 200) {
+        if (updatePublicKey.isNotEmpty) throw const UpdateSignatureException();
+        return null;
+      }
+      text = res.body;
+    } on UpdateSignatureException {
+      rethrow;
     } catch (_) {
+      if (updatePublicKey.isNotEmpty) throw const UpdateSignatureException();
       return null;
+    }
+    if (updatePublicKey.isNotEmpty) {
+      String? sig;
+      for (final a in info.assets) {
+        if (a.name == '$checksumsName.sig') {
+          try {
+            final r = await http.get(Uri.parse(a.downloadUrl)).timeout(const Duration(seconds: 10));
+            if (r.statusCode == 200) sig = r.body;
+          } catch (_) {}
+        }
+      }
+      if (!await checksumsSigned(text, sig, updatePublicKey)) throw const UpdateSignatureException();
+    }
+    return expectedSha256(text, asset.name);
+  }
+
+  /// The public half of the release signing key — the SAME value as
+  /// UPDATE_PUBLIC_KEY in DraconDex-EXE electron/src/db/update-install.js
+  /// (SPKI DER, base64; .github/scripts/sign-checksums.mjs --keygen there).
+  /// Empty = releases are not signed yet and only the SHA-256 is checked.
+  static const updatePublicKey = 'MCowBQYDK2VwAyEAKZ60njgMiHY4lJS6lK1FTHqJ9TzYlzVVCxz2sDEmHpM=';
+
+  /// True when [publicKeyB64] signed exactly [text]; an empty key = not checked.
+  static Future<bool> checksumsSigned(String text, String? sigB64, String publicKeyB64) async {
+    if (publicKeyB64.isEmpty) return true;
+    if (sigB64 == null || sigB64.trim().isEmpty) return false;
+    try {
+      final spki = base64Decode(publicKeyB64);
+      if (spki.length < 32) return false;
+      final key = SimplePublicKey(spki.sublist(spki.length - 32), type: KeyPairType.ed25519);
+      return await Ed25519().verify(utf8.encode(text), signature: Signature(base64Decode(sigB64.trim()), publicKey: key));
+    } catch (_) {
+      return false;
     }
   }
 }

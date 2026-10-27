@@ -1019,5 +1019,16 @@
   "auPovNoLink": "Link a Classifier to this book to choose a point of view from its characters.",
   "auPart": "Part",
   "auPartAdd": "Part divider",
-  "auPartPlaceholder": "Part name or a note (optional)"
+  "auPartPlaceholder": "Part name or a note (optional)",
+  "viewModeDetails": "Details",
+  "folderColKind": "Kind",
+  "folderColItems": "Items",
+  "folderColUpdated": "Updated",
+  "clsColorIcon": "Colour & icon",
+  "iconCustom": "Custom icon",
+  "iconCustomText": "Letter or emoji",
+  "iconUploadedHere": "Uploaded in this Nexus",
+  "colorCustom": "A colour of your own",
+  "iconNone": "No icon",
+  "iconUse": "Use"
 }

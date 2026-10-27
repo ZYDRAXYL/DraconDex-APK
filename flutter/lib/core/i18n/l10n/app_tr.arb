@@ -1019,5 +1019,16 @@
   "auPovNoLink": "Bakış açısını karakterlerinden seçmek için bu kitaba bir Classifier bağlayın.",
   "auPart": "Bölüm",
   "auPartAdd": "Bölüm ayırıcı",
-  "auPartPlaceholder": "Bölüm adı ya da not (isteğe bağlı)"
+  "auPartPlaceholder": "Bölüm adı ya da not (isteğe bağlı)",
+  "viewModeDetails": "Ayrıntılar",
+  "folderColKind": "Tür",
+  "folderColItems": "Öğeler",
+  "folderColUpdated": "Değiştirilme",
+  "clsColorIcon": "Renk ve simge",
+  "iconCustom": "Özel simge",
+  "iconCustomText": "Harf veya emoji",
+  "iconUploadedHere": "Bu Nexus'a yüklenenler",
+  "colorCustom": "Özel renk",
+  "iconNone": "Simge yok",
+  "iconUse": "Kullan"
 }

@@ -3067,4 +3067,37 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Назва частини або нотатка (необов’язково)';
+
+  @override
+  String get viewModeDetails => 'Таблиця';
+
+  @override
+  String get folderColKind => 'Тип';
+
+  @override
+  String get folderColItems => 'Елементи';
+
+  @override
+  String get folderColUpdated => 'Змінено';
+
+  @override
+  String get clsColorIcon => 'Колір і значок';
+
+  @override
+  String get iconCustom => 'Власний значок';
+
+  @override
+  String get iconCustomText => 'Літера або емодзі';
+
+  @override
+  String get iconUploadedHere => 'Завантажено в цей Nexus';
+
+  @override
+  String get colorCustom => 'Власний колір';
+
+  @override
+  String get iconNone => 'Без значка';
+
+  @override
+  String get iconUse => 'Використати';
 }

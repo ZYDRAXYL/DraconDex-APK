@@ -3070,4 +3070,37 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => 'Nama bagian atau catatan (opsional)';
+
+  @override
+  String get viewModeDetails => 'Detail';
+
+  @override
+  String get folderColKind => 'Jenis';
+
+  @override
+  String get folderColItems => 'Item';
+
+  @override
+  String get folderColUpdated => 'Diubah';
+
+  @override
+  String get clsColorIcon => 'Warna & ikon';
+
+  @override
+  String get iconCustom => 'Ikon sendiri';
+
+  @override
+  String get iconCustomText => 'Huruf atau emoji';
+
+  @override
+  String get iconUploadedHere => 'Diunggah di Nexus ini';
+
+  @override
+  String get colorCustom => 'Warna sendiri';
+
+  @override
+  String get iconNone => 'Tanpa ikon';
+
+  @override
+  String get iconUse => 'Pakai';
 }

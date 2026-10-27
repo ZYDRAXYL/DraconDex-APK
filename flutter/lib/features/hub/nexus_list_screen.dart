@@ -8,6 +8,9 @@ import '../../providers/update_provider.dart';
 import '../../widgets/ddx_list.dart';
 import '../../widgets/large_title_layout.dart';
 import '../builder/view_mode_button.dart';
+import '../../core/platform/platform_check.dart';
+import '../../data/services/apk_installer.dart' as apk_installer;
+import '../../data/services/update_service.dart';
 import '../update/update_dialog.dart';
 import 'new_nexus_screen.dart';
 import 'widgets/nexus_collection_view.dart';
@@ -43,7 +46,23 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
     _checkedForUpdate = true;
     final result = await ref.read(updateCheckProvider.future);
     if (!mounted || !result.available || result.dismissed || result.update == null) return;
-    await showDdxDialog(context: context, builder: (_) => UpdateDialog(update: result.update!));
+    final update = result.update!;
+    // Procress 29 part 7: on Android the new APK downloads by itself first, so
+    // the prompt is one tap — Android itself never lets an app install
+    // silently outside a store. A download that fails falls back to the
+    // plain prompt (which can download, or open the release page).
+    Object? ready;
+    final asset = isAndroidPlatform ? UpdateService.apkAsset(update) : null;
+    if (asset != null) {
+      try {
+        final expected = await UpdateService.fetchExpectedSha256(update, asset);
+        ready = await apk_installer.downloadApk(asset, expectedSha256: expected);
+      } catch (_) {
+        ready = null;
+      }
+    }
+    if (!mounted) return;
+    await showDdxDialog(context: context, builder: (_) => UpdateDialog(update: update, ready: ready));
   }
 
   // Step 1 of New Nexus, the template picker, full-screen (Procress 25)

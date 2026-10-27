@@ -3070,4 +3070,37 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get auPartPlaceholder => '部分名称或备注（可选）';
+
+  @override
+  String get viewModeDetails => '详细信息';
+
+  @override
+  String get folderColKind => '类型';
+
+  @override
+  String get folderColItems => '项目数';
+
+  @override
+  String get folderColUpdated => '更新时间';
+
+  @override
+  String get clsColorIcon => '颜色和图标';
+
+  @override
+  String get iconCustom => '自定义图标';
+
+  @override
+  String get iconCustomText => '文字或表情';
+
+  @override
+  String get iconUploadedHere => '此 Nexus 中已上传';
+
+  @override
+  String get colorCustom => '自定义颜色';
+
+  @override
+  String get iconNone => '无图标';
+
+  @override
+  String get iconUse => '使用';
 }

@@ -1019,5 +1019,16 @@
   "auPovNoLink": "Liên kết một Classifier với cuốn sách này để chọn người kể từ các nhân vật của nó.",
   "auPart": "Phần",
   "auPartAdd": "Đường chia phần",
-  "auPartPlaceholder": "Tên phần hoặc ghi chú (tùy chọn)"
+  "auPartPlaceholder": "Tên phần hoặc ghi chú (tùy chọn)",
+  "viewModeDetails": "Chi tiết",
+  "folderColKind": "Loại",
+  "folderColItems": "Mục",
+  "folderColUpdated": "Ngày sửa",
+  "clsColorIcon": "Màu và biểu tượng",
+  "iconCustom": "Biểu tượng tùy chỉnh",
+  "iconCustomText": "Chữ hoặc emoji",
+  "iconUploadedHere": "Đã tải lên trong Nexus này",
+  "colorCustom": "Màu tùy chỉnh",
+  "iconNone": "Không có biểu tượng",
+  "iconUse": "Dùng"
 }

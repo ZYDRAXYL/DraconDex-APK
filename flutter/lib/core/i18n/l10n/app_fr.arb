@@ -1019,5 +1019,16 @@
   "auPovNoLink": "Liez un Classifier à ce livre pour choisir un point de vue parmi ses personnages.",
   "auPart": "Partie",
   "auPartAdd": "Séparateur de partie",
-  "auPartPlaceholder": "Nom de la partie ou une note (facultatif)"
+  "auPartPlaceholder": "Nom de la partie ou une note (facultatif)",
+  "viewModeDetails": "Détails",
+  "folderColKind": "Type",
+  "folderColItems": "Éléments",
+  "folderColUpdated": "Modifié",
+  "clsColorIcon": "Couleur et icône",
+  "iconCustom": "Icône personnalisée",
+  "iconCustomText": "Lettre ou émoji",
+  "iconUploadedHere": "Importées dans ce Nexus",
+  "colorCustom": "Couleur personnalisée",
+  "iconNone": "Aucune icône",
+  "iconUse": "Utiliser"
 }

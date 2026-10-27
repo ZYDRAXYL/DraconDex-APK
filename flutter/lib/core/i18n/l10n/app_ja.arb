@@ -1019,5 +1019,16 @@
   "auPovNoLink": "この本に Classifier をリンクすると、その登場人物から視点を選べます。",
   "auPart": "部",
   "auPartAdd": "部の区切り",
-  "auPartPlaceholder": "部の名前やメモ（任意）"
+  "auPartPlaceholder": "部の名前やメモ（任意）",
+  "viewModeDetails": "詳細",
+  "folderColKind": "種類",
+  "folderColItems": "項目",
+  "folderColUpdated": "更新日時",
+  "clsColorIcon": "色とアイコン",
+  "iconCustom": "カスタムアイコン",
+  "iconCustomText": "文字・絵文字",
+  "iconUploadedHere": "このNexusでアップロード済み",
+  "colorCustom": "カスタムカラー",
+  "iconNone": "アイコンなし",
+  "iconUse": "使う"
 }
