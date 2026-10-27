@@ -119,7 +119,8 @@ class _Filled extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final last = '${ctx.block.id}|${ctx.source.id}|${ctx.itemKey}';
+    // the component too: the same data shape is all a draw may be handed
+    final last = '${ctx.block.component}|${ctx.block.id}|${ctx.source.id}|${ctx.itemKey}';
     return ref.watch(_fillProvider(_FillKey(ctx, load))).when(
           data: (d) {
             _lastFill[last] = d;

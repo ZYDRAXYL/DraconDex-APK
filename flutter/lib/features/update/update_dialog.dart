@@ -98,7 +98,8 @@ class _UpdateDialogState extends State<UpdateDialog> {
   Future<void> _installNow(UpdateInfo update) async {
     if (widget.ready != null) {
       setState(() => _stage = _Stage.installing);
-      final result = await apk_installer.installApk(widget.ready!);
+      // a File on Android (apk_installer_io), never reached on web (the stub takes Object)
+      final result = await apk_installer.installApk(widget.ready! as dynamic);
       if (!mounted) return;
       if (result.type == ResultType.done) {
         Navigator.of(context).pop();
