@@ -15,7 +15,11 @@ import '../../data/services/update_service.dart';
 /// docs/UPDATE.md.
 class UpdateDialog extends StatefulWidget {
   final UpdateInfo update;
-  const UpdateDialog({super.key, required this.update});
+
+  /// Procress 29 part 7: the APK, already downloaded and verified in the
+  /// background — "Install now" then hands it straight to Android.
+  final Object? ready;
+  const UpdateDialog({super.key, required this.update, this.ready});
 
   @override
   State<UpdateDialog> createState() => _UpdateDialogState();
@@ -36,7 +40,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
     final canInstallDirectly = isAndroidPlatform && UpdateService.apkAsset(update) != null;
 
     return AlertDialog(
-      title: Text('Update available: v${update.version}'),
+      title: Text(widget.ready != null ? 'Update ready: v${update.version}' : 'Update available: v${update.version}'),
       content: SizedBox(
         width: double.maxFinite,
         child: SingleChildScrollView(
@@ -92,6 +96,17 @@ class _UpdateDialogState extends State<UpdateDialog> {
   }
 
   Future<void> _installNow(UpdateInfo update) async {
+    if (widget.ready != null) {
+      setState(() => _stage = _Stage.installing);
+      final result = await apk_installer.installApk(widget.ready!);
+      if (!mounted) return;
+      if (result.type == ResultType.done) {
+        Navigator.of(context).pop();
+      } else {
+        setState(() { _stage = _Stage.error; _error = result.message.isNotEmpty ? result.message : 'The install could not be started.'; });
+      }
+      return;
+    }
     final asset = UpdateService.apkAsset(update);
     if (asset == null) return;
     setState(() {
