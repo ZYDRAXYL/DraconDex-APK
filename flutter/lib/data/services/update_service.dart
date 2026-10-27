@@ -316,7 +316,7 @@ class UpdateService {
   /// UPDATE_PUBLIC_KEY in DraconDex-EXE electron/src/db/update-install.js
   /// (SPKI DER, base64; .github/scripts/sign-checksums.mjs --keygen there).
   /// Empty = releases are not signed yet and only the SHA-256 is checked.
-  static const updatePublicKey = '';
+  static const updatePublicKey = 'MCowBQYDK2VwAyEAyIUKvcBS/6Hp7gstGdvUjOZeBfWDU9kKZHQIw7wGt34=';
 
   /// True when [publicKeyB64] signed exactly [text]; an empty key = not checked.
   static Future<bool> checksumsSigned(String text, String? sigB64, String publicKeyB64) async {
