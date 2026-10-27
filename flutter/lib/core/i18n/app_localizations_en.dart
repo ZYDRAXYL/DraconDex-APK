@@ -3034,4 +3034,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Create Nexus';
+
+  @override
+  String get clsLevelableHint => 'Each object keeps a table of values, one row per level.';
+
+  @override
+  String get clsConditionHint => 'The value holds only while its condition is met.';
+
+  @override
+  String get pageLinksTitle => 'Linked modules';
+
+  @override
+  String get pageLinksNone => 'Not linked to another module yet — search above to link one.';
+
+  @override
+  String get pageLinkSearch => 'Link a module…';
+
+  @override
+  String get pageLinkDirect => 'linked';
+
+  @override
+  String get pageLinkViaWiki => 'from a [[link]]';
+
+  @override
+  String get pageLinkRemove => 'Unlink';
+
+  @override
+  String get auPovNoLink => 'Link a Classifier to this book to choose a point of view from its characters.';
+
+  @override
+  String get auPart => 'Part';
+
+  @override
+  String get auPartAdd => 'Part divider';
+
+  @override
+  String get auPartPlaceholder => 'Part name or a note (optional)';
 }

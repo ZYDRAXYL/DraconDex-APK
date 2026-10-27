@@ -99,8 +99,9 @@ Future<void> openKey(BuildContext context, WidgetRef ref, String key) async {
 void openElement(BuildContext context, int nexusId, int moduleId, String key) =>
     GoRouter.of(context).push(RecentView.locationFor(nexusId, moduleId, key));
 
-/// Asks for one line of text; null when cancelled or empty.
-Future<String?> askText(BuildContext context, String title, {String initial = '', String? label}) async {
+/// Asks for one line of text; null when cancelled or empty ([allowEmpty]:
+/// empty is an answer — a Part divider with no name, Procress 28 part 5).
+Future<String?> askText(BuildContext context, String title, {String initial = '', String? label, bool allowEmpty = false}) async {
   final c = TextEditingController(text: initial);
   final r = await showDdxDialog<String>(
     context: context,
@@ -120,7 +121,7 @@ Future<String?> askText(BuildContext context, String title, {String initial = ''
   );
   // not disposed: the dialog's TextField is still animating out right now,
   // and a disposed controller there throws — a local one is just garbage
-  return r == null || r.isEmpty ? null : r;
+  return r == null || (r.isEmpty && !allowEmpty) ? null : r;
 }
 
 /// A card-sized tile for grids and boards.

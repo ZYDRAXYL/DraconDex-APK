@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Đã có Nexus trùng tên này",
   "nexusTemplateFailed": "Đã tạo Nexus nhưng không thêm được template",
   "btnRetry": "Thử lại",
-  "btnCreateNexus": "Tạo Nexus"
+  "btnCreateNexus": "Tạo Nexus",
+  "clsLevelableHint": "Mỗi đối tượng giữ một bảng giá trị, mỗi cấp một hàng.",
+  "clsConditionHint": "Giá trị chỉ có hiệu lực khi điều kiện được đáp ứng.",
+  "pageLinksTitle": "Mô-đun đã liên kết",
+  "pageLinksNone": "Chưa liên kết với mô-đun nào — tìm ở trên để liên kết.",
+  "pageLinkSearch": "Liên kết mô-đun…",
+  "pageLinkDirect": "đã liên kết",
+  "pageLinkViaWiki": "từ một [[liên kết]]",
+  "pageLinkRemove": "Bỏ liên kết",
+  "auPovNoLink": "Liên kết một Classifier với cuốn sách này để chọn người kể từ các nhân vật của nó.",
+  "auPart": "Phần",
+  "auPartAdd": "Đường chia phần",
+  "auPartPlaceholder": "Tên phần hoặc ghi chú (tùy chọn)"
 }

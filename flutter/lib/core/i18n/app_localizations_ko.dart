@@ -3034,4 +3034,40 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Nexus 만들기';
+
+  @override
+  String get clsLevelableHint => '각 객체가 레벨마다 한 행씩 값 표를 가집니다.';
+
+  @override
+  String get clsConditionHint => '조건이 맞을 때만 값이 적용됩니다.';
+
+  @override
+  String get pageLinksTitle => '연결된 모듈';
+
+  @override
+  String get pageLinksNone => '아직 다른 모듈과 연결되지 않았습니다 — 위에서 검색해 연결하세요.';
+
+  @override
+  String get pageLinkSearch => '모듈 연결…';
+
+  @override
+  String get pageLinkDirect => '연결됨';
+
+  @override
+  String get pageLinkViaWiki => '[[링크]]에서';
+
+  @override
+  String get pageLinkRemove => '연결 해제';
+
+  @override
+  String get auPovNoLink => '이 책에 Classifier를 연결하면 그 인물 중에서 시점을 고를 수 있습니다.';
+
+  @override
+  String get auPart => '부';
+
+  @override
+  String get auPartAdd => '부 구분선';
+
+  @override
+  String get auPartPlaceholder => '부 이름이나 메모(선택)';
 }

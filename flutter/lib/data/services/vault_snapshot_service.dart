@@ -1147,6 +1147,16 @@ class VaultSnapshotService {
           if (target == null) continue;
           value = '$target';
         }
+        // The Classifier relation view's linked modules (Procress 28 part 3):
+        // a JSON list of module ids — each through modMap, the unknown dropped.
+        if (u['key'] == 'clsRelInclude') {
+          try {
+            final ids = jsonDecode('${u['value'] ?? '[]'}');
+            value = jsonEncode([for (final id in ids is List ? ids : const []) ?modMap[(id as num?)?.toInt()]]);
+          } catch (_) {
+            continue;
+          }
+        }
         // An element page's title layout is keyed by the element
         // ("pageHead:cobj_12", APP docs/REDESIGN.md C6) — the key itself goes
         // through the entity maps, the same as page_block.item. Unmappable

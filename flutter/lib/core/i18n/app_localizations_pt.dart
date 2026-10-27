@@ -3034,4 +3034,40 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Criar Nexus';
+
+  @override
+  String get clsLevelableHint => 'Cada objeto guarda uma tabela de valores, uma linha por nível.';
+
+  @override
+  String get clsConditionHint => 'O valor só vale enquanto a condição for atendida.';
+
+  @override
+  String get pageLinksTitle => 'Módulos vinculados';
+
+  @override
+  String get pageLinksNone => 'Ainda não vinculado a outro módulo — pesquise acima para vincular um.';
+
+  @override
+  String get pageLinkSearch => 'Vincular um módulo…';
+
+  @override
+  String get pageLinkDirect => 'vinculado';
+
+  @override
+  String get pageLinkViaWiki => 'de um [[link]]';
+
+  @override
+  String get pageLinkRemove => 'Desvincular';
+
+  @override
+  String get auPovNoLink => 'Vincule um Classifier a este livro para escolher o ponto de vista entre os personagens dele.';
+
+  @override
+  String get auPart => 'Parte';
+
+  @override
+  String get auPartAdd => 'Divisor de parte';
+
+  @override
+  String get auPartPlaceholder => 'Nome da parte ou uma nota (opcional)';
 }

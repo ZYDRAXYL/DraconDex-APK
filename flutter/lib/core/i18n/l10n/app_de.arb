@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Es gibt bereits einen Nexus mit diesem Namen",
   "nexusTemplateFailed": "Nexus angelegt, aber die Vorlage ließ sich nicht hinzufügen",
   "btnRetry": "Erneut versuchen",
-  "btnCreateNexus": "Nexus anlegen"
+  "btnCreateNexus": "Nexus anlegen",
+  "clsLevelableHint": "Jedes Objekt führt eine Wertetabelle, eine Zeile pro Stufe.",
+  "clsConditionHint": "Der Wert gilt nur, solange seine Bedingung erfüllt ist.",
+  "pageLinksTitle": "Verknüpfte Module",
+  "pageLinksNone": "Noch mit keinem Modul verknüpft — oben suchen, um eins zu verknüpfen.",
+  "pageLinkSearch": "Modul verknüpfen…",
+  "pageLinkDirect": "verknüpft",
+  "pageLinkViaWiki": "aus einem [[Link]]",
+  "pageLinkRemove": "Verknüpfung lösen",
+  "auPovNoLink": "Verknüpfe einen Classifier mit diesem Buch, um eine Erzählperspektive aus seinen Figuren zu wählen.",
+  "auPart": "Teil",
+  "auPartAdd": "Teil-Trenner",
+  "auPartPlaceholder": "Name des Teils oder Notiz (optional)"
 }

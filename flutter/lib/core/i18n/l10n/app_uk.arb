@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Nexus з такою назвою вже є",
   "nexusTemplateFailed": "Nexus створено, але шаблон додати не вдалося",
   "btnRetry": "Повторити",
-  "btnCreateNexus": "Створити Nexus"
+  "btnCreateNexus": "Створити Nexus",
+  "clsLevelableHint": "Кожен об’єкт має таблицю значень — по рядку на рівень.",
+  "clsConditionHint": "Значення діє, лише поки виконано умову.",
+  "pageLinksTitle": "Пов’язані модулі",
+  "pageLinksNone": "Ще не пов’язано з іншими модулями — знайдіть модуль вище, щоб пов’язати.",
+  "pageLinkSearch": "Пов’язати модуль…",
+  "pageLinkDirect": "пов’язано",
+  "pageLinkViaWiki": "з [[посилання]]",
+  "pageLinkRemove": "Від’єднати",
+  "auPovNoLink": "Пов’яжіть із книгою Classifier, щоб вибрати оповідача з його персонажів.",
+  "auPart": "Частина",
+  "auPartAdd": "Роздільник частини",
+  "auPartPlaceholder": "Назва частини або нотатка (необов’язково)"
 }

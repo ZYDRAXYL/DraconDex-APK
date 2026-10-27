@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Nexus dengan nama ini sudah ada",
   "nexusTemplateFailed": "Nexus dibuat, tetapi template gagal ditambahkan",
   "btnRetry": "Coba lagi",
-  "btnCreateNexus": "Buat Nexus"
+  "btnCreateNexus": "Buat Nexus",
+  "clsLevelableHint": "Setiap objek menyimpan tabel nilai, satu baris per level.",
+  "clsConditionHint": "Nilai berlaku hanya selama kondisinya terpenuhi.",
+  "pageLinksTitle": "Modul tertaut",
+  "pageLinksNone": "Belum tertaut ke modul lain — cari di atas untuk menautkan.",
+  "pageLinkSearch": "Tautkan modul…",
+  "pageLinkDirect": "ditautkan",
+  "pageLinkViaWiki": "dari [[tautan]]",
+  "pageLinkRemove": "Lepas tautan",
+  "auPovNoLink": "Tautkan Classifier ke buku ini untuk memilih sudut pandang dari karakternya.",
+  "auPart": "Bagian",
+  "auPartAdd": "Pemisah bagian",
+  "auPartPlaceholder": "Nama bagian atau catatan (opsional)"
 }

@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Er bestaat al een Nexus met deze naam",
   "nexusTemplateFailed": "Nexus aangemaakt, maar het sjabloon kon niet worden toegevoegd",
   "btnRetry": "Opnieuw",
-  "btnCreateNexus": "Nexus aanmaken"
+  "btnCreateNexus": "Nexus aanmaken",
+  "clsLevelableHint": "Elk object houdt een tabel met waarden bij, één rij per niveau.",
+  "clsConditionHint": "De waarde geldt alleen zolang de voorwaarde klopt.",
+  "pageLinksTitle": "Gekoppelde modules",
+  "pageLinksNone": "Nog niet aan een andere module gekoppeld — zoek hierboven om er een te koppelen.",
+  "pageLinkSearch": "Module koppelen…",
+  "pageLinkDirect": "gekoppeld",
+  "pageLinkViaWiki": "uit een [[link]]",
+  "pageLinkRemove": "Ontkoppelen",
+  "auPovNoLink": "Koppel een Classifier aan dit boek om een vertelperspectief uit zijn personages te kiezen.",
+  "auPart": "Deel",
+  "auPartAdd": "Deelscheiding",
+  "auPartPlaceholder": "Naam van het deel of een notitie (optioneel)"
 }

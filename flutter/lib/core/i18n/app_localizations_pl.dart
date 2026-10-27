@@ -3031,4 +3031,40 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Utwórz Nexus';
+
+  @override
+  String get clsLevelableHint => 'Każdy obiekt ma tabelę wartości, jeden wiersz na poziom.';
+
+  @override
+  String get clsConditionHint => 'Wartość obowiązuje tylko, gdy spełniony jest jej warunek.';
+
+  @override
+  String get pageLinksTitle => 'Połączone moduły';
+
+  @override
+  String get pageLinksNone => 'Jeszcze bez połączeń z innymi modułami — wyszukaj powyżej, aby połączyć.';
+
+  @override
+  String get pageLinkSearch => 'Połącz moduł…';
+
+  @override
+  String get pageLinkDirect => 'połączony';
+
+  @override
+  String get pageLinkViaWiki => 'z [[linku]]';
+
+  @override
+  String get pageLinkRemove => 'Rozłącz';
+
+  @override
+  String get auPovNoLink => 'Połącz Classifier z tą książką, aby wybrać narratora spośród jego postaci.';
+
+  @override
+  String get auPart => 'Część';
+
+  @override
+  String get auPartAdd => 'Separator części';
+
+  @override
+  String get auPartPlaceholder => 'Nazwa części lub notatka (opcjonalnie)';
 }

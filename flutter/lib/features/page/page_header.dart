@@ -13,27 +13,30 @@ import '../../data/services/assets/asset_files.dart';
 import '../../data/services/assets/asset_store.dart';
 import '../../providers/db_providers.dart';
 import 'page_providers.dart';
+import 'views/graph_view.dart' show hexColor;
 import '../../widgets/sized_image.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_segmented.dart';
 
 /// A page's title layout (APP docs/REDESIGN.md C6) — the same module_ui row
 /// the desktop writes (EXE hub/page-head.js): "pageHead" for a module page,
-/// `pageHead:<itemKey>` for an element page, value {align, cover, icon}. No
-/// row, or '' (what "back to default" stores on both apps), is left / no
+/// `pageHead:<itemKey>` for an element page, value {align, cover, showIcon}.
+/// No row, or '' (what "back to default" stores on both apps), is left / no
 /// cover / no icon. The cover names an Asset Nest image by sha256 — ids
-/// differ per device, the hash does not.
+/// differ per device, the hash does not. Procress 28 part 2: [showIcon] puts
+/// the page's own (module) icon above the title; the older `{icon: emoji}`
+/// reads as on, and the emoji is no longer shown.
 class PageHeadLayout {
-  const PageHeadLayout({this.align = 'left', this.cover, this.icon});
+  const PageHeadLayout({this.align = 'left', this.cover, this.showIcon = false});
 
   final String align;
   final String? cover;
-  final String? icon;
+  final bool showIcon;
 
   static const aligns = ['left', 'center', 'right'];
   static const empty = PageHeadLayout();
 
-  bool get isDefault => align == 'left' && cover == null && icon == null;
+  bool get isDefault => align == 'left' && cover == null && !showIcon;
 
   /// Tolerant on purpose: the row is written by two apps and travels through
   /// sync, so anything malformed reads as the default rather than throwing.
@@ -49,21 +52,20 @@ class PageHeadLayout {
     final a = v['align'];
     final c = v['cover'];
     final i = v['icon'];
-    final icon = i is String && i.trim().isNotEmpty ? i.trim().characters.take(4).toString() : null;
     return PageHeadLayout(
       align: aligns.contains(a) ? a as String : 'left',
       cover: c is String && RegExp(r'^[a-f0-9]{64}$').hasMatch(c) ? c : null,
-      icon: icon,
+      showIcon: v['showIcon'] == true || (i is String && i.trim().isNotEmpty),
     );
   }
 
   /// What goes in module_ui.ui_value: '' for the default, as EXE stores it.
-  String encode() => isDefault ? '' : jsonEncode({'align': align, 'cover': cover, 'icon': icon});
+  String encode() => isDefault ? '' : jsonEncode({'align': align, 'cover': cover, if (showIcon) 'showIcon': true});
 
-  PageHeadLayout copyWith({String? align, Object? cover = _keep, Object? icon = _keep}) => PageHeadLayout(
+  PageHeadLayout copyWith({String? align, Object? cover = _keep, bool? showIcon}) => PageHeadLayout(
         align: align ?? this.align,
         cover: identical(cover, _keep) ? this.cover : cover as String?,
-        icon: identical(icon, _keep) ? this.icon : icon as String?,
+        showIcon: showIcon ?? this.showIcon,
       );
 }
 
@@ -154,7 +156,12 @@ class PageHeader extends ConsumerWidget {
                 ),
               ),
             ),
-          if (lay.icon != null) Text(lay.icon!, style: const TextStyle(fontSize: 40, height: 1.1)),
+          if (lay.showIcon)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Icon(moduleKindInfo[module.kind]?.icon ?? Icons.folder_outlined,
+                  size: 40, color: hexColor(module.colorCode) ?? Theme.of(context).colorScheme.primary),
+            ),
           SizedBox(
             width: double.infinity,
             child: Text(title, textAlign: align, maxLines: 2, overflow: TextOverflow.ellipsis, style: style),
@@ -222,15 +229,6 @@ class _PageLayoutSheet extends ConsumerStatefulWidget {
 }
 
 class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
-  final _icon = TextEditingController();
-  bool _seeded = false;
-
-  @override
-  void dispose() {
-    _icon.dispose();
-    super.dispose();
-  }
-
   Future<void> _save(PageHeadLayout next) => savePageHead(ref, widget.pageKey, next);
 
   @override
@@ -238,10 +236,6 @@ class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
     final l10n = AppLocalizations.of(context)!;
     final lay = ref.watch(pageHeadProvider(widget.pageKey)).valueOrNull;
     if (lay == null) return const SizedBox(height: 120, child: Center(child: CircularProgressIndicator()));
-    if (!_seeded) {
-      _icon.text = lay.icon ?? '';
-      _seeded = true;
-    }
     final images = ref.watch(coverImagesProvider(widget.nexusId)).valueOrNull ?? const <CoverImage>[];
     final muted = context.ddx.textMuted;
     Widget label(String t) => Padding(
@@ -267,13 +261,14 @@ class _PageLayoutSheetState extends ConsumerState<_PageLayoutSheet> {
               selected: lay.align,
               onChanged: (v) => _save(lay.copyWith(align: v)),
             ),
-            label(l10n.pageIcon),
-            TextField(
-              controller: _icon,
-              maxLength: 16,
-              decoration: const InputDecoration(prefixIcon: Icon(Icons.auto_awesome_outlined, size: 18), counterText: ''),
-              onSubmitted: (v) => _save(lay.copyWith(icon: v.trim().isEmpty ? null : v.trim())),
-              onTapOutside: (_) => _save(lay.copyWith(icon: _icon.text.trim().isEmpty ? null : _icon.text.trim())),
+            const SizedBox(height: 8),
+            CheckboxListTile(
+              key: const ValueKey('page-show-icon'),
+              contentPadding: EdgeInsets.zero,
+              controlAffinity: ListTileControlAffinity.leading,
+              value: lay.showIcon,
+              title: Text(l10n.pageIcon),
+              onChanged: (v) => _save(lay.copyWith(showIcon: v ?? false)),
             ),
             label(l10n.pageCover),
             if (images.isEmpty)

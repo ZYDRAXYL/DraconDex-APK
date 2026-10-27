@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Nexus o tej nazwie już istnieje",
   "nexusTemplateFailed": "Utworzono Nexus, ale nie udało się dodać szablonu",
   "btnRetry": "Ponów",
-  "btnCreateNexus": "Utwórz Nexus"
+  "btnCreateNexus": "Utwórz Nexus",
+  "clsLevelableHint": "Każdy obiekt ma tabelę wartości, jeden wiersz na poziom.",
+  "clsConditionHint": "Wartość obowiązuje tylko, gdy spełniony jest jej warunek.",
+  "pageLinksTitle": "Połączone moduły",
+  "pageLinksNone": "Jeszcze bez połączeń z innymi modułami — wyszukaj powyżej, aby połączyć.",
+  "pageLinkSearch": "Połącz moduł…",
+  "pageLinkDirect": "połączony",
+  "pageLinkViaWiki": "z [[linku]]",
+  "pageLinkRemove": "Rozłącz",
+  "auPovNoLink": "Połącz Classifier z tą książką, aby wybrać narratora spośród jego postaci.",
+  "auPart": "Część",
+  "auPartAdd": "Separator części",
+  "auPartPlaceholder": "Nazwa części lub notatka (opcjonalnie)"
 }

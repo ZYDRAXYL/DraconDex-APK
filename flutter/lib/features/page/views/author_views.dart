@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/i18n/app_localizations.dart';
 import '../../../data/dao/author_dao.dart';
 import '../../../data/models/author_model.dart';
+import '../../../data/services/linked_modules.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
 import '../../../providers/navigation_providers.dart';
@@ -18,6 +19,9 @@ import 'view_common.dart';
 import '../../../widgets/ddx_chip.dart';
 import '../../../widgets/ddx_card.dart';
 import '../../../widgets/ddx_icon_button.dart';
+import '../../../widgets/ddx_glass.dart';
+import '../linked_modules_sheet.dart';
+import 'author_parts.dart';
 
 /// The Author's five presets (EXE mod/author.js AUTHOR_VIEWS): editor,
 /// board (the corkboard, author-board.js), outline, reading, book.
@@ -109,7 +113,37 @@ void _chapterMenu(BuildContext context, WidgetRef ref, ComponentCtx ctx, Chapter
       label: l.auPov,
       icon: Icons.person_outline,
       onTap: () async {
-        final it = await pickEntity(context, ref, ctx.nexusId, title: l.auPov);
+        // Procress 28 part 5: only the characters of a Classifier linked to
+        // this book (the page head's 🔗, or a [[link]])
+        final db = await ref.read(databaseProvider.future);
+        final linked = await linkedModules(db, ctx.nexusId, ctx.source.id);
+        final index = await ref.read(nexusIndexProvider(ctx.nexusId).future);
+        final from = {
+          for (final e in linked)
+            if (index.any((it) => it.itemKind == 'module' && it.moduleId == e.id && it.moduleKind == 'classifier')) e.id,
+        };
+        if (!context.mounted) return;
+        if (from.isEmpty) {
+          await showDdxDialog<void>(
+            context: context,
+            builder: (d) => AlertDialog(
+              title: Text(l.auPov),
+              content: Text(l.auPovNoLink),
+              actions: [
+                TextButton(onPressed: () => Navigator.pop(d), child: Text(MaterialLocalizations.of(d).cancelButtonLabel)),
+                FilledButton(
+                  onPressed: () {
+                    Navigator.pop(d);
+                    showLinkedModulesSheet(context, ctx.source);
+                  },
+                  child: Text(l.pageLinksTitle),
+                ),
+              ],
+            ),
+          );
+          return;
+        }
+        final it = await pickEntity(context, ref, ctx.nexusId, title: l.auPov, where: (it) => it.itemKind == 'object' && from.contains(it.moduleId));
         if (it == null) return;
         await (await dao()).setChapterMeta(c.id, povKey: it.key);
         done();
@@ -244,6 +278,8 @@ class _Board extends ConsumerWidget {
 }
 
 /// Chapters in order with their synopses; drag to reorder.
+/// Procress 28 part 5: the Part dividers are rows too, dragged with the
+/// chapters — the new order of both is read back off the rows.
 class _Outline extends ConsumerWidget {
   final ComponentCtx ctx;
   final List<ChapterModel> chapters;
@@ -251,28 +287,42 @@ class _Outline extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l = AppLocalizations.of(context)!;
+    final parts = ref.watch(authorPartsProvider(ctx.source.id)).valueOrNull ?? const <AuthorPart>[];
+    final rows = authorRows(chapters, parts);
     return ReorderableListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       buildDefaultDragHandles: false,
       onReorderItem: (from, to) async {
-        final ids = [for (final c in chapters) c.id];
-        ids.insert(to, ids.removeAt(from));
+        final next = [...rows];
+        next.insert(to, next.removeAt(from));
+        final ids = [for (final r in next) if (r.chapter != null) r.chapter!.id];
         final db = await ref.read(databaseProvider.future);
-        await AuthorDao(db).reorderChapters(ids);
+        if (ids.join(',') != [for (final c in chapters) c.id].join(',')) await AuthorDao(db).reorderChapters(ids);
+        await saveAuthorParts(ref, ctx.source.id, partsFromRows(next));
         ref.invalidate(chaptersProvider(ctx.source.id));
       },
       children: [
-        for (var i = 0; i < chapters.length; i++)
-          DdxListTile(
-            key: ValueKey(chapters[i].id),
-            reorderIndex: i,
-            title: '${_no(chapters[i], i)}. ${chapters[i].name}',
-            meta: chapters[i].synopsis,
-            count: chapters[i].status == null ? null : authorStatusLabel(AppLocalizations.of(context)!, chapters[i].status!),
-            onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'bchp_${chapters[i].id}'),
-            onLongPress: () => _chapterMenu(context, ref, ctx, chapters[i]),
-          ),
+        for (var k = 0; k < rows.length; k++)
+          if (rows[k].part case final p?)
+            DdxListTile(
+              key: ValueKey('part-${p.id}'),
+              reorderIndex: k,
+              density: DdxDensity.compact,
+              icon: Icons.horizontal_rule,
+              title: p.label.isEmpty ? l.auPart : p.label.toUpperCase(),
+            )
+          else
+            DdxListTile(
+              key: ValueKey(rows[k].chapter!.id),
+              reorderIndex: k,
+              title: '${_no(rows[k].chapter!, rows[k].index)}. ${rows[k].chapter!.name}',
+              meta: rows[k].chapter!.synopsis,
+              count: rows[k].chapter!.status == null ? null : authorStatusLabel(l, rows[k].chapter!.status!),
+              onTap: () => openElement(context, ctx.nexusId, ctx.source.id, 'bchp_${rows[k].chapter!.id}'),
+              onLongPress: () => _chapterMenu(context, ref, ctx, rows[k].chapter!),
+            ),
       ],
     );
   }

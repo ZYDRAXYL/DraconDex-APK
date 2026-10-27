@@ -3031,4 +3031,40 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'Створити Nexus';
+
+  @override
+  String get clsLevelableHint => 'Кожен об’єкт має таблицю значень — по рядку на рівень.';
+
+  @override
+  String get clsConditionHint => 'Значення діє, лише поки виконано умову.';
+
+  @override
+  String get pageLinksTitle => 'Пов’язані модулі';
+
+  @override
+  String get pageLinksNone => 'Ще не пов’язано з іншими модулями — знайдіть модуль вище, щоб пов’язати.';
+
+  @override
+  String get pageLinkSearch => 'Пов’язати модуль…';
+
+  @override
+  String get pageLinkDirect => 'пов’язано';
+
+  @override
+  String get pageLinkViaWiki => 'з [[посилання]]';
+
+  @override
+  String get pageLinkRemove => 'Від’єднати';
+
+  @override
+  String get auPovNoLink => 'Пов’яжіть із книгою Classifier, щоб вибрати оповідача з його персонажів.';
+
+  @override
+  String get auPart => 'Частина';
+
+  @override
+  String get auPartAdd => 'Роздільник частини';
+
+  @override
+  String get auPartPlaceholder => 'Назва частини або нотатка (необов’язково)';
 }

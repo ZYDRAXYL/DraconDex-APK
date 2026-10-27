@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Nexus с таким именем уже есть",
   "nexusTemplateFailed": "Nexus создан, но шаблон добавить не удалось",
   "btnRetry": "Повторить",
-  "btnCreateNexus": "Создать Nexus"
+  "btnCreateNexus": "Создать Nexus",
+  "clsLevelableHint": "У каждого объекта таблица значений — по строке на уровень.",
+  "clsConditionHint": "Значение действует, только пока выполнено условие.",
+  "pageLinksTitle": "Связанные модули",
+  "pageLinksNone": "Пока не связан с другими модулями — найдите модуль выше, чтобы связать.",
+  "pageLinkSearch": "Связать модуль…",
+  "pageLinkDirect": "связан",
+  "pageLinkViaWiki": "из [[ссылки]]",
+  "pageLinkRemove": "Отвязать",
+  "auPovNoLink": "Свяжите с книгой Classifier, чтобы выбрать рассказчика из его персонажей.",
+  "auPart": "Часть",
+  "auPartAdd": "Разделитель части",
+  "auPartPlaceholder": "Название части или заметка (необязательно)"
 }

@@ -3034,4 +3034,40 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get btnCreateNexus => '创建 Nexus';
+
+  @override
+  String get clsLevelableHint => '每个对象保存一张数值表，每个等级一行。';
+
+  @override
+  String get clsConditionHint => '仅在满足条件时该值才生效。';
+
+  @override
+  String get pageLinksTitle => '已链接的模块';
+
+  @override
+  String get pageLinksNone => '尚未链接其他模块——在上方搜索以链接。';
+
+  @override
+  String get pageLinkSearch => '链接模块…';
+
+  @override
+  String get pageLinkDirect => '已链接';
+
+  @override
+  String get pageLinkViaWiki => '来自 [[链接]]';
+
+  @override
+  String get pageLinkRemove => '取消链接';
+
+  @override
+  String get auPovNoLink => '先为本书链接一个 Classifier，才能从其中的角色选择视角。';
+
+  @override
+  String get auPart => '部分';
+
+  @override
+  String get auPartAdd => '部分分隔线';
+
+  @override
+  String get auPartPlaceholder => '部分名称或备注（可选）';
 }

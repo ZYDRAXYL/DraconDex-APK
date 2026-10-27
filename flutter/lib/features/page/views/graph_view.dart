@@ -7,7 +7,16 @@ class GraphNode {
   final String key;
   final String label;
   final Color? color;
-  const GraphNode(this.key, this.label, {this.color});
+
+  /// Procress 28 part 3: drawn instead of the dot, in [color] — an element's
+  /// own icon ([icon]) or symbol ([glyph]).
+  final IconData? icon;
+  final String? glyph;
+
+  /// Nothing pulls on it (no edge): it sits on rings round the graph,
+  /// outside the force pass — 3,000 of them cost a placement, not 3,000².
+  final bool outer;
+  const GraphNode(this.key, this.label, {this.color, this.icon, this.glyph, this.outer = false});
 }
 
 /// An edge of [GraphView]; [from]/[to] are node keys.
@@ -27,6 +36,9 @@ class GraphView extends StatelessWidget {
   final List<GraphNode> nodes;
   final List<GraphEdge> edges;
   final void Function(GraphNode node)? onTap;
+
+  /// A long press on a node — the phone's hover (Procress 28 part 3).
+  final void Function(GraphNode node)? onLongPress;
   final bool fullScreen;
   final double height;
 
@@ -35,6 +47,7 @@ class GraphView extends StatelessWidget {
     required this.nodes,
     required this.edges,
     this.onTap,
+    this.onLongPress,
     this.fullScreen = false,
     this.height = 300,
   });
@@ -47,17 +60,24 @@ class GraphView extends StatelessWidget {
       final h = fullScreen && box.maxHeight.isFinite ? box.maxHeight : height;
       final pos = layoutGraph(nodes, edges, Size(w, h));
       final painter = _GraphPainter(nodes, edges, pos, scheme, Theme.of(context).textTheme.labelSmall!);
+      GraphNode? at(Offset o) {
+        for (final n in nodes.reversed) {
+          final p = pos[n.key];
+          if (p != null && (p - o).distance <= 18) return n;
+        }
+        return null;
+      }
+
       Widget canvas = GestureDetector(
         onTapUp: (d) {
-          for (final n in nodes.reversed) {
-            final p = pos[n.key];
-            if (p != null && (p - d.localPosition).distance <= 18) {
-              onTap?.call(n);
-              return;
-            }
-          }
+          if (at(d.localPosition) case final n?) onTap?.call(n);
         },
-        child: CustomPaint(size: Size(w, h), painter: painter),
+        onLongPressStart: onLongPress == null
+            ? null
+            : (d) {
+                if (at(d.localPosition) case final n?) onLongPress!(n);
+              },
+        child: ClipRect(child: CustomPaint(size: Size(w, h), painter: painter)),
       );
       if (fullScreen) {
         canvas = InteractiveViewer(minScale: 0.4, maxScale: 4, boundaryMargin: const EdgeInsets.all(200), child: canvas);
@@ -69,11 +89,25 @@ class GraphView extends StatelessWidget {
 
 /// Node positions: a circle start, then a fixed number of force steps
 /// (repulsion between all pairs, springs along edges, a pull to the middle).
-Map<String, Offset> layoutGraph(List<GraphNode> nodes, List<GraphEdge> edges, Size size) {
-  final n = nodes.length;
+Map<String, Offset> layoutGraph(List<GraphNode> all, List<GraphEdge> edges, Size size) {
   final c = Offset(size.width / 2, size.height / 2);
-  if (n == 0) return {};
-  if (n == 1) return {nodes.first.key: c};
+  // The outer nodes fill a band round the middle as a sunflower spiral — even
+  // at any count and always inside the box (a phone's graph does not pan);
+  // the rest go through the force pass.
+  final ring = <String, Offset>{};
+  {
+    final outer = [for (final nd in all) if (nd.outer) nd];
+    final rMax = math.min(size.width, size.height) / 2 - 12, r0 = rMax * 0.62;
+    for (var i = 0; i < outer.length; i++) {
+      final r = math.sqrt(r0 * r0 + (rMax * rMax - r0 * r0) * (i + 0.5) / outer.length);
+      final a = i * 2.399963; // the golden angle
+      ring[outer[i].key] = c + Offset(math.cos(a) * r * size.width / math.min(size.width, size.height), math.sin(a) * r);
+    }
+  }
+  final nodes = [for (final nd in all) if (!nd.outer) nd];
+  final n = nodes.length;
+  if (n == 0) return ring;
+  if (n == 1) return {...ring, nodes.first.key: c};
   final r = math.min(size.width, size.height) * 0.38;
   final pos = <String, Offset>{
     for (var i = 0; i < n; i++) nodes[i].key: c + Offset(math.cos(2 * math.pi * i / n), math.sin(2 * math.pi * i / n)) * r,
@@ -113,7 +147,7 @@ Map<String, Offset> layoutGraph(List<GraphNode> nodes, List<GraphEdge> edges, Si
     }
     temp *= 0.96;
   }
-  return pos;
+  return {...ring, ...pos};
 }
 
 class _GraphPainter extends CustomPainter {
@@ -152,14 +186,30 @@ class _GraphPainter extends CustomPainter {
     for (final nd in nodes) {
       final p = pos[nd.key];
       if (p == null) continue;
-      canvas.drawCircle(p, 10, Paint()..color = nd.color ?? scheme.primary);
-      canvas.drawCircle(
-          p,
-          10,
-          Paint()
-            ..style = PaintingStyle.stroke
-            ..color = scheme.surface
-            ..strokeWidth = 2);
+      final col = nd.color ?? scheme.primary;
+      if (nd.icon != null || nd.glyph != null) {
+        canvas.drawCircle(p, 11, Paint()..color = scheme.surface);
+        canvas.drawCircle(
+            p,
+            11,
+            Paint()
+              ..style = PaintingStyle.stroke
+              ..color = col
+              ..strokeWidth = 1.5);
+        final s = nd.icon != null ? String.fromCharCode(nd.icon!.codePoint) : nd.glyph!;
+        _text(canvas, s, p,
+            TextStyle(fontSize: 13, color: col, fontFamily: nd.icon?.fontFamily, package: nd.icon?.fontPackage, height: 1));
+      } else {
+        canvas.drawCircle(p, nd.outer ? 7 : 10, Paint()..color = col);
+        canvas.drawCircle(
+            p,
+            nd.outer ? 7 : 10,
+            Paint()
+              ..style = PaintingStyle.stroke
+              ..color = scheme.surface
+              ..strokeWidth = 2);
+      }
+      if (nd.outer) continue; // a ring of 3,000 names is noise — a long press says which
       _text(canvas, nd.label, p + const Offset(0, 18), label.copyWith(color: scheme.onSurface));
     }
   }

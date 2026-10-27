@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "A Nexus with this name already exists",
   "nexusTemplateFailed": "Nexus created, but the template could not be added",
   "btnRetry": "Retry",
-  "btnCreateNexus": "Create Nexus"
+  "btnCreateNexus": "Create Nexus",
+  "clsLevelableHint": "Each object keeps a table of values, one row per level.",
+  "clsConditionHint": "The value holds only while its condition is met.",
+  "pageLinksTitle": "Linked modules",
+  "pageLinksNone": "Not linked to another module yet — search above to link one.",
+  "pageLinkSearch": "Link a module…",
+  "pageLinkDirect": "linked",
+  "pageLinkViaWiki": "from a [[link]]",
+  "pageLinkRemove": "Unlink",
+  "auPovNoLink": "Link a Classifier to this book to choose a point of view from its characters.",
+  "auPart": "Part",
+  "auPartAdd": "Part divider",
+  "auPartPlaceholder": "Part name or a note (optional)"
 }

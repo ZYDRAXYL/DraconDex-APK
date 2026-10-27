@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "Bu adda bir Nexus zaten var",
   "nexusTemplateFailed": "Nexus oluşturuldu ama şablon eklenemedi",
   "btnRetry": "Tekrar dene",
-  "btnCreateNexus": "Nexus'u oluştur"
+  "btnCreateNexus": "Nexus'u oluştur",
+  "clsLevelableHint": "Her nesne, seviye başına bir satırlık bir değer tablosu tutar.",
+  "clsConditionHint": "Değer yalnızca koşulu sağlandığı sürece geçerlidir.",
+  "pageLinksTitle": "Bağlı modüller",
+  "pageLinksNone": "Henüz başka bir modüle bağlı değil — bağlamak için yukarıda arayın.",
+  "pageLinkSearch": "Modül bağla…",
+  "pageLinkDirect": "bağlı",
+  "pageLinkViaWiki": "bir [[bağlantı]]dan",
+  "pageLinkRemove": "Bağlantıyı kaldır",
+  "auPovNoLink": "Bakış açısını karakterlerinden seçmek için bu kitaba bir Classifier bağlayın.",
+  "auPart": "Bölüm",
+  "auPartAdd": "Bölüm ayırıcı",
+  "auPartPlaceholder": "Bölüm adı ya da not (isteğe bağlı)"
 }

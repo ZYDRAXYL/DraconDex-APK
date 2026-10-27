@@ -3034,4 +3034,40 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get btnCreateNexus => 'สร้าง Nexus';
+
+  @override
+  String get clsLevelableHint => 'แต่ละ object เก็บค่าเป็นตาราง หนึ่งแถวต่อหนึ่งระดับ';
+
+  @override
+  String get clsConditionHint => 'ค่านี้ใช้ได้เฉพาะตอนที่เงื่อนไขเป็นจริง';
+
+  @override
+  String get pageLinksTitle => 'โมดูลที่ลิงก์ไว้';
+
+  @override
+  String get pageLinksNone => 'ยังไม่ได้ลิงก์กับโมดูลอื่น — ค้นด้านบนเพื่อลิงก์';
+
+  @override
+  String get pageLinkSearch => 'ลิงก์โมดูล…';
+
+  @override
+  String get pageLinkDirect => 'ลิงก์เอง';
+
+  @override
+  String get pageLinkViaWiki => 'จาก [[ลิงก์]]';
+
+  @override
+  String get pageLinkRemove => 'เลิกลิงก์';
+
+  @override
+  String get auPovNoLink => 'ลิงก์ Classifier กับเล่มนี้ก่อน แล้วจึงเลือกผู้เล่าจากตัวละครในนั้นได้';
+
+  @override
+  String get auPart => 'ภาค';
+
+  @override
+  String get auPartAdd => 'เส้นแบ่งภาค';
+
+  @override
+  String get auPartPlaceholder => 'ชื่อภาค หรือโน้ต (ไม่บังคับ)';
 }

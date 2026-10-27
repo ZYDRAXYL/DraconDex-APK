@@ -1007,5 +1007,17 @@
   "nexusNameTaken": "已存在同名的 Nexus",
   "nexusTemplateFailed": "已创建 Nexus，但未能添加模板",
   "btnRetry": "重试",
-  "btnCreateNexus": "创建 Nexus"
+  "btnCreateNexus": "创建 Nexus",
+  "clsLevelableHint": "每个对象保存一张数值表，每个等级一行。",
+  "clsConditionHint": "仅在满足条件时该值才生效。",
+  "pageLinksTitle": "已链接的模块",
+  "pageLinksNone": "尚未链接其他模块——在上方搜索以链接。",
+  "pageLinkSearch": "链接模块…",
+  "pageLinkDirect": "已链接",
+  "pageLinkViaWiki": "来自 [[链接]]",
+  "pageLinkRemove": "取消链接",
+  "auPovNoLink": "先为本书链接一个 Classifier，才能从其中的角色选择视角。",
+  "auPart": "部分",
+  "auPartAdd": "部分分隔线",
+  "auPartPlaceholder": "部分名称或备注（可选）"
 }

@@ -3,12 +3,16 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../../../core/classifier/formula.dart';
 import '../../../core/links/safe_launch.dart';
 import '../../../core/i18n/app_localizations.dart';
+import '../../../core/icon_refs.dart';
 import '../../../data/dao/classifier_dao.dart';
 import '../../../data/models/classifier_model.dart';
+import '../../../data/models/viewer_model.dart';
+import '../../../data/services/linked_modules.dart';
 import '../../../data/services/wiki_service.dart';
 import '../../../providers/db_providers.dart';
 import '../../../providers/module_content_provider.dart';
@@ -23,6 +27,7 @@ import 'view_common.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_icon_button.dart';
 import '../../../widgets/ddx_field.dart';
+import '../../../widgets/ddx_chip.dart';
 
 /// The Classifier's four presets (EXE mod/classifier.js CLASSIFIER_VIEWS):
 /// table, list·detail, relations, grid — one loader, one typed editor.
@@ -559,6 +564,32 @@ class ClsItemFields extends ConsumerWidget {
 
 // ── relations ────────────────────────────────────────────────────────────
 
+/// Procress 28 part 3 — the relations around this Classifier, the whole of
+/// them (EXE mod/classifier.js mountClassifierRelationGraph): every object,
+/// an unlinked one on the outer band; an object with an icon draws it, the
+/// rest are dots; a long press says what a node is. Modules linked to this
+/// one ([linkedModulesProvider] — relations and [[links]]) can bring their
+/// elements in, one chip each; which are on is kept per module in module_ui
+/// `clsRelInclude`, the same row the desktop reads.
+final _clsRelIncludeProvider = FutureProvider.autoDispose.family<Set<int>, int>((ref, moduleId) async {
+  final db = await ref.watch(databaseProvider.future);
+  final r = await db.rawQuery("SELECT ui_value FROM module_ui WHERE module_ref=? AND ui_key='clsRelInclude'", [moduleId]);
+  try {
+    final v = jsonDecode(r.isEmpty ? '[]' : '${r.first['ui_value'] ?? '[]'}');
+    return v is List ? {for (final x in v) if (x is num) x.toInt()} : <int>{};
+  } catch (_) {
+    return <int>{};
+  }
+});
+
+/// Every relation of the Nexus as (from, to, label) — the graph keeps the
+/// ones between what it shows.
+final _nexusRelationsProvider = FutureProvider.autoDispose.family<List<(String, String, String?)>, int>((ref, nexusId) async {
+  final db = await ref.watch(databaseProvider.future);
+  final rows = await db.rawQuery('SELECT from_key, to_key, label FROM entity_relation WHERE nexus_ref=?', [nexusId]);
+  return [for (final r in rows) (r['from_key'] as String, r['to_key'] as String, r['label'] as String?)];
+});
+
 class _ClsRelations extends ConsumerWidget {
   final ComponentCtx ctx;
   final ClsData data;
@@ -567,18 +598,94 @@ class _ClsRelations extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context)!;
-    final keys = {for (final i in data.items) 'cobj_${i.id}'};
-    final inner = [for (final r in data.relations) if (keys.contains(r.to)) r];
+    final m = ctx.source;
+    final linked = ref.watch(linkedModulesProvider((nexusId: ctx.nexusId, moduleId: m.id))).valueOrNull ?? const <LinkedModule>[];
+    final include = ref.watch(_clsRelIncludeProvider(m.id)).valueOrNull ?? const <int>{};
+    final index = ref.watch(nexusIndexProvider(ctx.nexusId)).valueOrNull ?? const <IndexedItem>[];
+    final allRels = ref.watch(_nexusRelationsProvider(ctx.nexusId)).valueOrNull ?? const <(String, String, String?)>[];
+    final modName = {for (final it in index) if (it.itemKind == 'module') it.moduleId: it};
+    final others = [for (final e in linked) if (modName[e.id] case final it? when it.moduleKind != 'collector') it];
+    final extra = [
+      for (final it in index)
+        if (it.itemKind != 'module' && it.itemKind != 'file' && include.contains(it.moduleId) && others.any((o) => o.moduleId == it.moduleId)) it,
+    ];
+    final keys = {for (final i in data.items) 'cobj_${i.id}', for (final it in extra) it.key};
     final fieldName = {for (final f in data.fields) f.id: f.description};
     String relLabel(ClsRelation r) => r.field != null ? (fieldName[r.field] ?? '') : (r.label ?? '');
+    final edges = [
+      for (final (from, to, label) in allRels)
+        if (keys.contains(from) && keys.contains(to)) GraphEdge(from, to, label: label),
+    ];
+    final touched = {for (final e in edges) ...[e.from, e.to]};
+    final itemById = {for (final i in data.items) 'cobj_${i.id}': i};
+
+    Future<void> toggle(int id, bool on) async {
+      final db = await ref.read(databaseProvider.future);
+      final next = {...include}..removeWhere((x) => x == id);
+      if (on) next.add(id);
+      await db.insert('module_ui', {'module_ref': m.id, 'ui_key': 'clsRelInclude', 'ui_value': jsonEncode(next.toList())},
+          conflictAlgorithm: ConflictAlgorithm.replace);
+      ref.invalidate(_clsRelIncludeProvider(m.id));
+    }
+
+    void info(GraphNode n) {
+      final it = itemById[n.key];
+      final owner = it != null ? m.name : (index.where((e) => e.key == n.key).firstOrNull?.moduleName ?? '');
+      final lines = it == null
+          ? const <String>[]
+          : [
+              for (final f in data.fields.take(4))
+                if (data.text(it, f, l) case final String v when v.isNotEmpty) '${f.description}: $v',
+            ];
+      showDdxSheet<void>(
+        context: context,
+        showDragHandle: true,
+        builder: (sc) => SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
+            child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(n.label, style: Theme.of(sc).textTheme.titleMedium),
+              Text(owner, style: Theme.of(sc).textTheme.bodySmall),
+              const SizedBox(height: 8),
+              for (final s in lines) Text(s),
+              if (it?.note?.isNotEmpty == true) Padding(padding: const EdgeInsets.only(top: 6), child: Text(it!.note!, maxLines: 4, overflow: TextOverflow.ellipsis)),
+            ]),
+          ),
+        ),
+      );
+    }
+
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      if (others.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+          child: Wrap(spacing: 6, runSpacing: 6, children: [
+            for (final o in others)
+              DdxChip.filter(
+                o.name,
+                key: ValueKey('cls-rel-include-${o.moduleId}'),
+                selected: include.contains(o.moduleId),
+                color: hexColor(o.colorCode),
+                onSelected: (v) => toggle(o.moduleId, v),
+              ),
+          ]),
+        ),
       GraphView(
         fullScreen: ctx.fullScreen,
         nodes: [
-          for (final i in data.items) GraphNode('cobj_${i.id}', i.name, color: hexColor(i.colorCode ?? ctx.source.colorCode)),
+          for (final i in data.items)
+            GraphNode('cobj_${i.id}', i.name,
+                color: hexColor(i.colorCode ?? m.colorCode),
+                icon: iconForRef(i.icon),
+                glyph: glyphForRef(i.icon),
+                outer: !touched.contains('cobj_${i.id}')),
+          for (final it in extra)
+            GraphNode(it.key, it.name, color: hexColor(it.colorCode ?? modName[it.moduleId]?.colorCode), outer: !touched.contains(it.key)),
         ],
-        edges: [for (final r in inner) GraphEdge(r.from, r.to, label: relLabel(r))],
-        onTap: (n) => openElement(context, ctx.nexusId, ctx.source.id, n.key),
+        edges: edges,
+        onTap: (n) => itemById.containsKey(n.key) ? openElement(context, ctx.nexusId, m.id, n.key) : openKey(context, ref, n.key),
+        onLongPress: info,
       ),
       if (!ctx.fullScreen)
         if (data.relations.isEmpty)
@@ -928,25 +1035,28 @@ Future<void> editClsField(BuildContext context, WidgetRef ref, int moduleId, Cla
               const SizedBox(height: 12),
               DdxField(controller: expr, label: l.clsTypeFormula, hint: l.clsFormulaHint),
             ],
-            ExpansionTile(
-              tilePadding: EdgeInsets.zero,
-              initiallyExpanded: levelable || hasCondition,
-              title: Text(l.clsLevelAndCondition),
-              subtitle: Text(l.clsLevelAndConditionHint, style: Theme.of(d).textTheme.bodySmall),
-              children: [
-                SwitchListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(l.clsLevelable),
-                  value: levelable,
-                  onChanged: (v) => setLocal(() => levelable = v),
-                ),
-                SwitchListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(l.clsCondition),
-                  value: hasCondition,
-                  onChanged: (v) => setLocal(() => hasCondition = v),
-                ),
-              ],
+            // Procress 28 part 3: always open, two checkboxes, each with a line
+            // saying what it does (as EXE's field form)
+            const SizedBox(height: 16),
+            Text(l.clsLevelAndCondition, style: Theme.of(d).textTheme.titleSmall),
+            Text(l.clsLevelAndConditionHint, style: Theme.of(d).textTheme.bodySmall),
+            CheckboxListTile(
+              key: const ValueKey('cls-field-levelable'),
+              contentPadding: EdgeInsets.zero,
+              controlAffinity: ListTileControlAffinity.leading,
+              title: Text(l.clsLevelable),
+              subtitle: Text(l.clsLevelableHint),
+              value: levelable,
+              onChanged: (v) => setLocal(() => levelable = v ?? false),
+            ),
+            CheckboxListTile(
+              key: const ValueKey('cls-field-condition'),
+              contentPadding: EdgeInsets.zero,
+              controlAffinity: ListTileControlAffinity.leading,
+              title: Text(l.clsCondition),
+              subtitle: Text(l.clsConditionHint),
+              value: hasCondition,
+              onChanged: (v) => setLocal(() => hasCondition = v ?? false),
             ),
           ]),
         ),
@@ -1106,7 +1216,7 @@ class ClsLevelTable extends ConsumerWidget {
                     key: ValueKey(r.id),
                     dense: true,
                     contentPadding: EdgeInsets.zero,
-                    leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.menu, size: 20)),
+                    leading: ReorderableDragStartListener(index: i, child: const Icon(Icons.drag_handle, size: 20)),
                     title: Text.rich(
                       TextSpan(
                         children: [
