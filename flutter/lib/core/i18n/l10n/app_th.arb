@@ -1023,5 +1023,12 @@
   "viewModeDetails": "รายละเอียด",
   "folderColKind": "ชนิด",
   "folderColItems": "จำนวน",
-  "folderColUpdated": "แก้ล่าสุด"
+  "folderColUpdated": "แก้ล่าสุด",
+  "clsColorIcon": "สีและไอคอน",
+  "iconCustom": "ไอคอน กำหนดเอง",
+  "iconCustomText": "ตัวอักษร / อีโมจิ",
+  "iconUploadedHere": "ที่อัปโหลดไว้ใน Nexus นี้",
+  "colorCustom": "สีกำหนดเอง",
+  "iconNone": "ไม่มีไอคอน",
+  "iconUse": "ใช้"
 }

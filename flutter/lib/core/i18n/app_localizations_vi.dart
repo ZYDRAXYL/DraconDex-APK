@@ -3082,4 +3082,25 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get folderColUpdated => 'Ngày sửa';
+
+  @override
+  String get clsColorIcon => 'Màu và biểu tượng';
+
+  @override
+  String get iconCustom => 'Biểu tượng tùy chỉnh';
+
+  @override
+  String get iconCustomText => 'Chữ hoặc emoji';
+
+  @override
+  String get iconUploadedHere => 'Đã tải lên trong Nexus này';
+
+  @override
+  String get colorCustom => 'Màu tùy chỉnh';
+
+  @override
+  String get iconNone => 'Không có biểu tượng';
+
+  @override
+  String get iconUse => 'Dùng';
 }

@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Chi tiết",
   "folderColKind": "Loại",
   "folderColItems": "Mục",
-  "folderColUpdated": "Ngày sửa"
+  "folderColUpdated": "Ngày sửa",
+  "clsColorIcon": "Màu và biểu tượng",
+  "iconCustom": "Biểu tượng tùy chỉnh",
+  "iconCustomText": "Chữ hoặc emoji",
+  "iconUploadedHere": "Đã tải lên trong Nexus này",
+  "colorCustom": "Màu tùy chỉnh",
+  "iconNone": "Không có biểu tượng",
+  "iconUse": "Dùng"
 }

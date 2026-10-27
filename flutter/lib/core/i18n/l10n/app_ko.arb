@@ -1023,5 +1023,12 @@
   "viewModeDetails": "자세히",
   "folderColKind": "종류",
   "folderColItems": "항목",
-  "folderColUpdated": "수정한 날짜"
+  "folderColUpdated": "수정한 날짜",
+  "clsColorIcon": "색상 및 아이콘",
+  "iconCustom": "사용자 지정 아이콘",
+  "iconCustomText": "글자 또는 이모지",
+  "iconUploadedHere": "이 Nexus에 업로드됨",
+  "colorCustom": "사용자 지정 색",
+  "iconNone": "아이콘 없음",
+  "iconUse": "사용"
 }

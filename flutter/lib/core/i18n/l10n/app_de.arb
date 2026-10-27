@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Details",
   "folderColKind": "Art",
   "folderColItems": "Einträge",
-  "folderColUpdated": "Geändert"
+  "folderColUpdated": "Geändert",
+  "clsColorIcon": "Farbe & Symbol",
+  "iconCustom": "Eigenes Symbol",
+  "iconCustomText": "Zeichen oder Emoji",
+  "iconUploadedHere": "In diesem Nexus hochgeladen",
+  "colorCustom": "Eigene Farbe",
+  "iconNone": "Kein Symbol",
+  "iconUse": "Verwenden"
 }

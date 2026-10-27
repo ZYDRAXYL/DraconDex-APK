@@ -3079,4 +3079,25 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get folderColUpdated => 'Gewijzigd';
+
+  @override
+  String get clsColorIcon => 'Kleur en pictogram';
+
+  @override
+  String get iconCustom => 'Eigen pictogram';
+
+  @override
+  String get iconCustomText => 'Letter of emoji';
+
+  @override
+  String get iconUploadedHere => 'Geüpload in deze Nexus';
+
+  @override
+  String get colorCustom => 'Eigen kleur';
+
+  @override
+  String get iconNone => 'Geen pictogram';
+
+  @override
+  String get iconUse => 'Gebruiken';
 }

@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Détails",
   "folderColKind": "Type",
   "folderColItems": "Éléments",
-  "folderColUpdated": "Modifié"
+  "folderColUpdated": "Modifié",
+  "clsColorIcon": "Couleur et icône",
+  "iconCustom": "Icône personnalisée",
+  "iconCustomText": "Lettre ou émoji",
+  "iconUploadedHere": "Importées dans ce Nexus",
+  "colorCustom": "Couleur personnalisée",
+  "iconNone": "Aucune icône",
+  "iconUse": "Utiliser"
 }

@@ -3082,4 +3082,25 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get folderColUpdated => 'Изменено';
+
+  @override
+  String get clsColorIcon => 'Цвет и значок';
+
+  @override
+  String get iconCustom => 'Свой значок';
+
+  @override
+  String get iconCustomText => 'Буква или эмодзи';
+
+  @override
+  String get iconUploadedHere => 'Загружено в этот Nexus';
+
+  @override
+  String get colorCustom => 'Свой цвет';
+
+  @override
+  String get iconNone => 'Без значка';
+
+  @override
+  String get iconUse => 'Использовать';
 }

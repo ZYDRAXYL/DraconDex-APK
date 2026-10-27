@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Таблиця",
   "folderColKind": "Тип",
   "folderColItems": "Елементи",
-  "folderColUpdated": "Змінено"
+  "folderColUpdated": "Змінено",
+  "clsColorIcon": "Колір і значок",
+  "iconCustom": "Власний значок",
+  "iconCustomText": "Літера або емодзі",
+  "iconUploadedHere": "Завантажено в цей Nexus",
+  "colorCustom": "Власний колір",
+  "iconNone": "Без значка",
+  "iconUse": "Використати"
 }

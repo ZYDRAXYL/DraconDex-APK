@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Details",
   "folderColKind": "Soort",
   "folderColItems": "Items",
-  "folderColUpdated": "Gewijzigd"
+  "folderColUpdated": "Gewijzigd",
+  "clsColorIcon": "Kleur en pictogram",
+  "iconCustom": "Eigen pictogram",
+  "iconCustomText": "Letter of emoji",
+  "iconUploadedHere": "Geüpload in deze Nexus",
+  "colorCustom": "Eigen kleur",
+  "iconNone": "Geen pictogram",
+  "iconUse": "Gebruiken"
 }

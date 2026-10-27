@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Particulers",
   "folderColKind": "Kynde",
   "folderColItems": "Thynges",
-  "folderColUpdated": "Amended"
+  "folderColUpdated": "Amended",
+  "clsColorIcon": "Hewe and ymage",
+  "iconCustom": "Ymage of thyne owne",
+  "iconCustomText": "Lettre or emoji",
+  "iconUploadedHere": "Brought into this Nexus",
+  "colorCustom": "A hewe of thyne owne",
+  "iconNone": "No ymage",
+  "iconUse": "Use"
 }

@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Ayrıntılar",
   "folderColKind": "Tür",
   "folderColItems": "Öğeler",
-  "folderColUpdated": "Değiştirilme"
+  "folderColUpdated": "Değiştirilme",
+  "clsColorIcon": "Renk ve simge",
+  "iconCustom": "Özel simge",
+  "iconCustomText": "Harf veya emoji",
+  "iconUploadedHere": "Bu Nexus'a yüklenenler",
+  "colorCustom": "Özel renk",
+  "iconNone": "Simge yok",
+  "iconUse": "Kullan"
 }

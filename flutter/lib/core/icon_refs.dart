@@ -11,6 +11,10 @@ IconData? iconForRef(String? ref) {
   return _catalog[ref.startsWith('svg:') ? ref.substring(4) : ref];
 }
 
+/// The desktop catalogue's names this app can draw, in its order — the
+/// icon picker's first set (Procress 29 part 7).
+List<String> get appIconKeys => _catalog.keys.toList();
+
 /// The glyph of a `sym:` reference, or null.
 String? glyphForRef(String? ref) => ref != null && ref.startsWith('sym:') && ref.length > 4 ? ref.substring(4) : null;
 

@@ -1023,5 +1023,12 @@
   "viewModeDetails": "Detail",
   "folderColKind": "Jenis",
   "folderColItems": "Item",
-  "folderColUpdated": "Diubah"
+  "folderColUpdated": "Diubah",
+  "clsColorIcon": "Warna & ikon",
+  "iconCustom": "Ikon sendiri",
+  "iconCustomText": "Huruf atau emoji",
+  "iconUploadedHere": "Diunggah di Nexus ini",
+  "colorCustom": "Warna sendiri",
+  "iconNone": "Tanpa ikon",
+  "iconUse": "Pakai"
 }

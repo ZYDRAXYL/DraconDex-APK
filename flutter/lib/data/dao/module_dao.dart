@@ -46,6 +46,19 @@ class ModuleDao {
     await db.delete('nexus', where: 'id=?', whereArgs: [id]);
   }
 
+  /// The images uploaded as icons in this Nexus, newest use first, to pick
+  /// again (Procress 29 part 7; EXE src/db/module.js uploadedIcons). They live
+  /// in the rows that use them, so they travel with the vault already.
+  Future<List<String>> uploadedIcons(int nexusRef) async {
+    final rows = await db.rawQuery('''
+      SELECT icon FROM (
+        SELECT icon, update_at AS at FROM module WHERE nexus_ref=? AND icon LIKE 'img:%'
+        UNION ALL SELECT o.icon, o.update_at FROM classifier_object o JOIN module m ON m.id=o.module_ref WHERE m.nexus_ref=? AND o.icon LIKE 'img:%'
+        UNION ALL SELECT e.icon, e.update_at FROM timeline_event e JOIN timeline tl ON tl.id=e.timeline_id JOIN module m ON m.id=tl.module_ref WHERE m.nexus_ref=? AND e.icon LIKE 'img:%'
+      ) GROUP BY icon ORDER BY MAX(at) DESC LIMIT 120''', [nexusRef, nexusRef, nexusRef]);
+    return [for (final r in rows) r['icon'] as String];
+  }
+
   // ---- Module tree ---------------------------------------------------------
 
   static const _selectModule = '''

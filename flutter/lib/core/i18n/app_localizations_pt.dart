@@ -3082,4 +3082,25 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get folderColUpdated => 'Modificado';
+
+  @override
+  String get clsColorIcon => 'Cor e ícone';
+
+  @override
+  String get iconCustom => 'Ícone personalizado';
+
+  @override
+  String get iconCustomText => 'Letra ou emoji';
+
+  @override
+  String get iconUploadedHere => 'Enviados neste Nexus';
+
+  @override
+  String get colorCustom => 'Cor personalizada';
+
+  @override
+  String get iconNone => 'Sem ícone';
+
+  @override
+  String get iconUse => 'Usar';
 }

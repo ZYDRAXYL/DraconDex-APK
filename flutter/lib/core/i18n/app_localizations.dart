@@ -6276,6 +6276,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Updated'**
   String get folderColUpdated;
+
+  /// No description provided for @clsColorIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'Colour & icon'**
+  String get clsColorIcon;
+
+  /// No description provided for @iconCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom icon'**
+  String get iconCustom;
+
+  /// No description provided for @iconCustomText.
+  ///
+  /// In en, this message translates to:
+  /// **'Letter or emoji'**
+  String get iconCustomText;
+
+  /// No description provided for @iconUploadedHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded in this Nexus'**
+  String get iconUploadedHere;
+
+  /// No description provided for @colorCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'A colour of your own'**
+  String get colorCustom;
+
+  /// No description provided for @iconNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No icon'**
+  String get iconNone;
+
+  /// No description provided for @iconUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Use'**
+  String get iconUse;
 }
 
 class _AppLocalizationsDelegate

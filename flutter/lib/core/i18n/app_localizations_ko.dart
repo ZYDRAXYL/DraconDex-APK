@@ -3082,4 +3082,25 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get folderColUpdated => '수정한 날짜';
+
+  @override
+  String get clsColorIcon => '색상 및 아이콘';
+
+  @override
+  String get iconCustom => '사용자 지정 아이콘';
+
+  @override
+  String get iconCustomText => '글자 또는 이모지';
+
+  @override
+  String get iconUploadedHere => '이 Nexus에 업로드됨';
+
+  @override
+  String get colorCustom => '사용자 지정 색';
+
+  @override
+  String get iconNone => '아이콘 없음';
+
+  @override
+  String get iconUse => '사용';
 }
