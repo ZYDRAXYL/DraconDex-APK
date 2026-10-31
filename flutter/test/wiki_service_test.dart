@@ -176,4 +176,34 @@ void main() {
     expect(await WikiService.resolveName(db, 'obj:book 1/Cast/aria', nx), 'cobj_$a1');
     expect(await WikiService.resolveName(db, 'obj:Book 3/Cast/Aria', nx), isNull);
   });
+
+  // Procress 31 part 1: a module or object whose name holds | [ ] — the link
+  // pattern used to end the name at the first | and read the rest as an alias.
+  test('names with | [ ]: quoted links read whole; old unquoted ones still resolve', () async {
+    List<(String, String?)> all(String s) => [for (final m in WikiService.parse(s)) (m.name, m.alias)];
+    expect(all('[[mod:"Absolute |12|"/Charactors/object1]]'), [('mod:"Absolute |12|"/Charactors/object1', null)]);
+    expect(all('[[obj:"A[1]"/x|y]]'), [('obj:"A[1]"/x', 'y')]);
+    expect(all('[[mod:Absolute |12|/Charactors/object1]]'), [('mod:Absolute |12|/Charactors/object1', null)],
+        reason: 'written before the quotes: read whole');
+    expect(all('[[Name|alias]] [[B]]'), [('Name', 'alias'), ('B', null)]);
+    expect(all('[[He said "hi]] then [[x]]'), [('He said "hi', null), ('x', null)], reason: 'a lone " is a character');
+    expect(all('[[a "b]] text "c]]'), [('a "b', null)], reason: 'a quote never spans ]]');
+    expect(WikiService.displayText('see [[mod:Absolute |12|/Charactors/object1]]'), 'see object1');
+    final sw = Stopwatch()..start();
+    WikiService.parse('[[${'"x' * 20000} |');
+    WikiService.parse('[[${'""' * 20000}');
+    expect(sw.elapsedMilliseconds, lessThan(500), reason: 'no exponential backtracking');
+
+    final db = await openVault();
+    final nx = await db.insert('nexus', {'name': 'W'});
+    final dao = ModuleDao(db);
+    final abs = await dao.createModule(nexusRef: nx, name: 'Absolute |12|', kind: ModuleKind.collector);
+    final cast = await dao.createModule(nexusRef: nx, parentId: abs, name: 'Charactors', kind: ModuleKind.classifier);
+    await dao.createModule(nexusRef: nx, name: 'Charactors', kind: ModuleKind.classifier);
+    final o1 = await ClassifierDao(db).createItem(moduleRef: cast, name: 'object1');
+    final br = await ClassifierDao(db).createItem(moduleRef: cast, name: 'A[1]');
+    expect(await WikiService.resolveName(db, 'mod:"Absolute |12|"/Charactors/object1', nx), 'cobj_$o1');
+    expect(await WikiService.resolveName(db, 'obj:"Absolute |12|"/Charactors/"A[1]"', nx), 'cobj_$br');
+    expect(await WikiService.resolveName(db, WikiService.parse('[[mod:Absolute |12|/Charactors/object1]]').single.name, nx), 'cobj_$o1');
+  });
 }
