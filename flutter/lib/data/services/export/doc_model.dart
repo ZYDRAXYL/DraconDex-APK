@@ -10,6 +10,8 @@
 /// does not hold would go nowhere.
 library;
 
+import '../wiki_service.dart';
+
 class Run {
   final String text;
   final bool b, i, u, s, code, br;
@@ -33,15 +35,14 @@ class DocBlock {
   const DocBlock(this.t, {this.level = 0, this.ordered = false, this.depth = 0, this.n = 0, this.runs = const [], this.text = ''});
 }
 
-final _wiki = RegExp(r'\[\[([^[\]|]+?)(?:\|([^[\]]+?))?\]\]');
-
 // ── Markdown → blocks ───────────────────────────────────────────────────
 final _inline = RegExp(
   r'`([^`\n]+)`|\[([^\]\n]+)\]\((https?://[^)\s]+)\)|\*\*([^*\n]+)\*\*|~~([^~\n]+)~~|(?:^|(?<=[^*\w]))\*([^*\n]+)\*(?!\*)|(?:^|(?<=\W))_([^_\n]+)_(?!\w)',
 );
 
 List<Run> inlineRuns(String text) {
-  final src = text.replaceAllMapped(_wiki, (m) => (m[2] ?? m[1]!).trim());
+  // Procress 31 part 1: WikiService's own pattern; a path link reads as its object.
+  final src = text.replaceAllMapped(WikiService.linkRe, (m) => WikiService.matchOf(m).label.trim());
   final runs = <Run>[];
   var at = 0;
   for (final m in _inline.allMatches(src)) {

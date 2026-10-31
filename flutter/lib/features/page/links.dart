@@ -6,6 +6,7 @@ import '../../core/i18n/app_localizations.dart';
 import '../../core/links/safe_launch.dart';
 import '../../data/models/recent_view_model.dart';
 import '../../data/models/viewer_model.dart';
+import '../../data/services/wiki_service.dart';
 import '../../widgets/markdown_view.dart';
 import 'block_style.dart';
 import 'views/view_common.dart';
@@ -89,7 +90,7 @@ ResolvedLink resolveLink(PageLink l, List<IndexedItem>? index) {
 /// The words a link shows: its label (a [[wikilink]] in it read as its
 /// text), else what it points at.
 String linkLabel(PageLink l, ResolvedLink r) {
-  final label = l.label.replaceAllMapped(RegExp(r'\[\[([^\]|]+)(?:\|([^\]]+))?\]\]'), (m) => m[2] ?? m[1]!).trim();
+  final label = l.label.replaceAllMapped(WikiService.linkRe, (m) => WikiService.matchOf(m).label).trim();
   if (label.isNotEmpty) return label;
   if (r.name.isNotEmpty) return r.name;
   if (r.host != null) return r.host!;

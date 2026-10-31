@@ -149,8 +149,9 @@ class MarkdownView extends ConsumerWidget {
   Widget _rich(BuildContext context, WidgetRef ref, String line, TextStyle style) =>
       Text.rich(TextSpan(style: style, children: inlineSpans(context, ref, line, style)));
 
+  // Groups 1–2 are WikiService.linkRe's own (Procress 31 part 1).
   static final _inlineRe =
-      RegExp(r'\[\[([^\[\]|]+?)(?:\|([^\[\]]+?))?\]\]|\*\*(.+?)\*\*|\*(.+?)\*|`([^`]+)`|\[\^([A-Za-z0-9_-]{1,20})\]');
+      RegExp('${WikiService.linkRe.pattern}' r'|\*\*(.+?)\*\*|\*(.+?)\*|`([^`]+)`|\[\^([A-Za-z0-9_-]{1,20})\]');
 
   List<InlineSpan> inlineSpans(BuildContext context, WidgetRef ref, String line, TextStyle style) {
     final scheme = Theme.of(context).colorScheme;
@@ -161,7 +162,7 @@ class MarkdownView extends ConsumerWidget {
     for (final m in _inlineRe.allMatches(line)) {
       if (m.start > at) out.add(TextSpan(text: line.substring(at, m.start)));
       if (m.group(1) != null) {
-        final link = WikiLinkMatch(m.start, m.end, m.group(1)!.trim(), m.group(2)?.trim());
+        final link = WikiService.matchOf(m);
         // Known from the index when it has loaded; an unknown name is only
         // dimmed once the index says so, so nothing flickers while it loads.
         final known = index == null || names.contains(link.label.toLowerCase()) || link.name.contains(':');
@@ -311,7 +312,7 @@ Future<String> linkPreviewText(DatabaseExecutor db, String key) async {
   final raw = r.isEmpty ? '' : '${r.first['t'] ?? ''}';
   final plain = raw
       .replaceAll(RegExp(r'<[^>]+>'), ' ')
-      .replaceAllMapped(RegExp(r'\[\[([^\]|]+)(?:\|([^\]]+))?\]\]'), (x) => x[2] ?? x[1]!)
+      .replaceAllMapped(WikiService.linkRe, (x) => WikiService.matchOf(x).label)
       .replaceAll(RegExp(r'[#*_`>]+'), '')
       .replaceAll(RegExp(r'\s+'), ' ')
       .trim();

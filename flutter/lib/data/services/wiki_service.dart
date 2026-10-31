@@ -95,7 +95,30 @@ class ContentSource {
 /// the same thing on both apps. A `ns:` prefix forces one resolver.
 class WikiService {
   /// Keep in step with EXE `WIKILINK_RE` (db/wiki.js) and `MD_WIKILINK_RE`.
-  static final linkRe = RegExp(r'\[\[([^\[\]|]+?)(?:\|([^\[\]]+?))?\]\]');
+  /// Procress 31 part 1: a `"…"` part of the name is taken whole, so a module
+  /// called `Absolute |12|` or `A[1]` stays in the name instead of starting
+  /// the `|alias`. A `"…"` never spans a line or a `[[` / `]]`; a lone `"` is
+  /// an ordinary character, and each `"` has one way to match, so text full
+  /// of quotes cannot backtrack exponentially.
+  static final linkRe = RegExp(r'\[\[((?:"(?:[^"\n[\]]|\[(?!\[)|\](?!\]))*"|"(?!(?:[^"\n[\]]|\[(?!\[)|\](?!\]))*")|[^[\]|"])+?)(?:\|([^[\]]+?))?\]\]');
+
+  /// A path link written before such names were quoted
+  /// (`[[mod:Absolute |12|/Charactors/object1]]`) matches cut at its first
+  /// `|`: when the part before it is not a path but the whole text is, it is
+  /// read whole. EXE db/wiki.js `wikiLinkSplit` — keep in sync.
+  static (String, String?) split(String name, String? alias) {
+    if (alias == null || WikiPath.parse(name) != null || !RegExp(r'^\s*(obj|mod):', caseSensitive: false).hasMatch(name)) {
+      return (name, alias);
+    }
+    final whole = '$name|$alias';
+    return WikiPath.parse(whole) != null ? (whole, null) : (name, alias);
+  }
+
+  /// [m] (a [linkRe] match, or one whose groups 1–2 are the link's) as a link.
+  static WikiLinkMatch matchOf(Match m) {
+    final (name, alias) = split(m.group(1)!, m.group(2));
+    return WikiLinkMatch(m.start, m.end, name.trim(), alias?.trim());
+  }
 
   /// Procress 27 part 1: [text] as a reader sees it — every link as its name
   /// alone (`|alias`, else the object of `[[obj:Module/Object]]`, else the
@@ -106,9 +129,9 @@ class WikiService {
     var at = 0;
     for (final m in linkRe.allMatches(text)) {
       if (m.start > at) out.add((text.substring(at, m.start), false));
-      final name = m.group(1)!.trim();
-      final alias = m.group(2)?.trim();
-      out.add(((alias != null && alias.isNotEmpty) ? alias : WikiPath.parse(name)?.object ?? name, true));
+      final l = matchOf(m);
+      final alias = l.alias;
+      out.add(((alias != null && alias.isNotEmpty) ? alias : WikiPath.parse(l.name)?.object ?? l.name, true));
       at = m.end;
     }
     if (at < text.length) out.add((text.substring(at), false));
@@ -120,7 +143,7 @@ class WikiService {
 
   static List<WikiLinkMatch> parse(String text) => [
         for (final m in linkRe.allMatches(text))
-          if (m.group(1)!.trim().isNotEmpty) WikiLinkMatch(m.start, m.end, m.group(1)!.trim(), m.group(2)?.trim()),
+          if (m.group(1)!.trim().isNotEmpty) matchOf(m),
       ];
 
   // ── resolvers ────────────────────────────────────────────────────────────
