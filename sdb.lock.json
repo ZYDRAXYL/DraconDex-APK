@@ -3,8 +3,8 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "sdb-v2.1.2",
-    "version": "2.1.2"
+    "ref": "sdb-v2.1.3",
+    "version": "2.1.3"
   },
   "expect": {
     "vaultSchemaVersion": 7,
@@ -25,7 +25,7 @@
     },
     "flutter/lib/core/theme/tokens.g.dart": {
       "artifact": "generated/flutter/tokens.g.dart",
-      "sha256": "9e440614cf3a50d92073359bdf6453bb4759cff266e81bde11ef3670b1f66784"
+      "sha256": "d49f5b4744150d44146b85ac3b8b3d7dc49d654f64138fb17756cdcb622125a6"
     },
     "flutter/assets/images/DraconDex-IconApp.png": {
       "artifact": "assets/flutter/DraconDex-IconApp.png",
