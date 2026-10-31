@@ -115,7 +115,7 @@ class WikiService {
   }
 
   /// [m] (a [linkRe] match, or one whose groups 1–2 are the link's) as a link.
-  static WikiLinkMatch matchOf(RegExpMatch m) {
+  static WikiLinkMatch matchOf(Match m) {
     final (name, alias) = split(m.group(1)!, m.group(2));
     return WikiLinkMatch(m.start, m.end, name.trim(), alias?.trim());
   }
