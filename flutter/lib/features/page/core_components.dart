@@ -32,8 +32,9 @@ import '../../widgets/ddx_chip.dart';
 import '../../widgets/ddx_card.dart';
 import '../../widgets/ddx_field.dart';
 
-/// Properties, Related, and an element page's body — the three components
-/// every page can hold (EXE renderer/page/blocks.js, item-page.js).
+/// Properties, Related, and an element page's body (and its desktop-only
+/// fields block) — the components every page can hold (EXE
+/// renderer/page/blocks.js, item-page.js).
 final List<ComponentDef> coreComponents = [
   ComponentDef(
     id: 'core.properties',
@@ -57,6 +58,18 @@ final List<ComponentDef> coreComponents = [
     build: (c, x) => x.itemKey == null || x.itemKey == '*'
         ? SharedLayoutNote(text: AppLocalizations.of(c)!.pbSharedLayout)
         : ItemBody(module: x.page.module, itemKey: x.itemKey!),
+  ),
+  // The desktop's element fields as a block of their own (EXE item-page.js
+  // item.fields, APP src/design/no-modal rule 2). Here ItemBody already
+  // edits an element's fields, so the block draws nothing; it is registered
+  // so a layout made on the desktop keeps it quietly instead of showing
+  // "not in this app yet". Not offered when adding a block (arrange_mode).
+  ComponentDef(
+    id: 'item.fields',
+    kind: null,
+    once: true,
+    label: (l) => l.classifierFields,
+    build: (c, x) => const SizedBox.shrink(),
   ),
 ];
 
