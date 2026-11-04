@@ -15,6 +15,7 @@ import io.flutter.plugin.common.MethodChannel
 class MainActivity : FlutterActivity() {
     private var pending: Intent? = null
     private var channel: MethodChannel? = null
+    private var saf: SafChannel? = null // Port Link (Procress 32 9.1): USB-OTG / SD through SAF
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
@@ -30,6 +31,14 @@ class MainActivity : FlutterActivity() {
                 }
             }
         }
+        saf = SafChannel(this, MethodChannel(flutterEngine.dartExecutor.binaryMessenger, SafChannel.NAME))
+    }
+
+    // the folder picker's answer (SafChannel.pickTree) — FlutterActivity is a
+    // plain Activity, so startActivityForResult / onActivityResult is its way
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (saf?.onActivityResult(requestCode, resultCode, data) == true) return
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     // already running (singleTop): tell Dart there is something to take
