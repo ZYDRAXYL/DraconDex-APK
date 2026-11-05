@@ -3103,4 +3103,94 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get iconUse => 'ใช้';
+
+  @override
+  String get portDriveTitle => 'ไดร์ฟพกพา';
+
+  @override
+  String get portDriveSubtitle => 'sync Nexus กับ DraconDex แบบพกพาบนแฟลชไดร์ฟหรือการ์ด SD';
+
+  @override
+  String get portDriveAdd => 'เพิ่มโฟลเดอร์ของไดร์ฟ';
+
+  @override
+  String get portDriveAddHint => 'เลือกโฟลเดอร์ที่มีไฟล์ dracondex-portable.json';
+
+  @override
+  String get portDriveForget => 'ลืมไดร์ฟนี้';
+
+  @override
+  String get portDriveNotFound => 'ไม่พบ DraconDex แบบพกพาในโฟลเดอร์นี้';
+
+  @override
+  String get portDriveUnplugged => 'ไม่ได้เสียบอยู่';
+
+  @override
+  String get portDriveNeverRan => 'เปิดแอปพกพาบนคอมพิวเตอร์สักครั้งก่อน';
+
+  @override
+  String get portDriveEmpty => 'ยังไม่มี Nexus บนไดร์ฟนี้';
+
+  @override
+  String get portCloneHere => 'Clone มาเครื่องนี้';
+
+  @override
+  String get portCloneToDrive => 'Clone ลงไดร์ฟพกพา';
+
+  @override
+  String get portPickDrive => 'ไดร์ฟไหน?';
+
+  @override
+  String get portSyncNow => 'Sync ตอนนี้';
+
+  @override
+  String get portUnlink => 'เลิก sync';
+
+  @override
+  String get portUnlinkMessage => 'ทั้งสองฉบับยังอยู่ แต่จะไม่ sync กันอีก';
+
+  @override
+  String get portLinked => 'sync กับไดร์ฟอยู่';
+
+  @override
+  String get portSynced => 'sync แล้ว';
+
+  @override
+  String get portUnchanged => 'เป็นปัจจุบันแล้ว';
+
+  @override
+  String get portNeedsYou => 'ถูกแก้ทั้งสองฝั่ง — แตะ Sync ตอนนี้';
+
+  @override
+  String get portConflictTitle => 'ถูกแก้ทั้งสองฝั่ง';
+
+  @override
+  String get portConflictHint => 'เลือกว่าจะเก็บค่าไหนในแต่ละข้อ';
+
+  @override
+  String get portThisPhone => 'เครื่องนี้';
+
+  @override
+  String get portTheDrive => 'ไดร์ฟ';
+
+  @override
+  String get portAllPhone => 'ทั้งหมด: เครื่องนี้';
+
+  @override
+  String get portAllDrive => 'ทั้งหมด: ไดร์ฟ';
+
+  @override
+  String get portApply => 'ใช้';
+
+  @override
+  String get portErrNoDrive => 'ไม่ได้เสียบไดร์ฟอยู่';
+
+  @override
+  String get portErrChanged => 'ไดร์ฟเปลี่ยนระหว่างนั้น — ลองอีกครั้ง';
+
+  @override
+  String get portErrMapBroken => 'Nexus นี้ถูกแทนที่หลังจาก link แล้ว — เลิก sync แล้ว clone ใหม่';
+
+  @override
+  String get portErrFailed => 'sync ไม่สำเร็จ ({code})';
 }

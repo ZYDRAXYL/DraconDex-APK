@@ -3103,4 +3103,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get iconUse => 'Use';
+
+  @override
+  String get portDriveTitle => 'Portable drive';
+
+  @override
+  String get portDriveSubtitle => 'Sync Nexuses with a portable DraconDex on a USB drive or SD card.';
+
+  @override
+  String get portDriveAdd => 'Add the drive\'s folder';
+
+  @override
+  String get portDriveAddHint => 'Pick the folder that holds dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Forget this drive';
+
+  @override
+  String get portDriveNotFound => 'No portable DraconDex in this folder';
+
+  @override
+  String get portDriveUnplugged => 'Not plugged in';
+
+  @override
+  String get portDriveNeverRan => 'Start the portable app on a computer once first';
+
+  @override
+  String get portDriveEmpty => 'No Nexus on this drive yet';
+
+  @override
+  String get portCloneHere => 'Clone to this phone';
+
+  @override
+  String get portCloneToDrive => 'Clone to portable drive';
+
+  @override
+  String get portPickDrive => 'Which drive?';
+
+  @override
+  String get portSyncNow => 'Sync now';
+
+  @override
+  String get portUnlink => 'Stop syncing';
+
+  @override
+  String get portUnlinkMessage => 'Both copies stay. They are no longer synced.';
+
+  @override
+  String get portLinked => 'Synced with the drive';
+
+  @override
+  String get portSynced => 'Synced';
+
+  @override
+  String get portUnchanged => 'Already up to date';
+
+  @override
+  String get portNeedsYou => 'Changed on both sides — tap Sync now';
+
+  @override
+  String get portConflictTitle => 'Changed on both sides';
+
+  @override
+  String get portConflictHint => 'Pick which value to keep for each one.';
+
+  @override
+  String get portThisPhone => 'This phone';
+
+  @override
+  String get portTheDrive => 'Drive';
+
+  @override
+  String get portAllPhone => 'All: this phone';
+
+  @override
+  String get portAllDrive => 'All: drive';
+
+  @override
+  String get portApply => 'Apply';
+
+  @override
+  String get portErrNoDrive => 'The drive isn\'t plugged in';
+
+  @override
+  String get portErrChanged => 'The drive changed meanwhile — try again';
+
+  @override
+  String get portErrMapBroken => 'This Nexus was replaced after it was linked. Stop syncing, then clone it again.';
+
+  @override
+  String get portErrFailed => 'Couldn\'t sync ({code})';
 }

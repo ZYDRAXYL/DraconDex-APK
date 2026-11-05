@@ -3,8 +3,8 @@
   "self": "APK",
   "source": {
     "repo": "ZYDRAXYL/DraconDex-SDB",
-    "ref": "sdb-v2.1.4",
-    "version": "2.1.4"
+    "ref": "sdb-v2.1.6",
+    "version": "2.1.6"
   },
   "expect": {
     "vaultSchemaVersion": 7,
@@ -21,7 +21,7 @@
     },
     "flutter/lib/core/entity/entity_kinds.g.dart": {
       "artifact": "generated/flutter/entity_kinds.g.dart",
-      "sha256": "ce30f7eee2552a5496ab33f8dda8e0662043c5356e4340537636b021ff47f9d5"
+      "sha256": "4941871fb1ecad58850f30ac89921aaee0ccc7c2c45bec2ce8a3ebeb1a5fd5ef"
     },
     "flutter/lib/core/theme/tokens.g.dart": {
       "artifact": "generated/flutter/tokens.g.dart",
@@ -98,6 +98,10 @@
     "flutter/test/fixtures/stress-v2.json": {
       "artifact": "fixtures/stress-v2.json",
       "sha256": "4e9d5190388af2d4c194cf29a6a3d28a9399af148d73cfa0d5c6d5624aa7d5d9"
+    },
+    "flutter/test/fixtures/portlink-merge-v1.json": {
+      "artifact": "fixtures/portlink-merge-v1.json",
+      "sha256": "12db42fa33c4614d37a76af8a6c8f6e661162bbe464aa295cf1e00e5d477fb63"
     },
     "flutter/assets/templates/guide/en.json": {
       "artifact": "templates/guide/en.json",

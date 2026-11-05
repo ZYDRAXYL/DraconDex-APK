@@ -3103,4 +3103,94 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get iconUse => 'Pakai';
+
+  @override
+  String get portDriveTitle => 'Drive portabel';
+
+  @override
+  String get portDriveSubtitle => 'Sinkronkan Nexus dengan DraconDex portabel di flashdisk atau kartu SD.';
+
+  @override
+  String get portDriveAdd => 'Tambahkan folder drive';
+
+  @override
+  String get portDriveAddHint => 'Pilih folder yang berisi dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Lupakan drive ini';
+
+  @override
+  String get portDriveNotFound => 'Tidak ada DraconDex portabel di folder ini';
+
+  @override
+  String get portDriveUnplugged => 'Tidak tercolok';
+
+  @override
+  String get portDriveNeverRan => 'Jalankan aplikasi portabel di komputer sekali dulu';
+
+  @override
+  String get portDriveEmpty => 'Belum ada Nexus di drive ini';
+
+  @override
+  String get portCloneHere => 'Klon ke ponsel ini';
+
+  @override
+  String get portCloneToDrive => 'Klon ke drive portabel';
+
+  @override
+  String get portPickDrive => 'Drive yang mana?';
+
+  @override
+  String get portSyncNow => 'Sinkronkan sekarang';
+
+  @override
+  String get portUnlink => 'Berhenti sinkron';
+
+  @override
+  String get portUnlinkMessage => 'Kedua salinan tetap ada, tetapi tidak lagi disinkronkan.';
+
+  @override
+  String get portLinked => 'Tersinkron dengan drive';
+
+  @override
+  String get portSynced => 'Tersinkron';
+
+  @override
+  String get portUnchanged => 'Sudah terbaru';
+
+  @override
+  String get portNeedsYou => 'Diubah di kedua sisi — ketuk Sinkronkan sekarang';
+
+  @override
+  String get portConflictTitle => 'Diubah di kedua sisi';
+
+  @override
+  String get portConflictHint => 'Pilih nilai yang disimpan untuk masing-masing.';
+
+  @override
+  String get portThisPhone => 'Ponsel ini';
+
+  @override
+  String get portTheDrive => 'Drive';
+
+  @override
+  String get portAllPhone => 'Semua: ponsel ini';
+
+  @override
+  String get portAllDrive => 'Semua: drive';
+
+  @override
+  String get portApply => 'Terapkan';
+
+  @override
+  String get portErrNoDrive => 'Drive tidak tercolok';
+
+  @override
+  String get portErrChanged => 'Drive berubah sementara itu — coba lagi';
+
+  @override
+  String get portErrMapBroken => 'Nexus ini diganti setelah ditautkan. Hentikan sinkron, lalu klon lagi.';
+
+  @override
+  String get portErrFailed => 'Gagal menyinkronkan ({code})';
 }

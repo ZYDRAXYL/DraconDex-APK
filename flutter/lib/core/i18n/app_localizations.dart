@@ -6318,6 +6318,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Use'**
   String get iconUse;
+
+  /// No description provided for @portDriveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Portable drive'**
+  String get portDriveTitle;
+
+  /// No description provided for @portDriveSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync Nexuses with a portable DraconDex on a USB drive or SD card.'**
+  String get portDriveSubtitle;
+
+  /// No description provided for @portDriveAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the drive's folder'**
+  String get portDriveAdd;
+
+  /// No description provided for @portDriveAddHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the folder that holds dracondex-portable.json.'**
+  String get portDriveAddHint;
+
+  /// No description provided for @portDriveForget.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget this drive'**
+  String get portDriveForget;
+
+  /// No description provided for @portDriveNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No portable DraconDex in this folder'**
+  String get portDriveNotFound;
+
+  /// No description provided for @portDriveUnplugged.
+  ///
+  /// In en, this message translates to:
+  /// **'Not plugged in'**
+  String get portDriveUnplugged;
+
+  /// No description provided for @portDriveNeverRan.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the portable app on a computer once first'**
+  String get portDriveNeverRan;
+
+  /// No description provided for @portDriveEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No Nexus on this drive yet'**
+  String get portDriveEmpty;
+
+  /// No description provided for @portCloneHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Clone to this phone'**
+  String get portCloneHere;
+
+  /// No description provided for @portCloneToDrive.
+  ///
+  /// In en, this message translates to:
+  /// **'Clone to portable drive'**
+  String get portCloneToDrive;
+
+  /// No description provided for @portPickDrive.
+  ///
+  /// In en, this message translates to:
+  /// **'Which drive?'**
+  String get portPickDrive;
+
+  /// No description provided for @portSyncNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync now'**
+  String get portSyncNow;
+
+  /// No description provided for @portUnlink.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop syncing'**
+  String get portUnlink;
+
+  /// No description provided for @portUnlinkMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Both copies stay. They are no longer synced.'**
+  String get portUnlinkMessage;
+
+  /// No description provided for @portLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Synced with the drive'**
+  String get portLinked;
+
+  /// No description provided for @portSynced.
+  ///
+  /// In en, this message translates to:
+  /// **'Synced'**
+  String get portSynced;
+
+  /// No description provided for @portUnchanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Already up to date'**
+  String get portUnchanged;
+
+  /// No description provided for @portNeedsYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed on both sides — tap Sync now'**
+  String get portNeedsYou;
+
+  /// No description provided for @portConflictTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed on both sides'**
+  String get portConflictTitle;
+
+  /// No description provided for @portConflictHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick which value to keep for each one.'**
+  String get portConflictHint;
+
+  /// No description provided for @portThisPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone'**
+  String get portThisPhone;
+
+  /// No description provided for @portTheDrive.
+  ///
+  /// In en, this message translates to:
+  /// **'Drive'**
+  String get portTheDrive;
+
+  /// No description provided for @portAllPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'All: this phone'**
+  String get portAllPhone;
+
+  /// No description provided for @portAllDrive.
+  ///
+  /// In en, this message translates to:
+  /// **'All: drive'**
+  String get portAllDrive;
+
+  /// No description provided for @portApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get portApply;
+
+  /// No description provided for @portErrNoDrive.
+  ///
+  /// In en, this message translates to:
+  /// **'The drive isn't plugged in'**
+  String get portErrNoDrive;
+
+  /// No description provided for @portErrChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'The drive changed meanwhile — try again'**
+  String get portErrChanged;
+
+  /// No description provided for @portErrMapBroken.
+  ///
+  /// In en, this message translates to:
+  /// **'This Nexus was replaced after it was linked. Stop syncing, then clone it again.'**
+  String get portErrMapBroken;
+
+  /// No description provided for @portErrFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn't sync ({code})'**
+  String get portErrFailed;
 }
 
 class _AppLocalizationsDelegate

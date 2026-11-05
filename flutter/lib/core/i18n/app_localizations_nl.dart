@@ -3100,4 +3100,94 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get iconUse => 'Gebruiken';
+
+  @override
+  String get portDriveTitle => 'Draagbare schijf';
+
+  @override
+  String get portDriveSubtitle => 'Synchroniseer Nexussen met een draagbare DraconDex op een USB-stick of SD-kaart.';
+
+  @override
+  String get portDriveAdd => 'Map van de schijf toevoegen';
+
+  @override
+  String get portDriveAddHint => 'Kies de map met dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Deze schijf vergeten';
+
+  @override
+  String get portDriveNotFound => 'Geen draagbare DraconDex in deze map';
+
+  @override
+  String get portDriveUnplugged => 'Niet aangesloten';
+
+  @override
+  String get portDriveNeverRan => 'Start de draagbare app eerst één keer op een computer';
+
+  @override
+  String get portDriveEmpty => 'Nog geen Nexus op deze schijf';
+
+  @override
+  String get portCloneHere => 'Naar deze telefoon klonen';
+
+  @override
+  String get portCloneToDrive => 'Naar draagbare schijf klonen';
+
+  @override
+  String get portPickDrive => 'Welke schijf?';
+
+  @override
+  String get portSyncNow => 'Nu synchroniseren';
+
+  @override
+  String get portUnlink => 'Stoppen met synchroniseren';
+
+  @override
+  String get portUnlinkMessage => 'Beide kopieën blijven, maar worden niet meer gesynchroniseerd.';
+
+  @override
+  String get portLinked => 'Gesynchroniseerd met de schijf';
+
+  @override
+  String get portSynced => 'Gesynchroniseerd';
+
+  @override
+  String get portUnchanged => 'Al bijgewerkt';
+
+  @override
+  String get portNeedsYou => 'Aan beide kanten gewijzigd — tik op Nu synchroniseren';
+
+  @override
+  String get portConflictTitle => 'Aan beide kanten gewijzigd';
+
+  @override
+  String get portConflictHint => 'Kies per item welke waarde blijft.';
+
+  @override
+  String get portThisPhone => 'Deze telefoon';
+
+  @override
+  String get portTheDrive => 'Schijf';
+
+  @override
+  String get portAllPhone => 'Alles: deze telefoon';
+
+  @override
+  String get portAllDrive => 'Alles: schijf';
+
+  @override
+  String get portApply => 'Toepassen';
+
+  @override
+  String get portErrNoDrive => 'De schijf is niet aangesloten';
+
+  @override
+  String get portErrChanged => 'De schijf is intussen gewijzigd — probeer het opnieuw';
+
+  @override
+  String get portErrMapBroken => 'Deze Nexus is vervangen nadat hij gekoppeld werd. Stop met synchroniseren en kloon hem opnieuw.';
+
+  @override
+  String get portErrFailed => 'Synchroniseren mislukt ({code})';
 }

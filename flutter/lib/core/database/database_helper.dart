@@ -6,6 +6,7 @@ import 'db_factory.dart';
 import '../../data/services/legacy_notes.dart';
 import 'file_export.dart';
 import 'module_parents.dart';
+import 'port_link_schema.dart';
 import 'vault_schema.g.dart';
 import 'vault_upgrade.dart';
 
@@ -78,6 +79,7 @@ class DatabaseHelper {
     });
     await step('legacy notes', () => LegacyNotes.migrateAll(db));
     await step('module parents', () => db.transaction((txn) => normalizeModuleParents(txn)));
+    await step('port link', () => ensurePortLinkTables(db)); // Procress 32 9.2 — this install's tables, not vault.sql
     await _ensureDefaultNexus(db);
   }
 

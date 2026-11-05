@@ -3103,4 +3103,94 @@ class AppLocalizationsQd extends AppLocalizations {
 
   @override
   String get iconUse => 'Use';
+
+  @override
+  String get portDriveTitle => 'Wanderynge drive';
+
+  @override
+  String get portDriveSubtitle => 'Kepe Nexuses in accorde with a wanderynge DraconDex upon a USB stikke or SD carde.';
+
+  @override
+  String get portDriveAdd => 'Adde the drive\'s foldere';
+
+  @override
+  String get portDriveAddHint => 'Chese the foldere that holdeth dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Forgete this drive';
+
+  @override
+  String get portDriveNotFound => 'No wanderynge DraconDex in this foldere';
+
+  @override
+  String get portDriveUnplugged => 'Not yjoyned';
+
+  @override
+  String get portDriveNeverRan => 'Wake the wanderynge app upon a computere ones furst';
+
+  @override
+  String get portDriveEmpty => 'No Nexus upon this drive as yet';
+
+  @override
+  String get portCloneHere => 'Clone unto this phone';
+
+  @override
+  String get portCloneToDrive => 'Clone unto the wanderynge drive';
+
+  @override
+  String get portPickDrive => 'Whiche drive?';
+
+  @override
+  String get portSyncNow => 'Accorde now';
+
+  @override
+  String get portUnlink => 'Accorde no more';
+
+  @override
+  String get portUnlinkMessage => 'Bothe copyes abyde, yet they accorde no more.';
+
+  @override
+  String get portLinked => 'In accorde with the drive';
+
+  @override
+  String get portSynced => 'Accorded';
+
+  @override
+  String get portUnchanged => 'Alreadye in accorde';
+
+  @override
+  String get portNeedsYou => 'Chaunged on bothe sydes — touche Accorde now';
+
+  @override
+  String get portConflictTitle => 'Chaunged on bothe sydes';
+
+  @override
+  String get portConflictHint => 'Chese for eche whiche valewe to kepe.';
+
+  @override
+  String get portThisPhone => 'This phone';
+
+  @override
+  String get portTheDrive => 'Drive';
+
+  @override
+  String get portAllPhone => 'Alle: this phone';
+
+  @override
+  String get portAllDrive => 'Alle: drive';
+
+  @override
+  String get portApply => 'Do it';
+
+  @override
+  String get portErrNoDrive => 'The drive is not yjoyned';
+
+  @override
+  String get portErrChanged => 'The drive chaunged the whyle — assaye agayn';
+
+  @override
+  String get portErrMapBroken => 'This Nexus was replaced after it was bounde. Accorde no more, then clone it anewe.';
+
+  @override
+  String get portErrFailed => 'Myghte not accorde ({code})';
 }

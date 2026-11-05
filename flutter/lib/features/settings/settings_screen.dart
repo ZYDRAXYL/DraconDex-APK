@@ -19,6 +19,8 @@ import '../../core/theme/tokens.g.dart';
 import '../../widgets/ddx_list.dart';
 import 'theme_picker.dart';
 import 'transfer_screen.dart';
+import 'port_drive_screen.dart';
+import '../../core/platform/saf.dart';
 import '../../widgets/ddx_glass.dart';
 import '../../widgets/ddx_segmented.dart';
 
@@ -145,6 +147,16 @@ class SettingsScreen extends ConsumerWidget {
                 MaterialPageRoute<void>(builder: (_) => const TransferScreen()),
               ),
             ),
+            // Port Link (Plan part 9.6): Android only — SAF is how a USB stick or SD card is reached.
+            if (Saf.supported)
+              DdxListTile(
+                icon: Icons.usb,
+                title: l10n.portDriveTitle,
+                meta: l10n.portDriveSubtitle,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(builder: (_) => const PortDriveScreen()),
+                ),
+              ),
           ]),
           DdxListSection(title: l10n.settingsAbout, collapsible: false, children: [
             DdxListTile(

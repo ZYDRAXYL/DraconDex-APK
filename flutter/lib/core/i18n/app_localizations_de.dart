@@ -3103,4 +3103,94 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get iconUse => 'Verwenden';
+
+  @override
+  String get portDriveTitle => 'Mobiles Laufwerk';
+
+  @override
+  String get portDriveSubtitle => 'Nexusse mit einem portablen DraconDex auf USB-Stick oder SD-Karte synchronisieren.';
+
+  @override
+  String get portDriveAdd => 'Ordner des Laufwerks hinzufügen';
+
+  @override
+  String get portDriveAddHint => 'Wähle den Ordner mit dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Dieses Laufwerk vergessen';
+
+  @override
+  String get portDriveNotFound => 'Kein portables DraconDex in diesem Ordner';
+
+  @override
+  String get portDriveUnplugged => 'Nicht eingesteckt';
+
+  @override
+  String get portDriveNeverRan => 'Starte die portable App zuerst einmal auf einem Computer';
+
+  @override
+  String get portDriveEmpty => 'Noch kein Nexus auf diesem Laufwerk';
+
+  @override
+  String get portCloneHere => 'Auf dieses Telefon klonen';
+
+  @override
+  String get portCloneToDrive => 'Auf mobiles Laufwerk klonen';
+
+  @override
+  String get portPickDrive => 'Welches Laufwerk?';
+
+  @override
+  String get portSyncNow => 'Jetzt synchronisieren';
+
+  @override
+  String get portUnlink => 'Synchronisierung beenden';
+
+  @override
+  String get portUnlinkMessage => 'Beide Kopien bleiben erhalten, werden aber nicht mehr synchronisiert.';
+
+  @override
+  String get portLinked => 'Mit dem Laufwerk synchronisiert';
+
+  @override
+  String get portSynced => 'Synchronisiert';
+
+  @override
+  String get portUnchanged => 'Bereits aktuell';
+
+  @override
+  String get portNeedsYou => 'Auf beiden Seiten geändert — tippe auf Jetzt synchronisieren';
+
+  @override
+  String get portConflictTitle => 'Auf beiden Seiten geändert';
+
+  @override
+  String get portConflictHint => 'Wähle für jeden Eintrag, welcher Wert bleibt.';
+
+  @override
+  String get portThisPhone => 'Dieses Telefon';
+
+  @override
+  String get portTheDrive => 'Laufwerk';
+
+  @override
+  String get portAllPhone => 'Alle: dieses Telefon';
+
+  @override
+  String get portAllDrive => 'Alle: Laufwerk';
+
+  @override
+  String get portApply => 'Übernehmen';
+
+  @override
+  String get portErrNoDrive => 'Das Laufwerk ist nicht eingesteckt';
+
+  @override
+  String get portErrChanged => 'Das Laufwerk hat sich inzwischen geändert — bitte erneut versuchen';
+
+  @override
+  String get portErrMapBroken => 'Dieser Nexus wurde nach dem Verknüpfen ersetzt. Beende die Synchronisierung und klone ihn erneut.';
+
+  @override
+  String get portErrFailed => 'Synchronisierung fehlgeschlagen ({code})';
 }

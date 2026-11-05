@@ -3100,4 +3100,94 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get iconUse => 'Kullan';
+
+  @override
+  String get portDriveTitle => 'Taşınabilir sürücü';
+
+  @override
+  String get portDriveSubtitle => 'Nexus\'ları USB bellek veya SD karttaki taşınabilir DraconDex ile eşitleyin.';
+
+  @override
+  String get portDriveAdd => 'Sürücünün klasörünü ekle';
+
+  @override
+  String get portDriveAddHint => 'dracondex-portable.json dosyasının bulunduğu klasörü seçin.';
+
+  @override
+  String get portDriveForget => 'Bu sürücüyü unut';
+
+  @override
+  String get portDriveNotFound => 'Bu klasörde taşınabilir DraconDex yok';
+
+  @override
+  String get portDriveUnplugged => 'Takılı değil';
+
+  @override
+  String get portDriveNeverRan => 'Önce taşınabilir uygulamayı bir bilgisayarda bir kez başlatın';
+
+  @override
+  String get portDriveEmpty => 'Bu sürücüde henüz Nexus yok';
+
+  @override
+  String get portCloneHere => 'Bu telefona kopyala';
+
+  @override
+  String get portCloneToDrive => 'Taşınabilir sürücüye kopyala';
+
+  @override
+  String get portPickDrive => 'Hangi sürücü?';
+
+  @override
+  String get portSyncNow => 'Şimdi eşitle';
+
+  @override
+  String get portUnlink => 'Eşitlemeyi durdur';
+
+  @override
+  String get portUnlinkMessage => 'İki kopya da kalır, ancak artık eşitlenmez.';
+
+  @override
+  String get portLinked => 'Sürücüyle eşitlendi';
+
+  @override
+  String get portSynced => 'Eşitlendi';
+
+  @override
+  String get portUnchanged => 'Zaten güncel';
+
+  @override
+  String get portNeedsYou => 'İki tarafta da değişti — Şimdi eşitle\'ye dokunun';
+
+  @override
+  String get portConflictTitle => 'İki tarafta da değişti';
+
+  @override
+  String get portConflictHint => 'Her biri için hangi değerin kalacağını seçin.';
+
+  @override
+  String get portThisPhone => 'Bu telefon';
+
+  @override
+  String get portTheDrive => 'Sürücü';
+
+  @override
+  String get portAllPhone => 'Tümü: bu telefon';
+
+  @override
+  String get portAllDrive => 'Tümü: sürücü';
+
+  @override
+  String get portApply => 'Uygula';
+
+  @override
+  String get portErrNoDrive => 'Sürücü takılı değil';
+
+  @override
+  String get portErrChanged => 'Sürücü bu arada değişti — tekrar deneyin';
+
+  @override
+  String get portErrMapBroken => 'Bu Nexus bağlandıktan sonra değiştirildi. Eşitlemeyi durdurun, sonra yeniden kopyalayın.';
+
+  @override
+  String get portErrFailed => 'Eşitlenemedi ({code})';
 }
