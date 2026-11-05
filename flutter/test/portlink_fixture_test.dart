@@ -10,30 +10,11 @@ import 'package:dracondex/data/services/portlink/portlink_merge.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-// SDB 2.1.6's new case, run here until this repo's pin moves to it.
-// ponytail: delete this list once sdb.lock.json says 2.1.6 — the vendored file has it.
-const _pending = [
-  {
-    'name': 'drive-ref-stays',
-    'why': "a renumber moves only what this machine wrote: A stays in the drive's module",
-    'local': ["INSERT INTO module (nexus_ref, name, kind) VALUES (1, 'Local mod', 'classifier')", "UPDATE classifier_object SET name='A2' WHERE id=100"],
-    'drive': ["INSERT INTO module (nexus_ref, name, kind) VALUES (1, 'Drive mod', 'classifier')", "UPDATE classifier_object SET module_ref=(SELECT id FROM module WHERE name='Drive mod') WHERE id=100"],
-    'expect': {
-      'ok': true,
-      'queries': [
-        {'sql': 'SELECT o.name, m.name AS mod FROM classifier_object o JOIN module m ON m.id=o.module_ref', 'rows': [{'name': 'A2', 'mod': 'Drive mod'}]},
-        {'sql': 'SELECT name FROM module ORDER BY name', 'rows': [{'name': 'Drive mod'}, {'name': 'Heroes'}, {'name': 'Local mod'}]},
-      ],
-    },
-  },
-];
-
 void main() {
   sqfliteFfiInit();
   final f = databaseFactoryFfi;
   final fx = jsonDecode(File('test/fixtures/portlink-merge-v1.json').readAsStringSync()) as Map<String, dynamic>;
-  final names = {for (final c in fx['cases'] as List) c['name']};
-  final cases = [...fx['cases'] as List, ..._pending.where((c) => !names.contains(c['name']))];
+  final cases = fx['cases'] as List;
   late Directory dir;
   setUpAll(() async => dir = await Directory.systemTemp.createTemp('portfx'));
   tearDownAll(() => dir.delete(recursive: true));

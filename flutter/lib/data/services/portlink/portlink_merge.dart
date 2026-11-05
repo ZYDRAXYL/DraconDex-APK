@@ -30,7 +30,12 @@ class PortlinkConflict {
 class PortlinkMergeResult {
   final List<PortlinkConflict> conflicts;
   final Map<String, int> summary;
-  const PortlinkMergeResult(this.conflicts, this.summary);
+
+  /// table → L id → W id: the rows of this phone that had to move (a clash
+  /// with a row the drive made, or the same row by a UNIQUE). The caller's
+  /// local ↔ drive map follows them.
+  final Map<String, Map<int, int>> renumbered;
+  const PortlinkMergeResult(this.conflicts, this.summary, [this.renumbered = const {}]);
 }
 
 /// The 3-way merge of one Nexus (Plan part 9.4) — a port of EXE's
@@ -261,7 +266,7 @@ Future<PortlinkMergeResult> mergeInto(Database b, Database l, Database w, {Map<S
     await w.execute('PRAGMA foreign_keys = ON');
   }
   sum['conflicts'] = conflicts.length;
-  return PortlinkMergeResult(conflicts, sum);
+  return PortlinkMergeResult(conflicts, sum, idMap);
 }
 
 String _q(String n) => '"${n.replaceAll('"', '""')}"';
