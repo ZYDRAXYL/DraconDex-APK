@@ -19,8 +19,12 @@ final portlinkServiceProvider = FutureProvider<PortlinkService?>((ref) async {
 /// nexus id → its link.
 final portLinksProvider = FutureProvider<Map<int, PortLink>>((ref) async {
   if (!Saf.supported) return const {};
-  final db = await ref.watch(databaseProvider.future);
-  return {for (final l in await PortLinkDao(db).listLinks()) l.nexusId: l};
+  try {
+    final db = await ref.watch(databaseProvider.future);
+    return {for (final l in await PortLinkDao(db).listLinks()) l.nexusId: l};
+  } catch (_) {
+    return const {}; // no links to mark is the safe answer
+  }
 });
 
 /// One folder this app was given, and what is in it.
@@ -47,7 +51,16 @@ final portSyncStateProvider = StateProvider<Map<int, String>>((ref) => const {})
 /// Syncs every linked Nexus whose drive is plugged in, asking nothing — a
 /// Nexus that needs a choice is only marked. At app start and when a Nexus
 /// page is left (Plan part 9.6).
+///
+/// Never throws: it runs unasked, and a drive that cannot be read is not the
+/// screen's problem — that Nexus just keeps its mark.
 Future<void> syncAllLinked(WidgetRef ref, {int? only}) async {
+  try {
+    await _syncAllLinked(ref, only);
+  } catch (_) {}
+}
+
+Future<void> _syncAllLinked(WidgetRef ref, int? only) async {
   final svc = await ref.read(portlinkServiceProvider.future);
   if (svc == null) return;
   final links = await ref.read(portLinksProvider.future);
