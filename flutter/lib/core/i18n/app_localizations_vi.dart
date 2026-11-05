@@ -3103,4 +3103,94 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get iconUse => 'Dùng';
+
+  @override
+  String get portDriveTitle => 'Ổ đĩa di động';
+
+  @override
+  String get portDriveSubtitle => 'Đồng bộ Nexus với DraconDex di động trên USB hoặc thẻ SD.';
+
+  @override
+  String get portDriveAdd => 'Thêm thư mục của ổ đĩa';
+
+  @override
+  String get portDriveAddHint => 'Chọn thư mục chứa dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Quên ổ đĩa này';
+
+  @override
+  String get portDriveNotFound => 'Không có DraconDex di động trong thư mục này';
+
+  @override
+  String get portDriveUnplugged => 'Chưa cắm';
+
+  @override
+  String get portDriveNeverRan => 'Hãy mở ứng dụng di động trên máy tính một lần trước';
+
+  @override
+  String get portDriveEmpty => 'Chưa có Nexus nào trên ổ đĩa này';
+
+  @override
+  String get portCloneHere => 'Sao chép về điện thoại này';
+
+  @override
+  String get portCloneToDrive => 'Sao chép sang ổ đĩa di động';
+
+  @override
+  String get portPickDrive => 'Ổ đĩa nào?';
+
+  @override
+  String get portSyncNow => 'Đồng bộ ngay';
+
+  @override
+  String get portUnlink => 'Ngừng đồng bộ';
+
+  @override
+  String get portUnlinkMessage => 'Cả hai bản vẫn còn, nhưng không còn được đồng bộ.';
+
+  @override
+  String get portLinked => 'Đã đồng bộ với ổ đĩa';
+
+  @override
+  String get portSynced => 'Đã đồng bộ';
+
+  @override
+  String get portUnchanged => 'Đã là bản mới nhất';
+
+  @override
+  String get portNeedsYou => 'Đã thay đổi ở cả hai phía — chạm Đồng bộ ngay';
+
+  @override
+  String get portConflictTitle => 'Đã thay đổi ở cả hai phía';
+
+  @override
+  String get portConflictHint => 'Chọn giá trị cần giữ cho từng mục.';
+
+  @override
+  String get portThisPhone => 'Điện thoại này';
+
+  @override
+  String get portTheDrive => 'Ổ đĩa';
+
+  @override
+  String get portAllPhone => 'Tất cả: điện thoại này';
+
+  @override
+  String get portAllDrive => 'Tất cả: ổ đĩa';
+
+  @override
+  String get portApply => 'Áp dụng';
+
+  @override
+  String get portErrNoDrive => 'Ổ đĩa chưa được cắm';
+
+  @override
+  String get portErrChanged => 'Ổ đĩa đã thay đổi trong lúc đó — hãy thử lại';
+
+  @override
+  String get portErrMapBroken => 'Nexus này đã bị thay thế sau khi liên kết. Hãy ngừng đồng bộ rồi sao chép lại.';
+
+  @override
+  String get portErrFailed => 'Không thể đồng bộ ({code})';
 }

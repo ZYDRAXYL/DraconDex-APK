@@ -17,6 +17,7 @@ import '../../../widgets/confirm_dialog.dart';
 import '../../../widgets/ddx_list.dart';
 import '../../../widgets/row_menu.dart';
 import '../dialogs/nexus_dialog.dart';
+import '../../settings/port_drive_screen.dart';
 import '../../../widgets/ddx_glass.dart';
 import '../../../widgets/ddx_card.dart';
 
@@ -84,6 +85,7 @@ List<RowAction> nexusActions(BuildContext context, WidgetRef ref, NexusModel nex
       icon: Icons.ios_share,
       onTap: () => _exportPack(context, ref, nexus),
     ),
+    ...portlinkActions(context, ref, nexus),
     RowAction(
       label: l10n.btnDelete,
       icon: Icons.delete_outline,
@@ -142,6 +144,7 @@ class _NexusRow extends ConsumerWidget {
           : Icon(Icons.workspaces_outlined, size: compact ? DdxSize.iconSm : DdxSize.iconMd),
       title: nexus.name,
       meta: compact ? null : nexus.memo,
+      trailing: [PortLinkMark(nexusId: nexus.id)],
       actions: () => nexusActions(context, ref, nexus),
       onTap: () => context.push('/hub/${nexus.id}'),
     );
@@ -176,6 +179,7 @@ class _NexusCard extends ConsumerWidget {
                       ? ColorDot(colorCode: nexus.colorCode, size: 26)
                       : Icon(Icons.workspaces_outlined, size: 26, color: theme.colorScheme.primary),
                   const Spacer(),
+                  PortLinkMark(nexusId: nexus.id),
                   RowMenuButton(actions: actions, title: nexus.name, iconSize: 18),
                 ],
               ),

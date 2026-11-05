@@ -3100,4 +3100,94 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get iconUse => 'Використати';
+
+  @override
+  String get portDriveTitle => 'Переносний диск';
+
+  @override
+  String get portDriveSubtitle => 'Синхронізуйте Nexus з переносним DraconDex на флешці або SD-картці.';
+
+  @override
+  String get portDriveAdd => 'Додати папку диска';
+
+  @override
+  String get portDriveAddHint => 'Виберіть папку з файлом dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Забути цей диск';
+
+  @override
+  String get portDriveNotFound => 'У цій папці немає переносного DraconDex';
+
+  @override
+  String get portDriveUnplugged => 'Не підключено';
+
+  @override
+  String get portDriveNeverRan => 'Спочатку один раз запустіть переносний застосунок на комп\'ютері';
+
+  @override
+  String get portDriveEmpty => 'На цьому диску ще немає Nexus';
+
+  @override
+  String get portCloneHere => 'Клонувати на цей телефон';
+
+  @override
+  String get portCloneToDrive => 'Клонувати на переносний диск';
+
+  @override
+  String get portPickDrive => 'Який диск?';
+
+  @override
+  String get portSyncNow => 'Синхронізувати';
+
+  @override
+  String get portUnlink => 'Припинити синхронізацію';
+
+  @override
+  String get portUnlinkMessage => 'Обидві копії залишаться, але більше не синхронізуватимуться.';
+
+  @override
+  String get portLinked => 'Синхронізовано з диском';
+
+  @override
+  String get portSynced => 'Синхронізовано';
+
+  @override
+  String get portUnchanged => 'Уже актуально';
+
+  @override
+  String get portNeedsYou => 'Змінено з обох боків — натисніть «Синхронізувати»';
+
+  @override
+  String get portConflictTitle => 'Змінено з обох боків';
+
+  @override
+  String get portConflictHint => 'Виберіть, яке значення залишити в кожному випадку.';
+
+  @override
+  String get portThisPhone => 'Цей телефон';
+
+  @override
+  String get portTheDrive => 'Диск';
+
+  @override
+  String get portAllPhone => 'Усе: цей телефон';
+
+  @override
+  String get portAllDrive => 'Усе: диск';
+
+  @override
+  String get portApply => 'Застосувати';
+
+  @override
+  String get portErrNoDrive => 'Диск не підключено';
+
+  @override
+  String get portErrChanged => 'Диск тим часом змінився — спробуйте ще раз';
+
+  @override
+  String get portErrMapBroken => 'Цей Nexus замінили після зв\'язування. Припиніть синхронізацію й клонуйте його знову.';
+
+  @override
+  String get portErrFailed => 'Не вдалося синхронізувати ({code})';
 }

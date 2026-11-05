@@ -3103,4 +3103,94 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get iconUse => '使う';
+
+  @override
+  String get portDriveTitle => 'ポータブルドライブ';
+
+  @override
+  String get portDriveSubtitle => 'USBメモリやSDカード上のポータブル版DraconDexとNexusを同期します。';
+
+  @override
+  String get portDriveAdd => 'ドライブのフォルダを追加';
+
+  @override
+  String get portDriveAddHint => 'dracondex-portable.json があるフォルダを選んでください。';
+
+  @override
+  String get portDriveForget => 'このドライブを削除';
+
+  @override
+  String get portDriveNotFound => 'このフォルダにポータブル版DraconDexがありません';
+
+  @override
+  String get portDriveUnplugged => '接続されていません';
+
+  @override
+  String get portDriveNeverRan => '先にパソコンでポータブル版を一度起動してください';
+
+  @override
+  String get portDriveEmpty => 'このドライブにはまだNexusがありません';
+
+  @override
+  String get portCloneHere => 'このスマホに複製';
+
+  @override
+  String get portCloneToDrive => 'ポータブルドライブに複製';
+
+  @override
+  String get portPickDrive => 'どのドライブ？';
+
+  @override
+  String get portSyncNow => '今すぐ同期';
+
+  @override
+  String get portUnlink => '同期をやめる';
+
+  @override
+  String get portUnlinkMessage => '両方のコピーは残りますが、同期されなくなります。';
+
+  @override
+  String get portLinked => 'ドライブと同期中';
+
+  @override
+  String get portSynced => '同期しました';
+
+  @override
+  String get portUnchanged => '最新の状態です';
+
+  @override
+  String get portNeedsYou => '両方で変更されています — 今すぐ同期をタップ';
+
+  @override
+  String get portConflictTitle => '両方で変更されています';
+
+  @override
+  String get portConflictHint => 'それぞれ残す値を選んでください。';
+
+  @override
+  String get portThisPhone => 'このスマホ';
+
+  @override
+  String get portTheDrive => 'ドライブ';
+
+  @override
+  String get portAllPhone => 'すべて：このスマホ';
+
+  @override
+  String get portAllDrive => 'すべて：ドライブ';
+
+  @override
+  String get portApply => '適用';
+
+  @override
+  String get portErrNoDrive => 'ドライブが接続されていません';
+
+  @override
+  String get portErrChanged => 'その間にドライブが変更されました — もう一度お試しください';
+
+  @override
+  String get portErrMapBroken => 'このNexusはリンク後に置き換えられました。同期をやめてから、もう一度複製してください。';
+
+  @override
+  String get portErrFailed => '同期できませんでした（{code}）';
 }

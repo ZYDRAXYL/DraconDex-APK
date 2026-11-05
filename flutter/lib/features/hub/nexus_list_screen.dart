@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/i18n/app_localizations.dart';
 import '../../providers/builder_view_provider.dart';
 import '../../providers/module_provider.dart';
+import '../../providers/portlink_provider.dart';
 import '../../providers/update_provider.dart';
 import '../../widgets/ddx_list.dart';
 import '../../widgets/large_title_layout.dart';
@@ -39,6 +40,8 @@ class _NexusListScreenState extends ConsumerState<NexusListScreen> {
     // Fire-and-forget, once per app open — never throws, so a failed or
     // offline check is silently a no-op (see UpdateService.checkForUpdate).
     WidgetsBinding.instance.addPostFrameCallback((_) => _maybeShowUpdate());
+    // Port Link (Plan part 9.6): every linked Nexus whose drive is in, once per app open.
+    WidgetsBinding.instance.addPostFrameCallback((_) => syncAllLinked(ref));
   }
 
   Future<void> _maybeShowUpdate() async {

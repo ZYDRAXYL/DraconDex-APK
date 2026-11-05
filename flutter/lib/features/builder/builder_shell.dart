@@ -10,6 +10,7 @@ import '../../core/layout/breakpoints.dart';
 import '../../core/theme/ddx_theme.dart';
 import '../../data/services/bundle_service.dart';
 import '../../providers/navigation_providers.dart';
+import '../../providers/portlink_provider.dart';
 import '../../providers/recent_views_provider.dart';
 import '../../providers/shell_layout_provider.dart';
 import '../../widgets/ddx_glass.dart';
@@ -73,6 +74,9 @@ class _BuilderShellState extends ConsumerState<BuilderShell> {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) ref.read(chromeVisibleProvider.notifier).state = true;
       });
+      // Port Link (Plan part 9.6): leaving a Nexus syncs it, if its drive is in.
+      final left = RegExp(r'^/hub/(\d+)').firstMatch(old.location)?.group(1);
+      if (left != null && !widget.location.startsWith('/hub/$left')) syncAllLinked(ref, only: int.parse(left));
     }
   }
 

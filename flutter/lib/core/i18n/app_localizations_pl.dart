@@ -3100,4 +3100,94 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get iconUse => 'Użyj';
+
+  @override
+  String get portDriveTitle => 'Dysk przenośny';
+
+  @override
+  String get portDriveSubtitle => 'Synchronizuj Nexusy z przenośnym DraconDex na pendrivie lub karcie SD.';
+
+  @override
+  String get portDriveAdd => 'Dodaj folder dysku';
+
+  @override
+  String get portDriveAddHint => 'Wybierz folder z plikiem dracondex-portable.json.';
+
+  @override
+  String get portDriveForget => 'Zapomnij ten dysk';
+
+  @override
+  String get portDriveNotFound => 'Brak przenośnego DraconDex w tym folderze';
+
+  @override
+  String get portDriveUnplugged => 'Niepodłączony';
+
+  @override
+  String get portDriveNeverRan => 'Najpierw uruchom raz aplikację przenośną na komputerze';
+
+  @override
+  String get portDriveEmpty => 'Na tym dysku nie ma jeszcze Nexusa';
+
+  @override
+  String get portCloneHere => 'Sklonuj na ten telefon';
+
+  @override
+  String get portCloneToDrive => 'Sklonuj na dysk przenośny';
+
+  @override
+  String get portPickDrive => 'Który dysk?';
+
+  @override
+  String get portSyncNow => 'Synchronizuj teraz';
+
+  @override
+  String get portUnlink => 'Przestań synchronizować';
+
+  @override
+  String get portUnlinkMessage => 'Obie kopie zostają, ale nie są już synchronizowane.';
+
+  @override
+  String get portLinked => 'Zsynchronizowano z dyskiem';
+
+  @override
+  String get portSynced => 'Zsynchronizowano';
+
+  @override
+  String get portUnchanged => 'Już aktualne';
+
+  @override
+  String get portNeedsYou => 'Zmieniono po obu stronach — dotknij Synchronizuj teraz';
+
+  @override
+  String get portConflictTitle => 'Zmieniono po obu stronach';
+
+  @override
+  String get portConflictHint => 'Wybierz, którą wartość zachować w każdym przypadku.';
+
+  @override
+  String get portThisPhone => 'Ten telefon';
+
+  @override
+  String get portTheDrive => 'Dysk';
+
+  @override
+  String get portAllPhone => 'Wszystko: ten telefon';
+
+  @override
+  String get portAllDrive => 'Wszystko: dysk';
+
+  @override
+  String get portApply => 'Zastosuj';
+
+  @override
+  String get portErrNoDrive => 'Dysk nie jest podłączony';
+
+  @override
+  String get portErrChanged => 'Dysk w międzyczasie się zmienił — spróbuj ponownie';
+
+  @override
+  String get portErrMapBroken => 'Ten Nexus został zastąpiony po połączeniu. Przestań synchronizować i sklonuj go ponownie.';
+
+  @override
+  String get portErrFailed => 'Nie udało się zsynchronizować ({code})';
 }

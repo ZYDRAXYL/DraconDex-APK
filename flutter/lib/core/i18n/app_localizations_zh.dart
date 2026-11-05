@@ -3103,4 +3103,94 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get iconUse => '使用';
+
+  @override
+  String get portDriveTitle => '便携驱动器';
+
+  @override
+  String get portDriveSubtitle => '与 U 盘或 SD 卡上的便携版 DraconDex 同步 Nexus。';
+
+  @override
+  String get portDriveAdd => '添加驱动器文件夹';
+
+  @override
+  String get portDriveAddHint => '选择包含 dracondex-portable.json 的文件夹。';
+
+  @override
+  String get portDriveForget => '忘记此驱动器';
+
+  @override
+  String get portDriveNotFound => '此文件夹中没有便携版 DraconDex';
+
+  @override
+  String get portDriveUnplugged => '未插入';
+
+  @override
+  String get portDriveNeverRan => '请先在电脑上启动一次便携版';
+
+  @override
+  String get portDriveEmpty => '此驱动器上还没有 Nexus';
+
+  @override
+  String get portCloneHere => '克隆到此手机';
+
+  @override
+  String get portCloneToDrive => '克隆到便携驱动器';
+
+  @override
+  String get portPickDrive => '哪个驱动器？';
+
+  @override
+  String get portSyncNow => '立即同步';
+
+  @override
+  String get portUnlink => '停止同步';
+
+  @override
+  String get portUnlinkMessage => '两份副本都会保留，但不再同步。';
+
+  @override
+  String get portLinked => '已与驱动器同步';
+
+  @override
+  String get portSynced => '已同步';
+
+  @override
+  String get portUnchanged => '已是最新';
+
+  @override
+  String get portNeedsYou => '两边都有修改 — 请点“立即同步”';
+
+  @override
+  String get portConflictTitle => '两边都有修改';
+
+  @override
+  String get portConflictHint => '为每一项选择要保留的值。';
+
+  @override
+  String get portThisPhone => '此手机';
+
+  @override
+  String get portTheDrive => '驱动器';
+
+  @override
+  String get portAllPhone => '全部：此手机';
+
+  @override
+  String get portAllDrive => '全部：驱动器';
+
+  @override
+  String get portApply => '应用';
+
+  @override
+  String get portErrNoDrive => '驱动器未插入';
+
+  @override
+  String get portErrChanged => '驱动器在此期间发生了变化 — 请重试';
+
+  @override
+  String get portErrMapBroken => '此 Nexus 在关联后被替换。请停止同步，然后重新克隆。';
+
+  @override
+  String get portErrFailed => '无法同步（{code}）';
 }

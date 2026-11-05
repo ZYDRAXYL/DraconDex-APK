@@ -3103,4 +3103,94 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get iconUse => '사용';
+
+  @override
+  String get portDriveTitle => '휴대용 드라이브';
+
+  @override
+  String get portDriveSubtitle => 'USB 드라이브나 SD 카드의 휴대용 DraconDex와 Nexus를 동기화합니다.';
+
+  @override
+  String get portDriveAdd => '드라이브 폴더 추가';
+
+  @override
+  String get portDriveAddHint => 'dracondex-portable.json이 있는 폴더를 선택하세요.';
+
+  @override
+  String get portDriveForget => '이 드라이브 잊기';
+
+  @override
+  String get portDriveNotFound => '이 폴더에 휴대용 DraconDex가 없습니다';
+
+  @override
+  String get portDriveUnplugged => '연결되지 않음';
+
+  @override
+  String get portDriveNeverRan => '먼저 컴퓨터에서 휴대용 앱을 한 번 실행하세요';
+
+  @override
+  String get portDriveEmpty => '이 드라이브에 아직 Nexus가 없습니다';
+
+  @override
+  String get portCloneHere => '이 휴대폰으로 복제';
+
+  @override
+  String get portCloneToDrive => '휴대용 드라이브로 복제';
+
+  @override
+  String get portPickDrive => '어느 드라이브?';
+
+  @override
+  String get portSyncNow => '지금 동기화';
+
+  @override
+  String get portUnlink => '동기화 중지';
+
+  @override
+  String get portUnlinkMessage => '두 사본은 모두 남지만 더 이상 동기화되지 않습니다.';
+
+  @override
+  String get portLinked => '드라이브와 동기화됨';
+
+  @override
+  String get portSynced => '동기화됨';
+
+  @override
+  String get portUnchanged => '이미 최신입니다';
+
+  @override
+  String get portNeedsYou => '양쪽에서 변경됨 — 지금 동기화를 누르세요';
+
+  @override
+  String get portConflictTitle => '양쪽에서 변경됨';
+
+  @override
+  String get portConflictHint => '각 항목마다 남길 값을 선택하세요.';
+
+  @override
+  String get portThisPhone => '이 휴대폰';
+
+  @override
+  String get portTheDrive => '드라이브';
+
+  @override
+  String get portAllPhone => '전체: 이 휴대폰';
+
+  @override
+  String get portAllDrive => '전체: 드라이브';
+
+  @override
+  String get portApply => '적용';
+
+  @override
+  String get portErrNoDrive => '드라이브가 연결되어 있지 않습니다';
+
+  @override
+  String get portErrChanged => '그동안 드라이브가 변경되었습니다 — 다시 시도하세요';
+
+  @override
+  String get portErrMapBroken => '이 Nexus는 연결된 뒤 교체되었습니다. 동기화를 중지한 뒤 다시 복제하세요.';
+
+  @override
+  String get portErrFailed => '동기화하지 못했습니다 ({code})';
 }
